@@ -48,16 +48,16 @@ public class CustomRecipe {
 
         NamespacedKey tntBow = new NamespacedKey(lifestealSmp, "tnt_bow");
         ShapelessRecipe tntBowRecipe = new ShapelessRecipe(tntBow, createTNTBow());
-        customBowRecipe.addIngredient(1, Material.TNT);
-        customBowRecipe.addIngredient(1, Material.NETHERITE_BLOCK);
-        customBowRecipe.addIngredient(1, Material.BOW);
+        tntBowRecipe.addIngredient(1, Material.TNT);
+        tntBowRecipe.addIngredient(1, Material.NETHERITE_BLOCK);
+        tntBowRecipe.addIngredient(1, Material.BOW);
         Bukkit.addRecipe(tntBowRecipe);
 
-        NamespacedKey featherSword = new NamespacedKey(lifestealSmp, "tnt_bow");
+        NamespacedKey featherSword = new NamespacedKey(lifestealSmp, "feather_sword");
         ShapelessRecipe featherSwordRecipe = new ShapelessRecipe(featherSword, createFeatherSword());
-        customBowRecipe.addIngredient(1, Material.FEATHER);
-        customBowRecipe.addIngredient(1, Material.NETHERITE_BLOCK);
-        customBowRecipe.addIngredient(1, Material.DIAMOND_SWORD);
+        featherSwordRecipe.addIngredient(1, Material.FEATHER);
+        featherSwordRecipe.addIngredient(1, Material.NETHERITE_BLOCK);
+        featherSwordRecipe.addIngredient(1, Material.DIAMOND_SWORD);
         Bukkit.addRecipe(featherSwordRecipe);
     }
 
@@ -102,9 +102,18 @@ public class CustomRecipe {
         meta.setDisplayName(ChatColor.AQUA + "Feather Sword");
         List<String> DEFL = new ArrayList<>();
         DEFL.add(ChatColor.GOLD + "Special Ability: " + ChatColor.DARK_PURPLE + "Right click to launch yourself");
-        DEFL.add(ChatColor.LIGHT_PURPLE + "Permanent speed 2 while holding");
+        DEFL.add(ChatColor.LIGHT_PURPLE + "Permanent speed while holding");
         meta.setLore(DEFL);
         //meta.addItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS);
+        AttributeModifier attackSpeedModifier = new AttributeModifier(
+                UUID.randomUUID(),
+                "generic.attackSpeed",
+                -2.4,
+                AttributeModifier.Operation.ADD_NUMBER,
+                EquipmentSlot.HAND
+        );
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifier);
+
         AttributeModifier attackDamageModifier = new AttributeModifier(
                 UUID.randomUUID(),
                 "generic.attackDamage",
