@@ -59,6 +59,13 @@ public class CustomRecipe {
         featherSwordRecipe.addIngredient(1, Material.NETHERITE_BLOCK);
         featherSwordRecipe.addIngredient(1, Material.DIAMOND_SWORD);
         Bukkit.addRecipe(featherSwordRecipe);
+
+        NamespacedKey opPickaxe = new NamespacedKey(lifestealSmp, "op_pickaxe");
+        ShapelessRecipe opPickaxeRecipe = new ShapelessRecipe(opPickaxe, createOpPickaxe());
+        opPickaxeRecipe.addIngredient(1, Material.TNT);
+        opPickaxeRecipe.addIngredient(1, Material.NETHERITE_BLOCK);
+        opPickaxeRecipe.addIngredient(1, Material.DIAMOND_PICKAXE);
+        Bukkit.addRecipe(opPickaxeRecipe);
     }
 
     private static ItemStack createCustomBow() {
@@ -122,6 +129,21 @@ public class CustomRecipe {
                 EquipmentSlot.HAND
         );
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDamageModifier);
+
+        customBow.setItemMeta(meta);
+
+        return customBow;
+    }
+
+    private static ItemStack createOpPickaxe() {
+        ItemStack customBow = new ItemStack(Material.DIAMOND_PICKAXE);
+
+        ItemMeta meta = customBow.getItemMeta();
+        //meta.setDisplayName(ChatColor.LIGHT_PURPLE + "Teleporting Bow");
+        meta.setDisplayName(ChatColor.GOLD + "God Pickaxe");
+        List<String> DEFL = new ArrayList<>();
+        DEFL.add(ChatColor.GOLD + "Special Ability: " + ChatColor.DARK_PURPLE + "Mine to break 3x3!");
+        meta.setLore(DEFL);
 
         customBow.setItemMeta(meta);
 

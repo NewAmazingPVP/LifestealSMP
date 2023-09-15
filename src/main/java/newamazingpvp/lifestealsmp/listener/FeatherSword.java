@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.listener;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -14,7 +15,13 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class FeatherSword implements Listener {
+    private final Map<Player, Long> teleportCooldowns = new HashMap<>();
+    private final long teleportCooldownDuration = 60000;
+
     @EventHandler
     public void onPlayerItemHeld(PlayerItemHeldEvent event) {
         Player player = event.getPlayer();
@@ -31,17 +38,56 @@ public class FeatherSword implements Listener {
     }
 
     @EventHandler
-    public void onPlayerRightClick(PlayerInteractEvent event){
+    public void onPlayerRightClick(PlayerInteractEvent event) {
+        Player player = event.getPlayer();
         if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) &&
                 event.hasItem() && event.getItem().getType() == Material.DIAMOND_SWORD) {
             ItemMeta meta = event.getItem().getItemMeta();
             if (meta.getLore().toString().toLowerCase().contains("permanent speed")) {
-                Vector direction = event.getPlayer().getLocation().getDirection();
+                if (isTeleportCooldownExpired(player)) {
+                    Vector direction = player.getLocation().getDirection();
+                    direction.multiply(new Vector(10, 10, 10));
+                    player.teleport(player.getLocation().add(direction));
 
-                direction.multiply(new Vector(10, 10, 10));
-                event.getPlayer().teleport(event.getPlayer().getLocation().add(direction));
+                    setTeleportCooldown(player);
+                } else {
+                    player.sendMessage(ChatColor.RED + "You must wait "+ cooldownRemainingTime(player) + " for the cooldown to finish before teleporting again.");
+                }
             }
         }
     }
 
+    private boolean isTeleportCooldownExpired(Player player) {
+        if (teleportCooldowns.containsKey(player)) {
+            long lastTeleportTime = teleportCooldowns.get(player);
+            long currentTime = System.currentTimeMillis();
+            return currentTime - lastTeleportTime >= teleportCooldownDuration;
+        }
+        return true;
+    }
+
+    private String cooldownRemainingTime(Player player) {
+        if (teleportCooldowns.containsKey(player)) {
+            long lastTeleportTime = teleportCooldowns.get(player);
+            long currentTime = System.currentTimeMillis();
+            long remainingCooldown = teleportCooldownDuration - (currentTime - lastTeleportTime);
+
+            if (remainingCooldown <= 0) {
+                return "Cooldown is over.";
+            }
+
+            int seconds = (int) (remainingCooldown / 1000);
+            int minutes = seconds / 60;
+            seconds %= 60;
+
+            return String.format("%d:%02d", minutes, seconds);
+        }
+
+        return "Cooldown is over.";
+    }
+
+
+    private void setTeleportCooldown(Player player) {
+        teleportCooldowns.put(player, System.currentTimeMillis());
+    }
 }

@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp;
 
+import com.example.pickaxeplugin.OpPickaxe;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import newamazingpvp.lifestealsmp.command.CustomDistance;
@@ -57,6 +58,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new CompassListener(), this);
         getServer().getPluginManager().registerEvents(new TntBow(), this);
         getServer().getPluginManager().registerEvents(new FeatherSword(), this);
+        getServer().getPluginManager().registerEvents(new OpPickaxe(), this);
         int repeatDelayTicks = 7200 * 20;
         BukkitRunnable broadcastTask = new BukkitRunnable() {
             @Override
