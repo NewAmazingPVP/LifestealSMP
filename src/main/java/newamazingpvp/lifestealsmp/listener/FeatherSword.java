@@ -19,12 +19,14 @@ public class FeatherSword implements Listener {
     public void onPlayerItemHeld(PlayerItemHeldEvent event) {
         Player player = event.getPlayer();
         ItemStack heldItem = player.getInventory().getItem(event.getNewSlot());
-
+        player.sendMessage(String.valueOf(player.getWalkSpeed()));
         if (heldItem != null && heldItem.getType() == Material.DIAMOND_SWORD) {
             ItemMeta meta = heldItem.getItemMeta();
-            if (meta.getLore().toString().contains("Permanent Speed 2")) {
-                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 99999, 1));
+            if (meta.getLore().toString().toLowerCase().contains("permanent speed")) {
+                player.setWalkSpeed(0.3f);
             }
+        } else {
+            player.setWalkSpeed(0.2f);
         }
     }
 
@@ -33,10 +35,10 @@ public class FeatherSword implements Listener {
         if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) &&
                 event.hasItem() && event.getItem().getType() == Material.DIAMOND_SWORD) {
             ItemMeta meta = event.getItem().getItemMeta();
-            if (meta.getLore().toString().contains("Permanent Speed 2")) {
+            if (meta.getLore().toString().toLowerCase().contains("permanent speed")) {
                 Vector direction = event.getPlayer().getLocation().getDirection();
 
-                direction.multiply(new Vector(5, 5, 5));
+                direction.multiply(new Vector(10, 10, 10));
                 event.getPlayer().teleport(event.getPlayer().getLocation().add(direction));
             }
         }
