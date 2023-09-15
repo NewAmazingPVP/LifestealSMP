@@ -65,7 +65,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         broadcastTask.runTaskTimer(this, 0, repeatDelayTicks);
         registerCustomRecipes();
         try {
-            jda = JDABuilder.createDefault("MTAwMDk0MzMxMzE0ODQ1Mjg2NA.GPdpcR.en1IKs-w4SeOSAKF5ERkmE7OS7g6zvGs5Otjoo").build();
+            jda = JDABuilder.createDefault("token").build();
         } catch (LoginException e) {
             getLogger().log(Level.SEVERE, "Failed to initialize Discord bot!", e);
             return;
