@@ -41,11 +41,11 @@ public class CustomRecipe {
 
         NamespacedKey recipeKey = new NamespacedKey(lifestealSmp, "custom_bow_recipe");
 
-        ShapelessRecipe customBowRecipe = new ShapelessRecipe(recipeKey, createCustomBow());
+        ShapedRecipe customBowRecipe = new ShapedRecipe(recipeKey, createCustomBow());
 
         customBowRecipe.shape(" P ", "NBN", " B ");
 
-        customBowRecipe. setIngredient('P', Material.ENDER_PEARL);
+        customBowRecipe.setIngredient('P', Material.ENDER_PEARL);
         customBowRecipe.setIngredient('N', Material.NETHERITE_BLOCK);
         customBowRecipe.setIngredient('B', Material.BOW);
 
