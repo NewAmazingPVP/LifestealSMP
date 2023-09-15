@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.listener;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -15,10 +16,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class TntBow implements Listener {
     private HashMap<UUID, ItemStack> playerHeldItems = new HashMap<>();
+    private final Map<Player, Long> teleportCooldowns = new HashMap<>();
+    private final long teleportCooldownDuration = 15000;
 
     @EventHandler
     public void onProjectileLaunch(ProjectileLaunchEvent event) {
@@ -41,20 +45,20 @@ public class TntBow implements Listener {
             Player shooter = (Player) arrow.getShooter();
 
             if (playerHeldItems.containsKey(shooter.getUniqueId())) {
-                Location arrowLocation = arrow.getLocation();
-                spawnIgnitedTNT(arrowLocation);
-                ItemStack item = playerHeldItems.get(shooter.getUniqueId());
-                shooter.setCooldown(item.getType(), 20*15);
-                playerHeldItems.remove(shooter.getUniqueId());
-
+                if (isTeleportCooldownExpired(shooter)) {
+                    Location arrowLocation = arrow.getLocation();
+                    spawnIgnitedTNT(arrowLocation);
+                    ItemStack item = playerHeldItems.get(shooter.getUniqueId());
+                    playerHeldItems.remove(shooter.getUniqueId());
+                    setTeleportCooldown(shooter);
+                } else {
+                    shooter.sendMessage(ChatColor.RED + "You must wait "+ cooldownRemainingTime(shooter) + " for the cooldown to finish before using the TNT again.");
+                }
             }
         }
     }
 
     public void spawnIgnitedTNT(Location location) {
-        Block block = location.getBlock();
-        block.setType(Material.TNT);
-
         TNTPrimed tnt = (TNTPrimed) location.getWorld().spawnEntity(location, EntityType.PRIMED_TNT);
 
         tnt.setFuseTicks(40);
@@ -63,5 +67,37 @@ public class TntBow implements Listener {
     private boolean isBow(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
         return item.getType() == Material.BOW && meta.getLore().toString().contains("TNT Shooter!");
+    }
+    private boolean isTeleportCooldownExpired(Player player) {
+        if (teleportCooldowns.containsKey(player)) {
+            long lastTeleportTime = teleportCooldowns.get(player);
+            long currentTime = System.currentTimeMillis();
+            return currentTime - lastTeleportTime >= teleportCooldownDuration;
+        }
+        return true;
+    }
+
+    private void setTeleportCooldown(Player player) {
+        teleportCooldowns.put(player, System.currentTimeMillis());
+    }
+
+    private String cooldownRemainingTime(Player player) {
+        if (teleportCooldowns.containsKey(player)) {
+            long lastTeleportTime = teleportCooldowns.get(player);
+            long currentTime = System.currentTimeMillis();
+            long remainingCooldown = teleportCooldownDuration - (currentTime - lastTeleportTime);
+
+            if (remainingCooldown <= 0) {
+                return "Cooldown is over.";
+            }
+
+            int seconds = (int) (remainingCooldown / 1000);
+            int minutes = seconds / 60;
+            seconds %= 60;
+
+            return String.format("%d:%02d", minutes, seconds);
+        }
+
+        return "Cooldown is over.";
     }
 }
