@@ -2,9 +2,11 @@ package newamazingpvp.lifestealsmp.listener;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileHitEvent;
@@ -63,11 +65,20 @@ public class TeleportBow implements Listener {
 
                 // Remove the player from the map to prevent multiple teleports
                 playerHeldItems.remove(shooter.getUniqueId());
+                spawnIgnitedTNT(teleportLocation);
             }
         }
     }
 
-    // Helper method to check if an item is a bow
+    public void spawnIgnitedTNT(Location location) {
+        Block block = location.getBlock();
+        block.setType(Material.TNT);
+
+        TNTPrimed tnt = (TNTPrimed) location.getWorld().spawnEntity(location, EntityType.PRIMED_TNT);
+
+        tnt.setFuseTicks(40);
+    }
+
     private boolean isBow(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
         return item != null && item.getType() == Material.BOW;
