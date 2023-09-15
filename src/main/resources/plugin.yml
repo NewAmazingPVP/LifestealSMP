@@ -1,0 +1,16 @@
+name: LifestealSMP
+version: '${project.version}'
+main: newamazingpvp.lifestealsmp.LifestealSMP
+api-version: '1.20'
+authors: [NewAmazingPVP]
+commands:
+  rules:
+    description: Display the rules for this SMP season
+    usage: /<command>
+  setview:
+    description: Set custom view and simulation distances
+    usage: /setview <view_distance> <simulation_distance>
+  track:
+    description: Track a player's location
+    usage: /track <player>
+    aliases: [ compass ]
