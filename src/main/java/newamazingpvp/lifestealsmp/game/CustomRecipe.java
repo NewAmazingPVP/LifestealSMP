@@ -60,7 +60,7 @@ public class CustomRecipe {
         meta.setDisplayName("Custom Bow");
         List<String> DEFL = new ArrayList<>();
         DEFL.add(ChatColor.RED + "Just don't use this...");
-        SI.setLore(DEFL);
+        meta.setLore(DEFL);
 
         meta.addItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
