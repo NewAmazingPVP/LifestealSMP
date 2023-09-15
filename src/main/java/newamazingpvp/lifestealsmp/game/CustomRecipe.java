@@ -39,29 +39,47 @@ public class CustomRecipe {
         purpleBlockRecipe.setIngredient('S', Material.STONE_BRICKS);
         Bukkit.addRecipe(purpleBlockRecipe);
 
-        NamespacedKey recipeKey = new NamespacedKey(lifestealSmp, "custom_bow_recipe");
+        NamespacedKey recipeKey = new NamespacedKey(lifestealSmp, "teleporting_bow");
+        ShapelessRecipe customBowRecipe = new ShapelessRecipe(recipeKey, createCustomBow());
+        customBowRecipe.addIngredient(1, Material.ENDER_PEARL);
+        customBowRecipe.addIngredient(1, Material.NETHERITE_BLOCK);
+        customBowRecipe.addIngredient(1, Material.BOW);
+        Bukkit.addRecipe(customBowRecipe);
 
-        ShapedRecipe customBowRecipe = new ShapedRecipe(recipeKey, createCustomBow());
-
-        customBowRecipe.shape(" P ", "NBN", " B ");
-
-        customBowRecipe.setIngredient('P', Material.ENDER_PEARL);
-        customBowRecipe.setIngredient('N', Material.NETHERITE_BLOCK);
-        customBowRecipe.setIngredient('B', Material.BOW);
-
-        lifestealSmp.getServer().addRecipe(customBowRecipe);
+        NamespacedKey tntBow = new NamespacedKey(lifestealSmp, "tnt_bow");
+        ShapelessRecipe tntBowRecipe = new ShapelessRecipe(tntBow, createTNTBow());
+        customBowRecipe.addIngredient(1, Material.TNT);
+        customBowRecipe.addIngredient(1, Material.NETHERITE_BLOCK);
+        customBowRecipe.addIngredient(1, Material.BOW);
+        Bukkit.addRecipe(tntBowRecipe);
     }
 
     private static ItemStack createCustomBow() {
         ItemStack customBow = new ItemStack(Material.BOW);
 
-        // Add custom meta to the bow (e.g., display name)
         ItemMeta meta = customBow.getItemMeta();
-        meta.setDisplayName("Custom Bow");
+        //meta.setDisplayName(ChatColor.LIGHT_PURPLE + "Teleporting Bow");
+        meta.setDisplayName(ChatColor.MAGIC + "Teleporting Bow");
         List<String> DEFL = new ArrayList<>();
-        DEFL.add(ChatColor.RED + "Just don't use this...");
+        DEFL.add(ChatColor.GOLD + "Special Ability: " + ChatColor.DARK_PURPLE + "Shoot to teleport!");
         meta.setLore(DEFL);
+        meta.addItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
+        customBow.setItemMeta(meta);
+
+        return customBow;
+    }
+
+    private static ItemStack createTNTBow() {
+        ItemStack customBow = new ItemStack(Material.BOW);
+
+        ItemMeta meta = customBow.getItemMeta();
+        //meta.setDisplayName(ChatColor.LIGHT_PURPLE + "Teleporting Bow");
+        meta.setDisplayName(ChatColor.GOLD + "TNT Bow");
+        List<String> DEFL = new ArrayList<>();
+        DEFL.add(ChatColor.GOLD + "Special Ability: " + ChatColor.DARK_PURPLE + "TNT Shooter!");
+        meta.setLore(DEFL);
         meta.addItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
