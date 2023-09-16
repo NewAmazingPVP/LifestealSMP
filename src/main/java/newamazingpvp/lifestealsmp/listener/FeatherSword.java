@@ -77,10 +77,7 @@ public class FeatherSword implements Listener {
             }
 
             int seconds = (int) (remainingCooldown / 1000);
-            int minutes = seconds / 60;
-            seconds %= 60;
-
-            return String.format("%d:%02d", minutes, seconds);
+            return seconds + " seconds";
         }
 
         return "Cooldown is over.";
