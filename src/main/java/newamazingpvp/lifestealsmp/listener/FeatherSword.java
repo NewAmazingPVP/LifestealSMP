@@ -20,7 +20,7 @@ import java.util.Map;
 
 public class FeatherSword implements Listener {
     private final Map<Player, Long> teleportCooldowns = new HashMap<>();
-    private final long teleportCooldownDuration = 60000;
+    private final long teleportCooldownDuration = 30000;
 
     @EventHandler
     public void onPlayerItemHeld(PlayerItemHeldEvent event) {

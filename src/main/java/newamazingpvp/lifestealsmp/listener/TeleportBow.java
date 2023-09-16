@@ -25,7 +25,7 @@ import java.util.UUID;
 public class TeleportBow implements Listener {
     private HashMap<UUID, ItemStack> playerHeldItems = new HashMap<>();
     private final Map<Player, Long> teleportCooldowns = new HashMap<>();
-    private final long teleportCooldownDuration = 30000;
+    private final long teleportCooldownDuration = 15000;
 
     @EventHandler
     public void onProjectileLaunch(ProjectileLaunchEvent event) {
