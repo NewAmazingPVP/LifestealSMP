@@ -20,13 +20,12 @@ import java.util.Map;
 
 public class FeatherSword implements Listener {
     private final Map<Player, Long> teleportCooldowns = new HashMap<>();
-    private final long teleportCooldownDuration = 30000;
+    private final long teleportCooldownDuration = 60000;
 
     @EventHandler
     public void onPlayerItemHeld(PlayerItemHeldEvent event) {
         Player player = event.getPlayer();
         ItemStack heldItem = player.getInventory().getItem(event.getNewSlot());
-        player.sendMessage(String.valueOf(player.getWalkSpeed()));
         if (heldItem != null && heldItem.getType() == Material.DIAMOND_SWORD) {
             ItemMeta meta = heldItem.getItemMeta();
             if (meta.getLore().toString().toLowerCase().contains("permanent speed")) {

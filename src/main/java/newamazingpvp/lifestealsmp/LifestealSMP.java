@@ -22,7 +22,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 
+import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
 import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastServerMessage;
+import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.registerCustomRecipes;
 
 public final class LifestealSMP extends JavaPlugin implements Listener {
@@ -45,7 +47,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
         getCommand("rules").setExecutor(new RulesCommand());
         getCommand("setview").setExecutor(new CustomDistance());
-        getCommand("track").setExecutor(new TrackCommand());
+        //getCommand("track").setExecutor(new TrackCommand());
         lifestealSmp = this;
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
@@ -75,6 +77,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
             return;
         }
         Bukkit.getScheduler().runTaskTimer(lifestealSmp, PlayerPing::monitorPlayerPings, 0L, 20L);
+        scheduleRestart();
+        //compassUpdate();
     }
     @Override
     public void onDisable() {

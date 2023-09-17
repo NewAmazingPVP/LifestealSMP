@@ -10,7 +10,4 @@ commands:
   setview:
     description: Set custom view and simulation distances
     usage: /setview <view_distance> <simulation_distance>
-  track:
-    description: Track a player's location
-    usage: /track <player>
-    aliases: [ compass ]
+
