@@ -2,6 +2,7 @@ package newamazingpvp.lifestealsmp.listener;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
@@ -10,6 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 
 public class SpawnProtection implements Listener {
 
@@ -58,6 +60,18 @@ public class SpawnProtection implements Listener {
         if (isWithinSpawnRadius(event.getBlock().getLocation())) {
             event.setCancelled(true);
             event.getPlayer().sendMessage(ChatColor.RED + "You cannot place blocks within the spawn area. Go around 50 blocks away to be able to place");
+        }
+    }
+
+    @EventHandler
+    public void spawnBlockPlace(PlayerInteractEvent event) {
+        if (isWithinSpawnRadius(event.getPlayer().getLocation())) {
+            if(event.getPlayer().getInventory().getItemInMainHand().getType() == Material.LAVA_BUCKET
+            || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.FIRE_CHARGE
+            || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.FLINT_AND_STEEL) {
+                event.setCancelled(true);
+                event.getPlayer().sendMessage(ChatColor.RED + "You cannot interact within the spawn area. Go around 50 blocks away to be able to interact");
+            }
         }
     }
 

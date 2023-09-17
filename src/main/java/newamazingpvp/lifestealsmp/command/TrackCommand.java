@@ -16,7 +16,6 @@ import static newamazingpvp.lifestealsmp.game.Compass.trackingPlayers;
 
 public class TrackCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (cmd.getName().equalsIgnoreCase("track")) {
             if (!(sender instanceof Player)) {
                 sender.sendMessage("This command can only be used by a player!");
                 return true;
@@ -93,8 +92,7 @@ public class TrackCommand implements CommandExecutor {
             return true;
         }
 
-        return false;
-    }
+
 
     public static int diamondBlockCount(Player player) {
         int diamondCount = 0;

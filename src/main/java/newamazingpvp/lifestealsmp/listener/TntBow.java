@@ -22,7 +22,7 @@ import java.util.UUID;
 public class TntBow implements Listener {
     private HashMap<UUID, ItemStack> playerHeldItems = new HashMap<>();
     private final Map<Player, Long> teleportCooldowns = new HashMap<>();
-    private final long teleportCooldownDuration = 15000;
+    private final long teleportCooldownDuration = 10000;
 
     @EventHandler
     public void onProjectileLaunch(ProjectileLaunchEvent event) {
