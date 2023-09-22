@@ -26,6 +26,7 @@ import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
 import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastServerMessage;
 import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.registerCustomRecipes;
+import static newamazingpvp.lifestealsmp.game.PlayerPing.monitorPlayerPings;
 
 public final class LifestealSMP extends JavaPlugin implements Listener {
     public static LifestealSMP lifestealSmp;
@@ -44,11 +45,11 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
+        lifestealSmp = this;
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
         getCommand("rules").setExecutor(new RulesCommand());
         getCommand("setview").setExecutor(new CustomDistance());
         //getCommand("track").setExecutor(new TrackCommand());
-        lifestealSmp = this;
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
@@ -70,13 +71,19 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         };
         broadcastTask.runTaskTimer(this, 0, repeatDelayTicks);
         registerCustomRecipes();
-        try {
+        /*try {
             jda = JDABuilder.createDefault("token").build();
         } catch (LoginException e) {
             getLogger().log(Level.SEVERE, "Failed to initialize Discord bot!", e);
             return;
-        }
-        Bukkit.getScheduler().runTaskTimer(lifestealSmp, PlayerPing::monitorPlayerPings, 0L, 20L);
+        }*/
+        //Bukkit.getScheduler().runTaskTimer(this, PlayerPing::monitorPlayerPings, 0L, 20L);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                monitorPlayerPings();
+            }
+        }.runTaskTimer(this, 0L, 20L);
         scheduleRestart();
         //compassUpdate();
     }
@@ -104,11 +111,11 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
     public void playerInvunerable(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
-        // Make the player invulnerable for 2 seconds
         player.setInvulnerable(true);
         getServer().getScheduler().runTaskLater(this, () -> player.setInvulnerable(false), 60);
         if(!event.getPlayer().hasPlayedBefore()){
             getServer().dispatchCommand(getServer().getConsoleSender(), "ep user " + event.getPlayer().getName() + " setgroup " + randomGroup());
+            player.sendMessage("Welcome! \n/rules\n/prefix\n/color ");
         }
     }
 }
