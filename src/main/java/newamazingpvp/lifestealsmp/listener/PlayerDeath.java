@@ -45,8 +45,14 @@ public class PlayerDeath implements Listener {
                     }
                 }
             }
-
         }
+        Player Gamer = e.getEntity();
+        int[] pos = { Gamer.getLocation().getBlockX(), Gamer.getLocation().getBlockY(), Gamer.getLocation().getBlockZ() };
+        Gamer.sendMessage(ChatColor.BOLD + "" + ChatColor.GOLD +
+                "You Died At:" +
+                "  X:" + pos[0] +
+                "  Y:" + pos[1] +
+                "  Z:" + pos[2] + " in " + Gamer.getLocation().getWorld().toString());
     }
 
 }
