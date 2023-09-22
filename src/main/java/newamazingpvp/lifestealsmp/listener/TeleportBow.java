@@ -79,7 +79,7 @@ public class TeleportBow implements Listener {
 
     private boolean isBow(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
-        return item.getType() == Material.BOW && meta.getLore().toString().contains("Shoot to teleport!");
+        return item.getType() == Material.BOW && meta.getLore() !=null && meta.getLore().toString().contains("Shoot to teleport!");
 
     }
 
