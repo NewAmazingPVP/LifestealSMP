@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.game;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -7,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static org.bukkit.Bukkit.getServer;
 
 public class PlayerPing {
     public static Map<Player, Integer> playerPingMap = new HashMap<>();
@@ -16,7 +18,7 @@ public class PlayerPing {
         return player.getPing();
     }
     public static void monitorPlayerPings() {
-        for (Player player : lifestealSmp.getServer().getOnlinePlayers()) {
+        for (Player player : getServer().getOnlinePlayers()) {
             int currentPing = getPlayerPing(player);
             Integer lastPing = playerPingMap.get(player);
 

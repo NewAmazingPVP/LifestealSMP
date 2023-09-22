@@ -28,7 +28,7 @@ public class FeatherSword implements Listener {
         ItemStack heldItem = player.getInventory().getItem(event.getNewSlot());
         if (heldItem != null && heldItem.getType() == Material.DIAMOND_SWORD) {
             ItemMeta meta = heldItem.getItemMeta();
-            if (meta.getLore().toString().toLowerCase().contains("permanent speed")) {
+            if (meta.getLore() !=null && meta.getLore().toString().toLowerCase().contains("permanent speed")) {
                 player.setWalkSpeed(0.3f);
             }
         } else {
@@ -42,6 +42,7 @@ public class FeatherSword implements Listener {
         if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) &&
                 event.hasItem() && event.getItem().getType() == Material.DIAMOND_SWORD) {
             ItemMeta meta = event.getItem().getItemMeta();
+            if(meta.getLore() == null) return;
             if (meta.getLore().toString().toLowerCase().contains("permanent speed")) {
                 if (isTeleportCooldownExpired(player)) {
                     Vector direction = player.getLocation().getDirection();
