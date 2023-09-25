@@ -66,6 +66,11 @@ public class CustomRecipe {
         opPickaxeRecipe.addIngredient(1, Material.NETHERITE_BLOCK);
         opPickaxeRecipe.addIngredient(1, Material.DIAMOND_PICKAXE);
         Bukkit.addRecipe(opPickaxeRecipe);
+
+        NamespacedKey nethScraps = new NamespacedKey(lifestealSmp, "neth_scraps");
+        ShapelessRecipe nethScrapsRecipe = new ShapelessRecipe(nethScraps, createNethScarps());
+        nethScrapsRecipe.addIngredient(1, Material.NETHERITE_INGOT);
+        Bukkit.addRecipe(nethScrapsRecipe);
     }
 
     private static ItemStack createCustomBow() {
@@ -147,6 +152,11 @@ public class CustomRecipe {
 
         customBow.setItemMeta(meta);
 
+        return customBow;
+    }
+
+    private static ItemStack createNethScarps() {
+        ItemStack customBow = new ItemStack(Material.NETHERITE_SCRAP, 4);
         return customBow;
     }
 }
