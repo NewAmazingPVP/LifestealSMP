@@ -71,6 +71,107 @@ public class CustomRecipe {
         ShapelessRecipe nethScrapsRecipe = new ShapelessRecipe(nethScraps, createNethScarps());
         nethScrapsRecipe.addIngredient(1, Material.NETHERITE_INGOT);
         Bukkit.addRecipe(nethScrapsRecipe);
+
+        NamespacedKey diamondHorse = new NamespacedKey(lifestealSmp, "horse_armor_diamond");
+        ItemStack horseArmor = new ItemStack(Material.DIAMOND_HORSE_ARMOR, 2);
+        ShapelessRecipe diamondHorseArmor = new ShapelessRecipe(diamondHorse, horseArmor);
+        diamondHorseArmor.addIngredient(7, Material.DIAMOND);
+        diamondHorseArmor.addIngredient(1, Material.LEATHER_HORSE_ARMOR);
+        Bukkit.addRecipe(diamondHorseArmor);
+
+        // Craftable Items
+// 1. Quartz Block into Quartz
+        ShapelessRecipe quartzRecipe = new ShapelessRecipe(new NamespacedKey(lifestealSmp, "quartz_block_to_quartz"), new ItemStack(Material.QUARTZ, 9));
+        quartzRecipe.addIngredient(1, Material.QUARTZ_BLOCK);
+        Bukkit.addRecipe(quartzRecipe);
+
+// 2. Honeycomb Block into Honeycomb
+        ShapelessRecipe honeycombRecipe = new ShapelessRecipe(new NamespacedKey(lifestealSmp, "honeycomb_block_to_honeycomb"), new ItemStack(Material.HONEYCOMB, 4));
+        honeycombRecipe.addIngredient(1, Material.HONEYCOMB_BLOCK);
+        Bukkit.addRecipe(honeycombRecipe);
+
+// 3. Totem Recipe
+        //ShapedRecipe totemRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "totem_recipe"), new ItemStack(Material.TOTEM_OF_UNDYING));
+        //totemRecipe.shape("GGG", "GEG", "GBG");
+        //totemRecipe.setIngredient('G', Material.GOLD_BLOCK);
+        //totemRecipe.setIngredient('E', Material.EMERALD);
+        //totemRecipe.setIngredient('B', Material.EXPERIENCE_BOTTLE);
+        //Bukkit.addRecipe(totemRecipe);
+
+// 4. Blaze Rod Recipe
+        //ShapelessRecipe blazeRodRecipe = new ShapelessRecipe(new NamespacedKey(lifestealSmp, "blaze_rod_recipe"), new ItemStack(Material.BLAZE_ROD));
+        //blazeRodRecipe.addIngredient(2, Material.BLAZE_POWDER);
+        //blazeRodRecipe.addIngredient(2, Material.GOLD_INGOT); // You can choose between gold or iron
+        //Bukkit.addRecipe(blazeRodRecipe);
+
+// 5. Shroomlight Recipe
+// Option 1: Glowstone in the corners with any mushroom in the rest (3x3)
+        ShapedRecipe shroomlightRecipe1 = new ShapedRecipe(new NamespacedKey(lifestealSmp, "shroomlight_recipe_1"), new ItemStack(Material.SHROOMLIGHT, 4));
+        shroomlightRecipe1.shape("GMG", "MNM", "GMG");
+        shroomlightRecipe1.setIngredient('G', Material.GLOWSTONE);
+        shroomlightRecipe1.setIngredient('M', Material.BROWN_MUSHROOM); // Any mushroom
+        shroomlightRecipe1.setIngredient('N', Material.NETHER_BRICK);
+        Bukkit.addRecipe(shroomlightRecipe1);
+
+// Option 2: Mushroom blocks in the corners with glowstone dust filling the rest (3x3)
+        ShapedRecipe shroomlightRecipe2 = new ShapedRecipe(new NamespacedKey(lifestealSmp, "shroomlight_recipe_2"), new ItemStack(Material.SHROOMLIGHT, 4));
+        shroomlightRecipe2.shape("MGD", "GNG", "DGM");
+        shroomlightRecipe2.setIngredient('M', Material.BROWN_MUSHROOM_BLOCK); // Any mushroom block
+        shroomlightRecipe2.setIngredient('G', Material.GLOWSTONE_DUST);
+        shroomlightRecipe2.setIngredient('D', Material.NETHER_BRICK);
+        shroomlightRecipe2.setIngredient('N', Material.NETHER_WART_BLOCK);
+        Bukkit.addRecipe(shroomlightRecipe2);
+
+// 6. Nylium Recipes
+// Crimson Nylium
+        ShapedRecipe crimsonNyliumRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "crimson_nylium_recipe"), new ItemStack(Material.CRIMSON_NYLIUM, 2));
+        crimsonNyliumRecipe.shape("WW", "WB");
+        crimsonNyliumRecipe.setIngredient('W', Material.NETHER_WART_BLOCK);
+        crimsonNyliumRecipe.setIngredient('B', Material.NETHERRACK);
+        Bukkit.addRecipe(crimsonNyliumRecipe);
+
+// Warped Nylium
+        ShapedRecipe warpedNyliumRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "warped_nylium_recipe"), new ItemStack(Material.WARPED_NYLIUM, 2));
+        warpedNyliumRecipe.shape("WW", "WB");
+        warpedNyliumRecipe.setIngredient('W', Material.WARPED_WART_BLOCK);
+        warpedNyliumRecipe.setIngredient('B', Material.NETHERRACK);
+        Bukkit.addRecipe(warpedNyliumRecipe);
+
+// 7. Soul Sand Recipes
+// Crafting Soul Sand
+        ShapedRecipe soulSandRecipe1 = new ShapedRecipe(new NamespacedKey(lifestealSmp, "soul_sand_crafting_recipe"), new ItemStack(Material.SOUL_SAND));
+        soulSandRecipe1.shape("DD", "DD");
+        soulSandRecipe1.setIngredient('D', Material.DIRT);
+        Bukkit.addRecipe(soulSandRecipe1);
+
+// Smelting Soul Soil into Soul Sand
+        FurnaceRecipe soulSandRecipe2 = new FurnaceRecipe(new NamespacedKey(lifestealSmp, "soul_soil_to_soul_sand_recipe"), new ItemStack(Material.SOUL_SAND), Material.SOUL_SOIL, 0.7f, 200);
+        Bukkit.addRecipe(soulSandRecipe2);
+
+// 8. Mycelium Recipe
+        ShapedRecipe myceliumRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "mycelium_recipe"), new ItemStack(Material.MYCELIUM));
+        myceliumRecipe.shape("PPP", "PDP", "PPP");
+        myceliumRecipe.setIngredient('P', Material.PODZOL);
+        myceliumRecipe.setIngredient('D', Material.BROWN_MUSHROOM_BLOCK); // Any mushroom block
+        Bukkit.addRecipe(myceliumRecipe);
+
+// 9. Cherry Petals Recipe
+        ShapelessRecipe cherryPetalsRecipe = new ShapelessRecipe(new NamespacedKey(lifestealSmp, "cherry_petals_recipe"), new ItemStack(Material.PINK_DYE, 9));
+        cherryPetalsRecipe.addIngredient(1, Material.CHERRY_LEAVES);
+        Bukkit.addRecipe(cherryPetalsRecipe);
+
+// 10. Flowering Azalea Bush Recipe
+        ShapelessRecipe floweringAzaleaBushRecipe = new ShapelessRecipe(new NamespacedKey(lifestealSmp, "flowering_azalea_bush_recipe"), new ItemStack(Material.AZALEA));
+        floweringAzaleaBushRecipe.addIngredient(1, Material.AZALEA);
+        floweringAzaleaBushRecipe.addIngredient(1, Material.BONE_MEAL);
+        Bukkit.addRecipe(floweringAzaleaBushRecipe);
+
+// 11. Cobweb Recipes
+// Crafting Cobweb from String
+        ShapedRecipe cobwebRecipe1 = new ShapedRecipe(new NamespacedKey(lifestealSmp, "cobweb_recipe_1"), new ItemStack(Material.COBWEB));
+        cobwebRecipe1.shape("SSS", "SSS", "SSS");
+        cobwebRecipe1.setIngredient('S', Material.STRING);
+        Bukkit.addRecipe(cobwebRecipe1);
     }
 
     private static ItemStack createCustomBow() {
