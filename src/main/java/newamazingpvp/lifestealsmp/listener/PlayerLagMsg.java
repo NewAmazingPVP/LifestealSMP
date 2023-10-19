@@ -47,5 +47,15 @@ public class PlayerLagMsg implements Listener {
                 }
             }, 20);
         }
+        if ((event.getMessage().contains("tp") || (event.getMessage().contains("teleport") && !event.getMessage().contains("https")))){
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
+                @Override
+                public void run() {
+                    for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+                        p.sendMessage(ChatColor.RED + "This server does not have tp and you should not ask admins to teleport you (/rules)" + ChatColor.YELLOW + event.getPlayer().getName());
+                    }
+                }
+            }, 20);
+        }
     }
 }

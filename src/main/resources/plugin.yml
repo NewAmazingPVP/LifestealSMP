@@ -10,4 +10,7 @@ commands:
   setview:
     description: Set custom view and simulation distances
     usage: /setview <view_distance> <simulation_distance>
+  recipes:
+    description: View all the custom recipes of this lifesteal server
+    usage: /recipes
 

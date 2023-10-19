@@ -1,9 +1,11 @@
 package newamazingpvp.lifestealsmp;
 
 import com.example.pickaxeplugin.OpPickaxe;
+import com.sun.source.tree.Tree;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import newamazingpvp.lifestealsmp.command.CustomDistance;
+import newamazingpvp.lifestealsmp.command.RecipesCommand;
 import newamazingpvp.lifestealsmp.command.RulesCommand;
 import newamazingpvp.lifestealsmp.command.TrackCommand;
 import newamazingpvp.lifestealsmp.game.PlayerPing;
@@ -24,6 +26,7 @@ import java.util.logging.Level;
 
 import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
 import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastServerMessage;
+import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastWarningMessage;
 import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.game.PlayerPing.monitorPlayerPings;
@@ -49,6 +52,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
         getCommand("rules").setExecutor(new RulesCommand());
         getCommand("setview").setExecutor(new CustomDistance());
+        getCommand("recipes").setExecutor(new RecipesCommand());
         //getCommand("track").setExecutor(new TrackCommand());
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
@@ -62,6 +66,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new TntBow(), this);
         getServer().getPluginManager().registerEvents(new FeatherSword(), this);
         getServer().getPluginManager().registerEvents(new OpPickaxe(), this);
+        getServer().getPluginManager().registerEvents(new TreeChopAxe(), this);
         int repeatDelayTicks = 7200 * 20;
         BukkitRunnable broadcastTask = new BukkitRunnable() {
             @Override
@@ -70,6 +75,14 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
             }
         };
         broadcastTask.runTaskTimer(this, 0, repeatDelayTicks);
+        int repeat = 900 * 20;
+        BukkitRunnable broadcast = new BukkitRunnable() {
+            @Override
+            public void run() {
+                broadcastWarningMessage();
+            }
+        };
+        broadcast.runTaskTimer(this, 0, repeat);
         registerCustomRecipes();
         /*try {
             jda = JDABuilder.createDefault("token").build();

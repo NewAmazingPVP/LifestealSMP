@@ -60,6 +60,13 @@ public class CustomRecipe {
         featherSwordRecipe.addIngredient(1, Material.DIAMOND_SWORD);
         Bukkit.addRecipe(featherSwordRecipe);
 
+        NamespacedKey tropChopAxe = new NamespacedKey(lifestealSmp, "trop_chop_axe");
+        ShapelessRecipe tropChopAxeRecipe = new ShapelessRecipe(tropChopAxe, createCustomAxe());
+        tropChopAxeRecipe.addIngredient(1, Material.TNT);
+        tropChopAxeRecipe.addIngredient(1, Material.NETHERITE_BLOCK);
+        tropChopAxeRecipe.addIngredient(1, Material.DIAMOND_AXE);
+        Bukkit.addRecipe(tropChopAxeRecipe);
+
         NamespacedKey opPickaxe = new NamespacedKey(lifestealSmp, "op_pickaxe");
         ShapelessRecipe opPickaxeRecipe = new ShapelessRecipe(opPickaxe, createOpPickaxe());
         opPickaxeRecipe.addIngredient(1, Material.TNT);
@@ -191,6 +198,21 @@ public class CustomRecipe {
         return customBow;
     }
 
+    private static ItemStack createCustomAxe() {
+        ItemStack customBow = new ItemStack(Material.NETHERITE_AXE);
+
+        ItemMeta meta = customBow.getItemMeta();
+        //meta.setDisplayName(ChatColor.LIGHT_PURPLE + "Teleporting Bow");
+        meta.setDisplayName(ChatColor.AQUA + "Tree chopping axe");
+        List<String> DEFL = new ArrayList<>();
+        DEFL.add(ChatColor.GOLD + "Special Ability: " + ChatColor.DARK_PURPLE + "Breaks whole tree down with one chop!");
+        meta.setLore(DEFL);
+
+        customBow.setItemMeta(meta);
+
+        return customBow;
+    }
+
     private static ItemStack createTNTBow() {
         ItemStack customBow = new ItemStack(Material.BOW);
 
@@ -209,7 +231,7 @@ public class CustomRecipe {
     }
 
     private static ItemStack createFeatherSword() {
-        ItemStack customBow = new ItemStack(Material.DIAMOND_SWORD);
+        ItemStack customBow = new ItemStack(Material.NETHERITE_SWORD);
 
         ItemMeta meta = customBow.getItemMeta();
         meta.setDisplayName(ChatColor.AQUA + "Feather Sword");
@@ -218,7 +240,7 @@ public class CustomRecipe {
         DEFL.add(ChatColor.LIGHT_PURPLE + "Permanent speed while holding");
         meta.setLore(DEFL);
         //meta.addItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS);
-        AttributeModifier attackSpeedModifier = new AttributeModifier(
+        /*AttributeModifier attackSpeedModifier = new AttributeModifier(
                 UUID.randomUUID(),
                 "generic.attackSpeed",
                 -2.4,
@@ -234,7 +256,7 @@ public class CustomRecipe {
                 AttributeModifier.Operation.ADD_NUMBER,
                 EquipmentSlot.HAND
         );
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDamageModifier);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDamageModifier);*/
 
         customBow.setItemMeta(meta);
 
@@ -242,7 +264,7 @@ public class CustomRecipe {
     }
 
     private static ItemStack createOpPickaxe() {
-        ItemStack customBow = new ItemStack(Material.DIAMOND_PICKAXE);
+        ItemStack customBow = new ItemStack(Material.NETHERITE_PICKAXE);
 
         ItemMeta meta = customBow.getItemMeta();
         //meta.setDisplayName(ChatColor.LIGHT_PURPLE + "Teleporting Bow");
