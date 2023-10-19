@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 public class DisableElytra implements Listener {
     @EventHandler
     public void onArmorChange(PlayerArmorChangeEvent event) {
-        Player player = event.getPlayer();
+        /*Player player = event.getPlayer();
         ItemStack newArmorPiece = event.getNewItem();
 
         // Check if the new armor piece is an elytra
@@ -19,7 +19,7 @@ public class DisableElytra implements Listener {
             player.getInventory().setChestplate(null);
             player.getInventory().addItem(new ItemStack(Material.ELYTRA));
             player.sendMessage(ChatColor.RED + "You cannot equip an elytra!");
-        }
+        }*/
     }
 
     private boolean isElytra(ItemStack item) {

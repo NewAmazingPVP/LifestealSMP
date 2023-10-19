@@ -16,4 +16,13 @@ public class EndCrystalWarning implements Listener {
             player.sendTitle(ChatColor.RED + "WARNING!", "You can only use crystals to respawn dragon and not for PVP!");
         }
     }
+
+    @EventHandler
+    public void onDangerousCraft(CraftItemEvent event) {
+        if (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.RESPAWN_ANCHOR || event.getCurrentItem().getType() == Material.TNT_MINECART) {
+            event.getWhoClicked().sendMessage(ChatColor.RED + "You cannot use this for PVP! Do /rules");
+            Player player = (Player) event.getView().getPlayer();
+            player.sendTitle(ChatColor.RED + "WARNING!", "You cannot use this for PVP! Do /rules");
+        }
+    }
 }

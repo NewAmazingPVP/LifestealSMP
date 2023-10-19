@@ -1,0 +1,53 @@
+package newamazingpvp.lifestealsmp.listener;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedList;
+import org.bukkit.GameMode;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+public class TreeChopAxe implements Listener {
+    public static HashSet<Material> validLogMaterials = new HashSet<>(Arrays.asList(
+            Material.LEGACY_LOG, Material.LEGACY_LOG_2,
+            Material.ACACIA_LOG, Material.BIRCH_LOG, Material.DARK_OAK_LOG, Material.JUNGLE_LOG,
+            Material.OAK_LOG, Material.SPRUCE_LOG, Material.CRIMSON_STEM, Material.WARPED_STEM));
+
+    @EventHandler
+    public void onBlockBreak(BlockBreakEvent e) {
+        Player player = e.getPlayer();
+        ItemStack handStack = player.getInventory().getItemInMainHand();
+        ItemMeta meta = handStack.getItemMeta();
+        if(meta.getLore() == null) return;
+        if (meta.getLore().toString().toLowerCase().contains("tree")) {
+            Block block = e.getBlock();
+            if (validLogMaterials.contains(block.getType()))
+                cutDownTree(block.getLocation(), (player.getGameMode() == GameMode.CREATIVE) ? handStack.clone() : handStack);
+        }
+    }
+
+
+    private void cutDownTree(Location location, ItemStack handStack) {
+        if (validLogMaterials.contains(location.getBlock().getType())) {
+            location.getBlock().breakNaturally(handStack);
+            for (int x = -1; x <= 1; x++) {
+                for (int y = -1; y <= 1; y++) {
+                    for (int z = -1; z <= 1; z++) {
+                        Location neighborLocation = location.clone().add(x, y, z);
+                        if (neighborLocation.getBlock().getType() != Material.AIR) {
+                            cutDownTree(neighborLocation, handStack);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
