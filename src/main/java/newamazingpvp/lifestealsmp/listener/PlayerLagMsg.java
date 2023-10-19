@@ -17,13 +17,13 @@ import static org.bukkit.Bukkit.getServer;
 public class PlayerLagMsg implements Listener {
     @EventHandler
     public void playerChat(AsyncPlayerChatEvent event) {
-        if ((event.getMessage().contains("lag") || event.getMessage().contains("tps")) &&
+        if ((event.getMessage().toLowerCase().contains("lag") || event.getMessage().toLowerCase().contains("tps")) &&
                 !(
-                        event.getMessage().contains("not lagging") ||
-                                event.getMessage().contains("not laggy") ||
-                                event.getMessage().contains("didnt lag") ||
-                                event.getMessage().contains("llager") ||
-                                event.getMessage().contains("https")
+                        event.getMessage().toLowerCase().contains("not lagging") ||
+                                event.getMessage().toLowerCase().contains("not laggy") ||
+                                event.getMessage().toLowerCase().contains("didnt lag") ||
+                                event.getMessage().toLowerCase().contains("llager") ||
+                                event.getMessage().toLowerCase().contains("https")
                 )) {
             OptionalDouble tpsTest = Arrays.stream(getServer().getTPS()).findFirst();
             double tps = tpsTest.orElse(20.0);
@@ -47,12 +47,12 @@ public class PlayerLagMsg implements Listener {
                 }
             }, 20);
         }
-        if ((event.getMessage().contains("tp") || (event.getMessage().contains("teleport") && !event.getMessage().contains("https")))){
+        if ((event.getMessage().toLowerCase().contains("tp") || (event.getMessage().toLowerCase().contains("teleport") && !event.getMessage().toLowerCase().contains("https")))){
             Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
                 @Override
                 public void run() {
                     for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-                        p.sendMessage(ChatColor.RED + "This server does not have tp and you should not ask admins to teleport you (/rules)" + ChatColor.YELLOW + event.getPlayer().getName());
+                        p.sendMessage(ChatColor.RED + "This server does not have tp and you should not ask admins to teleport you (do /rules) " + ChatColor.YELLOW + event.getPlayer().getName());
                     }
                 }
             }, 20);
