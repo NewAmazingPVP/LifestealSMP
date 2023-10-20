@@ -4,10 +4,7 @@ import com.example.pickaxeplugin.OpPickaxe;
 import com.sun.source.tree.Tree;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
-import newamazingpvp.lifestealsmp.command.CustomDistance;
-import newamazingpvp.lifestealsmp.command.RecipesCommand;
-import newamazingpvp.lifestealsmp.command.RulesCommand;
-import newamazingpvp.lifestealsmp.command.TrackCommand;
+import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.game.PlayerPing;
 import newamazingpvp.lifestealsmp.listener.*;
 import org.bukkit.Bukkit;
@@ -67,6 +64,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new FeatherSword(), this);
         getServer().getPluginManager().registerEvents(new OpPickaxe(), this);
         getServer().getPluginManager().registerEvents(new TreeChopAxe(), this);
+        getServer().getPluginManager().registerEvents(new PlayerInCombat(), this);
         int repeatDelayTicks = 7200 * 20;
         BukkitRunnable broadcastTask = new BukkitRunnable() {
             @Override
