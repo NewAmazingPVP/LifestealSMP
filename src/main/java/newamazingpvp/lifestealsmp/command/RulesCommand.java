@@ -11,6 +11,7 @@ public class RulesCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
+            
             player.sendMessage(ChatColor.GOLD + "Rules for this SMP Season:");
             player.sendMessage(ChatColor.WHITE + "- End Crystals/Respawn Anchors/Beds/Minecarts banned for PVP");
             player.sendMessage(ChatColor.WHITE + "- Hacking or cheating not allowed");
