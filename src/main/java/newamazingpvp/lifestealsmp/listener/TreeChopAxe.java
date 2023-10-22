@@ -26,7 +26,7 @@ public class TreeChopAxe implements Listener {
         Player player = e.getPlayer();
         ItemStack handStack = player.getInventory().getItemInMainHand();
         ItemMeta meta = handStack.getItemMeta();
-        if(meta.getLore() == null) return;
+        if(meta == null || !meta.hasLore()) return;
         if (meta.getLore().toString().toLowerCase().contains("tree")) {
             Block block = e.getBlock();
             if (validLogMaterials.contains(block.getType()))

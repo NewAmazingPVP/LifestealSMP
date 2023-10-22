@@ -42,35 +42,44 @@ public class CustomRecipe {
         NamespacedKey recipeKey = new NamespacedKey(lifestealSmp, "teleporting_bow");
         ShapelessRecipe customBowRecipe = new ShapelessRecipe(recipeKey, createCustomBow());
         customBowRecipe.addIngredient(1, Material.ENDER_PEARL);
-        customBowRecipe.addIngredient(1, Material.NETHERITE_BLOCK);
+        customBowRecipe.addIngredient(1, Material.NETHERITE_INGOT);
         customBowRecipe.addIngredient(1, Material.BOW);
         Bukkit.addRecipe(customBowRecipe);
 
         NamespacedKey tntBow = new NamespacedKey(lifestealSmp, "tnt_bow");
         ShapelessRecipe tntBowRecipe = new ShapelessRecipe(tntBow, createTNTBow());
         tntBowRecipe.addIngredient(1, Material.TNT);
-        tntBowRecipe.addIngredient(1, Material.NETHERITE_BLOCK);
+        tntBowRecipe.addIngredient(1, Material.NETHERITE_INGOT);
         tntBowRecipe.addIngredient(1, Material.BOW);
         Bukkit.addRecipe(tntBowRecipe);
 
         NamespacedKey featherSword = new NamespacedKey(lifestealSmp, "feather_sword");
         ShapelessRecipe featherSwordRecipe = new ShapelessRecipe(featherSword, createFeatherSword());
         featherSwordRecipe.addIngredient(1, Material.FEATHER);
-        featherSwordRecipe.addIngredient(1, Material.NETHERITE_BLOCK);
+        featherSwordRecipe.addIngredient(1, Material.NETHERITE_INGOT);
         featherSwordRecipe.addIngredient(1, Material.DIAMOND_SWORD);
+        featherSwordRecipe.addIngredient(1, Material.GOLD_BLOCK);
+        featherSwordRecipe.addIngredient(1, Material.IRON_BLOCK);
+        featherSwordRecipe.addIngredient(1, Material.DIAMOND_BLOCK);
         Bukkit.addRecipe(featherSwordRecipe);
 
         NamespacedKey tropChopAxe = new NamespacedKey(lifestealSmp, "trop_chop_axe");
         ShapelessRecipe tropChopAxeRecipe = new ShapelessRecipe(tropChopAxe, createCustomAxe());
         tropChopAxeRecipe.addIngredient(1, Material.TNT);
-        tropChopAxeRecipe.addIngredient(1, Material.NETHERITE_BLOCK);
+        tropChopAxeRecipe.addIngredient(1, Material.DIAMOND_BLOCK);
+        tropChopAxeRecipe.addIngredient(1, Material.GOLD_BLOCK);
+        tropChopAxeRecipe.addIngredient(1, Material.IRON_BLOCK);
+        tropChopAxeRecipe.addIngredient(1, Material.NETHERITE_INGOT);
         tropChopAxeRecipe.addIngredient(1, Material.DIAMOND_AXE);
         Bukkit.addRecipe(tropChopAxeRecipe);
 
         NamespacedKey opPickaxe = new NamespacedKey(lifestealSmp, "op_pickaxe");
         ShapelessRecipe opPickaxeRecipe = new ShapelessRecipe(opPickaxe, createOpPickaxe());
         opPickaxeRecipe.addIngredient(1, Material.TNT);
-        opPickaxeRecipe.addIngredient(1, Material.NETHERITE_BLOCK);
+        opPickaxeRecipe.addIngredient(1, Material.DIAMOND_BLOCK);
+        opPickaxeRecipe.addIngredient(1, Material.GOLD_BLOCK);
+        opPickaxeRecipe.addIngredient(1, Material.IRON_BLOCK);
+        opPickaxeRecipe.addIngredient(1, Material.NETHERITE_INGOT);
         opPickaxeRecipe.addIngredient(1, Material.DIAMOND_PICKAXE);
         Bukkit.addRecipe(opPickaxeRecipe);
 
