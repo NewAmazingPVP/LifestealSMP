@@ -16,7 +16,7 @@ public class PlayerInCombat implements Listener {
     private final long cooldownTime = 60 * 20 * 50;
     private final HashMap<Player, Long> cooldowns = new HashMap<>();
 
-    private boolean canPlayMusic(Player player) {
+    /*private boolean canPlayMusic(Player player) {
         long currentTime = System.currentTimeMillis();
         if (cooldowns.containsKey(player)) {
             long lastMusicTime = cooldowns.get(player);
@@ -32,5 +32,5 @@ public class PlayerInCombat implements Listener {
             p.playSound(p.getLocation(), Sound.MUSIC_DISC_5, 1.0f, 1.0f);
             cooldowns.put(p, System.currentTimeMillis());
         }
-    }
+    }*/
 }

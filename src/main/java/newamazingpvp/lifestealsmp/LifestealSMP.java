@@ -65,6 +65,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new OpPickaxe(), this);
         getServer().getPluginManager().registerEvents(new TreeChopAxe(), this);
         getServer().getPluginManager().registerEvents(new PlayerInCombat(), this);
+        getServer().getPluginManager().registerEvents(new GracePeriod(), this);
         int repeatDelayTicks = 7200 * 20;
         BukkitRunnable broadcastTask = new BukkitRunnable() {
             @Override
@@ -73,14 +74,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
             }
         };
         broadcastTask.runTaskTimer(this, 0, repeatDelayTicks);
-        int repeat = 900 * 20;
-        BukkitRunnable broadcast = new BukkitRunnable() {
-            @Override
-            public void run() {
-                broadcastWarningMessage();
-            }
-        };
-        broadcast.runTaskTimer(this, 0, repeat);
         registerCustomRecipes();
         /*try {
             jda = JDABuilder.createDefault("token").build();

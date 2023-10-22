@@ -17,7 +17,7 @@ public class OpPickaxe implements Listener {
         Player player = event.getPlayer();
         ItemStack item = player.getInventory().getItemInMainHand();
 
-        if (item != null && item.getType() == Material.DIAMOND_PICKAXE) {
+        if (item != null && item.getType() == Material.NETHERITE_PICKAXE) {
             if (hasLore(item, "Mine to break 3x3!")) {
                 Block block = event.getBlock();
                 breakBlocksAround(player, block);

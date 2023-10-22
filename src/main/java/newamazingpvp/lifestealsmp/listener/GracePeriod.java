@@ -9,22 +9,26 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+
 public class GracePeriod implements Listener {
-    private final long gracePeriod = 1697913000L;
-    public List<String> names = Arrays.asList();
+    public List<String> names = new ArrayList<>();
 
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
         if (event.getEntity() instanceof Player) {
             Player damaged = (Player) event.getEntity();
-
             if (event.getDamager() instanceof Player || event.getDamager() instanceof Arrow) {
                 if (event.getDamager() instanceof Player) {
                     Player damager = (Player) event.getDamager();
-
                     if (isGracePeriod()) {
                         event.setCancelled(true);
                         damager.sendMessage(ChatColor.RED + "You cannot damage players during the grace period!");
@@ -32,6 +36,7 @@ public class GracePeriod implements Listener {
                     if(isPlayerDeathProt(damaged)){
                         event.setCancelled(true);
                         damager.sendMessage(ChatColor.RED + "You cannot damage players during their death protection unless they attack you back!");
+                        damaged.sendMessage(ChatColor.RED + "Someone tried attacking u but was prevented because u died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
                     }
                     names.remove(damager.getName());
                 } else if (event.getDamager() instanceof Arrow) {
@@ -46,6 +51,7 @@ public class GracePeriod implements Listener {
                         if(isPlayerDeathProt(damaged)){
                             event.setCancelled(true);
                             event.getDamager().sendMessage(ChatColor.RED + "You cannot shoot players during their death protection unless they attack you back!");
+                            event.getEntity().sendMessage(ChatColor.RED + "Someone tried attacking u but was prevented because u died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
                         }
                         names.remove(event.getDamager().getName());
                     }
@@ -54,20 +60,27 @@ public class GracePeriod implements Listener {
         }
     }
 
-    public boolean isGracePeriod(){
-        Long lol = System.currentTimeMillis();
-        return lol < gracePeriod;
+    public boolean isGracePeriod() {
+        LocalDateTime targetDateTime = LocalDateTime.of(2023, Month.OCTOBER, 21, 14, 30);
+
+        ZoneId estTimeZone = ZoneId.of("America/New_York");
+        ZonedDateTime estTargetDateTime = ZonedDateTime.of(targetDateTime, estTimeZone);
+
+        ZonedDateTime currentDateTime = ZonedDateTime.now(estTimeZone);
+
+        return currentDateTime.isBefore(estTargetDateTime);
     }
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event){
-        names.add(event.getPlayer().getName());
+        String name = event.getPlayer().getName();
+        names.add(name);
         new BukkitRunnable() {
             @Override
             public void run() {
-                names.remove(event.getPlayer().getName())
+                names.remove(name);
             }
-        })0, 1)
+        }.runTaskLater(lifestealSmp, 20*60*15);
     }
 
     public boolean isPlayerDeathProt(Player p){
