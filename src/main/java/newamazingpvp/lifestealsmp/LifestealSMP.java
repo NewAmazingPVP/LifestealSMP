@@ -50,6 +50,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getCommand("rules").setExecutor(new RulesCommand());
         getCommand("setview").setExecutor(new CustomDistance());
         getCommand("recipes").setExecutor(new RecipesCommand());
+        getCommand("tp").setExecutor(new TradeCommand());
         //getCommand("track").setExecutor(new TrackCommand());
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
