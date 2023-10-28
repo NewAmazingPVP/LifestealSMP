@@ -39,5 +39,6 @@ public class TradeCommand implements CommandExecutor {
                 }
             }.runTaskLater(lifestealSmp, 20*30);
         }
+        return true;
     }
 }
