@@ -31,6 +31,7 @@ public class TreeChopAxe implements Listener {
             Block block = e.getBlock();
             if (validLogMaterials.contains(block.getType()))
                 cutDownTree(block.getLocation(), (player.getGameMode() == GameMode.CREATIVE) ? handStack.clone() : handStack);
+                handStack.setDurability((short) (handStack.getDurability()+1));
         }
     }
 
@@ -48,7 +49,6 @@ public class TreeChopAxe implements Listener {
                     }
                 }
             }
-            handStack.setDurability((short) (handStack.getDurability()+1));
         }
     }
 }
