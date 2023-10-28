@@ -32,9 +32,10 @@ public class TeleportBow implements Listener {
         if (event.getEntityType() == EntityType.ARROW && event.getEntity().getShooter() instanceof Player) {
             Player shooter = (Player) event.getEntity().getShooter();
             ItemStack mainHandItem = shooter.getInventory().getItemInMainHand();
+            ItemStack offHandItem = shooter.getInventory().getItemInMainHand();
 
             // Check if the player is holding a bow when they shoot the arrow
-            if (isBow(mainHandItem)) {
+            if (isBow(mainHandItem) || isBow(offHandItem)) {
                 playerHeldItems.put(shooter.getUniqueId(), mainHandItem);
             } else {
                 // Remove the player from the map if they switched to a non-bow item

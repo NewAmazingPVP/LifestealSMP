@@ -3,6 +3,8 @@ package newamazingpvp.lifestealsmp.listener;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,20 +22,30 @@ import java.util.Map;
 
 public class FeatherSword implements Listener {
     private final Map<Player, Long> teleportCooldowns = new HashMap<>();
-    private final long teleportCooldownDuration = 60000;
+    private final long teleportCooldownDuration = 5000;
 
     @EventHandler
     public void onPlayerItemHeld(PlayerItemHeldEvent event) {
         Player player = event.getPlayer();
-        ItemStack heldItem = player.getInventory().getItem(event.getNewSlot());
-        if (heldItem != null && heldItem.getType() == Material.NETHERITE_SWORD) {
-            ItemMeta meta = heldItem.getItemMeta();
-            if (meta.getLore() !=null && meta.getLore().toString().toLowerCase().contains("permanent speed")) {
-                player.setWalkSpeed(0.3f);
-            }
+
+        ItemStack mainHandItem = player.getInventory().getItem(event.getNewSlot());
+        ItemStack offHandItem = player.getInventory().getItemInOffHand();
+
+        if (isPermanentSpeedSword(mainHandItem) || isPermanentSpeedSword(offHandItem)) {
+            player.setWalkSpeed(0.3f);
         } else {
             player.setWalkSpeed(0.2f);
         }
+    }
+
+    private boolean isPermanentSpeedSword(ItemStack item) {
+        if (item != null && item.getType() == Material.NETHERITE_SWORD) {
+            ItemMeta meta = item.getItemMeta();
+            if (meta.getLore() != null && meta.getLore().toString().toLowerCase().contains("permanent speed")) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @EventHandler
@@ -42,19 +54,32 @@ public class FeatherSword implements Listener {
         if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) &&
                 event.hasItem() && event.getItem().getType() == Material.NETHERITE_SWORD) {
             ItemMeta meta = event.getItem().getItemMeta();
-            if(meta.getLore() == null) return;
+            if (meta.getLore() == null) return;
             if (meta.getLore().toString().toLowerCase().contains("permanent speed")) {
                 if (isTeleportCooldownExpired(player)) {
                     Vector direction = player.getLocation().getDirection();
                     direction.multiply(new Vector(10, 10, 10));
-                    player.teleport(player.getLocation().add(direction));
+                    Location targetLocation = player.getLocation().add(direction);
 
-                    setTeleportCooldown(player);
+                    if (isSafeLocation(targetLocation)) {
+                        player.teleport(targetLocation);
+                        setTeleportCooldown(player);
+                    } else {
+                        player.sendMessage(ChatColor.RED + "Teleport destination is blocked.");
+                    }
                 } else {
-                    player.sendMessage(ChatColor.RED + "You must wait "+ cooldownRemainingTime(player) + " for the cooldown to finish before teleporting again.");
+                    player.sendMessage(ChatColor.RED + "You must wait " + cooldownRemainingTime(player) + " for the cooldown to finish before teleporting again.");
                 }
             }
         }
+    }
+
+    private boolean isSafeLocation(Location location) {
+        Block block = location.getBlock();
+        if (!block.isEmpty() || !block.getRelative(BlockFace.UP).isEmpty()) {
+            return false;
+        }
+        return true;
     }
 
     private boolean isTeleportCooldownExpired(Player player) {

@@ -48,6 +48,7 @@ public class TreeChopAxe implements Listener {
                     }
                 }
             }
+            handStack.setDurability((short) (handStack.getDurability()+1));
         }
     }
 }
