@@ -24,7 +24,6 @@ public class PlayerLagMsg implements Listener {
                                 event.getMessage().toLowerCase().contains("not laggy") ||
                                 event.getMessage().toLowerCase().contains("didnt lag") ||
                                 event.getMessage().toLowerCase().contains("llage") ||
-                                event.getMessage().toLowerCase().contains("outpost") ||
                                 event.getMessage().toLowerCase().contains("https")
                 )) {
             OptionalDouble tpsTest = Arrays.stream(getServer().getTPS()).findFirst();
@@ -49,7 +48,7 @@ public class PlayerLagMsg implements Listener {
                 }
             }, 20);
         }
-        if ((event.getMessage().toLowerCase().contains("tp") || (event.getMessage().toLowerCase().contains("teleport") && !event.getMessage().toLowerCase().contains("tps")))){
+        if ((event.getMessage().toLowerCase().contains("tp") || (event.getMessage().toLowerCase().contains("teleport") && !event.getMessage().toLowerCase().contains("tps"))) && !event.getMessage().toLowerCase().contains("outpost")){
             Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
                 @Override
                 public void run() {
