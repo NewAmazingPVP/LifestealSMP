@@ -1,6 +1,5 @@
 package newamazingpvp.lifestealsmp;
 
-import com.example.pickaxeplugin.OpPickaxe;
 import com.sun.source.tree.Tree;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;

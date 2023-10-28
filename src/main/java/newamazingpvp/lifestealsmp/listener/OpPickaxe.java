@@ -1,4 +1,4 @@
-package com.example.pickaxeplugin;
+package newamazingpvp.lifestealsmp.listener;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -20,7 +20,9 @@ public class OpPickaxe implements Listener {
         if (item != null && item.getType() == Material.NETHERITE_PICKAXE) {
             if (hasLore(item, "Mine to break 3x3!")) {
                 Block block = event.getBlock();
+                if(player.isSneaking()) return;
                 breakBlocksAround(player, block);
+                item.setDurability((short) (item.getDurability()+1));
             }
         }
     }
@@ -41,7 +43,7 @@ public class OpPickaxe implements Listener {
             for (int y = -1; y <= 1; y++) {
                 for (int z = -1; z <= 1; z++) {
                     Block targetBlock = centerBlock.getRelative(x, y, z);
-                    if (targetBlock.getType() != Material.BEDROCK) {
+                    if ((targetBlock.getType() != Material.BEDROCK) && (targetBlock.getType() != Material.END_PORTAL_FRAME) && (targetBlock.getType() != Material.END_PORTAL)) {
                         targetBlock.breakNaturally();
                     }
                 }

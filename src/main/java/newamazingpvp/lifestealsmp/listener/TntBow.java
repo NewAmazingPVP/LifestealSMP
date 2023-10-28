@@ -22,15 +22,16 @@ import java.util.UUID;
 public class TntBow implements Listener {
     private HashMap<UUID, ItemStack> playerHeldItems = new HashMap<>();
     private final Map<Player, Long> teleportCooldowns = new HashMap<>();
-    private final long teleportCooldownDuration = 10000;
+    private final long teleportCooldownDuration = 5000;
 
     @EventHandler
     public void onProjectileLaunch(ProjectileLaunchEvent event) {
         if (event.getEntityType() == EntityType.ARROW && event.getEntity().getShooter() instanceof Player) {
             Player shooter = (Player) event.getEntity().getShooter();
             ItemStack mainHandItem = shooter.getInventory().getItemInMainHand();
+            ItemStack offHandItem = shooter.getInventory().getItemInOffHand();
 
-            if (isBow(mainHandItem)) {
+            if (isBow(mainHandItem) || isBow(offHandItem)) {
                 playerHeldItems.put(shooter.getUniqueId(), mainHandItem);
             } else {
                 playerHeldItems.remove(shooter.getUniqueId());
