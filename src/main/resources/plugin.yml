@@ -13,4 +13,7 @@ commands:
   recipes:
     description: View all the custom recipes of this lifesteal server
     usage: /recipes
+  td:
+    description: Trade command for bedrock players because normal /trade glitched for them
+    usage: /td
 
