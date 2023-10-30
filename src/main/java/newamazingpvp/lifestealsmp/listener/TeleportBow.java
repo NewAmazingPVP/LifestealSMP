@@ -17,6 +17,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import static newamazingpvp.lifestealsmp.listener.FeatherSword.getString;
+
 public class TeleportBow implements Listener {
     private final HashMap<UUID, ItemStack> playerHeldItems = new HashMap<>();
     private final Map<Player, Long> teleportCooldowns = new HashMap<>();
@@ -93,19 +95,6 @@ public class TeleportBow implements Listener {
     }
 
     private String cooldownRemainingTime(Player player) {
-        if (teleportCooldowns.containsKey(player)) {
-            long lastTeleportTime = teleportCooldowns.get(player);
-            long currentTime = System.currentTimeMillis();
-            long remainingCooldown = teleportCooldownDuration - (currentTime - lastTeleportTime);
-
-            if (remainingCooldown <= 0) {
-                return "Cooldown is over.";
-            }
-
-            int seconds = (int) (remainingCooldown / 1000);
-            return seconds + " seconds";
-        }
-
-        return "Cooldown is over.";
+        return getString(player, teleportCooldowns, teleportCooldownDuration);
     }
 }
