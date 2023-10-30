@@ -2,14 +2,12 @@ package newamazingpvp.lifestealsmp.game;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Calendar;
 import java.util.TimeZone;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static org.bukkit.Bukkit.getServer;
 
 public class AutoRestart {
     private static final long[] warningTimes = {10, 7, 5, 3, 2, 1};
@@ -21,6 +19,7 @@ public class AutoRestart {
             "Server will restart in 2 minutes!",
             "Server will restart in 1 minute!",
     };
+
     public static void scheduleRestart() {
         Calendar now = Calendar.getInstance(TimeZone.getTimeZone("America/New_York"));
         Calendar restartTime = Calendar.getInstance(TimeZone.getTimeZone("America/New_York"));

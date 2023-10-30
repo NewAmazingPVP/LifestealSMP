@@ -3,27 +3,22 @@ package newamazingpvp.lifestealsmp.listener;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
-import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.util.Vector;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class TeleportBow implements Listener {
-    private HashMap<UUID, ItemStack> playerHeldItems = new HashMap<>();
+    private final HashMap<UUID, ItemStack> playerHeldItems = new HashMap<>();
     private final Map<Player, Long> teleportCooldowns = new HashMap<>();
     private final long teleportCooldownDuration = 10000;
 
@@ -72,7 +67,7 @@ public class TeleportBow implements Listener {
                     playerHeldItems.remove(shooter.getUniqueId());
                     setTeleportCooldown(shooter);
                 } else {
-                    shooter.sendMessage(ChatColor.RED + "You must wait "+ cooldownRemainingTime(shooter) + " for the cooldown to finish before teleporting again.");
+                    shooter.sendMessage(ChatColor.RED + "You must wait " + cooldownRemainingTime(shooter) + " for the cooldown to finish before teleporting again.");
                 }
             }
         }
@@ -80,7 +75,7 @@ public class TeleportBow implements Listener {
 
     private boolean isBow(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
-        return item.getType() == Material.BOW && meta.getLore() !=null && meta.getLore().toString().contains("Shoot to teleport!");
+        return item.getType() == Material.BOW && meta.getLore() != null && meta.getLore().toString().contains("Shoot to teleport!");
 
     }
 

@@ -46,7 +46,6 @@ public class SpawnProtection implements Listener {
     }
 
 
-
     @EventHandler
     public void spawnBlockBreak(BlockBreakEvent event) {
         if (isWithinSpawnRadius(event.getBlock().getLocation())) {
@@ -66,9 +65,9 @@ public class SpawnProtection implements Listener {
     @EventHandler
     public void spawnBlockPlace(PlayerInteractEvent event) {
         if (isWithinSpawnRadius(event.getPlayer().getLocation())) {
-            if(event.getPlayer().getInventory().getItemInMainHand().getType() == Material.LAVA_BUCKET
-            || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.FIRE_CHARGE
-            || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.FLINT_AND_STEEL) {
+            if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.LAVA_BUCKET
+                    || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.FIRE_CHARGE
+                    || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.FLINT_AND_STEEL) {
                 event.setCancelled(true);
                 event.getPlayer().sendMessage(ChatColor.RED + "You cannot interact within the spawn area. Go around 50 blocks away to be able to interact");
             }
@@ -79,7 +78,7 @@ public class SpawnProtection implements Listener {
     private boolean isWithinSpawnRadius(Location location) {
         Location spawnLocation = location.getWorld().getSpawnLocation();
         World.Environment spawnEnvironment = location.getWorld().getEnvironment();
-        if(spawnEnvironment != World.Environment.NORMAL){
+        if (spawnEnvironment != World.Environment.NORMAL) {
             return false;
         }
         return location.distanceSquared(spawnLocation) <= spawnRadius * spawnRadius;

@@ -14,7 +14,6 @@ import java.time.Month;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
@@ -33,7 +32,7 @@ public class GracePeriod implements Listener {
                         event.setCancelled(true);
                         damager.sendMessage(ChatColor.RED + "You cannot damage players during the grace period!");
                     }
-                    if(isPlayerDeathProt(damaged)){
+                    if (isPlayerDeathProt(damaged)) {
                         event.setCancelled(true);
                         damager.sendMessage(ChatColor.RED + "You cannot damage players during their death protection unless they attack you back!");
                         damaged.sendMessage(ChatColor.RED + "Someone tried attacking u but was prevented because u died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
@@ -48,7 +47,7 @@ public class GracePeriod implements Listener {
                             event.setCancelled(true);
                             shooter.sendMessage(ChatColor.RED + "You cannot shoot players during the grace period!");
                         }
-                        if(isPlayerDeathProt(damaged)){
+                        if (isPlayerDeathProt(damaged)) {
                             event.setCancelled(true);
                             event.getDamager().sendMessage(ChatColor.RED + "You cannot shoot players during their death protection unless they attack you back!");
                             event.getEntity().sendMessage(ChatColor.RED + "Someone tried attacking u but was prevented because u died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
@@ -72,7 +71,7 @@ public class GracePeriod implements Listener {
     }
 
     @EventHandler
-    public void onDeath(PlayerDeathEvent event){
+    public void onDeath(PlayerDeathEvent event) {
         String name = event.getPlayer().getName();
         names.add(name);
         new BukkitRunnable() {
@@ -80,10 +79,10 @@ public class GracePeriod implements Listener {
             public void run() {
                 names.remove(name);
             }
-        }.runTaskLater(lifestealSmp, 20*60*15);
+        }.runTaskLater(lifestealSmp, 20 * 60 * 15);
     }
 
-    public boolean isPlayerDeathProt(Player p){
+    public boolean isPlayerDeathProt(Player p) {
         return names.contains(p.getName());
     }
 }

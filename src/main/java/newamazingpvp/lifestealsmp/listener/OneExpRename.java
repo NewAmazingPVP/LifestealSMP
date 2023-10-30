@@ -9,7 +9,7 @@ public class OneExpRename implements Listener {
     @EventHandler
     public void onAnvilPrepare(PrepareAnvilEvent event) {
         AnvilInventory anvilInventory = event.getInventory();
-        if((!(anvilInventory.getRenameText() == null)) && anvilInventory.getSecondItem() == null) {
+        if ((!(anvilInventory.getRenameText() == null)) && anvilInventory.getSecondItem() == null) {
             event.getInventory().setRepairCost(1);
         }
     }

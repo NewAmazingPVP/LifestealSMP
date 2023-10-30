@@ -13,8 +13,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
 import java.util.HashMap;
@@ -41,9 +39,7 @@ public class FeatherSword implements Listener {
     private boolean isPermanentSpeedSword(ItemStack item) {
         if (item != null && item.getType() == Material.NETHERITE_SWORD) {
             ItemMeta meta = item.getItemMeta();
-            if (meta.getLore() != null && meta.getLore().toString().toLowerCase().contains("permanent speed")) {
-                return true;
-            }
+            return meta.getLore() != null && meta.getLore().toString().toLowerCase().contains("permanent speed");
         }
         return false;
     }
@@ -76,10 +72,7 @@ public class FeatherSword implements Listener {
 
     private boolean isSafeLocation(Location location) {
         Block block = location.getBlock();
-        if (!block.isEmpty() || !block.getRelative(BlockFace.UP).isEmpty()) {
-            return false;
-        }
-        return true;
+        return block.isEmpty() && block.getRelative(BlockFace.UP).isEmpty();
     }
 
     private boolean isTeleportCooldownExpired(Player player) {

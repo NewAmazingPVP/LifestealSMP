@@ -1,19 +1,18 @@
 package newamazingpvp.lifestealsmp.listener;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedList;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.Arrays;
+import java.util.HashSet;
 
 public class TreeChopAxe implements Listener {
     public static HashSet<Material> validLogMaterials = new HashSet<>(Arrays.asList(
@@ -26,12 +25,12 @@ public class TreeChopAxe implements Listener {
         Player player = e.getPlayer();
         ItemStack handStack = player.getInventory().getItemInMainHand();
         ItemMeta meta = handStack.getItemMeta();
-        if(meta == null || !meta.hasLore()) return;
+        if (meta == null || !meta.hasLore()) return;
         if (meta.getLore().toString().toLowerCase().contains("tree")) {
             Block block = e.getBlock();
             if (validLogMaterials.contains(block.getType()))
                 cutDownTree(block.getLocation(), (player.getGameMode() == GameMode.CREATIVE) ? handStack.clone() : handStack);
-                handStack.setDurability((short) (handStack.getDurability()+1));
+            handStack.setDurability((short) (handStack.getDurability() + 1));
         }
     }
 
