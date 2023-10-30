@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import static newamazingpvp.lifestealsmp.game.Compass.lastPortalLocations;
 import static newamazingpvp.lifestealsmp.game.Compass.trackingPlayers;
 
-public class CompassListener implements Listener{
+public class CompassListener implements Listener {
     @EventHandler
     public void onPlayerPortalEvent(PlayerPortalEvent event) {
         lastPortalLocations.put(event.getPlayer().getUniqueId(), event.getFrom());
@@ -22,7 +22,7 @@ public class CompassListener implements Listener{
     }
 
     @EventHandler
-    private void onPlayerDeath(PlayerDeathEvent e){
+    private void onPlayerDeath(PlayerDeathEvent e) {
         Player player = e.getEntity();
         trackingPlayers.remove(player.getUniqueId());
     }

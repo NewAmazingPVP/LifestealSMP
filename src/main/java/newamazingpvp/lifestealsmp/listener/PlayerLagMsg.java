@@ -2,7 +2,6 @@ package newamazingpvp.lifestealsmp.listener;
 
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -48,7 +47,7 @@ public class PlayerLagMsg implements Listener {
                 }
             }, 20);
         }
-        if ((event.getMessage().toLowerCase().contains("tp") || (event.getMessage().toLowerCase().contains("teleport") && !event.getMessage().toLowerCase().contains("tps"))) && !event.getMessage().toLowerCase().contains("outpost")){
+        if ((event.getMessage().toLowerCase().contains("tp") || (event.getMessage().toLowerCase().contains("teleport") && !event.getMessage().toLowerCase().contains("tps"))) && !event.getMessage().toLowerCase().contains("outpost")) {
             Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
                 @Override
                 public void run() {
