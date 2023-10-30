@@ -16,6 +16,7 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 public class Compass {
     public static HashMap<UUID, UUID> trackingPlayers = new HashMap<>();
     public static HashMap<UUID, Location> lastPortalLocations = new HashMap<>();
+
     public static void compassUpdate() {
         new BukkitRunnable() {
             public void run() {
@@ -50,7 +51,7 @@ public class Compass {
                                 }
                                 String message;
                                 if (distance >= 0) {
-                                    message = ChatColor.GREEN + "Tracking " + ChatColor.BOLD + target.getName() + " " + ChatColor.AQUA + distance + ChatColor.GREEN + " blocks away" ;
+                                    message = ChatColor.GREEN + "Tracking " + ChatColor.BOLD + target.getName() + " " + ChatColor.AQUA + distance + ChatColor.GREEN + " blocks away";
                                 } else {
                                     message = ChatColor.RED + "Cannot measure the distance to the player because they are in a different dimension and haven't used a portal yet";
                                 }
@@ -90,7 +91,6 @@ public class Compass {
     }
 
 
-
     public static Location generateRandomLocation(Player player) {
         int offsetX = (int) (Math.random() * 201) - 100;
         int offsetZ = (int) (Math.random() * 201) - 100;
@@ -118,6 +118,7 @@ public class Compass {
             compass.setItemMeta(compassMeta);
         }
     }
+
     public static void setLodestoneCompass(ItemStack compass, Location location) {
         CompassMeta compassMeta = (CompassMeta) compass.getItemMeta();
         assert compassMeta != null;

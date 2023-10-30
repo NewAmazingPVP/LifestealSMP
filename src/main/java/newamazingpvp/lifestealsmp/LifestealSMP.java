@@ -1,10 +1,9 @@
 package newamazingpvp.lifestealsmp;
 
-import com.sun.source.tree.Tree;
 import net.dv8tion.jda.api.JDA;
-import net.dv8tion.jda.api.JDABuilder;
-import newamazingpvp.lifestealsmp.command.*;
-import newamazingpvp.lifestealsmp.game.PlayerPing;
+import newamazingpvp.lifestealsmp.command.CustomDistance;
+import newamazingpvp.lifestealsmp.command.RecipesCommand;
+import newamazingpvp.lifestealsmp.command.RulesCommand;
 import newamazingpvp.lifestealsmp.listener.*;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -14,16 +13,12 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import javax.security.auth.login.LoginException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import java.util.logging.Level;
 
 import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
 import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastServerMessage;
-import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastWarningMessage;
-import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.game.PlayerPing.monitorPlayerPings;
 
@@ -91,6 +86,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         scheduleRestart();
         //compassUpdate();
     }
+
     @Override
     public void onDisable() {
         // Shutdown the Discord bot on plugin disable
@@ -117,7 +113,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
 
         player.setInvulnerable(true);
         getServer().getScheduler().runTaskLater(this, () -> player.setInvulnerable(false), 60);
-        if(!event.getPlayer().hasPlayedBefore()){
+        if (!event.getPlayer().hasPlayedBefore()) {
             getServer().dispatchCommand(getServer().getConsoleSender(), "ep user " + event.getPlayer().getName() + " setgroup " + randomGroup());
             player.sendMessage("Welcome! \n/rules\n/prefix\n/color ");
         }

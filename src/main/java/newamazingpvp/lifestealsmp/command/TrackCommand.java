@@ -16,67 +16,67 @@ import static newamazingpvp.lifestealsmp.game.Compass.trackingPlayers;
 
 public class TrackCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-            if (!(sender instanceof Player)) {
-                sender.sendMessage("This command can only be used by a player!");
-                return true;
-            }
+        if (!(sender instanceof Player)) {
+            sender.sendMessage("This command can only be used by a player!");
+            return true;
+        }
 
-            Player player = (Player) sender;
+        Player player = (Player) sender;
 
-            if (args.length == 0) {
-                sender.sendMessage("Usage: /track <player>");
-                return true;
-            }
+        if (args.length == 0) {
+            sender.sendMessage("Usage: /track <player>");
+            return true;
+        }
 
-            if (getCompassFromInventory(player) == null) {
-                sender.sendMessage(ChatColor.RED + "You need a compass in your inventory to use this command!");
-                return true;
-            }
+        if (getCompassFromInventory(player) == null) {
+            sender.sendMessage(ChatColor.RED + "You need a compass in your inventory to use this command!");
+            return true;
+        }
 
-            Player target = Bukkit.getPlayer(args[0]);
+        Player target = Bukkit.getPlayer(args[0]);
 
-            if (target == null) {
-                sender.sendMessage(ChatColor.RED + "Player not found!");
-                return true;
-            }
+        if (target == null) {
+            sender.sendMessage(ChatColor.RED + "Player not found!");
+            return true;
+        }
 
-            long targetPlaytime = getPlaytime(target);
-            long requiredPlaytimeTicks = 3 * 60 * 60 * 20;
+        long targetPlaytime = getPlaytime(target);
+        long requiredPlaytimeTicks = 3 * 60 * 60 * 20;
 
-            if (targetPlaytime < requiredPlaytimeTicks) {
-                long remainingTicks = requiredPlaytimeTicks - targetPlaytime;
-                long remainingSeconds = remainingTicks / 20;
+        if (targetPlaytime < requiredPlaytimeTicks) {
+            long remainingTicks = requiredPlaytimeTicks - targetPlaytime;
+            long remainingSeconds = remainingTicks / 20;
 
-                int remainingHours = (int) (remainingSeconds / 3600);
-                int remainingMinutes = (int) ((remainingSeconds % 3600) / 60);
-                int remainingSecondsLeft = (int) (remainingSeconds % 60);
+            int remainingHours = (int) (remainingSeconds / 3600);
+            int remainingMinutes = (int) ((remainingSeconds % 3600) / 60);
+            int remainingSecondsLeft = (int) (remainingSeconds % 60);
 
-                String remainingTimeMessage = ChatColor.RED + "Cannot track player because they have newbie protection for " +
-                        ChatColor.YELLOW + remainingHours + " hours, " +
-                        remainingMinutes + " minutes, " +
-                        remainingSecondsLeft + " seconds.";
+            String remainingTimeMessage = ChatColor.RED + "Cannot track player because they have newbie protection for " +
+                    ChatColor.YELLOW + remainingHours + " hours, " +
+                    remainingMinutes + " minutes, " +
+                    remainingSecondsLeft + " seconds.";
 
-                sender.sendMessage(remainingTimeMessage);
-                return true;
-            }
+            sender.sendMessage(remainingTimeMessage);
+            return true;
+        }
 
-            long targetDeathTime = getDeathTime(target);
-            long requiredDeathTime = 15 * 60 * 20;
+        long targetDeathTime = getDeathTime(target);
+        long requiredDeathTime = 15 * 60 * 20;
 
-            if (targetDeathTime < requiredDeathTime) {
-                long remainingTicks = requiredDeathTime - targetDeathTime;
-                long remainingSeconds = remainingTicks / 20;
+        if (targetDeathTime < requiredDeathTime) {
+            long remainingTicks = requiredDeathTime - targetDeathTime;
+            long remainingSeconds = remainingTicks / 20;
 
-                int remainingMinutes = (int) ((remainingSeconds % 3600) / 60);
-                int remainingSecondsLeft = (int) (remainingSeconds % 60);
+            int remainingMinutes = (int) ((remainingSeconds % 3600) / 60);
+            int remainingSecondsLeft = (int) (remainingSeconds % 60);
 
-                String remainingTimeMessage = ChatColor.RED + "Cannot track because they died recently and have death protection for " +
-                        ChatColor.YELLOW + remainingMinutes + " minutes, " +
-                        remainingSecondsLeft + " seconds.";
+            String remainingTimeMessage = ChatColor.RED + "Cannot track because they died recently and have death protection for " +
+                    ChatColor.YELLOW + remainingMinutes + " minutes, " +
+                    remainingSecondsLeft + " seconds.";
 
-                sender.sendMessage(remainingTimeMessage);
-                return true;
-            }
+            sender.sendMessage(remainingTimeMessage);
+            return true;
+        }
 
             /*if(diamondBlockCount(player) > 0){
                 ItemStack block = new ItemStack(Material.DIAMOND_BLOCK, 1);
@@ -87,11 +87,10 @@ public class TrackCommand implements CommandExecutor {
                 return true;
             }*/
 
-            trackingPlayers.put(player.getUniqueId(), target.getUniqueId());
-            player.sendMessage(ChatColor.GREEN + "Compass is now pointing towards " + target.getName());
-            return true;
-        }
-
+        trackingPlayers.put(player.getUniqueId(), target.getUniqueId());
+        player.sendMessage(ChatColor.GREEN + "Compass is now pointing towards " + target.getName());
+        return true;
+    }
 
 
     public static int diamondBlockCount(Player player) {
@@ -112,6 +111,6 @@ public class TrackCommand implements CommandExecutor {
     }
 
     private long getDeathTime(Player player) {
-        return player.getStatistic(Statistic.TIME_SINCE_DEATH );
+        return player.getStatistic(Statistic.TIME_SINCE_DEATH);
     }
 }

@@ -35,6 +35,7 @@ public class BroadcastMessage {
 
         Bukkit.spigot().broadcast(message);
     }
+
     public static void broadcastWarningMessage() {
         String discordLink = "https://discord.gg/PN8egFY3ap";
         String warningMessage = "**WARNING** The server is going private, so make sure to join the Discord server to be able to play next season! ";

@@ -2,13 +2,11 @@ package newamazingpvp.lifestealsmp.listener;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.java.JavaPlugin;
 
 public class OpPickaxe implements Listener {
 
@@ -20,9 +18,9 @@ public class OpPickaxe implements Listener {
         if (item != null && item.getType() == Material.NETHERITE_PICKAXE) {
             if (hasLore(item, "Mine to break 3x3!")) {
                 Block block = event.getBlock();
-                if(player.isSneaking()) return;
+                if (player.isSneaking()) return;
                 breakBlocksAround(player, block);
-                item.setDurability((short) (item.getDurability()+1));
+                item.setDurability((short) (item.getDurability() + 1));
             }
         }
     }

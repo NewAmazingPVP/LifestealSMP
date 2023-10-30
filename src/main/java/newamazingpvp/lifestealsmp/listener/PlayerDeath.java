@@ -29,15 +29,15 @@ public class PlayerDeath implements Listener {
         ICombatLogX plugin = getAPI();
         IDeathManager deathManager = plugin.getDeathManager();
 
-        if(deathManager.wasPunishKilled(player)) {
+        if (deathManager.wasPunishKilled(player)) {
             double amount = player.getMaxHealth();
             player.setMaxHealth(amount - 2);
             List<Entity> trackedEnemies = deathManager.getTrackedEnemies(player);
-            for(Entity p : trackedEnemies){
-                if(p instanceof Player){
+            for (Entity p : trackedEnemies) {
+                if (p instanceof Player) {
                     Player pl = (Player) p;
                     double addAmount = pl.getMaxHealth();
-                    if(addAmount <= 18){
+                    if (addAmount <= 18) {
                         pl.setMaxHealth(addAmount + 2);
                     } else {
                         getServer().dispatchCommand(getServer().getConsoleSender(), "lsgive heart_item 1 " + pl.getName());
@@ -47,7 +47,7 @@ public class PlayerDeath implements Listener {
             }
         }
         Player Gamer = e.getEntity();
-        int[] pos = { Gamer.getLocation().getBlockX(), Gamer.getLocation().getBlockY(), Gamer.getLocation().getBlockZ() };
+        int[] pos = {Gamer.getLocation().getBlockX(), Gamer.getLocation().getBlockY(), Gamer.getLocation().getBlockZ()};
         Gamer.sendMessage(ChatColor.BOLD + "" + ChatColor.GOLD +
                 "You Died At:" +
                 "  X:" + pos[0] +

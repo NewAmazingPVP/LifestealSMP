@@ -16,6 +16,7 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class ServerAge implements Listener {
     private final LocalDateTime serverStartTime = LocalDateTime.of(2023, 9, 16, 11, 30);
+
     @EventHandler
     public void playerServerAge(PlayerChatEvent event) {
         String message = event.getMessage().toLowerCase(); // Convert to lowercase
@@ -63,7 +64,7 @@ public class ServerAge implements Listener {
                 Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
                     @Override
                     public void run() {
-                        for(Player p : Bukkit.getServer().getOnlinePlayers()) {
+                        for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                             p.sendMessage(uptimeMessage);
                         }
                     }
