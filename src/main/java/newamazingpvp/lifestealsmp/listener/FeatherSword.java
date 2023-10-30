@@ -14,6 +14,7 @@ import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -85,6 +86,11 @@ public class FeatherSword implements Listener {
     }
 
     private String cooldownRemainingTime(Player player) {
+        return getString(player, teleportCooldowns, teleportCooldownDuration);
+    }
+
+    @NotNull
+    static String getString(Player player, Map<Player, Long> teleportCooldowns, long teleportCooldownDuration) {
         if (teleportCooldowns.containsKey(player)) {
             long lastTeleportTime = teleportCooldowns.get(player);
             long currentTime = System.currentTimeMillis();
