@@ -1,16 +1,9 @@
 package newamazingpvp.lifestealsmp.listener;
 
-import com.github.sirblobman.combatlogx.api.event.PlayerTagEvent;
-import org.bukkit.Bukkit;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.PlayerDeathEvent;
 
 import java.util.HashMap;
-
-import static newamazingpvp.lifestealsmp.game.Compass.trackingPlayers;
 
 public class PlayerInCombat implements Listener {
     private final long cooldownTime = 60 * 20 * 50;
