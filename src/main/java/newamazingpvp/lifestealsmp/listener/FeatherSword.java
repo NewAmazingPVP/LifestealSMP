@@ -52,7 +52,8 @@ public class FeatherSword implements Listener {
                 event.hasItem() && event.getItem().getType() == Material.NETHERITE_SWORD) {
             ItemMeta meta = event.getItem().getItemMeta();
             if (meta.getLore() == null) return;
-            if (meta.getLore().toString().toLowerCase().contains("permanent speed")) {
+            if (meta.getLore().toString().toLowerCase().contains("permanent speed")
+            && !player.getInventory().getItemInOffHand().toString().toLowerCase().contains("shield")) {
                 if (isTeleportCooldownExpired(player)) {
                     Vector direction = player.getLocation().getDirection();
                     direction.multiply(new Vector(10, 10, 10));
