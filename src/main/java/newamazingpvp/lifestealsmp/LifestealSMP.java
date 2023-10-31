@@ -44,7 +44,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getCommand("rules").setExecutor(new RulesCommand());
         getCommand("setview").setExecutor(new CustomDistance());
         getCommand("recipes").setExecutor(new RecipesCommand());
-        //getCommand("tp").setExecutor(new TradeCommand());
+        //getCommand("td").setExecutor(new TradeCommand());
         //getCommand("track").setExecutor(new TrackCommand());
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
@@ -115,7 +115,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getScheduler().runTaskLater(this, () -> player.setInvulnerable(false), 60);
         if (!event.getPlayer().hasPlayedBefore()) {
             getServer().dispatchCommand(getServer().getConsoleSender(), "ep user " + event.getPlayer().getName() + " setgroup " + randomGroup());
-            player.sendMessage("Welcome! \n/rules\n/prefix\n/color ");
+            player.sendMessage("Welcome! \n/rules\n/prefix\n/color\n/recipes ");
         }
     }
 }
