@@ -1,11 +1,11 @@
 package newamazingpvp.lifestealsmp;
 
-import net.dv8tion.jda.api.JDA;
 import newamazingpvp.lifestealsmp.command.CustomDistance;
 import newamazingpvp.lifestealsmp.command.RecipesCommand;
 import newamazingpvp.lifestealsmp.command.RulesCommand;
 import newamazingpvp.lifestealsmp.listener.*;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,6 +13,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -21,11 +22,12 @@ import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
 import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastServerMessage;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.game.PlayerPing.monitorPlayerPings;
+import static newamazingpvp.lifestealsmp.utility.DiscordBot.*;
 
 public final class LifestealSMP extends JavaPlugin implements Listener {
     public static LifestealSMP lifestealSmp;
+    private FileConfiguration config;
 
-    private JDA jda;
     public static final List<String> groupNames = Arrays.asList(
             "Supporter", "Build_Team", "Build_Team+", "Premium", "Mojang",
             "Helper", "PIG+++", "Events", "Mcp", "Youtube", "NAP",
@@ -39,6 +41,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
+        saveDefaultConfig();
+        config = getConfig();
         lifestealSmp = this;
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
         getCommand("rules").setExecutor(new RulesCommand());
@@ -60,7 +64,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new OpPickaxe(), this);
         getServer().getPluginManager().registerEvents(new TreeChopAxe(), this);
         getServer().getPluginManager().registerEvents(new PlayerInCombat(), this);
-        getServer().getPluginManager().registerEvents(new GracePeriod(), this);
+        //getServer().getPluginManager().registerEvents(new GracePeriod(), this);
         int repeatDelayTicks = 7200 * 20;
         BukkitRunnable broadcastTask = new BukkitRunnable() {
             @Override
@@ -85,11 +89,18 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         }.runTaskTimer(this, 0L, 20L);
         scheduleRestart();
         //compassUpdate();
+        intializeBot();
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                sendDiscordEmbedTitle("@NewAmazingPVP LOL", Color.MAGENTA, "");
+            }
+        }.runTaskLater(this, 120);
+
     }
 
     @Override
     public void onDisable() {
-        // Shutdown the Discord bot on plugin disable
         if (jda != null) {
             jda.shutdownNow();
         }
