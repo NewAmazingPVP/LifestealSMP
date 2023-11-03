@@ -13,6 +13,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.block.TNTPrimeEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
 
 public class SpawnProtection implements Listener {
 
@@ -91,5 +92,20 @@ public class SpawnProtection implements Listener {
             return false;
         }
         return location.distanceSquared(spawnLocation) <= spawnRadius * spawnRadius;
+    }
+
+    @EventHandler
+    public void onBlockBreak(BlockBreakEvent event) {
+        if (event.isCancelled()) return;
+
+        // Check if the broken block is Dark Oak
+        if (event.getBlock().getType() == Material.DARK_OAK_LOG) {
+            // Check if we should drop a sapling
+            if (Math.random() < 0.10) {
+                // Drop a Dark Oak sapling
+                ItemStack sapling = new ItemStack(Material.DARK_OAK_SAPLING);
+                event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), sapling);
+            }
+        }
     }
 }
