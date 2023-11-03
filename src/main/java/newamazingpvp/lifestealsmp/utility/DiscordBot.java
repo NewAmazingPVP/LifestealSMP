@@ -4,6 +4,7 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
+import newamazingpvp.lifestealsmp.dccommands.Stats;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.awt.*;
@@ -18,6 +19,7 @@ public class DiscordBot {
         String token = lifestealSmp.getConfig().getString("Discord.BotToken");
         String channelId = lifestealSmp.getConfig().getString("Discord.Channel");
         jda = JDABuilder.createDefault(token).build();
+        jda.addEventListener((new Stats()));
         new BukkitRunnable() {
             @Override
             public void run() {
