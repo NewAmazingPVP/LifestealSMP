@@ -10,12 +10,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.block.TNTPrimeEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public class SpawnProtection implements Listener {
 
-    private final int spawnRadius = 60;
+    private static final int spawnRadius = 60;
 
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
@@ -67,15 +68,23 @@ public class SpawnProtection implements Listener {
         if (isWithinSpawnRadius(event.getPlayer().getLocation())) {
             if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.LAVA_BUCKET
                     || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.FIRE_CHARGE
-                    || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.FLINT_AND_STEEL) {
+                    || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.FLINT_AND_STEEL
+                    || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.WATER_BUCKET
+                    || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.BOW) {
                 event.setCancelled(true);
                 event.getPlayer().sendMessage(ChatColor.RED + "You cannot interact within the spawn area. Go around 50 blocks away to be able to interact");
             }
         }
     }
 
+    @EventHandler
+    public void spawnTNT(TNTPrimeEvent e) {
+        if (isWithinSpawnRadius(e.getBlock().getLocation()) || isWithinSpawnRadius(e.getBlock().getLocation())) {
+            e.setCancelled(true);
+        }
+    }
 
-    private boolean isWithinSpawnRadius(Location location) {
+    public static boolean isWithinSpawnRadius(Location location) {
         Location spawnLocation = location.getWorld().getSpawnLocation();
         World.Environment spawnEnvironment = location.getWorld().getEnvironment();
         if (spawnEnvironment != World.Environment.NORMAL) {

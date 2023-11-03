@@ -19,6 +19,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.listener.FeatherSword.getString;
+import static newamazingpvp.lifestealsmp.listener.SpawnProtection.isWithinSpawnRadius;
 
 public class TntBow implements Listener {
     private final HashMap<UUID, ItemStack> playerHeldItems = new HashMap<>();
@@ -60,7 +61,8 @@ public class TntBow implements Listener {
         }
     }
 
-    public void spawnIgnitedTNT(Location location) {
+    public static void spawnIgnitedTNT(Location location) {
+        if (isWithinSpawnRadius(location)) return;
         TNTPrimed tnt = (TNTPrimed) location.getWorld().spawnEntity(location, EntityType.PRIMED_TNT);
 
         tnt.setFuseTicks(40);

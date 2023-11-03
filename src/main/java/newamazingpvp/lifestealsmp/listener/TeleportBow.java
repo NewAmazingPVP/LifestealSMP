@@ -47,20 +47,9 @@ public class TeleportBow implements Listener {
             Arrow arrow = (Arrow) event.getEntity();
             Player shooter = (Player) arrow.getShooter();
 
-            // Check if the player has a bow in the map (i.e., they shot the arrow with a bow)
             if (playerHeldItems.containsKey(shooter.getUniqueId())) {
                 if (isTeleportCooldownExpired(shooter)) {
-                    // Calculate the location where the arrow lands
                     Location arrowLocation = arrow.getLocation();
-                    //Vector arrowVelocity = arrow.getVelocity();
-                    //double arrowSpeed = arrowVelocity.length();
-                    //double airTime = arrowLocation.distance(arrowLocation.getWorld().getHighestBlockAt(arrowLocation).getLocation()) / arrowSpeed;
-
-                    // Use the arrow's velocity to estimate the landing location
-                    //Location landingLocation = arrowLocation.clone().add(arrowVelocity.multiply(airTime));
-
-                    // Teleport the player slightly in the direction they were looking when they shot the arrow
-                    //Location teleportLocation = landingLocation.clone();
                     arrowLocation.setPitch(shooter.getLocation().getPitch());
                     arrowLocation.setYaw(shooter.getLocation().getYaw());
 
