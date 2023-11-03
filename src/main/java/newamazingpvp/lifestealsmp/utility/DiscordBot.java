@@ -4,10 +4,12 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
+import net.dv8tion.jda.api.requests.GatewayIntent;
 import newamazingpvp.lifestealsmp.dccommands.Stats;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.awt.*;
+import java.util.EnumSet;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
@@ -18,7 +20,11 @@ public class DiscordBot {
     public static void intializeBot() {
         String token = lifestealSmp.getConfig().getString("Discord.BotToken");
         String channelId = lifestealSmp.getConfig().getString("Discord.Channel");
-        jda = JDABuilder.createDefault(token).build();
+        EnumSet<GatewayIntent> allIntents = EnumSet.allOf(GatewayIntent.class);
+
+        JDABuilder jdaBuilder = JDABuilder.createDefault(token);
+        jdaBuilder.enableIntents(allIntents);
+        jda = jdaBuilder.build();
         jda.addEventListener((new Stats()));
         new BukkitRunnable() {
             @Override
@@ -48,6 +54,7 @@ public class DiscordBot {
         EmbedBuilder eb = new EmbedBuilder();
         eb.setTitle(msg);
         eb.setColor(c);
+        eb.setThumbnail("https://minotar.net/armor/body/newamazingpvp/100.png");
         if (channelID.isEmpty()) {
             channel.sendMessageEmbeds(eb.build()).queue();
         } else {
