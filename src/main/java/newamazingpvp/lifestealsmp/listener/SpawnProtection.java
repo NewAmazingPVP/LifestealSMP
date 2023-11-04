@@ -51,6 +51,7 @@ public class SpawnProtection implements Listener {
     @EventHandler
     public void spawnBlockBreak(BlockBreakEvent event) {
         if (isWithinSpawnRadius(event.getBlock().getLocation())) {
+            if(event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
             event.setCancelled(true);
             event.getPlayer().sendMessage(ChatColor.RED + "You cannot break blocks within the spawn area. Go around 50 blocks away to be able to break");
         }
@@ -59,6 +60,7 @@ public class SpawnProtection implements Listener {
     @EventHandler
     public void spawnBlockPlace(BlockPlaceEvent event) {
         if (isWithinSpawnRadius(event.getBlock().getLocation())) {
+            if(event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
             event.setCancelled(true);
             event.getPlayer().sendMessage(ChatColor.RED + "You cannot place blocks within the spawn area. Go around 50 blocks away to be able to place");
         }

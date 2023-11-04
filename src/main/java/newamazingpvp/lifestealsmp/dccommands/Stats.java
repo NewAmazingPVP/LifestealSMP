@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import java.awt.*;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.utility.DiscordBot.sendDiscordEmbedStats;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.sendDiscordEmbedTitle;
 
 public class Stats extends ListenerAdapter {
@@ -60,10 +61,10 @@ public class Stats extends ListenerAdapter {
                     + "\nDistance Swam: " + swim + "\nDamage Dealt: " + dealt +
                     "\nDamage Absorbed: " + absorbed + "\nDealt/Absorbed Ratio: " + dar +
                      "\n Time Played: " + hours + " hours " + mins + " minutes", Color.BLUE, event.getChannel().getId());*/
-            sendDiscordEmbedTitle("Kills: " + kills + "\nDeaths: " +
+            sendDiscordEmbedStats("Kills: " + kills + "\nDeaths: " +
                     deaths + "\nK/D: " + kd + "\nTotal Distance: " + final1
                     + " blocks\nDamage Dealt: " + deal +
-                    "❤️\nTime Played: " + hours + " hours " + mins + " minutes", Color.BLUE, event.getChannel().getId());
+                    "❤️\nTime Played: " + hours + " hours " + mins + " minutes", Color.BLUE, event.getChannel().getId(), playerName);
         }
     }
 }
