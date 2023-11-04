@@ -54,7 +54,21 @@ public class DiscordBot {
         EmbedBuilder eb = new EmbedBuilder();
         eb.setTitle(msg);
         eb.setColor(c);
-        eb.setThumbnail("https://minotar.net/armor/body/newamazingpvp/100.png");
+        if (channelID.isEmpty()) {
+            channel.sendMessageEmbeds(eb.build()).queue();
+        } else {
+            TextChannel tempChannel = jda.getTextChannelById(channelID);
+            if (tempChannel != null) {
+                tempChannel.sendMessageEmbeds(eb.build()).queue();
+            }
+        }
+    }
+
+    public static void sendDiscordEmbedStats(String msg, Color c, String channelID, String name) {
+        EmbedBuilder eb = new EmbedBuilder();
+        eb.setTitle(msg);
+        eb.setColor(c);
+        eb.setThumbnail("https://minotar.net/armor/body/" + name + "/100.png");
         if (channelID.isEmpty()) {
             channel.sendMessageEmbeds(eb.build()).queue();
         } else {
