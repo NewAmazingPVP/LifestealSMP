@@ -1,7 +1,12 @@
 package newamazingpvp.lifestealsmp.game;
 
+import com.github.sirblobman.combatlogx.api.ICombatLogX;
+import com.github.sirblobman.combatlogx.api.object.UntagReason;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,8 +46,20 @@ public class PlayerPing {
                     //    getLogger().warning("Discord channel not found!");
                     //}
                 }
+                if (player.getPing() > 500) {
+                    ICombatLogX plugin = getAPI();
+                    if(plugin.getCombatManager().isInCombat(player)){
+                        plugin.getCombatManager().untag(player, UntagReason.valueOf("Very high ping disconnect"));
+                    }
+                    player.kickPlayer(ChatColor.RED + "Your ping is too high! You are disconnected for your own safety!");
+                }
             }
             playerPingMap.put(player, currentPing);
         }
     }
-}
+        public static ICombatLogX getAPI() {
+            PluginManager pluginManager = Bukkit.getPluginManager();
+            Plugin plugin = pluginManager.getPlugin("CombatLogX");
+            return (ICombatLogX) plugin;
+        }
+    }
