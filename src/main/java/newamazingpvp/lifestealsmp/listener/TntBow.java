@@ -3,10 +3,7 @@ package newamazingpvp.lifestealsmp.listener;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.Arrow;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.TNTPrimed;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileHitEvent;
@@ -50,7 +47,7 @@ public class TntBow implements Listener {
             if (playerHeldItems.containsKey(shooter.getUniqueId())) {
                 if (isTeleportCooldownExpired(shooter)) {
                     Location arrowLocation = arrow.getLocation();
-                    spawnIgnitedTNT(arrowLocation);
+                    spawnIgnitedTNT(arrowLocation, shooter);
                     ItemStack item = playerHeldItems.get(shooter.getUniqueId());
                     playerHeldItems.remove(shooter.getUniqueId());
                     setTeleportCooldown(shooter);
@@ -61,11 +58,12 @@ public class TntBow implements Listener {
         }
     }
 
-    public static void spawnIgnitedTNT(Location location) {
+    public static void spawnIgnitedTNT(Location location, Entity p) {
         if (isWithinSpawnRadius(location)) return;
         TNTPrimed tnt = (TNTPrimed) location.getWorld().spawnEntity(location, EntityType.PRIMED_TNT);
 
-        tnt.setFuseTicks(40);
+        tnt.setFuseTicks(80);
+        tnt.setSource(p);
     }
 
     private boolean isBow(ItemStack item) {

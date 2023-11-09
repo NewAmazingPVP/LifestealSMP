@@ -17,80 +17,68 @@ public class RecipesCommand implements CommandExecutor {
             TextComponent message = new TextComponent(ChatColor.GOLD + "**Recipes**");
             message.addExtra("\n");
 
+            // Existing recipes and links
             TextComponent extraHeartText = new TextComponent(ChatColor.GOLD + " - Extra Heart");
-            TextComponent extraHeartLinkText = new TextComponent(" [Link]");
-            //extraHeartLinkText.setColor(ChatColor.WHITE);
-            extraHeartLinkText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://imgur.com/gHqMsFl"));
-            extraHeartText.addExtra(extraHeartLinkText);
+            addRecipeLink(extraHeartText, "https://imgur.com/gHqMsFl");
             message.addExtra(extraHeartText);
             message.addExtra("\n");
 
             TextComponent reviveBeaconText = new TextComponent(ChatColor.GOLD + " - Revive Beacon");
-            TextComponent reviveBeaconLinkText = new TextComponent(" [Link]");
-            //reviveBeaconLinkText.setColor(ChatColor.WHITE);
-            reviveBeaconLinkText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://imgur.com/9LGQ06M"));
-            reviveBeaconText.addExtra(reviveBeaconLinkText);
+            addRecipeLink(reviveBeaconText, "https://imgur.com/9LGQ06M");
             message.addExtra(reviveBeaconText);
             message.addExtra("\n");
 
             TextComponent shulkerBoxText = new TextComponent(ChatColor.GOLD + " - Shulker Box");
-            TextComponent shulkerBoxLinkText = new TextComponent(" [Link]");
-            //shulkerBoxLinkText.setColor(ChatColor.WHITE);
-            shulkerBoxLinkText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://media.discordapp.net/attachments/1031334605200044112/1133885868642418810/image.png"));
-            shulkerBoxText.addExtra(shulkerBoxLinkText);
+            addRecipeLink(shulkerBoxText, "https://media.discordapp.net/attachments/1031334605200044112/1133885868642418810/image.png");
             message.addExtra(shulkerBoxText);
             message.addExtra("\n");
 
             TextComponent endstoneText = new TextComponent(ChatColor.GOLD + " - Endstone");
-            TextComponent endstoneLinkText = new TextComponent(" [Link]");
-            //endstoneLinkText.setColor(ChatColor.WHITE);
-            endstoneLinkText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://media.discordapp.net/attachments/1031334605200044112/1133886044547325962/image.png"));
-            endstoneText.addExtra(endstoneLinkText);
+            addRecipeLink(endstoneText, "https://media.discordapp.net/attachments/1031334605200044112/1133886044547325962/image.png");
             message.addExtra(endstoneText);
             message.addExtra("\n");
 
             TextComponent purpurBlockText = new TextComponent(ChatColor.GOLD + " - Purpur Block");
-            TextComponent purpurBlockLinkText = new TextComponent(" [Link]");
-            //purpurBlockLinkText.setColor(ChatColor.WHITE);
-            purpurBlockLinkText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://media.discordapp.net/attachments/1112379346439655495/1133888846409519195/image.png"));
-            purpurBlockText.addExtra(purpurBlockLinkText);
+            addRecipeLink(purpurBlockText, "https://media.discordapp.net/attachments/1112379346439655495/1133888846409519195/image.png");
             message.addExtra(purpurBlockText);
             message.addExtra("\n");
 
+            // Updated recipes for this season
             TextComponent miningPickaxeText = new TextComponent(ChatColor.GOLD + " - Custom 3x3 Mining Pickaxe");
-            TextComponent miningPickaxeLinkText = new TextComponent(" [Link]");
-            //miningPickaxeLinkText.setColor(ChatColor.WHITE);
-            miningPickaxeLinkText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://i.imgur.com/EJCm12d.png"));
-            miningPickaxeText.addExtra(miningPickaxeLinkText);
+            addRecipeLink(miningPickaxeText, "https://i.imgur.com/sWMHTUh.png");
             message.addExtra(miningPickaxeText);
             message.addExtra("\n");
 
             TextComponent featherSwordText = new TextComponent(ChatColor.GOLD + " - Custom Feather sword - Gives speed while holding and allows to tp 5 blocks in front every minute");
-            TextComponent featherSwordLinkText = new TextComponent(" [Link]");
-            //featherSwordLinkText.setColor(ChatColor.WHITE);
-            featherSwordLinkText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://i.imgur.com/UfQYd3Y.png"));
-            featherSwordText.addExtra(featherSwordLinkText);
+            addRecipeLink(featherSwordText, "https://i.imgur.com/AvHgwvE.png");
             message.addExtra(featherSwordText);
             message.addExtra("\n");
 
             TextComponent teleportingBowText = new TextComponent(ChatColor.GOLD + " - Custom Teleporting bow");
-            TextComponent teleportingBowLinkText = new TextComponent(" [Link]");
-            //teleportingBowLinkText.setColor(ChatColor.WHITE);
-            teleportingBowLinkText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://i.imgur.com/qWzpp3b.png"));
-            teleportingBowText.addExtra(teleportingBowLinkText);
+            addRecipeLink(teleportingBowText, "https://i.imgur.com/ylMX4ff.png");
             message.addExtra(teleportingBowText);
             message.addExtra("\n");
 
             TextComponent tntBowText = new TextComponent(ChatColor.GOLD + " - Custom TNT bow");
-            TextComponent tntBowLinkText = new TextComponent(" [Link]");
-            //tntBowLinkText.setColor(ChatColor.WHITE);
-            tntBowLinkText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://i.imgur.com/m3YVrj7.png"));
-            tntBowText.addExtra(tntBowLinkText);
+            addRecipeLink(tntBowText, "https://i.imgur.com/sn604Xm.png");
             message.addExtra(tntBowText);
+            message.addExtra("\n");
+
+            // Additional recipe
+            TextComponent treeBreakdownAxeText = new TextComponent(ChatColor.GOLD + " - Custom Tree Breakdown Axe");
+            addRecipeLink(treeBreakdownAxeText, "https://i.imgur.com/6LiNjzZ.png");
+            message.addExtra(treeBreakdownAxeText);
 
             // Send the message to the player
             player.spigot().sendMessage(message);
         }
         return true;
+    }
+
+    // Helper method to add a link to a TextComponent
+    private void addRecipeLink(TextComponent textComponent, String link) {
+        TextComponent linkText = new TextComponent(" [Link]");
+        linkText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, link));
+        textComponent.addExtra(linkText);
     }
 }

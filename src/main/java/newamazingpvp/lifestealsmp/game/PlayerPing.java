@@ -8,9 +8,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import static newamazingpvp.lifestealsmp.utility.DiscordBot.sendDiscordEmbedPlayer;
 import static org.bukkit.Bukkit.getServer;
 
 public class PlayerPing {
@@ -52,6 +54,9 @@ public class PlayerPing {
                         plugin.getCombatManager().untag(player, UntagReason.valueOf("Very high ping disconnect"));
                     }
                     player.kickPlayer(ChatColor.RED + "Your ping is too high! You are disconnected for your own safety!");
+                    String s = player.getName() + " got kicked for high ping! NO PING SPOOFING1!!1!!!1111!!";
+                    getServer().broadcastMessage(s);
+                    sendDiscordEmbedPlayer(s, Color.RED, "", player.getName());
                 }
             }
             playerPingMap.put(player, currentPing);
