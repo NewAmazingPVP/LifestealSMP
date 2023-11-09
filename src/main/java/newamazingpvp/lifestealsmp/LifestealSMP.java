@@ -48,8 +48,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getCommand("rules").setExecutor(new RulesCommand());
         getCommand("setview").setExecutor(new CustomDistance());
         getCommand("recipes").setExecutor(new RecipesCommand());
-        //getCommand("td").setExecutor(new TradeCommand());
-        //getCommand("track").setExecutor(new TrackCommand());
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
@@ -82,12 +80,11 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
             }
         }.runTaskTimer(this, 0L, 20L);
         scheduleRestart();
-        //compassUpdate();
         intializeBot();
         new BukkitRunnable() {
             @Override
             public void run() {
-                sendDiscordEmbedTitle("@NewAmazingPVP LOL", Color.MAGENTA, "");
+                sendDiscordEmbedTitle("Bot intialized", Color.MAGENTA, "");
             }
         }.runTaskLater(this, 120);
 
