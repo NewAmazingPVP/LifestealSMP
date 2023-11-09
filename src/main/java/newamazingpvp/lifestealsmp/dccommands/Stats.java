@@ -15,14 +15,12 @@ import static newamazingpvp.lifestealsmp.utility.DiscordBot.sendDiscordEmbedTitl
 public class Stats extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        System.out.println("Recieved something");
         if (event.getAuthor().isBot()) {
             return;
         }
         String messageContent = event.getMessage().getContentRaw();
         if (messageContent.startsWith("!stats ")) {
             String playerName = messageContent.substring("!stats ".length());
-            System.out.println("Player Name: " + playerName);
             OfflinePlayer fPlayer = lifestealSmp.getServer().getOfflinePlayer(playerName);
             int kills = fPlayer.getStatistic(Statistic.PLAYER_KILLS);
             int deaths = fPlayer.getStatistic(Statistic.DEATHS);
@@ -61,7 +59,7 @@ public class Stats extends ListenerAdapter {
                     + "\nDistance Swam: " + swim + "\nDamage Dealt: " + dealt +
                     "\nDamage Absorbed: " + absorbed + "\nDealt/Absorbed Ratio: " + dar +
                      "\n Time Played: " + hours + " hours " + mins + " minutes", Color.BLUE, event.getChannel().getId());*/
-            sendDiscordEmbedStats("Kills: " + kills + "\nDeaths: " +
+            sendDiscordEmbedStats("Kills: " + kills + "⚔️\nDeaths: " +
                     deaths + "\nK/D: " + kd + "\nTotal Distance: " + final1
                     + " blocks\nDamage Dealt: " + deal +
                     "❤️\nTime Played: " + hours + " hours " + mins + " minutes", Color.BLUE, event.getChannel().getId(), playerName);
