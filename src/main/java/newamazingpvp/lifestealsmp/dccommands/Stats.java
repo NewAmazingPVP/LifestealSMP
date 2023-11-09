@@ -59,7 +59,7 @@ public class Stats extends ListenerAdapter {
                     + "\nDistance Swam: " + swim + "\nDamage Dealt: " + dealt +
                     "\nDamage Absorbed: " + absorbed + "\nDealt/Absorbed Ratio: " + dar +
                      "\n Time Played: " + hours + " hours " + mins + " minutes", Color.BLUE, event.getChannel().getId());*/
-            sendDiscordEmbedStats("Kills: " + kills + "⚔️\nDeaths: " +
+            sendDiscordEmbedStats("Kills: " + kills + " ⚔️\nDeaths: " +
                     deaths + "\nK/D: " + kd + "\nTotal Distance: " + final1
                     + " blocks\nDamage Dealt: " + deal +
                     "❤️\nTime Played: " + hours + " hours " + mins + " minutes", Color.BLUE, event.getChannel().getId(), playerName);
