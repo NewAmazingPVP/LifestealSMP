@@ -15,6 +15,8 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
+import static newamazingpvp.lifestealsmp.game.PlayerPing.getAPI;
+
 public class SpawnProtection implements Listener {
 
     private static final int spawnRadius = 60;
@@ -29,6 +31,7 @@ public class SpawnProtection implements Listener {
                     Player damager = (Player) event.getDamager();
 
                     if (isWithinSpawnRadius(damaged.getLocation())) {
+                        if(getAPI().getCombatManager().isInCombat(damager) && getAPI().getCombatManager().isInCombat(damaged)) return;
                         event.setCancelled(true);
                         damager.sendMessage(ChatColor.RED + "You cannot damage players within the spawn protection area!");
                     }
@@ -38,6 +41,7 @@ public class SpawnProtection implements Listener {
                         Player shooter = (Player) arrow.getShooter();
 
                         if (isWithinSpawnRadius(damaged.getLocation())) {
+                            if(getAPI().getCombatManager().isInCombat(shooter) && getAPI().getCombatManager().isInCombat(damaged)) return;
                             event.setCancelled(true);
                             shooter.sendMessage(ChatColor.RED + "You cannot shoot players within the spawn protection area!");
                         }
@@ -51,7 +55,7 @@ public class SpawnProtection implements Listener {
     @EventHandler
     public void spawnBlockBreak(BlockBreakEvent event) {
         if (isWithinSpawnRadius(event.getBlock().getLocation())) {
-            if(event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
+            //if(event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
             event.setCancelled(true);
             event.getPlayer().sendMessage(ChatColor.RED + "You cannot break blocks within the spawn area. Go around 50 blocks away to be able to break");
         }
@@ -60,7 +64,7 @@ public class SpawnProtection implements Listener {
     @EventHandler
     public void spawnBlockPlace(BlockPlaceEvent event) {
         if (isWithinSpawnRadius(event.getBlock().getLocation())) {
-            if(event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
+            //if(event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
             event.setCancelled(true);
             event.getPlayer().sendMessage(ChatColor.RED + "You cannot place blocks within the spawn area. Go around 50 blocks away to be able to place");
         }
