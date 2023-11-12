@@ -8,6 +8,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+
 public class OpPickaxe implements Listener {
 
     @EventHandler
@@ -19,8 +21,10 @@ public class OpPickaxe implements Listener {
             if (hasLore(item)) {
                 Block block = event.getBlock();
                 if (player.isSneaking()) return;
+                lifestealSmp.getServer().broadcastMessage("Event");
                 breakBlocksAround(block);
                 item.setDurability((short) (item.getDurability() + 1));
+                event.setCancelled(true);
             }
         }
     }
@@ -41,11 +45,15 @@ public class OpPickaxe implements Listener {
             for (int y = -1; y <= 1; y++) {
                 for (int z = -1; z <= 1; z++) {
                     Block targetBlock = centerBlock.getRelative(x, y, z);
-                    if ((targetBlock.getType() != Material.BEDROCK) && (targetBlock.getType() != Material.END_PORTAL_FRAME) && (targetBlock.getType() != Material.END_PORTAL) && targetBlock.getType().equals(centerBlock.getType())) {
+                    if ((targetBlock.getType() != Material.BEDROCK) && (targetBlock.getType() != Material.END_PORTAL_FRAME) && (targetBlock.getType() != Material.END_PORTAL)
+                    && targetBlock.getType().toString().equalsIgnoreCase(centerBlock.getType().toString()) &&
+                            !(targetBlock.getLocation().x() == centerBlock.getLocation().x() && targetBlock.getLocation().y() == centerBlock.getLocation().y()
+                            && targetBlock.getLocation().z() == centerBlock.getLocation().z())) {
                         targetBlock.breakNaturally();
                     }
                 }
             }
         }
+        centerBlock.breakNaturally();
     }
 }
