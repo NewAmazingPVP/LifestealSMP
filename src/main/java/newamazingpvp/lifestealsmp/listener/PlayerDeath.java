@@ -54,5 +54,4 @@ public class PlayerDeath implements Listener {
                 "  Y:" + pos[1] +
                 "  Z:" + pos[2] + " in " + Gamer.getLocation().getWorld().toString());
     }
-
 }

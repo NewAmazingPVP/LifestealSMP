@@ -46,9 +46,9 @@ public class OpPickaxe implements Listener {
                 for (int z = -1; z <= 1; z++) {
                     Block targetBlock = centerBlock.getRelative(x, y, z);
                     if ((targetBlock.getType() != Material.BEDROCK) && (targetBlock.getType() != Material.END_PORTAL_FRAME) && (targetBlock.getType() != Material.END_PORTAL)
-                    && targetBlock.getType().toString().equalsIgnoreCase(centerBlock.getType().toString()) &&
+                            && targetBlock.getType().toString().equalsIgnoreCase(centerBlock.getType().toString()) &&
                             !(targetBlock.getLocation().x() == centerBlock.getLocation().x() && targetBlock.getLocation().y() == centerBlock.getLocation().y()
-                            && targetBlock.getLocation().z() == centerBlock.getLocation().z())) {
+                                    && targetBlock.getLocation().z() == centerBlock.getLocation().z())) {
                         targetBlock.breakNaturally();
                     }
                 }
