@@ -36,6 +36,4 @@ public class RulesCommand implements CommandExecutor {
         }
         return true;
     }
-
-
 }
