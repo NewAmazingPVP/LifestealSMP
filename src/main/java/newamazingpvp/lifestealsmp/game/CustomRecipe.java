@@ -21,7 +21,7 @@ public class CustomRecipe {
         extraHeartRecipe.shape("CXC", "DSD", "XNX");
         extraHeartRecipe.setIngredient('D', Material.DIAMOND_BLOCK);
         extraHeartRecipe.setIngredient('N', Material.NETHERITE_INGOT);
-        extraHeartRecipe.setIngredient('C', CorruptedMobSoul());
+        extraHeartRecipe.setIngredient('C', corruptedMobSoul());
         extraHeartRecipe.setIngredient('S', severedMobHeart());
         extraHeartRecipe.setIngredient('X', Material.AIR);
         Bukkit.addRecipe(extraHeartRecipe);
@@ -301,10 +301,10 @@ public class CustomRecipe {
         return customBow;
     }
 
-    public static ItemStack CorruptedMobSoul() {
+    public static ItemStack corruptedMobSoul() {
 
-        ItemStack CorruptedMobSoul = new ItemStack(Material.ECHO_SHARD);
-        ItemMeta soulM = CorruptedMobSoul.getItemMeta();
+        ItemStack corruptedMobSoul = new ItemStack(Material.ECHO_SHARD);
+        ItemMeta soulM = corruptedMobSoul.getItemMeta();
         soulM.addEnchant(Enchantment.DURABILITY, 1, false);
         soulM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         soulM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL" + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Co" + ChatColor.MAGIC + "r" + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "rupted Mob Soul" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL");
@@ -312,14 +312,14 @@ public class CustomRecipe {
         List<String> soulL = new ArrayList<>();
         soulL.add(ChatColor.AQUA + "U$e To Cr" + ChatColor.MAGIC + "a" + ChatColor.AQUA + "ft Extra Hearts!" + ChatColor.MAGIC + "L");
         soulM.setLore(soulL);
-        CorruptedMobSoul.setItemMeta(soulM);
+        corruptedMobSoul.setItemMeta(soulM);
 
-        return CorruptedMobSoul;
+        return corruptedMobSoul;
     }
 
     public static ItemStack severedMobHeart() {
 
-        ItemStack severedMobHeart = new ItemStack(Material.BEETROOTS);
+        ItemStack severedMobHeart = new ItemStack(Material.NETHER_STAR);
         ItemMeta heartM = severedMobHeart.getItemMeta();
         heartM.addEnchant(Enchantment.DURABILITY, 1, false);
         heartM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
