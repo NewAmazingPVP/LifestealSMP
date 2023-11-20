@@ -58,7 +58,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new ServerAge(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
         getServer().getPluginManager().registerEvents(new EndCrystalWarning(), this);
-        getServer().getPluginManager().registerEvents(new CompassListener(), this);
         getServer().getPluginManager().registerEvents(new TntBow(), this);
         getServer().getPluginManager().registerEvents(new FeatherSword(), this);
         getServer().getPluginManager().registerEvents(new OpPickaxe(), this);
