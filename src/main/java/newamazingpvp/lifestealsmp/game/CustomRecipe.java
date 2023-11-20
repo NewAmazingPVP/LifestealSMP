@@ -342,7 +342,7 @@ public class CustomRecipe {
         EheartM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL" + ChatColor.DARK_RED + ChatColor.BOLD + "Extra Heart" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL");
         EheartM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> EheartL = new ArrayList<>();
-        EheartL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Right Click:" + ChatColor.DARK_PURPLE + " for +1 heart!");
+        EheartL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Right Click:" + ChatColor.DARK_PURPLE + " For +1 Heart!");
         EheartL.add(ChatColor.GRAY + "(max 20 hearts)");
         EheartM.setLore(EheartL);
         extraHeart.setItemMeta(EheartM);
