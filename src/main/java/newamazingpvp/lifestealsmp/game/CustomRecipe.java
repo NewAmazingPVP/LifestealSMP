@@ -319,7 +319,7 @@ public class CustomRecipe {
 
     public static ItemStack severedMobHeart() {
 
-        ItemStack severedMobHeart = new ItemStack(Material.NETHER_STAR);
+        ItemStack severedMobHeart = new ItemStack(Material.BEETROOT);
         ItemMeta heartM = severedMobHeart.getItemMeta();
         heartM.addEnchant(Enchantment.DURABILITY, 1, false);
         heartM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
