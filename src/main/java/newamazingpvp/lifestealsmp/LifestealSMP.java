@@ -3,6 +3,7 @@ package newamazingpvp.lifestealsmp;
 import newamazingpvp.lifestealsmp.command.CustomDistance;
 import newamazingpvp.lifestealsmp.command.RecipesCommand;
 import newamazingpvp.lifestealsmp.command.RulesCommand;
+import newamazingpvp.lifestealsmp.game.Compass;
 import newamazingpvp.lifestealsmp.listener.*;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -50,6 +51,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getCommand("rules").setExecutor(new RulesCommand());
         getCommand("setview").setExecutor(new CustomDistance());
         getCommand("recipes").setExecutor(new RecipesCommand());
+        getCommand("track").setExecutor(new Compass());
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
@@ -58,6 +60,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new ServerAge(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
         getServer().getPluginManager().registerEvents(new EndCrystalWarning(), this);
+        getServer().getPluginManager().registerEvents(new Compass(), this);
         getServer().getPluginManager().registerEvents(new TntBow(), this);
         getServer().getPluginManager().registerEvents(new FeatherSword(), this);
         getServer().getPluginManager().registerEvents(new OpPickaxe(), this);
