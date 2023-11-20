@@ -4,13 +4,11 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Statistic;
-import org.bukkit.entity.Player;
 
 import java.awt.*;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.sendDiscordEmbedStats;
-import static newamazingpvp.lifestealsmp.utility.DiscordBot.sendDiscordEmbedTitle;
 
 public class Stats extends ListenerAdapter {
     @Override
@@ -41,7 +39,7 @@ public class Stats extends ListenerAdapter {
             int strider = fPlayer.getStatistic(Statistic.STRIDER_ONE_CM);
             int under = fPlayer.getStatistic(Statistic.WALK_ON_WATER_ONE_CM);
             int over = fPlayer.getStatistic(Statistic.FLY_ONE_CM);
-            int final1 = (walk+swim+fly+aviate+boat+climb+crouch+fall+horse+minecart+pig+sprint+strider+under+over) / 100;
+            int final1 = (walk + swim + fly + aviate + boat + climb + crouch + fall + horse + minecart + pig + sprint + strider + under + over) / 100;
             int dealt = fPlayer.getStatistic(Statistic.DAMAGE_DEALT) / 10;
             int absorbed = fPlayer.getStatistic(Statistic.DAMAGE_TAKEN) / 10;
             int playTime = fPlayer.getStatistic(Statistic.PLAY_ONE_MINUTE);

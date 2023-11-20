@@ -27,7 +27,7 @@ public class CustomHeartItems implements Listener {
         ItemMeta soulM = CorruptedMobSoul.getItemMeta();
         soulM.addEnchant(Enchantment.DURABILITY, 1, false);
         soulM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        soulM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL" + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Co" + ChatColor.MAGIC + "r" + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "rupted Mob Soul" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL");
+        soulM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "Co" + ChatColor.MAGIC + "r" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "rupted Mob Soul" + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "LL");
         soulM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> soulL = new ArrayList<>();
         soulL.add(ChatColor.AQUA + "U$e To Cr" + ChatColor.MAGIC + "a" + ChatColor.AQUA + "ft Extra Hearts!" + ChatColor.MAGIC + "L");
@@ -47,7 +47,7 @@ public class CustomHeartItems implements Listener {
 
         if (Math.random() <= 1.0 / 2) {
             e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), new ItemStack(CorruptedMobSoul));
-            killer.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "Rare Drop!" + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + " Corrupted Mob Soul");
+            killer.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "Rare Drop!" + ChatColor.DARK_PURPLE + ChatColor.BOLD + " Corrupted Mob Soul");
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 0.0f), 10);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f), 20);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 3.0f), 30);
