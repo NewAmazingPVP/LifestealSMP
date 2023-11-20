@@ -51,7 +51,16 @@ public class CustomHeartItems implements Listener {
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 0.0f), 1);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 1.0f), 11);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 3.0f), 21);
+            e.getEntity().getWorld().spawnParticle(Particle.VILLAGER_HAPPY, loc, 100, 0, 0, 0, 0.1);
         }
+        /*if (Math.random() <= 1.0 / 2) {
+            e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), new ItemStack(severedMobHeart));
+            killer.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "Rare Drop!" + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + " Severed Mob Heart");
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 0.0f), 1);
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 1.0f), 11);
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 3.0f), 21);
+            e.getEntity().getWorld().spawnParticle(Particle.VILLAGER_HAPPY, loc, 100, 0, 0, 0, 0.1);
+        }*/
     }
 }
 
