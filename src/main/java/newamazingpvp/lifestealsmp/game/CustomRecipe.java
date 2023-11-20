@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -14,6 +15,17 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class CustomRecipe {
     public static void registerCustomRecipes() {
+
+        ItemStack extraHeart = new ItemStack(Material.SHULKER_BOX);
+        ShapedRecipe extraHeartRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "extra_heart"), extraHeart);
+        extraHeartRecipe.shape("CXC", "DSD", "XNX");
+        extraHeartRecipe.setIngredient('D', Material.DIAMOND_BLOCK);
+        extraHeartRecipe.setIngredient('N', Material.NETHERITE_INGOT);
+        extraHeartRecipe.setIngredient('C', CorruptedMobSoul());
+        extraHeartRecipe.setIngredient('S', severedMobHeart());
+        extraHeartRecipe.setIngredient('X', Material.AIR);
+        Bukkit.addRecipe(extraHeartRecipe);
+
         ItemStack shulker = new ItemStack(Material.SHULKER_BOX);
         ShapedRecipe shulkerRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "shulker_recipe"), shulker);
         shulkerRecipe.shape("DDD", "DCD", "DDD");
@@ -287,5 +299,37 @@ public class CustomRecipe {
     private static ItemStack createNethScarps() {
         ItemStack customBow = new ItemStack(Material.NETHERITE_SCRAP, 4);
         return customBow;
+    }
+
+    private static ItemStack CorruptedMobSoul() {
+
+        ItemStack CorruptedMobSoul = new ItemStack(Material.ECHO_SHARD);
+        ItemMeta soulM = CorruptedMobSoul.getItemMeta();
+        soulM.addEnchant(Enchantment.DURABILITY, 1, false);
+        soulM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        soulM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL" + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Co" + ChatColor.MAGIC + "r" + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "rupted Mob Soul" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL");
+        soulM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        List<String> soulL = new ArrayList<>();
+        soulL.add(ChatColor.AQUA + "U$e To Cr" + ChatColor.MAGIC + "a" + ChatColor.AQUA + "ft Extra Hearts!" + ChatColor.MAGIC + "L");
+        soulM.setLore(soulL);
+        CorruptedMobSoul.setItemMeta(soulM);
+
+        return CorruptedMobSoul;
+    }
+
+    private static ItemStack severedMobHeart() {
+
+        ItemStack severedMobHeart = new ItemStack(Material.BEETROOTS);
+        ItemMeta heartM = severedMobHeart.getItemMeta();
+        heartM.addEnchant(Enchantment.DURABILITY, 1, false);
+        heartM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        heartM.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Severed Mob Heart");
+        heartM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        List<String> heartL = new ArrayList<>();
+        heartL.add(ChatColor.AQUA + "Use To Craft Extra Hearts!");
+        heartM.setLore(heartL);
+        severedMobHeart.setItemMeta(heartM);
+
+        return severedMobHeart;
     }
 }
