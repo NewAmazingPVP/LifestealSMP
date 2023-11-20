@@ -16,7 +16,7 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 public class CustomRecipe {
     public static void registerCustomRecipes() {
 
-        ItemStack extraHeart = new ItemStack(Material.SHULKER_BOX);
+        ItemStack extraHeart = new ItemStack(extraHeart());
         ShapedRecipe extraHeartRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "extra_heart"), extraHeart);
         extraHeartRecipe.shape("CXC", "DSD", "XNX");
         extraHeartRecipe.setIngredient('D', Material.DIAMOND_BLOCK);
@@ -331,5 +331,22 @@ public class CustomRecipe {
         severedMobHeart.setItemMeta(heartM);
 
         return severedMobHeart;
+    }
+
+    public static ItemStack extraHeart() {
+
+        ItemStack extraHeart = new ItemStack(Material.RED_DYE);
+        ItemMeta EheartM = extraHeart.getItemMeta();
+        EheartM.addEnchant(Enchantment.DURABILITY, 1, false);
+        EheartM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        EheartM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL" + ChatColor.DARK_RED + ChatColor.BOLD + "Extra Heart" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL");
+        EheartM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        List<String> EheartL = new ArrayList<>();
+        EheartL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Right Click:" + ChatColor.DARK_PURPLE + " for +1 heart!");
+        EheartL.add(ChatColor.GRAY + "(max 20 hearts)");
+        EheartM.setLore(EheartL);
+        extraHeart.setItemMeta(EheartM);
+
+        return extraHeart;
     }
 }
