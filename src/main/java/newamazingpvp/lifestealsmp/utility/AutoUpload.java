@@ -84,7 +84,7 @@ public class AutoUpload {
                 out.write(buffer, 0, bytesRead);
             }
             defaultUrl = downloadUrl;
-            lifestealSmp.getServer().broadcastMessage(ChatColor.AQUA + "ArenaPVP plugin updated, restart server now...");
+            lifestealSmp.getServer().broadcastMessage(ChatColor.AQUA + "LifestealSMP plugin updated, restart server now...");
         } catch (IOException e) {
             lifestealSmp.getServer().broadcastMessage(ChatColor.RED + "Failed to download plugin: " + e.getMessage());
             e.printStackTrace();
