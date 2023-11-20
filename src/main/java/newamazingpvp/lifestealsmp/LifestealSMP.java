@@ -22,6 +22,7 @@ import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
 import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastServerMessage;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.game.PlayerPing.monitorPlayerPings;
+import static newamazingpvp.lifestealsmp.utility.AutoUpload.startReleaseChecker;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.*;
 
 public final class LifestealSMP extends JavaPlugin implements Listener {
@@ -44,6 +45,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         saveDefaultConfig();
         config = getConfig();
         lifestealSmp = this;
+        startReleaseChecker();
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
         getCommand("rules").setExecutor(new RulesCommand());
         getCommand("setview").setExecutor(new CustomDistance());
@@ -62,7 +64,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new OpPickaxe(), this);
         getServer().getPluginManager().registerEvents(new TreeChopAxe(), this);
         getServer().getPluginManager().registerEvents(new PlayerInCombat(), this);
-        getServer().getPluginManager().registerEvents(new Custom_Heart_Items(), this);
+        getServer().getPluginManager().registerEvents(new CustomHeartItems(), this);
         //getServer().getPluginManager().registerEvents(new GracePeriod(), this);
         int repeatDelayTicks = 7200 * 20;
         BukkitRunnable broadcastTask = new BukkitRunnable() {
