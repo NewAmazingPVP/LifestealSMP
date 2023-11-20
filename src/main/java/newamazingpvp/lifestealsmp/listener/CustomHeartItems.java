@@ -15,7 +15,7 @@ import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
-public class Custom_Heart_Items implements Listener {
+public class CustomHeartItems implements Listener {
 
     @EventHandler
     public void onPlayerKill(EntityDeathEvent e) {
