@@ -301,7 +301,7 @@ public class CustomRecipe {
         return customBow;
     }
 
-    private static ItemStack CorruptedMobSoul() {
+    public static ItemStack CorruptedMobSoul() {
 
         ItemStack CorruptedMobSoul = new ItemStack(Material.ECHO_SHARD);
         ItemMeta soulM = CorruptedMobSoul.getItemMeta();
@@ -317,7 +317,7 @@ public class CustomRecipe {
         return CorruptedMobSoul;
     }
 
-    private static ItemStack severedMobHeart() {
+    public static ItemStack severedMobHeart() {
 
         ItemStack severedMobHeart = new ItemStack(Material.BEETROOTS);
         ItemMeta heartM = severedMobHeart.getItemMeta();
