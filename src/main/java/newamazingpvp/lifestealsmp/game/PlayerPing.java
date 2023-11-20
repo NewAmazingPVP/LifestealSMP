@@ -50,7 +50,7 @@ public class PlayerPing {
                 }
                 if (player.getPing() > 500) {
                     ICombatLogX plugin = getAPI();
-                    if(plugin.getCombatManager().isInCombat(player)){
+                    if (plugin.getCombatManager().isInCombat(player)) {
                         plugin.getCombatManager().untag(player, UntagReason.valueOf("Very high ping disconnect"));
                         sendDiscordEmbedPlayer("High ping during combat! Untagging player and kicking them!", Color.RED, "", player.getName());
                     }
@@ -63,9 +63,10 @@ public class PlayerPing {
             playerPingMap.put(player, currentPing);
         }
     }
-        public static ICombatLogX getAPI() {
-            PluginManager pluginManager = Bukkit.getPluginManager();
-            Plugin plugin = pluginManager.getPlugin("CombatLogX");
-            return (ICombatLogX) plugin;
-        }
+
+    public static ICombatLogX getAPI() {
+        PluginManager pluginManager = Bukkit.getPluginManager();
+        Plugin plugin = pluginManager.getPlugin("CombatLogX");
+        return (ICombatLogX) plugin;
     }
+}

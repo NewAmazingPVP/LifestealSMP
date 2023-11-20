@@ -31,7 +31,8 @@ public class SpawnProtection implements Listener {
                     Player damager = (Player) event.getDamager();
 
                     if (isWithinSpawnRadius(damaged.getLocation())) {
-                        if(getAPI().getCombatManager().isInCombat(damager) && getAPI().getCombatManager().isInCombat(damaged)) return;
+                        if (getAPI().getCombatManager().isInCombat(damager) && getAPI().getCombatManager().isInCombat(damaged))
+                            return;
                         event.setCancelled(true);
                         damager.sendMessage(ChatColor.RED + "You cannot damage players within the spawn protection area!");
                     }
@@ -41,7 +42,8 @@ public class SpawnProtection implements Listener {
                         Player shooter = (Player) arrow.getShooter();
 
                         if (isWithinSpawnRadius(damaged.getLocation())) {
-                            if(getAPI().getCombatManager().isInCombat(shooter) && getAPI().getCombatManager().isInCombat(damaged)) return;
+                            if (getAPI().getCombatManager().isInCombat(shooter) && getAPI().getCombatManager().isInCombat(damaged))
+                                return;
                             event.setCancelled(true);
                             shooter.sendMessage(ChatColor.RED + "You cannot shoot players within the spawn protection area!");
                         }
