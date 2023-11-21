@@ -62,7 +62,7 @@ public class CustomHeartItems implements Listener {
                     player.playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_GROWL, 1.0f, 1.0f);
                     player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "+1 Heart!");
                     player.sendTitle(ChatColor.GOLD + "+1", "", 0, 70, 20);
-                    player.setMaxHealth(player.getMaxHealth() + 1);
+                    player.setMaxHealth(player.getMaxHealth() + 2);
                     if (item.getAmount() > 1) {
                         item.setAmount(item.getAmount() - 1);
                         player.getInventory().setItemInMainHand(item);
