@@ -16,7 +16,7 @@ public class AddHPADMINONLY implements CommandExecutor {
         }
 
         Player player = (Player) sender;
-        player.setMaxHealth(player.getMaxHealth() + 2);
+        player.setMaxHealth(player.getMaxHealth() + 1);
 
         return true;
 
