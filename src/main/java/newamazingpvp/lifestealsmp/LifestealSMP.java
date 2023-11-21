@@ -1,8 +1,10 @@
 package newamazingpvp.lifestealsmp;
 
-import newamazingpvp.lifestealsmp.command.CustomDistance;
-import newamazingpvp.lifestealsmp.command.RecipesCommand;
-import newamazingpvp.lifestealsmp.command.RulesCommand;
+import newamazingpvp.lifestealsmp.MontuStaff.MontuStaffLeft;
+import newamazingpvp.lifestealsmp.MontuStaff.MontuStaffRight;
+import newamazingpvp.lifestealsmp.MontuStaff.MontuStaffShiftLeft;
+import newamazingpvp.lifestealsmp.MontuStaff.MontuStaffShiftRight;
+import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.game.Compass;
 import newamazingpvp.lifestealsmp.listener.*;
 import org.bukkit.Bukkit;
@@ -52,6 +54,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getCommand("setview").setExecutor(new CustomDistance());
         getCommand("recipes").setExecutor(new RecipesCommand());
         getCommand("track").setExecutor(new Compass());
+        getCommand("GMS").setExecutor(new GiveMontuStaffSetADMINONLY());
+        getCommand("restart_with_warning").setExecutor(new RestartWithWarmingADMINONLY());
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
@@ -67,6 +71,10 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new TreeChopAxe(), this);
         getServer().getPluginManager().registerEvents(new PlayerInCombat(), this);
         getServer().getPluginManager().registerEvents(new CustomHeartItems(), this);
+        getServer().getPluginManager().registerEvents(new MontuStaffLeft(), this);
+        getServer().getPluginManager().registerEvents(new MontuStaffRight(), this);
+        getServer().getPluginManager().registerEvents(new MontuStaffShiftLeft(), this);
+        getServer().getPluginManager().registerEvents(new MontuStaffShiftRight(), this);
         //getServer().getPluginManager().registerEvents(new GracePeriod(), this);
         int repeatDelayTicks = 7200 * 20;
         BukkitRunnable broadcastTask = new BukkitRunnable() {
