@@ -17,6 +17,7 @@ public class AddHPADMINONLY implements CommandExecutor {
 
         Player player = (Player) sender;
         player.setMaxHealth(player.getMaxHealth() + 1);
+        player.sendMessage(ChatColor.GREEN + "+1hp");
 
         return true;
 
