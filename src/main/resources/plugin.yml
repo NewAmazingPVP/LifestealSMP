@@ -17,3 +17,10 @@ commands:
     description: Track a player's location
     usage: /track <player>
     aliases: [compass]
+  GMS:
+    description: Admins Only
+    usage: /GMS
+    aliases: dontfuckingtrytorunthisifyouarenotaadmin
+  restart_with_warning:
+    description: Admins Only RS server with a warning
+    usage: /restart_with_warning

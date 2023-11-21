@@ -1,12 +1,20 @@
 package newamazingpvp.lifestealsmp.MontuStaff;
 
+import org.bukkit.*;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.util.Vector;
 
 import java.util.HashMap;
-/*import java.util.UUID;
+import java.util.UUID;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
-public class MontuStaffLeft {
+public class MontuStaffLeft implements Listener {
 
     private final HashMap<UUID, Long> cooldowns = new HashMap<>();
 
@@ -68,4 +76,4 @@ public class MontuStaffLeft {
             }
         }
     }
-}*/
+}
