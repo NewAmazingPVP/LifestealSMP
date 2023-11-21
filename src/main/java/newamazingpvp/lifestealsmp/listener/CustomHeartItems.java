@@ -1,6 +1,6 @@
 package newamazingpvp.lifestealsmp.listener;
 
-import org.bukkit.*;
+/*import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -65,5 +65,5 @@ public class CustomHeartItems implements Listener {
         }
 
     }
-}
+}*/
 
