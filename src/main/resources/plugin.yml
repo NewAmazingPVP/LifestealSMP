@@ -24,3 +24,7 @@ commands:
   restart_with_warning:
     description: Admins Only RS server with a warning
     usage: /restart_with_warning
+  remHP:
+    description: Removes HP Admins Only
+    usage: /remHP
+    aliases: rem
