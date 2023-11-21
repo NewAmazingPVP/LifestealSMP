@@ -27,4 +27,6 @@ commands:
   remHP:
     description: Removes HP Admins Only
     usage: /remHP
-    aliases: rem
+  addHP:
+    description: Adds HP Admins Only
+    usage: /AddHP
