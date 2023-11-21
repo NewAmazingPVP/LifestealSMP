@@ -16,7 +16,8 @@ public class RemHPADMINONLY implements CommandExecutor {
         }
 
             Player player = (Player) sender;
-            player.setMaxHealth(player.getMaxHealth() - 2);
+            player.setMaxHealth(player.getMaxHealth() - 1);
+            player.sendMessage(ChatColor.GREEN + "-1hp");
 
             return true;
 
