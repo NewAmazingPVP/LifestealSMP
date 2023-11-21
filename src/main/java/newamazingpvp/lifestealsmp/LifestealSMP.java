@@ -58,6 +58,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getCommand("restart_with_warning").setExecutor(new RestartWithWarmingADMINONLY());
         getCommand("remHP").setExecutor(new RemHPADMINONLY());
         getCommand("addHP").setExecutor(new AddHPADMINONLY());
+        getCommand("LSwithdraw").setExecutor(new LSwithdraw());
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);

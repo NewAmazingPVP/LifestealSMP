@@ -30,3 +30,6 @@ commands:
   addHP:
     description: Adds HP Admins Only
     usage: /AddHP
+  LSwithdraw:
+    description: Removes 1 heart
+    usage: /LSwithdraw
