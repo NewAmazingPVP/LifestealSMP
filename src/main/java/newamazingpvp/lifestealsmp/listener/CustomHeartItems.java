@@ -26,7 +26,7 @@ public class CustomHeartItems implements Listener {
         if (Math.random() >= 0.5) {
             e.getDrops().add(corruptedMobSoul());
             //e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), new ItemStack(CorruptedMobSoul()));
-            killer.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "Rare Drop!" + ChatColor.DARK_PURPLE + " Corrupted Mob Soul");
+            killer.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "RARE DROP!" + ChatColor.DARK_PURPLE + " Corrupted Mob Soul");
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 0.0f), 3);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f), 6);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 3.0f), 9);
@@ -35,7 +35,7 @@ public class CustomHeartItems implements Listener {
         if (Math.random() <= 0.5) {
             e.getDrops().add(severedMobHeart());
             //e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), new ItemStack(severedMobHeart()));
-            killer.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "Rare Drop!" + ChatColor.DARK_PURPLE + " Severed Mob Heart");
+            killer.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "RARE DROP!" + ChatColor.DARK_PURPLE + " Severed Mob Heart");
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 0.0f), 3);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f), 6);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 3.0f), 9);
@@ -51,17 +51,24 @@ public class CustomHeartItems implements Listener {
 
         if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
             if (item.getType() == Material.RED_DYE && item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.getItemMeta().getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL" + ChatColor.DARK_RED + ChatColor.BOLD + "Extra Heart" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL")) {
-                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 2.0f);
-                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 2.0f);
-                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 2.0f);
-                player.playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_GROWL, 1.0f, 1.0f);
-                player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "+1 Heart!");
-                player.sendTitle(ChatColor.GOLD + "+1", "", 0, 70, 20);
-                if (item.getAmount() > 1) {
-                    item.setAmount(item.getAmount() - 1);
-                    player.getInventory().setItemInMainHand(item);
+                if (e.getPlayer().getMaxHealth() >= 20) {
+
+                    player.sendMessage(ChatColor.RED + "You have the max hearts allowed! (20)");
+
                 } else {
-                    player.getInventory().setItemInMainHand(null);
+                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 2.0f);
+                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 2.0f);
+                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 2.0f);
+                    player.playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_GROWL, 1.0f, 1.0f);
+                    player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "+1 Heart!");
+                    player.sendTitle(ChatColor.GOLD + "+1", "", 0, 70, 20);
+                    player.setMaxHealth(player.getMaxHealth() + 1);
+                    if (item.getAmount() > 1) {
+                        item.setAmount(item.getAmount() - 1);
+                        player.getInventory().setItemInMainHand(item);
+                    } else {
+                        player.getInventory().setItemInMainHand(null);
+                    }
                 }
             }
         }
