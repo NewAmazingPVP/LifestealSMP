@@ -19,7 +19,7 @@ public class MontuStaffShiftLeft implements Listener {
         // Check if the player is holding the item "1111111111111"
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
         ItemMeta meta = itemInHand.getItemMeta();
-        if (meta != null && meta.hasDisplayName() && meta.getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Montu's Staff" + ChatColor.DARK_AQUA + " [Wand]")) {
+        if (meta != null && meta.hasDisplayName() && meta.getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Montu's Staff")) {
             // Check if the player is crouching
             if (player.isSneaking()) {
                 // Check if the player is left-clicking
