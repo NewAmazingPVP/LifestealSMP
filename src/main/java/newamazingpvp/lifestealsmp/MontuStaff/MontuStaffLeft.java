@@ -25,7 +25,7 @@ public class MontuStaffLeft implements Listener {
         if (event.getAction().name().contains("LEFT_CLICK") && event.getItem() != null) {
             if (itemInHand != null && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName()) {
                 String name2 = itemInHand.getItemMeta().getDisplayName();
-                if (name2.equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Montu's Staff" + ChatColor.DARK_AQUA + " [Wand]")) {
+                if (name2.equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Montu's Staff")) {
                     if (!player.isSneaking()) {
                         // check if the player is in cooldown
                         if (cooldowns.containsKey(player.getUniqueId())) {
