@@ -352,7 +352,7 @@ public class CustomRecipe {
 
     public static ItemStack ancientSpellScroll() {
 
-        ItemStack ancientSpellScroll = new ItemStack(Material.REDSTONE_BLOCK);
+        ItemStack ancientSpellScroll = new ItemStack(Material.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE);
         ItemMeta ASM = ancientSpellScroll.getItemMeta();
         ASM.addEnchant(Enchantment.DURABILITY, 1, false);
         ASM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
