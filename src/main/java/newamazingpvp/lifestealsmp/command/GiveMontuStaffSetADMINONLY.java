@@ -32,21 +32,20 @@ public class GiveMontuStaffSetADMINONLY implements CommandExecutor {
         SOPM.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Montu's Staff");
         List<String> SOPL = new ArrayList<>();
         SOPL.add(" ");
-        SOPL.add(ChatColor.DARK_BLUE + "Only works if you have full lapis armor on!");
+        SOPL.add(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Abilities change depending on special armor set");
+        SOPL.add(ChatColor.RED + "Requires montu helmet to use!");
         SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
-        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Right Click" + ChatColor.DARK_AQUA + " (7sec Cooldown)");
-        SOPL.add(ChatColor.GREEN + "Warp 5 blocks where you are looking!");
+        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Right Click:");
+        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
         SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
-        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Shift Right Click" + ChatColor.DARK_AQUA + " (10sec Cooldown)");
-        SOPL.add(ChatColor.GREEN + "Spawn a sonic wave that will");
-        SOPL.add(ChatColor.GREEN + "damage any mob in its range!" + ChatColor.RED + " 3 Damage");
+        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Shift Right Click:");
+        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
         SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
-        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Left Click" + ChatColor.DARK_AQUA + " (Very small cooldown)");
-        SOPL.add(ChatColor.GREEN + "Shoots a beam 15 blocks out that deals damage!" + ChatColor.RED + " 2 Damage");
+        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Left Click:");
+        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
         SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
-        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Shift Left Click" + ChatColor.DARK_AQUA + " (30sec Cooldown)");
-        SOPL.add(ChatColor.GREEN + "Spawn a comet wave that will hit the ground");
-        SOPL.add(ChatColor.GREEN + "and damage any mob in its range!" + ChatColor.RED + " 7 Damage");
+        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Shift Left Click:");
+        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
         SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
         SOPM.setLore(SOPL);
         SOPM.addEnchant(Enchantment.DURABILITY, 1, false);
@@ -55,18 +54,6 @@ public class GiveMontuStaffSetADMINONLY implements CommandExecutor {
 
         player.getInventory().addItem(StickOfPower);
 
-        ItemStack MontuHELM = new ItemStack(Material.LEATHER_HELMET);
-        LeatherArmorMeta SI = (LeatherArmorMeta) MontuHELM.getItemMeta();
-        SI.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Montu Helmet");
-        List<String> SIL = new ArrayList<>();
-        SIL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Full Set Bonus:");
-        SIL.add(ChatColor.DARK_PURPLE + "Lets you use the Montu Staff!");
-        SI.setLore(SIL);
-        SI.setUnbreakable(true);
-        SI.addItemFlags(ItemFlag.HIDE_DYE);
-        //SVCM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        SI.setColor(Color.fromRGB(0, 0, 255));
-        MontuHELM.setItemMeta(SI);;
 
         ItemStack MontuCP = new ItemStack(Material.LEATHER_CHESTPLATE);
         LeatherArmorMeta SVCM = (LeatherArmorMeta) MontuCP.getItemMeta();
@@ -107,7 +94,6 @@ public class GiveMontuStaffSetADMINONLY implements CommandExecutor {
         SVBM.setColor(Color.fromRGB(0, 0, 255));
         MontuBOOT.setItemMeta(SVBM);
 
-        player.getInventory().addItem(MontuHELM);
         player.getInventory().addItem(MontuCP);
         player.getInventory().addItem(MontuLEG);
         player.getInventory().addItem(MontuBOOT);

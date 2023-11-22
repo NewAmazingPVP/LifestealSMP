@@ -41,7 +41,7 @@ public class GiveMontuHelmetADMINONLY implements CommandExecutor {
         PlayerProfile profile = getProfile("https://textures.minecraft.net/texture/3070fad4da430fc24141542918ca184803d7f50a8a8e263d0331e3fd62029336");
         ItemStack head = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) head.getItemMeta();
-        meta.setOwnerProfile(profile); // Set the owning player of the head to the player profile
+        meta.setOwnerProfile(profile);
         head.setItemMeta(meta);
         player.getInventory().addItem(head);
 
