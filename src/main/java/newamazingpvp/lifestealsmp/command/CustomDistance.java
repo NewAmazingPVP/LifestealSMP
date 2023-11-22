@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.command;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -44,7 +45,7 @@ public class CustomDistance implements CommandExecutor {
             player.setViewDistance(renderDistance);
             player.setSimulationDistance(simulationDistance);
             player.sendMessage("Your render distance has been set to " + ChatColor.AQUA + renderDistance + ChatColor.WHITE + " and simulation distance to " + ChatColor.AQUA + simulationDistance + ChatColor.WHITE + ".");
-
+            player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
             return true;
         }
         return false;

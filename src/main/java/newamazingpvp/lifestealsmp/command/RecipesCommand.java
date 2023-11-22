@@ -3,6 +3,7 @@ package newamazingpvp.lifestealsmp.command;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -71,6 +72,8 @@ public class RecipesCommand implements CommandExecutor {
 
             // Send the message to the player
             player.spigot().sendMessage(message);
+
+            player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
         }
         return true;
     }

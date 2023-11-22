@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.command;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -33,6 +34,7 @@ public class RulesCommand implements CommandExecutor {
             player.sendMessage(ChatColor.WHITE + "- Any kind of trash talking is not allowed");
             player.sendMessage(ChatColor.WHITE + "- Use common sense");
             player.sendMessage(ChatColor.GOLD + "Your presence in this SMP implies accepting these rules, including all further changes. These changes might be done at any time without notice; it is your responsibility to check for them.");
+            player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
         }
         return true;
     }

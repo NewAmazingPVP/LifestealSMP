@@ -21,7 +21,7 @@ public class RestartWithWarmingADMINONLY implements CommandExecutor {
 
         Player playerSender = (Player) sender;
         playerSender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Restarting Server!");
-
+        playerSender.playSound(playerSender.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
 
         for (Player player : Bukkit.getOnlinePlayers()) {
 

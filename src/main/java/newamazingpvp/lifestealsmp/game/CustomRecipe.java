@@ -349,4 +349,20 @@ public class CustomRecipe {
 
         return extraHeart;
     }
+
+    public static ItemStack ancientSpellScroll() {
+
+        ItemStack ancientSpellScroll = new ItemStack(Material.REDSTONE_BLOCK);
+        ItemMeta ASM = ancientSpellScroll.getItemMeta();
+        ASM.addEnchant(Enchantment.DURABILITY, 1, false);
+        ASM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        ASM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Ancient Spell Scroll");
+        ASM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        List<String> MSL = new ArrayList<>();
+        MSL.add(ChatColor.AQUA + "Used To Craft Montu's Staff");
+        ASM.setLore(MSL);
+        ancientSpellScroll.setItemMeta(ASM);
+
+        return ancientSpellScroll;
+    }
 }
