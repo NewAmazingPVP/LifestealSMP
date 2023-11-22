@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.listener;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,7 +21,10 @@ public class PlayerJoiningServer implements Listener {
         player.sendMessage(ChatColor.AQUA + "Use" + ChatColor.RED + " /recipes" + ChatColor.AQUA + " For recipe info.");
         player.sendMessage(ChatColor.AQUA + "Use" + ChatColor.RED + " /discord_link" + ChatColor.AQUA + " For the discord link.");
         player.sendMessage(ChatColor.GRAY + "(also how you send appeals and reports)");
+        player.sendMessage(ChatColor.AQUA + "Use" + ChatColor.RED + " /easyprefix" + ChatColor.AQUA + "To change your name prefix");
         player.sendMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "=========================================");
 
+        player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f);
+        player.sendTitle(ChatColor.DARK_GREEN + "Welcome!", "", 0, 70, 20);
     }
 }
