@@ -22,7 +22,7 @@ public class GiveMontuHelmetADMINONLY implements CommandExecutor {
             ItemStack MintyHelm = new ItemStack(Material.PLAYER_HEAD);
             SkullMeta meta = (SkullMeta) MintyHelm.getItemMeta();
 
-            meta.setOwningPlayer(Bukkit.getOfflinePlayer(UUID.fromString("398d815c-684b-4814-9401-18b1d5b8bd1e")));
+            meta.setOwningPlayer(Bukkit.getOfflinePlayer(UUID.fromString("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzA3MGZhZDRkYTQzMGZjMjQxNDE1NDI5MThjYTE4NDgwM2Q3ZjUwYThhOGUyNjNkMDMzMWUzZmQ2MjAyOTMzNiJ9fX0")));
             meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Montu Helmet");
 
             MintyHelm.setItemMeta(meta);
