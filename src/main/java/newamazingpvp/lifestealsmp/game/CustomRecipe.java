@@ -7,11 +7,14 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.profile.PlayerProfile;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.command.GiveMontuHelmetADMINONLY.getProfile;
 
 public class CustomRecipe {
     public static void registerCustomRecipes() {
@@ -364,5 +367,20 @@ public class CustomRecipe {
         ancientSpellScroll.setItemMeta(ASM);
 
         return ancientSpellScroll;
+    }
+
+    public static ItemStack montuHelm() {
+
+        PlayerProfile profile = getProfile("https://textures.minecraft.net/texture/3070fad4da430fc24141542918ca184803d7f50a8a8e263d0331e3fd62029336");
+        ItemStack montuHelm = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta meta = (SkullMeta) montuHelm.getItemMeta();
+        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Montu's Helmet");
+        List<String> SOPL = new ArrayList<>();;
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Required for Montu's staff");
+        meta.setLore(SOPL);
+        meta.setOwnerProfile(profile);
+        montuHelm.setItemMeta(meta);
+
+        return montuHelm;
     }
 }
