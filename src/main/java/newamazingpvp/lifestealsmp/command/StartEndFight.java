@@ -1,8 +1,6 @@
 package newamazingpvp.lifestealsmp.command;
 
-import org.bukkit.ChatColor;
-import org.bukkit.World;
-import org.bukkit.WorldBorder;
+import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -27,10 +25,26 @@ public class StartEndFight implements CommandExecutor {
             p.teleport(endFightSpawn);
             p.setInvulnerable(true);
             getServer().getScheduler().runTaskLater(lifestealSmp, () -> p.setInvulnerable(false), 20 * 60);
-            p.sendMessage(ChatColor.AQUA + "60 seconds to get ready for the final fight!");
+            p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "GET READY!" + ChatColor.YELLOW + " The end fight will be starting in 60sec!");
             endFightParticipants.add(p.getName());
             //PotionEffect effect = new PotionEffect(PotionEffectType.GLOWING, 200000000, 1);
             //p.addPotionEffect(effect);
+
+        }
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> lifestealSmp.getServer().broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + "GET READY!" + ChatColor.YELLOW + " The end fight will be starting in 30sec!"), 600);
+        int delay = 1000;
+
+        for (int i = 10; i > 0; i--) {
+            final int count = i;
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> {
+                lifestealSmp.getServer().broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + "GET READY!" + ChatColor.YELLOW + " The end fight will be starting in " + count + " seconds!");
+            }, delay);
+
+            delay += 20;
+        }
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> lifestealSmp.getServer().broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + "GO!"), 1200);
+        for(Player p : lifestealSmp.getServer().getOnlinePlayers()){
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> p.sendTitle(ChatColor.RED + "" + ChatColor.BOLD + "GO!", ChatColor.GOLD + "Good Luck!"), 1200);
         }
         return true;
     }
