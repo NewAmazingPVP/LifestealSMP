@@ -45,11 +45,9 @@ public class GiveMontuHelmetADMINONLY implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player player = (Player) sender;
-
         player.getInventory().addItem(montuHelm());
-
         player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
         return true;
     }
-
 }
+
