@@ -86,6 +86,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new EndFightRestrictions(), this);
         getServer().getPluginManager().registerEvents(new AntiUseListener(), this);
         getServer().getPluginManager().registerEvents(new MontuStaffDrops(), this);
+        getServer().getPluginManager().registerEvents(new PlayerJoiningServer(), this);
         //getServer().getPluginManager().registerEvents(new GracePeriod(), this);
         int repeatDelayTicks = 7200 * 20;
         BukkitRunnable broadcastTask = new BukkitRunnable() {
