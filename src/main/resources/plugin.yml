@@ -33,3 +33,9 @@ commands:
   LSwithdraw:
     description: Removes 1 heart
     usage: /LSwithdraw
+  startEndFight:
+    description: Start End Fight with all presets
+    usage: /startEndFight
+  stopEndFight:
+    description: Stop End Fight
+    usage: /stopEndFight

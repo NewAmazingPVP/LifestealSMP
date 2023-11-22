@@ -6,6 +6,7 @@ import newamazingpvp.lifestealsmp.MontuStaff.MontuStaffShiftLeft;
 import newamazingpvp.lifestealsmp.MontuStaff.MontuStaffShiftRight;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.game.Compass;
+import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
 import newamazingpvp.lifestealsmp.listener.*;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -59,6 +60,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getCommand("remHP").setExecutor(new RemHPADMINONLY());
         getCommand("addHP").setExecutor(new AddHPADMINONLY());
         getCommand("LSwithdraw").setExecutor(new LSwithdraw());
+        getCommand("startEndFight").setExecutor(new StartEndFight());
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
@@ -79,6 +81,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new MontuStaffShiftLeft(), this);
         getServer().getPluginManager().registerEvents(new MontuStaffShiftRight(), this);
         getServer().getPluginManager().registerEvents(new AnvilMenuListener(), this);
+        getServer().getPluginManager().registerEvents(new EndFightRestrictions(), this);
         //getServer().getPluginManager().registerEvents(new GracePeriod(), this);
         int repeatDelayTicks = 7200 * 20;
         BukkitRunnable broadcastTask = new BukkitRunnable() {
