@@ -23,6 +23,8 @@ public class CustomHeartItems implements Listener {
         Player killer = e.getEntity().getKiller();
         Location loc = e.getEntity().getLocation();
 
+        if(killer == null) return;
+
         if (Math.random() >= 0.5) {
             e.getDrops().add(corruptedMobSoul());
             //e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), new ItemStack(CorruptedMobSoul()));
@@ -40,6 +42,7 @@ public class CustomHeartItems implements Listener {
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f), 6);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 3.0f), 9);
             e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
+
         }
     }
 
