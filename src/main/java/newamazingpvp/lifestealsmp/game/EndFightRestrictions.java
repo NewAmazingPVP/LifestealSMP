@@ -57,6 +57,7 @@ public class EndFightRestrictions implements Listener {
             if(totalHP < 1.0){
                 p.banPlayer(ChatColor.RED + "You were eliminated! GF!");
                 sendDiscordEmbedPlayer(p.getName() + " was eliminated from end fight! GF!", Color.YELLOW, "", p.getName());
+                lifestealSmp.getServer().broadcastMessage(ChatColor.GOLD + p.getName() + " was eliminated GF!");
                 return;
             }
             p.setMaxHealth(p.getMaxHealth() - e.getFinalDamage());
@@ -69,6 +70,7 @@ public class EndFightRestrictions implements Listener {
             Player p = e.getEntity();
             p.banPlayer(ChatColor.RED + "You were eliminated! GF!");
             sendDiscordEmbedPlayer(p.getName() + " was eliminated from end fight! GF!", Color.YELLOW, "", p.getName());
+            lifestealSmp.getServer().broadcastMessage(ChatColor.GOLD + p.getName() + " was eliminated GF!");
         }
     }
 
@@ -76,6 +78,7 @@ public class EndFightRestrictions implements Listener {
     public void onPlayerMove(PlayerMoveEvent e){
         if(isEndFightEnabled && e.getTo().distance(endSpawn) > 110){
             e.setCancelled(true);
+            e.getPlayer().sendMessage(ChatColor.YELLOW + "You cannot go outside the border!");
         }
     }
 
@@ -83,6 +86,7 @@ public class EndFightRestrictions implements Listener {
     public void onPlayerTeleport(PlayerTeleportEvent e){
         if(isEndFightEnabled && e.getTo().distance(endSpawn) > 110){
             e.setCancelled(true);
+            e.getPlayer().sendMessage(ChatColor.YELLOW + "You cannot go outside the border!");
         }
     }
 }
