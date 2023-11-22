@@ -42,7 +42,7 @@ public class MontuStaffLeft implements Listener {
                         if (event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
                             if (itemInHand != null && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName()) {
                                 String name = itemInHand.getItemMeta().getDisplayName();
-                                if (name.equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Montu's Staff" + ChatColor.DARK_AQUA + " [Wand]")) {
+                                if (name.equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Montu's Staff")) {
                                     // 1000 milliseconds = 1 second
                                     long cooldownEnd = System.currentTimeMillis() + 1000;
                                     cooldowns.put(player.getUniqueId(), cooldownEnd);
