@@ -19,14 +19,21 @@ public class LSwithdraw implements CommandExecutor {
         }
 
         Player player = (Player) sender;
-        player.setMaxHealth(player.getMaxHealth() - 2);
-        player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "-1 Heart!");
-        player.sendMessage(ChatColor.GRAY + "(Boosting using this command will result in you being banned)");
-        player.getInventory().addItem(extraHeart());
-        player.playSound(player.getLocation(), Sound.BLOCK_PORTAL_TRIGGER, 1.0f, 2.0f);
+        if (player.getMaxHealth() == 2) {
 
+            player.sendMessage(ChatColor.RED + "If you withdraw any more you will die...");
+
+        } else {
+            player.setMaxHealth(player.getMaxHealth() - 2);
+            player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "-1 Heart!");
+            player.sendMessage(ChatColor.GRAY + "(Boosting using this command will result in you being banned)");
+            player.getInventory().addItem(extraHeart());
+            player.playSound(player.getLocation(), Sound.BLOCK_PORTAL_TRIGGER, 1.0f, 2.0f);
+            player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
+            return true;
+
+        }
         return true;
-
     }
-
 }
+
