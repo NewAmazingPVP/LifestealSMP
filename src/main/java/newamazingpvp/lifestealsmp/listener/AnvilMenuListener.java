@@ -26,7 +26,7 @@ public class AnvilMenuListener implements Listener {
                 if (itemName.equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Severed Mob Heart")) {
                     event.setCancelled(true);
                 }
-                if (itemName.equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL" + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Co" + ChatColor.MAGIC + "r" + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "rupted Mob Soul" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL")) {
+                if (itemName.contains("rupted Mob Soul")) {
                     event.setCancelled(true);
                 }
                 if (itemName.equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Montu's Staff")) {

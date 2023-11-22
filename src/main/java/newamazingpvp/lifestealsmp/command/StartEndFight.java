@@ -20,9 +20,9 @@ public class StartEndFight implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         isEndFightEnabled = true;
-        WorldBorder worldBorder = lifestealSmp.getServer().getWorld("world_the_end").getWorldBorder();
-        worldBorder.setCenter(0, 0);
-        worldBorder.setSize(150);
+        //WorldBorder worldBorder = lifestealSmp.getServer().getWorld("world_the_end").getWorldBorder();
+        //worldBorder.setCenter(0, 0);
+        //worldBorder.setSize(150);
         for(Player p : lifestealSmp.getServer().getOnlinePlayers()){
             p.teleport(endFightSpawn);
             p.setInvulnerable(true);
