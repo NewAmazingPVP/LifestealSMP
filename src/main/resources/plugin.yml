@@ -40,5 +40,5 @@ commands:
     description: Stop End Fight
     usage: /stopEndFight
   giveMontuHelm:
-    description: Gives the custom montu helmet
+    description: Gives the custom montu helmet Admin Only
     usage: /giveMontuHelm
