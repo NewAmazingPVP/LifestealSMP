@@ -4,7 +4,7 @@ import newamazingpvp.lifestealsmp.LegacyMontuStaff.MontuStaffLeft;
 import newamazingpvp.lifestealsmp.LegacyMontuStaff.MontuStaffRight;
 import newamazingpvp.lifestealsmp.LegacyMontuStaff.MontuStaffShiftLeft;
 import newamazingpvp.lifestealsmp.LegacyMontuStaff.MontuStaffShiftRight;
-import newamazingpvp.lifestealsmp.StaffListeners.DetectArmorSrtBonus;
+import newamazingpvp.lifestealsmp.StaffListeners.DetectArmorSetBonus;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.game.Compass;
 import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
@@ -88,7 +88,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new SekhmetStaffDrops(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoiningServer(), this);
         getServer().getPluginManager().registerEvents(new ChatFilter(), this);
-        getServer().getPluginManager().registerEvents(new DetectArmorSrtBonus(), this);
+        getServer().getPluginManager().registerEvents(new DetectArmorSetBonus(), this);
         //getServer().getPluginManager().registerEvents(new GracePeriod(), this);
         int repeatDelayTicks = 7200 * 20;
         BukkitRunnable broadcastTask = new BukkitRunnable() {
