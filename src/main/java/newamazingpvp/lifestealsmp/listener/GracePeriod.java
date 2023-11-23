@@ -60,7 +60,7 @@ public class GracePeriod implements Listener {
     }
 
     public boolean isGracePeriod() {
-        LocalDateTime targetDateTime = LocalDateTime.of(2023, Month.OCTOBER, 21, 14, 30);
+        LocalDateTime targetDateTime = LocalDateTime.of(2023, Month.NOVEMBER, 22, 20, 59);
 
         ZoneId estTimeZone = ZoneId.of("America/New_York");
         ZonedDateTime estTargetDateTime = ZonedDateTime.of(targetDateTime, estTimeZone);
@@ -70,7 +70,7 @@ public class GracePeriod implements Listener {
         return currentDateTime.isBefore(estTargetDateTime);
     }
 
-    @EventHandler
+    /*@EventHandler
     public void onDeath(PlayerDeathEvent event) {
         String name = event.getPlayer().getName();
         names.add(name);
@@ -80,7 +80,7 @@ public class GracePeriod implements Listener {
                 names.remove(name);
             }
         }.runTaskLater(lifestealSmp, 20 * 60 * 15);
-    }
+    }*/
 
     public boolean isPlayerDeathProt(Player p) {
         return names.contains(p.getName());
