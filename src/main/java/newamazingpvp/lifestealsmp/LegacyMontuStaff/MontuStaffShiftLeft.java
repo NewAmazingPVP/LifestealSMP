@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.MontuStaff;
+package newamazingpvp.lifestealsmp.LegacyMontuStaff;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
