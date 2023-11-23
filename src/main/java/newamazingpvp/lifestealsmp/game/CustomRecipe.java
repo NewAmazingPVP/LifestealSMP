@@ -361,7 +361,7 @@ public class CustomRecipe {
         ASM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         ASM.addItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS);
         List<String> MSL = new ArrayList<>();
-        MSL.add(ChatColor.AQUA + "Used To Craft Montu's Staff");
+        MSL.add(ChatColor.AQUA + "Used To Craft Sekhmet's Staff");
         ASM.setLore(MSL);
         ancientSpellScroll.setItemMeta(ASM);
 
@@ -420,7 +420,9 @@ public class CustomRecipe {
         SVCM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Sekhmet's Chestplate");
         List<String> SVCL = new ArrayList<>();
         SVCL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Full Set Bonus:");
-        SVCL.add(ChatColor.DARK_PURPLE + "Lets you use the Montu Staff!");
+        SVCL.add(ChatColor.DARK_PURPLE + "Lets you use the Sekhmet's Staff!");
+        SVCL.add(ChatColor.DARK_PURPLE + "Unlocks abilities that are more for");
+        SVCL.add(ChatColor.DARK_PURPLE + "movement and quick attacks.");
         SVCM.setLore(SVCL);
         SVCM.setUnbreakable(true);
         SVCM.addItemFlags(ItemFlag.HIDE_DYE);
@@ -438,7 +440,9 @@ public class CustomRecipe {
         SVLM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Sekhmet's Leggings");
         List<String> SVLL = new ArrayList<>();
         SVLL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Full Set Bonus:");
-        SVLL.add(ChatColor.DARK_PURPLE + "Lets you use the Montu Staff!");
+        SVLL.add(ChatColor.DARK_PURPLE + "Lets you use the Sekhmet's Staff!");
+        SVLL.add(ChatColor.DARK_PURPLE + "Unlocks abilities that are more for");
+        SVLL.add(ChatColor.DARK_PURPLE + "movement and quick attacks.");
         SVLM.setLore(SVLL);
         SVLM.setUnbreakable(true);
         SVLM.addItemFlags(ItemFlag.HIDE_DYE);
@@ -456,7 +460,9 @@ public class CustomRecipe {
         SVBM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Sekhmet's Boots");
         List<String> SVBL = new ArrayList<>();
         SVBL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Full Set Bonus:");
-        SVBL.add(ChatColor.DARK_PURPLE + "Lets you use the Montu Staff!");
+        SVBL.add(ChatColor.DARK_PURPLE + "Lets you use the Sekhmet's Staff!");
+        SVBL.add(ChatColor.DARK_PURPLE + "Unlocks abilities that are more for");
+        SVBL.add(ChatColor.DARK_PURPLE + "movement and quick attacks.");
         SVBM.setLore(SVBL);
         SVBM.setUnbreakable(true);
         SVBM.addItemFlags(ItemFlag.HIDE_DYE);
@@ -465,5 +471,56 @@ public class CustomRecipe {
         SekhmetBOOT1.setItemMeta(SVBM);
 
         return SekhmetBOOT1;
+    }
+
+    public static ItemStack SekhmetCHEST2() {
+
+        ItemStack SekhmetCHEST2 = new ItemStack(Material.GOLDEN_CHESTPLATE);
+        ItemMeta ASM = SekhmetCHEST2.getItemMeta();
+        ASM.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Sekhmet's Chestplate");
+        List<String> MSL = new ArrayList<>();
+        MSL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Full Set Bonus:");
+        MSL.add(ChatColor.DARK_PURPLE + "Lets you use the Sekhmet's Staff!");
+        MSL.add(ChatColor.DARK_PURPLE + "Unlocks abilities that are slower");
+        MSL.add(ChatColor.DARK_PURPLE + "but deal large amounts of damage.");
+        ASM.setLore(MSL);
+        ASM.setUnbreakable(true);
+        SekhmetCHEST2.setItemMeta(ASM);
+
+        return SekhmetCHEST2;
+    }
+
+    public static ItemStack SekhmetLEG2() {
+
+        ItemStack SekhmetLEG2 = new ItemStack(Material.GOLDEN_LEGGINGS);
+        ItemMeta ASM = SekhmetLEG2.getItemMeta();
+        ASM.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Sekhmet's Leggings");
+        List<String> MSL = new ArrayList<>();
+        MSL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Full Set Bonus:");
+        MSL.add(ChatColor.DARK_PURPLE + "Lets you use the Sekhmet's Staff!");
+        MSL.add(ChatColor.DARK_PURPLE + "Unlocks abilities that are slower");
+        MSL.add(ChatColor.DARK_PURPLE + "but deal large amounts of damage.");
+        ASM.setLore(MSL);
+        ASM.setUnbreakable(true);
+        SekhmetLEG2.setItemMeta(ASM);
+
+        return SekhmetLEG2;
+    }
+
+    public static ItemStack SekhmetBOOT2() {
+
+        ItemStack SekhmetBOOT2 = new ItemStack(Material.GOLDEN_LEGGINGS);
+        ItemMeta ASM = SekhmetBOOT2.getItemMeta();
+        ASM.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Sekhmet's Boots");
+        List<String> MSL = new ArrayList<>();
+        MSL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Full Set Bonus:");
+        MSL.add(ChatColor.DARK_PURPLE + "Lets you use the Sekhmet's Staff!");
+        MSL.add(ChatColor.DARK_PURPLE + "Unlocks abilities that are slower");
+        MSL.add(ChatColor.DARK_PURPLE + "but deal large amounts of damage.");
+        ASM.setLore(MSL);
+        ASM.setUnbreakable(true);
+        SekhmetBOOT2.setItemMeta(ASM);
+
+        return SekhmetBOOT2;
     }
 }
