@@ -21,7 +21,7 @@ public class PlayerJoiningServer implements Listener {
         player.sendMessage(ChatColor.AQUA + "Use" + ChatColor.RED + " /recipes" + ChatColor.AQUA + " For recipe info.");
         player.sendMessage(ChatColor.AQUA + "Use" + ChatColor.RED + " /discord_link" + ChatColor.AQUA + " For the discord link.");
         player.sendMessage(ChatColor.GRAY + "(also how you send appeals and reports)");
-        player.sendMessage(ChatColor.AQUA + "Use" + ChatColor.RED + " /easyprefix" + ChatColor.AQUA + "To change your name prefix");
+        player.sendMessage(ChatColor.AQUA + "Use" + ChatColor.RED + " /easyprefix" + ChatColor.AQUA + " To change your name prefix");
         player.sendMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "=========================================");
 
         player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f);
