@@ -46,7 +46,7 @@ public class GiveSekhmetSetADMINONLY implements CommandExecutor {
         Player player = (Player) sender;
 
 
-        player.getInventory().addItem(SekhmetSTAFF());
+        player.getInventory().addItem(SekhmetSTAFF1());
 
         player.getInventory().addItem(SekhmetCHEST1());
         player.getInventory().addItem(SekhmetLEG1());

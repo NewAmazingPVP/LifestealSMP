@@ -383,36 +383,6 @@ public class CustomRecipe {
         return montuHelm;
     }
 
-    public static ItemStack SekhmetSTAFF() {
-
-        ItemStack SekhmetSTAFF  = new ItemStack(Material.STICK);
-        ItemMeta SOPM = SekhmetSTAFF.getItemMeta();
-        SOPM.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Sekhmet's Staff");
-        List<String> SOPL = new ArrayList<>();
-        SOPL.add(" ");
-        SOPL.add(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Abilities change depending on special armor set");
-        SOPL.add(ChatColor.RED + "Requires montu helmet to use!");
-        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
-        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Right Click:");
-        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
-        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
-        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Shift Right Click:");
-        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
-        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
-        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Left Click:");
-        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
-        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
-        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Shift Left Click:");
-        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
-        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
-        SOPM.setLore(SOPL);
-        SOPM.addEnchant(Enchantment.DURABILITY, 1, false);
-        SOPM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        SekhmetSTAFF.setItemMeta(SOPM);
-
-        return SekhmetSTAFF;
-    }
-
     public static ItemStack SekhmetCHEST1() {
 
         ItemStack SekhmetCHEST1 = new ItemStack(Material.LEATHER_CHESTPLATE);
@@ -522,5 +492,107 @@ public class CustomRecipe {
         SekhmetBOOT2.setItemMeta(ASM);
 
         return SekhmetBOOT2;
+    }
+
+    public static ItemStack SekhmetSTAFF1() {
+
+        ItemStack SekhmetSTAFF1  = new ItemStack(Material.STICK);
+        ItemMeta SOPM = SekhmetSTAFF1.getItemMeta();
+        SOPM.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Sekhmet's Staff");
+        List<String> SOPL = new ArrayList<>();
+        SOPL.add(" ");
+        SOPL.add(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Abilities change depending on special armor set");
+        SOPL.add(ChatColor.RED + "Requires montu helmet to use!");
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
+        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Right Click:");
+        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
+        SOPL.add(ChatColor.LIGHT_PURPLE + "Teleports you to where you are looking.");
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
+        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Shift Right Click:");
+        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
+        SOPL.add(ChatColor.LIGHT_PURPLE + "Makes a area around you where players will get poisoned.");
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
+        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Left Click:");
+        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
+        SOPL.add(ChatColor.LIGHT_PURPLE + "Shoots a beam of energy.");
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
+        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Shift Left Click:");
+        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
+        SOPL.add(ChatColor.LIGHT_PURPLE + "Makes a shock wave around you ripping the lad apart.");
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
+        SOPM.setLore(SOPL);
+        SOPM.addEnchant(Enchantment.DURABILITY, 1, false);
+        SOPM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        SekhmetSTAFF1.setItemMeta(SOPM);
+
+        return SekhmetSTAFF1;
+    }
+
+    public static ItemStack SekhmetSTAFF2() {
+
+        ItemStack SekhmetSTAFF2  = new ItemStack(Material.STICK);
+        ItemMeta SOPM = SekhmetSTAFF2.getItemMeta();
+        SOPM.setDisplayName(ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "Sekhmet's Staff");
+        List<String> SOPL = new ArrayList<>();
+        SOPL.add(" ");
+        SOPL.add(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Abilities change depending on special armor set");
+        SOPL.add(ChatColor.RED + "Requires montu helmet to use!");
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
+        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Right Click:");
+        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
+        SOPL.add(ChatColor.LIGHT_PURPLE + "Teleports you to where you are looking.");
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
+        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Shift Right Click:");
+        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
+        SOPL.add(ChatColor.LIGHT_PURPLE + "Makes a area around you where players will get poisoned.");
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
+        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Left Click:");
+        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
+        SOPL.add(ChatColor.LIGHT_PURPLE + "Shoots a beam of energy.");
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
+        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Shift Left Click:");
+        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
+        SOPL.add(ChatColor.LIGHT_PURPLE + "Makes a shock wave around you ripping the lad apart.");
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
+        SOPM.setLore(SOPL);
+        SOPM.addEnchant(Enchantment.DURABILITY, 1, false);
+        SOPM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        SekhmetSTAFF2.setItemMeta(SOPM);
+
+        return SekhmetSTAFF2;
+    }
+
+    public static ItemStack SekhmetSTAFF3() {
+
+        ItemStack SekhmetSTAFF3  = new ItemStack(Material.STICK);
+        ItemMeta SOPM = SekhmetSTAFF3.getItemMeta();
+        SOPM.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Sekhmet's Staff");
+        List<String> SOPL = new ArrayList<>();
+        SOPL.add(" ");
+        SOPL.add(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Abilities change depending on special armor set");
+        SOPL.add(ChatColor.RED + "Requires montu helmet to use!");
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
+        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Right Click:");
+        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
+        SOPL.add(ChatColor.LIGHT_PURPLE + "Teleports you to where you are looking.");
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
+        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Shift Right Click:");
+        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
+        SOPL.add(ChatColor.LIGHT_PURPLE + "Makes a area around you where players will get poisoned.");
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
+        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Left Click:");
+        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
+        SOPL.add(ChatColor.LIGHT_PURPLE + "Shoots a beam of energy.");
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
+        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Shift Left Click:");
+        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
+        SOPL.add(ChatColor.LIGHT_PURPLE + "Makes a shock wave around you ripping the lad apart.");
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
+        SOPM.setLore(SOPL);
+        SOPM.addEnchant(Enchantment.DURABILITY, 1, false);
+        SOPM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        SekhmetSTAFF3.setItemMeta(SOPM);
+
+        return SekhmetSTAFF3;
     }
 }
