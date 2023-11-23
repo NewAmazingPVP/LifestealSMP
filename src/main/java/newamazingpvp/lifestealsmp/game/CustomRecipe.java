@@ -359,6 +359,7 @@ public class CustomRecipe {
         ASM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         ASM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Ancient Spell Scroll");
         ASM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        ASM.addItemFlags(ItemFlag.HIDE_ARMOR_TRIM);
         List<String> MSL = new ArrayList<>();
         MSL.add(ChatColor.AQUA + "Used To Craft Montu's Staff");
         ASM.setLore(MSL);
