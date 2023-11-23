@@ -60,7 +60,7 @@ public class GracePeriod implements Listener {
     }
 
     public boolean isGracePeriod() {
-        LocalDateTime targetDateTime = LocalDateTime.of(2023, Month.NOVEMBER, 22, 20, 59);
+        LocalDateTime targetDateTime = LocalDateTime.of(2023, Month.NOVEMBER, 23, 30, 29);
 
         ZoneId estTimeZone = ZoneId.of("America/New_York");
         ZonedDateTime estTargetDateTime = ZonedDateTime.of(targetDateTime, estTimeZone);

@@ -36,9 +36,13 @@ commands:
   startEndFight:
     description: Start End Fight with all presets
     usage: /startEndFight
+    permission: lifestealSMP.admin
+    default: op
   stopEndFight:
     description: Stop End Fight
     usage: /stopEndFight
+    permission: lifestealSMP.admin
+    default: op
   giveMontuHelm:
     description: Gives the custom montu helmet Admin Only
     usage: /giveMontuHelm
