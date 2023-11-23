@@ -502,7 +502,7 @@ public class CustomRecipe {
         List<String> SOPL = new ArrayList<>();
         SOPL.add(" ");
         SOPL.add(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Abilities change depending on special armor set");
-        SOPL.add(ChatColor.RED + "Requires montu helmet to use!");
+        SOPL.add(ChatColor.RED + "Requires Sekhmet's helmet to use!");
         SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
         SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Right Click:");
         SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
@@ -536,7 +536,7 @@ public class CustomRecipe {
         List<String> SOPL = new ArrayList<>();
         SOPL.add(" ");
         SOPL.add(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Abilities change depending on special armor set");
-        SOPL.add(ChatColor.RED + "Requires montu helmet to use!");
+        SOPL.add(ChatColor.RED + "Requires Sekhmet's helmet to use!");
         SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
         SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Right Click:");
         SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
@@ -570,7 +570,7 @@ public class CustomRecipe {
         List<String> SOPL = new ArrayList<>();
         SOPL.add(" ");
         SOPL.add(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Abilities change depending on special armor set");
-        SOPL.add(ChatColor.RED + "Requires montu helmet to use!");
+        SOPL.add(ChatColor.RED + "Requires Sekhmet's helmet to use!");
         SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
         SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Right Click:");
         SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
