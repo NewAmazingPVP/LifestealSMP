@@ -62,11 +62,8 @@ public class DetectArmorSetBonus implements Listener {
                     }
                 }
             }
-        }else {
-
-            player.sendMessage("test3");
-
         }
+        player.sendMessage("test3");
     }
 }
 
