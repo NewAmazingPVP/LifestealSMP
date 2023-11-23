@@ -48,7 +48,3 @@ commands:
     usage: /stopEndFight
     permission: lifestealSMP.admin
     default: op
-  giveMontuHelm:
-    description: Gives the custom montu helmet Admin Only
-    usage: /giveMontuHelm
-    default: op
