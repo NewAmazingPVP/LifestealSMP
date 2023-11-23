@@ -33,10 +33,5 @@ public class ChatFilter implements Listener {
             player.sendMessage(ChatColor.RED + "You can not say inappropriate / offensive words in chat!");
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
         }
-        if (message.contains("nig")) {
-            event.setCancelled(true);
-            player.sendMessage(ChatColor.RED + "You can not say inappropriate / offensive words in chat!");
-            player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
-        }
     }
 }
