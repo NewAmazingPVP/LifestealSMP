@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.command.GiveMontuHelmetADMINONLY.getProfile;
+import static newamazingpvp.lifestealsmp.command.GiveSekhmetSetADMINONLY.getProfile;
 
 public class CustomRecipe {
     public static void registerCustomRecipes() {
