@@ -17,9 +17,9 @@ commands:
     description: Track a player's location
     usage: /track <player>
     aliases: [compass]
-  GMS:
+  GiveSekhmetSet:
     description: Admins Only
-    usage: /GMS
+    usage: /GiveSekhmetSet
     aliases: dontfuckingtrytorunthisifyouarenotaadmin
     default: op
   restart_with_warning:
