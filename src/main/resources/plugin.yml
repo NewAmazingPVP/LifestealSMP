@@ -48,3 +48,8 @@ commands:
     usage: /stopEndFight
     permission: lifestealSMP.admin
     default: op
+  jailplayer:
+    description: Use this to make a player a prisoner (troll command)
+    usage: /jailplayer <name>
+    permission: lifestealSMP.admin
+    default: op

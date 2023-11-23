@@ -37,7 +37,7 @@ public class DetectArmorSetBonus1 implements Listener {
                                 if (boots != null && boots.getType().equals(Material.LEATHER_BOOTS)) {
                                     if (meta3 != null && meta3.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Sekhmet's Boots")) {
 
-                                        player.sendMessage("test1");
+                                        
 
                                     }
                                 }
