@@ -509,7 +509,7 @@ public class CustomRecipe {
 
     public static ItemStack SekhmetBOOT2() {
 
-        ItemStack SekhmetBOOT2 = new ItemStack(Material.GOLDEN_LEGGINGS);
+        ItemStack SekhmetBOOT2 = new ItemStack(Material.GOLDEN_BOOTS);
         ItemMeta ASM = SekhmetBOOT2.getItemMeta();
         ASM.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Sekhmet's Boots");
         List<String> MSL = new ArrayList<>();
