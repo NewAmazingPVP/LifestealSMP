@@ -64,6 +64,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getCommand("LSwithdraw").setExecutor(new LSwithdraw());
         getCommand("startEndFight").setExecutor(new StartEndFight());
         getCommand("stopEndFight").setExecutor(new StopEndFight());
+        getCommand("jailplayer").setExecutor(new JailPlayer());
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);

@@ -17,6 +17,16 @@ import static newamazingpvp.lifestealsmp.command.GiveSekhmetSetADMINONLY.getProf
 public class CustomRecipe {
     public static void registerCustomRecipes() {
 
+        ItemStack SekhmetSTAFF = new ItemStack(extraHeart());
+        ShapedRecipe SekhmetSTAFFR = new ShapedRecipe(new NamespacedKey(lifestealSmp, "SekhmetSTAFF"), SekhmetSTAFF);
+        SekhmetSTAFFR.shape("CXC", "DSD", "XNX");
+        SekhmetSTAFFR.setIngredient('D', Material.DIAMOND_BLOCK);
+        SekhmetSTAFFR.setIngredient('N', Material.NETHERITE_INGOT);
+        SekhmetSTAFFR.setIngredient('C', corruptedMobSoul());
+        SekhmetSTAFFR.setIngredient('S', severedMobHeart());
+        SekhmetSTAFFR.setIngredient('X', Material.AIR);
+        Bukkit.addRecipe(SekhmetSTAFFR);
+
         ItemStack extraHeart = new ItemStack(extraHeart());
         ShapedRecipe extraHeartRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "extra_heart"), extraHeart);
         extraHeartRecipe.shape("CXC", "DSD", "XNX");
