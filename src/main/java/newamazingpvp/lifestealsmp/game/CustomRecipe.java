@@ -1,12 +1,10 @@
 package newamazingpvp.lifestealsmp.game;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
+import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.profile.PlayerProfile;
 
@@ -374,13 +372,97 @@ public class CustomRecipe {
         PlayerProfile profile = getProfile("https://textures.minecraft.net/texture/3070fad4da430fc24141542918ca184803d7f50a8a8e263d0331e3fd62029336");
         ItemStack montuHelm = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) montuHelm.getItemMeta();
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Montu's Helmet");
-        List<String> SOPL = new ArrayList<>();;
-        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Required for Montu's staff");
+        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Sekhmet's Helmet");
+        List<String> SOPL = new ArrayList<>();
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Required for Sekhmet's staff");
         meta.setLore(SOPL);
         meta.setOwnerProfile(profile);
         montuHelm.setItemMeta(meta);
 
         return montuHelm;
+    }
+
+    public static ItemStack SekhmetSTAFF() {
+
+        ItemStack SekhmetSTAFF  = new ItemStack(Material.STICK);
+        ItemMeta SOPM = SekhmetSTAFF.getItemMeta();
+        SOPM.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Sekhmet's Staff");
+        List<String> SOPL = new ArrayList<>();
+        SOPL.add(" ");
+        SOPL.add(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Abilities change depending on special armor set");
+        SOPL.add(ChatColor.RED + "Requires montu helmet to use!");
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
+        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Right Click:");
+        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
+        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Shift Right Click:");
+        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
+        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Left Click:");
+        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
+        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Shift Left Click:");
+        SOPL.add(ChatColor.DARK_RED + "Use a full set bonus to get abilities");
+        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
+        SOPM.setLore(SOPL);
+        SOPM.addEnchant(Enchantment.DURABILITY, 1, false);
+        SOPM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        SekhmetSTAFF.setItemMeta(SOPM);
+
+        return SekhmetSTAFF;
+    }
+
+    public static ItemStack SekhmetCHEST1() {
+
+        ItemStack SekhmetCHEST1 = new ItemStack(Material.LEATHER_CHESTPLATE);
+        LeatherArmorMeta SVCM = (LeatherArmorMeta) SekhmetCHEST1.getItemMeta();
+        SVCM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Sekhmet's Chestplate");
+        List<String> SVCL = new ArrayList<>();
+        SVCL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Full Set Bonus:");
+        SVCL.add(ChatColor.DARK_PURPLE + "Lets you use the Montu Staff!");
+        SVCM.setLore(SVCL);
+        SVCM.setUnbreakable(true);
+        SVCM.addItemFlags(ItemFlag.HIDE_DYE);
+        //SVCM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SVCM.setColor(Color.fromRGB(0, 0, 255));
+        SekhmetCHEST1.setItemMeta(SVCM);
+
+        return SekhmetCHEST1;
+    }
+
+    public static ItemStack SekhmetLEG1() {
+
+        ItemStack SekhmetLEG1 = new ItemStack(Material.LEATHER_LEGGINGS);
+        LeatherArmorMeta SVLM = (LeatherArmorMeta) SekhmetLEG1.getItemMeta();
+        SVLM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Sekhmet's Leggings");
+        List<String> SVLL = new ArrayList<>();
+        SVLL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Full Set Bonus:");
+        SVLL.add(ChatColor.DARK_PURPLE + "Lets you use the Montu Staff!");
+        SVLM.setLore(SVLL);
+        SVLM.setUnbreakable(true);
+        SVLM.addItemFlags(ItemFlag.HIDE_DYE);
+        //SVLM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SVLM.setColor(Color.fromRGB(0, 0, 255));
+        SekhmetLEG1.setItemMeta(SVLM);
+
+        return SekhmetLEG1;
+    }
+
+    public static ItemStack SekhmetBOOT1() {
+
+        ItemStack SekhmetBOOT1 = new ItemStack(Material.LEATHER_BOOTS);
+        LeatherArmorMeta SVBM = (LeatherArmorMeta) SekhmetBOOT1.getItemMeta();
+        SVBM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Sekhmet's Boots");
+        List<String> SVBL = new ArrayList<>();
+        SVBL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Full Set Bonus:");
+        SVBL.add(ChatColor.DARK_PURPLE + "Lets you use the Montu Staff!");
+        SVBM.setLore(SVBL);
+        SVBM.setUnbreakable(true);
+        SVBM.addItemFlags(ItemFlag.HIDE_DYE);
+        //SVBM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SVBM.setColor(Color.fromRGB(0, 0, 255));
+        SekhmetBOOT1.setItemMeta(SVBM);
+
+        return SekhmetBOOT1;
     }
 }

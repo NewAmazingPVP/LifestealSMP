@@ -55,14 +55,14 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getCommand("setview").setExecutor(new CustomDistance());
         getCommand("recipes").setExecutor(new RecipesCommand());
         getCommand("track").setExecutor(new Compass());
-        getCommand("GMS").setExecutor(new GiveMontuStaffSetADMINONLY());
+        getCommand("GiveSekhmetSet").setExecutor(new GiveSekhmetSetADMINONLY());
         getCommand("restart_with_warning").setExecutor(new RestartWithWarmingADMINONLY());
         getCommand("remHP").setExecutor(new RemHPADMINONLY());
         getCommand("addHP").setExecutor(new AddHPADMINONLY());
         getCommand("LSwithdraw").setExecutor(new LSwithdraw());
         getCommand("startEndFight").setExecutor(new StartEndFight());
         getCommand("stopEndFight").setExecutor(new StopEndFight());
-        getCommand("giveMontuHelm").setExecutor(new GiveMontuHelmetADMINONLY());
+        //getCommand("giveMontuHelm").setExecutor(new GiveMontuHelmetADMINONLY());
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
