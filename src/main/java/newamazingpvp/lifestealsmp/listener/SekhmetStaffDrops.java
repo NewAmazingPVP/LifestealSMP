@@ -8,9 +8,8 @@ import org.bukkit.event.entity.EntityDeathEvent;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.ancientSpellScroll;
-import static newamazingpvp.lifestealsmp.game.CustomRecipe.corruptedMobSoul;
 
-public class MontuStaffDrops implements Listener {
+public class SekhmetStaffDrops implements Listener {
 
     @EventHandler
     public void onPlayerKill(EntityDeathEvent e) {
@@ -20,7 +19,6 @@ public class MontuStaffDrops implements Listener {
 
         if (Math.random() >= 0.5) {
             e.getDrops().add(ancientSpellScroll());
-            //e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), new ItemStack(CorruptedMobSoul()));
             killer.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "RARE DROP!" + ChatColor.DARK_PURPLE + " Ancient Spell Scroll");
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 0.0f), 3);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f), 6);
