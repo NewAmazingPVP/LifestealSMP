@@ -21,18 +21,23 @@ commands:
     description: Admins Only
     usage: /GMS
     aliases: dontfuckingtrytorunthisifyouarenotaadmin
+    default: op
   restart_with_warning:
     description: Admins Only RS server with a warning
     usage: /restart_with_warning
+    default: op
   remHP:
     description: Removes HP Admins Only
     usage: /remHP
+    default: op
   addHP:
     description: Adds HP Admins Only
     usage: /AddHP
+    default: op
   LSwithdraw:
     description: Removes 1 heart
     usage: /LSwithdraw
+    default: op
   startEndFight:
     description: Start End Fight with all presets
     usage: /startEndFight
@@ -46,3 +51,4 @@ commands:
   giveMontuHelm:
     description: Gives the custom montu helmet Admin Only
     usage: /giveMontuHelm
+    default: op
