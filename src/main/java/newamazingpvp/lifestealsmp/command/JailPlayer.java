@@ -56,7 +56,7 @@ public class JailPlayer implements CommandExecutor {
             ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
             LeatherArmorMeta chestplateMeta = (LeatherArmorMeta) chestplate.getItemMeta();
             chestplateMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Prisoner Jumpsuit");
-            chestplateMeta.setColor(Color.fromRGB(255, 99, 9));
+            chestplateMeta.setColor(Color.fromRGB(255, 85, 0));
             chestplateMeta.setUnbreakable(true);
             List<String> CHESTPLATELORE = new ArrayList<>();
             CHESTPLATELORE.add(ChatColor.DARK_RED + "Given to people who are prisoners.");
@@ -70,7 +70,7 @@ public class JailPlayer implements CommandExecutor {
             ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
             LeatherArmorMeta leggingsMeta = (LeatherArmorMeta) leggings.getItemMeta();
             leggingsMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Prisoner Jumpsuit");
-            leggingsMeta.setColor(Color.fromRGB(255, 99, 9));
+            leggingsMeta.setColor(Color.fromRGB(255, 85, 0));
             leggingsMeta.setUnbreakable(true);
             List<String> LEGGINGSLORE = new ArrayList<>();
             LEGGINGSLORE.add(ChatColor.DARK_RED + "Given to people who are prisoners.");
@@ -83,7 +83,7 @@ public class JailPlayer implements CommandExecutor {
             ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
             LeatherArmorMeta bootsMeta = (LeatherArmorMeta) boots.getItemMeta();
             bootsMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Prisoner Jumpsuit");
-            bootsMeta.setColor(Color.fromRGB(255, 99, 9));
+            bootsMeta.setColor(Color.fromRGB(255, 85, 0));
             bootsMeta.setUnbreakable(true);
             List<String> BOOTSLORE = new ArrayList<>();
             BOOTSLORE.add(ChatColor.DARK_RED + "Given to people who are prisoners.");

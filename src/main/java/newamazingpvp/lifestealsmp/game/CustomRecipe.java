@@ -17,7 +17,7 @@ import static newamazingpvp.lifestealsmp.command.GiveSekhmetSetADMINONLY.getProf
 public class CustomRecipe {
     public static void registerCustomRecipes() {
 
-        ItemStack SekhmetSTAFF = new ItemStack(extraHeart());
+        /*ItemStack SekhmetSTAFF = new ItemStack(extraHeart());
         ShapedRecipe SekhmetSTAFFR = new ShapedRecipe(new NamespacedKey(lifestealSmp, "SekhmetSTAFF"), SekhmetSTAFF);
         SekhmetSTAFFR.shape("CXC", "DSD", "XNX");
         SekhmetSTAFFR.setIngredient('D', Material.DIAMOND_BLOCK);
@@ -25,7 +25,7 @@ public class CustomRecipe {
         SekhmetSTAFFR.setIngredient('C', corruptedMobSoul());
         SekhmetSTAFFR.setIngredient('S', severedMobHeart());
         SekhmetSTAFFR.setIngredient('X', Material.AIR);
-        Bukkit.addRecipe(SekhmetSTAFFR);
+        Bukkit.addRecipe(SekhmetSTAFFR);*/
 
         ItemStack extraHeart = new ItemStack(extraHeart());
         ShapedRecipe extraHeartRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "extra_heart"), extraHeart);
@@ -604,5 +604,20 @@ public class CustomRecipe {
         SekhmetSTAFF3.setItemMeta(SOPM);
 
         return SekhmetSTAFF3;
+    }
+
+    public static ItemStack AimingBow() {
+
+        ItemStack AimingBow  = new ItemStack(Material.BOW);
+        ItemMeta SOPM = AimingBow.getItemMeta();
+        SOPM.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Sekhmet's Staff");
+        List<String> SOPL = new ArrayList<>();
+        SOPL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Item Ability:");
+        SOPL.add(ChatColor.DARK_PURPLE + "All arrows will auto aim to players.");
+        SOPM.setLore(SOPL);
+        SOPM.setUnbreakable(true);
+        AimingBow.setItemMeta(SOPM);
+
+        return AimingBow;
     }
 }
