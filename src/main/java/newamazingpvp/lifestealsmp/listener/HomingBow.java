@@ -41,6 +41,10 @@ public class HomingBow implements Listener {
             @Override
             public void run() {
                 updateVelocity(arrow);
+                if(arrow.getTicksLived() >= 400){
+                    arrow.remove();
+                    cancel();
+                }
             }
         }.runTaskTimer(lifestealSmp, 0L, 1L);
     }
