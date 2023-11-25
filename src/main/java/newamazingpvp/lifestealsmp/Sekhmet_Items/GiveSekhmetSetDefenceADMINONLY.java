@@ -1,6 +1,8 @@
-package newamazingpvp.lifestealsmp.command;
+package newamazingpvp.lifestealsmp.Sekhmet_Items;
 
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -13,10 +15,10 @@ import java.net.URL;
 import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.*;
+import static newamazingpvp.lifestealsmp.game.CustomRecipe.SekhmetBOOT2;
 
-public class GiveSekhmetSetADMINONLY implements CommandExecutor {
-
-    private static final UUID RANDOM_UUID = UUID.fromString("92864445-51c5-4c3b-9039-517c9927d1b4"); // We reuse the same "random" UUID all the time
+public class GiveSekhmetSetDefenceADMINONLY implements CommandExecutor {
+    private static final UUID RANDOM_UUID = UUID.fromString("92864445-51c5-4c3b-9039-517c9927d1b5"); // We reuse the same "random" UUID all the time
 
     public static PlayerProfile getProfile(String url) {
         PlayerProfile profile = Bukkit.createPlayerProfile(RANDOM_UUID); // Get a new player profile
@@ -40,17 +42,7 @@ public class GiveSekhmetSetADMINONLY implements CommandExecutor {
             return true;
         }
 
-
-
-
         Player player = (Player) sender;
-
-
-        player.getInventory().addItem(SekhmetSTAFF1());
-
-        player.getInventory().addItem(SekhmetCHEST1());
-        player.getInventory().addItem(SekhmetLEG1());
-        player.getInventory().addItem(SekhmetBOOT1());
 
         player.getInventory().addItem(montuHelm());
 
