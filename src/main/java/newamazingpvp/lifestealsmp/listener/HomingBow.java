@@ -73,7 +73,7 @@ public class HomingBow implements Listener {
         if (target == null)
             return;
         arrow.setVelocity(generateNewVelocity(arrow, target));
-        arrow.getWorld().spawnParticle(Particle.HEART, arrow.getLocation(), 50, 0.5, 0.5, 0.5);
+        arrow.getWorld().spawnParticle(Particle.DRIP_LAVA, arrow.getLocation(), 50, 0.5, 0.5, 0.5);
     }
 
     private List<LivingEntity> getPotentialTargets(final AbstractArrow arrow) {
