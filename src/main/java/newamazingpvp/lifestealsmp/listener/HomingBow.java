@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.listener;
 
+import org.bukkit.FluidCollisionMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
@@ -9,16 +10,19 @@ import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static org.bukkit.Bukkit.getServer;
 
 public class HomingBow implements Listener {
+
+    private final Map<AbstractArrow, LivingEntity> arrowList = new HashMap<>();
+    private final Set<AbstractArrow> invalidsInList = new HashSet<>();
+
     @EventHandler
     public void onProjectileLaunch(ProjectileLaunchEvent event) {
         if (event.getEntity() instanceof Arrow) {
@@ -33,58 +37,83 @@ public class HomingBow implements Listener {
     }
 
     private void startHoming(Arrow arrow, Player shooter) {
-        new HomingArrowRunnable(arrow, shooter).runTaskTimer(lifestealSmp, 0L, 1L);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                updateVelocity(arrow);
+            }
+        }.runTaskTimer(lifestealSmp, 0L, 1L);
     }
 
     private boolean isHomingBow(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
         return item.getType() == Material.BOW && meta.getLore() != null && meta.getLore().toString().contains("Homing Arrows!");
     }
-}
 
-class HomingArrowRunnable extends BukkitRunnable {
-
-    private final Arrow arrow;
-    private Entity target;
-    private final Player shooter;
-
-    public HomingArrowRunnable(Arrow arrow, Player shooter) {
-        this.arrow = arrow;
-        this.shooter = shooter;
-    }
-
-    @Override
-    public void run() {
-        if (target == null || target.isDead()) {
-            setTarget();
-        }
-
-        if (arrow.isDead() || target == null || target.isDead()) {
-            cancel();
+    private void updateVelocity(AbstractArrow arrow) {
+        if (!isValid(arrow)) {
+            this.invalidsInList.add(arrow);
             return;
         }
-
-        Vector newVector = target.getBoundingBox().getCenter().subtract(arrow.getLocation().toVector()).normalize();
-        arrow.setVelocity(newVector);
+        LivingEntity target = this.arrowList.get(arrow);
+        if (target != null && isSeparatedByWall((Entity) arrow, target))
+            target = null;
+        if (target == null)
+            for (LivingEntity currentEntity : getPotentialTargets(arrow)) {
+                if (!isSeparatedByWall((Entity) arrow, currentEntity)) {
+                    target = currentEntity;
+                    break;
+                }
+            }
+        if (target == null)
+            return;
+        arrow.setVelocity(generateNewVelocity(arrow, target));
     }
 
-    private void setTarget() {
-        List<Entity> nearbyEntities = arrow.getNearbyEntities(100, 100, 100);
+    private List<LivingEntity> getPotentialTargets(final AbstractArrow arrow) {
+        int range = 50;
+        Collection<Entity> entities = arrow.getWorld().getNearbyEntities(arrow.getLocation(), range, range, range);
+        List<LivingEntity> aliveInFront = entities.stream()
+                .filter(e -> (e instanceof LivingEntity && ((LivingEntity) e).getEyeLocation().subtract(arrow.getLocation()).toVector().dot(arrow.getVelocity().normalize()) > 0.0D && !e.equals(arrow.getShooter())))
+                .map(e -> (LivingEntity) e)
+                .collect(Collectors.toList());
 
-        if (nearbyEntities.isEmpty()) {
-            cancel();
-            return;
-        }
+        aliveInFront.sort(Comparator.comparingDouble(o -> angle(o.getEyeLocation().subtract(arrow.getLocation()).toVector(), arrow.getVelocity())));
 
-        Optional<Entity> optionalEntity = nearbyEntities.stream()
-                //entity instanceof Player &&
-                .filter(entity -> !entity.equals(shooter) && (entity instanceof Mob || entity instanceof Player))
-                .min(Comparator.comparing(entity -> entity.getLocation().distanceSquared(arrow.getLocation())));
+        return aliveInFront;
+    }
+    double angle(Vector a, Vector b) {
+        return Math.acos(a.normalize().dot(b.normalize()));
+    }
 
-        target = optionalEntity.orElse(null);
+    private boolean isValid(AbstractArrow arrow) {
+        if (!arrow.isValid() || arrow.getVelocity().length() <= 0.0D || arrow.isInWater())
+            return false;
+        return true;
+    }
 
-        if (target == null) {
-            cancel();
-        }
+    private boolean isSeparatedByWall(Entity source, LivingEntity end) {
+        if (source == null || !source.isValid())
+            return true;
+        if (end == null || !end.isValid())
+            return true;
+        Location sourceLoc = source.getLocation();
+        Location endLoc = end.getEyeLocation();
+        if (!sourceLoc.getWorld().equals(endLoc.getWorld()))
+            return true;
+        Vector sourceToEnd = endLoc.subtract(sourceLoc).toVector();
+        RayTraceResult rayTraceResult = endLoc.getWorld().rayTraceBlocks(sourceLoc, sourceToEnd, sourceToEnd.length(), FluidCollisionMode.SOURCE_ONLY, true);
+        if (rayTraceResult == null)
+            return false;
+        return true;
+    }
+
+    private Vector generateNewVelocity(AbstractArrow arrow, LivingEntity target) {
+        Vector arrowToTarget = target.getEyeLocation().subtract(arrow.getLocation()).toVector();
+        Vector arrowPathUnitVec = arrow.getVelocity().normalize();
+        Vector projectedVec = arrowPathUnitVec.multiply(arrowToTarget.dot(arrowPathUnitVec));
+        Vector vectorUpwards = arrowToTarget.subtract(projectedVec);
+        Double speed = Double.valueOf(arrow.getVelocity().length());
+        return arrow.getVelocity().clone().add(vectorUpwards.multiply(0.04)).normalize().multiply(speed.doubleValue());
     }
 }
