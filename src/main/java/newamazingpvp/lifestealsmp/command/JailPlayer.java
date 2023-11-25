@@ -49,7 +49,7 @@ public class JailPlayer implements CommandExecutor {
         team.setPrefix("[Prisoner] ");
         team.addEntry(player.getName());
 
-        sender.sendMessage(ChatColor.GOLD + playerName + " is now a prisoner !");
+        sender.sendMessage(ChatColor.GOLD + playerName + " is now a prisoner!");
 
         if (player.getScoreboard().getEntryTeam(player.getName()).getName().equalsIgnoreCase("prisoner")) {
 
@@ -102,5 +102,4 @@ public class JailPlayer implements CommandExecutor {
         }
         return false;
     }
-
 }
