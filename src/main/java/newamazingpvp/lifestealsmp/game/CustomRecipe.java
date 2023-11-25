@@ -108,6 +108,12 @@ public class CustomRecipe {
         nethScrapsRecipe.addIngredient(1, Material.NETHERITE_INGOT);
         Bukkit.addRecipe(nethScrapsRecipe);
 
+        NamespacedKey homingBow = new NamespacedKey(lifestealSmp, "homing_bow");
+        ShapelessRecipe homingBowRecipe = new ShapelessRecipe(homingBow, createHomingBow());
+        homingBowRecipe.addIngredient(1, Material.ARROW);
+        homingBowRecipe.addIngredient(1, Material.NETHERITE_INGOT);
+        homingBowRecipe.addIngredient(1, Material.BOW);
+        Bukkit.addRecipe(homingBowRecipe);
     }
 
     private static ItemStack createCustomBow() {
@@ -150,6 +156,23 @@ public class CustomRecipe {
         meta.setDisplayName(ChatColor.GOLD + "TNT Bow");
         List<String> DEFL = new ArrayList<>();
         DEFL.add(ChatColor.GOLD + "Special Ability: " + ChatColor.DARK_PURPLE + "TNT Shooter!");
+        meta.setLore(DEFL);
+        meta.addItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+
+        customBow.setItemMeta(meta);
+
+        return customBow;
+    }
+
+    private static ItemStack createHomingBow() {
+        ItemStack customBow = new ItemStack(Material.BOW);
+
+        ItemMeta meta = customBow.getItemMeta();
+        //meta.setDisplayName(ChatColor.LIGHT_PURPLE + "Teleporting Bow");
+        meta.setDisplayName(ChatColor.GOLD + "Homing Bow");
+        List<String> DEFL = new ArrayList<>();
+        DEFL.add(ChatColor.GOLD + "Special Ability: " + ChatColor.DARK_PURPLE + "Homing Arrows!");
         meta.setLore(DEFL);
         meta.addItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);

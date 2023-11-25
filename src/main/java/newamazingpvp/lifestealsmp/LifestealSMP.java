@@ -92,6 +92,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new ChatFilter(), this);
         getServer().getPluginManager().registerEvents(new DetectArmorSetBonus1(), this);
         getServer().getPluginManager().registerEvents(new DetectArmorSetBonus2(), this);
+        getServer().getPluginManager().registerEvents(new HomingBow(), this);
         //getServer().getPluginManager().registerEvents(new GracePeriod(), this);
         int repeatDelayTicks = 7200 * 20;
         BukkitRunnable broadcastTask = new BukkitRunnable() {
@@ -110,13 +111,13 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
             }
         }.runTaskTimer(this, 0L, 20L);
         scheduleRestart();
-        intializeBot();
+        /*intializeBot();
         new BukkitRunnable() {
             @Override
             public void run() {
                 sendDiscordEmbedTitle("Bot intialized", Color.MAGENTA, "");
             }
-        }.runTaskLater(this, 120);
+        }.runTaskLater(this, 120);*/
 
     }
 
