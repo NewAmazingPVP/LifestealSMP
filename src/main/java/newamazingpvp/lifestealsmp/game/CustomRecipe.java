@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.command.GiveSekhmetSetADMINONLY.getProfile;
+import static newamazingpvp.lifestealsmp.Sekhmet_Items.GiveSekhmetSetSpeedADMINONLY.getProfile;
 
 public class CustomRecipe {
     public static void registerCustomRecipes() {
@@ -308,12 +308,27 @@ public class CustomRecipe {
         SkullMeta meta = (SkullMeta) montuHelm.getItemMeta();
         meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Sekhmet's Helmet");
         List<String> SOPL = new ArrayList<>();
-        SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Required for Sekhmet's staff");
+        SOPL.add(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Required for Ancient Wand");
         meta.setLore(SOPL);
         meta.setOwnerProfile(profile);
         montuHelm.setItemMeta(meta);
 
         return montuHelm;
+    }
+
+    public static ItemStack AquaHealm() {
+
+        PlayerProfile profileaqua = getProfile("http://textures.minecraft.net/texture/d3530b3109d80796035d3cff3973b70e2cb73b925389f06cd4314a76099ba1d");
+        ItemStack AquaHealm = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta meta = (SkullMeta) AquaHealm.getItemMeta();
+        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Diver Helmet");
+        List<String> SOPL = new ArrayList<>();
+        SOPL.add(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Required for Aqua Wand");
+        meta.setLore(SOPL);
+        meta.setOwnerProfile(profileaqua);
+        AquaHealm.setItemMeta(meta);
+
+        return AquaHealm;
     }
 
     public static ItemStack SekhmetCHEST1() {
