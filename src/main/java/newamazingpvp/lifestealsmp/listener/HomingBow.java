@@ -3,6 +3,7 @@ package newamazingpvp.lifestealsmp.listener;
 import org.bukkit.FluidCollisionMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.entity.*;
 import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
@@ -72,6 +73,7 @@ public class HomingBow implements Listener {
         if (target == null)
             return;
         arrow.setVelocity(generateNewVelocity(arrow, target));
+        arrow.getWorld().spawnParticle(Particle.HEART, arrow.getLocation(), 50, 0.5, 0.5, 0.5);
     }
 
     private List<LivingEntity> getPotentialTargets(final AbstractArrow arrow) {
