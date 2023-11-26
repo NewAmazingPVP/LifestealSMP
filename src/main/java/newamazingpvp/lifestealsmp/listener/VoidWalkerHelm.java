@@ -30,7 +30,7 @@ public class VoidWalkerHelm implements Listener {
 
 
         if (helmet.getType().equals(Material.PLAYER_HEAD)) {
-            if (meta == null && meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + " LL")) {
+            if (meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + " LL")) {
                 player.addScoreboardTag("voidwalker");
                 player.sendMessage("added");
             } else {
