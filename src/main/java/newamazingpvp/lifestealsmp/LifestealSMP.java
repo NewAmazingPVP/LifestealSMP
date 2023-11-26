@@ -1,5 +1,7 @@
 package newamazingpvp.lifestealsmp;
 
+import newamazingpvp.lifestealsmp.CustomItemDrops.CustomHeartItems;
+import newamazingpvp.lifestealsmp.CustomItemDrops.SekhmetStaffDrops;
 import newamazingpvp.lifestealsmp.LegacyMontuStaff.MontuStaffLeft;
 import newamazingpvp.lifestealsmp.LegacyMontuStaff.MontuStaffRight;
 import newamazingpvp.lifestealsmp.LegacyMontuStaff.MontuStaffShiftLeft;
