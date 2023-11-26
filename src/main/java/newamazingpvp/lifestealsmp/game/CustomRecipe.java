@@ -21,7 +21,7 @@ import static newamazingpvp.lifestealsmp.Sekhmet_Items.GiveSekhmetSetSpeedADMINO
 public class CustomRecipe {
     public static void registerCustomRecipes() {
 
-        /*ItemStack SekhmetSTAFF = new ItemStack(extraHeart());
+        ItemStack SekhmetSTAFF = new ItemStack(extraHeart());
         ShapedRecipe SekhmetSTAFFR = new ShapedRecipe(new NamespacedKey(lifestealSmp, "SekhmetSTAFF"), SekhmetSTAFF);
         SekhmetSTAFFR.shape("CXC", "DSD", "XNX");
         SekhmetSTAFFR.setIngredient('D', Material.DIAMOND_BLOCK);
@@ -29,7 +29,7 @@ public class CustomRecipe {
         SekhmetSTAFFR.setIngredient('C', corruptedMobSoul());
         SekhmetSTAFFR.setIngredient('S', severedMobHeart());
         SekhmetSTAFFR.setIngredient('X', Material.AIR);
-        Bukkit.addRecipe(SekhmetSTAFFR);*/
+        Bukkit.addRecipe(SekhmetSTAFFR);
 
         ItemStack extraHeart = new ItemStack(extraHeart());
         ShapedRecipe extraHeartRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "extra_heart"), extraHeart);
@@ -356,7 +356,7 @@ public class CustomRecipe {
         PlayerProfile profileVOID = getProfile("http://textures.minecraft.net/texture/d3530b3109d80796035d3cff3973b70e2cb73b925389f06cd4314a76099ba1d");
         ItemStack VoidWalkerHEALM = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) VoidWalkerHEALM.getItemMeta();
-        meta.setDisplayName(ChatColor.BLACK + "" + ChatColor.MAGIC + "LL" + ChatColor.BLACK + "" + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.BLACK + "" + ChatColor.MAGIC + "LL");
+        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + " LL");
         List<String> SOPL = new ArrayList<>();
         SOPL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Item Ability:");
         SOPL.add(ChatColor.DARK_PURPLE + "When in the end, you will gain");
