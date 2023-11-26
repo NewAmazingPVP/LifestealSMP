@@ -52,7 +52,6 @@ public class GiveSekhmetSetSpeedADMINONLY implements CommandExecutor {
 
         player.getInventory().addItem(AquaHealm());
 
-        player.getInventory().addItem(VoidWalkerHEALM());
 
 
 

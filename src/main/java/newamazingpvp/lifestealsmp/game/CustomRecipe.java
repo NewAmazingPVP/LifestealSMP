@@ -21,15 +21,17 @@ import static newamazingpvp.lifestealsmp.Sekhmet_Items.GiveSekhmetSetSpeedADMINO
 public class CustomRecipe {
     public static void registerCustomRecipes() {
 
-        ItemStack SekhmetSTAFF = new ItemStack(extraHeart());
-        ShapedRecipe SekhmetSTAFFR = new ShapedRecipe(new NamespacedKey(lifestealSmp, "SekhmetSTAFF"), SekhmetSTAFF);
-        SekhmetSTAFFR.shape("CXC", "DSD", "XNX");
-        SekhmetSTAFFR.setIngredient('D', Material.DIAMOND_BLOCK);
-        SekhmetSTAFFR.setIngredient('N', Material.NETHERITE_INGOT);
-        SekhmetSTAFFR.setIngredient('C', corruptedMobSoul());
-        SekhmetSTAFFR.setIngredient('S', severedMobHeart());
-        SekhmetSTAFFR.setIngredient('X', Material.AIR);
-        Bukkit.addRecipe(SekhmetSTAFFR);
+        ItemStack VWH = new ItemStack(VoidWalkerHEALM());
+        ShapedRecipe VWHR = new ShapedRecipe(new NamespacedKey(lifestealSmp, "VoidWalkerHealmR"), VWH);
+        VWHR.shape("DAD", "BXB", "TNT");
+        VWHR.setIngredient('D', Material.DIAMOND_BLOCK,5);
+        VWHR.setIngredient('N', Material.NETHERITE_INGOT,3);
+        VWHR.setIngredient('B', Material.BEACON);
+        VWHR.setIngredient('X', Material.DRAGON_HEAD);
+        VWHR.setIngredient('T', Material.DRAGON_BREATH);
+        VWHR.setIngredient('A', antimatterVile());
+
+        Bukkit.addRecipe(VWHR);
 
         ItemStack extraHeart = new ItemStack(extraHeart());
         ShapedRecipe extraHeartRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "extra_heart"), extraHeart);
