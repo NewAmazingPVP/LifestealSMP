@@ -29,17 +29,25 @@ public class VoidWalkerHelm implements Listener {
         ItemMeta meta = helmet.getItemMeta();
 
 
-        /*if (helmet == null && helmet.getType().equals(Material.PLAYER_HEAD)) {*/
+        if (helmet == null && helmet.getType().equals(Material.PLAYER_HEAD)) {
             if (meta == null && meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + " LL")) {
                 player.addScoreboardTag("voidwalker");
                 player.sendMessage("added");
+            } else {
+                player.removeScoreboardTag("voidwalker");
+                player.sendMessage("removed");
             }
-
-        if (helmet != null && helmet.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + " LL")) {
+        } else {
             player.removeScoreboardTag("voidwalker");
             player.sendMessage("removed");
         }
     }
+
+        /*if (helmet != null && helmet.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + " LL")) {
+            player.removeScoreboardTag("voidwalker");
+            player.sendMessage("removed");
+        }
+    }*/
 
     @EventHandler
     public void onPlayerInteract(PlayerMoveEvent event) {
