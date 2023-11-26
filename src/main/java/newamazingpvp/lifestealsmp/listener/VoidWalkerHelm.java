@@ -1,0 +1,51 @@
+package newamazingpvp.lifestealsmp.listener;
+
+import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
+
+import java.util.EventListener;
+
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+
+public class VoidWalkerHelm implements Listener {
+
+    @EventHandler
+    public void onPlayerInteract(PlayerArmorChangeEvent event) {
+        Player player = event.getPlayer();
+        ItemStack helmet = player.getInventory().getHelmet();
+        ItemMeta meta = helmet.getItemMeta();
+
+
+        if (helmet != null && helmet.getType().equals(Material.PLAYER_HEAD)) {
+            if (meta != null && meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + " LL")) {
+                player.addScoreboardTag("void-walker");
+            } else {
+                player.removeScoreboardTag("void-walker");
+            }
+        } else {
+            player.removeScoreboardTag("void-walker");
+        }
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    if (player.hasMetadata("void-walker")) {
+                        player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 2));
+                        player.sendMessage("Test Successful!");
+                    }
+                }
+            }
+        }.runTaskTimer(lifestealSmp, 0L, 1L);
+    }
+}
