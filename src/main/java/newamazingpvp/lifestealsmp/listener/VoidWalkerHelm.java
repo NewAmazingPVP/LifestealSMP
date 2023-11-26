@@ -31,13 +31,16 @@ public class VoidWalkerHelm implements Listener {
         if (helmet != null && helmet.getType().equals(Material.PLAYER_HEAD)) {
             if (meta != null && meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + " LL")) {
                 player.addScoreboardTag("void-walker");
+                player.sendMessage("test1");
             } else {
                 player.removeScoreboardTag("void-walker");
+                player.sendMessage("test2");
             }
         } else {
             player.removeScoreboardTag("void-walker");
+            player.sendMessage("test2");
         }
-        new BukkitRunnable() {
+        /*new BukkitRunnable() {
             @Override
             public void run() {
                 for (Player player : Bukkit.getOnlinePlayers()) {
@@ -47,7 +50,7 @@ public class VoidWalkerHelm implements Listener {
                     }
                 }
             }
-        }.runTaskTimer(lifestealSmp, 0L, 1L);
+        }.runTaskTimer(lifestealSmp, 0L, 1L);*/
     }
 
     @EventHandler
