@@ -93,7 +93,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new ChatFilter(), this);
         getServer().getPluginManager().registerEvents(new HomingBow(), this);
         getServer().getPluginManager().registerEvents(new OtherCustomDrops(), this);
-        getServer().getPluginManager().registerEvents(new VoidWalkerHelm(), this);
+        //getServer().getPluginManager().registerEvents(new VoidWalkerHelm(), this);
+        getServer().getPluginManager().registerEvents(new VoidWalkerHelmEffects(), this);
         //getServer().getPluginManager().registerEvents(new GracePeriod(), this);
         int repeatDelayTicks = 7200 * 20;
         BukkitRunnable broadcastTask = new BukkitRunnable() {
