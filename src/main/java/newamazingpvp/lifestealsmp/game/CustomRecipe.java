@@ -7,9 +7,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.profile.PlayerProfile;
+import org.bukkit.profile.PlayerTextures;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.Sekhmet_Items.GiveSekhmetSetSpeedADMINONLY.getProfile;
@@ -318,7 +322,7 @@ public class CustomRecipe {
 
     public static ItemStack AquaHealm() {
 
-        PlayerProfile profileaqua = getProfile("http://textures.minecraft.net/texture/d3530b3109d80796035d3cff3973b70e2cb73b925389f06cd4314a76099ba1d");
+        PlayerProfile profileaqua = getProfile("http://textures.minecraft.net/texture/7b40b3f16a2dc24106780090f485c9b5866d66e77e6f900292a0527b60d174f2");
         ItemStack AquaHealm = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) AquaHealm.getItemMeta();
         meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Diver Helmet");
@@ -330,6 +334,38 @@ public class CustomRecipe {
 
         return AquaHealm;
     }
+
+    private static final UUID RANDOM_UUID = UUID.fromString("92864445-51c5-4c3b-9039-517c9927d1c7"); // We reuse the same "random" UUID all the time
+
+    public static PlayerProfile getProfile(String url) {
+        PlayerProfile profileVOID = Bukkit.createPlayerProfile(RANDOM_UUID); // Get a new player profile
+        PlayerTextures textures = profileVOID.getTextures();
+        URL urlObject;
+        try {
+            urlObject = new URL(url); // The URL to the skin
+        } catch (MalformedURLException exception) {
+            throw new RuntimeException("Invalid URL", exception);
+        }
+        textures.setSkin(urlObject); // Set the skin of the player profile to the URL
+        profileVOID.setTextures(textures); // Set the textures back to the profile
+        return profileVOID;
+    }
+
+    public static ItemStack VoidWalkerHEALM() {
+
+        PlayerProfile profileVOID = getProfile("http://textures.minecraft.net/texture/d3530b3109d80796035d3cff3973b70e2cb73b925389f06cd4314a76099ba1d");
+        ItemStack VoidWalkerHEALM = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta meta = (SkullMeta) VoidWalkerHEALM.getItemMeta();
+        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Diver Helmet");
+        List<String> SOPL = new ArrayList<>();
+        SOPL.add(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Required for Aqua Wand");
+        meta.setLore(SOPL);
+        meta.setOwnerProfile(profileVOID);
+        VoidWalkerHEALM.setItemMeta(meta);
+
+        return VoidWalkerHEALM;
+    }
+
 
     public static ItemStack SekhmetCHEST1() {
 
@@ -551,5 +587,20 @@ public class CustomRecipe {
         AimingBow.setItemMeta(SOPM);
 
         return AimingBow;
+    }
+
+    public static ItemStack antimatterVile() {
+
+        ItemStack antimatterVile  = new ItemStack(Material.ECHO_SHARD);
+        ItemMeta SOPM = antimatterVile.getItemMeta();
+        SOPM.addEnchant(Enchantment.DURABILITY, 1, false);
+        SOPM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        SOPM.setDisplayName(ChatColor.BLACK + "" + ChatColor.BOLD + "Antimatter Vile");
+        List<String> SOPL = new ArrayList<>();
+        SOPL.add(ChatColor.AQUA + "Used to craft the" + ChatColor.BLACK + " Void Walker" + ChatColor.AQUA + " helmet.");
+        SOPM.setLore(SOPL);
+        antimatterVile.setItemMeta(SOPM);
+
+        return antimatterVile;
     }
 }
