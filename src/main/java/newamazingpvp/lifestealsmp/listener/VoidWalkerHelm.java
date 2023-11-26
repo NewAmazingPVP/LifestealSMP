@@ -49,7 +49,7 @@ public class VoidWalkerHelm implements Listener {
         ItemStack helmet = player.getInventory().getHelmet();
         ItemMeta meta = helmet.getItemMeta();
 
-        player.sendMessage("Armor Change Detected");
+        player.sendMessage("test1111111111111");
 
         if (helmet.getType().equals(Material.PLAYER_HEAD)) {
             if (meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + " LL")) {
