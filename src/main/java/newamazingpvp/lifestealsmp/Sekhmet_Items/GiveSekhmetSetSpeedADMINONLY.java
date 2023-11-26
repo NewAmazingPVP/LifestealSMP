@@ -52,6 +52,8 @@ public class GiveSekhmetSetSpeedADMINONLY implements CommandExecutor {
 
         player.getInventory().addItem(AquaHealm());
 
+        player.getInventory().addItem(VoidWalkerHEALM());
+
 
 
         player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
