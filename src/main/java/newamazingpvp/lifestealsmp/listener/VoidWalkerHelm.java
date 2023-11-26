@@ -7,6 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
@@ -40,24 +41,7 @@ public class VoidWalkerHelm implements Listener {
             player.removeScoreboardTag("void-walker");
             player.sendMessage("test2");
         }
-
-
-
-        /*new BukkitRunnable() {
-            @Override
-            public void run() {
-                for (Player player : Bukkit.getOnlinePlayers()) {
-                    if (player.hasMetadata("void-walker")) {
-                        player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 40, 2));
-                        player.sendMessage("Test Successful!");
-                    }
-                }
-            }
-        }.runTaskTimer(lifestealSmp, 0L, 1L);*/
     }
-
-
-
 
     @EventHandler
     public void onPlayerInteract(PlayerMoveEvent event) {
@@ -66,6 +50,14 @@ public class VoidWalkerHelm implements Listener {
         if (player.getScoreboardTags().contains("void-walker")) {
             event.setCancelled(true);
         }
+    }
+
+    @EventHandler
+    public void onPlayerInteract(BlockPlaceEvent event) {
+        Player player = event.getPlayer();
+
+        player.removeScoreboardTag("void-walker");
+
     }
 }
 
