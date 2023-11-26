@@ -40,6 +40,9 @@ public class VoidWalkerHelm implements Listener {
             player.removeScoreboardTag("void-walker");
             player.sendMessage("test2");
         }
+
+
+
         /*new BukkitRunnable() {
             @Override
             public void run() {
@@ -53,13 +56,16 @@ public class VoidWalkerHelm implements Listener {
         }.runTaskTimer(lifestealSmp, 0L, 1L);*/
     }
 
+
+
+
     @EventHandler
     public void onPlayerInteract(PlayerMoveEvent event) {
         Player player = event.getPlayer();
 
-        if (player.hasMetadata("void-walker")) {
+        if (player.getScoreboardTags().contains("void-walker")) {
             event.setCancelled(true);
-
         }
     }
 }
+
