@@ -35,11 +35,11 @@ public class VoidWalkerHelm implements Listener {
                 player.sendMessage("added");
             } else {
                 player.removeScoreboardTag("voidwalker");
-                player.sendMessage("removed");
+                player.sendMessage("removed1");
             }
         } else {
             player.removeScoreboardTag("voidwalker");
-            player.sendMessage("removed");
+            player.sendMessage("removed2");
         }
     }
 
