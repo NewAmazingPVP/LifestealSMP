@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp;
 
 import newamazingpvp.lifestealsmp.CustomItemDrops.CustomHeartItems;
+import newamazingpvp.lifestealsmp.CustomItemDrops.OtherCustomDrops;
 import newamazingpvp.lifestealsmp.CustomItemDrops.SekhmetStaffDrops;
 import newamazingpvp.lifestealsmp.LegacyMontuStaff.MontuStaffLeft;
 import newamazingpvp.lifestealsmp.LegacyMontuStaff.MontuStaffRight;
@@ -91,6 +92,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new PlayerJoiningServer(), this);
         getServer().getPluginManager().registerEvents(new ChatFilter(), this);
         getServer().getPluginManager().registerEvents(new HomingBow(), this);
+        getServer().getPluginManager().registerEvents(new OtherCustomDrops(), this);
         //getServer().getPluginManager().registerEvents(new GracePeriod(), this);
         int repeatDelayTicks = 7200 * 20;
         BukkitRunnable broadcastTask = new BukkitRunnable() {
