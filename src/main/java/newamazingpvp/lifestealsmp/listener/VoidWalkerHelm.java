@@ -35,16 +35,16 @@ public class VoidWalkerHelm implements Listener {
                 player.sendMessage("added");
             }
         }
-        /*if (helmet != null && helmet.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + " LL")) {
+        if (helmet != null && helmet.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + " LL")) {
             player.removeScoreboardTag("voidwalker");
-        }*/
+        }
     }
 
     @EventHandler
     public void onPlayerInteract(PlayerMoveEvent event) {
         Player player = event.getPlayer();
 
-        if (player.getScoreboardTags().contains("void-walker")) {
+        if (player.getScoreboardTags().contains("voidwalker")) {
             event.setCancelled(true);
         }
     }
@@ -53,7 +53,7 @@ public class VoidWalkerHelm implements Listener {
     public void onPlayerInteract(BlockPlaceEvent event) {
         Player player = event.getPlayer();
 
-        player.removeScoreboardTag("void-walker");
+        player.removeScoreboardTag("voidwalker");
 
     }
 }
