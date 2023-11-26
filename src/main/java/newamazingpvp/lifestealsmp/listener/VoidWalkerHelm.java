@@ -8,6 +8,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
@@ -42,17 +44,29 @@ public class VoidWalkerHelm implements Listener {
             player.removeScoreboardTag("voidwalker");
             player.sendMessage("removed2");
         }
-        if (helmet.getType().equals(Material.AIR)) {
-            player.removeScoreboardTag("voidwalker");
-            player.sendMessage("removed3");
-        }
     }
 
-        /*if (helmet != null && helmet.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + " LL")) {
+    @EventHandler
+    public void onPlayerInteract(InventoryClickEvent event) {
+        Player player = (Player) event.getWhoClicked();
+        ItemStack helmet = player.getInventory().getHelmet();
+        ItemMeta meta = helmet.getItemMeta();
+
+        player.sendMessage("Armor Change Detected");
+
+        if (helmet.getType().equals(Material.PLAYER_HEAD)) {
+            if (meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + " LL")) {
+                player.addScoreboardTag("voidwalker");
+                player.sendMessage("added11");
+            } else {
+                player.removeScoreboardTag("voidwalker");
+                player.sendMessage("removed111");
+            }
+        } else {
             player.removeScoreboardTag("voidwalker");
-            player.sendMessage("removed");
+            player.sendMessage("removed222");
         }
-    }*/
+    }
 
     @EventHandler
     public void onPlayerInteract(PlayerMoveEvent event) {
