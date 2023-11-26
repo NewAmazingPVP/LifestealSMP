@@ -1,9 +1,7 @@
 package newamazingpvp.lifestealsmp.listener;
 
 import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -30,24 +28,23 @@ public class VoidWalkerHelm implements Listener {
         ItemStack helmet = player.getInventory().getHelmet();
         ItemMeta meta = helmet.getItemMeta();
 
-        player.sendMessage("Armor Change Detected");
 
         if (helmet.getType().equals(Material.PLAYER_HEAD)) {
             if (meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + " LL")) {
                 player.addScoreboardTag("voidwalker");
-                player.sendMessage("added");
+                player.sendMessage("added because armor chaned");
             } else {
                 player.removeScoreboardTag("voidwalker");
-                player.sendMessage("removed1");
+                player.sendMessage("removed because armor changed not named correct");
             }
         } else {
             player.removeScoreboardTag("voidwalker");
-            player.sendMessage("removed2");
+            player.sendMessage("removed because armor changed not correct item");
         }
     }
 
     @EventHandler
-    public void onPlayerInteract(InventoryClickEvent event) {
+    public void onPlayerInteract(InventoryInteractEvent event) {
         Player player = (Player) event.getWhoClicked();
         ItemStack helmet = player.getInventory().getHelmet();
         ItemMeta meta = helmet.getItemMeta();
@@ -57,16 +54,17 @@ public class VoidWalkerHelm implements Listener {
         if (helmet.getType().equals(Material.PLAYER_HEAD)) {
             if (meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + " LL")) {
                 player.addScoreboardTag("voidwalker");
-                player.sendMessage("added11");
+                player.sendMessage("added because invintory click");
             } else {
                 player.removeScoreboardTag("voidwalker");
-                player.sendMessage("removed111");
+                player.sendMessage("removed because invintory click not correct name");
             }
         } else {
             player.removeScoreboardTag("voidwalker");
-            player.sendMessage("removed222");
+            player.sendMessage("removed because invintory click not correct item");
         }
     }
+
 
     @EventHandler
     public void onPlayerInteract(PlayerMoveEvent event) {
