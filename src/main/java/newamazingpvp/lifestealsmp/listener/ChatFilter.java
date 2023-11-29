@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
@@ -41,22 +42,43 @@ public class ChatFilter implements Listener {
 
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
-        String message = event.getMessage();
+        String originalMessage = event.getMessage();
         Player player = event.getPlayer();
 
-        if (containsBlacklistedWord(message)) {
-            event.setCancelled(true);
-            player.sendMessage(ChatColor.RED + "Don't say inappropriate / offensive words in chat!");
+        String censoredMessage = censorBlacklistedWords(originalMessage);
+
+        if (!originalMessage.equals(censoredMessage)) {
+            event.setMessage(censoredMessage);
+            player.sendMessage(ChatColor.RED + "Some words in your message were inappropriate and have been censored.");
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
         }
     }
 
-    private boolean containsBlacklistedWord(String message) {
+    private String censorBlacklistedWords(String message) {
+        String messageWithoutSpaces = message.replaceAll(" ", "");
+
         for (String word : blacklistWords) {
-            if (message.toLowerCase().contains(word.toLowerCase())) {
-                return true;
+            String regex = "(?i)" + Pattern.quote(word);
+            String replacement = "*".repeat(word.length());
+            messageWithoutSpaces = messageWithoutSpaces.replaceAll(regex, replacement);
+        }
+
+        StringBuilder censoredMessage = new StringBuilder();
+        int spaceIndex = 0;
+        for (char c : message.toCharArray()) {
+            if (c == ' ') {
+                censoredMessage.append(c);
+            } else {
+                // Ensure spaceIndex does not exceed the length of messageWithoutSpaces
+                if (spaceIndex < messageWithoutSpaces.length()) {
+                    censoredMessage.append(messageWithoutSpaces.charAt(spaceIndex));
+                }
+                spaceIndex++;
             }
         }
-        return false;
+
+        return censoredMessage.toString();
     }
+
+
 }
