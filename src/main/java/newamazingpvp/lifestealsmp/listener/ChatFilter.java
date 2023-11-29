@@ -14,12 +14,15 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static org.bukkit.Bukkit.getServer;
+
 public class ChatFilter implements Listener {
     public static final ArrayList<String> blacklistWords = new ArrayList<>();
 
     public static void initializeBlacklist() {
         try {
-            Scanner input = new Scanner(new File("blacklist.csv"));
+            Scanner input = new Scanner(new File(lifestealSmp.getDataFolder().getAbsolutePath() + File.separator + "blacklist.csv"));
             while (input.hasNextLine()) {
                 String[] temp = input.nextLine().split(",");
                 List<String> words = Arrays.asList(temp);
@@ -40,11 +43,20 @@ public class ChatFilter implements Listener {
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         String message = event.getMessage();
         Player player = event.getPlayer();
-        if (blacklistWords.contains(message)) {
+
+        if (containsBlacklistedWord(message)) {
             event.setCancelled(true);
-            player.sendMessage(ChatColor.RED + "You can not say inappropriate / offensive words in chat!");
+            player.sendMessage(ChatColor.RED + "Don't say inappropriate / offensive words in chat!");
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
         }
+    }
 
+    private boolean containsBlacklistedWord(String message) {
+        for (String word : blacklistWords) {
+            if (message.toLowerCase().contains(word.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
     }
 }
