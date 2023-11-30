@@ -8,6 +8,7 @@ import newamazingpvp.lifestealsmp.LegacyMontuStaff.MontuStaffRight;
 import newamazingpvp.lifestealsmp.LegacyMontuStaff.MontuStaffShiftLeft;
 import newamazingpvp.lifestealsmp.LegacyMontuStaff.MontuStaffShiftRight;
 import newamazingpvp.lifestealsmp.Sekhmet_Items.GiveSekhmetSetSpeedADMINONLY;
+import newamazingpvp.lifestealsmp.Sekhmet_Items.testNoBlockBreak;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.game.Compass;
 import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
@@ -98,6 +99,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         //getServer().getPluginManager().registerEvents(new VoidWalkerHelm(), this);
         getServer().getPluginManager().registerEvents(new VoidWalkerHelmEffects(), this);
         //getServer().getPluginManager().registerEvents(new GracePeriod(), this);
+        getServer().getPluginManager().registerEvents(new testNoBlockBreak(), this);
         int repeatDelayTicks = 7200 * 20;
         BukkitRunnable broadcastTask = new BukkitRunnable() {
             @Override
