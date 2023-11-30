@@ -5,7 +5,8 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.requests.GatewayIntent;
-import newamazingpvp.lifestealsmp.dccommands.Stats;
+import newamazingpvp.lifestealsmp.discord.Moderation;
+import newamazingpvp.lifestealsmp.discord.Stats;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.awt.*;
@@ -26,6 +27,7 @@ public class DiscordBot {
         jdaBuilder.enableIntents(allIntents);
         jda = jdaBuilder.build();
         jda.addEventListener((new Stats()));
+        jda.addEventListener((new Moderation()));
         new BukkitRunnable() {
             @Override
             public void run() {
