@@ -2,7 +2,10 @@ package newamazingpvp.lifestealsmp.game;
 
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.*;
+import org.bukkit.inventory.ItemFlag;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -23,8 +26,8 @@ public class CustomRecipe {
         ItemStack VWH = new ItemStack(VoidWalkerHEALM());
         ShapedRecipe VWHR = new ShapedRecipe(new NamespacedKey(lifestealSmp, "VoidWalkerHealmR"), VWH);
         VWHR.shape("DAD", "BXB", "TNT");
-        VWHR.setIngredient('D', Material.DIAMOND_BLOCK,5);
-        VWHR.setIngredient('N', Material.NETHERITE_INGOT,3);
+        VWHR.setIngredient('D', Material.DIAMOND_BLOCK, 5);
+        VWHR.setIngredient('N', Material.NETHERITE_INGOT, 3);
         VWHR.setIngredient('B', Material.BEACON);
         VWHR.setIngredient('X', Material.DRAGON_HEAD);
         VWHR.setIngredient('T', Material.DRAGON_BREATH);
@@ -246,7 +249,7 @@ public class CustomRecipe {
         ItemMeta soulM = corruptedMobSoul.getItemMeta();
         soulM.addEnchant(Enchantment.DURABILITY, 1, false);
         soulM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        soulM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL" + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Co" + ChatColor.MAGIC + "r" + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "rupted Mob Soul" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL");
+        soulM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "Co" + ChatColor.MAGIC + "r" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "rupted Mob Soul" + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "LL");
         soulM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> soulL = new ArrayList<>();
         soulL.add(ChatColor.AQUA + "U$e To Cr" + ChatColor.MAGIC + "a" + ChatColor.AQUA + "ft Extra Hearts!" + ChatColor.MAGIC + "L");
@@ -278,7 +281,7 @@ public class CustomRecipe {
         ItemMeta EheartM = extraHeart.getItemMeta();
         EheartM.addEnchant(Enchantment.DURABILITY, 1, false);
         EheartM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        EheartM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL" + ChatColor.DARK_RED + ChatColor.BOLD + "Extra Heart" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL");
+        EheartM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL" + ChatColor.DARK_RED + ChatColor.BOLD + "Extra Heart" + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "LL");
         EheartM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> EheartL = new ArrayList<>();
         EheartL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Right Click:" + ChatColor.DARK_PURPLE + " For +1 Heart!");
@@ -357,7 +360,7 @@ public class CustomRecipe {
         PlayerProfile profileVOID = getProfile("http://textures.minecraft.net/texture/d3530b3109d80796035d3cff3973b70e2cb73b925389f06cd4314a76099ba1d");
         ItemStack VoidWalkerHEALM = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) VoidWalkerHEALM.getItemMeta();
-        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + " LL");
+        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + " LL");
         List<String> SOPL = new ArrayList<>();
         SOPL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Item Ability:");
         SOPL.add(ChatColor.DARK_PURPLE + "When in the end, you will gain");
@@ -365,7 +368,7 @@ public class CustomRecipe {
         SOPL.add(ChatColor.DARK_PURPLE + "and strength 2!");
         SOPL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Item Ability #2:");
         SOPL.add(ChatColor.DARK_PURPLE + "If crouching, when you place");
-        SOPL.add(ChatColor.DARK_PURPLE + "obsidian a unstable Enderman" );
+        SOPL.add(ChatColor.DARK_PURPLE + "obsidian a unstable Enderman");
         SOPL.add(ChatColor.DARK_PURPLE + "that will fight for you!");
         SOPL.add(ChatColor.GRAY + "(one at a time)");
         meta.setLore(SOPL);
@@ -483,7 +486,7 @@ public class CustomRecipe {
 
     public static ItemStack SekhmetSTAFF1() {
 
-        ItemStack SekhmetSTAFF1  = new ItemStack(Material.STICK);
+        ItemStack SekhmetSTAFF1 = new ItemStack(Material.STICK);
         ItemMeta SOPM = SekhmetSTAFF1.getItemMeta();
         SOPM.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Sekhmet's Staff");
         List<String> SOPL = new ArrayList<>();
@@ -517,7 +520,7 @@ public class CustomRecipe {
 
     public static ItemStack SekhmetSTAFF2() {
 
-        ItemStack SekhmetSTAFF2  = new ItemStack(Material.STICK);
+        ItemStack SekhmetSTAFF2 = new ItemStack(Material.STICK);
         ItemMeta SOPM = SekhmetSTAFF2.getItemMeta();
         SOPM.setDisplayName(ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "Sekhmet's Staff");
         List<String> SOPL = new ArrayList<>();
@@ -551,7 +554,7 @@ public class CustomRecipe {
 
     public static ItemStack SekhmetSTAFF3() {
 
-        ItemStack SekhmetSTAFF3  = new ItemStack(Material.STICK);
+        ItemStack SekhmetSTAFF3 = new ItemStack(Material.STICK);
         ItemMeta SOPM = SekhmetSTAFF3.getItemMeta();
         SOPM.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Sekhmet's Staff");
         List<String> SOPL = new ArrayList<>();
@@ -585,7 +588,7 @@ public class CustomRecipe {
 
     public static ItemStack AimingBow() {
 
-        ItemStack AimingBow  = new ItemStack(Material.BOW);
+        ItemStack AimingBow = new ItemStack(Material.BOW);
         ItemMeta SOPM = AimingBow.getItemMeta();
         SOPM.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Heat Seeking Bow");
         List<String> SOPL = new ArrayList<>();
@@ -600,7 +603,7 @@ public class CustomRecipe {
 
     public static ItemStack antimatterVile() {
 
-        ItemStack antimatterVile  = new ItemStack(Material.ECHO_SHARD);
+        ItemStack antimatterVile = new ItemStack(Material.ECHO_SHARD);
         ItemMeta SOPM = antimatterVile.getItemMeta();
         SOPM.addEnchant(Enchantment.DURABILITY, 1, false);
         SOPM.addItemFlags(ItemFlag.HIDE_ENCHANTS);

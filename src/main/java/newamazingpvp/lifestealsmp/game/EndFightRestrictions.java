@@ -1,63 +1,63 @@
 package newamazingpvp.lifestealsmp.game;
 
 import com.destroystokyo.paper.event.player.PlayerTeleportEndGatewayEvent;
-import net.kyori.adventure.text.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.*;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityPortalEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
 
 import java.awt.*;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.sendDiscordEmbedPlayer;
-import static newamazingpvp.lifestealsmp.variables.Loc.*;
+import static newamazingpvp.lifestealsmp.variables.Loc.endPortalCenter;
+import static newamazingpvp.lifestealsmp.variables.Loc.endSpawn;
 import static newamazingpvp.lifestealsmp.variables.Misc.endFightParticipants;
 import static newamazingpvp.lifestealsmp.variables.Misc.isEndFightEnabled;
 
 public class EndFightRestrictions implements Listener {
     @EventHandler
-    public void portalLeave(PlayerPortalEvent e){
-        if(isEndFightEnabled){
+    public void portalLeave(PlayerPortalEvent e) {
+        if (isEndFightEnabled) {
             e.getPlayer().sendMessage(ChatColor.RED + "You cannot use portal during end fight!");
             e.setCancelled(true);
         }
     }
 
     @EventHandler
-    public void worldSwitch(PlayerChangedWorldEvent e){
-        if(isEndFightEnabled){
+    public void worldSwitch(PlayerChangedWorldEvent e) {
+        if (isEndFightEnabled) {
             e.getPlayer().sendMessage(ChatColor.RED + "You cannot use portal during end fight!");
             e.getPlayer().teleport(endPortalCenter);
         }
     }
 
     @EventHandler
-    public void entityPortal(EntityPortalEvent e){
-        if(isEndFightEnabled){
+    public void entityPortal(EntityPortalEvent e) {
+        if (isEndFightEnabled) {
             e.setCancelled(true);
         }
     }
 
     @EventHandler
-    public void portalLeave(PlayerTeleportEndGatewayEvent e){
-        if(isEndFightEnabled){
+    public void portalLeave(PlayerTeleportEndGatewayEvent e) {
+        if (isEndFightEnabled) {
             e.getPlayer().sendMessage(ChatColor.RED + "You cannot use portal during end fight!");
             e.setCancelled(true);
         }
     }
 
     @EventHandler
-    public void playerJoin(PlayerLoginEvent e){
-        if(isEndFightEnabled){
+    public void playerJoin(PlayerLoginEvent e) {
+        if (isEndFightEnabled) {
             OfflinePlayer f = e.getPlayer();
-            if(!(endFightParticipants.contains(e.getPlayer().getName()) || lifestealSmp.getServer().getWhitelistedPlayers().contains(f))){
+            if (!(endFightParticipants.contains(e.getPlayer().getName()) || lifestealSmp.getServer().getWhitelistedPlayers().contains(f))) {
                 e.disallow(PlayerLoginEvent.Result.KICK_OTHER, "Sorry you cannot join during end fight!");
                 lifestealSmp.getServer().broadcastMessage(e.getPlayer().getName() + " tried during end fight but isn't whitelist");
             }
@@ -65,11 +65,11 @@ public class EndFightRestrictions implements Listener {
     }
 
     @EventHandler
-    public void playerDamage(EntityDamageByEntityEvent e){
-        if(isEndFightEnabled && e.getEntity() instanceof Player && (e.getDamager() instanceof Player || e.getDamager() instanceof Arrow)){
+    public void playerDamage(EntityDamageByEntityEvent e) {
+        if (isEndFightEnabled && e.getEntity() instanceof Player && (e.getDamager() instanceof Player || e.getDamager() instanceof Arrow)) {
             Player p = (Player) e.getEntity();
             double totalHP = p.getMaxHealth() - e.getFinalDamage();
-            if(totalHP < 1.0){
+            if (totalHP < 1.0) {
                 p.banPlayer(ChatColor.RED + "You were eliminated! GF!");
                 sendDiscordEmbedPlayer(p.getName() + " was eliminated from end fight! GF!", Color.YELLOW, "", p.getName());
                 lifestealSmp.getServer().broadcastMessage(ChatColor.GOLD + p.getName() + " was eliminated GF!");
@@ -80,8 +80,8 @@ public class EndFightRestrictions implements Listener {
     }
 
     @EventHandler
-    public void onPlayerDeath(PlayerDeathEvent e){
-        if(isEndFightEnabled){
+    public void onPlayerDeath(PlayerDeathEvent e) {
+        if (isEndFightEnabled) {
             Player p = e.getEntity();
             p.banPlayer(ChatColor.RED + "You were eliminated! GF!");
             sendDiscordEmbedPlayer(p.getName() + " was eliminated from end fight! GF!", Color.YELLOW, "", p.getName());
@@ -90,16 +90,16 @@ public class EndFightRestrictions implements Listener {
     }
 
     @EventHandler
-    public void onPlayerMove(PlayerMoveEvent e){
-        if(isEndFightEnabled && e.getTo().distance(endSpawn) > 110){
+    public void onPlayerMove(PlayerMoveEvent e) {
+        if (isEndFightEnabled && e.getTo().distance(endSpawn) > 110) {
             e.setCancelled(true);
             e.getPlayer().sendMessage(ChatColor.YELLOW + "You cannot go outside the border!");
         }
     }
 
     @EventHandler
-    public void onPlayerTeleport(PlayerTeleportEvent e){
-        if(isEndFightEnabled && e.getTo().distance(endSpawn) > 110){
+    public void onPlayerTeleport(PlayerTeleportEvent e) {
+        if (isEndFightEnabled && e.getTo().distance(endSpawn) > 110) {
             e.setCancelled(true);
             e.getPlayer().sendMessage(ChatColor.YELLOW + "You cannot go outside the border!");
         }

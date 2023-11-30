@@ -14,5 +14,6 @@ public class Moderation extends ListenerAdapter {
         if (!messageContent.equals(censoredMessage)) {
             event.getMessage().delete();
             sendDiscordMessage(event.getAuthor().getName() + "tried saying something bad. Here is the moderated language **" + messageContent + "**", "1019965981025652738");
-        }}
+        }
+    }
 }

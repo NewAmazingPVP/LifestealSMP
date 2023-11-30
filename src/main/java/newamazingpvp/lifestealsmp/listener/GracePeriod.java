@@ -6,8 +6,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -15,8 +13,6 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
-import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class GracePeriod implements Listener {
     public List<String> names = new ArrayList<>();

@@ -1,6 +1,8 @@
 package newamazingpvp.lifestealsmp.sekhmetitems;
 
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -41,8 +43,6 @@ public class GiveSekhmetSetSpeedADMINONLY implements CommandExecutor {
         }
 
 
-
-
         Player player = (Player) sender;
 
 
@@ -51,8 +51,6 @@ public class GiveSekhmetSetSpeedADMINONLY implements CommandExecutor {
         player.getInventory().addItem(SekhmetBOOT1());
 
         player.getInventory().addItem(AquaHealm());
-
-
 
 
         player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);

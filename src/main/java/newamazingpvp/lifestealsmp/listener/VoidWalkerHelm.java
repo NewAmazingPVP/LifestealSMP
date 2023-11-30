@@ -1,24 +1,16 @@
 package newamazingpvp.lifestealsmp.listener;
 
 import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent;
-import org.bukkit.*;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryInteractEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
-import org.bukkit.scheduler.BukkitRunnable;
-
-import java.util.EventListener;
-
-import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class VoidWalkerHelm implements Listener {
 
@@ -30,7 +22,7 @@ public class VoidWalkerHelm implements Listener {
 
 
         if (helmet.getType().equals(Material.PLAYER_HEAD)) {
-            if (meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + " LL")) {
+            if (meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + " LL")) {
                 player.addScoreboardTag("voidwalker");
                 player.sendMessage("added because armor chaned");
             } else {
@@ -52,7 +44,7 @@ public class VoidWalkerHelm implements Listener {
         player.sendMessage("test1111111111111");
 
         if (helmet.getType().equals(Material.PLAYER_HEAD)) {
-            if (meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + " LL")) {
+            if (meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + " LL")) {
                 player.addScoreboardTag("voidwalker");
                 player.sendMessage("added because invintory click");
             } else {
