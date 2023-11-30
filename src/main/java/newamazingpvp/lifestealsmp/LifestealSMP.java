@@ -1,13 +1,13 @@
 package newamazingpvp.lifestealsmp;
 
-import newamazingpvp.lifestealsmp.CustomItemDrops.CustomHeartItems;
-import newamazingpvp.lifestealsmp.CustomItemDrops.OtherCustomDrops;
-import newamazingpvp.lifestealsmp.CustomItemDrops.SekhmetStaffDrops;
-import newamazingpvp.lifestealsmp.LegacyMontuStaff.MontuStaffLeft;
-import newamazingpvp.lifestealsmp.LegacyMontuStaff.MontuStaffRight;
-import newamazingpvp.lifestealsmp.LegacyMontuStaff.MontuStaffShiftLeft;
-import newamazingpvp.lifestealsmp.LegacyMontuStaff.MontuStaffShiftRight;
-import newamazingpvp.lifestealsmp.Sekhmet_Items.GiveSekhmetSetSpeedADMINONLY;
+import newamazingpvp.lifestealsmp.customitemdrops.CustomHeartItems;
+import newamazingpvp.lifestealsmp.customitemdrops.OtherCustomDrops;
+import newamazingpvp.lifestealsmp.customitemdrops.SekhmetStaffDrops;
+import newamazingpvp.lifestealsmp.legacymontustaff.MontuStaffLeft;
+import newamazingpvp.lifestealsmp.legacymontustaff.MontuStaffRight;
+import newamazingpvp.lifestealsmp.legacymontustaff.MontuStaffShiftLeft;
+import newamazingpvp.lifestealsmp.legacymontustaff.MontuStaffShiftRight;
+import newamazingpvp.lifestealsmp.sekhmetitems.GiveSekhmetSetSpeedADMINONLY;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.game.Compass;
 import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
@@ -62,9 +62,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getCommand("recipes").setExecutor(new RecipesCommand());
         getCommand("track").setExecutor(new Compass());
         getCommand("GiveSekhmetSet").setExecutor(new GiveSekhmetSetSpeedADMINONLY());
-        getCommand("restart_with_warning").setExecutor(new RestartWithWarmingADMINONLY());
-        getCommand("remHP").setExecutor(new RemHPADMINONLY());
-        getCommand("addHP").setExecutor(new AddHPADMINONLY());
+        getCommand("restart_with_warning").setExecutor(new RestartWithWarming());
+        getCommand("remHP").setExecutor(new RemoveHP());
+        getCommand("addHP").setExecutor(new AddHP());
         getCommand("LSwithdraw").setExecutor(new LSwithdraw());
         getCommand("startEndFight").setExecutor(new StartEndFight());
         getCommand("stopEndFight").setExecutor(new StopEndFight());

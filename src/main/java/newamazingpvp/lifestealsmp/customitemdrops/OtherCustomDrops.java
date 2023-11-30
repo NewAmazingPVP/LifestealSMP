@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.CustomItemDrops;
+package newamazingpvp.lifestealsmp.customitemdrops;
 
 import org.bukkit.Location;
 import org.bukkit.entity.EnderDragon;
@@ -6,9 +6,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 
-import java.util.EventListener;
-
-import static newamazingpvp.lifestealsmp.game.CustomRecipe.ancientSpellScroll;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.antimatterVile;
 
 public class OtherCustomDrops implements Listener {

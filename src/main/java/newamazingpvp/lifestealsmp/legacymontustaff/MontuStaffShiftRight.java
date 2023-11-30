@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.LegacyMontuStaff;
+package newamazingpvp.lifestealsmp.legacymontustaff;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;

@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.CustomItemDrops;
+package newamazingpvp.lifestealsmp.customitemdrops;
 
 import org.bukkit.*;
 import org.bukkit.entity.Player;

@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.Sekhmet_Items.GiveSekhmetSetSpeedADMINONLY.getProfile;
 
 public class CustomRecipe {
     public static void registerCustomRecipes() {
