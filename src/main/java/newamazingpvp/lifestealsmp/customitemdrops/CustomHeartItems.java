@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.CustomItemDrops;
+package newamazingpvp.lifestealsmp.customitemdrops;
 
 import org.bukkit.*;
 import org.bukkit.entity.Player;
@@ -8,8 +8,6 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.corruptedMobSoul;

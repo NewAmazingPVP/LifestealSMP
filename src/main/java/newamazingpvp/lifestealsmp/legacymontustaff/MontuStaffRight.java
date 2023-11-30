@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.LegacyMontuStaff;
+package newamazingpvp.lifestealsmp.legacymontustaff;
 
 import org.bukkit.*;
 import org.bukkit.entity.Player;

@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
-public class RestartWithWarmingADMINONLY implements CommandExecutor {
+public class RestartWithWarming implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
