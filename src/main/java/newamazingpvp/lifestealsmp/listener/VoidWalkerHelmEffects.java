@@ -35,6 +35,7 @@ public class VoidWalkerHelmEffects implements Listener {
                         player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 40, 0));
                         player.sendMessage("Detected");
 
+
                     }
                 }
             }
