@@ -5,8 +5,8 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.entity.*;
-import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -42,7 +42,7 @@ public class HomingBow implements Listener {
             @Override
             public void run() {
                 updateVelocity(arrow);
-                if(arrow.getTicksLived() >= 400){
+                if (arrow.getTicksLived() >= 400) {
                     arrow.remove();
                     cancel();
                 }
@@ -61,11 +61,11 @@ public class HomingBow implements Listener {
             return;
         }
         LivingEntity target = this.arrowList.get(arrow);
-        if (target != null && isSeparatedByWall((Entity) arrow, target))
+        if (target != null && isSeparatedByWall(arrow, target))
             target = null;
         if (target == null)
             for (LivingEntity currentEntity : getPotentialTargets(arrow)) {
-                if (!isSeparatedByWall((Entity) arrow, currentEntity)) {
+                if (!isSeparatedByWall(arrow, currentEntity)) {
                     target = currentEntity;
                     break;
                 }
@@ -88,14 +88,13 @@ public class HomingBow implements Listener {
 
         return aliveInFront;
     }
+
     double angle(Vector a, Vector b) {
         return Math.acos(a.normalize().dot(b.normalize()));
     }
 
     private boolean isValid(AbstractArrow arrow) {
-        if (!arrow.isValid() || arrow.getVelocity().length() <= 0.0D || arrow.isInWater())
-            return false;
-        return true;
+        return arrow.isValid() && !(arrow.getVelocity().length() <= 0.0D) && !arrow.isInWater();
     }
 
     private boolean isSeparatedByWall(Entity source, LivingEntity end) {
@@ -109,9 +108,7 @@ public class HomingBow implements Listener {
             return true;
         Vector sourceToEnd = endLoc.subtract(sourceLoc).toVector();
         RayTraceResult rayTraceResult = endLoc.getWorld().rayTraceBlocks(sourceLoc, sourceToEnd, sourceToEnd.length(), FluidCollisionMode.SOURCE_ONLY, true);
-        if (rayTraceResult == null)
-            return false;
-        return true;
+        return rayTraceResult != null;
     }
 
     private Vector generateNewVelocity(AbstractArrow arrow, LivingEntity target) {

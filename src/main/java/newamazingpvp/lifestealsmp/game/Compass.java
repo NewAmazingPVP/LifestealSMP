@@ -16,11 +16,9 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.CompassMeta;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
@@ -31,6 +29,7 @@ public class Compass implements CommandExecutor, Listener {
     private final HashMap<UUID, Location> lastPortalLocations = new HashMap<>();
     private final HashMap<UUID, Long> elytraTrackCooldown = new HashMap<>();
     private boolean logOffTracking;
+
     @EventHandler
     public void onPlayerPortalEvent(PlayerPortalEvent event) {
         lastPortalLocations.put(event.getPlayer().getUniqueId(), event.getFrom());
@@ -83,12 +82,12 @@ public class Compass implements CommandExecutor, Listener {
                 }
             }*/
             Player g = (Player) sender;
-            if((isElytra(g))){
+            if ((isElytra(g))) {
                 sender.sendMessage(ChatColor.RED + "You cannot track while having elytra!!!");
                 return true;
             }
 
-            if(isPlayerElytraCooldown(g)){
+            if (isPlayerElytraCooldown(g)) {
                 sender.sendMessage(ChatColor.RED + "You have used elytra in last two hours so you cannot track!");
                 return true;
             }
@@ -190,7 +189,7 @@ public class Compass implements CommandExecutor, Listener {
 
         if (isElytratest(newArmorPiece)) {
             elytraTrackCooldown.remove(player.getUniqueId());
-            elytraTrackCooldown.put(player.getUniqueId(), System.currentTimeMillis()+7200000);
+            elytraTrackCooldown.put(player.getUniqueId(), System.currentTimeMillis() + 7200000);
         }
     }
 
@@ -202,8 +201,9 @@ public class Compass implements CommandExecutor, Listener {
     private boolean isElytratest(ItemStack t) {
         return t.getType().toString().toLowerCase().contains("elytra");
     }
+
     private boolean isElytra(Player p) {
-        if(p.getInventory().getChestplate() == null) return false;
+        if (p.getInventory().getChestplate() == null) return false;
         return p.getInventory().getChestplate().getType().toString().toLowerCase().contains("elytra");
     }
 

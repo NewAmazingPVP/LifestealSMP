@@ -8,12 +8,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static org.bukkit.Bukkit.getServer;
 
 public class ChatFilter implements Listener {
     public static final ArrayList<String> blacklistWords = new ArrayList<>();

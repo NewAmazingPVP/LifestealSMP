@@ -20,7 +20,7 @@ public class AnvilMenuListener implements Listener {
             ItemStack clickedItem = event.getCurrentItem();
             if (clickedItem != null && clickedItem.hasItemMeta() && clickedItem.getItemMeta().hasDisplayName()) {
                 String itemName = clickedItem.getItemMeta().getDisplayName();
-                if (itemName.equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL" + ChatColor.DARK_RED + ChatColor.BOLD + "Extra Heart" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL")) {
+                if (itemName.equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL" + ChatColor.DARK_RED + ChatColor.BOLD + "Extra Heart" + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "LL")) {
                     event.setCancelled(true);
                 }
                 if (itemName.equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Severed Mob Heart")) {

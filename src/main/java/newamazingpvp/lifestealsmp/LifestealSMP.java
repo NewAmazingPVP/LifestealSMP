@@ -1,17 +1,17 @@
 package newamazingpvp.lifestealsmp;
 
+import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.customitemdrops.CustomHeartItems;
 import newamazingpvp.lifestealsmp.customitemdrops.OtherCustomDrops;
 import newamazingpvp.lifestealsmp.customitemdrops.SekhmetStaffDrops;
+import newamazingpvp.lifestealsmp.game.Compass;
+import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
 import newamazingpvp.lifestealsmp.legacymontustaff.MontuStaffLeft;
 import newamazingpvp.lifestealsmp.legacymontustaff.MontuStaffRight;
 import newamazingpvp.lifestealsmp.legacymontustaff.MontuStaffShiftLeft;
 import newamazingpvp.lifestealsmp.legacymontustaff.MontuStaffShiftRight;
-import newamazingpvp.lifestealsmp.sekhmetitems.GiveSekhmetSetSpeedADMINONLY;
-import newamazingpvp.lifestealsmp.command.*;
-import newamazingpvp.lifestealsmp.game.Compass;
-import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
 import newamazingpvp.lifestealsmp.listener.*;
+import newamazingpvp.lifestealsmp.sekhmetitems.GiveSekhmetSetSpeedADMINONLY;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;

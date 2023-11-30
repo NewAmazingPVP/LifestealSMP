@@ -1,12 +1,11 @@
 package newamazingpvp.lifestealsmp.command;
 
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.variables.Loc.endFightSpawn;
@@ -21,7 +20,7 @@ public class StartEndFight implements CommandExecutor {
         //WorldBorder worldBorder = lifestealSmp.getServer().getWorld("world_the_end").getWorldBorder();
         //worldBorder.setCenter(0, 0);
         //worldBorder.setSize(150);
-        for(Player p : lifestealSmp.getServer().getOnlinePlayers()){
+        for (Player p : lifestealSmp.getServer().getOnlinePlayers()) {
             p.teleport(endFightSpawn);
             p.setInvulnerable(true);
             getServer().getScheduler().runTaskLater(lifestealSmp, () -> p.setInvulnerable(false), 20 * 60);
@@ -43,7 +42,7 @@ public class StartEndFight implements CommandExecutor {
             delay += 20;
         }
         Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> lifestealSmp.getServer().broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + "GO!"), 1200);
-        for(Player p : lifestealSmp.getServer().getOnlinePlayers()){
+        for (Player p : lifestealSmp.getServer().getOnlinePlayers()) {
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> p.sendTitle(ChatColor.RED + "" + ChatColor.BOLD + "GO!", ChatColor.GOLD + "Good Luck!"), 1200);
         }
         return true;
