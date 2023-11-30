@@ -51,7 +51,7 @@ public class ChatFilter implements Listener {
         }
     }
 
-    private String censorBlacklistedWords(String message) {
+    public static String censorBlacklistedWords(String message) {
         String messageWithoutSpaces = message.replaceAll(" ", "");
 
         for (String word : blacklistWords) {
