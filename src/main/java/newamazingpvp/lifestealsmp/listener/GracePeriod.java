@@ -1,11 +1,16 @@
 package newamazingpvp.lifestealsmp.listener;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Arrow;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -13,6 +18,9 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static org.bukkit.Bukkit.getServer;
 
 public class GracePeriod implements Listener {
     public List<String> names = new ArrayList<>();
@@ -56,7 +64,7 @@ public class GracePeriod implements Listener {
     }
 
     public boolean isGracePeriod() {
-        LocalDateTime targetDateTime = LocalDateTime.of(2023, Month.NOVEMBER, 23, 30, 29);
+        LocalDateTime targetDateTime = LocalDateTime.of(2023, Month.NOVEMBER, 23, 10, 29);
 
         ZoneId estTimeZone = ZoneId.of("America/New_York");
         ZonedDateTime estTargetDateTime = ZonedDateTime.of(targetDateTime, estTimeZone);
@@ -66,8 +74,11 @@ public class GracePeriod implements Listener {
         return currentDateTime.isBefore(estTargetDateTime);
     }
 
-    /*@EventHandler
+    @EventHandler
     public void onDeath(PlayerDeathEvent event) {
+        if(!(event.getEntity().getKiller() instanceof Player)){
+            return;
+        }
         String name = event.getPlayer().getName();
         names.add(name);
         new BukkitRunnable() {
@@ -76,7 +87,7 @@ public class GracePeriod implements Listener {
                 names.remove(name);
             }
         }.runTaskLater(lifestealSmp, 20 * 60 * 15);
-    }*/
+    }
 
     public boolean isPlayerDeathProt(Player p) {
         return names.contains(p.getName());
