@@ -28,6 +28,7 @@ import java.util.Random;
 
 import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
 import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastServerMessage;
+import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.game.PlayerPing.monitorPlayerPings;
 import static newamazingpvp.lifestealsmp.listener.ChatFilter.initializeBlacklist;
@@ -123,7 +124,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
                 sendDiscordEmbedTitle("Bot intialized", Color.MAGENTA, "");
             }
         }.runTaskLater(this, 120);
-
+        compassUpdate();
     }
 
     @Override

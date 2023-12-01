@@ -17,17 +17,19 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.CompassMeta;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class Compass implements CommandExecutor, Listener {
 
-    private final HashMap<UUID, UUID> trackingPlayers = new HashMap<>();
-    private final HashMap<UUID, Location> lastPortalLocations = new HashMap<>();
-    private final HashMap<UUID, Long> elytraTrackCooldown = new HashMap<>();
+    private static final HashMap<UUID, UUID> trackingPlayers = new HashMap<>();
+    private static final HashMap<UUID, Location> lastPortalLocations = new HashMap<>();
+    private static final HashMap<UUID, Long> elytraTrackCooldown = new HashMap<>();
     private boolean logOffTracking;
 
     @EventHandler
@@ -165,11 +167,11 @@ public class Compass implements CommandExecutor, Listener {
         return player.getStatistic(Statistic.PLAY_ONE_MINUTE);
     }
 
-    private long getDeathTime(Player player) {
+    private static long getDeathTime(Player player) {
         return player.getStatistic(Statistic.TIME_SINCE_DEATH);
     }
 
-    private boolean playerDiedRecently(Player target) {
+    private static boolean playerDiedRecently(Player target) {
         long targetDeathTime = getDeathTime(target);
         long requiredDeathTime = 15 * 60 * 20;
 
@@ -193,7 +195,7 @@ public class Compass implements CommandExecutor, Listener {
         }
     }
 
-    private boolean isPlayerElytraCooldown(Player p) {
+    private static boolean isPlayerElytraCooldown(Player p) {
         Long value = elytraTrackCooldown.get(p.getUniqueId());
         return value != null && value > System.currentTimeMillis();
     }
@@ -202,88 +204,74 @@ public class Compass implements CommandExecutor, Listener {
         return t.getType().toString().toLowerCase().contains("elytra");
     }
 
-    private boolean isElytra(Player p) {
+    private static boolean isElytra(Player p) {
         if (p.getInventory().getChestplate() == null) return false;
         return p.getInventory().getChestplate().getType().toString().toLowerCase().contains("elytra");
     }
 
-    private void compassUpdate() {
+    public static void compassUpdate() {
         new BukkitRunnable() {
             public void run() {
                 for (UUID playerUUID : trackingPlayers.keySet()) {
                     Player player = Bukkit.getPlayer(playerUUID);
-                    if (player != null) {
-                        Player target = Bukkit.getPlayer(trackingPlayers.get(playerUUID));
-                        ItemStack compass = getCompassFromInventory(player);
-                        if (compass != null) {
-                            if (target != null && !playerDiedRecently(target) &&
-                                    !isElytra(player) && !isPlayerElytraCooldown(player)) {
-                                if (player.getWorld().getEnvironment() == World.Environment.NORMAL && target.getWorld().getEnvironment() == World.Environment.NORMAL) {
-                                    setNormalCompass(compass);
-                                    player.setCompassTarget(target.getLocation());
-                                } else if (player.getWorld() == target.getWorld()) {
-                                    setLodestoneCompass(compass, target.getLocation());
-                                } else {
-                                    Location portalLocation = lastPortalLocations.get(target.getUniqueId());
-                                    if (portalLocation != null && player.getWorld() == portalLocation.getWorld()) {
-                                        setLodestoneCompass(compass, portalLocation);
-                                    }
-                                }
-                                int distance;
-                                if (player.getWorld().getEnvironment() == target.getWorld().getEnvironment()) {
-                                    distance = (int) player.getLocation().distance(target.getLocation());
-                                } else {
-                                    Location portalLocation = lastPortalLocations.get(target.getUniqueId());
-                                    if (portalLocation != null && player.getWorld() == portalLocation.getWorld()) {
-                                        distance = (int) player.getLocation().distance(portalLocation);
-                                    } else {
-                                        distance = -1;
-                                    }
-                                }
-                                String message;
-                                if (distance >= 0) {
-                                    //message = ChatColor.GREEN + "Tracking " + ChatColor.BOLD + target.getName() + " " + ChatColor.AQUA + distance + ChatColor.GREEN + " blocks away";
-                                    message = ChatColor.GREEN + "Tracking " + ChatColor.BOLD + target.getName();
-                                } else {
-                                    message = ChatColor.RED + "Cannot track player because they are in a different dimension and haven't used a portal yet";
-                                }
-                                TextComponent textComponent = new TextComponent(message);
-                                player.spigot().sendMessage(ChatMessageType.ACTION_BAR, textComponent);
+
+                    if (player == null) {
+                        continue;
+                    }
+
+                    UUID targetUUID = trackingPlayers.get(playerUUID);
+                    Player target = Bukkit.getPlayer(targetUUID);
+
+                    ItemStack compass = getCompassFromInventory(player);
+
+                    if (compass == null) {
+                        continue;
+                    }
+                    String msg;
+                    int distance = 0;
+                    if (target != null && !playerDiedRecently(target) && !isElytra(player) && !isPlayerElytraCooldown(player)) {
+                        if (player.getWorld().getEnvironment() == World.Environment.NORMAL && target.getWorld().getEnvironment() == World.Environment.NORMAL) {
+                            setNormalCompass(compass);
+                            player.setCompassTarget(target.getLocation());
+                            msg = ChatColor.GREEN + "Tracking " + ChatColor.BOLD + target.getName();
+                            distance = (int) player.getLocation().distance(target.getLocation());
+                        } else {
+                            Location targetLocation;
+                            if (player.getWorld() == target.getWorld()) {
+                                targetLocation = target.getLocation();
                             } else {
-                                setNormalCompass(compass);
-                                player.setCompassTarget(generateRandomLocation(player));
+                                Location portalLocation = lastPortalLocations.get(target.getUniqueId());
+                                targetLocation = (portalLocation != null && player.getWorld() == portalLocation.getWorld()) ? portalLocation : null;
+                            }
+
+                            if (targetLocation != null) {
+                                setLodestoneCompass(compass, targetLocation);
+                                msg = ChatColor.GREEN + "Tracking " + ChatColor.BOLD + target.getName();
+                                distance = (int) player.getLocation().distance(targetLocation);
+                            } else {
+                                msg = (player.getWorld().getEnvironment() != target.getWorld().getEnvironment())
+                                        ? ChatColor.RED + "Cannot track player because they are in a different dimension and haven't used a portal yet"
+                                        : ChatColor.GREEN + "Tracking " + ChatColor.BOLD + target.getName();
                             }
                         }
+                        String dis = calculateDistanceCategory(distance);
+                        msg += " \"\"" + dis + "\"\" ";
+                        TextComponent textComponent = new TextComponent(msg);
+                        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, textComponent);
+                        boolean e = isMovingCloser(player, target);
+                        player.sendMessage("ur "+ e);
+                    } else {
+                        setNormalCompass(compass);
+                        player.setCompassTarget(generateRandomLocation(player));
                     }
                 }
+
             }
         }.runTaskTimer(lifestealSmp, 0L, 0L); // Update interval for normal compasses
-
-        new BukkitRunnable() {
-            public void run() {
-                for (UUID playerUUID : trackingPlayers.keySet()) {
-                    Player player = Bukkit.getPlayer(playerUUID);
-                    if (player != null) {
-                        ItemStack compass = getCompassFromInventory(player);
-                        if (compass != null) {
-                            CompassMeta compassMeta = (CompassMeta) compass.getItemMeta();
-                            assert compassMeta != null;
-                            boolean isLodestone = compassMeta.isLodestoneTracked();
-                            if (isLodestone) {
-                                Player target = Bukkit.getPlayer(trackingPlayers.get(playerUUID));
-                                if (target != null && player.getWorld() == target.getWorld()) {
-                                    setLodestoneCompass(compass, target.getLocation());
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }.runTaskTimer(lifestealSmp, 0L, 20L);
     }
 
 
-    private Location generateRandomLocation(Player player) {
+    private static Location generateRandomLocation(Player player) {
         int offsetX = (int) (Math.random() * 201) - 100;
         int offsetZ = (int) (Math.random() * 201) - 100;
         Location playerLocation = player.getLocation();
@@ -292,7 +280,48 @@ public class Compass implements CommandExecutor, Listener {
         return new Location(player.getWorld(), x, 64, z);
     }
 
-    private ItemStack getCompassFromInventory(Player player) {
+    public static String calculateDistanceCategory(double distance) {
+        if(distance == 0){
+            return "";
+        } else if (distance < 100) {
+            return "Very close";
+        } else if (distance < 300) {
+            return "Close";
+        } else if (distance < 700) {
+            return "Near";
+        } else if (distance < 1300) {
+            return "Moderate";
+        } else if (distance < 2100) {
+            return "Far";
+        } else if (distance < 3100) {
+            return "Distant";
+        } else if (distance < 4300) {
+            return "Very far";
+        } else if (distance < 5700) {
+            return "Extremely far";
+        } else if (distance < 7300) {
+            return "Exceptionally far";
+        } else if (distance < 9100) {
+            return "Incredibly far";
+        } else if (distance < 11100) {
+            return "Unreachable";
+        } else if (distance < 14000) {
+            return "Astronomical";
+        }
+        return "";
+    }
+    public static boolean isMovingCloser(Player movingPlayer, Player targetPlayer) {
+        Vector velocity = movingPlayer.getVelocity();
+        Location targetLoc = targetPlayer.getLocation();
+
+        double distanceNow = movingPlayer.getLocation().distance(targetLoc);
+
+        Vector velocityAdjusted = velocity.clone().multiply(5);
+        double distanceNextTick = movingPlayer.getLocation().add(velocityAdjusted).distance(targetLoc);
+
+        return distanceNextTick < distanceNow;
+    }
+    private static ItemStack getCompassFromInventory(Player player) {
         for (ItemStack item : player.getInventory().getContents()) {
             if (item != null && item.getType() == Material.COMPASS) {
                 return item;
@@ -301,7 +330,7 @@ public class Compass implements CommandExecutor, Listener {
         return null;
     }
 
-    private void setNormalCompass(ItemStack compass) {
+    private static void setNormalCompass(ItemStack compass) {
         CompassMeta compassMeta = (CompassMeta) compass.getItemMeta();
         assert compassMeta != null;
         if (compassMeta.isLodestoneTracked()) {
@@ -311,7 +340,7 @@ public class Compass implements CommandExecutor, Listener {
         }
     }
 
-    private void setLodestoneCompass(ItemStack compass, Location location) {
+    private static void setLodestoneCompass(ItemStack compass, Location location) {
         CompassMeta compassMeta = (CompassMeta) compass.getItemMeta();
         assert compassMeta != null;
         compassMeta.setLodestone(location);
