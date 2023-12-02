@@ -34,6 +34,7 @@ public class LSwithdraw implements CommandExecutor {
             } else {
                 World world = player.getWorld();
                 world.dropItem(player.getLocation(), extraHeart());
+                player.sendMessage(ChatColor.GRAY + "Heart was dropped because your inventory was full");
             }
             player.playSound(player.getLocation(), Sound.BLOCK_PORTAL_TRIGGER, 1.0f, 2.0f);
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
