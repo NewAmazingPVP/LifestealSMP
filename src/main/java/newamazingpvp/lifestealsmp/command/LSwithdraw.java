@@ -1,7 +1,9 @@
 package newamazingpvp.lifestealsmp.command;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Sound;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -19,7 +21,7 @@ public class LSwithdraw implements CommandExecutor {
         }
 
         Player player = (Player) sender;
-        if (player.getMaxHealth() == 2) {
+        if (player.getMaxHealth() <= 2) {
 
             player.sendMessage(ChatColor.RED + "If you withdraw any more you will die...");
 
@@ -27,7 +29,12 @@ public class LSwithdraw implements CommandExecutor {
             player.setMaxHealth(player.getMaxHealth() - 2);
             player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "-1 Heart!");
             player.sendMessage(ChatColor.GRAY + "(Boosting using this command will result in you being banned)");
-            player.getInventory().addItem(extraHeart());
+            if (player.getInventory().firstEmpty() != -1) {
+                player.getInventory().addItem(extraHeart());
+            } else {
+                World world = player.getWorld();
+                world.dropItem(player.getLocation(), extraHeart());
+            }
             player.playSound(player.getLocation(), Sound.BLOCK_PORTAL_TRIGGER, 1.0f, 2.0f);
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
             return true;
