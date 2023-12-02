@@ -3,6 +3,7 @@ package newamazingpvp.lifestealsmp.listener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Arrow;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -37,9 +38,10 @@ public class GracePeriod implements Listener {
                         damager.sendMessage(ChatColor.RED + "You cannot damage players during the grace period!");
                     }
                     if (isPlayerDeathProt(damaged)) {
-                        event.setCancelled(true);
-                        damager.sendMessage(ChatColor.RED + "You cannot damage players during their death protection unless they attack you back!");
-                        damaged.sendMessage(ChatColor.RED + "Someone tried attacking u but was prevented because u died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
+                        damager.sendMessage(ChatColor.RED + "This player was recently killed by another player and won't drop heart if you kill them again");
+                        //event.setCancelled(true);
+                        //damager.sendMessage(ChatColor.RED + "You cannot damage players during their death protection unless they attack you back!");
+                        //damaged.sendMessage(ChatColor.RED + "Someone tried attacking u but was prevented because u died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
                     }
                     names.remove(damager.getName());
                 } else if (event.getDamager() instanceof Arrow) {
@@ -52,9 +54,10 @@ public class GracePeriod implements Listener {
                             shooter.sendMessage(ChatColor.RED + "You cannot shoot players during the grace period!");
                         }
                         if (isPlayerDeathProt(damaged)) {
-                            event.setCancelled(true);
-                            event.getDamager().sendMessage(ChatColor.RED + "You cannot shoot players during their death protection unless they attack you back!");
-                            event.getEntity().sendMessage(ChatColor.RED + "Someone tried attacking u but was prevented because u died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
+                            //event.setCancelled(true);
+                            //event.getDamager().sendMessage(ChatColor.RED + "You cannot shoot players during their death protection unless they attack you back!");
+                            event.getDamager().sendMessage(ChatColor.RED + "This player was recently killed by another player and won't drop heart if you kill them again");
+                            //event.getEntity().sendMessage(ChatColor.RED + "Someone tried attacking u but was prevented because u died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
                         }
                         names.remove(event.getDamager().getName());
                     }
@@ -76,10 +79,16 @@ public class GracePeriod implements Listener {
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
-        if(!(event.getEntity().getKiller() instanceof Player)){
+        LivingEntity killer = event.getEntity().getKiller();
+        if(!(killer instanceof Player)){
             return;
         }
-        String name = event.getPlayer().getName();
+        Player p = event.getEntity();
+        if(!names.contains(p.getName())){
+            p.setMaxHealth(p.getMaxHealth() - 2);
+            killer.setMaxHealth(killer.getMaxHealth() + 2);
+        }
+        String name = p.getName();
         names.add(name);
         new BukkitRunnable() {
             @Override
