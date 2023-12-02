@@ -235,7 +235,7 @@ public class Compass implements CommandExecutor, Listener {
                     if (target != null && !playerDiedRecently(target) && !isElytra(player) && !isPlayerElytraCooldown(player)) {
                         if (player.getWorld().getEnvironment() == World.Environment.NORMAL && target.getWorld().getEnvironment() == World.Environment.NORMAL) {
                             setNormalCompass(compass);
-                            player.setCompassTarget(target.getLocation());
+                            //player.setCompassTarget(target.getLocation());
                             msg = ChatColor.GREEN + "Tracking " + ChatColor.BOLD + target.getName();
                             distance = (int) player.getLocation().distance(target.getLocation());
                         } else {
@@ -248,7 +248,7 @@ public class Compass implements CommandExecutor, Listener {
                             }
 
                             if (targetLocation != null) {
-                                setLodestoneCompass(compass, targetLocation);
+                                //setLodestoneCompass(compass, targetLocation);
                                 msg = ChatColor.GREEN + "Tracking " + ChatColor.BOLD + target.getName();
                                 distance = (int) player.getLocation().distance(targetLocation);
                             } else {
@@ -287,29 +287,29 @@ public class Compass implements CommandExecutor, Listener {
 
     public static String calculateDistanceCategory(double distance) {
         if (distance < 70) {
-            return "Very close";
+            return "1";
         } else if (distance < 200) {
-            return "Close";
+            return "2";
         } else if (distance < 500) {
-            return "Near";
+            return "3";
         } else if (distance < 1000) {
-            return "Moderate";
+            return "4";
         } else if (distance < 2000) {
-            return "Far";
+            return "5";
         } else if (distance < 3100) {
-            return "Distant";
+            return "6";
         } else if (distance < 4300) {
-            return "Very far";
+            return "7";
         } else if (distance < 5700) {
-            return "Extremely far";
+            return "8";
         } else if (distance < 7300) {
-            return "Exceptionally far";
+            return "9";
         } else if (distance < 9100) {
-            return "Incredibly far";
+            return "10";
         } else if (distance < 11100) {
-            return "Opposite";
+            return "11";
         } else if (distance < 14000) {
-            return "Astronomical";
+            return "12";
         }
         return "";
     }
