@@ -84,7 +84,7 @@ public class DiscordBot {
     public static void sendDiscordEmbedPlayer(String msg, Color c, String channelID, String p) {
         p = "https://minotar.net/helm/" + p;
         EmbedBuilder eb = new EmbedBuilder();
-        eb.setAuthor(msg, "https://you.net", p);
+        eb.setAuthor(msg, "https://shop.nappixel.tk/", p);
         eb.setColor(c);
         if (channelID.isEmpty()) {
             channel.sendMessageEmbeds(eb.build()).queue();
