@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.listener;
 
+import com.github.sirblobman.combatlogx.api.ICombatLogX;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Arrow;
@@ -21,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
+import static newamazingpvp.lifestealsmp.game.PlayerPing.getAPI;
 import static org.bukkit.Bukkit.getServer;
 
 public class GracePeriod implements Listener {
@@ -31,6 +34,7 @@ public class GracePeriod implements Listener {
         if (event.getEntity() instanceof Player) {
             Player damaged = (Player) event.getEntity();
             if (event.getDamager() instanceof Player || event.getDamager() instanceof Arrow) {
+                ICombatLogX plugin = getAPI();
                 if (event.getDamager() instanceof Player) {
                     Player damager = (Player) event.getDamager();
                     if (isGracePeriod()) {
@@ -42,6 +46,10 @@ public class GracePeriod implements Listener {
                         //event.setCancelled(true);
                         //damager.sendMessage(ChatColor.RED + "You cannot damage players during their death protection unless they attack you back!");
                         //damaged.sendMessage(ChatColor.RED + "Someone tried attacking u but was prevented because u died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
+                    }
+                    if(getPlaytime(damaged) < 216000 && !plugin.getCombatManager().isInCombat(damaged)){
+                        event.setCancelled(true);
+                        damager.sendMessage(ChatColor.RED + "You cannot damage during their newbie protection!");
                     }
                     names.remove(damager.getName());
                 } else if (event.getDamager() instanceof Arrow) {
@@ -58,6 +66,10 @@ public class GracePeriod implements Listener {
                             //event.getDamager().sendMessage(ChatColor.RED + "You cannot shoot players during their death protection unless they attack you back!");
                             event.getDamager().sendMessage(ChatColor.RED + "This player was recently killed by another player and won't drop heart if you kill them again");
                             //event.getEntity().sendMessage(ChatColor.RED + "Someone tried attacking u but was prevented because u died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
+                        }
+                        if(getPlaytime(damaged) < 216000 && !plugin.getCombatManager().isInCombat(damaged)){
+                            event.setCancelled(true);
+                            event.getDamager().sendMessage(ChatColor.RED + "You cannot damage during their newbie protection!");
                         }
                         names.remove(event.getDamager().getName());
                     }
