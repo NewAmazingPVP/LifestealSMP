@@ -13,6 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPortalEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerVelocityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.CompassMeta;
@@ -24,6 +25,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static org.bukkit.Bukkit.getServer;
 
 public class Compass implements CommandExecutor, Listener {
 
@@ -195,6 +197,7 @@ public class Compass implements CommandExecutor, Listener {
         }
     }
 
+
     private static boolean isPlayerElytraCooldown(Player p) {
         Long value = elytraTrackCooldown.get(p.getUniqueId());
         return value != null && value > System.currentTimeMillis();
@@ -255,11 +258,13 @@ public class Compass implements CommandExecutor, Listener {
                             }
                         }
                         String dis = calculateDistanceCategory(distance);
-                        msg += " \"\"" + dis + "\"\" ";
+                        if(distance != 0) {
+                            msg += " In radius of range " + dis;
+                        }
                         TextComponent textComponent = new TextComponent(msg);
                         player.spigot().sendMessage(ChatMessageType.ACTION_BAR, textComponent);
-                        boolean e = isMovingCloser(player, target);
-                        player.sendMessage("ur "+ e);
+                        //boolean e = isMovingCloser(player, target);
+                        //player.sendMessage("ur "+ e);
                     } else {
                         setNormalCompass(compass);
                         player.setCompassTarget(generateRandomLocation(player));
@@ -267,7 +272,7 @@ public class Compass implements CommandExecutor, Listener {
                 }
 
             }
-        }.runTaskTimer(lifestealSmp, 0L, 0L); // Update interval for normal compasses
+        }.runTaskTimer(lifestealSmp, 0L, 0L);
     }
 
 
@@ -281,17 +286,15 @@ public class Compass implements CommandExecutor, Listener {
     }
 
     public static String calculateDistanceCategory(double distance) {
-        if(distance == 0){
-            return "";
-        } else if (distance < 100) {
+        if (distance < 70) {
             return "Very close";
-        } else if (distance < 300) {
+        } else if (distance < 200) {
             return "Close";
-        } else if (distance < 700) {
+        } else if (distance < 500) {
             return "Near";
-        } else if (distance < 1300) {
+        } else if (distance < 1000) {
             return "Moderate";
-        } else if (distance < 2100) {
+        } else if (distance < 2000) {
             return "Far";
         } else if (distance < 3100) {
             return "Distant";
@@ -304,21 +307,28 @@ public class Compass implements CommandExecutor, Listener {
         } else if (distance < 9100) {
             return "Incredibly far";
         } else if (distance < 11100) {
-            return "Unreachable";
+            return "Opposite";
         } else if (distance < 14000) {
             return "Astronomical";
         }
         return "";
     }
     public static boolean isMovingCloser(Player movingPlayer, Player targetPlayer) {
-        Vector velocity = movingPlayer.getVelocity();
+        double velocityX = movingPlayer.getVelocity().getX();
+        double velocityZ = movingPlayer.getVelocity().getZ();
+        getServer().broadcastMessage(velocityX + " and y " + velocityZ);
         Location targetLoc = targetPlayer.getLocation();
 
         double distanceNow = movingPlayer.getLocation().distance(targetLoc);
 
-        Vector velocityAdjusted = velocity.clone().multiply(5);
-        double distanceNextTick = movingPlayer.getLocation().add(velocityAdjusted).distance(targetLoc);
+        double distanceNextTickX = movingPlayer.getLocation().getX() + velocityX*100;
+        double distanceNextTickZ = movingPlayer.getLocation().getZ() + velocityZ*100;
 
+        Location locationNextTick = new Location(targetPlayer.getWorld(), distanceNextTickX, movingPlayer.getLocation().y(), distanceNextTickZ);
+
+        double distanceNextTick = locationNextTick.distance(targetLoc);
+
+        getServer().broadcastMessage(distanceNextTick + " and distance now " + distanceNow);
         return distanceNextTick < distanceNow;
     }
     private static ItemStack getCompassFromInventory(Player player) {
