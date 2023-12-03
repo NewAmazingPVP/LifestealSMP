@@ -27,7 +27,7 @@ public class DiscordBot {
         jdaBuilder.enableIntents(allIntents);
         jda = jdaBuilder.build();
         jda.addEventListener((new Stats()));
-        jda.addEventListener((new Moderation()));
+        //jda.addEventListener((new Moderation()));
         new BukkitRunnable() {
             @Override
             public void run() {
