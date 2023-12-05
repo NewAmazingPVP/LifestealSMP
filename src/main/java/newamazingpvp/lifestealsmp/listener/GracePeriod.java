@@ -23,6 +23,7 @@ import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
+import static newamazingpvp.lifestealsmp.game.PlayerLifeManager.eliminatePlayer;
 import static newamazingpvp.lifestealsmp.game.PlayerPing.getAPI;
 import static org.bukkit.Bukkit.getServer;
 
@@ -97,7 +98,11 @@ public class GracePeriod implements Listener {
         }
         Player p = event.getEntity();
         if(!names.contains(p.getName())){
-            p.setMaxHealth(p.getMaxHealth() - 2);
+            if(!(p.getMaxHealth() <= 2)) {
+                p.setMaxHealth(p.getMaxHealth() - 2);
+            } else {
+                eliminatePlayer(p);
+            }
             killer.setMaxHealth(killer.getMaxHealth() + 2);
         }
         String name = p.getName();

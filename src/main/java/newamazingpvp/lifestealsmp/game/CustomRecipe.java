@@ -122,6 +122,26 @@ public class CustomRecipe {
         homingBowRecipe.addIngredient(1, Material.NETHERITE_INGOT);
         homingBowRecipe.addIngredient(1, Material.BOW);
         Bukkit.addRecipe(homingBowRecipe);
+
+        NamespacedKey reviveBeacon = new NamespacedKey(lifestealSmp, "revive_beacon");
+        ShapelessRecipe reviveBeaconRecipe = new ShapelessRecipe(reviveBeacon, createReviveBeacon());
+        reviveBeaconRecipe.addIngredient(1, Material.BEACON);
+        reviveBeaconRecipe.addIngredient(1, Material.BOW);
+        Bukkit.addRecipe(reviveBeaconRecipe);
+    }
+
+    private static ItemStack createReviveBeacon() {
+        ItemStack reviveBeacon = new ItemStack(Material.BEACON);
+
+        ItemMeta meta = reviveBeacon.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_PURPLE + "Revive Beacon");
+        List<String> DEFL = new ArrayList<>();
+        DEFL.add(ChatColor.GOLD + "Use to revive eliminated players!");
+        meta.setLore(DEFL);
+
+        reviveBeacon.setItemMeta(meta);
+
+        return reviveBeacon;
     }
 
     private static ItemStack createCustomBow() {
