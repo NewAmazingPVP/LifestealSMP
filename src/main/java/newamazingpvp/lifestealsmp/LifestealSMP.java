@@ -70,6 +70,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getCommand("startEndFight").setExecutor(new StartEndFight());
         getCommand("stopEndFight").setExecutor(new StopEndFight());
         getCommand("jailplayer").setExecutor(new JailPlayer());
+        getCommand("revivePlayer").setExecutor(new RevivePlayer());
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
@@ -100,6 +101,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         //getServer().getPluginManager().registerEvents(new VoidWalkerHelm(), this);
         getServer().getPluginManager().registerEvents(new VoidWalkerHelmEffects(), this);
         getServer().getPluginManager().registerEvents(new GracePeriod(), this);
+        getServer().getPluginManager().registerEvents(new ReviveBeacon(), this);
         int repeatDelayTicks = 7200 * 20;
         BukkitRunnable broadcastTask = new BukkitRunnable() {
             @Override

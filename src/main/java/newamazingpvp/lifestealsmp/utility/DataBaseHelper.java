@@ -39,13 +39,15 @@ public class DataBaseHelper {
     }
 
     public void insertData(String tableName, String columns, String values) {
-        String query = "INSERT INTO " + tableName + " (" + columns + ") VALUES (" + values + ");";
+        String query = "INSERT INTO " + tableName + " (" + columns + ") VALUES (?);";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, values);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 
     public ResultSet getData(String tableName, String condition) {
         String query = "SELECT * FROM " + tableName + " WHERE " + condition + ";";
@@ -58,6 +60,19 @@ public class DataBaseHelper {
         return null;
     }
 
+    public boolean doesPlayerExist(String playerName) throws SQLException {
+        String query = "SELECT * FROM " + "player_data" + " WHERE " + "player_name" + " = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, playerName);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                return resultSet.next();
+            }
+        }
+    }
+
+
     public void deleteData(String tableName, String condition) {
         String query = "DELETE FROM " + tableName + " WHERE " + condition + ";";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
@@ -66,4 +81,20 @@ public class DataBaseHelper {
             e.printStackTrace();
         }
     }
+
+    public void deletePlayer(String playerName) {
+        String tableName = "player_data";
+        String condition = "player_name = ?";
+
+        String query = "DELETE FROM " + tableName + " WHERE " + condition + ";";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, playerName);
+
+            int affectedRows = statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

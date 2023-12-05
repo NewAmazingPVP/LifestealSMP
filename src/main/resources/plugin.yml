@@ -53,3 +53,8 @@ commands:
     usage: /jailplayer <name>
     permission: lifestealSMP.admin
     default: op
+  reviveplayer:
+    description: Revive an eliminated player!
+    usage: /reviveplayer <name>
+    permission: lifestealSMP.admin
+    default: op
