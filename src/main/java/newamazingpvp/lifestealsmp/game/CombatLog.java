@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.game;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
@@ -16,28 +17,23 @@ import java.util.Map;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class CombatLog {
-    private static List<Player> combaters = new ArrayList<>();
+    public static List<Player> combaters = new ArrayList<>();
     private static Map<Player, PlayerCombatData> playerCombatDataMap = new HashMap<>();
 
-    public static void tagPlayer(Player p) {
-        PlayerCombatData existingData = playerCombatDataMap.remove(p);
+    public static void tagPlayer(Player p, Player enemy) {
+        if (playerCombatDataMap.get(p) != null) {
+            playerCombatDataMap.get(p).setTimer(90);
+            playerCombatDataMap.get(p).addEnemy(enemy);
+        } else {
+            combaters.add(p);
 
-        if (existingData != null) {
-            // Player already has combat data, create a new BossBar and reset the timer
-            existingData.getBossBar().removeAll();
+            BossBar bossBar = Bukkit.createBossBar(ChatColor.RED + "Combat Log Timer: 90 seconds left", BarColor.YELLOW, BarStyle.SOLID);
+            bossBar.addPlayer(p);
+
+            PlayerCombatData combatData = new PlayerCombatData(bossBar, 90);
+            playerCombatDataMap.put(p, combatData);
+            playerCombatDataMap.get(p).addEnemy(enemy);
         }
-
-        combaters.add(p);
-
-        BossBar bossBar = Bukkit.createBossBar("Combat Log Timer: 90 seconds left", BarColor.BLUE, BarStyle.SOLID);
-        bossBar.addPlayer(p);
-
-        PlayerCombatData combatData = new PlayerCombatData(bossBar, 90);
-        playerCombatDataMap.put(p, combatData);
-
-        double initialProgress = 1.0;
-        double progressDecreasePerSecond = initialProgress / 90.0;
-
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -47,24 +43,17 @@ public class CombatLog {
                     return;
                 }
 
-                combatData.updateBossBar();
-                combatData.decreaseTimer();
+                playerCombatDataMap.get(p).updateBossBar();
+                playerCombatDataMap.get(p).decreaseTimer();
 
-                if (combatData.getTimer() <= 0) {
-                    // Combat timer expired, create a new BossBar and reset the timer
+                if (playerCombatDataMap.get(p).getTimer() <= -1) {
                     cancelCombatData(p);
-
-                    BossBar newBossBar = Bukkit.createBossBar("Combat Log Timer: 90 seconds left", BarColor.BLUE, BarStyle.SOLID);
-                    newBossBar.addPlayer(p);
-
-                    PlayerCombatData newData = new PlayerCombatData(newBossBar, 90);
-                    playerCombatDataMap.put(p, newData);
                 }
             }
         }.runTaskTimer(lifestealSmp, 0L, 20L);
     }
 
-    private static void cancelCombatData(Player player) {
+    public static void cancelCombatData(Player player) {
         PlayerCombatData combatData = playerCombatDataMap.remove(player);
         if (combatData != null) {
             combatData.getBossBar().removeAll();
@@ -72,9 +61,23 @@ public class CombatLog {
         }
     }
 
+    public static void removeEnemies(Player player){
+        PlayerCombatData combatData = playerCombatDataMap.get(player);
+        if (combatData != null) {
+            for(Player p : combatData.getEnemies()) {
+                cancelCombatData(p);
+            }
+        }
+    }
+
+    public static boolean isPlayerInCombat(Player player) {
+        return combaters.contains(player);
+    }
+
     private static class PlayerCombatData {
         private BossBar bossBar;
         private int timer;
+        private final List<Player> enemies = new ArrayList<>();
 
         public PlayerCombatData(BossBar bossBar, int timer) {
             this.bossBar = bossBar;
@@ -89,13 +92,31 @@ public class CombatLog {
             return timer;
         }
 
+        public void setTimer(int time) {
+            timer = time;
+        }
+
+        public void addEnemy(Player enemy) {
+            if (!enemies.contains(enemy)) {
+                enemies.add(enemy);
+            }
+        }
+
+        public void removeEnemy(Player enemy) {
+            enemies.remove(enemy);
+        }
+
+        public List<Player> getEnemies() {
+            return enemies;
+        }
+
         public void decreaseTimer() {
             timer--;
         }
 
         public void updateBossBar() {
             bossBar.setProgress((double) timer / 90.0);
-            bossBar.setTitle("Combat Log Timer: " + timer + " seconds left");
+            bossBar.setTitle(ChatColor.RED + "Combat Log Timer: " + timer + " seconds left");
         }
     }
 }

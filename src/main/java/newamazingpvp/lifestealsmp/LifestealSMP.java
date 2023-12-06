@@ -6,10 +6,7 @@ import newamazingpvp.lifestealsmp.customitemdrops.OtherCustomDrops;
 import newamazingpvp.lifestealsmp.customitemdrops.SekhmetStaffDrops;
 import newamazingpvp.lifestealsmp.game.Compass;
 import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
-import newamazingpvp.lifestealsmp.legacymontustaff.MontuStaffLeft;
-import newamazingpvp.lifestealsmp.legacymontustaff.MontuStaffRight;
-import newamazingpvp.lifestealsmp.legacymontustaff.MontuStaffShiftLeft;
-import newamazingpvp.lifestealsmp.legacymontustaff.MontuStaffShiftRight;
+import newamazingpvp.lifestealsmp.legacymontustaff.*;
 import newamazingpvp.lifestealsmp.listener.*;
 import newamazingpvp.lifestealsmp.sekhmetitems.GiveSekhmetSetSpeedADMINONLY;
 import org.bukkit.Bukkit;
@@ -20,11 +17,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
-
-import java.awt.*;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
 
 import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
 import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastServerMessage;
@@ -94,6 +86,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new VoidWalkerHelmEffects(), this);
         getServer().getPluginManager().registerEvents(new GracePeriod(), this);
         getServer().getPluginManager().registerEvents(new ReviveBeacon(), this);
+        getServer().getPluginManager().registerEvents(new CombatLogListener(), this);
         int repeatDelayTicks = 7200 * 20;
         BukkitRunnable broadcastTask = new BukkitRunnable() {
             @Override
