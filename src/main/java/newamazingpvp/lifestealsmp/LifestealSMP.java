@@ -38,16 +38,7 @@ import static newamazingpvp.lifestealsmp.utility.DiscordBot.*;
 public final class LifestealSMP extends JavaPlugin implements Listener {
     public static LifestealSMP lifestealSmp;
     private FileConfiguration config;
-
-    public static final List<String> groupNames = Arrays.asList(
-            "Supporter", "Build_Team", "Build_Team+", "Premium", "Mojang",
-            "Helper", "PIG+++", "Events", "Mcp", "Youtube", "NAP",
-            "Ender", "Furious", "ASH", "Vip", "Vip+", "Mvp", "Mvp+",
-            "Mvp++", "GameMaster", "Female", "Male", "Non-Binary",
-            "Eboy", "Egirl", "Sexy", "Pro", "Ace", "Sweaty",
-            "Unbeatable", "simp", "Europe", "Blood", "Test",
-            "2P6ldu1teo45", "Niko", "Regar", "Duck"
-    );
+    
 
 
     @Override
@@ -156,7 +147,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         player.setInvulnerable(true);
         getServer().getScheduler().runTaskLater(this, () -> player.setInvulnerable(false), 60);
         if (!event.getPlayer().hasPlayedBefore()) {
-            getServer().dispatchCommand(getServer().getConsoleSender(), "ep user " + event.getPlayer().getName() + " setgroup " + randomGroup());
+            getServer().dispatchCommand(getServer().getConsoleSender(), "customprefix " + event.getPlayer().getName() + " &8[&cPlayer&8]&7 ");
             player.sendMessage("Welcome! \n/rules\n/prefix\n/color\n/recipes ");
         }
     }
