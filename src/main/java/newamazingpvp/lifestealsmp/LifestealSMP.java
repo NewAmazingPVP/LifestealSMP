@@ -38,7 +38,7 @@ import static newamazingpvp.lifestealsmp.utility.DiscordBot.*;
 public final class LifestealSMP extends JavaPlugin implements Listener {
     public static LifestealSMP lifestealSmp;
     private FileConfiguration config;
-    
+
 
 
     @Override
@@ -126,17 +126,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         if (jda != null) {
             jda.shutdownNow();
         }
-    }
-
-    public static String randomGroup() {
-        if (groupNames.isEmpty()) {
-            return null;
-        }
-
-        Random random = new Random();
-        int randomIndex = random.nextInt(groupNames.size());
-
-        return groupNames.get(randomIndex);
     }
 
 
