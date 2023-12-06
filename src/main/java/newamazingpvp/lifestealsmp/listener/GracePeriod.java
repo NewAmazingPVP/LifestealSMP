@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.game.CombatLog.removeEnemies;
 import static newamazingpvp.lifestealsmp.game.CombatLog.tagPlayer;
 import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
 import static newamazingpvp.lifestealsmp.game.PlayerLifeManager.eliminatePlayer;
@@ -54,8 +55,8 @@ public class GracePeriod implements Listener {
                         damager.sendMessage(ChatColor.RED + "You cannot damage during their newbie protection!");
                     }*/
                     names.remove(damager.getName());
-                    tagPlayer(damager);
-                    tagPlayer(damaged);
+                    tagPlayer(damager, damaged);
+                    tagPlayer(damaged, damager);
                 } else if (event.getDamager() instanceof Arrow) {
                     Arrow arrow = (Arrow) event.getDamager();
                     if (arrow.getShooter() instanceof Player) {
@@ -76,8 +77,8 @@ public class GracePeriod implements Listener {
                             event.getDamager().sendMessage(ChatColor.RED + "You cannot damage during their newbie protection!");
                         }*/
                         names.remove(event.getDamager().getName());
-                        tagPlayer((Player) event.getDamager());
-                        tagPlayer(damaged);
+                        tagPlayer((Player) event.getDamager(), damaged);
+                        tagPlayer(damaged, (Player) event.getDamager());
                     }
                 }
             }
@@ -97,6 +98,7 @@ public class GracePeriod implements Listener {
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
+        removeEnemies(event.getPlayer());
         LivingEntity killer = event.getEntity().getKiller();
         if(!(killer instanceof Player)){
             return;

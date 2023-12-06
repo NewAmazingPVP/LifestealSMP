@@ -27,6 +27,5 @@ public class PlayerJoiningServer implements Listener {
 
         player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f);
         player.sendTitle(ChatColor.DARK_GREEN + "Welcome!", "", 0, 70, 20);
-        tagPlayer(player);
     }
 }
