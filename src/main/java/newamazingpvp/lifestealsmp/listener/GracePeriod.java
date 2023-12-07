@@ -22,8 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.game.CombatLog.removeEnemies;
-import static newamazingpvp.lifestealsmp.game.CombatLog.tagPlayer;
+import static newamazingpvp.lifestealsmp.game.CombatLog.*;
 import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
 import static newamazingpvp.lifestealsmp.game.PlayerLifeManager.eliminatePlayer;
 import static newamazingpvp.lifestealsmp.game.PlayerPing.getAPI;
@@ -37,7 +36,6 @@ public class GracePeriod implements Listener {
         if (event.getEntity() instanceof Player) {
             Player damaged = (Player) event.getEntity();
             if (event.getDamager() instanceof Player || event.getDamager() instanceof Arrow) {
-                //ICombatLogX plugin = getAPI();
                 if (event.getDamager() instanceof Player) {
                     Player damager = (Player) event.getDamager();
                     if (isGracePeriod()) {
@@ -45,18 +43,20 @@ public class GracePeriod implements Listener {
                         damager.sendMessage(ChatColor.RED + "You cannot damage players during the grace period!");
                     }
                     if (isPlayerDeathProt(damaged)) {
-                        damager.sendMessage(ChatColor.RED + "This player was recently killed by another player and won't drop heart if you kill them again");
+                        damager.sendMessage(ChatColor.RED + "This player was recently killed by a player and won't give heart if you kill them again");
                         //event.setCancelled(true);
                         //damager.sendMessage(ChatColor.RED + "You cannot damage players during their death protection unless they attack you back!");
                         //damaged.sendMessage(ChatColor.RED + "Someone tried attacking u but was prevented because u died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
                     }
-                    /*if(getPlaytime(damaged) < 216000 && !plugin.getCombatManager().isInCombat(damaged)){
+                    /*if(getPlaytime(damaged) < 216000 && !isInCombat(damaged)){
                         event.setCancelled(true);
                         damager.sendMessage(ChatColor.RED + "You cannot damage during their newbie protection!");
                     }*/
-                    names.remove(damager.getName());
-                    tagPlayer(damager, damaged);
-                    tagPlayer(damaged, damager);
+                    if(!event.isCancelled()) {
+                        names.remove(damager.getName());
+                        tagPlayer(damager, damaged);
+                        tagPlayer(damaged, damager);
+                    }
                 } else if (event.getDamager() instanceof Arrow) {
                     Arrow arrow = (Arrow) event.getDamager();
                     if (arrow.getShooter() instanceof Player) {
@@ -69,16 +69,18 @@ public class GracePeriod implements Listener {
                         if (isPlayerDeathProt(damaged)) {
                             //event.setCancelled(true);
                             //event.getDamager().sendMessage(ChatColor.RED + "You cannot shoot players during their death protection unless they attack you back!");
-                            event.getDamager().sendMessage(ChatColor.RED + "This player was recently killed by another player and won't drop heart if you kill them again");
+                            event.getDamager().sendMessage(ChatColor.RED + "This player was recently killed by a player and won't give heart if you kill them again");
                             //event.getEntity().sendMessage(ChatColor.RED + "Someone tried attacking u but was prevented because u died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
                         }
-                        /*if(getPlaytime(damaged) < 216000 && !plugin.getCombatManager().isInCombat(damaged)){
+                        /*if(getPlaytime(damaged) < 216000 && !isInCombat(damaged)){
                             event.setCancelled(true);
                             event.getDamager().sendMessage(ChatColor.RED + "You cannot damage during their newbie protection!");
                         }*/
-                        names.remove(event.getDamager().getName());
-                        tagPlayer((Player) event.getDamager(), damaged);
-                        tagPlayer(damaged, (Player) event.getDamager());
+                        if(!event.isCancelled()) {
+                            names.remove(event.getDamager().getName());
+                            tagPlayer((Player) event.getDamager(), damaged);
+                            tagPlayer(damaged, (Player) event.getDamager());
+                        }
                     }
                 }
             }

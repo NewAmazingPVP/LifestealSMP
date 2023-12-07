@@ -23,7 +23,7 @@ public class CombatLogListener implements Listener {
 
     @EventHandler
     public void onPlayerDisconnect(PlayerQuitEvent e){
-        if(isPlayerInCombat(e.getPlayer())) {
+        if(isInCombat(e.getPlayer())) {
             Player p = e.getPlayer();
             e.getPlayer().setHealth(0.0);
 

@@ -6,7 +6,6 @@ import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
@@ -27,13 +26,14 @@ public class CombatLog {
         } else {
             combaters.add(p);
 
-            BossBar bossBar = Bukkit.createBossBar(ChatColor.RED + "Combat Log Timer: 90 seconds left", BarColor.YELLOW, BarStyle.SOLID);
+            BossBar bossBar = Bukkit.createBossBar(ChatColor.GOLD + "" + ChatColor.BOLD + "Combat Timer " + ChatColor.GRAY + "" + ChatColor.BOLD + ">>" + ChatColor.RED + " 90 " + ChatColor.WHITE + "seconds.", BarColor.YELLOW, BarStyle.SOLID);
             bossBar.addPlayer(p);
 
             PlayerCombatData combatData = new PlayerCombatData(bossBar, 90);
             playerCombatDataMap.put(p, combatData);
             playerCombatDataMap.get(p).addEnemy(enemy);
         }
+        p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "You are in combat do not log out!");
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -58,6 +58,7 @@ public class CombatLog {
         if (combatData != null) {
             combatData.getBossBar().removeAll();
             combaters.remove(player);
+            player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "You are no longer in combat.");
         }
     }
 
@@ -70,7 +71,7 @@ public class CombatLog {
         }
     }
 
-    public static boolean isPlayerInCombat(Player player) {
+    public static boolean isInCombat(Player player) {
         return combaters.contains(player);
     }
 
@@ -116,7 +117,7 @@ public class CombatLog {
 
         public void updateBossBar() {
             bossBar.setProgress((double) timer / 90.0);
-            bossBar.setTitle(ChatColor.RED + "Combat Log Timer: " + timer + " seconds left");
+            bossBar.setTitle(ChatColor.GOLD + "" + ChatColor.BOLD + "Combat Timer " + ChatColor.GRAY + "" + ChatColor.BOLD + ">>" + ChatColor.RED + " " + timer + " " + ChatColor.WHITE + "seconds.");
         }
     }
 }
