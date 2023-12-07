@@ -45,7 +45,7 @@ public class CombatLog {
                     playerCombatDataMap.get(p).updateBossBar();
                     playerCombatDataMap.get(p).decreaseTimer();
 
-                    if (playerCombatDataMap.get(p).getTimer() <= -1) {
+                    if (playerCombatDataMap.get(p).getTimer() <= -1 || playerCombatDataMap.get(p).getEnemies() == null) {
                         cancelCombatData(p);
                     }
                 }
@@ -68,7 +68,11 @@ public class CombatLog {
         PlayerCombatData combatData = playerCombatDataMap.get(player);
         if (combatData != null) {
             for(Player p : combatData.getEnemies()) {
-                cancelCombatData(p);
+                if(playerCombatDataMap.get(p).getEnemies().size() == 1) {
+                    cancelCombatData(p);
+                } else {
+                    playerCombatDataMap.get(p).removeEnemy(player);
+                }
             }
         }
     }
@@ -120,6 +124,7 @@ public class CombatLog {
         public void updateBossBar() {
             bossBar.setProgress((double) timer / 90.0);
             bossBar.setTitle(ChatColor.GOLD + "" + ChatColor.BOLD + "Combat Timer " + ChatColor.GRAY + "" + ChatColor.BOLD + ">>" + ChatColor.RED + " " + timer + " " + ChatColor.WHITE + "seconds.");
+            enemies.removeIf(p -> !isInCombat(p));
         }
     }
 }
