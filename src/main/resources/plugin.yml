@@ -72,3 +72,8 @@ commands:
     usage: /vision
     aliases:
       - nightvision
+  discordmessage:
+    description: Send message on discord!
+    usage: /senddiscordmessage <msg> <channelID>
+    permission: lifestealSMP.admin
+    default: op
