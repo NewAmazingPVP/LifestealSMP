@@ -67,15 +67,6 @@
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
-        <repository>
-            <id>sirblobman-public</id>
-            <url>https://nexus.sirblobman.xyz/public/</url>
-        </repository>
-        <repository>
-            <id>jcenter</id>
-            <name>jcenter</name>
-            <url>https://jcenter.bintray.com/</url>
-        </repository>
     </repositories>
 
     <dependencies>
@@ -83,18 +74,6 @@
             <groupId>org.purpurmc.purpur</groupId>
             <artifactId>purpur-api</artifactId>
             <version>1.20.1-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.github.sirblobman.api</groupId>
-            <artifactId>core</artifactId>
-            <version>2.9-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.github.sirblobman.combatlogx</groupId>
-            <artifactId>api</artifactId>
-            <version>11.4-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
