@@ -32,25 +32,27 @@ public class CombatLog {
             PlayerCombatData combatData = new PlayerCombatData(bossBar, 90);
             playerCombatDataMap.put(p, combatData);
             playerCombatDataMap.get(p).addEnemy(enemy);
+
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    if (!combaters.contains(p) || !playerCombatDataMap.containsKey(p)) {
+                        cancelCombatData(p);
+                        this.cancel();
+                        return;
+                    }
+
+                    playerCombatDataMap.get(p).updateBossBar();
+                    playerCombatDataMap.get(p).decreaseTimer();
+
+                    if (playerCombatDataMap.get(p).getTimer() <= -1) {
+                        cancelCombatData(p);
+                    }
+                }
+            }.runTaskTimer(lifestealSmp, 0L, 20L);
         }
         p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "You are in combat do not log out!");
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                if (!combaters.contains(p) || !playerCombatDataMap.containsKey(p)) {
-                    cancelCombatData(p);
-                    this.cancel();
-                    return;
-                }
 
-                playerCombatDataMap.get(p).updateBossBar();
-                playerCombatDataMap.get(p).decreaseTimer();
-
-                if (playerCombatDataMap.get(p).getTimer() <= -1) {
-                    cancelCombatData(p);
-                }
-            }
-        }.runTaskTimer(lifestealSmp, 0L, 20L);
     }
 
     public static void cancelCombatData(Player player) {
