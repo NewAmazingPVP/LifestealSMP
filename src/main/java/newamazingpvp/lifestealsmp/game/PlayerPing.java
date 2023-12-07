@@ -1,8 +1,5 @@
 package newamazingpvp.lifestealsmp.game;
 
-import com.github.sirblobman.combatlogx.api.ICombatLogX;
-import com.github.sirblobman.combatlogx.api.object.UntagReason;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -12,6 +9,8 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import static newamazingpvp.lifestealsmp.game.CombatLog.cancelCombatData;
+import static newamazingpvp.lifestealsmp.game.CombatLog.isInCombat;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.sendDiscordEmbedPlayer;
 import static org.bukkit.Bukkit.getServer;
 
@@ -49,9 +48,8 @@ public class PlayerPing {
                     //}
                 }
                 if (player.getPing() > 500) {
-                    ICombatLogX plugin = getAPI();
-                    if (plugin.getCombatManager().isInCombat(player)) {
-                        plugin.getCombatManager().untag(player, UntagReason.valueOf("Very high ping disconnect"));
+                    if (isInCombat(player)) {
+                        cancelCombatData(player);
                         sendDiscordEmbedPlayer("High ping during combat! Untagging player and kicking them!", Color.RED, "", player.getName());
                     }
                     player.kickPlayer(ChatColor.RED + "Your ping is too high! You are disconnected for your own safety!");
@@ -62,11 +60,5 @@ public class PlayerPing {
             }
             playerPingMap.put(player, currentPing);
         }
-    }
-
-    public static ICombatLogX getAPI() {
-        PluginManager pluginManager = Bukkit.getPluginManager();
-        Plugin plugin = pluginManager.getPlugin("CombatLogX");
-        return (ICombatLogX) plugin;
     }
 }

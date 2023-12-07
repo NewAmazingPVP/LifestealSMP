@@ -1,7 +1,5 @@
 package newamazingpvp.lifestealsmp.listener;
 
-import com.github.sirblobman.combatlogx.api.ICombatLogX;
-import com.github.sirblobman.combatlogx.api.manager.IDeathManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
@@ -17,16 +15,10 @@ import java.util.List;
 import static org.bukkit.Bukkit.getServer;
 
 public class PlayerDeath implements Listener {
-    public ICombatLogX getAPI() {
-        PluginManager pluginManager = Bukkit.getPluginManager();
-        Plugin plugin = pluginManager.getPlugin("CombatLogX");
-        return (ICombatLogX) plugin;
-    }
-
     @EventHandler
     public void onDeath(PlayerDeathEvent e) {
         Player player = e.getEntity();
-        ICombatLogX plugin = getAPI();
+        /*ICombatLogX plugin = getAPI();
         IDeathManager deathManager = plugin.getDeathManager();
 
         if (deathManager.wasPunishKilled(player)) {
@@ -45,7 +37,7 @@ public class PlayerDeath implements Listener {
                     }
                 }
             }
-        }
+        }*/
         Player Gamer = e.getEntity();
         int[] pos = {Gamer.getLocation().getBlockX(), Gamer.getLocation().getBlockY(), Gamer.getLocation().getBlockZ()};
         Gamer.sendMessage(ChatColor.BOLD + "" + ChatColor.GOLD +

@@ -67,3 +67,8 @@ commands:
     usage: /customprefix <player> <prefix>
     permission: lifestealSMP.admin
     default: op
+  vision:
+    description: Enable full night vision
+    usage: /vision
+    aliases:
+      - nightvision
