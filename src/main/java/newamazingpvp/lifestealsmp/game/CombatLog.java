@@ -24,6 +24,7 @@ public class CombatLog {
             playerCombatDataMap.get(p).setTimer(90);
             playerCombatDataMap.get(p).addEnemy(enemy);
         } else {
+            p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "You are in combat do not log out!");
             combaters.add(p);
 
             BossBar bossBar = Bukkit.createBossBar(ChatColor.GOLD + "" + ChatColor.BOLD + "Combat Timer " + ChatColor.GRAY + "" + ChatColor.BOLD + ">>" + ChatColor.RED + " 90 " + ChatColor.WHITE + "seconds.", BarColor.YELLOW, BarStyle.SOLID);
@@ -51,7 +52,7 @@ public class CombatLog {
                 }
             }.runTaskTimer(lifestealSmp, 0L, 20L);
         }
-        p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "You are in combat do not log out!");
+
 
     }
 
@@ -79,6 +80,22 @@ public class CombatLog {
 
     public static boolean isInCombat(Player player) {
         return combaters.contains(player);
+    }
+
+    public static int getCombatTimer(Player p){
+        PlayerCombatData combatData = playerCombatDataMap.get(p);
+        if (combatData != null) {
+            return playerCombatDataMap.get(p).getTimer();
+        }
+        return -1;
+    }
+
+    public static List<Player> getEnemies(Player p) {
+        PlayerCombatData combatData = playerCombatDataMap.get(p);
+        if (combatData != null) {
+            return playerCombatDataMap.get(p).getEnemies();
+        }
+        return null;
     }
 
     private static class PlayerCombatData {
