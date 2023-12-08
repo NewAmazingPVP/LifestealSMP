@@ -23,7 +23,7 @@ public class CustomHeartItems implements Listener {
 
         if (killer == null) return;
 
-        if (Math.random() <= 0.001) {
+        if (Math.random() <= 0.0002) {
             e.getDrops().add(corruptedMobSoul());
             //e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), new ItemStack(CorruptedMobSoul()));
             killer.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "RARE DROP!" + ChatColor.DARK_PURPLE + " Corrupted Mob Soul");
@@ -32,7 +32,7 @@ public class CustomHeartItems implements Listener {
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 3.0f), 9);
             e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
         }
-        if (Math.random() <= 0.001) {
+        if (Math.random() <= 0.0002) {
             e.getDrops().add(severedMobHeart());
             //e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), new ItemStack(severedMobHeart()));
             killer.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "RARE DROP!" + ChatColor.DARK_PURPLE + " Severed Mob Heart");
