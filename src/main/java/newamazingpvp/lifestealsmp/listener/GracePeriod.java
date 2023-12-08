@@ -42,10 +42,10 @@ public class GracePeriod implements Listener {
                         //damager.sendMessage(ChatColor.RED + "You cannot damage players during their death protection unless they attack you back!");
                         //damaged.sendMessage(ChatColor.RED + "Someone tried attacking u but was prevented because u died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
                     }
-                    /*if(getPlaytime(damaged) < 216000 && !isInCombat(damaged)){
+                    if(getPlaytime(damaged) < 216000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())){
                         event.setCancelled(true);
                         damager.sendMessage(ChatColor.RED + "You cannot damage during their newbie protection!");
-                    }*/
+                    }
                     if(!event.isCancelled()) {
                         names.remove(damager.getName());
                         tagPlayer(damager, damaged);
@@ -66,10 +66,10 @@ public class GracePeriod implements Listener {
                             event.getDamager().sendMessage(ChatColor.RED + "This player was recently killed by a player and won't give heart if you kill them again");
                             //event.getEntity().sendMessage(ChatColor.RED + "Someone tried attacking u but was prevented because u died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
                         }
-                        /*if(getPlaytime(damaged) < 216000 && !isInCombat(damaged)){
+                        if(getPlaytime(damaged) < 216000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())){
                             event.setCancelled(true);
                             event.getDamager().sendMessage(ChatColor.RED + "You cannot damage during their newbie protection!");
-                        }*/
+                        }
                         if(!event.isCancelled()) {
                             names.remove(event.getDamager().getName());
                             tagPlayer((Player) event.getDamager(), damaged);
@@ -85,6 +85,7 @@ public class GracePeriod implements Listener {
                     if(getPlaytime(p) < 216000 && !newbieViolate.contains(p.getName())){
                         newbieViolate.add(p.getName());
                         event.setCancelled(true);
+                        lifestealSmp.getServer().broadcastMessage(p.getName() + " has lost their newbie protection for 5 minutes because of potentially breaking the no griefing rule during newbie protection");
                         new BukkitRunnable() {
                             @Override
                             public void run() {
