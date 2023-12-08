@@ -47,7 +47,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getCommand("setview").setExecutor(new CustomDistance());
         getCommand("recipes").setExecutor(new RecipesCommand());
         getCommand("track").setExecutor(new Compass());
-        //getCommand("GiveSekhmetSet").setExecutor(new GiveSekhmetSetSpeedADMINONLY());
+        getCommand("GiveSekhmetSet").setExecutor(new GiveSekhmetSetSpeedADMINONLY());
         getCommand("restart_with_warning").setExecutor(new RestartWithWarming());
         getCommand("remHP").setExecutor(new RemoveHP());
         getCommand("addHP").setExecutor(new AddHP());
