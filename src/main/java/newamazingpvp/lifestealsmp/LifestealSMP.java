@@ -133,7 +133,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         player.setInvulnerable(true);
         getServer().getScheduler().runTaskLater(this, () -> player.setInvulnerable(false), 60);
         if (!event.getPlayer().hasPlayedBefore()) {
-            getServer().dispatchCommand(getServer().getConsoleSender(), "customprefix " + event.getPlayer().getName() + " &8[&cPlayer&8]&7 ");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "ep user " + event.getPlayer().getName() + " setgroup default");
             player.sendMessage("Welcome! \n/rules\n/prefix\n/color\n/recipes ");
         }
     }
