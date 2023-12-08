@@ -13,6 +13,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 
@@ -31,9 +33,11 @@ public class FeatherSword implements Listener {
         ItemStack offHandItem = player.getInventory().getItemInOffHand();
 
         if (isPermanentSpeedSword(mainHandItem) || isPermanentSpeedSword(offHandItem)) {
-            player.setWalkSpeed(0.3f);
+            //player.setWalkSpeed(0.3f);
+            giveSpeed(player);
         } else {
-            player.setWalkSpeed(0.2f);
+            //player.setWalkSpeed(0.2f);
+            removeSpeed(player);
         }
     }
 
@@ -111,5 +115,13 @@ public class FeatherSword implements Listener {
 
     private void setTeleportCooldown(Player player) {
         teleportCooldowns.put(player, System.currentTimeMillis());
+    }
+
+    private void giveSpeed(Player player) {
+        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 1, true, false));
+    }
+
+    private void removeSpeed(Player player) {
+        player.removePotionEffect(PotionEffectType.SPEED);
     }
 }
