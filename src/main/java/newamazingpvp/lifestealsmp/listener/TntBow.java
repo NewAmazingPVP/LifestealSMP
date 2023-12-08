@@ -6,8 +6,10 @@ import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -22,6 +24,25 @@ public class TntBow implements Listener {
     private final HashMap<UUID, ItemStack> playerHeldItems = new HashMap<>();
     private final Map<Player, Long> teleportCooldowns = new HashMap<>();
     private final long teleportCooldownDuration = 5000;
+
+    @EventHandler
+    public void onPlayerUseBow(PlayerInteractEvent event) {
+        if(!(event.getAction() == Action.LEFT_CLICK_AIR
+        || event.getAction() == Action.LEFT_CLICK_BLOCK
+        || event.getAction() == Action.RIGHT_CLICK_AIR
+        || event.getAction() == Action.RIGHT_CLICK_BLOCK)){
+            return;
+        }
+        Player shooter = event.getPlayer();
+        ItemStack mainHandItem = shooter.getInventory().getItemInMainHand();
+        ItemStack offHandItem = shooter.getInventory().getItemInOffHand();
+        if (isBow(mainHandItem) || isBow(offHandItem)) {
+            if (!isTeleportCooldownExpired(shooter)) {
+                event.setCancelled(true);
+                shooter.sendMessage(ChatColor.RED + "You must wait " + cooldownRemainingTime(shooter) + " for the cooldown to finish before using the TNT again.");
+            }
+        }
+    }
 
     @EventHandler
     public void onProjectileLaunch(ProjectileLaunchEvent event) {
