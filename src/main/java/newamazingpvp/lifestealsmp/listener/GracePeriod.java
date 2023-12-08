@@ -1,10 +1,7 @@
 package newamazingpvp.lifestealsmp.listener;
 
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -26,6 +23,7 @@ import static newamazingpvp.lifestealsmp.game.PlayerLifeManager.eliminatePlayer;
 
 public class GracePeriod implements Listener {
     public List<String> names = new ArrayList<>();
+    public List<String> newbieViolate = new ArrayList<>();
 
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
@@ -77,6 +75,22 @@ public class GracePeriod implements Listener {
                             tagPlayer((Player) event.getDamager(), damaged);
                             tagPlayer(damaged, (Player) event.getDamager());
                         }
+                    }
+                }
+            }
+        } else {
+            if (event.getEntity() instanceof Villager){
+                if (event.getDamager() instanceof Player) {
+                    Player p = (Player) event.getDamager();
+                    if(getPlaytime(p) < 216000 && !newbieViolate.contains(p.getName())){
+                        newbieViolate.add(p.getName());
+                        event.setCancelled(true);
+                        new BukkitRunnable() {
+                            @Override
+                            public void run() {
+                                newbieViolate.remove(p.getName());
+                            }
+                        }.runTaskLater(lifestealSmp, 20 * 60 * 5);
                     }
                 }
             }
