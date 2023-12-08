@@ -67,10 +67,10 @@ public class Compass implements CommandExecutor, Listener {
                 return true;
             }
 
-            if (getCompassFromInventory(player) == null) {
+            /*if (getCompassFromInventory(player) == null) {
                 sender.sendMessage(ChatColor.RED + "You need a compass in your inventory to use this command!");
                 return true;
-            }
+            }*/
 
             Player target = Bukkit.getPlayer(args[0]);
 
@@ -225,16 +225,16 @@ public class Compass implements CommandExecutor, Listener {
                     UUID targetUUID = trackingPlayers.get(playerUUID);
                     Player target = Bukkit.getPlayer(targetUUID);
 
-                    ItemStack compass = getCompassFromInventory(player);
+                    //ItemStack compass = getCompassFromInventory(player);
 
-                    if (compass == null) {
-                        continue;
-                    }
+                    //if (compass == null) {
+                    //    continue;
+                    //}
                     String msg;
                     int distance = 0;
                     if (target != null && !playerDiedRecently(target) && !isElytra(player) && !isPlayerElytraCooldown(player)) {
                         if (player.getWorld().getEnvironment() == World.Environment.NORMAL && target.getWorld().getEnvironment() == World.Environment.NORMAL) {
-                            setNormalCompass(compass);
+                            //setNormalCompass(compass);
                             //player.setCompassTarget(target.getLocation());
                             msg = ChatColor.GREEN + "Tracking " + ChatColor.BOLD + target.getName();
                             distance = (int) player.getLocation().distance(target.getLocation());
@@ -257,17 +257,17 @@ public class Compass implements CommandExecutor, Listener {
                                         : ChatColor.GREEN + "Tracking " + ChatColor.BOLD + target.getName();
                             }
                         }
-                        String dis = calculateDistanceCategory(distance);
+                        //String dis = calculateDistanceCategory(distance);
                         if(distance != 0) {
-                            msg += " In radius of range " + dis;
+                            msg += ChatColor.BOLD + " " + distance + " blocks";
                         }
                         TextComponent textComponent = new TextComponent(msg);
                         player.spigot().sendMessage(ChatMessageType.ACTION_BAR, textComponent);
                         //boolean e = isMovingCloser(player, target);
                         //player.sendMessage("ur "+ e);
                     } else {
-                        setNormalCompass(compass);
-                        player.setCompassTarget(generateRandomLocation(player));
+                        //setNormalCompass(compass);
+                        //player.setCompassTarget(generateRandomLocation(player));
                     }
                 }
 
