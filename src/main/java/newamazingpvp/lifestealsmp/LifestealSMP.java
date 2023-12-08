@@ -18,6 +18,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.awt.*;
+
 import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
 import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastServerMessage;
 import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
@@ -106,13 +108,13 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
             }
         }.runTaskTimer(this, 0L, 20L);
         scheduleRestart();
-        /*intializeBot();
+        intializeBot();
         new BukkitRunnable() {
             @Override
             public void run() {
                 sendDiscordEmbedTitle("Bot intialized", Color.MAGENTA, "");
             }
-        }.runTaskLater(this, 120);*/
+        }.runTaskLater(this, 120);
         compassUpdate();
     }
 
