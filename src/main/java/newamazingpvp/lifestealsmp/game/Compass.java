@@ -17,6 +17,8 @@ import org.bukkit.event.player.PlayerVelocityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.CompassMeta;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
@@ -93,6 +95,11 @@ public class Compass implements CommandExecutor, Listener {
 
             if (isPlayerElytraCooldown(g)) {
                 sender.sendMessage(ChatColor.RED + "You have used elytra in last two hours so you cannot track!");
+                return true;
+            }
+
+            if(isPlayerInvisible(g) || isPlayerInvisible(target)){
+                sender.sendMessage(ChatColor.RED + "Either you or your target is invisible thus cannot be tracked");
                 return true;
             }
 
@@ -232,7 +239,7 @@ public class Compass implements CommandExecutor, Listener {
                     //}
                     String msg;
                     int distance = 0;
-                    if (target != null && !playerDiedRecently(target) && !isElytra(player) && !isPlayerElytraCooldown(player)) {
+                    if (target != null && !playerDiedRecently(target) && !isElytra(player) && !isPlayerElytraCooldown(player) && !(isPlayerInvisible(player) || (isPlayerInvisible(target)))) {
                         if (player.getWorld().getEnvironment() == World.Environment.NORMAL && target.getWorld().getEnvironment() == World.Environment.NORMAL) {
                             //setNormalCompass(compass);
                             //player.setCompassTarget(target.getLocation());
@@ -356,6 +363,10 @@ public class Compass implements CommandExecutor, Listener {
         compassMeta.setLodestone(location);
         compassMeta.setLodestoneTracked(true);
         compass.setItemMeta(compassMeta);
+    }
+
+    public static boolean isPlayerInvisible(Player p){
+        return p.getActivePotionEffects().contains(PotionEffectType.INVISIBILITY);
     }
 
 }
