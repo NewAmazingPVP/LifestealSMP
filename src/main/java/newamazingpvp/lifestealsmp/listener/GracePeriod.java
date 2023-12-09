@@ -47,7 +47,7 @@ public class GracePeriod implements Listener {
                         damager.sendMessage(ChatColor.RED + "You cannot damage during their newbie protection!");
                     }
                     if(!event.isCancelled()) {
-                        names.remove(damager.getName());
+                        //names.remove(damager.getName());
                         tagPlayer(damager, damaged);
                         tagPlayer(damaged, damager);
                     }
@@ -71,7 +71,7 @@ public class GracePeriod implements Listener {
                             event.getDamager().sendMessage(ChatColor.RED + "You cannot damage during their newbie protection!");
                         }
                         if(!event.isCancelled()) {
-                            names.remove(event.getDamager().getName());
+                            //names.remove(event.getDamager().getName());
                             tagPlayer((Player) event.getDamager(), damaged);
                             tagPlayer(damaged, (Player) event.getDamager());
                         }
