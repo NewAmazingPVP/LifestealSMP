@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
@@ -46,6 +47,13 @@ public class CombatLogListener implements Listener {
 
             cancelCombatData(e.getPlayer());
             removeEnemies(e.getPlayer());
+        }
+    }
+
+    @EventHandler
+    public void onPlayerRespawn(PlayerRespawnEvent e) {
+        if(isInCombat(e.getPlayer())){
+            cancelCombatData(e.getPlayer());
         }
     }
 }
