@@ -80,3 +80,9 @@ commands:
   shop:
     description: Get link for the shop
     usage: /shop
+  help:
+    description: Useful commands for the SMP
+    usage: /help
+  guide:
+    description: Guide tutorial book for SMP
+    usage: /guide

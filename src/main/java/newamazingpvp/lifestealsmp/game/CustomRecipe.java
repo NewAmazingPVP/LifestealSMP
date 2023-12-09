@@ -23,7 +23,7 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 public class CustomRecipe {
     public static void registerCustomRecipes() {
 
-        ItemStack VWH = new ItemStack(VoidWalkerHEALM());
+        /*ItemStack VWH = new ItemStack(VoidWalkerHEALM());
         ShapedRecipe VWHR = new ShapedRecipe(new NamespacedKey(lifestealSmp, "VoidWalkerHealmR"), VWH);
         VWHR.shape("DAD", "BXB", "TNT");
         VWHR.setIngredient('D', Material.DIAMOND_BLOCK, 5);
@@ -33,7 +33,7 @@ public class CustomRecipe {
         VWHR.setIngredient('T', Material.DRAGON_BREATH);
         VWHR.setIngredient('A', antimatterVile());
 
-        Bukkit.addRecipe(VWHR);
+        Bukkit.addRecipe(VWHR);*/
 
         ItemStack extraHeart = new ItemStack(extraHeart());
         ShapedRecipe extraHeartRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "extra_heart"), extraHeart);
@@ -52,7 +52,7 @@ public class CustomRecipe {
         shulkerRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(shulkerRecipe);
 
-        ItemStack endStone = new ItemStack(Material.END_STONE);
+        /*ItemStack endStone = new ItemStack(Material.END_STONE);
         ShapedRecipe endStoneRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "end_stone_recipe"), endStone);
         endStoneRecipe.shape("DNE");
         endStoneRecipe.setIngredient('D', Material.DIRT);
@@ -107,21 +107,21 @@ public class CustomRecipe {
         opPickaxeRecipe.addIngredient(1, Material.GOLD_BLOCK);
         opPickaxeRecipe.addIngredient(5, Material.NETHERITE_INGOT);
         opPickaxeRecipe.addIngredient(1, Material.DIAMOND_PICKAXE);
-        Bukkit.addRecipe(opPickaxeRecipe);
+        Bukkit.addRecipe(opPickaxeRecipe);*/
 
         NamespacedKey nethScraps = new NamespacedKey(lifestealSmp, "neth_scraps");
         ShapelessRecipe nethScrapsRecipe = new ShapelessRecipe(nethScraps, createNethScarps());
         nethScrapsRecipe.addIngredient(1, Material.NETHERITE_INGOT);
         Bukkit.addRecipe(nethScrapsRecipe);
 
-        NamespacedKey homingBow = new NamespacedKey(lifestealSmp, "homing_bow");
+        /*NamespacedKey homingBow = new NamespacedKey(lifestealSmp, "homing_bow");
         ShapelessRecipe homingBowRecipe = new ShapelessRecipe(homingBow, createHomingBow());
         homingBowRecipe.addIngredient(1, Material.BOW);
         homingBowRecipe.addIngredient(2, Material.NETHERITE_INGOT);
         homingBowRecipe.addIngredient(2, Material.DIAMOND_BLOCK);
         homingBowRecipe.addIngredient(1, Material.NETHER_STAR);
         homingBowRecipe.addIngredient(2, Material.COMPASS);
-        Bukkit.addRecipe(homingBowRecipe);
+        Bukkit.addRecipe(homingBowRecipe);*/
 
         NamespacedKey reviveBeacon = new NamespacedKey(lifestealSmp, "revive_beacon");
         ShapelessRecipe reviveBeaconRecipe = new ShapelessRecipe(reviveBeacon, createReviveBeacon());

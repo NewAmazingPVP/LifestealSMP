@@ -15,7 +15,7 @@ import java.util.List;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class ServerAge implements Listener {
-    private final LocalDateTime serverStartTime = LocalDateTime.of(2023, 9, 16, 11, 30);
+    private final LocalDateTime serverStartTime = LocalDateTime.of(2023, 12, 9, 11, 30);
 
     @EventHandler
     public void playerServerAge(PlayerChatEvent event) {
@@ -57,7 +57,7 @@ public class ServerAge implements Listener {
                 long minutes = duration.toMinutesPart();
 
                 String uptimeMessage = String.format(
-                        "The server started on" + ChatColor.AQUA + " 7/27/23 12:00pm est" + ChatColor.WHITE + " and has been up for" + ChatColor.GOLD + " %d days, %d hours, and %d minutes.",
+                        "The server started on" + ChatColor.AQUA + " 12/9/23 11:30am est" + ChatColor.WHITE + " and has been up for" + ChatColor.GOLD + " %d days, %d hours, and %d minutes.",
                         days, hours, minutes
                 );
 
