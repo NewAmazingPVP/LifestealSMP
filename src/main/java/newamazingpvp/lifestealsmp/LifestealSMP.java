@@ -68,6 +68,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getCommand("vision").setExecutor(new NightVision());
         getCommand("senddiscordmessage").setExecutor(new SendDiscordMessage());
         getCommand("shop").setExecutor(new ShopCommand());
+        getCommand("help").setExecutor(new HelpCommand());
+        getCommand("guide").setExecutor(new GuideCommand());
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
@@ -116,7 +118,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
                 monitorPlayerPings();
             }
         }.runTaskTimer(this, 0L, 20L);
-        scheduleRestart();
+        //scheduleRestart();
         intializeBot();
         new BukkitRunnable() {
             @Override
@@ -139,16 +141,18 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
-        player.setInvulnerable(true);
-        getServer().getScheduler().runTaskLater(this, () -> player.setInvulnerable(false), 60);
-
         if (!player.hasPlayedBefore()) {
+            player.setInvulnerable(true);
+            getServer().getScheduler().runTaskLater(this, () -> player.setInvulnerable(false), 200);
             getServer().dispatchCommand(getServer().getConsoleSender(), "ep user " + player.getName() + " setgroup default");
 
-            player.sendMessage("Welcome! \n/rules\n/prefix\n/color\n/recipes ");
+            player.sendMessage("Welcome! \n/help\n/guide\n/rules\n/prefix\n/color\n/recipes\n/trade ");
             giveClickableItem(player);
 
             player.teleport(lobby);
+        } else {
+            player.setInvulnerable(true);
+            getServer().getScheduler().runTaskLater(this, () -> player.setInvulnerable(false), 60);
         }
     }
 
@@ -157,13 +161,17 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         Player player = event.getPlayer();
         ItemStack item = player.getInventory().getItemInMainHand();
 
-        if (item != null && item.getType() == Material.GREEN_TERRACOTTA && item.hasItemMeta()) {
-            ItemMeta meta = item.getItemMeta();
-
-            if (meta.hasDisplayName() && meta.getLore().contains("playing")) {
-                player.teleport(player.getWorld().getSpawnLocation());
-            }
+        if (isTpBlock(item)){
+            event.setCancelled(true);
+            player.teleport(player.getWorld().getSpawnLocation());
+            item.setAmount(0);
         }
+
+    }
+
+    private boolean isTpBlock(ItemStack item) {
+        ItemMeta meta = item.getItemMeta();
+        return item.getType() == Material.GREEN_TERRACOTTA && meta.getLore() != null && meta.getLore().toString().contains("Click to start");
     }
 
     private void giveClickableItem(Player player) {

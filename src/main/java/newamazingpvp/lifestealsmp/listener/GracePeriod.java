@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.listener;
 
 import org.bukkit.ChatColor;
+import org.bukkit.World;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,6 +20,7 @@ import java.util.List;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.game.CombatLog.*;
 import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
+import static newamazingpvp.lifestealsmp.game.CustomRecipe.extraHeart;
 import static newamazingpvp.lifestealsmp.game.PlayerLifeManager.eliminatePlayer;
 
 public class GracePeriod implements Listener {
@@ -76,6 +78,27 @@ public class GracePeriod implements Listener {
                             tagPlayer(damaged, (Player) event.getDamager());
                         }
                     }
+                } else if (event.getDamager() instanceof TNTPrimed) {
+                    TNTPrimed arrow = (TNTPrimed) event.getDamager();
+                    if (arrow.getSource() instanceof Player) {
+                        Player shooter = (Player) arrow.getSource();
+
+                        if (isGracePeriod()) {
+                            event.setCancelled(true);
+                            shooter.sendMessage(ChatColor.RED + "You cannot tnt players during the grace period!");
+                        }
+                        if (isPlayerDeathProt(damaged)) {
+                            event.getDamager().sendMessage(ChatColor.RED + "This player was recently killed by a player and won't give heart if you kill them again");
+                        }
+                        if (getPlaytime(damaged) < 216000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())) {
+                            event.setCancelled(true);
+                            event.getDamager().sendMessage(ChatColor.RED + "You cannot damage during their newbie protection!");
+                        }
+                        if (!event.isCancelled()) {
+                            tagPlayer((Player) event.getDamager(), damaged);
+                            tagPlayer(damaged, (Player) event.getDamager());
+                        }
+                    }
                 }
             }
         } else {
@@ -117,13 +140,24 @@ public class GracePeriod implements Listener {
             return;
         }
         Player p = event.getEntity();
+        Player slainer = (Player) killer;
         if(!names.contains(p.getName())){
             if(!(p.getMaxHealth() <= 2)) {
                 p.setMaxHealth(p.getMaxHealth() - 2);
             } else {
                 eliminatePlayer(p);
             }
-            killer.setMaxHealth(killer.getMaxHealth() + 2);
+            if(!(killer.getMaxHealth() >= 38)) {
+                killer.setMaxHealth(killer.getMaxHealth() + 2);
+            } else {
+                if (slainer.getInventory().firstEmpty() != -1) {
+                    slainer.getInventory().addItem(extraHeart());
+                } else {
+                    World world = slainer.getWorld();
+                    world.dropItem(slainer.getLocation(), extraHeart());
+                    killer.sendMessage(ChatColor.GRAY + "Heart was dropped because your inventory was full");
+                }
+            }
         }
         String name = p.getName();
         names.add(name);

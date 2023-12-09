@@ -2,6 +2,7 @@ package newamazingpvp.lifestealsmp.game;
 
 import com.destroystokyo.paper.event.player.PlayerTeleportEndGatewayEvent;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
@@ -16,8 +17,7 @@ import java.awt.*;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.sendDiscordEmbedPlayer;
-import static newamazingpvp.lifestealsmp.variables.Loc.endPortalCenter;
-import static newamazingpvp.lifestealsmp.variables.Loc.endSpawn;
+import static newamazingpvp.lifestealsmp.variables.Loc.*;
 import static newamazingpvp.lifestealsmp.variables.Misc.endFightParticipants;
 import static newamazingpvp.lifestealsmp.variables.Misc.isEndFightEnabled;
 
@@ -64,7 +64,7 @@ public class EndFightRestrictions implements Listener {
         }
     }
 
-    @EventHandler
+    /*@EventHandler
     public void playerDamage(EntityDamageByEntityEvent e) {
         if (isEndFightEnabled && e.getEntity() instanceof Player && (e.getDamager() instanceof Player || e.getDamager() instanceof Arrow)) {
             Player p = (Player) e.getEntity();
@@ -75,17 +75,26 @@ public class EndFightRestrictions implements Listener {
                 lifestealSmp.getServer().broadcastMessage(ChatColor.GOLD + p.getName() + " was eliminated GF!");
                 return;
             }
-            p.setMaxHealth(p.getMaxHealth() - e.getFinalDamage());
+            //p.setMaxHealth(p.getMaxHealth() - e.getFinalDamage());
         }
-    }
+    }*/
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e) {
         if (isEndFightEnabled) {
             Player p = e.getEntity();
-            p.banPlayer(ChatColor.RED + "You were eliminated! GF!");
+            p.sendMessage(ChatColor.RED + "You were eliminated! GF!");
             sendDiscordEmbedPlayer(p.getName() + " was eliminated from end fight! GF!", Color.YELLOW, "", p.getName());
             lifestealSmp.getServer().broadcastMessage(ChatColor.GOLD + p.getName() + " was eliminated GF!");
+        }
+    }
+
+    @EventHandler
+    public void onPlayerRespawn(PlayerRespawnEvent e) {
+        if (isEndFightEnabled) {
+            Player p = e.getPlayer();
+            p.setGameMode(GameMode.SPECTATOR);
+            p.teleport(endFightSpawn);
         }
     }
 
