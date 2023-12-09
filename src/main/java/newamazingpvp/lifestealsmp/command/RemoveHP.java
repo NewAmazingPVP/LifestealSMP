@@ -21,7 +21,7 @@ public class RemoveHP implements CommandExecutor {
                 int amount = Integer.parseInt(args[0]);
 
                 Player player = (Player) sender;
-                player.setMaxHealth(player.getMaxHealth() + amount);
+                player.setMaxHealth(player.getMaxHealth() - amount);
                 player.sendMessage(ChatColor.GREEN + "+" + amount + "hp");
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
 
