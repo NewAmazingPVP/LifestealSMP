@@ -46,7 +46,15 @@ public class GracePeriod implements Listener {
                     }
                     if(getPlaytime(damaged) < 216000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())){
                         event.setCancelled(true);
-                        damager.sendMessage(ChatColor.RED + "You cannot damage during their newbie protection!");
+
+                        long remainingSeconds = getPlaytime(damaged) / 20;
+                        long finalTime = 216000- remainingSeconds;
+
+                        int remainingMinutes = (int) ((finalTime % 3600) / 60);
+                        int remainingSecondsLeft = (int) (finalTime % 60);
+
+                        damager.sendMessage(ChatColor.RED + "You cannot damage during their newbie protection for " + ChatColor.YELLOW + remainingMinutes + " minutes, " +
+                                remainingSecondsLeft + " seconds.");
                     }
                     if(!event.isCancelled()) {
                         //names.remove(damager.getName());
@@ -70,7 +78,14 @@ public class GracePeriod implements Listener {
                         }
                         if(getPlaytime(damaged) < 216000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())){
                             event.setCancelled(true);
-                            event.getDamager().sendMessage(ChatColor.RED + "You cannot damage during their newbie protection!");
+                            long remainingSeconds = getPlaytime(damaged) / 20;
+                            long finalTime = 216000- remainingSeconds;
+
+                            int remainingMinutes = (int) ((finalTime % 3600) / 60);
+                            int remainingSecondsLeft = (int) (finalTime % 60);
+
+                            event.getDamager().sendMessage(ChatColor.RED + "You cannot damage during their newbie protection for " + ChatColor.YELLOW + remainingMinutes + " minutes, " +
+                                    remainingSecondsLeft + " seconds.");
                         }
                         if(!event.isCancelled()) {
                             //names.remove(event.getDamager().getName());
@@ -92,7 +107,14 @@ public class GracePeriod implements Listener {
                         }
                         if (getPlaytime(damaged) < 216000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())) {
                             event.setCancelled(true);
-                            event.getDamager().sendMessage(ChatColor.RED + "You cannot damage during their newbie protection!");
+                            long remainingSeconds = getPlaytime(damaged) / 20;
+                            long finalTime = 216000- remainingSeconds;
+
+                            int remainingMinutes = (int) ((finalTime % 3600) / 60);
+                            int remainingSecondsLeft = (int) (finalTime % 60);
+
+                            event.getDamager().sendMessage(ChatColor.RED + "You cannot damage during their newbie protection for " + ChatColor.YELLOW + remainingMinutes + " minutes, " +
+                                    remainingSecondsLeft + " seconds.");
                         }
                         if (!event.isCancelled()) {
                             tagPlayer((Player) event.getDamager(), damaged);

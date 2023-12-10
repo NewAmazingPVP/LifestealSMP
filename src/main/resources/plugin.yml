@@ -14,6 +14,8 @@ commands:
   setview:
     description: Set custom view and simulation distances
     usage: /setview <view_distance> <simulation_distance>
+    permission: lifestealSMP.admin
+    default: op
   recipes:
     description: View all the custom recipes of this lifesteal server
     usage: /recipes
@@ -24,23 +26,28 @@ commands:
   GiveSekhmetSet:
     description: Admins Only
     usage: /GiveSekhmetSet
+    permission: lifestealSMP.admin
     aliases: dontfuckingtrytorunthisifyouarenotaadmin
     default: op
   restart_with_warning:
     description: Admins Only RS server with a warning
+    permission: lifestealSMP.admin
     usage: /restart_with_warning
     default: op
   remHP:
     description: Removes HP Admins Only
     usage: /remHP
+    permission: lifestealSMP.admin
     default: op
   addHP:
     description: Adds HP Admins Only
     usage: /AddHP
+    permission: lifestealSMP.admin
     default: op
   LSwithdraw:
     description: Removes 1 heart
     usage: /LSwithdraw
+    permission: lifestealSMP.admin
     default: op
   startEndFight:
     description: Start End Fight with all presets
