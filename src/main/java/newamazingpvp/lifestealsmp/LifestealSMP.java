@@ -112,12 +112,12 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         broadcastTask.runTaskTimer(this, 0, repeatDelayTicks);
         registerCustomRecipes();
         //Bukkit.getScheduler().runTaskTimer(this, PlayerPing::monitorPlayerPings, 0L, 20L);
-        new BukkitRunnable() {
+        /*new BukkitRunnable() {
             @Override
             public void run() {
                 monitorPlayerPings();
             }
-        }.runTaskTimer(this, 0L, 20L);
+        }.runTaskTimer(this, 0L, 20L);*/
         //scheduleRestart();
         intializeBot();
         new BukkitRunnable() {

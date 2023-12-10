@@ -366,7 +366,7 @@ public class Compass implements CommandExecutor, Listener {
     }
 
     public static boolean isPlayerInvisible(Player p){
-        return p.getActivePotionEffects().contains(PotionEffectType.INVISIBILITY);
+        return p.hasPotionEffect((PotionEffectType.INVISIBILITY));
     }
 
 }
