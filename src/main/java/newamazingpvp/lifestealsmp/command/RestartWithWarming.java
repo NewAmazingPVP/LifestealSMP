@@ -14,10 +14,6 @@ public class RestartWithWarming implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(ChatColor.RED + "This command can only be executed by players.");
-            return true;
-        }
 
         Player playerSender = (Player) sender;
         playerSender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Restarting Server!");
