@@ -46,13 +46,13 @@ public class Compass implements CommandExecutor, Listener {
         trackingPlayers.remove(event.getPlayer().getUniqueId());
     }
 
-    @EventHandler
+    /*@EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         if (trackingPlayers.containsValue(e.getPlayer().getUniqueId())) {
             e.getPlayer().sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[WARNING] You are being tracked by unspecified amount of players!");
         }
 
-    }
+    }*/
 
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

@@ -48,7 +48,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         saveDefaultConfig();
         config = getConfig();
         lifestealSmp = this;
-        startReleaseChecker();
+        //startReleaseChecker();
         initializeBlacklist();
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
         getCommand("rules").setExecutor(new RulesCommand());

@@ -53,6 +53,7 @@ public class GracePeriod implements Listener {
                         int remainingMinutes = (int) ((finalTime % 3600) / 60);
                         int remainingSecondsLeft = (int) (finalTime % 60);
 
+                        damaged.sendMessage(ChatColor.RED + "Someone tried hitting you during your newbie protection! If you hit them back you will lose your protection temporarily and will be attacked!");
                         damager.sendMessage(ChatColor.RED + "You cannot damage during their newbie protection for " + ChatColor.YELLOW + remainingMinutes + " minutes, " +
                                 remainingSecondsLeft + " seconds.");
                     }
@@ -84,6 +85,7 @@ public class GracePeriod implements Listener {
                             int remainingMinutes = (int) ((finalTime % 3600) / 60);
                             int remainingSecondsLeft = (int) (finalTime % 60);
 
+                            damaged.sendMessage(ChatColor.RED + "Someone tried hitting you during your newbie protection! If you hit them back you will lose your protection temporarily and will be attacked!");
                             event.getDamager().sendMessage(ChatColor.RED + "You cannot damage during their newbie protection for " + ChatColor.YELLOW + remainingMinutes + " minutes, " +
                                     remainingSecondsLeft + " seconds.");
                         }
@@ -113,6 +115,7 @@ public class GracePeriod implements Listener {
                             int remainingMinutes = (int) ((finalTime % 3600) / 60);
                             int remainingSecondsLeft = (int) (finalTime % 60);
 
+                            damaged.sendMessage(ChatColor.RED + "Someone tried hitting you during your newbie protection! If you hit them back you will lose your protection temporarily and will be attacked!");
                             event.getDamager().sendMessage(ChatColor.RED + "You cannot damage during their newbie protection for " + ChatColor.YELLOW + remainingMinutes + " minutes, " +
                                     remainingSecondsLeft + " seconds.");
                         }
@@ -169,7 +172,7 @@ public class GracePeriod implements Listener {
             } else {
                 eliminatePlayer(p);
             }
-            if(!(killer.getMaxHealth() >= 38)) {
+            if(!(killer.getMaxHealth() > 38)) {
                 killer.setMaxHealth(killer.getMaxHealth() + 2);
             } else {
                 if (slainer.getInventory().firstEmpty() != -1) {
