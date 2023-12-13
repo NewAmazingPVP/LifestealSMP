@@ -11,6 +11,7 @@ public class HelpCommand implements CommandExecutor {
         if(sender instanceof Player){
             Player p = (Player) sender;
             p.sendMessage("/rules for the rules of the SMP" +
+                    "\n/discord for the discord link" +
                     "\n/recipes for the recipes of custom items on this SMP" +
                     "\n/track to track players on the server" +
                     "\n/vision to toggle permanent full brightness " +
