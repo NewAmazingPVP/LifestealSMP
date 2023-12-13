@@ -14,29 +14,24 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static newamazingpvp.lifestealsmp.game.CustomRecipe.createFeatherSword;
+import static newamazingpvp.lifestealsmp.game.CustomRecipe.*;
 
 public class GiveCustomItem implements CommandExecutor, TabCompleter {
 
-    private ArrayList<String> subcommands = new ArrayList<>(List.of("feathersword", "lol", "xd"));
-    private ArrayList<ItemStack> subItems = new ArrayList<>(List.of(createFeatherSword()));
+    private ArrayList<String> subcommands = new ArrayList<>(List.of("feathersword", "homingbow", "tntbow", "tpbow", "oppickaxe", "treecutteraxe", "heart", "revivebeacon"));
+    private ArrayList<ItemStack> subItems = new ArrayList<>(List.of(createFeatherSword(), createHomingBow(), createTNTBow(), createCustomBow(), createOpPickaxe(), createCustomAxe(), extraHeart(), createReviveBeacon()));
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(args.length == 1){
-            for(String s : subcommands){
-                if(args[0].equalsIgnoreCase(s)){
-                    Player p = (Player) sender;
-                    p.getInventory().addItem(subItems.get(subcommands.indexOf(s)));
-                }
-            }
+            int index = subcommands.indexOf(args[0].toLowerCase());
+            if(index == -1) return false;
+            Player p = (Player) sender;
+            p.getInventory().addItem(subItems.get(index));
         } else if (args.length == 2){{
-            for(String s : subcommands) {
-                if (args[1].equalsIgnoreCase(s)) {
-                    Player p = Bukkit.getPlayer(args[0]);
-                    if (p == null) return false;
-                    p.getInventory().addItem(subItems.get(subcommands.indexOf(s)));
-                }
-            }
+            Player p = Bukkit.getPlayer(args[0]);
+            int index = subcommands.indexOf(args[1].toLowerCase());
+            if(index == -1 || p == null) return false;
+            p.getInventory().addItem(subItems.get(index));
             }
         }
         return true;
@@ -44,7 +39,7 @@ public class GiveCustomItem implements CommandExecutor, TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-        if (args.length == 1) {
+        if (args.length == 1 || args.length == 2) {
             return subcommands;
         }
         return null;
