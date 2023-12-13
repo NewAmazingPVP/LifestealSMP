@@ -133,7 +133,7 @@ public class CustomRecipe {
         Bukkit.addRecipe(reviveBeaconRecipe);
     }
 
-    private static ItemStack createReviveBeacon() {
+    public static ItemStack createReviveBeacon() {
         ItemStack reviveBeacon = new ItemStack(Material.BEACON);
 
         ItemMeta meta = reviveBeacon.getItemMeta();
@@ -147,7 +147,7 @@ public class CustomRecipe {
         return reviveBeacon;
     }
 
-    private static ItemStack createCustomBow() {
+    public static ItemStack createCustomBow() {
         ItemStack customBow = new ItemStack(Material.BOW);
 
         ItemMeta meta = customBow.getItemMeta();
@@ -164,7 +164,7 @@ public class CustomRecipe {
         return customBow;
     }
 
-    private static ItemStack createCustomAxe() {
+    public static ItemStack createCustomAxe() {
         ItemStack customBow = new ItemStack(Material.NETHERITE_AXE);
 
         ItemMeta meta = customBow.getItemMeta();
@@ -179,7 +179,7 @@ public class CustomRecipe {
         return customBow;
     }
 
-    private static ItemStack createTNTBow() {
+    public static ItemStack createTNTBow() {
         ItemStack customBow = new ItemStack(Material.BOW);
 
         ItemMeta meta = customBow.getItemMeta();
@@ -196,7 +196,7 @@ public class CustomRecipe {
         return customBow;
     }
 
-    private static ItemStack createHomingBow() {
+    public static ItemStack createHomingBow() {
         ItemStack customBow = new ItemStack(Material.BOW);
 
         ItemMeta meta = customBow.getItemMeta();
@@ -246,7 +246,7 @@ public class CustomRecipe {
         return customBow;
     }
 
-    private static ItemStack createOpPickaxe() {
+    public static ItemStack createOpPickaxe() {
         ItemStack customBow = new ItemStack(Material.NETHERITE_PICKAXE);
 
         ItemMeta meta = customBow.getItemMeta();
