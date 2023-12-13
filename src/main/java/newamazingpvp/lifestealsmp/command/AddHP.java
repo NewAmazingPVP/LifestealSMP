@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.command;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
@@ -11,31 +12,24 @@ public class AddHP implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(ChatColor.RED + "This command can only be executed by players.");
-            return true;
-        }
+
 
         if (args.length == 1) {
-            try {
-                int amount = Integer.parseInt(args[0]);
+            int amount = Integer.parseInt(args[0]);
 
-                Player player = (Player) sender;
-                player.setMaxHealth(player.getMaxHealth() + amount);
-                player.sendMessage(ChatColor.GREEN + "+" + amount + "hp");
-                player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
-
-            } catch (NumberFormatException e) {
-                Player player = (Player) sender;
-                player.setMaxHealth(player.getMaxHealth() + 1);
-                player.sendMessage(ChatColor.GREEN + "+1hp");
-                player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
-            }
-        } else {
             Player player = (Player) sender;
-            player.setMaxHealth(player.getMaxHealth() + 1);
-            player.sendMessage(ChatColor.GREEN + "+1hp");
+            player.setMaxHealth(player.getMaxHealth() + amount);
+            player.sendMessage(ChatColor.GREEN + "+" + amount + "hp");
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
+
+        } else if (args.length == 2){
+            int amount = Integer.parseInt(args[1]);
+
+            Player player = Bukkit.getPlayer(args[0]);
+            if(player == null) return false;
+            player.setMaxHealth(player.getMaxHealth() + amount);
+            //player.sendMessage(ChatColor.GREEN + "+" + amount + "hp");
+            //player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
         }
 
         return true;
