@@ -13,6 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -21,7 +22,7 @@ import static newamazingpvp.lifestealsmp.game.PlayerLifeManager.revivePlayer;
 
 public class ReviveBeacon implements Listener {
 
-    private final Map<UUID, Player> lastInteractedPlayers = new HashMap<>();
+    private final ArrayList<UUID> lastInteractedPlayers = new ArrayList<>();
 
     @EventHandler
     public void onBeaconUse(PlayerInteractEvent e) {
@@ -33,7 +34,7 @@ public class ReviveBeacon implements Listener {
             Player p = e.getPlayer();
             p.sendMessage("Type the exact name of the player you want to revive! Make sure to put a \".\" in front of bedrock player names.");
             p.sendTitle(ChatColor.AQUA + "Check chat!", "Enter the player name in chat!");
-            lastInteractedPlayers.put(p.getUniqueId(), p);
+            lastInteractedPlayers.add((p.getUniqueId()));
             e.getItem().setAmount(0);
         }
     }
@@ -51,7 +52,7 @@ public class ReviveBeacon implements Listener {
         Player player = e.getPlayer();
         UUID playerUUID = player.getUniqueId();
 
-        if (lastInteractedPlayers.containsKey(playerUUID)) {
+        if (lastInteractedPlayers.contains(playerUUID)) {
             e.setCancelled(true);
 
             String revivedPlayerName = e.getMessage();
