@@ -52,7 +52,7 @@ public class CustomRecipe {
         shulkerRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(shulkerRecipe);
 
-        /*ItemStack endStone = new ItemStack(Material.END_STONE);
+        ItemStack endStone = new ItemStack(Material.END_STONE);
         ShapedRecipe endStoneRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "end_stone_recipe"), endStone);
         endStoneRecipe.shape("DNE");
         endStoneRecipe.setIngredient('D', Material.DIRT);
@@ -67,7 +67,7 @@ public class CustomRecipe {
         purpleBlockRecipe.setIngredient('S', Material.STONE_BRICKS);
         Bukkit.addRecipe(purpleBlockRecipe);
 
-        NamespacedKey recipeKey = new NamespacedKey(lifestealSmp, "teleporting_bow");
+        /*NamespacedKey recipeKey = new NamespacedKey(lifestealSmp, "teleporting_bow");
         ShapelessRecipe customBowRecipe = new ShapelessRecipe(recipeKey, createCustomBow());
         customBowRecipe.addIngredient(2, Material.ENDER_PEARL);
         customBowRecipe.addIngredient(1, Material.NETHERITE_INGOT);
