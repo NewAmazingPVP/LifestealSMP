@@ -93,3 +93,8 @@ commands:
   guide:
     description: Guide tutorial book for SMP
     usage: /guide
+  givecustomitem:
+    description: Give custom item (admin only)!
+    usage: /givecustomitem <player> <item>
+    permission: lifestealSMP.admin
+    default: op
