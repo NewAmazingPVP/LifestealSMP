@@ -47,8 +47,8 @@ commands:
   LSwithdraw:
     description: Removes 1 heart
     usage: /LSwithdraw
-    permission: lifestealSMP.admin
-    default: op
+    aliases:
+      - withdraw
   startEndFight:
     description: Start End Fight with all presets
     usage: /startEndFight
