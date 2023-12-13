@@ -25,7 +25,7 @@ public class TntBow implements Listener {
     private final Map<Player, Long> teleportCooldowns = new HashMap<>();
     private final long teleportCooldownDuration = 5000;
 
-    /*@EventHandler
+    @EventHandler
     public void onPlayerUseBow(PlayerInteractEvent event) {
         if(!(event.getAction() == Action.LEFT_CLICK_AIR
         || event.getAction() == Action.LEFT_CLICK_BLOCK
@@ -42,7 +42,7 @@ public class TntBow implements Listener {
                 shooter.sendMessage(ChatColor.RED + "You must wait " + cooldownRemainingTime(shooter) + " for the cooldown to finish before using the TNT again.");
             }
         }
-    }*/
+    }
 
     @EventHandler
     public void onProjectileLaunch(ProjectileLaunchEvent event) {
