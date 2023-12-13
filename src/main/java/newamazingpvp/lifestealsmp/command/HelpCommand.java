@@ -15,7 +15,9 @@ public class HelpCommand implements CommandExecutor {
                     "\n/track to track players on the server" +
                     "\n/vision to toggle permanent full brightness " +
                     "\n/trade to trade with other players!" +
-                    "\n/team create -- /team invite -- /team help for teams");
+                    "\n/team create -- /team invite -- /team help for teams" +
+                    "\n/stats to see player stats on the server" +
+                    "\n/voicechat for the voicechat ingame with mod");
         }
         return true;
     }
