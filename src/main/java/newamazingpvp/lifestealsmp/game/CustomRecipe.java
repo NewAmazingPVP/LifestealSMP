@@ -213,7 +213,7 @@ public class CustomRecipe {
         return customBow;
     }
 
-    private static ItemStack createFeatherSword() {
+    public static ItemStack createFeatherSword() {
         ItemStack customBow = new ItemStack(Material.NETHERITE_SWORD);
 
         ItemMeta meta = customBow.getItemMeta();
