@@ -29,6 +29,7 @@ import java.util.List;
 
 import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
 import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastServerMessage;
+import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastShop;
 import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.game.PlayerPing.monitorPlayerPings;
@@ -102,14 +103,20 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new GracePeriod(), this);
         getServer().getPluginManager().registerEvents(new ReviveBeacon(), this);
         getServer().getPluginManager().registerEvents(new CombatLogListener(), this);
-        int repeatDelayTicks = 7200 * 20;
         BukkitRunnable broadcastTask = new BukkitRunnable() {
             @Override
             public void run() {
                 broadcastServerMessage();
             }
         };
-        broadcastTask.runTaskTimer(this, 0, repeatDelayTicks);
+        broadcastTask.runTaskTimer(this, 0, 7200 * 20);
+        BukkitRunnable broadcastShopTask = new BukkitRunnable() {
+            @Override
+            public void run() {
+                broadcastShop();
+            }
+        };
+        broadcastShopTask.runTaskTimer(this, 0, 3600 * 20);
         registerCustomRecipes();
         //Bukkit.getScheduler().runTaskTimer(this, PlayerPing::monitorPlayerPings, 0L, 20L);
         /*new BukkitRunnable() {

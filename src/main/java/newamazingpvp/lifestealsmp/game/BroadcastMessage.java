@@ -39,10 +39,21 @@ public class BroadcastMessage {
     public static void broadcastWarningMessage() {
         String discordLink = "https://discord.gg/PN8egFY3ap";
         String warningMessage = "**WARNING** The server is going private, so make sure to join the Discord server to be able to play next season! ";
-
         TextComponent message = new TextComponent(ChatColor.RED + warningMessage);
 
         TextComponent discordText = new TextComponent(ChatColor.BLUE + "Click here: https://discord.gg/PN8egFY3ap");
+        discordText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, discordLink));
+        message.addExtra(discordText);
+
+        Bukkit.spigot().broadcast(message);
+    }
+
+    public static void broadcastShop() {
+        String discordLink = "https://shop.nappixel.tk";
+        String warningMessage = "To help support the development of the server check out /shop ";
+        TextComponent message = new TextComponent(ChatColor.GREEN + warningMessage);
+
+        TextComponent discordText = new TextComponent(ChatColor.BLUE + "Click here: https://shop.nappixel.tk");
         discordText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, discordLink));
         message.addExtra(discordText);
 
