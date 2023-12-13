@@ -15,9 +15,9 @@ public class RestartWithWarming implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        Player playerSender = (Player) sender;
-        playerSender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Restarting Server!");
-        playerSender.playSound(playerSender.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
+        //Player playerSender = (Player) sender;
+        //playerSender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Restarting Server!");
+        //playerSender.playSound(playerSender.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
 
         for (Player player : Bukkit.getOnlinePlayers()) {
 
