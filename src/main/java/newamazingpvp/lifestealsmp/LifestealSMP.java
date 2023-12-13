@@ -28,8 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
-import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastServerMessage;
-import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastShop;
+import static newamazingpvp.lifestealsmp.game.BroadcastMessage.*;
 import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.game.PlayerPing.monitorPlayerPings;
@@ -115,6 +114,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         BukkitRunnable broadcastShopTask = new BukkitRunnable() {
             @Override
             public void run() {
+                broadcastReportBugs();
                 broadcastShop();
             }
         };

@@ -59,4 +59,16 @@ public class BroadcastMessage {
 
         Bukkit.spigot().broadcast(message);
     }
+
+    public static void broadcastReportBugs() {
+        String discordLink = "https://discord.gg/PN8egFY3ap";
+        String warningMessage = "Report bugs in discord by making a new ticket for a reward up to one netherite ingot! ";
+        TextComponent message = new TextComponent(ChatColor.GREEN + warningMessage);
+
+        TextComponent discordText = new TextComponent(ChatColor.BLUE + "Click here: https://discord.gg/PN8egFY3ap");
+        discordText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, discordLink));
+        message.addExtra(discordText);
+
+        Bukkit.spigot().broadcast(message);
+    }
 }
