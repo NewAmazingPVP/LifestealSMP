@@ -35,9 +35,9 @@ public class PlayerLagMsg implements Listener {
             Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
                 @Override
                 public void run() {
-                    if (finalTps > 19.01) {
+                    if (finalTps > 18.00) {
                         for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-                            p.sendMessage("The server currently has " + ChatColor.AQUA + finalTps + ChatColor.WHITE + " tps and is not lagging. Check your wifi/ping instead " + ChatColor.YELLOW + event.getPlayer().getName() + ChatColor.WHITE + ". Decrease your render/simulation distance and its recommended for you to use fabously optimized modpack for more performance and less client lag.");
+                            p.sendMessage("The server currently has " + ChatColor.AQUA + finalTps + ChatColor.WHITE + " tps and is not lagging.");
                         }
                     } else {
                         for (Player p : Bukkit.getServer().getOnlinePlayers()) {
