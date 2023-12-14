@@ -29,8 +29,9 @@ public class CombatLogListener implements Listener {
     public void onPlayerDisconnect(PlayerQuitEvent e){
         if(isInCombat(e.getPlayer())) {
             Player p = e.getPlayer();
-            p.setMaxHealth(p.getMaxHealth() - 2);
-            if(getCombatTimer(p) <= 85){
+
+            if(getCombatTimer(p) < 85){
+                p.setMaxHealth(p.getMaxHealth() - 2);
                 Player winner = getEnemies(p).get(getEnemies(p).size()-1);
                 if(!(winner.getMaxHealth() > 38)) {
                     winner.setMaxHealth(winner.getMaxHealth() + 2);
