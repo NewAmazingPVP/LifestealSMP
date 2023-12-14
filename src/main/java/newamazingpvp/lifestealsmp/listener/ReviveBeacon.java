@@ -35,7 +35,7 @@ public class ReviveBeacon implements Listener {
             p.sendMessage("Type the exact name of the player you want to revive! Make sure to put a \".\" in front of bedrock player names.");
             p.sendTitle(ChatColor.AQUA + "Check chat!", "Enter the player name in chat!");
             lastInteractedPlayers.add((p.getUniqueId()));
-            e.getItem().setAmount(0);
+            e.getItem().setAmount(e.getItem().getAmount() - 1);
         }
     }
 
