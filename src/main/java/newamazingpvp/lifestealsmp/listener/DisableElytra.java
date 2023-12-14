@@ -1,9 +1,13 @@
 package newamazingpvp.lifestealsmp.listener;
 
 import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityToggleGlideEvent;
 import org.bukkit.inventory.ItemStack;
+
+import static newamazingpvp.lifestealsmp.game.CombatLog.isInCombat;
 
 public class DisableElytra implements Listener {
     @EventHandler
@@ -21,5 +25,13 @@ public class DisableElytra implements Listener {
 
     private boolean isElytra(ItemStack item) {
         return item.getType().toString().toLowerCase().contains("elytra");
+    }
+    @EventHandler
+    public void onEntityToggleGlide(EntityToggleGlideEvent event) {
+        if(event.getEntity() instanceof Player) {
+            if(isInCombat((Player) event.getEntity())) {
+                event.setCancelled(true);
+            }
+        }
     }
 }

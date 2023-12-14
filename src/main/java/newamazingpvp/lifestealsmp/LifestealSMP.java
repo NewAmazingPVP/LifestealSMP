@@ -104,6 +104,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new GracePeriod(), this);
         getServer().getPluginManager().registerEvents(new ReviveBeacon(), this);
         getServer().getPluginManager().registerEvents(new CombatLogListener(), this);
+        getServer().getPluginManager().registerEvents(new DisableNetherite(), this);
         BukkitRunnable broadcastTask = new BukkitRunnable() {
             @Override
             public void run() {
