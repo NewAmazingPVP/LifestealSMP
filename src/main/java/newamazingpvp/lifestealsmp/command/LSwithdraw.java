@@ -9,9 +9,14 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.HashMap;
+
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.extraHeart;
 
 public class LSwithdraw implements CommandExecutor {
+
+    private final HashMap<String, Long> cooldowns = new HashMap<>();
+    private static final long COOLDOWN_TIME = 6 * 60 * 60 * 1000; // 6 hours in milliseconds
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -21,14 +26,21 @@ public class LSwithdraw implements CommandExecutor {
         }
 
         Player player = (Player) sender;
+
+        if (hasCooldown(player)) {
+            long timeRemaining = getCooldownTime(player);
+            player.sendMessage(ChatColor.RED + "You must wait " + formatTime(timeRemaining) + " before using this command again.");
+            return true;
+        }
+
         if (player.getMaxHealth() <= 2) {
-
             player.sendMessage(ChatColor.RED + "If you withdraw any more you will die...");
-
         } else {
+            setCooldown(player);
             player.setMaxHealth(player.getMaxHealth() - 2);
             player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "-1 Heart!");
             player.sendMessage(ChatColor.GRAY + "(Boosting using this command will result in you being banned)");
+
             if (player.getInventory().firstEmpty() != -1) {
                 player.getInventory().addItem(extraHeart());
             } else {
@@ -36,12 +48,30 @@ public class LSwithdraw implements CommandExecutor {
                 world.dropItem(player.getLocation(), extraHeart());
                 player.sendMessage(ChatColor.GRAY + "Heart was dropped because your inventory was full");
             }
+
             player.playSound(player.getLocation(), Sound.BLOCK_PORTAL_TRIGGER, 1.0f, 2.0f);
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
             return true;
-
         }
+
         return true;
     }
-}
 
+    private boolean hasCooldown(Player player) {
+        return cooldowns.containsKey(player.getName()) && System.currentTimeMillis() - cooldowns.get(player.getName()) < COOLDOWN_TIME;
+    }
+
+    private long getCooldownTime(Player player) {
+        return COOLDOWN_TIME - (System.currentTimeMillis() - cooldowns.get(player.getName()));
+    }
+
+    private void setCooldown(Player player) {
+        cooldowns.put(player.getName(), System.currentTimeMillis());
+    }
+
+    private String formatTime(long milliseconds) {
+        long minutes = (milliseconds / (1000 * 60)) % 60;
+        long seconds = (milliseconds / 1000) % 60;
+        return String.format("%02d:%02d", minutes, seconds);
+    }
+}

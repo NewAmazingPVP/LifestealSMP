@@ -98,3 +98,8 @@ commands:
     usage: /givecustomitem <player> <item>
     permission: lifestealSMP.admin
     default: op
+  serverruntime:
+    description: Check the server age/runtime!
+    usage: /serverruntime
+    aliases:
+      - serverage
