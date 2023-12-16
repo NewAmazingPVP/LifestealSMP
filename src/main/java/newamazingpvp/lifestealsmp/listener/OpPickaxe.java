@@ -21,7 +21,6 @@ public class OpPickaxe implements Listener {
             if (hasLore(item)) {
                 Block block = event.getBlock();
                 if (player.isSneaking()) return;
-                lifestealSmp.getServer().broadcastMessage("Event");
                 breakBlocksAround(block);
                 item.setDurability((short) (item.getDurability() + 1));
                 event.setCancelled(true);
