@@ -279,7 +279,7 @@ public class Compass implements CommandExecutor, Listener {
                 }
 
             }
-        }.runTaskTimer(lifestealSmp, 0L, 20L * 15L);
+        }.runTaskTimer(lifestealSmp, 0L, 20L * 45L);
     }
 
 
