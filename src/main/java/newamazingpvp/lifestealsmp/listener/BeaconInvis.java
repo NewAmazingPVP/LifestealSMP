@@ -44,9 +44,9 @@ public class BeaconInvis implements Listener {
     }
 
     private Beacon getFullyPoweredBeaconInRange(Location playerLocation) {
-        double beaconRange = 10;
+        double beaconRange = 50;
 
-        for (Entity entity : playerLocation.getWorld().getNearbyEntities(playerLocation, beaconRange, beaconRange, beaconRange)) {
+        for (Entity entity : playerLocation.getWorld().getNearbyEntities(playerLocation, beaconRange, 384, beaconRange)) {
             if (entity instanceof Beacon) {
                 Beacon beacon = (Beacon) entity;
                 if (playerLocation.distanceSquared(beacon.getLocation()) <= beaconRange * beaconRange && beacon.getTier() == 4) {
