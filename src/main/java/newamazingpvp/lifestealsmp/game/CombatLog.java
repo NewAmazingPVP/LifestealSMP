@@ -17,7 +17,7 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class CombatLog {
     public static List<Player> combaters = new ArrayList<>();
-    private static Map<Player, PlayerCombatData> playerCombatDataMap = new HashMap<>();
+    private static final Map<Player, PlayerCombatData> playerCombatDataMap = new HashMap<>();
 
     public static void tagPlayer(Player p, Player enemy) {
         if (playerCombatDataMap.get(p) != null) {
@@ -27,7 +27,7 @@ public class CombatLog {
             p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "You are in combat do not log out!");
             combaters.add(p);
 
-            BossBar bossBar = Bukkit.createBossBar(ChatColor.GOLD + "" + ChatColor.BOLD + "Combat Timer " + ChatColor.GRAY + "" + ChatColor.BOLD + ">>" + ChatColor.RED + " 90 " + ChatColor.WHITE + "seconds.", BarColor.YELLOW, BarStyle.SOLID);
+            BossBar bossBar = Bukkit.createBossBar(ChatColor.GOLD + "" + ChatColor.BOLD + "Combat Timer " + ChatColor.GRAY + ChatColor.BOLD + ">>" + ChatColor.RED + " 90 " + ChatColor.WHITE + "seconds.", BarColor.YELLOW, BarStyle.SOLID);
             bossBar.addPlayer(p);
 
             PlayerCombatData combatData = new PlayerCombatData(bossBar, 90);
@@ -65,11 +65,11 @@ public class CombatLog {
         }
     }
 
-    public static void removeEnemies(Player player){
+    public static void removeEnemies(Player player) {
         PlayerCombatData combatData = playerCombatDataMap.get(player);
         if (combatData != null) {
-            for(Player p : combatData.getEnemies()) {
-                if(playerCombatDataMap.get(p).getEnemies().size() == 1) {
+            for (Player p : combatData.getEnemies()) {
+                if (playerCombatDataMap.get(p).getEnemies().size() == 1) {
                     cancelCombatData(p);
                 } else {
                     playerCombatDataMap.get(p).removeEnemy(player);
@@ -82,7 +82,7 @@ public class CombatLog {
         return combaters.contains(player);
     }
 
-    public static int getCombatTimer(Player p){
+    public static int getCombatTimer(Player p) {
         PlayerCombatData combatData = playerCombatDataMap.get(p);
         if (combatData != null) {
             return playerCombatDataMap.get(p).getTimer();
@@ -99,7 +99,7 @@ public class CombatLog {
     }
 
     private static class PlayerCombatData {
-        private BossBar bossBar;
+        private final BossBar bossBar;
         private int timer;
         private final List<Player> enemies = new ArrayList<>();
 
@@ -140,7 +140,7 @@ public class CombatLog {
 
         public void updateBossBar() {
             bossBar.setProgress((double) timer / 90.0);
-            bossBar.setTitle(ChatColor.GOLD + "" + ChatColor.BOLD + "Combat Timer " + ChatColor.GRAY + "" + ChatColor.BOLD + ">>" + ChatColor.RED + " " + timer + " " + ChatColor.WHITE + "seconds.");
+            bossBar.setTitle(ChatColor.GOLD + "" + ChatColor.BOLD + "Combat Timer " + ChatColor.GRAY + ChatColor.BOLD + ">>" + ChatColor.RED + " " + timer + " " + ChatColor.WHITE + "seconds.");
             enemies.removeIf(p -> !isInCombat(p));
         }
     }

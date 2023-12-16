@@ -13,7 +13,8 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class PlayerLifeManager {
     public static DataBaseHelper dataBaseHelper;
-    public static void eliminatePlayer(Player p){
+
+    public static void eliminatePlayer(Player p) {
         dataBaseHelper = new DataBaseHelper(lifestealSmp.getDataFolder().getAbsolutePath() + File.separator + "eliminated.db");
 
         dataBaseHelper.createTable("player_data", "player_name TEXT");
@@ -28,7 +29,7 @@ public class PlayerLifeManager {
 
         dataBaseHelper.createTable("player_data", "player_name TEXT");
 
-        if(dataBaseHelper.doesPlayerExist(p.getName())){
+        if (dataBaseHelper.doesPlayerExist(p.getName())) {
             Bukkit.getServer().getBanList(org.bukkit.BanList.Type.NAME).pardon(p.getName());
             dataBaseHelper.deletePlayer(p.getName());
             sender.sendMessage(ChatColor.GOLD + "Successfully revived " + p.getName());

@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 
 public class ServerRuntime implements CommandExecutor {
     private final LocalDateTime serverStartTime = LocalDateTime.of(2023, 12, 9, 11, 30);
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         LocalDateTime currentTime = LocalDateTime.now();

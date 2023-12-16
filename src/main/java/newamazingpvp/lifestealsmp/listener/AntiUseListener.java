@@ -33,7 +33,7 @@ public class AntiUseListener implements Listener {
         if (item.getType() == Material.BEETROOT && item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.getItemMeta().getLore().contains("Severed")) {
 
             event.setCancelled(true);
-            PotionEffect potion = new PotionEffect(PotionEffectType.POISON,10,1, false);
+            PotionEffect potion = new PotionEffect(PotionEffectType.POISON, 10, 1, false);
             event.getPlayer().addPotionEffect(potion);
 
         }

@@ -28,10 +28,10 @@ public class TeleportBow implements Listener {
 
     @EventHandler
     public void onPlayerUseBow(PlayerInteractEvent event) {
-        if(!(event.getAction() == Action.LEFT_CLICK_AIR
+        if (!(event.getAction() == Action.LEFT_CLICK_AIR
                 || event.getAction() == Action.LEFT_CLICK_BLOCK
                 || event.getAction() == Action.RIGHT_CLICK_AIR
-                || event.getAction() == Action.RIGHT_CLICK_BLOCK)){
+                || event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
             return;
         }
         Player shooter = event.getPlayer();
@@ -44,6 +44,7 @@ public class TeleportBow implements Listener {
             }
         }
     }
+
     @EventHandler
     public void onProjectileLaunch(ProjectileLaunchEvent event) {
         if (event.getEntityType() == EntityType.ARROW && event.getEntity().getShooter() instanceof Player) {

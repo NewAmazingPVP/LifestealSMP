@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 public class HelpCommand implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender instanceof Player){
+        if (sender instanceof Player) {
             Player p = (Player) sender;
             p.sendMessage("/rules for the rules of the SMP" +
                     "\n/discord for the discord link" +
