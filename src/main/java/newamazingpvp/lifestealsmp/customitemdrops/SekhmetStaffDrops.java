@@ -17,7 +17,7 @@ public class SekhmetStaffDrops implements Listener {
         Player killer = e.getEntity().getKiller();
         Location loc = e.getEntity().getLocation();
 
-        if(killer == null) return;
+        if (killer == null) return;
 
         if (Math.random() >= 0.5) {
             e.getDrops().add(ancientSpellScroll());

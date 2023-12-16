@@ -20,22 +20,22 @@ import static newamazingpvp.lifestealsmp.game.CustomRecipe.extraHeart;
 
 public class CombatLogListener implements Listener {
     @EventHandler
-    public void onPlayerKick(PlayerKickEvent e){
+    public void onPlayerKick(PlayerKickEvent e) {
         cancelCombatData(e.getPlayer());
         removeEnemies(e.getPlayer());
     }
 
     @EventHandler
-    public void onPlayerDisconnect(PlayerQuitEvent e){
-        if(isInCombat(e.getPlayer())) {
+    public void onPlayerDisconnect(PlayerQuitEvent e) {
+        if (isInCombat(e.getPlayer())) {
             Player p = e.getPlayer();
 
-            if(getCombatTimer(p) < 85){
+            if (getCombatTimer(p) < 85) {
                 p.setMaxHealth(p.getMaxHealth() - 2);
-                Player winner = getEnemies(p).get(getEnemies(p).size()-1);
-                if(!(winner.getMaxHealth() > 38)) {
+                Player winner = getEnemies(p).get(getEnemies(p).size() - 1);
+                if (!(winner.getMaxHealth() > 38)) {
                     winner.setMaxHealth(winner.getMaxHealth() + 2);
-                }  else {
+                } else {
                     if (winner.getInventory().firstEmpty() != -1) {
                         winner.getInventory().addItem(extraHeart());
                         winner.sendMessage(ChatColor.DARK_PURPLE + "You were given heart item because you reached max health!");
@@ -45,7 +45,7 @@ public class CombatLogListener implements Listener {
                         winner.sendMessage(ChatColor.LIGHT_PURPLE + "Heart was dropped because your inventory was full");
                     }
                 }
-                }
+            }
             p.setHealth(0.0);
 
 
@@ -68,7 +68,7 @@ public class CombatLogListener implements Listener {
 
     @EventHandler
     public void onPlayerRespawn(PlayerRespawnEvent e) {
-        if(isInCombat(e.getPlayer())){
+        if (isInCombat(e.getPlayer())) {
             cancelCombatData(e.getPlayer());
         }
     }

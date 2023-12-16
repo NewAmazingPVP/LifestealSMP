@@ -1,6 +1,5 @@
 package newamazingpvp.lifestealsmp.listener;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Beacon;
 import org.bukkit.entity.Entity;
@@ -9,7 +8,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -19,7 +17,7 @@ import java.util.UUID;
 
 public class BeaconInvis implements Listener {
 
-    private Map<UUID, Beacon> playersInBeaconRange = new HashMap<>();
+    private final Map<UUID, Beacon> playersInBeaconRange = new HashMap<>();
 
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {

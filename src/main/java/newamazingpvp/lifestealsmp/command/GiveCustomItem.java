@@ -9,29 +9,28 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.*;
 
 public class GiveCustomItem implements CommandExecutor, TabCompleter {
 
-    private ArrayList<String> subcommands = new ArrayList<>(List.of("feathersword", "homingbow", "tntbow", "tpbow", "oppickaxe", "treecutteraxe", "heart", "revivebeacon", "corruptedmobsoul", "severedmobheart"));
-    private ArrayList<ItemStack> subItems = new ArrayList<>(List.of(createFeatherSword(), createHomingBow(), createTNTBow(), createCustomBow(), createOpPickaxe(), createCustomAxe(), extraHeart(), createReviveBeacon(), corruptedMobSoul(), severedMobHeart()));
+    private final ArrayList<String> subcommands = new ArrayList<>(List.of("feathersword", "homingbow", "tntbow", "tpbow", "oppickaxe", "treecutteraxe", "heart", "revivebeacon", "corruptedmobsoul", "severedmobheart"));
+    private final ArrayList<ItemStack> subItems = new ArrayList<>(List.of(createFeatherSword(), createHomingBow(), createTNTBow(), createCustomBow(), createOpPickaxe(), createCustomAxe(), extraHeart(), createReviveBeacon(), corruptedMobSoul(), severedMobHeart()));
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(args.length == 1){
+        if (args.length == 1) {
             int index = subcommands.indexOf(args[0].toLowerCase());
-            if(index == -1) return false;
+            if (index == -1) return false;
             Player p = (Player) sender;
             p.getInventory().addItem(subItems.get(index));
-        } else if (args.length == 2){{
-            Player p = Bukkit.getPlayer(args[0]);
-            int index = subcommands.indexOf(args[1].toLowerCase());
-            if(index == -1 || p == null) return false;
-            p.getInventory().addItem(subItems.get(index));
+        } else if (args.length == 2) {
+            {
+                Player p = Bukkit.getPlayer(args[0]);
+                int index = subcommands.indexOf(args[1].toLowerCase());
+                if (index == -1 || p == null) return false;
+                p.getInventory().addItem(subItems.get(index));
             }
         }
         return true;

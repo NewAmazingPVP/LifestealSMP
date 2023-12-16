@@ -1,7 +1,6 @@
 package newamazingpvp.lifestealsmp.command;
 
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.command.Command;

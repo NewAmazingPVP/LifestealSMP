@@ -18,7 +18,8 @@ public class GuideCommand implements CommandExecutor {
         }
         return true;
     }
-    private ItemStack createTutorialBook(){
+
+    private ItemStack createTutorialBook() {
         ItemStack book = new ItemStack(Material.WRITTEN_BOOK);
         BookMeta meta = (BookMeta) book.getItemMeta();
 

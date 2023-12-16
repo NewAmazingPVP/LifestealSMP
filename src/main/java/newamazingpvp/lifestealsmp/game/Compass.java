@@ -10,20 +10,15 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPortalEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.event.player.PlayerVelocityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.CompassMeta;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.potion.PotionType;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.util.Vector;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
@@ -98,7 +93,7 @@ public class Compass implements CommandExecutor, Listener {
                 return true;
             }
 
-            if(isPlayerInvisible(g) || isPlayerInvisible(target)){
+            if (isPlayerInvisible(g) || isPlayerInvisible(target)) {
                 sender.sendMessage(ChatColor.RED + "Either you or your target is invisible thus cannot be tracked");
                 return true;
             }
@@ -265,7 +260,7 @@ public class Compass implements CommandExecutor, Listener {
                             }
                         }
                         //String dis = calculateDistanceCategory(distance);
-                        if(distance != 0) {
+                        if (distance != 0) {
                             msg += ChatColor.BOLD + " " + distance + " blocks";
                         }
                         TextComponent textComponent = new TextComponent(msg);
@@ -320,6 +315,7 @@ public class Compass implements CommandExecutor, Listener {
         }
         return "";
     }
+
     public static boolean isMovingCloser(Player movingPlayer, Player targetPlayer) {
         double velocityX = movingPlayer.getVelocity().getX();
         double velocityZ = movingPlayer.getVelocity().getZ();
@@ -328,8 +324,8 @@ public class Compass implements CommandExecutor, Listener {
 
         double distanceNow = movingPlayer.getLocation().distance(targetLoc);
 
-        double distanceNextTickX = movingPlayer.getLocation().getX() + velocityX*100;
-        double distanceNextTickZ = movingPlayer.getLocation().getZ() + velocityZ*100;
+        double distanceNextTickX = movingPlayer.getLocation().getX() + velocityX * 100;
+        double distanceNextTickZ = movingPlayer.getLocation().getZ() + velocityZ * 100;
 
         Location locationNextTick = new Location(targetPlayer.getWorld(), distanceNextTickX, movingPlayer.getLocation().y(), distanceNextTickZ);
 
@@ -338,6 +334,7 @@ public class Compass implements CommandExecutor, Listener {
         getServer().broadcastMessage(distanceNextTick + " and distance now " + distanceNow);
         return distanceNextTick < distanceNow;
     }
+
     private static ItemStack getCompassFromInventory(Player player) {
         for (ItemStack item : player.getInventory().getContents()) {
             if (item != null && item.getType() == Material.COMPASS) {
@@ -365,7 +362,7 @@ public class Compass implements CommandExecutor, Listener {
         compass.setItemMeta(compassMeta);
     }
 
-    public static boolean isPlayerInvisible(Player p){
+    public static boolean isPlayerInvisible(Player p) {
         return p.hasPotionEffect((PotionEffectType.INVISIBILITY));
     }
 

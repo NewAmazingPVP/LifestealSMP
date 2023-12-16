@@ -26,10 +26,11 @@ public class DisableElytra implements Listener {
     private boolean isElytra(ItemStack item) {
         return item.getType().toString().toLowerCase().contains("elytra");
     }
+
     @EventHandler
     public void onEntityToggleGlide(EntityToggleGlideEvent event) {
-        if(event.getEntity() instanceof Player) {
-            if(isInCombat((Player) event.getEntity())) {
+        if (event.getEntity() instanceof Player) {
+            if (isInCombat((Player) event.getEntity())) {
                 event.setCancelled(true);
             }
         }

@@ -2,11 +2,8 @@ package newamazingpvp.lifestealsmp;
 
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.customitemdrops.CustomHeartItems;
-import newamazingpvp.lifestealsmp.customitemdrops.OtherCustomDrops;
-import newamazingpvp.lifestealsmp.customitemdrops.SekhmetStaffDrops;
 import newamazingpvp.lifestealsmp.game.Compass;
 import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
-import newamazingpvp.lifestealsmp.legacymontustaff.*;
 import newamazingpvp.lifestealsmp.listener.*;
 import newamazingpvp.lifestealsmp.sekhmetitems.GiveSekhmetSetSpeedADMINONLY;
 import org.bukkit.Bukkit;
@@ -34,14 +31,11 @@ import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.game.PlayerPing.monitorPlayerPings;
 import static newamazingpvp.lifestealsmp.listener.ChatFilter.initializeBlacklist;
-import static newamazingpvp.lifestealsmp.utility.AutoUpload.startReleaseChecker;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.*;
-import static newamazingpvp.lifestealsmp.variables.Loc.lobby;
 
 public final class LifestealSMP extends JavaPlugin implements Listener {
     public static LifestealSMP lifestealSmp;
     private FileConfiguration config;
-
 
 
     @Override
@@ -152,7 +146,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        if(player.getName().equals("NewAmazingPVP")){
+        if (player.getName().equals("NewAmazingPVP")) {
             event.setQuitMessage("");
         }
     }
@@ -160,7 +154,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        if(player.getName().equals("NewAmazingPVP")){
+        if (player.getName().equals("NewAmazingPVP")) {
             event.setJoinMessage("");
         }
 
@@ -184,7 +178,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         Player player = event.getPlayer();
         ItemStack item = player.getInventory().getItemInMainHand();
 
-        if (isTpBlock(item)){
+        if (isTpBlock(item)) {
             event.setCancelled(true);
             player.teleport(player.getWorld().getSpawnLocation());
             item.setAmount(0);

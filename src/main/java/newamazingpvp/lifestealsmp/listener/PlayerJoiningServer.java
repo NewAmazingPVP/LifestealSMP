@@ -7,8 +7,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import static newamazingpvp.lifestealsmp.game.CombatLog.tagPlayer;
-
 public class PlayerJoiningServer implements Listener {
 
     @EventHandler

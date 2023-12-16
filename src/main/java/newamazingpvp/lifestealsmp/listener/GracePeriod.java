@@ -1,13 +1,11 @@
 package newamazingpvp.lifestealsmp.listener;
 
 import org.bukkit.ChatColor;
-import org.bukkit.World;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.time.LocalDateTime;
@@ -45,11 +43,11 @@ public class GracePeriod implements Listener {
                         //damager.sendMessage(ChatColor.RED + "You cannot damage players during their death protection unless they attack you back!");
                         //damaged.sendMessage(ChatColor.RED + "Someone tried attacking u but was prevented because u died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
                     }
-                    if(getPlaytime(damaged) < 216000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())){
+                    if (getPlaytime(damaged) < 216000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())) {
                         event.setCancelled(true);
 
                         long remainingSeconds = getPlaytime(damaged) / 20;
-                        long finalTime = 216000- remainingSeconds;
+                        long finalTime = 216000 - remainingSeconds;
 
                         int remainingMinutes = (int) ((finalTime % 3600) / 60);
                         int remainingSecondsLeft = (int) (finalTime % 60);
@@ -58,7 +56,7 @@ public class GracePeriod implements Listener {
                         damager.sendMessage(ChatColor.RED + "You cannot damage during their newbie protection for " + ChatColor.YELLOW + remainingMinutes + " minutes, " +
                                 remainingSecondsLeft + " seconds.");
                     }
-                    if(!event.isCancelled()) {
+                    if (!event.isCancelled()) {
                         //names.remove(damager.getName());
                         tagPlayer(damager, damaged);
                         tagPlayer(damaged, damager);
@@ -78,10 +76,10 @@ public class GracePeriod implements Listener {
                             event.getDamager().sendMessage(ChatColor.RED + "This player was recently killed by a player and won't give heart if you kill them again");
                             //event.getEntity().sendMessage(ChatColor.RED + "Someone tried attacking u but was prevented because u died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
                         }
-                        if(getPlaytime(damaged) < 216000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())){
+                        if (getPlaytime(damaged) < 216000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())) {
                             event.setCancelled(true);
                             long remainingSeconds = getPlaytime(damaged) / 20;
-                            long finalTime = 216000- remainingSeconds;
+                            long finalTime = 216000 - remainingSeconds;
 
                             int remainingMinutes = (int) ((finalTime % 3600) / 60);
                             int remainingSecondsLeft = (int) (finalTime % 60);
@@ -90,7 +88,7 @@ public class GracePeriod implements Listener {
                             event.getDamager().sendMessage(ChatColor.RED + "You cannot damage during their newbie protection for " + ChatColor.YELLOW + remainingMinutes + " minutes, " +
                                     remainingSecondsLeft + " seconds.");
                         }
-                        if(!event.isCancelled()) {
+                        if (!event.isCancelled()) {
                             //names.remove(event.getDamager().getName());
                             tagPlayer((Player) event.getDamager(), damaged);
                             tagPlayer(damaged, (Player) event.getDamager());
@@ -111,7 +109,7 @@ public class GracePeriod implements Listener {
                         if (getPlaytime(damaged) < 216000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())) {
                             event.setCancelled(true);
                             long remainingSeconds = getPlaytime(damaged) / 20;
-                            long finalTime = 216000- remainingSeconds;
+                            long finalTime = 216000 - remainingSeconds;
 
                             int remainingMinutes = (int) ((finalTime % 3600) / 60);
                             int remainingSecondsLeft = (int) (finalTime % 60);
@@ -128,10 +126,10 @@ public class GracePeriod implements Listener {
                 }
             }
         } else {
-            if (event.getEntity() instanceof Villager){
+            if (event.getEntity() instanceof Villager) {
                 if (event.getDamager() instanceof Player) {
                     Player p = (Player) event.getDamager();
-                    if(getPlaytime(p) < 216000 && !newbieViolate.contains(p.getName())){
+                    if (getPlaytime(p) < 216000 && !newbieViolate.contains(p.getName())) {
                         newbieViolate.add(p.getName());
                         event.setCancelled(true);
                         lifestealSmp.getServer().broadcastMessage(p.getName() + " has lost their newbie protection for 5 minutes because of potentially breaking the no griefing rule during newbie protection");
@@ -162,18 +160,18 @@ public class GracePeriod implements Listener {
     public void onDeath(PlayerDeathEvent event) {
         removeEnemies(event.getPlayer());
         LivingEntity killer = event.getEntity().getKiller();
-        if(!(killer instanceof Player)){
+        if (!(killer instanceof Player)) {
             return;
         }
         Player p = event.getEntity();
         Player slainer = (Player) killer;
-        if(!names.contains(p.getName())){
-            if(!(p.getMaxHealth() <= 2)) {
+        if (!names.contains(p.getName())) {
+            if (!(p.getMaxHealth() <= 2)) {
                 p.setMaxHealth(p.getMaxHealth() - 2);
             } else {
                 eliminatePlayer(p);
             }
-            if(!(killer.getMaxHealth() > 38)) {
+            if (!(killer.getMaxHealth() > 38)) {
                 killer.setMaxHealth(killer.getMaxHealth() + 2);
             } else {
                 addItemOrDrop(slainer, extraHeart(), "Heart was dropped because your inventory was full");

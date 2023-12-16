@@ -2,8 +2,6 @@ package newamazingpvp.lifestealsmp.game;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginManager;
 
 import java.awt.*;
 import java.util.HashMap;
