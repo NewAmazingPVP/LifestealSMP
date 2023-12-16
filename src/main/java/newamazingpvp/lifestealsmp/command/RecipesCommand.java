@@ -18,14 +18,13 @@ public class RecipesCommand implements CommandExecutor {
             TextComponent message = new TextComponent(ChatColor.GOLD + "**Recipes**");
             message.addExtra("\n");
 
-            // Existing recipes and links
             TextComponent extraHeartText = new TextComponent(ChatColor.GOLD + " - Extra Heart");
-            addRecipeLink(extraHeartText, "https://imgur.com/gHqMsFl");
+            addRecipeLink(extraHeartText, "https://i.imgur.com/6IWV6J4.png");
             message.addExtra(extraHeartText);
             message.addExtra("\n");
 
             TextComponent reviveBeaconText = new TextComponent(ChatColor.GOLD + " - Revive Beacon");
-            addRecipeLink(reviveBeaconText, "https://imgur.com/9LGQ06M");
+            addRecipeLink(reviveBeaconText, "https://i.imgur.com/XN1H5YF.png");
             message.addExtra(reviveBeaconText);
             message.addExtra("\n");
 
@@ -44,33 +43,36 @@ public class RecipesCommand implements CommandExecutor {
             message.addExtra(purpurBlockText);
             message.addExtra("\n");
 
-            // Updated recipes for this season
             TextComponent miningPickaxeText = new TextComponent(ChatColor.GOLD + " - Custom 3x3 Mining Pickaxe");
-            addRecipeLink(miningPickaxeText, "https://i.imgur.com/sWMHTUh.png");
+            addRecipeLink(miningPickaxeText, "https://i.imgur.com/xUBJPvd.png");
             message.addExtra(miningPickaxeText);
             message.addExtra("\n");
 
             TextComponent featherSwordText = new TextComponent(ChatColor.GOLD + " - Custom Feather sword - Gives speed while holding and allows to tp 5 blocks in front every minute");
-            addRecipeLink(featherSwordText, "https://i.imgur.com/AvHgwvE.png");
+            addRecipeLink(featherSwordText, "https://i.imgur.com/mZXrbDk.png");
             message.addExtra(featherSwordText);
             message.addExtra("\n");
 
             TextComponent teleportingBowText = new TextComponent(ChatColor.GOLD + " - Custom Teleporting bow");
-            addRecipeLink(teleportingBowText, "https://i.imgur.com/ylMX4ff.png");
+            addRecipeLink(teleportingBowText, "https://i.imgur.com/Kn654zx.png");
             message.addExtra(teleportingBowText);
             message.addExtra("\n");
 
             TextComponent tntBowText = new TextComponent(ChatColor.GOLD + " - Custom TNT bow");
-            addRecipeLink(tntBowText, "https://i.imgur.com/sn604Xm.png");
+            addRecipeLink(tntBowText, "https://i.imgur.com/MO3tB8T.png");
             message.addExtra(tntBowText);
             message.addExtra("\n");
 
-            // Additional recipe
-            TextComponent treeBreakdownAxeText = new TextComponent(ChatColor.GOLD + " - Custom Tree Breakdown Axe");
-            addRecipeLink(treeBreakdownAxeText, "https://i.imgur.com/6LiNjzZ.png");
+            TextComponent treeBreakdownAxeText = new TextComponent(ChatColor.GOLD + " - Custom Tree Cutter Axe");
+            addRecipeLink(treeBreakdownAxeText, "https://i.imgur.com/Fd0rFjh.png");
             message.addExtra(treeBreakdownAxeText);
 
-            // Send the message to the player
+            TextComponent homingBowText = new TextComponent(ChatColor.GOLD + " - Custom Homing Bow");
+            addRecipeLink(homingBowText, "https://i.imgur.com/gc7sjpZ.png");
+            message.addExtra(homingBowText);
+            message.addExtra("\n");
+
+
             player.spigot().sendMessage(message);
 
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);

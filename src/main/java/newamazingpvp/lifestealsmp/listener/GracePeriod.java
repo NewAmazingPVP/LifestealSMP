@@ -22,6 +22,7 @@ import static newamazingpvp.lifestealsmp.game.CombatLog.*;
 import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.extraHeart;
 import static newamazingpvp.lifestealsmp.game.PlayerLifeManager.eliminatePlayer;
+import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 
 public class GracePeriod implements Listener {
     public List<String> names = new ArrayList<>();
@@ -175,13 +176,7 @@ public class GracePeriod implements Listener {
             if(!(killer.getMaxHealth() > 38)) {
                 killer.setMaxHealth(killer.getMaxHealth() + 2);
             } else {
-                if (slainer.getInventory().firstEmpty() != -1) {
-                    slainer.getInventory().addItem(extraHeart());
-                } else {
-                    World world = slainer.getWorld();
-                    world.dropItem(slainer.getLocation(), extraHeart());
-                    killer.sendMessage(ChatColor.GRAY + "Heart was dropped because your inventory was full");
-                }
+                addItemOrDrop(slainer, extraHeart(), "Heart was dropped because your inventory was full");
             }
         }
         String name = p.getName();

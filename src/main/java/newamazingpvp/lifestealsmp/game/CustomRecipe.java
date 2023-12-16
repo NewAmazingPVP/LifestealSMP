@@ -67,7 +67,7 @@ public class CustomRecipe {
         purpleBlockRecipe.setIngredient('S', Material.STONE_BRICKS);
         Bukkit.addRecipe(purpleBlockRecipe);
 
-        /*NamespacedKey recipeKey = new NamespacedKey(lifestealSmp, "teleporting_bow");
+        NamespacedKey recipeKey = new NamespacedKey(lifestealSmp, "teleporting_bow");
         ShapelessRecipe customBowRecipe = new ShapelessRecipe(recipeKey, createCustomBow());
         customBowRecipe.addIngredient(2, Material.ENDER_PEARL);
         customBowRecipe.addIngredient(1, Material.NETHERITE_INGOT);
@@ -107,21 +107,21 @@ public class CustomRecipe {
         opPickaxeRecipe.addIngredient(1, Material.GOLD_BLOCK);
         opPickaxeRecipe.addIngredient(5, Material.NETHERITE_INGOT);
         opPickaxeRecipe.addIngredient(1, Material.DIAMOND_PICKAXE);
-        Bukkit.addRecipe(opPickaxeRecipe);*/
+        Bukkit.addRecipe(opPickaxeRecipe);
 
         NamespacedKey nethScraps = new NamespacedKey(lifestealSmp, "neth_scraps");
         ShapelessRecipe nethScrapsRecipe = new ShapelessRecipe(nethScraps, createNethScarps());
         nethScrapsRecipe.addIngredient(1, Material.NETHERITE_INGOT);
         Bukkit.addRecipe(nethScrapsRecipe);
 
-        /*NamespacedKey homingBow = new NamespacedKey(lifestealSmp, "homing_bow");
+        NamespacedKey homingBow = new NamespacedKey(lifestealSmp, "homing_bow");
         ShapelessRecipe homingBowRecipe = new ShapelessRecipe(homingBow, createHomingBow());
         homingBowRecipe.addIngredient(1, Material.BOW);
         homingBowRecipe.addIngredient(2, Material.NETHERITE_INGOT);
         homingBowRecipe.addIngredient(2, Material.DIAMOND_BLOCK);
         homingBowRecipe.addIngredient(1, Material.NETHER_STAR);
         homingBowRecipe.addIngredient(2, Material.COMPASS);
-        Bukkit.addRecipe(homingBowRecipe);*/
+        Bukkit.addRecipe(homingBowRecipe);
 
         NamespacedKey reviveBeacon = new NamespacedKey(lifestealSmp, "revive_beacon");
         ShapelessRecipe reviveBeaconRecipe = new ShapelessRecipe(reviveBeacon, createReviveBeacon());
