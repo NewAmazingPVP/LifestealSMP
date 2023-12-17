@@ -45,7 +45,7 @@ public class PlayerPing {
                     //    getLogger().warning("Discord channel not found!");
                     //}
                 }
-                if (player.getPing() > 500) {
+                if (player.getPing() > 999) {
                     if (isInCombat(player)) {
                         cancelCombatData(player);
                         sendDiscordEmbedPlayer("High ping during combat! Untagging player and kicking them!", Color.RED, "", player.getName());
