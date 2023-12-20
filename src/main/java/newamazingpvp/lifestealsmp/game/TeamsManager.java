@@ -11,8 +11,8 @@ import org.bukkit.scoreboard.Team;
 import java.util.HashMap;
 
 public class TeamsManager {
-    private HashMap<String, Team> teamInvites = new HashMap<>();
-    public void joinTeam(Player p, String teamName){
+    private static HashMap<String, Team> teamInvites = new HashMap<>();
+    public static void joinTeam(Player p, String teamName){
         if(teamInvites.containsKey(p.getName())) {
             ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
             Scoreboard scoreboard = scoreboardManager.getMainScoreboard();
@@ -30,10 +30,9 @@ public class TeamsManager {
         }
     }
 
-    public void sendTeamMessage(Player p, String msg, Team t){
+    public static void sendTeamMessage(Player p, String msg, Team t){
 
-        ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
-        Scoreboard scoreboard = scoreboardManager.getMainScoreboard();
+        Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
         Team team = scoreboard.getTeam(t.getName());
 
         for(OfflinePlayer teamMate : team.getPlayers()){
@@ -44,14 +43,13 @@ public class TeamsManager {
         }
     }
 
-    public void createTeam(Player p, String teamName){
+    public static void createTeam(Player p, String teamName){
         if(getPlayerTeam(p) != null)
         {
             p.sendMessage("You are already in a team! /team leave before making a new one!");
             return;
         }
-        ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
-        Scoreboard scoreboard = scoreboardManager.getMainScoreboard();
+        Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
         Team team = (scoreboard.getTeam(teamName) != null) ? null : scoreboard.registerNewTeam(teamName);;
         if (team == null) {
             p.sendMessage(ChatColor.RED + "Team with this name already exists!");
@@ -61,18 +59,18 @@ public class TeamsManager {
         }
     }
 
-    public Team getPlayerTeam(Player p){
+    public static Team getPlayerTeam(Player p){
         return Bukkit.getScoreboardManager().getMainScoreboard().getPlayerTeam(p);
     }
 
-    public void leaveTeam(Player p){
+    public static void leaveTeam(Player p){
         if(getPlayerTeam(p) != null) {
             Bukkit.getScoreboardManager().getMainScoreboard().getPlayerTeam(p).removePlayer(p);
             p.sendMessage(ChatColor.BLUE + "You left the team!");
         }
     }
 
-    public void inviteToTeam(Player p, Player targetP){
+    public static void inviteToTeam(Player p, Player targetP){
         Team team = (getPlayerTeam(p) == null) ? null : getPlayerTeam(p);;
         if (team == null) {
             p.sendMessage(ChatColor.RED + "You are in an invalid team. Are you in a team before inviting??");
