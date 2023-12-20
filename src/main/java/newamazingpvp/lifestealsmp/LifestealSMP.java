@@ -19,6 +19,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.awt.*;
@@ -73,7 +74,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
         //getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
         getServer().getPluginManager().registerEvents(new TeleportBow(), this);
-        getServer().getPluginManager().registerEvents(new ServerAge(), this);
+        //getServer().getPluginManager().registerEvents(new ServerAge(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
         getServer().getPluginManager().registerEvents(new EndCrystalWarning(), this);
         getServer().getPluginManager().registerEvents(new Compass(), this);
@@ -146,7 +147,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        if (player.getName().equals("NewAmazingPVP")) {
+        if (player.getName().equals("NewAmazingPVP") && player.hasPotionEffect(PotionEffectType.INVISIBILITY)) {
             event.setQuitMessage("");
         }
     }
@@ -168,8 +169,13 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
 
             //player.teleport(lobby);
         } else {
-            player.setInvulnerable(true);
-            getServer().getScheduler().runTaskLater(this, () -> player.setInvulnerable(false), 60);
+            if(player.getName().startsWith(".")){
+                player.setInvulnerable(true);
+                getServer().getScheduler().runTaskLater(this, () -> player.setInvulnerable(false), 120);
+            } else {
+                player.setInvulnerable(true);
+                getServer().getScheduler().runTaskLater(this, () -> player.setInvulnerable(false), 60);
+            }
         }
     }
 
