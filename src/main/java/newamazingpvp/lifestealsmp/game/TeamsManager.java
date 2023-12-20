@@ -8,24 +8,26 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
 
+import java.util.HashMap;
+
 public class TeamsManager {
+    private HashMap<String, Team> teamInvites = new HashMap<>();
     public void joinTeam(Player p, String teamName){
-        Player player = Bukkit.getPlayer(p.getName());
-        if (player == null) {
-            p.sendMessage("Player not found.");
-            return;
-        }
+        if(teamInvites.containsKey(p.getName())) {
+            ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
+            Scoreboard scoreboard = scoreboardManager.getMainScoreboard();
+            Team team = (scoreboard.getTeam(teamName) != null) ? scoreboard.getTeam(teamName) : null;
+            if (team == null) {
+                p.sendMessage(ChatColor.RED + "This team does not exist!");
+                return;
+            }
+            team.addEntry(p.getName());
 
-        ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
-        Scoreboard scoreboard = scoreboardManager.getMainScoreboard();
-        Team team = (scoreboard.getTeam(teamName) != null) ? scoreboard.getTeam(teamName) : null;
-        if(team == null){
-            p.sendMessage(ChatColor.RED + "This team does not exist!");
-            return;
+            sendTeamMessage(p, " I have joined the team!", team);
+            teamInvites.remove(p.getName());
+        } else {
+            p.sendMessage(ChatColor.RED + "Invalid team invite. Ask someone to send you an invite again.");
         }
-        team.addEntry(player.getName());
-
-        sendTeamMessage(p, " I have joined the team!" , team);
     }
 
     public void sendTeamMessage(Player p, String msg, Team t){
@@ -43,18 +45,41 @@ public class TeamsManager {
     }
 
     public void createTeam(Player p, String teamName){
+        if(getPlayerTeam(p) != null)
+        {
+            p.sendMessage("You are already in a team! /team leave before making a new one!");
+            return;
+        }
         ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
         Scoreboard scoreboard = scoreboardManager.getMainScoreboard();
         Team team = (scoreboard.getTeam(teamName) != null) ? null : scoreboard.registerNewTeam(teamName);;
         if (team == null) {
             p.sendMessage(ChatColor.RED + "Team with this name already exists!");
         } else {
+            teamInvites.put(p.getName(), team);
             joinTeam(p, team.getName());
         }
     }
 
-    public void inviteToTeam(Player p, Player targetP, String teamName){
-        
+    public Team getPlayerTeam(Player p){
+        return Bukkit.getScoreboardManager().getMainScoreboard().getPlayerTeam(p);
+    }
+
+    public void leaveTeam(Player p){
+        if(getPlayerTeam(p) != null) {
+            Bukkit.getScoreboardManager().getMainScoreboard().getPlayerTeam(p).removePlayer(p);
+            p.sendMessage(ChatColor.BLUE + "You left the team!");
+        }
+    }
+
+    public void inviteToTeam(Player p, Player targetP){
+        Team team = (getPlayerTeam(p) == null) ? null : getPlayerTeam(p);;
+        if (team == null) {
+            p.sendMessage(ChatColor.RED + "You are in an invalid team. Are you in a team before inviting??");
+        } else {
+            targetP.sendMessage(p.getName() + " have invited you to their team! Type /team join " + team.getName());
+            teamInvites.put(targetP.getName(), team);
+        }
     }
 
 }
