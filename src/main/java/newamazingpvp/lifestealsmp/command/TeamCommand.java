@@ -59,7 +59,7 @@ public class TeamCommand  implements CommandExecutor, TabCompleter {
                     teamNames.add(t.getName());
                 }
                 return teamNames;
-            } 
+            }
         }
         return null;
     }
