@@ -20,6 +20,7 @@ import static newamazingpvp.lifestealsmp.game.CombatLog.*;
 import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.extraHeart;
 import static newamazingpvp.lifestealsmp.game.PlayerLifeManager.eliminatePlayer;
+import static newamazingpvp.lifestealsmp.game.TeamsManager.onSameTeam;
 import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 
 public class GracePeriod implements Listener {
@@ -56,6 +57,9 @@ public class GracePeriod implements Listener {
                         damager.sendMessage(ChatColor.RED + "You cannot damage during their newbie protection for " + ChatColor.YELLOW + remainingMinutes + " minutes, " +
                                 remainingSecondsLeft + " seconds.");
                     }
+                    if(onSameTeam(damaged, damager)){
+                        event.setCancelled(true);
+                    }
                     if (!event.isCancelled()) {
                         //names.remove(damager.getName());
                         tagPlayer(damager, damaged);
@@ -73,7 +77,7 @@ public class GracePeriod implements Listener {
                         if (isPlayerDeathProt(damaged)) {
                             //event.setCancelled(true);
                             //event.getDamager().sendMessage(ChatColor.RED + "You cannot shoot players during their death protection unless they attack you back!");
-                            event.getDamager().sendMessage(ChatColor.RED + "This player was recently killed by a player and won't give heart if you kill them again");
+                            shooter.sendMessage(ChatColor.RED + "This player was recently killed by a player and won't give heart if you kill them again");
                             //event.getEntity().sendMessage(ChatColor.RED + "Someone tried attacking u but was prevented because u died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
                         }
                         if (getPlaytime(damaged) < 216000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())) {
@@ -85,13 +89,16 @@ public class GracePeriod implements Listener {
                             int remainingSecondsLeft = (int) (finalTime % 60);
 
                             damaged.sendMessage(ChatColor.RED + "Someone tried hitting you during your newbie protection! If you hit them back you will lose your protection temporarily and will be attacked!");
-                            event.getDamager().sendMessage(ChatColor.RED + "You cannot damage during their newbie protection for " + ChatColor.YELLOW + remainingMinutes + " minutes, " +
+                            shooter.sendMessage(ChatColor.RED + "You cannot damage during their newbie protection for " + ChatColor.YELLOW + remainingMinutes + " minutes, " +
                                     remainingSecondsLeft + " seconds.");
+                        }
+                        if(onSameTeam(damaged, shooter)){
+                            event.setCancelled(true);
                         }
                         if (!event.isCancelled()) {
                             //names.remove(event.getDamager().getName());
-                            tagPlayer((Player) event.getDamager(), damaged);
-                            tagPlayer(damaged, (Player) event.getDamager());
+                            tagPlayer(shooter, damaged);
+                            tagPlayer(damaged, shooter);
                         }
                     }
                 } else if (event.getDamager() instanceof TNTPrimed) {

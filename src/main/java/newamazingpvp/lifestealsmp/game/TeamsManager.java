@@ -8,10 +8,14 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
 
 public class TeamsManager {
     private static HashMap<String, Team> teamInvites = new HashMap<>();
+    private static List<UUID> playerTeamChat;
     public static void joinTeam(Player p, String teamName){
         if(teamInvites.containsKey(p.getName())) {
             ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
@@ -23,17 +27,18 @@ public class TeamsManager {
             }
             team.addEntry(p.getName());
 
-            sendTeamMessage(p, " I have joined the team!", team);
+            sendTeamMessage(p, " I have joined the team!");
             teamInvites.remove(p.getName());
         } else {
             p.sendMessage(ChatColor.RED + "Invalid team invite. Ask someone to send you an invite again.");
         }
     }
 
-    public static void sendTeamMessage(Player p, String msg, Team t){
+    public static void sendTeamMessage(Player p, String msg){
 
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
-        Team team = scoreboard.getTeam(t.getName());
+        Team team = scoreboard.getPlayerTeam(p);
+        if(team == null) return;
 
         for(OfflinePlayer teamMate : team.getPlayers()){
             if(teamMate.isOnline()){
@@ -42,6 +47,37 @@ public class TeamsManager {
             }
         }
     }
+
+    public static void teamChatMode(Player p)
+    {
+        if(playerTeamChat.contains(p.getUniqueId())) {
+            playerTeamChat.add(p.getUniqueId());
+            p.sendMessage("Your messages now go to team chat!");
+        } else {
+            playerTeamChat.remove(p.getUniqueId());
+            p.sendMessage("Your messages now go to global chat!");
+        }
+    }
+
+    public static List<String> getTeamMembers(Player p) {
+        Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
+        Team team = scoreboard.getPlayerTeam(p);
+        if (team == null) return null;
+        List<String> names = new ArrayList<>();
+        for (OfflinePlayer teamMate : team.getPlayers()) {
+            names.add(teamMate.getName());
+        }
+        return names;
+    }
+
+    public static boolean isPlayerInTeamChat(Player p){
+        return playerTeamChat.contains(p.getUniqueId());
+    }
+
+    public static boolean onSameTeam(Player p, Player t){
+        return getPlayerTeam(p).equals(getPlayerTeam(t));
+    }
+
 
     public static void createTeam(Player p, String teamName){
         if(getPlayerTeam(p) != null)
@@ -67,6 +103,12 @@ public class TeamsManager {
         if(getPlayerTeam(p) != null) {
             Bukkit.getScoreboardManager().getMainScoreboard().getPlayerTeam(p).removePlayer(p);
             p.sendMessage(ChatColor.BLUE + "You left the team!");
+        }
+    }
+
+    public static void kickPlayer(OfflinePlayer p){
+        if(Bukkit.getScoreboardManager().getMainScoreboard().getPlayerTeam(p) != null) {
+            Bukkit.getScoreboardManager().getMainScoreboard().getPlayerTeam(p).removePlayer(p);
         }
     }
 
