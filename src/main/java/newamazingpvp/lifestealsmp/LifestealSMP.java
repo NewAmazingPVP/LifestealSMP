@@ -32,6 +32,7 @@ import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.game.PlayerPing.monitorPlayerPings;
 import static newamazingpvp.lifestealsmp.listener.ChatFilter.initializeBlacklist;
+import static newamazingpvp.lifestealsmp.listener.TpsEvent.checkTps;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.*;
 
 public final class LifestealSMP extends JavaPlugin implements Listener {
@@ -105,6 +106,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new CombatLogListener(), this);
         getServer().getPluginManager().registerEvents(new DisableNetherite(), this);
         getServer().getPluginManager().registerEvents(new BeaconInvis(), this);
+        //getServer().getPluginManager().registerEvents(new TpsEvent(), this);
         BukkitRunnable broadcastTask = new BukkitRunnable() {
             @Override
             public void run() {
@@ -137,6 +139,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
             }
         }.runTaskLater(this, 120);
         compassUpdate();
+        //checkTps();
     }
 
     @Override
