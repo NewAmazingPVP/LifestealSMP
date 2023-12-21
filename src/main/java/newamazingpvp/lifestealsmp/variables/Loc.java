@@ -8,4 +8,6 @@ public class Loc {
     public static Location endSpawn = new Location(Bukkit.getWorld("world_the_end"), 0, 60.0, 0);
     public static Location endPortalCenter = new Location(Bukkit.getWorld("world_the_end"), 0, 70.0, 0);
     public static Location lobby = new Location(Bukkit.getWorld("world"), -20, 270.0, 27);
+    public static Location spawnLoc1 = new Location(Bukkit.getWorld("world"), -20, 270.0, 27);
+    public static Location spawnLoc2 = new Location(Bukkit.getWorld("world"), -20, 270.0, 27);
 }
