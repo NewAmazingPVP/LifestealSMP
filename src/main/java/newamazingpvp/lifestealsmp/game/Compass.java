@@ -146,7 +146,8 @@ public class Compass implements CommandExecutor, Listener {
             }*/
 
             trackingPlayers.put(player.getUniqueId(), target.getUniqueId());
-            player.sendMessage(ChatColor.GREEN + "Compass is now pointing towards " + target.getName());
+            player.sendMessage(ChatColor.GREEN + "Tracking distance to " + target.getName() + " every 45 seconds");
+            //player.sendMessage(ChatColor.GREEN + "Compass is now pointing towards " + target.getName());
             //target.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[WARNING] You are being tracked!");
             return true;
         }
