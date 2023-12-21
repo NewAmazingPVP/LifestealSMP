@@ -23,6 +23,7 @@ public class ServerRuntime implements CommandExecutor {
                 "The server started on" + ChatColor.AQUA + " 12/9/23 11:30am est" + ChatColor.WHITE + " and has been up for" + ChatColor.GOLD + " %d days, %d hours, and %d minutes.",
                 days, hours, minutes
         );
+        sender.sendMessage(uptimeMessage);
         return true;
     }
 }
