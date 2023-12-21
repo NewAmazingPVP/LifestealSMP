@@ -17,10 +17,9 @@ public class TeamListener implements Listener {
         Player p = event.getPlayer();
         if(isPlayerInTeamChat(p)){
             event.setCancelled(true);
-            sendTeamMessage(p, event.getMessage())
+            sendTeamMessage(p, event.getMessage());
         }
     }
 
-    @EventHandler
-    public void playerFightEvent
+
 }

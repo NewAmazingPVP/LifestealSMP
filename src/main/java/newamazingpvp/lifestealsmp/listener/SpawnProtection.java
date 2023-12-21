@@ -112,18 +112,5 @@ public class SpawnProtection implements Listener {
         return false;
     }
 
-    @EventHandler
-    public void onBlockBreak(BlockBreakEvent event) {
-        if (event.isCancelled()) return;
-
-        // Check if the broken block is Dark Oak
-        if (event.getBlock().getType() == Material.DARK_OAK_LOG) {
-            // Check if we should drop a sapling
-            if (Math.random() < 0.10) {
-                // Drop a Dark Oak sapling
-                ItemStack sapling = new ItemStack(Material.DARK_OAK_SAPLING);
-                event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), sapling);
-            }
-        }
-    }
+    
 }
