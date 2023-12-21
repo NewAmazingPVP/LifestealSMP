@@ -78,6 +78,13 @@ public class TeamsManager {
         return getPlayerTeam(p).equals(getPlayerTeam(t));
     }
 
+    public static List<String> getAllTeams() {
+        List<String> teams = new ArrayList<>();
+        for (Team t : Bukkit.getScoreboardManager().getMainScoreboard().getTeams()){
+            teams.add(t.getName());
+        }
+        return teams;
+    }
 
     public static void createTeam(Player p, String teamName){
         if(getPlayerTeam(p) != null)
