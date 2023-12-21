@@ -16,25 +16,29 @@ import java.util.List;
 import static newamazingpvp.lifestealsmp.game.TeamsManager.*;
 
 public class TeamCommand  implements CommandExecutor, TabCompleter {
-    private final ArrayList<String> teamFirstIndex = new ArrayList<>(List.of("join", "leave", "create", "invite"));
+    private final ArrayList<String> teamFirstIndex = new ArrayList<>(List.of("join", "leave", "create", "invite", "chat", "kick"));
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player p = (Player) sender;
-        if(args.length == 0){
+        if(args.length == 0 || (args.length == 1 && args[0].equals("help"))){
             p.sendMessage("/team create" +
                     "\n/team join" +
                     "\n/team invite" +
                     "\n/team leave" +
                     "\n/team chat");
         } else if (args.length == 1) {
-            if (args[0].equals("create")) {
+            if(args[0].equals("leave")) {
+                leaveTeam(p);
+            } else if(args[0].equals("chat")){
+                teamChatMode(p);
+            } else if (args[0].equals("create")) {
                 p.sendMessage("Incorrect command usage. Type /team create [teamName]");
             } else if (args[0].equals("join")) {
                 p.sendMessage("Incorrect command usage. Type /team join [teamName]");
             }  else if (args[0].equals("invite")) {
                 p.sendMessage("Incorrect command usage. Type /team invite [playerName]");
-            } else if (args[0].equals("leave")) {
-                leaveTeam(p);
+            } else if (args[0].equals("kick")) {
+                p.sendMessage("Incorrect command usage. Type /team kick [playerName]");
             }
         } else if (args.length == 2) {
             if (args[0].equals("create")) {
@@ -43,6 +47,10 @@ public class TeamCommand  implements CommandExecutor, TabCompleter {
                 joinTeam(p, args[1]);
             } else if (args[0].equals("invite")) {
                 inviteToTeam(p, Bukkit.getPlayer(args[1]));
+            } else if(args[0].equals("chat")){
+                sendTeamMessage(p, args[1]);
+            } else if(args[0].equals("kick")){
+                kickPlayer(Bukkit.getOfflinePlayer((args[1])));
             }
         }
         return true;
@@ -50,6 +58,7 @@ public class TeamCommand  implements CommandExecutor, TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        Player p = (Player) sender;
         if (args.length == 1) {
             return teamFirstIndex;
         } else if(args.length == 2) {
@@ -59,6 +68,8 @@ public class TeamCommand  implements CommandExecutor, TabCompleter {
                     teamNames.add(t.getName());
                 }
                 return teamNames;
+            } else if(args[0].equals("kick")){
+                return getTeamMembers(p);
             }
         }
         return null;
