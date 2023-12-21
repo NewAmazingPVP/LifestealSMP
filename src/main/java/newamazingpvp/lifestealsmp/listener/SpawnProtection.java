@@ -16,6 +16,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 import static newamazingpvp.lifestealsmp.game.CombatLog.isInCombat;
+import static newamazingpvp.lifestealsmp.variables.Loc.spawnLoc1;
+import static newamazingpvp.lifestealsmp.variables.Loc.spawnLoc2;
 
 
 public class SpawnProtection implements Listener {
@@ -100,7 +102,14 @@ public class SpawnProtection implements Listener {
         if (spawnEnvironment != World.Environment.NORMAL) {
             return false;
         }
-        return location.distanceSquared(spawnLocation) <= spawnRadius * spawnRadius;
+        if(location.x() > spawnLoc1.x() && location.x() < spawnLoc2.x()){
+            if(location.y() > spawnLoc1.y() && location.y() < spawnLoc2.y()){
+                if(location.z() > spawnLoc1.z() && location.z() < spawnLoc2.z()){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     @EventHandler
