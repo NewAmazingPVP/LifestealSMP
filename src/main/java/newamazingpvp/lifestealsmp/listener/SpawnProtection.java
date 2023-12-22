@@ -75,7 +75,6 @@ public class SpawnProtection implements Listener {
 
     @EventHandler
     public void spawnBlockPlace(PlayerInteractEvent event) {
-        event.getAction() == Action.CLICK
         if (isWithinSpawnRadius(event.getPlayer().getLocation())) {
             if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.LAVA_BUCKET
                     || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.FIRE_CHARGE

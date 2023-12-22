@@ -15,7 +15,7 @@ import java.util.UUID;
 
 public class TeamsManager {
     private static HashMap<String, Team> teamInvites = new HashMap<>();
-    private static List<UUID> playerTeamChat;
+    private static List<UUID> playerTeamChat = new ArrayList<>();
     public static void joinTeam(Player p, String teamName){
         if(teamInvites.containsKey(p.getName())) {
             ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
@@ -50,7 +50,7 @@ public class TeamsManager {
 
     public static void teamChatMode(Player p)
     {
-        if(playerTeamChat.contains(p.getUniqueId())) {
+        if(!playerTeamChat.contains(p.getUniqueId())) {
             playerTeamChat.add(p.getUniqueId());
             p.sendMessage("Your messages now go to team chat!");
         } else {
@@ -113,8 +113,8 @@ public class TeamsManager {
         }
     }
 
-    public static void kickPlayer(OfflinePlayer p){
-        if(Bukkit.getScoreboardManager().getMainScoreboard().getPlayerTeam(p) != null) {
+    public static void kickPlayer(OfflinePlayer t, OfflinePlayer p){
+        if(Bukkit.getScoreboardManager().getMainScoreboard().getPlayerTeam(p).equals(Bukkit.getScoreboardManager().getMainScoreboard().getPlayerTeam(t))) {
             Bukkit.getScoreboardManager().getMainScoreboard().getPlayerTeam(p).removePlayer(p);
         }
     }
