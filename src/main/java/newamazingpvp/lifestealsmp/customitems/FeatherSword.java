@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.listener;
+package newamazingpvp.lifestealsmp.customitems;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -95,7 +95,7 @@ public class FeatherSword implements Listener {
     }
 
     @NotNull
-    static String getString(Player player, Map<Player, Long> teleportCooldowns, long teleportCooldownDuration) {
+    public static String getString(Player player, Map<Player, Long> teleportCooldowns, long teleportCooldownDuration) {
         if (teleportCooldowns.containsKey(player)) {
             long lastTeleportTime = teleportCooldowns.get(player);
             long currentTime = System.currentTimeMillis();

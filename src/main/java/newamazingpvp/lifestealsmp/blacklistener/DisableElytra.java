@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.listener;
+package newamazingpvp.lifestealsmp.blacklistener;
 
 import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent;
 import org.bukkit.entity.Player;

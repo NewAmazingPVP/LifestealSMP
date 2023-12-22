@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.customitemdrops;
+package newamazingpvp.lifestealsmp.customitems;
 
 import org.bukkit.Location;
 import org.bukkit.entity.EnderDragon;

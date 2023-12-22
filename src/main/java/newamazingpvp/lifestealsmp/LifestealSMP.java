@@ -1,11 +1,12 @@
 package newamazingpvp.lifestealsmp;
 
+import newamazingpvp.lifestealsmp.blacklistener.*;
 import newamazingpvp.lifestealsmp.command.*;
-import newamazingpvp.lifestealsmp.customitemdrops.CustomHeartItems;
+import newamazingpvp.lifestealsmp.customitems.*;
 import newamazingpvp.lifestealsmp.game.Compass;
 import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
 import newamazingpvp.lifestealsmp.listener.*;
-import newamazingpvp.lifestealsmp.sekhmetitems.GiveSekhmetSetSpeedADMINONLY;
+import newamazingpvp.lifestealsmp.cometwip.GiveSekhmetSetSpeedADMINONLY;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -31,8 +32,7 @@ import static newamazingpvp.lifestealsmp.game.BroadcastMessage.*;
 import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.game.PlayerPing.monitorPlayerPings;
-import static newamazingpvp.lifestealsmp.listener.ChatFilter.initializeBlacklist;
-import static newamazingpvp.lifestealsmp.listener.TpsEvent.checkTps;
+import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlacklist;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.*;
 
 public final class LifestealSMP extends JavaPlugin implements Listener {
@@ -108,6 +108,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new DisableNetherite(), this);
         getServer().getPluginManager().registerEvents(new BeaconInvis(), this);
         getServer().getPluginManager().registerEvents(new TeamListener(), this);
+        getServer().getPluginManager().registerEvents(new DiscordListener(), this);
         //getServer().getPluginManager().registerEvents(new TpsEvent(), this);
         BukkitRunnable broadcastTask = new BukkitRunnable() {
             @Override
