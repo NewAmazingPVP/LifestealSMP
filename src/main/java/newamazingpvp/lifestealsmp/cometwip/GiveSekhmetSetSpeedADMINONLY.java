@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.sekhmetitems;
+package newamazingpvp.lifestealsmp.cometwip;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

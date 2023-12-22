@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.listener;
+package newamazingpvp.lifestealsmp.customitems;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import static newamazingpvp.lifestealsmp.listener.FeatherSword.getString;
+import static newamazingpvp.lifestealsmp.customitems.FeatherSword.getString;
 import static newamazingpvp.lifestealsmp.listener.SpawnProtection.isWithinSpawnRadius;
 
 public class TntBow implements Listener {
