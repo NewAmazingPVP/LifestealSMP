@@ -51,7 +51,7 @@ public class DiscordListener implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
         String s = event.getDeathMessage();
-        sendDiscordEmbedPlayer(s, Color.YELLOW, "", event.getPlayer().getName());
+        sendDiscordEmbedPlayer(s, Color.BLACK, "", event.getPlayer().getName());
     }
 
 }
