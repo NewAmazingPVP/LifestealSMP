@@ -61,7 +61,7 @@ public class TeamCommand  implements CommandExecutor, TabCompleter {
             } else if(args[0].equals("chat")){
                 sendTeamMessage(p, args[1]);
             } else if(args[0].equals("kick")){
-                kickPlayer(Bukkit.getOfflinePlayer((args[1])));
+                kickPlayer(p, Bukkit.getOfflinePlayer((args[1])));
             }
         }
         return true;
