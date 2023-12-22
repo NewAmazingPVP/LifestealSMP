@@ -133,6 +133,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         }.runTaskTimer(this, 0L, 20L);
         scheduleRestart();
         intializeBot();
+        webHookClient();
         new BukkitRunnable() {
             @Override
             public void run() {

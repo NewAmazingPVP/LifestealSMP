@@ -88,6 +88,12 @@
             <version>5.0.0-beta.17</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>club.minnced</groupId>
+            <artifactId>discord-webhooks</artifactId>
+            <version>0.8.4</version>
+            <scope>provided</scope>
+        </dependency>
 
     </dependencies>
 </project>
