@@ -42,6 +42,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
+        sendDiscordMessage("The server has started✅", "");
         saveDefaultConfig();
         config = getConfig();
         lifestealSmp = this;
@@ -149,6 +150,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         if (jda != null) {
             jda.shutdownNow();
         }
+        sendDiscordMessage("The server has stopped🛑", "");
     }
 
     @EventHandler
