@@ -62,7 +62,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getCommand("stopEndFight").setExecutor(new StopEndFight());
         getCommand("jailplayer").setExecutor(new JailPlayer());
         getCommand("reviveplayer").setExecutor(new RevivePlayer());
-        getCommand("customprefix").setExecutor(new CustomPrefixAdmin());
         getCommand("vision").setExecutor(new NightVision());
         getCommand("senddiscordmessage").setExecutor(new SendDiscordMessage());
         getCommand("shop").setExecutor(new ShopCommand());
