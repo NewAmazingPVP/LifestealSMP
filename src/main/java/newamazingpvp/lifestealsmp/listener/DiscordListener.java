@@ -1,8 +1,10 @@
 package newamazingpvp.lifestealsmp.listener;
 
 import com.destroystokyo.paper.event.player.PlayerAdvancementCriterionGrantEvent;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerAdvancementDoneEvent;
@@ -24,8 +26,14 @@ public class DiscordListener implements Listener {
 
     @EventHandler
     public void playerJoin(PlayerJoinEvent event) {
-        String s = event.getPlayer().getName() + " joined the SMP server";
-        sendDiscordEmbedPlayer(s, Color.GREEN, "", event.getPlayer().getName());
+        Player p = event.getPlayer();
+        if(p.hasPlayedBefore()) {
+            String s = p.getName() + " joined the SMP server";
+            sendDiscordEmbedPlayer(s, Color.GREEN, "", event.getPlayer().getName());
+        } else {
+            String s = p.getName() + " joined the SMP server for the first time";
+            sendDiscordEmbedPlayer(s, Color.CYAN, "", event.getPlayer().getName());
+        }
     }
 
     @EventHandler
@@ -36,7 +44,14 @@ public class DiscordListener implements Listener {
 
     @EventHandler
     public void onAchievement(PlayerAdvancementDoneEvent event) {
-        String s = event.getPlayer().getName() + " has made the advancement " + event.getAdvancement().displayName();
+        String s = event.getPlayer().getName() + " has made the advancement " + event.getAdvancement().getKey().getKey();
         sendDiscordEmbedPlayer(s, Color.ORANGE, "", event.getPlayer().getName());
     }
+
+    @EventHandler
+    public void onPlayerDeath(PlayerDeathEvent event) {
+        String s = event.getDeathMessage();
+        sendDiscordEmbedPlayer(s, Color.YELLOW, "", event.getPlayer().getName());
+    }
+
 }

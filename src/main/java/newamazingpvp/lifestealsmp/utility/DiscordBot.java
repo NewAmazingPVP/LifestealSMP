@@ -100,7 +100,7 @@ public class DiscordBot {
         }
     }
     public static void webHookClient(){
-        WebhookClientBuilder builder = new WebhookClientBuilder("e");
+        WebhookClientBuilder builder = new WebhookClientBuilder(lifestealSmp.getConfig().getString("Discord.Webhook"));
         builder.setThreadFactory((job) -> {
             Thread thread = new Thread(job);
             thread.setName("E");
