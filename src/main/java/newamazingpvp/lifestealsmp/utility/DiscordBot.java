@@ -1,11 +1,15 @@
 package newamazingpvp.lifestealsmp.utility;
 
+import club.minnced.discord.webhook.WebhookClient;
+import club.minnced.discord.webhook.WebhookClientBuilder;
+import club.minnced.discord.webhook.send.WebhookMessageBuilder;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import newamazingpvp.lifestealsmp.discord.Stats;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.awt.*;
@@ -16,6 +20,7 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 public class DiscordBot {
     public static JDA jda;
     public static TextChannel channel;
+    public static WebhookClient client;
 
     public static void intializeBot() {
         String token = lifestealSmp.getConfig().getString("Discord.BotToken");
@@ -94,5 +99,26 @@ public class DiscordBot {
             }
         }
     }
+    public static void webHookClient(){
+        WebhookClientBuilder builder = new WebhookClientBuilder("e");
+        builder.setThreadFactory((job) -> {
+            Thread thread = new Thread(job);
+            thread.setName("E");
+            thread.setDaemon(true);
+            return thread;
+        });
+        builder.setWait(true);
+        client = builder.build();
+    }
+
+    public static void sendWebhook(Player p, String msg){
+        String avatar = "https://minotar.net/helm/" + p.getName();
+        WebhookMessageBuilder builder = new WebhookMessageBuilder();
+        builder.setUsername(p.getName());
+        builder.setAvatarUrl(avatar);
+        builder.setContent(msg);
+        client.send(builder.build());
+    }
+
 
 }
