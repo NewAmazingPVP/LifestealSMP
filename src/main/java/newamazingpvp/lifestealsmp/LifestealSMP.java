@@ -73,8 +73,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getCommand("givecustomitem").setExecutor(new GiveCustomItem());
         getCommand("givecustomitem").setTabCompleter(new GiveCustomItem());
         getCommand("serverruntime").setExecutor(new ServerRuntime());
-        getCommand("team").setExecutor(new TeamCommand());
-        getCommand("team").setTabCompleter(new TeamCommand());
+        //getCommand("team").setExecutor(new TeamCommand());
+        //getCommand("team").setTabCompleter(new TeamCommand());
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
@@ -109,8 +109,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new CombatLogListener(), this);
         getServer().getPluginManager().registerEvents(new DisableNetherite(), this);
         getServer().getPluginManager().registerEvents(new BeaconInvis(), this);
-        getServer().getPluginManager().registerEvents(new TeamListener(), this);
-        getServer().getPluginManager().registerEvents(new DiscordListener(), this);
+        //getServer().getPluginManager().registerEvents(new TeamListener(), this);
+        //getServer().getPluginManager().registerEvents(new DiscordListener(), this);
         //getServer().getPluginManager().registerEvents(new TpsEvent(), this);
         BukkitRunnable broadcastTask = new BukkitRunnable() {
             @Override
@@ -146,9 +146,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         }.runTaskLater(this, 120);
         compassUpdate();
         //checkTps();
-        LogAppender appender = new LogAppender();
+        /*LogAppender appender = new LogAppender();
         org.apache.logging.log4j.core.Logger logger = (org.apache.logging.log4j.core.Logger) LogManager.getRootLogger();
-        logger.addAppender(appender);
+        logger.addAppender(appender);*/
     }
 
     @Override
