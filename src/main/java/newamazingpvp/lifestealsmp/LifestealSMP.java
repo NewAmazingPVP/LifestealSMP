@@ -3,10 +3,13 @@ package newamazingpvp.lifestealsmp;
 import newamazingpvp.lifestealsmp.blacklistener.*;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.customitems.*;
+import newamazingpvp.lifestealsmp.discord.DiscordListener;
 import newamazingpvp.lifestealsmp.game.Compass;
 import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
 import newamazingpvp.lifestealsmp.listener.*;
 import newamazingpvp.lifestealsmp.cometwip.GiveSekhmetSetSpeedADMINONLY;
+import newamazingpvp.lifestealsmp.utility.LogAppender;
+import org.apache.logging.log4j.LogManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -143,6 +146,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         }.runTaskLater(this, 120);
         compassUpdate();
         //checkTps();
+        LogAppender appender = new LogAppender();
+        org.apache.logging.log4j.core.Logger logger = (org.apache.logging.log4j.core.Logger) LogManager.getRootLogger();
+        logger.addAppender(appender);
     }
 
     @Override
