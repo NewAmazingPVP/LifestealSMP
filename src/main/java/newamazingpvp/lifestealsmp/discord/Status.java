@@ -12,10 +12,10 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.utility.DiscordBot.channelId;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.jda;
 
 public class Status extends ListenerAdapter {
-    String channelId = lifestealSmp.getConfig().getString("Discord.Channel");
     @Override
     public void onReady(ReadyEvent event) {
         super.onReady(event);
@@ -31,7 +31,7 @@ public class Status extends ListenerAdapter {
                     channel.getManager().setTopic("Total Players online: " + num).queue();
                 }
             }
-        }.runTaskTimer(lifestealSmp, 0L, 5 * 60 * 20);
+        }.runTaskTimerAsynchronously(lifestealSmp, 120L, 5 * 60 * 20);
 
     }
 }
