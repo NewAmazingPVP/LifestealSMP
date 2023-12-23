@@ -191,34 +191,5 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
             }
         }
     }
-
-    @EventHandler
-    public void onPlayerClick(PlayerInteractEvent event) {
-        Player player = event.getPlayer();
-        ItemStack item = player.getInventory().getItemInMainHand();
-
-        if (isTpBlock(item)) {
-            event.setCancelled(true);
-            player.teleport(player.getWorld().getSpawnLocation());
-            item.setAmount(0);
-        }
-
-    }
-
-    private boolean isTpBlock(ItemStack item) {
-        ItemMeta meta = item.getItemMeta();
-        return item.getType() == Material.GREEN_TERRACOTTA && meta.getLore() != null && meta.getLore().toString().contains("Click to start");
-    }
-
-    private void giveClickableItem(Player player) {
-        ItemStack item = new ItemStack(Material.GREEN_TERRACOTTA);
-        ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(ChatColor.GREEN + "CLICK TO PLAY");
-        List<String> DEFL = new ArrayList<>();
-        DEFL.add(ChatColor.GOLD + "Click to start playing the Lifesteal SMP!");
-        meta.setLore(DEFL);
-        item.setItemMeta(meta);
-
-        player.getInventory().setItemInMainHand(item);
-    }
+    
 }
