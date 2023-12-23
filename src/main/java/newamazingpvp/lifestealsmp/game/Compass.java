@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.discord.DiscordListener.isVanished;
 import static org.bukkit.Bukkit.getServer;
 
 public class Compass implements CommandExecutor, Listener {
@@ -71,7 +72,7 @@ public class Compass implements CommandExecutor, Listener {
 
             Player target = Bukkit.getPlayer(args[0]);
 
-            if (target == null) {
+            if (target == null || isVanished(target)) {
                 sender.sendMessage(ChatColor.RED + "Player not found!");
                 return true;
             }
