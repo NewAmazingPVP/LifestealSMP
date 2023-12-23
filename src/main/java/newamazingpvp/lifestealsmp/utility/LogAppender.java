@@ -9,12 +9,14 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.jda;
 
 public class LogAppender extends AbstractAppender {
 
     private SimpleDateFormat formatter;
     private static Map<String, String> discordMessageIds = new HashMap<>();
+    String consoleChannel = lifestealSmp.getConfig().getString("Discord.ConsoleChannel");
 
     public LogAppender() {
         super("MyLogAppender", null, null);
@@ -26,7 +28,7 @@ public class LogAppender extends AbstractAppender {
     public void append(LogEvent event) {
         LogEvent log = event.toImmutable();
         String message = log.getMessage().getFormattedMessage();
-        sendDiscordMessage(getFormattedLogMessage(message), "1187946136124805180");
+        sendDiscordMessage(getFormattedLogMessage(message), consoleChannel);
     }
 
     private String getFormattedLogMessage(String message) {
@@ -48,12 +50,12 @@ public class LogAppender extends AbstractAppender {
 
                     oldMessageContent = oldMessageContent.replaceAll("```", "");
 
-                    if (oldMessageContent.length() >= 2000 || oldMessageContent.length() + msg.length() >= 2000) {
+                    if (oldMessageContent.length() >= 1998 || oldMessageContent.length() + msg.length() >= 1998) {
                         tempChannel.sendMessage("```\n" + msg + "\n```").queue(message -> {
                             discordMessageIds.put(channelID, message.getId());
                         });
                     } else {
-                        String newMessage = "```\n" + oldMessageContent + "\n" + msg + "\n```";
+                        String newMessage = "```\n" + oldMessageContent + msg + "\n```";
 
                         tempChannel.editMessageById(oldMessageId, newMessage).queue();
                     }
