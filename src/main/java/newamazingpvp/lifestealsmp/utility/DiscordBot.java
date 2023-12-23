@@ -33,7 +33,7 @@ public class DiscordBot {
         jdaBuilder.enableIntents(allIntents);
         jda = jdaBuilder.build();
         jda.addEventListener((new Stats()));
-        jda.addEventListener((new PlayerList()));
+        //jda.addEventListener((new PlayerList()));
         //jda.addEventListener((new Status()));
         new BukkitRunnable() {
             @Override
