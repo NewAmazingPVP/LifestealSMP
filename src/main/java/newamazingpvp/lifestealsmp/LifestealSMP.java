@@ -30,6 +30,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static newamazingpvp.lifestealsmp.discord.DiscordListener.isVanished;
 import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
 import static newamazingpvp.lifestealsmp.game.BroadcastMessage.*;
 import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
@@ -45,10 +46,11 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        //sendDiscordMessage("The server has started✅", "");
         saveDefaultConfig();
         config = getConfig();
         lifestealSmp = this;
+        intializeBot();
+        webHookClient();
         //startReleaseChecker();
         initializeBlacklist();
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
@@ -109,7 +111,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new DisableNetherite(), this);
         getServer().getPluginManager().registerEvents(new BeaconInvis(), this);
         //getServer().getPluginManager().registerEvents(new TeamListener(), this);
-        //getServer().getPluginManager().registerEvents(new DiscordListener(), this);
+        getServer().getPluginManager().registerEvents(new DiscordListener(), this);
         //getServer().getPluginManager().registerEvents(new TpsEvent(), this);
         BukkitRunnable broadcastTask = new BukkitRunnable() {
             @Override
@@ -134,19 +136,11 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
             }
         }.runTaskTimer(this, 0L, 20L);
         scheduleRestart();
-        intializeBot();
-        webHookClient();
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                sendDiscordEmbedTitle("Bot intialized", Color.MAGENTA, "");
-            }
-        }.runTaskLater(this, 120);
         compassUpdate();
         //checkTps();
-        /*LogAppender appender = new LogAppender();
+        LogAppender appender = new LogAppender();
         org.apache.logging.log4j.core.Logger logger = (org.apache.logging.log4j.core.Logger) LogManager.getRootLogger();
-        logger.addAppender(appender);*/
+        logger.addAppender(appender);
     }
 
     @Override
@@ -160,7 +154,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        if (player.getName().equals("NewAmazingPVP") && player.hasPotionEffect(PotionEffectType.INVISIBILITY)) {
+        if (player.getName().equals("NewAmazingPVP") && isVanished(player)) {
             event.setQuitMessage("");
         }
     }

@@ -5,14 +5,16 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.bukkit.ChatColor;
 
+import static newamazingpvp.lifestealsmp.utility.DiscordBot.channelId;
 import static org.bukkit.Bukkit.getServer;
 
 public class MessageEvent extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        if (event.getAuthor().isBot()) {
+        if (!event.getChannel().getId().equals(channelId) || event.getAuthor().isBot() || event.isWebhookMessage()) {
             return;
         }
+
 
         String message = event.getMessage().getContentRaw();
 

@@ -24,10 +24,11 @@ public class DiscordBot {
     public static JDA jda;
     public static TextChannel channel;
     public static WebhookClient client;
+    public static String channelId;
 
     public static void intializeBot() {
         String token = lifestealSmp.getConfig().getString("Discord.BotToken");
-        String channelId = lifestealSmp.getConfig().getString("Discord.Channel");
+        channelId = lifestealSmp.getConfig().getString("Discord.Channel");
         EnumSet<GatewayIntent> allIntents = EnumSet.allOf(GatewayIntent.class);
 
         JDABuilder jdaBuilder = JDABuilder.createDefault(token);
@@ -36,21 +37,22 @@ public class DiscordBot {
         jda.addEventListener((new Stats()));
         jda.addEventListener((new PlayerList()));
         jda.addEventListener((new MessageEvent()));
-        //jda.addEventListener((new Status()));
+        jda.addEventListener((new Status()));
         new BukkitRunnable() {
             @Override
             public void run() {
-                channel = jda.getTextChannelById(channelId);
-                /*if (channel != null) {
-                    channel.sendMessage("Hi test").queue();
-                } else {
-                    getLogger().warning("Discord channel not found!");
-                }*/
+                if (jda.getTextChannelById(channelId) != null) {
+                    channel = jda.getTextChannelById(channelId);
+                    sendDiscordEmbedTitle("Bot intialized", Color.MAGENTA, "");
+                    sendDiscordMessage("The server has started✅", "");
+                    this.cancel();
+                }
             }
-        }.runTaskLater(lifestealSmp, 100);
+        }.runTaskTimer(lifestealSmp, 0, 1);
     }
 
     public static void sendDiscordMessage(String msg, String channelID) {
+        if(jda == null)return;
         if (channelID.isEmpty()) {
             channel.sendMessage(msg);
         } else {
@@ -62,6 +64,7 @@ public class DiscordBot {
     }
 
     public static void sendDiscordEmbedTitle(String msg, Color c, String channelID) {
+        if(jda == null)return;
         EmbedBuilder eb = new EmbedBuilder();
         eb.setTitle(msg);
         eb.setColor(c);
@@ -76,6 +79,7 @@ public class DiscordBot {
     }
 
     public static void sendDiscordEmbedStats(String msg, Color c, String channelID, String name) {
+        if(jda == null)return;
         EmbedBuilder eb = new EmbedBuilder();
         eb.setTitle(msg);
         eb.setColor(c);
@@ -91,6 +95,7 @@ public class DiscordBot {
     }
 
     public static void sendDiscordEmbedPlayer(String msg, Color c, String channelID, String p) {
+        if(jda == null)return;
         p = "https://minotar.net/helm/" + p;
         EmbedBuilder eb = new EmbedBuilder();
         eb.setAuthor(msg, "https://shop.nappixel.tk/", p);
