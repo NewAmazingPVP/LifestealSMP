@@ -80,7 +80,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
         //getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
         getServer().getPluginManager().registerEvents(new TeleportBow(), this);
-        //getServer().getPluginManager().registerEvents(new ServerAge(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
         getServer().getPluginManager().registerEvents(new EndCrystalWarning(), this);
         getServer().getPluginManager().registerEvents(new Compass(), this);
@@ -128,7 +127,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         };
         broadcastShopTask.runTaskTimer(this, 0, 3600 * 20);
         registerCustomRecipes();
-        //Bukkit.getScheduler().runTaskTimer(this, PlayerPing::monitorPlayerPings, 0L, 20L);
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -136,14 +134,14 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
             }
         }.runTaskTimer(this, 0L, 20L);
         scheduleRestart();
-        intializeBot();
+        /*intializeBot();
         webHookClient();
         new BukkitRunnable() {
             @Override
             public void run() {
                 sendDiscordEmbedTitle("Bot intialized", Color.MAGENTA, "");
             }
-        }.runTaskLater(this, 120);
+        }.runTaskLater(this, 120);*/
         compassUpdate();
         //checkTps();
         /*LogAppender appender = new LogAppender();

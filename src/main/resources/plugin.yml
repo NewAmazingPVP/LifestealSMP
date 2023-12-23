@@ -105,8 +105,8 @@ commands:
     usage: /serverruntime
     aliases:
       - serverage
-  team:
-    description: Teams for the server
-    usage: /team
-    aliases:
-      - tm
+  #team:
+   # description: Teams for the server
+    #usage: /team
+    #aliases:
+    #  - tm
