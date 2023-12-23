@@ -1,11 +1,11 @@
 package newamazingpvp.lifestealsmp.utility;
 
-import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.appender.AbstractAppender;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,7 +18,7 @@ public class LogAppender extends AbstractAppender {
 
     public LogAppender() {
         super("MyLogAppender", null, null);
-        //formatter = new SimpleDateFormat("HH:mm:ss");
+        formatter = new SimpleDateFormat("[E yyyy.MM.dd HH:mm:ss]");
         start();
     }
 
@@ -26,8 +26,12 @@ public class LogAppender extends AbstractAppender {
     public void append(LogEvent event) {
         LogEvent log = event.toImmutable();
         String message = log.getMessage().getFormattedMessage();
-        sendDiscordMessage(message,"1187946136124805180");
+        sendDiscordMessage(getFormattedLogMessage(message), "1187946136124805180");
+    }
 
+    private String getFormattedLogMessage(String message) {
+        Date now = new Date();
+        return formatter.format(now) + " " + message.replaceAll("\n", "");
     }
 
     public void sendDiscordMessage(String msg, String channelID) {
