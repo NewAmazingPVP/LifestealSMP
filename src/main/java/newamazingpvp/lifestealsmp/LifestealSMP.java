@@ -134,14 +134,14 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
             }
         }.runTaskTimer(this, 0L, 20L);
         scheduleRestart();
-        /*intializeBot();
+        intializeBot();
         webHookClient();
         new BukkitRunnable() {
             @Override
             public void run() {
                 sendDiscordEmbedTitle("Bot intialized", Color.MAGENTA, "");
             }
-        }.runTaskLater(this, 120);*/
+        }.runTaskLater(this, 120);
         compassUpdate();
         //checkTps();
         /*LogAppender appender = new LogAppender();
