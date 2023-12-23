@@ -78,7 +78,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
-        //getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
+        getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
         getServer().getPluginManager().registerEvents(new TeleportBow(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
         getServer().getPluginManager().registerEvents(new EndCrystalWarning(), this);
@@ -191,5 +191,5 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
             }
         }
     }
-    
+
 }
