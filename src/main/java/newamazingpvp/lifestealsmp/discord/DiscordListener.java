@@ -53,7 +53,7 @@ public class DiscordListener implements Listener {
     @EventHandler
     public void onAchievement(PlayerAdvancementCriterionGrantEvent event) {
         if(isVanished(event.getPlayer())) return;
-        if(event.getCriterion().contains("has")) return;
+        if(event.getCriterion().contains("has") || event.getCriterion().contains("minecraft:")) return;
         String s = event.getPlayer().getName() + " has made the advancement " + event.getCriterion();
         sendDiscordEmbedPlayer(s, Color.ORANGE, channelId, event.getPlayer().getName());
     }
