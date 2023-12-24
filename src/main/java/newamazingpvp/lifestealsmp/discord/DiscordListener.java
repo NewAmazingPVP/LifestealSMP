@@ -51,9 +51,10 @@ public class DiscordListener implements Listener {
     }
 
     @EventHandler
-    public void onAchievement(PlayerAdvancementDoneEvent event) {
+    public void onAchievement(PlayerAdvancementCriterionGrantEvent event) {
         if(isVanished(event.getPlayer())) return;
-        String s = event.getPlayer().getName() + " has made the advancement " + event.getAdvancement().getKey().getKey();
+        if(event.getCriterion().contains("has")) return;
+        String s = event.getPlayer().getName() + " has made the advancement " + event.getCriterion();
         sendDiscordEmbedPlayer(s, Color.ORANGE, channelId, event.getPlayer().getName());
     }
 
