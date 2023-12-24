@@ -49,8 +49,13 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         saveDefaultConfig();
         config = getConfig();
         lifestealSmp = this;
-        intializeBot();
-        webHookClient();
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                intializeBot();
+                webHookClient();
+            }
+        }.runTaskLaterAsynchronously(this, 0L);
         //startReleaseChecker();
         initializeBlacklist();
         Bukkit.getServer().getPluginManager().registerEvents(this, this);

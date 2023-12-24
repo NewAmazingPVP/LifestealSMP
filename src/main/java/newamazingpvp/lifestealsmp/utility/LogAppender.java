@@ -1,8 +1,10 @@
 package newamazingpvp.lifestealsmp.utility;
 
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.appender.AbstractAppender;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,7 +18,7 @@ public class LogAppender extends AbstractAppender {
 
     private SimpleDateFormat formatter;
     private static Map<String, String> discordMessageIds = new HashMap<>();
-    String consoleChannel = lifestealSmp.getConfig().getString("Discord.ConsoleChannel");
+    public static String consoleChannel = lifestealSmp.getConfig().getString("Discord.ConsoleChannel");
 
     public LogAppender() {
         super("MyLogAppender", null, null);
@@ -26,9 +28,14 @@ public class LogAppender extends AbstractAppender {
 
     @Override
     public void append(LogEvent event) {
-        LogEvent log = event.toImmutable();
-        String message = log.getMessage().getFormattedMessage();
-        sendDiscordMessage(getFormattedLogMessage(message), consoleChannel);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                LogEvent log = event.toImmutable();
+                String message = log.getMessage().getFormattedMessage();
+                sendDiscordMessage(getFormattedLogMessage(message), consoleChannel);
+            }
+        }.runTaskLaterAsynchronously(lifestealSmp, 0L);
     }
 
     private String getFormattedLogMessage(String message) {
@@ -66,5 +73,6 @@ public class LogAppender extends AbstractAppender {
                 }
             }
         }
+
     }
 }
