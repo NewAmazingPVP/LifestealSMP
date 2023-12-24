@@ -138,9 +138,15 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         scheduleRestart();
         compassUpdate();
         //checkTps();
-        LogAppender appender = new LogAppender();
-        org.apache.logging.log4j.core.Logger logger = (org.apache.logging.log4j.core.Logger) LogManager.getRootLogger();
-        logger.addAppender(appender);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                LogAppender appender = new LogAppender();
+                org.apache.logging.log4j.core.Logger logger = (org.apache.logging.log4j.core.Logger) LogManager.getRootLogger();
+                logger.addAppender(appender);
+            }
+        }.runTaskLaterAsynchronously(this, 20L);
+
     }
 
     @Override
