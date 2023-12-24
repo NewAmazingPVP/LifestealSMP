@@ -23,6 +23,7 @@ public class DiscordListener implements Listener {
     @EventHandler
     public void messageSent(AsyncPlayerChatEvent event) {
         if(!event.isCancelled()){
+            if(event.getFormat().toLowerCase().contains("team")) return;
             sendWebhook(event.getPlayer(), event.getMessage());
         }
     }
@@ -50,13 +51,13 @@ public class DiscordListener implements Listener {
         sendDiscordEmbedPlayer(s, Color.RED, channelId, event.getPlayer().getName());
     }
 
-    @EventHandler
+    /*@EventHandler
     public void onAchievement(PlayerAdvancementCriterionGrantEvent event) {
         if(isVanished(event.getPlayer())) return;
         if(event.getCriterion().contains("has") || event.getCriterion().contains("minecraft:")) return;
         String s = event.getPlayer().getName() + " has made the advancement " + event.getCriterion();
         sendDiscordEmbedPlayer(s, Color.ORANGE, channelId, event.getPlayer().getName());
-    }
+    }*/
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {

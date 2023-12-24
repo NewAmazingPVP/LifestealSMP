@@ -13,7 +13,7 @@ import static newamazingpvp.lifestealsmp.discord.DiscordListener.isVanished;
 public class PlayerList extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        if (event.getAuthor().isBot()) {
+        if (event.getAuthor().isBot() || event.isWebhookMessage()) {
             return;
         }
 

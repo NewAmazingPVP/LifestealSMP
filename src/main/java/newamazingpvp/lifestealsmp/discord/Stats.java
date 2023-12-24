@@ -13,7 +13,7 @@ import static newamazingpvp.lifestealsmp.utility.DiscordBot.sendDiscordEmbedStat
 public class Stats extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        if (event.getAuthor().isBot()) {
+        if (event.getAuthor().isBot() || event.isWebhookMessage()) {
             return;
         }
         String messageContent = event.getMessage().getContentRaw();
