@@ -18,6 +18,10 @@ public class TeamsManager {
     private static List<UUID> playerTeamChat = new ArrayList<>();
     public static void joinTeam(Player p, String teamName){
         if(teamInvites.containsKey(p.getName())) {
+            if(getPlayerTeam(p) != null){
+                p.sendMessage(ChatColor.RED + "You have to leave your current team (/team leave) before joining a new one!");
+                return;
+            }
             ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
             Scoreboard scoreboard = scoreboardManager.getMainScoreboard();
             Team team = (scoreboard.getTeam(teamName) != null) ? scoreboard.getTeam(teamName) : null;
