@@ -19,8 +19,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 import static newamazingpvp.lifestealsmp.game.CombatLog.isInCombat;
-import static newamazingpvp.lifestealsmp.variables.Loc.spawnLoc1;
-import static newamazingpvp.lifestealsmp.variables.Loc.spawnLoc2;
+import static newamazingpvp.lifestealsmp.variables.Loc.*;
 
 
 public class SpawnProtection implements Listener {
@@ -116,9 +115,14 @@ public class SpawnProtection implements Listener {
         if (spawnEnvironment != World.Environment.NORMAL) {
             return false;
         }
-        if(location.x() > spawnLoc1.x() && location.x() < spawnLoc2.x()){
-            if(location.y() > spawnLoc1.y() && location.y() < spawnLoc2.y()){
-                if(location.z() > spawnLoc1.z() && location.z() < spawnLoc2.z()){
+        if (inLocation(location, spawnLoc1, spawnLoc2)) return true;
+        return inLocation(location, signLoc1, signLoc2);
+    }
+
+    private static boolean inLocation(Location location, Location loc1, Location loc2) {
+        if(location.x() > loc1.x() && location.x() < loc2.x()){
+            if(location.y() > loc1.y() && location.y() < loc2.y()){
+                if(location.z() > loc1.z() && location.z() < loc2.z()){
                     return true;
                 }
             }

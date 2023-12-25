@@ -11,6 +11,10 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.intializeBot;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.webHookClient;
@@ -26,7 +30,7 @@ public class OpPickaxe implements Listener {
             if (hasLore(item)) {
                 Block block = event.getBlock();
                 if (player.isSneaking()) return;
-                breakBlocksAround(block);
+                breakBlocksAround(block, item);
                 item.setDurability((short) (item.getDurability() + 1));
                 event.setCancelled(true);
             }
@@ -44,7 +48,7 @@ public class OpPickaxe implements Listener {
         return false;
     }
 
-    private void breakBlocksAround(Block centerBlock) {
+    private void breakBlocksAround(Block centerBlock, ItemStack item) {
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -53,19 +57,33 @@ public class OpPickaxe implements Listener {
                     for (int y = -1; y <= 1; y++) {
                         for (int z = -1; z <= 1; z++) {
                             Block targetBlock = centerBlock.getRelative(x, y, z);
-                            // Check and break blocks asynchronously
-                                if ((targetBlock.getType() != Material.BEDROCK) && (targetBlock.getType() != Material.END_PORTAL_FRAME) && (targetBlock.getType() != Material.END_PORTAL)
-                                        && targetBlock.getType().toString().equalsIgnoreCase(centerBlock.getType().toString()) &&
-                                        !(targetBlock.getLocation().x() == centerBlock.getLocation().x() && targetBlock.getLocation().y() == centerBlock.getLocation().y()
-                                                && targetBlock.getLocation().z() == centerBlock.getLocation().z())) {
-                                    Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> targetBlock.breakNaturally(), 0);
-                                    //targetBlock.getDrops()
+                            if ((targetBlock.getType() != Material.BEDROCK) && (targetBlock.getType() != Material.END_PORTAL_FRAME) && (targetBlock.getType() != Material.END_PORTAL)
+                                    && targetBlock.getType().toString().equalsIgnoreCase(centerBlock.getType().toString()) &&
+                                    !(targetBlock.getLocation().getX() == centerBlock.getLocation().getX() && targetBlock.getLocation().getY() == centerBlock.getLocation().getY()
+                                            && targetBlock.getLocation().getZ() == centerBlock.getLocation().getZ())) {
+                                Collection<ItemStack> drops = targetBlock.getDrops(item);
+                                //since all blocks are same types make more efficient by storing total drops and give alltogether at end instead of in loop
+                                // make hasmap<itemstack, quantity> and then at end make Itemstack e = new ItemStack(Hashmap.getKey(), Hashmap.getValue(); then drop
+                                for (ItemStack drop : drops) {
+                                    Bukkit.getScheduler().runTask(lifestealSmp, () -> targetBlock.getWorld().dropItem(targetBlock.getLocation(), drop));
                                 }
+
+                                Bukkit.getScheduler().runTask(lifestealSmp, () -> targetBlock.setType(Material.AIR));
+
+                            }
                         }
                     }
                 }
-                Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> centerBlock.breakNaturally(), 0);
+                Collection<ItemStack> centerDrops = centerBlock.getDrops(item);
+
+                for (ItemStack drop : centerDrops) {
+                    Bukkit.getScheduler().runTask(lifestealSmp, () -> centerBlock.getWorld().dropItem(centerBlock.getLocation(), drop));
+                }
+
+                Bukkit.getScheduler().runTask(lifestealSmp, () -> centerBlock.setType(Material.AIR));
+
             }
         }.runTaskAsynchronously(lifestealSmp);
     }
+
 }
