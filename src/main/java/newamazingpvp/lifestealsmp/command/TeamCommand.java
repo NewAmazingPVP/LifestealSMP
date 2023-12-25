@@ -49,7 +49,7 @@ public class TeamCommand  implements CommandExecutor, TabCompleter {
                     p.sendMessage(ChatColor.AQUA + s);
                 }
             } else if (args[0].equals("members")) {
-                p.sendMessage(ChatColor.DARK_PURPLE + "Here are your team members");
+                p.sendMessage(ChatColor.DARK_PURPLE + "Here are your team members:");
                 for(String s: getTeamMembers(p)){
                     p.sendMessage(ChatColor.DARK_BLUE + s);
                 }
