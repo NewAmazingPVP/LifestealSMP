@@ -54,6 +54,10 @@
 
     <repositories>
         <repository>
+            <id>scarsz</id>
+            <url>https://nexus.scarsz.me/content/repositories/releases/</url>
+        </repository>
+        <repository>
             <id>dv8tion</id>
             <name>m2-dv8tion</name>
             <url>https://m2.dv8tion.net/releases</url>
@@ -99,6 +103,11 @@
             <artifactId>log4j-core</artifactId>
             <version>2.20.0</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>me.scarsz</groupId>
+            <artifactId>jdaappender</artifactId>
+            <version>1.1.1</version>
         </dependency>
 
     </dependencies>

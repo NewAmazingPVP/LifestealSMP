@@ -63,7 +63,7 @@ public class SpawnProtection implements Listener {
         if (isWithinSpawnRadius(event.getBlock().getLocation())) {
             //if(event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
             event.setCancelled(true);
-            event.getPlayer().sendMessage(ChatColor.RED + "You cannot break blocks within the spawn area. Go around 50 blocks away to be able to break");
+            event.getPlayer().sendMessage(ChatColor.RED + "You cannot break blocks within the spawn area");
         }
     }
 
@@ -72,7 +72,7 @@ public class SpawnProtection implements Listener {
         if (isWithinSpawnRadius(event.getBlock().getLocation())) {
             //if(event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
             event.setCancelled(true);
-            event.getPlayer().sendMessage(ChatColor.RED + "You cannot place blocks within the spawn area. Go around 50 blocks away to be able to place");
+            event.getPlayer().sendMessage(ChatColor.RED + "You cannot place blocks within the spawn area");
         }
     }
 
@@ -85,7 +85,7 @@ public class SpawnProtection implements Listener {
                     || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.WATER_BUCKET
                     || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.BOW) {*/
                 event.setCancelled(true);
-                event.getPlayer().sendMessage(ChatColor.RED + "You cannot interact within the spawn area. Go around 50 blocks away to be able to interact");
+                event.getPlayer().sendMessage(ChatColor.RED + "You cannot interact within the spawn area");
             //}
         }
     }
