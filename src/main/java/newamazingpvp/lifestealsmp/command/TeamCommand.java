@@ -26,7 +26,10 @@ public class TeamCommand  implements CommandExecutor, TabCompleter {
                     "\n/team join" +
                     "\n/team invite" +
                     "\n/team leave" +
-                    "\n/team chat");
+                    "\n/team chat" +
+                    "\n/team kick" +
+                    "\n/team list" +
+                    "\n/team members");
         } else if (args.length == 1) {
             if(args[0].equals("leave")) {
                 leaveTeam(p);
