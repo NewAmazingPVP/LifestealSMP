@@ -22,7 +22,7 @@ public class TeamCommand  implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player p = (Player) sender;
         if(args.length == 0 || (args.length == 1 && args[0].equals("help"))){
-            p.sendMessage("/team create" +
+            p.sendMessage(ChatColor.GOLD + "/team create" +
                     "\n/team join" +
                     "\n/team invite" +
                     "\n/team leave" +
@@ -36,22 +36,22 @@ public class TeamCommand  implements CommandExecutor, TabCompleter {
             } else if(args[0].equals("chat")){
                 teamChatMode(p);
             } else if (args[0].equals("create")) {
-                p.sendMessage("Incorrect command usage. Type /team create [teamName]");
+                p.sendMessage(ChatColor.RED + "Incorrect command usage. Type /team create [teamName]");
             } else if (args[0].equals("join")) {
-                p.sendMessage("Incorrect command usage. Type /team join [teamName]");
+                p.sendMessage(ChatColor.RED + "Incorrect command usage. Type /team join [teamName]");
             }  else if (args[0].equals("invite")) {
-                p.sendMessage("Incorrect command usage. Type /team invite [playerName]");
+                p.sendMessage(ChatColor.RED + "Incorrect command usage. Type /team invite [playerName]");
             } else if (args[0].equals("kick")) {
-                p.sendMessage("Incorrect command usage. Type /team kick [playerName]");
+                p.sendMessage(ChatColor.RED + "Incorrect command usage. Type /team kick [playerName]");
             } else if (args[0].equals("list")) {
-                p.sendMessage(ChatColor.GOLD + "Here is the list of all the teams in this server!");
+                p.sendMessage(ChatColor.GOLD + "List of all the teams in this server!");
                 for(String s: getAllTeams()){
-                    p.sendMessage(s);
+                    p.sendMessage(ChatColor.AQUA + s);
                 }
             } else if (args[0].equals("members")) {
-                p.sendMessage("Here are your team members");
+                p.sendMessage(ChatColor.DARK_PURPLE + "Here are your team members");
                 for(String s: getTeamMembers(p)){
-                    p.sendMessage(s);
+                    p.sendMessage(ChatColor.DARK_BLUE + s);
                 }
             }
         } else if (args.length == 2) {

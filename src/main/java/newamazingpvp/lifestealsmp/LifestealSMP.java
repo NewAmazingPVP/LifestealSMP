@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp;
 
+import me.scarsz.jdaappender.ChannelLoggingHandler;
 import newamazingpvp.lifestealsmp.blacklistener.*;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.customitems.*;
@@ -38,6 +39,7 @@ import static newamazingpvp.lifestealsmp.game.CustomRecipe.registerCustomRecipes
 import static newamazingpvp.lifestealsmp.game.PlayerPing.monitorPlayerPings;
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlacklist;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.*;
+import static newamazingpvp.lifestealsmp.utility.LogAppender.consoleChannel;
 
 public final class LifestealSMP extends JavaPlugin implements Listener {
     public static LifestealSMP lifestealSmp;
@@ -80,8 +82,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getCommand("givecustomitem").setExecutor(new GiveCustomItem());
         getCommand("givecustomitem").setTabCompleter(new GiveCustomItem());
         getCommand("serverruntime").setExecutor(new ServerRuntime());
-        //getCommand("team").setExecutor(new TeamCommand());
-        //getCommand("team").setTabCompleter(new TeamCommand());
+        getCommand("team").setExecutor(new TeamCommand());
+        getCommand("team").setTabCompleter(new TeamCommand());
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
@@ -115,7 +117,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new CombatLogListener(), this);
         getServer().getPluginManager().registerEvents(new DisableNetherite(), this);
         getServer().getPluginManager().registerEvents(new BeaconInvis(), this);
-        //getServer().getPluginManager().registerEvents(new TeamListener(), this);
+        getServer().getPluginManager().registerEvents(new TeamListener(), this);
         getServer().getPluginManager().registerEvents(new DiscordListener(), this);
         //getServer().getPluginManager().registerEvents(new TpsEvent(), this);
         BukkitRunnable broadcastTask = new BukkitRunnable() {
@@ -146,12 +148,19 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                LogAppender appender = new LogAppender();
-                org.apache.logging.log4j.core.Logger logger = (org.apache.logging.log4j.core.Logger) LogManager.getRootLogger();
-                logger.addAppender(appender);
+            ChannelLoggingHandler handler = new ChannelLoggingHandler(() -> jda.getTextChannelById(consoleChannel), config -> {
+                config.setColored(true);
+                config.setSplitCodeBlockForLinks(false);
+                config.setAllowLinkEmbeds(true);
+                config.mapLoggerName("net.dv8tion.jda", "JDA");
+                config.mapLoggerName("net.minecraft.server.MinecraftServer", "Server");
+                config.mapLoggerNameFriendly("net.minecraft.server", s -> "Server/" + s);
+                config.mapLoggerNameFriendly("net.minecraft", s -> "Minecraft/" + s);
+                config.mapLoggerName("github.scarsz.discordsrv.dependencies.jda", s -> "DiscordSRV/JDA/" + s);
+            }).attachLog4jLogging().schedule();
+            handler.schedule();
             }
-        }.runTaskLaterAsynchronously(this, 20L);
-
+        }.runTaskLater(this, 120L);
     }
 
     @Override

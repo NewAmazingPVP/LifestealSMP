@@ -23,7 +23,7 @@ public class Status extends ListenerAdapter {
         new BukkitRunnable() {
             @Override
             public void run() {
-                jda.getPresence().setActivity(Activity.playing("Playing minecraft"));
+                jda.getPresence().setActivity(Activity.playing("minecraft"));
                 TextChannel channel = event.getJDA().getTextChannelById(channelId);
 
                 if (channel != null) {

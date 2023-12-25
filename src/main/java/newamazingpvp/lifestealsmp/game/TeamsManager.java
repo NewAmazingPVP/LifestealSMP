@@ -52,10 +52,10 @@ public class TeamsManager {
     {
         if(!playerTeamChat.contains(p.getUniqueId())) {
             playerTeamChat.add(p.getUniqueId());
-            p.sendMessage("Your messages now go to team chat!");
+            p.sendMessage(ChatColor.AQUA + "Your messages now go to team chat!");
         } else {
             playerTeamChat.remove(p.getUniqueId());
-            p.sendMessage("Your messages now go to global chat!");
+            p.sendMessage(ChatColor.GOLD + "Your messages now go to global chat!");
         }
     }
 
@@ -75,7 +75,10 @@ public class TeamsManager {
     }
 
     public static boolean onSameTeam(Player p, Player t){
-        return getPlayerTeam(p).equals(getPlayerTeam(t));
+        if(getPlayerTeam(p) != null && getPlayerTeam(t) != null) {
+            return getPlayerTeam(p).equals(getPlayerTeam(t));
+        }
+        return false;
     }
 
     public static List<String> getAllTeams() {
@@ -99,6 +102,7 @@ public class TeamsManager {
         } else {
             teamInvites.put(p.getName(), team);
             joinTeam(p, team.getName());
+            p.sendMessage(ChatColor.DARK_PURPLE + "You have created the team named " + team.getName() + "! Invite others to your team doing /team invite [username]");
         }
     }
 
@@ -113,9 +117,14 @@ public class TeamsManager {
         }
     }
 
-    public static void kickPlayer(OfflinePlayer t, OfflinePlayer p){
+    public static void kickPlayer(Player t, OfflinePlayer p){
         if(Bukkit.getScoreboardManager().getMainScoreboard().getPlayerTeam(p).equals(Bukkit.getScoreboardManager().getMainScoreboard().getPlayerTeam(t))) {
             Bukkit.getScoreboardManager().getMainScoreboard().getPlayerTeam(p).removePlayer(p);
+            t.sendMessage(ChatColor.DARK_RED + "You kicked " + p.getName() + " from your team!");
+            if(p.isOnline()){
+                Player player = (Player) p;
+                player.sendMessage(ChatColor.RED + "You were kicked out of the team!");
+            }
         }
     }
 
@@ -124,8 +133,9 @@ public class TeamsManager {
         if (team == null) {
             p.sendMessage(ChatColor.RED + "You are in an invalid team. Are you in a team before inviting??");
         } else {
-            targetP.sendMessage(p.getName() + " have invited you to their team! Type /team join " + team.getName());
+            targetP.sendMessage(ChatColor.GREEN + p.getName() + " have invited you to their team! Type /team join " + team.getName());
             teamInvites.put(targetP.getName(), team);
+            p.sendMessage(ChatColor.DARK_GREEN + "Invite sent to " + targetP.getName());
         }
     }
 

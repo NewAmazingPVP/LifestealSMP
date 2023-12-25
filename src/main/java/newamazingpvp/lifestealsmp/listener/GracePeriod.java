@@ -57,9 +57,9 @@ public class GracePeriod implements Listener {
                         damager.sendMessage(ChatColor.RED + "You cannot damage during their newbie protection for " + ChatColor.YELLOW + remainingMinutes + " minutes, " +
                                 remainingSecondsLeft + " seconds.");
                     }
-                    /*if(onSameTeam(damaged, damager)){
+                    if(onSameTeam(damaged, damager)){
                         event.setCancelled(true);
-                    }*/
+                    }
                     if (!event.isCancelled()) {
                         //names.remove(damager.getName());
                         tagPlayer(damager, damaged);
@@ -69,7 +69,7 @@ public class GracePeriod implements Listener {
                     Arrow arrow = (Arrow) event.getDamager();
                     if (arrow.getShooter() instanceof Player) {
                         Player shooter = (Player) arrow.getShooter();
-
+                        if(event.getDamager().equals(shooter)) event.setCancelled(true);
                         if (isGracePeriod()) {
                             event.setCancelled(true);
                             shooter.sendMessage(ChatColor.RED + "You cannot shoot players during the grace period!");
@@ -92,9 +92,9 @@ public class GracePeriod implements Listener {
                             shooter.sendMessage(ChatColor.RED + "You cannot damage during their newbie protection for " + ChatColor.YELLOW + remainingMinutes + " minutes, " +
                                     remainingSecondsLeft + " seconds.");
                         }
-                        /*if(onSameTeam(damaged, shooter)){
+                        if(onSameTeam(damaged, shooter)){
                             event.setCancelled(true);
-                        }*/
+                        }
                         if (!event.isCancelled()) {
                             //names.remove(event.getDamager().getName());
                             tagPlayer(shooter, damaged);
