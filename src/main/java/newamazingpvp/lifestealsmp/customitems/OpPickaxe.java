@@ -1,5 +1,7 @@
 package newamazingpvp.lifestealsmp.customitems;
 
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -7,8 +9,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.utility.DiscordBot.intializeBot;
+import static newamazingpvp.lifestealsmp.utility.DiscordBot.webHookClient;
 
 public class OpPickaxe implements Listener {
 
@@ -40,19 +45,27 @@ public class OpPickaxe implements Listener {
     }
 
     private void breakBlocksAround(Block centerBlock) {
-        for (int x = -1; x <= 1; x++) {
-            for (int y = -1; y <= 1; y++) {
-                for (int z = -1; z <= 1; z++) {
-                    Block targetBlock = centerBlock.getRelative(x, y, z);
-                    if ((targetBlock.getType() != Material.BEDROCK) && (targetBlock.getType() != Material.END_PORTAL_FRAME) && (targetBlock.getType() != Material.END_PORTAL)
-                            && targetBlock.getType().toString().equalsIgnoreCase(centerBlock.getType().toString()) &&
-                            !(targetBlock.getLocation().x() == centerBlock.getLocation().x() && targetBlock.getLocation().y() == centerBlock.getLocation().y()
-                                    && targetBlock.getLocation().z() == centerBlock.getLocation().z())) {
-                        targetBlock.breakNaturally();
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                // Break blocks asynchronously
+                for (int x = -1; x <= 1; x++) {
+                    for (int y = -1; y <= 1; y++) {
+                        for (int z = -1; z <= 1; z++) {
+                            Block targetBlock = centerBlock.getRelative(x, y, z);
+                            // Check and break blocks asynchronously
+                                if ((targetBlock.getType() != Material.BEDROCK) && (targetBlock.getType() != Material.END_PORTAL_FRAME) && (targetBlock.getType() != Material.END_PORTAL)
+                                        && targetBlock.getType().toString().equalsIgnoreCase(centerBlock.getType().toString()) &&
+                                        !(targetBlock.getLocation().x() == centerBlock.getLocation().x() && targetBlock.getLocation().y() == centerBlock.getLocation().y()
+                                                && targetBlock.getLocation().z() == centerBlock.getLocation().z())) {
+                                    Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> targetBlock.breakNaturally(), 0);
+                                    //targetBlock.getDrops()
+                                }
+                        }
                     }
                 }
+                Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> centerBlock.breakNaturally(), 0);
             }
-        }
-        centerBlock.breakNaturally();
+        }.runTaskAsynchronously(lifestealSmp);
     }
 }
