@@ -1,5 +1,7 @@
 package newamazingpvp.lifestealsmp;
 
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.common.io.ByteStreams;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import newamazingpvp.lifestealsmp.blacklistener.*;
 import newamazingpvp.lifestealsmp.command.*;
@@ -26,6 +28,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.json.simple.JSONObject;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -40,6 +43,7 @@ import static newamazingpvp.lifestealsmp.game.PlayerPing.monitorPlayerPings;
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlacklist;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.*;
 import static newamazingpvp.lifestealsmp.utility.LogAppender.consoleChannel;
+import static org.bukkit.Bukkit.getPlayer;
 
 public final class LifestealSMP extends JavaPlugin implements Listener {
     public static LifestealSMP lifestealSmp;
@@ -48,6 +52,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
+        getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         saveDefaultConfig();
         config = getConfig();
         lifestealSmp = this;
@@ -161,6 +166,19 @@ public final class LifestealSMP extends JavaPlugin implements Listener {
             handler.schedule();
             }
         }.runTaskLater(this, 120L);
+
+
+        ByteArrayDataOutput out = ByteStreams.newDataOutput();
+        out.writeUTF("Server");
+
+        JSONObject dataObject = new JSONObject();
+        dataObject.put("message", "Hello, BungeeCord!");
+        dataObject.put("intData", 42);
+        dataObject.put("doubleData", 3.14);
+
+        out.writeUTF(dataObject.toJSONString());
+        getServer().sendPluginMessage(this, "BungeeCord", out.toByteArray());
+        //getPlayer("e").sendPluginMessage(this, "BungeeCord", out.toByteArray());
     }
 
     @Override
