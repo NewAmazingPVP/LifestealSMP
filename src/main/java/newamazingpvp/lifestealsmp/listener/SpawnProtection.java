@@ -97,6 +97,13 @@ public class SpawnProtection implements Listener {
     }
 
     @EventHandler
+    public void hungerLose(FoodLevelChangeEvent e) {
+        if (e.getEntity() instanceof Player && isWithinSpawnRadius(e.getEntity().getLocation())) {
+            e.setCancelled(true);
+        }
+    }
+
+    @EventHandler
     public void spawnTNT(TNTPrimeEvent e) {
         if (isWithinSpawnRadius(e.getBlock().getLocation())) {
             e.setCancelled(true);
