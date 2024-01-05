@@ -3,8 +3,9 @@ package newamazingpvp.lifestealsmp.discord;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import org.bukkit.ChatColor;
+import net.md_5.bungee.api.ChatColor;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.channelId;
 import static org.bukkit.Bukkit.getServer;
 
@@ -23,14 +24,16 @@ public class MessageEvent extends ListenerAdapter {
 
         String highestRole = member != null ? member.getRoles().get(0).getName() : "No Role";
 
-        ChatColor discordColor = getChatColorFromDiscordColor(member != null ? member.getRoles().get(0).getColor().getRGB() : 0);
+        net.md_5.bungee.api.ChatColor rolecolor;
+        if(member.getRoles().get(0).getColor() != null) {
+            rolecolor = net.md_5.bungee.api.ChatColor.of("#" + Integer.toHexString(member.getRoles().get(0).getColor().getRGB()).substring(2));
+        }
+        else {
+            rolecolor = ChatColor.WHITE;
+        }
 
-        getServer().broadcastMessage(ChatColor.AQUA + "[Discord | " + discordColor + highestRole + "] " + ChatColor.RESET + username + ": " + message);
-    }
 
-    private ChatColor getChatColorFromDiscordColor(int rgb) {
-        ChatColor[] colors = ChatColor.values();
-        return colors[Math.abs(rgb) % colors.length];
+        lifestealSmp.getServer().broadcastMessage(net.md_5.bungee.api.ChatColor.AQUA + "[Discord | " + rolecolor + highestRole + "] " + net.md_5.bungee.api.ChatColor.RESET + username + ": " + message);
     }
 
 }
