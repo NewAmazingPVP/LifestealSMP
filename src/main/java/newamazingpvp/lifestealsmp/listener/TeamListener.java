@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.listener;
 
 import io.papermc.paper.event.player.AsyncChatEvent;
+import io.papermc.paper.event.player.ChatEvent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,6 +19,7 @@ public class TeamListener implements Listener {
         if(isPlayerInTeamChat(p)){
             event.setCancelled(true);
             sendTeamMessage(p, event.getMessage());
+            event.setMessage("");
         }
     }
 
