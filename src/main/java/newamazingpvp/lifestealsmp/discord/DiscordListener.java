@@ -95,7 +95,7 @@ public class DiscordListener implements Listener {
         if (pl != null) {
             pl.sendPluginMessage(lifestealSmp, "BungeeCord", out.toByteArray());
         }
-
+        sendDiscordEmbedPlayer(event.getPlayer().getName() + " has made the advancement " + title + "!", Color.YELLOW, channelId, event.getPlayer().getName());
     }
 
     private String getComponentText(Component component) {
