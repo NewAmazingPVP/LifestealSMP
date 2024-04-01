@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.bukkit.Bukkit;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.LifestealSMP.silentMode;
 import static newamazingpvp.lifestealsmp.utility.LogAppender.consoleChannel;
 import static org.bukkit.Bukkit.getServer;
 
@@ -19,5 +20,8 @@ public class ConsoleCommand extends ListenerAdapter {
         Bukkit.getScheduler().runTask(lifestealSmp, () -> {
             getServer().dispatchCommand(getServer().getConsoleSender(), messageContent);
         });
+        if(messageContent.toLowerCase().contains("silent")){
+            silentMode = !silentMode;
+        }
     }
 }

@@ -122,8 +122,9 @@ public class SpawnProtection implements Listener {
         if (spawnEnvironment != World.Environment.NORMAL) {
             return false;
         }
-        if (inLocation(location, spawnLoc1, spawnLoc2)) return true;
-        return inLocation(location, signLoc1, signLoc2);
+        //if (inLocation(location, spawnLoc1, spawnLoc2)) return true;
+        //return inLocation(location, signLoc1, signLoc2);
+        return inLocation(location, spawnLoc1, spawnLoc2);
     }
 
     private static boolean inLocation(Location location, Location loc1, Location loc2) {

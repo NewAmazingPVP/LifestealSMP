@@ -13,14 +13,14 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 public class DisableNetherite implements Listener {
     @EventHandler
     public void onArmorChange(PlayerArmorChangeEvent event) {
-        Player player = event.getPlayer();
+        /*Player player = event.getPlayer();
         ItemStack newArmorPiece = event.getNewItem();
 
         if (newArmorPiece != null && isElytra(newArmorPiece)) {
             player.getInventory().setChestplate(null);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> player.getInventory().addItem(newArmorPiece), 20);
             player.sendMessage(ChatColor.RED + "Why did you try breaking a rule and wasting resources!? Do /rules");
-        }
+        }*/
     }
 
     private boolean isElytra(ItemStack item) {

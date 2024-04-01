@@ -50,6 +50,7 @@ import static org.bukkit.Bukkit.getPlayer;
 
 public final class LifestealSMP extends JavaPlugin implements Listener, PluginMessageListener {
     public static LifestealSMP lifestealSmp;
+    public static boolean silentMode = true;
     private FileConfiguration config;
 
 
@@ -127,7 +128,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new DisableNetherite(), this);
         getServer().getPluginManager().registerEvents(new BeaconInvis(), this);
         getServer().getPluginManager().registerEvents(new TeamListener(), this);
-        //getServer().getPluginManager().registerEvents(new DiscordListener(), this);
+        getServer().getPluginManager().registerEvents(new DiscordListener(), this);
         //getServer().getPluginManager().registerEvents(new TpsEvent(), this);
         BukkitRunnable broadcastTask = new BukkitRunnable() {
             @Override
@@ -185,7 +186,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        if (player.getName().equals("NewAmazingPVP") && isVanished(player)) {
+        if (player.getName().equals("NewAmazingPVP") && isVanished(player) && silentMode) {
             event.setQuitMessage("");
         }
     }
@@ -193,8 +194,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        if (player.getName().equals("NewAmazingPVP")) {
+        if (player.getName().equals("NewAmazingPVP") && silentMode) {
             event.setJoinMessage("");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vanish NewAmazingPVP");
         }
 
         if (!player.hasPlayedBefore()) {

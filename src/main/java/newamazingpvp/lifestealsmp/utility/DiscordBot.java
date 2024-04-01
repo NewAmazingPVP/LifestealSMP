@@ -32,11 +32,11 @@ public class DiscordBot {
         jdaBuilder.enableIntents(allIntents);
         jda = jdaBuilder.build();
         jda.addEventListener((new Stats()));
-        //jda.addEventListener((new PlayerList()));
-        //jda.addEventListener((new MessageEvent()));
-        //jda.addEventListener((new Status()));
+        jda.addEventListener((new PlayerList()));
+        jda.addEventListener((new MessageEvent()));
+        jda.addEventListener((new Status()));
         jda.addEventListener((new ConsoleCommand()));
-        //jda.addEventListener((new IPClass()));
+        jda.addEventListener((new IPClass()));
         new BukkitRunnable() {
             @Override
             public void run() {
