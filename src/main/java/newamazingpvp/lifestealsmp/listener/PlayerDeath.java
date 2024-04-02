@@ -44,7 +44,7 @@ public class PlayerDeath implements Listener {
                 "  X:" + pos[0] +
                 "  Y:" + pos[1] +
                 "  Z:" + pos[2] + " in " + Gamer.getLocation().getWorld().toString());
-        ByteArrayDataOutput out = ByteStreams.newDataOutput();
+        /*ByteArrayDataOutput out = ByteStreams.newDataOutput();
         out.writeUTF("Server");
 
         JSONObject dataObject = new JSONObject();
@@ -58,6 +58,6 @@ public class PlayerDeath implements Listener {
 
         if (pl != null) {
             pl.sendPluginMessage(lifestealSmp, "BungeeCord", out.toByteArray());
-        }
+        }*/
     }
 }

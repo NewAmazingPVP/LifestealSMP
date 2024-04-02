@@ -26,6 +26,7 @@ public class TeamListener implements Listener {
             event.setCancelled(true);
             sendTeamMessage(p, event.getMessage());
         } else {
+            /*
             ByteArrayDataOutput out = ByteStreams.newDataOutput();
             out.writeUTF("Server");
 
@@ -38,7 +39,7 @@ public class TeamListener implements Listener {
 
             if (p != null) {
                 p.sendPluginMessage(lifestealSmp, "BungeeCord", out.toByteArray());
-            }
+            }*/
         }
     }
 

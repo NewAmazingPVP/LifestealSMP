@@ -17,6 +17,7 @@ import org.apache.logging.log4j.LogManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -56,8 +57,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
     @Override
     public void onEnable() {
-        this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
-        this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
+        //this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+        //this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
         saveDefaultConfig();
         config = getConfig();
         lifestealSmp = this;
@@ -158,6 +159,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         new BukkitRunnable() {
             @Override
             public void run() {
+                getServer().dispatchCommand(getServer().getConsoleSender(), "chunky continue");
             ChannelLoggingHandler handler = new ChannelLoggingHandler(() -> jda.getTextChannelById(consoleChannel), config -> {
                 config.setColored(true);
                 config.setSplitCodeBlockForLinks(false);
@@ -171,6 +173,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             handler.schedule();
             }
         }.runTaskLater(this, 120L);
+
 
 
     }
@@ -196,6 +199,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         Player player = event.getPlayer();
         if (player.getName().equals("NewAmazingPVP") && silentMode) {
             event.setJoinMessage("");
+            //getServer().getScheduler().runTaskLater(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "vanish NewAmazingPVP"), 20);
             getServer().dispatchCommand(getServer().getConsoleSender(), "vanish NewAmazingPVP");
         }
 
