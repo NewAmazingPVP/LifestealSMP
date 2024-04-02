@@ -13,9 +13,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import static newamazingpvp.lifestealsmp.game.AlliesManager.playerAlliesChat;
+
 public class TeamsManager {
     private static HashMap<String, Team> teamInvites = new HashMap<>();
-    private static List<UUID> playerTeamChat = new ArrayList<>();
+    public static List<UUID> playerTeamChat = new ArrayList<>();
     public static void joinTeam(Player p, String teamName){
         if(teamInvites.containsKey(p.getName())) {
             if(getPlayerTeam(p) != null){
@@ -31,7 +33,7 @@ public class TeamsManager {
             }
             team.addEntry(p.getName());
 
-            sendTeamMessage(p, " I have joined the team!");
+            sendTeamMessage(p, "I have joined the team!");
             teamInvites.remove(p.getName());
         } else {
             p.sendMessage(ChatColor.RED + "Invalid team invite. Ask someone to send you an invite again.");
@@ -52,10 +54,20 @@ public class TeamsManager {
         }
     }
 
+    public static void sendTeamMessage(Team t, String msg){
+        for(OfflinePlayer teamMate : t.getPlayers()){
+            if(teamMate.isOnline()){
+                Player player = (Player) teamMate;
+                player.sendMessage(msg);
+            }
+        }
+    }
+
     public static void teamChatMode(Player p)
     {
         if(!playerTeamChat.contains(p.getUniqueId())) {
             playerTeamChat.add(p.getUniqueId());
+            playerAlliesChat.remove(p.getUniqueId());
             p.sendMessage(ChatColor.AQUA + "Your messages now go to team chat!");
         } else {
             playerTeamChat.remove(p.getUniqueId());

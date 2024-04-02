@@ -197,7 +197,7 @@ public class Compass implements CommandExecutor, Listener {
 
         if (isElytratest(newArmorPiece)) {
             elytraTrackCooldown.remove(player.getUniqueId());
-            elytraTrackCooldown.put(player.getUniqueId(), System.currentTimeMillis() + 7200000);
+            elytraTrackCooldown.put(player.getUniqueId(), System.currentTimeMillis() + 900000);
         }
     }
 
