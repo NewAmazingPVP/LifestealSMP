@@ -14,6 +14,8 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.json.simple.JSONObject;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.game.AlliesManager.isPlayerInAllyChat;
+import static newamazingpvp.lifestealsmp.game.AlliesManager.sendAllyMessage;
 import static newamazingpvp.lifestealsmp.game.TeamsManager.isPlayerInTeamChat;
 import static newamazingpvp.lifestealsmp.game.TeamsManager.sendTeamMessage;
 
@@ -25,7 +27,10 @@ public class TeamListener implements Listener {
         if(isPlayerInTeamChat(p)){
             event.setCancelled(true);
             sendTeamMessage(p, event.getMessage());
-        } else {
+        } else if(isPlayerInAllyChat(p)) {
+            event.setCancelled(true);
+            sendAllyMessage(p, event.getMessage());
+
             /*
             ByteArrayDataOutput out = ByteStreams.newDataOutput();
             out.writeUTF("Server");

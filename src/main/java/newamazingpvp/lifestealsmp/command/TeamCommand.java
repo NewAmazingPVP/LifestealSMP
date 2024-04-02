@@ -14,10 +14,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static newamazingpvp.lifestealsmp.game.AlliesManager.*;
 import static newamazingpvp.lifestealsmp.game.TeamsManager.*;
 
 public class TeamCommand  implements CommandExecutor, TabCompleter {
-    private final ArrayList<String> teamFirstIndex = new ArrayList<>(List.of("join", "leave", "create", "invite", "chat", "kick", "list", "members"));
+    private final ArrayList<String> teamFirstIndex = new ArrayList<>(List.of("join", "leave", "create", "invite", "chat", "kick", "list", "members", "ally"));
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player p = (Player) sender;
@@ -65,6 +66,12 @@ public class TeamCommand  implements CommandExecutor, TabCompleter {
                 sendTeamMessage(p, args[1]);
             } else if(args[0].equals("kick")){
                 kickPlayer(p, Bukkit.getOfflinePlayer((args[1])));
+            } else if (args[0].equals("ally") && args[1].equals("accept")){
+                allyWantedTeam(getPlayerTeam(p));
+            } else if (args[0].equals("ally") && args[1].equals("chat")){
+                allyChatMode(p);
+            } else if (args[0].equals("ally")) {
+                wantedAlly(getPlayerTeam(p), Bukkit.getScoreboardManager().getMainScoreboard().getTeam(args[1]));
             }
         }
         return true;
@@ -76,7 +83,7 @@ public class TeamCommand  implements CommandExecutor, TabCompleter {
         if (args.length == 1) {
             return teamFirstIndex;
         } else if(args.length == 2) {
-            if (args[0].equals("create") || args[0].equals("join") || args[0].equals("list")) {
+            if (args[0].equals("create") || args[0].equals("join") || args[0].equals("list") || args[0].equals("ally")) {
                 ArrayList<String> teamNames = new ArrayList<>();
                 for (Team t : Bukkit.getScoreboardManager().getMainScoreboard().getTeams()) {
                     teamNames.add(t.getName());
