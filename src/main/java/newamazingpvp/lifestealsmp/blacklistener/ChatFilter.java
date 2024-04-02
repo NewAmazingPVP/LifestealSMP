@@ -54,29 +54,39 @@ public class ChatFilter implements Listener {
     }
 
     public static String censorBlacklistedWords(String message) {
-        String messageWithoutSpaces = message.replaceAll(" ", "");
+        StringBuilder messageWithoutSpecialChars = new StringBuilder();
+        StringBuilder specialChars = new StringBuilder();
+
+        for (char c : message.toCharArray()) {
+            if (!Character.isLetterOrDigit(c)) {
+                specialChars.append(c);
+            } else {
+                messageWithoutSpecialChars.append(c);
+            }
+        }
+
+        String messageWithoutSpecialCharsStr = messageWithoutSpecialChars.toString();
 
         for (String word : blacklistWords) {
-            String regex = "(?i)" + Pattern.quote(word);
+            String regex = "(?i)(?:" + Pattern.quote(word) + ")(?=[^a-zA-Z0-9]|$)";
             String replacement = "*".repeat(word.length());
-            messageWithoutSpaces = messageWithoutSpaces.replaceAll(regex, replacement);
+            messageWithoutSpecialCharsStr = messageWithoutSpecialCharsStr.replaceAll(regex, replacement);
         }
 
         StringBuilder censoredMessage = new StringBuilder();
-        int spaceIndex = 0;
+        int charIndex = 0;
         for (char c : message.toCharArray()) {
-            if (c == ' ') {
-                censoredMessage.append(c);
+            if (!Character.isLetterOrDigit(c)) {
+                censoredMessage.append(specialChars.charAt(0));
+                specialChars.deleteCharAt(0);
             } else {
-                // Ensure spaceIndex does not exceed the length of messageWithoutSpaces
-                if (spaceIndex < messageWithoutSpaces.length()) {
-                    censoredMessage.append(messageWithoutSpaces.charAt(spaceIndex));
+                if (charIndex < messageWithoutSpecialCharsStr.length()) {
+                    censoredMessage.append(messageWithoutSpecialCharsStr.charAt(charIndex));
                 }
-                spaceIndex++;
+                charIndex++;
             }
         }
 
         return censoredMessage.toString();
     }
-
 }

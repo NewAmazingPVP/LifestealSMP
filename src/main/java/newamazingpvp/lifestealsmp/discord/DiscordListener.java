@@ -80,7 +80,7 @@ public class DiscordListener implements Listener {
         var title = getComponentText(advancement.title());
         var description = getComponentText(advancement.description());
 
-        ByteArrayDataOutput out = ByteStreams.newDataOutput();
+        /*ByteArrayDataOutput out = ByteStreams.newDataOutput();
         out.writeUTF("Server");
         // + "|" + description
         JSONObject dataObject = new JSONObject();
@@ -94,7 +94,7 @@ public class DiscordListener implements Listener {
 
         if (pl != null) {
             pl.sendPluginMessage(lifestealSmp, "BungeeCord", out.toByteArray());
-        }
+        }*/
         sendDiscordEmbedPlayer(event.getPlayer().getName() + " has made the advancement " + title + "!", Color.YELLOW, channelId, event.getPlayer().getName());
     }
 
