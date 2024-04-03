@@ -53,6 +53,7 @@ public class AllyClass {
                 players.add(teamMate);
             }
         }
+        return players;
     }
 
     public ArrayList<Player> getOnlineMembers() {
@@ -64,6 +65,7 @@ public class AllyClass {
                 }
             }
         }
+        return  players;
     }
 
 
