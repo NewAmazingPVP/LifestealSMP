@@ -2,6 +2,7 @@ package newamazingpvp.lifestealsmp.command;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -38,33 +39,29 @@ public class AllyCommand implements CommandExecutor, TabCompleter {
             } else if (args[0].equals("invite")) {
                 p.sendMessage(ChatColor.RED + "Incorrect command usage. Type /ally invite [teamName]");
             } else if (args[0].equals("kick")) {
-                p.sendMessage(ChatColor.RED + "Incorrect command usage. Type /team kick [playerName]");
+                p.sendMessage(ChatColor.RED + "Incorrect command usage. Type /ally kick [teamName]");
             } else if (args[0].equals("list")) {
-                p.sendMessage(ChatColor.GOLD + "List of all the teams in this server!");
-                for(String s: getAllTeams()){
-                    p.sendMessage(ChatColor.AQUA + s);
+                p.sendMessage(ChatColor.GOLD + "List of all the allied teams in the alliance!");
+                for(Team t: getAllianceTeams(p)){
+                    p.sendMessage(ChatColor.LIGHT_PURPLE + t.getName());
                 }
             } else if (args[0].equals("members")) {
-                p.sendMessage(ChatColor.DARK_PURPLE + "Here are your team members:");
-                for(String s: getTeamMembers(p)){
-                    p.sendMessage(ChatColor.DARK_BLUE + s);
+                p.sendMessage(ChatColor.DARK_PURPLE + "Here are your alliance members:");
+                for(OfflinePlayer pl: getAllianceMembers(p)){
+                    p.sendMessage(ChatColor.DARK_BLUE + pl.getName());
                 }
             }  else if (args[0].equals("accept")){
                 allyWantedTeam(getPlayerTeam(p));
             }
         } else if (args.length == 2) {
-            if (args[0].equals("create")) {
-                createTeam(p, args[1]);
-            } else if (args[0].equals("join")) {
-                joinTeam(p, args[1]);
-            } else if (args[0].equals("invite")) {
-                inviteToTeam(p, Bukkit.getPlayer(args[1]));
+            if (args[0].equals("invite")) {
+                wantedAlly(p, args[1]);
             } else if(args[0].equals("chat")){
-                sendTeamMessage(p, args[1]);
+                sendAllyMessage(p, args[1]);
             } else if(args[0].equals("kick")){
-                kickPlayer(p, Bukkit.getOfflinePlayer((args[1])));
-            } else if (args[0].equals("invite")) {
-                wantedAlly(getPlayerTeam(p), Bukkit.getScoreboardManager().getMainScoreboard().getTeam(args[1]));
+                removeAlly(p, getTeam(args[1]));
+            } else if (args[0].equals("leave")) {
+                removeTeam(getPlayerTeam(p));
             }
         }
         return true;
@@ -75,7 +72,6 @@ public class AllyCommand implements CommandExecutor, TabCompleter {
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         Player p = (Player) sender;
         if (args.length == 1) {
-
             return allyFirstIndex;
         } else if(args.length == 2) {
             if (args[0].equals("invite")) {

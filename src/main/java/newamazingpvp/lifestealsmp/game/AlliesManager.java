@@ -3,15 +3,10 @@ package newamazingpvp.lifestealsmp.game;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.Particle;
 import org.bukkit.entity.Player;
-import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import static newamazingpvp.lifestealsmp.game.TeamsManager.*;
 
@@ -38,6 +33,16 @@ public class AlliesManager {
         sendTeamMessage(t, ChatColor.LIGHT_PURPLE + "Team " + invited.getName() + " has received your ally request");
         sendTeamMessage(invited, ChatColor.LIGHT_PURPLE + "Team " + invited.getName() + " has invited to ally with them. Do /ally accept");
     }
+
+    public static void wantedAlly(Player p, String inv){
+        Team t = getPlayerTeam(p);
+        Team invited = Bukkit.getScoreboardManager().getMainScoreboard().getTeam(inv);
+        if(t == null || invited == null) return;
+        wantedAllies.put(t, invited);
+        sendTeamMessage(t, ChatColor.LIGHT_PURPLE + "Team " + invited.getName() + " has received your ally request");
+        sendTeamMessage(invited, ChatColor.LIGHT_PURPLE + "Team " + invited.getName() + " has invited to ally with them. Do /ally accept");
+    }
+
 
     public static boolean isWantedAlly(Team t){
         return (wantedAllies.containsKey(t) || wantedAllies.containsValue(t));
@@ -130,5 +135,18 @@ public class AlliesManager {
         }
     }
 
+    public static ArrayList<OfflinePlayer> getAllianceMembers(Player p){
+        Team t = getPlayerTeam(t);
+        if(t == null) return new ArrayList<>();
+        if(getAllyClasIndex(t) == -1) return new ArrayList<>();
+        return allAllies.get(getAllyClasIndex(t)).getMembers();
+    }
+
+    public static HashSet<Team> getAllianceTeams(Player p){
+        Team t = getPlayerTeam(t);
+        if(t == null) return new HashSet<>();
+        if(getAllyClasIndex(t) == -1) return new HashSet<>();
+        return allAllies.get(getAllyClasIndex(t)).getAllies();
+    }
 
 }
