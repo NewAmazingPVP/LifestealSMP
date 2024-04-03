@@ -95,6 +95,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("serverruntime").setExecutor(new ServerRuntime());
         getCommand("team").setExecutor(new TeamCommand());
         getCommand("team").setTabCompleter(new TeamCommand());
+        getCommand("ally").setExecutor(new AllyCommand());
+        getCommand("ally").setTabCompleter(new AllyCommand());
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
