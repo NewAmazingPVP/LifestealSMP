@@ -12,6 +12,7 @@ import org.bukkit.scoreboard.Team;
 import java.util.ArrayList;
 import java.util.List;
 
+import static newamazingpvp.lifestealsmp.game.AlliesManager.*;
 import static newamazingpvp.lifestealsmp.game.TeamsManager.*;
 
 public class AllyCommand implements CommandExecutor, TabCompleter {
@@ -31,15 +32,11 @@ public class AllyCommand implements CommandExecutor, TabCompleter {
                     "\n/ally members");
         } else if (args.length == 1) {
             if(args[0].equals("leave")) {
-                leaveTeam(p);
+                leaveAlly(p);
             } else if(args[0].equals("chat")){
-                teamChatMode(p);
-            } else if (args[0].equals("create")) {
-                p.sendMessage(ChatColor.RED + "Incorrect command usage. Type /team create [teamName]");
-            } else if (args[0].equals("join")) {
-                p.sendMessage(ChatColor.RED + "Incorrect command usage. Type /team join [teamName]");
-            }  else if (args[0].equals("invite")) {
-                p.sendMessage(ChatColor.RED + "Incorrect command usage. Type /team invite [playerName]");
+                allyChatMode(p);
+            } else if (args[0].equals("invite")) {
+                p.sendMessage(ChatColor.RED + "Incorrect command usage. Type /ally invite [teamName]");
             } else if (args[0].equals("kick")) {
                 p.sendMessage(ChatColor.RED + "Incorrect command usage. Type /team kick [playerName]");
             } else if (args[0].equals("list")) {
@@ -52,6 +49,8 @@ public class AllyCommand implements CommandExecutor, TabCompleter {
                 for(String s: getTeamMembers(p)){
                     p.sendMessage(ChatColor.DARK_BLUE + s);
                 }
+            }  else if (args[0].equals("accept")){
+                allyWantedTeam(getPlayerTeam(p));
             }
         } else if (args.length == 2) {
             if (args[0].equals("create")) {
@@ -64,6 +63,8 @@ public class AllyCommand implements CommandExecutor, TabCompleter {
                 sendTeamMessage(p, args[1]);
             } else if(args[0].equals("kick")){
                 kickPlayer(p, Bukkit.getOfflinePlayer((args[1])));
+            } else if (args[0].equals("invite")) {
+                wantedAlly(getPlayerTeam(p), Bukkit.getScoreboardManager().getMainScoreboard().getTeam(args[1]));
             }
         }
         return true;

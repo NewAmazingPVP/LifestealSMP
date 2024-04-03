@@ -24,6 +24,8 @@ public class AlliesManager {
     public static void addAlly(Team t, Team invited) {
         if(getAllyClasIndex(t, invited) != -1){
             int index = getAllyClasIndex(t, invited);
+            removeTeam(t);
+            removeTeam(invited);
             allAllies.get(index).addAlly(t);
             allAllies.get(index).addAlly(invited);
         } else {
@@ -44,15 +46,15 @@ public class AlliesManager {
     public static void allyWantedTeam(Team t){
         if(wantedAllies.containsKey(t)){
             addAlly(t, wantedAllies.get(t));
-            sendTeamMessage(t, ChatColor.LIGHT_PURPLE + "Now allied with " + wantedAllies.get(t));
-            sendTeamMessage(wantedAllies.get(t), ChatColor.LIGHT_PURPLE + "Now allied with " + t.getName());
+            //sendTeamMessage(t, ChatColor.LIGHT_PURPLE + "Now allied with " + wantedAllies.get(t));
+            //sendTeamMessage(wantedAllies.get(t), ChatColor.LIGHT_PURPLE + "Now allied with " + t.getName());
             wantedAllies.remove(t);
         } else {
             for (Team allyTeam : wantedAllies.keySet()) {
                 if (wantedAllies.get(allyTeam).equals(t)) {
                     addAlly(t, allyTeam);
-                    sendTeamMessage(t, ChatColor.LIGHT_PURPLE + "Now allied with " + allyTeam.getName());
-                    sendTeamMessage(allyTeam, ChatColor.LIGHT_PURPLE + "Now allied with " + t.getName());
+                    //sendTeamMessage(t, ChatColor.LIGHT_PURPLE + "Now allied with " + allyTeam.getName());
+                    //sendTeamMessage(allyTeam, ChatColor.LIGHT_PURPLE + "Now allied with " + t.getName());
                     wantedAllies.remove(allyTeam);
                 }
             }
@@ -106,7 +108,25 @@ public class AlliesManager {
     public static void leaveAlly(Player p){
         if(getPlayerTeam(p) != null){
             int index = getAllyClasIndex(getPlayerTeam(p));
-            allAllies.get(index).removeAlly(getPlayerTeam(p));
+            if(index != -1) {
+                allAllies.get(index).removeAlly(getPlayerTeam(p));
+            }
+        }
+    }
+
+    public static void removeAlly(Player p, Team t){
+        Team playerTeam = getPlayerTeam(p);
+        if(playerTeam == null) return;
+        int index = getAllyClasIndex(playerTeam);
+        if(index == -1) return;
+        allAllies.get(index).removeAlly(t);
+    }
+
+    public static void removeTeam(Team t){
+        for(int i = 0; i < allAllies.size(); i++){
+            if(allAllies.get(i).hasTeam(t)){
+                allAllies.get(i).removeAlly(t);
+            }
         }
     }
 
