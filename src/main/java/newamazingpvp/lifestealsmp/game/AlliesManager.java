@@ -135,11 +135,26 @@ public class AlliesManager {
         }
     }
 
-    public static ArrayList<OfflinePlayer> getAllianceMembers(Player p){
-        Team t = getPlayerTeam(t);
+    public static ArrayList<String> getAllianceMembers(Player p){
+        Team t = getPlayerTeam(p);
         if(t == null) return new ArrayList<>();
         if(getAllyClasIndex(t) == -1) return new ArrayList<>();
-        return allAllies.get(getAllyClasIndex(t)).getMembers();
+        ArrayList<String> s = new ArrayList<>();
+        for(OfflinePlayer names: allAllies.get(getAllyClasIndex(t)).getMembers()){
+            s.add(names.getName());
+        }
+        return s;
+    }
+
+    public static String getAllianceTeams(Player p){
+        Team t = getPlayerTeam(p);
+        if(t == null) return new ArrayList<>();
+        if(getAllyClasIndex(t) == -1) return new ArrayList<>();
+        ArrayList<String> s = new ArrayList<>();
+        for(Team names: allAllies.get(getAllyClasIndex(t)).getAllies()){
+            s.add(names.getName());
+        }
+        return s;
     }
 
     public static HashSet<Team> getAllianceTeams(Player p){
@@ -148,5 +163,6 @@ public class AlliesManager {
         if(getAllyClasIndex(t) == -1) return new HashSet<>();
         return allAllies.get(getAllyClasIndex(t)).getAllies();
     }
+
 
 }
