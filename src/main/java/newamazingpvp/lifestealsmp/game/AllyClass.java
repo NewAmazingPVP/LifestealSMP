@@ -1,11 +1,14 @@
 package newamazingpvp.lifestealsmp.game;
 
+import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Team;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+
+import static newamazingpvp.lifestealsmp.game.TeamsManager.sendTeamMessage;
 
 public class AllyClass {
     HashSet<Team> allies;
@@ -26,10 +29,14 @@ public class AllyClass {
 
     public void addAlly(Team t){
         allies.add(t);
+        sendAllyMessage(ChatColor.DARK_PURPLE + t.getName() + " has joined the alliance!");
     }
 
     public void removeAlly(Team t){
-        allies.remove(t);
+        if(allies.remove(t)){
+            sendAllyMessage(ChatColor.RED + t.getName() + " has left the alliance");
+            sendTeamMessage(t, ChatColor.RED + "Your team has left the alliance");
+        }
     }
 
     public HashSet<Team> getAllies(){
