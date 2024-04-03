@@ -47,8 +47,8 @@ public class AllyCommand implements CommandExecutor, TabCompleter {
                 }
             } else if (args[0].equals("members")) {
                 p.sendMessage(ChatColor.DARK_PURPLE + "Here are your alliance members:");
-                for(OfflinePlayer pl: getAllianceMembers(p)){
-                    p.sendMessage(ChatColor.DARK_BLUE + pl.getName());
+                for(String s: getAllianceMembers(p)){
+                    p.sendMessage(ChatColor.DARK_BLUE + s));
                 }
             }  else if (args[0].equals("accept")){
                 allyWantedTeam(getPlayerTeam(p));
@@ -81,7 +81,7 @@ public class AllyCommand implements CommandExecutor, TabCompleter {
                 }
                 return teamNames;
             } else if(args[0].equals("kick")){
-                return getTeamMembers(p);
+                return getAllianceTeams(p);
             }
         }
         return null;
