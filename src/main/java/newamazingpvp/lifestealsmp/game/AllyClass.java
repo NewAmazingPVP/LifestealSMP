@@ -39,6 +39,10 @@ public class AllyClass {
         }
     }
 
+    public void removeAllyWithoutNotify(Team t){
+        allies.remove(t);
+    }
+
     public HashSet<Team> getAllies(){
         return allies;
     }
@@ -47,11 +51,18 @@ public class AllyClass {
         return allies.contains(t);
     }
 
+    public void sendAllyMessage(String msg, Player player){
+        for(Player p: getOnlineMembers()){
+            p.sendMessage(ChatColor.LIGHT_PURPLE + "Ally: " + ChatColor.RESET + "<" + player.getName() + "> " + msg);
+        }
+    }
+
     public void sendAllyMessage(String msg){
         for(Player p: getOnlineMembers()){
             p.sendMessage(msg);
         }
     }
+
 
     public ArrayList<OfflinePlayer> getMembers(){
         ArrayList<OfflinePlayer> players = new ArrayList<>();
