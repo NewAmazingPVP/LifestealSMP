@@ -51,15 +51,15 @@ public class AlliesManager {
     public static void allyWantedTeam(Team t){
         if(wantedAllies.containsKey(t)){
             addAlly(t, wantedAllies.get(t));
-            //sendTeamMessage(t, ChatColor.LIGHT_PURPLE + "Now allied with " + wantedAllies.get(t));
-            //sendTeamMessage(wantedAllies.get(t), ChatColor.LIGHT_PURPLE + "Now allied with " + t.getName());
+            sendTeamMessage(t, ChatColor.LIGHT_PURPLE + "Now allied with " + wantedAllies.get(t) + " and their allies");
+            sendTeamMessage(wantedAllies.get(t), ChatColor.LIGHT_PURPLE + "Now allied with " + t.getName() + " and their allies");
             wantedAllies.remove(t);
         } else {
             for (Team allyTeam : wantedAllies.keySet()) {
                 if (wantedAllies.get(allyTeam).equals(t)) {
                     addAlly(t, allyTeam);
-                    //sendTeamMessage(t, ChatColor.LIGHT_PURPLE + "Now allied with " + allyTeam.getName());
-                    //sendTeamMessage(allyTeam, ChatColor.LIGHT_PURPLE + "Now allied with " + t.getName());
+                    sendTeamMessage(t, ChatColor.LIGHT_PURPLE + "Now allied with " + allyTeam.getName() + " and their allies");
+                    sendTeamMessage(allyTeam, ChatColor.LIGHT_PURPLE + "Now allied with " + t.getName() + " and their allies");
                     wantedAllies.remove(allyTeam);
                 }
             }
@@ -70,7 +70,7 @@ public class AlliesManager {
         if(getPlayerTeam(p) == null) return;
         int index = getAllyClasIndex(getPlayerTeam(p));
         if(index != -1){
-            allAllies.get(index).sendAllyMessage(msg);
+            allAllies.get(index).sendAllyMessage(msg,p);
         }
 
     }
@@ -127,6 +127,7 @@ public class AlliesManager {
         allAllies.get(index).removeAlly(t);
     }
 
+
     public static void removeTeam(Team t){
         for(int i = 0; i < allAllies.size(); i++){
             if(allAllies.get(i).hasTeam(t)){
@@ -134,6 +135,7 @@ public class AlliesManager {
             }
         }
     }
+
 
     public static ArrayList<String> getAllianceMembers(Player p){
         Team t = getPlayerTeam(p);
@@ -146,7 +148,7 @@ public class AlliesManager {
         return s;
     }
 
-    public static String getAllianceTeams(Player p){
+    public static ArrayList<String> getAllianceTeams(Player p){
         Team t = getPlayerTeam(p);
         if(t == null) return new ArrayList<>();
         if(getAllyClasIndex(t) == -1) return new ArrayList<>();
@@ -156,13 +158,5 @@ public class AlliesManager {
         }
         return s;
     }
-
-    public static HashSet<Team> getAllianceTeams(Player p){
-        Team t = getPlayerTeam(t);
-        if(t == null) return new HashSet<>();
-        if(getAllyClasIndex(t) == -1) return new HashSet<>();
-        return allAllies.get(getAllyClasIndex(t)).getAllies();
-    }
-
 
 }

@@ -42,13 +42,13 @@ public class AllyCommand implements CommandExecutor, TabCompleter {
                 p.sendMessage(ChatColor.RED + "Incorrect command usage. Type /ally kick [teamName]");
             } else if (args[0].equals("list")) {
                 p.sendMessage(ChatColor.GOLD + "List of all the allied teams in the alliance!");
-                for(Team t: getAllianceTeams(p)){
-                    p.sendMessage(ChatColor.LIGHT_PURPLE + t.getName());
+                for(String s: getAllianceTeams(p)){
+                    p.sendMessage(ChatColor.LIGHT_PURPLE + s);
                 }
             } else if (args[0].equals("members")) {
                 p.sendMessage(ChatColor.DARK_PURPLE + "Here are your alliance members:");
                 for(String s: getAllianceMembers(p)){
-                    p.sendMessage(ChatColor.DARK_BLUE + s));
+                    p.sendMessage(ChatColor.DARK_BLUE + s);
                 }
             }  else if (args[0].equals("accept")){
                 allyWantedTeam(getPlayerTeam(p));
