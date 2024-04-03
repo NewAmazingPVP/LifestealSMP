@@ -110,3 +110,8 @@ commands:
     usage: /team
     aliases:
       - tm
+  ally:
+    description: Ally with other teams
+    usage: /ally
+    aliases:
+      - al

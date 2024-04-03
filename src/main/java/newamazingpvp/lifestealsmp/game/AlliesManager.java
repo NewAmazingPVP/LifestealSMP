@@ -13,41 +13,28 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
-import static newamazingpvp.lifestealsmp.game.TeamsManager.playerTeamChat;
-import static newamazingpvp.lifestealsmp.game.TeamsManager.sendTeamMessage;
+import static newamazingpvp.lifestealsmp.game.TeamsManager.*;
 
 public class AlliesManager {
-    private static HashMap<Team, ArrayList<Team>> allies = new HashMap<>();
 
+    private static ArrayList<AllyClass> allAllies = new ArrayList<>();
     private static HashMap<Team, Team> wantedAllies = new HashMap<>();
     public static List<UUID> playerAlliesChat = new ArrayList<>();
 
     public static void addAlly(Team t, Team invited) {
-        if (allies.containsKey(t)) {
-            ArrayList<Team> currentAllies = allies.get(t);
-            if (allies.containsKey(invited)) {
-                currentAllies.addAll(allies.get(invited));
-                allies.remove(invited);
-            } else {
-                currentAllies.add(invited);
-            }
-            allies.put(t, currentAllies);
+        if(getAllyClasIndex(t, invited) != -1){
+            int index = getAllyClasIndex(t, invited);
+            allAllies.get(index).addAlly(t);
+            allAllies.get(index).addAlly(invited);
         } else {
-            ArrayList<Team> currentAllies = new ArrayList<>();
-            if (allies.containsKey(invited)) {
-                currentAllies.addAll(allies.get(invited));
-                allies.remove(invited);
-            } else {
-                currentAllies.add(invited);
-            }
-            allies.put(t, currentAllies);
+            allAllies.add(new AllyClass(t, invited));
         }
     }
 
     public static void wantedAlly(Team t, Team invited){
         wantedAllies.put(t, invited);
         sendTeamMessage(t, ChatColor.LIGHT_PURPLE + "Team " + invited.getName() + " has received your ally request");
-        sendTeamMessage(invited, ChatColor.LIGHT_PURPLE + "Team " + invited.getName() + " has invited to ally with them. Do /team ally accept");
+        sendTeamMessage(invited, ChatColor.LIGHT_PURPLE + "Team " + invited.getName() + " has invited to ally with them. Do /ally accept");
     }
 
     public static boolean isWantedAlly(Team t){
@@ -73,35 +60,12 @@ public class AlliesManager {
     }
 
     public static void sendAllyMessage(Player p, String msg){
-
-        Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
-        Team team = scoreboard.getPlayerTeam(p);
-        if(team == null) return;
-
-        if(allies.containsKey(team)){
-            for(Team t: allies.get(team)){
-                for(OfflinePlayer teamMate : t.getPlayers()) {
-                    if(teamMate.isOnline()) {
-                        Player player = (Player) teamMate;
-                        player.sendMessage(ChatColor.LIGHT_PURPLE + "Ally: " + ChatColor.RESET + "<" + p.getName() + "> " + msg);
-                    }
-                }
-            }
-            sendTeamMessage(team, ChatColor.LIGHT_PURPLE + "Ally: " + ChatColor.RESET + "<" + p.getName() + "> " + msg);
-        } else{
-            for (Team allyTeam : allies.keySet()) {
-                if (allies.get(allyTeam).contains(team)) {
-                    for (OfflinePlayer teamMate : allyTeam.getPlayers()) {
-                        if (teamMate.isOnline()) {
-                            Player player = (Player) teamMate;
-                            player.sendMessage(ChatColor.LIGHT_PURPLE + "Ally: " + ChatColor.RESET + "<" + p.getName() + "> " + msg);
-                        }
-                    }
-                    sendTeamMessage(team, ChatColor.LIGHT_PURPLE + "Ally: " + ChatColor.RESET + "<" + p.getName() + "> " + msg);
-                    break;
-                }
-            }
+        if(getPlayerTeam(p) == null) return;
+        int index = getAllyClasIndex(getPlayerTeam(p));
+        if(index != -1){
+            allAllies.get(index).sendAllyMessage(msg);
         }
+
     }
 
     public static void allyChatMode(Player p)
@@ -116,7 +80,35 @@ public class AlliesManager {
         }
     }
 
+    public static int getAllyClasIndex(Team t, Team inv){
+        for(int i = 0; i < allAllies.size(); i++){
+            if(allAllies.get(i).hasTeam(t) || allAllies.get(i).hasTeam(inv)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static int getAllyClasIndex(Team t){
+        for(int i = 0; i < allAllies.size(); i++){
+            if(allAllies.get(i).hasTeam(t)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
     public static boolean isPlayerInAllyChat(Player p){
         return playerAlliesChat.contains(p.getUniqueId());
     }
+
+    public static void leaveAlly(Player p){
+        if(getPlayerTeam(p) != null){
+            int index = getAllyClasIndex(getPlayerTeam(p));
+            allAllies.get(index).removeAlly(getPlayerTeam(p));
+        }
+    }
+
+
 }
