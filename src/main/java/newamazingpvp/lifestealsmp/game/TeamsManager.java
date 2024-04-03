@@ -155,4 +155,8 @@ public class TeamsManager {
         }
     }
 
+    public static Team getTeam(String s){
+        return Bukkit.getScoreboardManager().getMainScoreboard().getTeam(s);
+    }
+
 }
