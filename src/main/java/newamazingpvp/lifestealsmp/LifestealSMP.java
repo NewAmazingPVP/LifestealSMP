@@ -88,6 +88,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("vision").setExecutor(new NightVision());
         getCommand("senddiscordmessage").setExecutor(new SendDiscordMessage());
         getCommand("shop").setExecutor(new ShopCommand());
+        getCommand("discord").setExecutor(new DiscordLink());
         getCommand("help").setExecutor(new HelpCommand());
         getCommand("guide").setExecutor(new GuideCommand());
         getCommand("givecustomitem").setExecutor(new GiveCustomItem());
@@ -132,6 +133,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new BeaconInvis(), this);
         getServer().getPluginManager().registerEvents(new TeamListener(), this);
         getServer().getPluginManager().registerEvents(new DiscordListener(), this);
+        getServer().getPluginManager().registerEvents(new NewbieProgression(), this);
         //getServer().getPluginManager().registerEvents(new TpsEvent(), this);
         BukkitRunnable broadcastTask = new BukkitRunnable() {
             @Override
@@ -204,6 +206,10 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             //getServer().getScheduler().runTaskLater(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "vanish NewAmazingPVP"), 20);
             getServer().dispatchCommand(getServer().getConsoleSender(), "vanish NewAmazingPVP");
         }
+        /*if(player.getDisplayName().equals(player.getName())) {
+            player.setDisplayName(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW + player.getDisplayName());
+            player.getDisplayName();
+        }*/
 
         if (!player.hasPlayedBefore()) {
             player.setInvulnerable(true);
