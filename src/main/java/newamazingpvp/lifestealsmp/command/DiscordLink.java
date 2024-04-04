@@ -8,20 +8,16 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class ShopCommand implements CommandExecutor {
-    private final String shopURL = "https://shop.nappixel.tk/";
+public class DiscordLink implements CommandExecutor {
+    private final String discordURL = "https://discord.gg/PN8egFY3ap";
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            /*if(player.getDisplayName().equals(player.getName())) {
-                player.setDisplayName(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW + player.getDisplayName());
-                player.sendMessage(player.getDisplayName());
-            }*/
 
-            TextComponent linkText = new TextComponent(ChatColor.GOLD + "Here is our shop:" + ChatColor.AQUA + " https://shop.nappixel.tk/");
-            linkText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, shopURL));
+            TextComponent linkText = new TextComponent(ChatColor.GOLD + "Here is our discord:" + ChatColor.AQUA + " https://discord.gg/PN8egFY3ap");
+            linkText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, discordURL));
 
             player.spigot().sendMessage(linkText);
         } else {

@@ -31,6 +31,8 @@ public class TeamListener implements Listener {
             event.setCancelled(true);
             sendAllyMessage(p, event.getMessage());
 
+
+
             /*
             ByteArrayDataOutput out = ByteStreams.newDataOutput();
             out.writeUTF("Server");
