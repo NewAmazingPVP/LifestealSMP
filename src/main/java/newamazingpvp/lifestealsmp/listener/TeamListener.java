@@ -15,6 +15,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.json.simple.JSONObject;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.essentials;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.game.AlliesManager.isPlayerInAllyChat;
 import static newamazingpvp.lifestealsmp.game.AlliesManager.sendAllyMessage;
@@ -33,8 +34,7 @@ public class TeamListener implements Listener {
             event.setCancelled(true);
             sendAllyMessage(p, event.getMessage());
         } else {
-            Essentials e = new Essentials();
-            event.setFormat(e.getUser(p.getUniqueId()).getNickname() + ChatColor.WHITE + ": " + event.getMessage());
+            event.setFormat(essentials.getUser(p.getUniqueId()).getNickname() + ChatColor.WHITE + ": " + event.getMessage());
 
 
 

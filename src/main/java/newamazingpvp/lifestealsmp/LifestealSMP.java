@@ -54,6 +54,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
     public static LifestealSMP lifestealSmp;
     public static boolean silentMode = true;
     private FileConfiguration config;
+    public static Essentials essentials;
 
 
     @Override
@@ -179,7 +180,13 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             handler.schedule();
             }
         }.runTaskLater(this, 120L);
+        essentials = (Essentials) getServer().getPluginManager().getPlugin("Essentials");
 
+        if (essentials == null) {
+            getLogger().severe("EssentialsX is not installed on this server.");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
 
 
     }
@@ -202,19 +209,17 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        Essentials e = new Essentials();
-        e.getUser("eee").setNickname("");
         Player player = event.getPlayer();
         if (player.getName().equals("NewAmazingPVP") && silentMode) {
             event.setJoinMessage("");
             //getServer().getScheduler().runTaskLater(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "vanish NewAmazingPVP"), 20);
             getServer().dispatchCommand(getServer().getConsoleSender(), "vanish NewAmazingPVP");
         }
-        if(e.getUser(player.getUniqueId()).getNickname().equals(player.getName())) {
+        //if(essentials.getUser(player.getUniqueId()).getNickname().equals(player.getName())) {
             //player.setDisplayName(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW + player.getDisplayName());
             //player.getDisplayName();
-            e.getUser(player.getUniqueId()).setNickname(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW + player.getName());
-        }
+            essentials.getUser(player.getUniqueId()).setNickname(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW + player.getName());
+        //}
 
 
         if (!player.hasPlayedBefore()) {
