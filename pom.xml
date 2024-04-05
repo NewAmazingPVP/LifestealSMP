@@ -54,7 +54,7 @@
 
     <repositories>
         <repository>
-            <id>essentialsx</id>
+            <id>essentialsx-repo</id>
             <url>https://repo.essentialsx.net/releases/</url>
         </repository>
         <repository>
