@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp;
 
+import com.earth2me.essentials.Essentials;
 import com.google.common.collect.Iterables;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
@@ -201,16 +202,20 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
+        Essentials e = new Essentials();
+        e.getUser("eee").setNickname("");
         Player player = event.getPlayer();
         if (player.getName().equals("NewAmazingPVP") && silentMode) {
             event.setJoinMessage("");
             //getServer().getScheduler().runTaskLater(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "vanish NewAmazingPVP"), 20);
             getServer().dispatchCommand(getServer().getConsoleSender(), "vanish NewAmazingPVP");
         }
-        /*if(player.getDisplayName().equals(player.getName())) {
-            player.setDisplayName(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW + player.getDisplayName());
-            player.getDisplayName();
-        }*/
+        if(e.getUser(player.getUniqueId()).getNickname().equals(player.getName())) {
+            //player.setDisplayName(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW + player.getDisplayName());
+            //player.getDisplayName();
+            e.getUser(player.getUniqueId()).setNickname(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW + player.getName());
+        }
+
 
         if (!player.hasPlayedBefore()) {
             player.setInvulnerable(true);

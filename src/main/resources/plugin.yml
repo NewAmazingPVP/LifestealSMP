@@ -8,6 +8,7 @@ libraries:
   - net.dv8tion:JDA:5.0.0-beta.17
   - club.minnced:discord-webhooks:0.8.4
   - org.apache.logging.log4j:log4j-core:2.20.0
+  - net.essentialsx:EssentialsX:2.20.1
 
 commands:
   rules:

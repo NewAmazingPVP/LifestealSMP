@@ -1,11 +1,13 @@
 package newamazingpvp.lifestealsmp.listener;
 
+import com.earth2me.essentials.Essentials;
 import com.google.common.collect.Iterables;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 import io.papermc.paper.event.player.AsyncChatEvent;
 import io.papermc.paper.event.player.ChatEvent;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -30,6 +32,9 @@ public class TeamListener implements Listener {
         } else if(isPlayerInAllyChat(p)) {
             event.setCancelled(true);
             sendAllyMessage(p, event.getMessage());
+        } else {
+            Essentials e = new Essentials();
+            event.setFormat(e.getUser(p.getUniqueId()).getNickname() + ChatColor.WHITE + ": " + event.getMessage());
 
 
 
