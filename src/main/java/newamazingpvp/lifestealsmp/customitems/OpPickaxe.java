@@ -11,6 +11,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +21,29 @@ import static newamazingpvp.lifestealsmp.utility.DiscordBot.intializeBot;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.webHookClient;
 
 public class OpPickaxe implements Listener {
+    private final ArrayList<Material> blackList = new ArrayList<>(List.of(
+            Material.BEDROCK,
+            Material.END_PORTAL_FRAME,
+            Material.END_PORTAL,
+            Material.SHULKER_BOX,
+            Material.CHEST,
+            Material.ENDER_CHEST,
+            Material.BARREL,
+            Material.CHEST_MINECART,
+            Material.DISPENSER,
+            Material.DROPPER,
+            Material.HOPPER,
+            Material.ITEM_FRAME,
+            Material.FURNACE,
+            Material.BLAST_FURNACE,
+            Material.SMOKER,
+            Material.BREWING_STAND,
+            Material.LECTERN,
+            Material.JUKEBOX,
+            Material.COMPOSTER,
+            Material.BEEHIVE,
+            Material.BEE_NEST
+    ));
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
@@ -57,7 +81,7 @@ public class OpPickaxe implements Listener {
                     for (int y = -1; y <= 1; y++) {
                         for (int z = -1; z <= 1; z++) {
                             Block targetBlock = centerBlock.getRelative(x, y, z);
-                            if ((targetBlock.getType() != Material.BEDROCK) && (targetBlock.getType() != Material.END_PORTAL_FRAME) && (targetBlock.getType() != Material.END_PORTAL)
+                            if (!blackList.contains(targetBlock.getType())
                                     && targetBlock.getType().toString().equalsIgnoreCase(centerBlock.getType().toString()) &&
                                     !(targetBlock.getLocation().getX() == centerBlock.getLocation().getX() && targetBlock.getLocation().getY() == centerBlock.getLocation().getY()
                                             && targetBlock.getLocation().getZ() == centerBlock.getLocation().getZ())) {
