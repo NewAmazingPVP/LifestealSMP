@@ -1,0 +1,44 @@
+name: Java Build and Release
+
+on:
+  push: {branches: ["master", "main"]}
+
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '16'
+          distribution: 'adopt'
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build with Maven
+        run: mvn clean package
+
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.METRICS_TOKEN }}
+        with:
+          tag_name: v${{ github.run_number }}
+          release_name: Release ${{ github.run_number }}
+          draft: false
+          prerelease: false
+
+      - name: Upload JAR file
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.METRICS_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./target/LifestealSMP-1.0.jar
+          asset_name: LifestealSMP-1.0.jar
+          asset_content_type: application/java-archive
