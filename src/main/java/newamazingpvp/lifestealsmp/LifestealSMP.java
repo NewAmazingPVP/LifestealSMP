@@ -46,6 +46,7 @@ import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.game.PlayerPing.monitorPlayerPings;
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlacklist;
+import static newamazingpvp.lifestealsmp.utility.AutoUpload.startReleaseChecker;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.*;
 import static newamazingpvp.lifestealsmp.utility.LogAppender.consoleChannel;
 import static org.bukkit.Bukkit.getPlayer;
@@ -71,7 +72,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
                 webHookClient();
             }
         }.runTaskLaterAsynchronously(this, 0L);
-        //startReleaseChecker();
+        startReleaseChecker();
         initializeBlacklist();
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
         getCommand("rules").setExecutor(new RulesCommand());
