@@ -31,7 +31,7 @@ public class AlliesManager {
     public static void wantedAlly(Team t, Team invited){
         wantedAllies.put(t, invited);
         sendTeamMessage(t, ChatColor.LIGHT_PURPLE + "Team " + invited.getName() + " has received your ally request");
-        sendTeamMessage(invited, ChatColor.LIGHT_PURPLE + "Team " + invited.getName() + " has invited to ally with them. Do /ally accept");
+        sendTeamMessage(invited, ChatColor.LIGHT_PURPLE + "Team " + t.getName() + " has invited to ally with them. Do /ally accept");
     }
 
     public static void wantedAlly(Player p, String inv){
@@ -40,7 +40,7 @@ public class AlliesManager {
         if(t == null || invited == null) return;
         wantedAllies.put(t, invited);
         sendTeamMessage(t, ChatColor.LIGHT_PURPLE + "Team " + invited.getName() + " has received your ally request");
-        sendTeamMessage(invited, ChatColor.LIGHT_PURPLE + "Team " + invited.getName() + " has invited to ally with them. Do /ally accept");
+        sendTeamMessage(invited, ChatColor.LIGHT_PURPLE + "Team " + t.getName() + " has invited to ally with them. Do /ally accept");
     }
 
 
