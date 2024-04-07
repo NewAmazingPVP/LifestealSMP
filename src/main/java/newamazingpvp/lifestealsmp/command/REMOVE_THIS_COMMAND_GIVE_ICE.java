@@ -42,6 +42,8 @@ public class REMOVE_THIS_COMMAND_GIVE_ICE implements CommandExecutor {
             player.getInventory().addItem(IceCube());
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
 
+        } else {
+            sender.sendMessage("This command can only be executed by a player.");
         }
         return true;
     }
