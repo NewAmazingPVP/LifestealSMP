@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.command;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
@@ -11,6 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +39,9 @@ public class REMOVE_THIS_COMMAND_GIVE_ICE implements CommandExecutor {
 
         return IceCube;
     }
+
+
+
 
 
     @Override
