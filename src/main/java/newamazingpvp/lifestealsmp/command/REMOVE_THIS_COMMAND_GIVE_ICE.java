@@ -23,11 +23,14 @@ public class REMOVE_THIS_COMMAND_GIVE_ICE implements CommandExecutor {
         ItemMeta SI = IceCube.getItemMeta();
         SI.addEnchant(Enchantment.DURABILITY, 1, false);
         SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        SI.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Ice Cube" + ChatColor.DARK_AQUA + " [Item]");
+        SI.setDisplayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Ice Cube" + ChatColor.DARK_AQUA + " [Item]");
         SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> BL = new ArrayList<>();
-        BL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Right Click:" + ChatColor.DARK_PURPLE + " Freeze the closest player for a few sec!");
-        BL.add(ChatColor.RED + "One time use, Can freeze you.");
+        BL.add(ChatColor.GOLD + "" + "Special Ability:" + ChatColor.DARK_PURPLE + " Freeze");
+        BL.add(ChatColor.DARK_PURPLE + "" + "Freezes ALL players (Excluding you)");
+        BL.add(ChatColor.DARK_PURPLE + "" + "by covering them in ice preventing");
+        BL.add(ChatColor.DARK_PURPLE + "" + "them from moving.");
+        BL.add(ChatColor.RED + "One time use!");
         SI.setLore(BL);
         IceCube.setItemMeta(SI);
 
