@@ -6,6 +6,7 @@ import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 import io.sentry.util.Objects;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -30,7 +31,7 @@ public class DiscordListener implements Listener {
     @EventHandler
     public void messageSent(AsyncPlayerChatEvent event) {
         if(!event.isCancelled()){
-            if(event.getFormat().toLowerCase().contains("team")) return;
+            if(event.getFormat().contains(ChatColor.AQUA + "Team: ")) return;
             sendWebhook(event.getPlayer(), event.getMessage());
         }
     }
