@@ -118,3 +118,8 @@ commands:
     usage: /ally
     aliases:
       - al
+  gibIce:
+    description: gives ice cube REMOVE THIS
+    usage: /gibIce
+    permission: lifestealSMP.admin
+    default: op
