@@ -2,12 +2,14 @@ package newamazingpvp.lifestealsmp.customitems;
 
 import com.destroystokyo.paper.event.player.PlayerJumpEvent;
 import org.bukkit.*;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemFlag;
@@ -26,10 +28,29 @@ public class IceCube implements Listener {
 
     //not the fucking rapper
 
+
+    public static ItemStack FrozenIceHelm () {
+
+        ItemStack IceCube = new ItemStack(Material.ICE);
+        ItemMeta SI = IceCube.getItemMeta();
+        SI.addEnchant(Enchantment.DURABILITY, 1, false);
+        SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        SI.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Ice");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        List<String> BL = new ArrayList<>();
+        BL.add(ChatColor.GOLD + "" + "Special Ability:" + ChatColor.DARK_PURPLE + " Freeze,");
+        BL.add(ChatColor.DARK_RED + "If you see this...");
+        BL.add(ChatColor.DARK_RED + "you are frozen.");
+        SI.setLore(BL);
+        IceCube.setItemMeta(SI);
+
+        return IceCube;
+    }
+
     public static ItemStack FrozenIceCP () {
         ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
         LeatherArmorMeta chestplateMeta = (LeatherArmorMeta) chestplate.getItemMeta();
-        chestplateMeta.setDisplayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Ice");
+        chestplateMeta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Ice");
         chestplateMeta.setColor(Color.fromRGB(255, 85, 0));
         chestplateMeta.setUnbreakable(true);
         List<String> CHESTPLATELORE = new ArrayList<>();
@@ -46,7 +67,7 @@ public class IceCube implements Listener {
     public static ItemStack FrozenIceLEG () {
         ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
         LeatherArmorMeta legMeta = (LeatherArmorMeta) leggings.getItemMeta();
-        legMeta.setDisplayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Ice");
+        legMeta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Ice");
         legMeta.setColor(Color.fromRGB(255, 85, 0));
         legMeta.setUnbreakable(true);
         List<String> LEGGINGSLORE = new ArrayList<>();
@@ -63,7 +84,7 @@ public class IceCube implements Listener {
     public static ItemStack FrozenIceBOOTS () {
         ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
         LeatherArmorMeta bootsMeta = (LeatherArmorMeta) boots.getItemMeta();
-        bootsMeta.setDisplayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Ice");
+        bootsMeta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Ice");
         bootsMeta.setColor(Color.fromRGB(255, 85, 0));
         bootsMeta.setUnbreakable(true);
         List<String> BOOTSELORE = new ArrayList<>();
@@ -102,6 +123,8 @@ public class IceCube implements Listener {
 
                     closestPlayer.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 10, 5));
 
+
+                    player.getInventory().setHelmet(FrozenIceHelm());
                     player.getInventory().setChestplate(FrozenIceCP());
                     player.getInventory().setLeggings(FrozenIceLEG());
                     player.getInventory().setBoots(FrozenIceBOOTS());
@@ -164,6 +187,15 @@ public class IceCube implements Listener {
     public void onPlayerInteract2(EntityDamageByEntityEvent event) {
         Player player = (Player) event.getDamager();
         if (player.getScoreboardTags().contains("frozen")) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onMenuClick(InventoryClickEvent event) {
+        Player player = (Player) event.getWhoClicked();
+        if (event.getCurrentItem().getDisplayName().equalsIgnoreCase(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Ice") && event.getCurrentItem().getType() == Material.ICE) {
+            player.playSound(player.getLocation(), Sound.BLOCK_GLASS_BREAK, 1.0f, 1.0f);
             event.setCancelled(true);
         }
     }
