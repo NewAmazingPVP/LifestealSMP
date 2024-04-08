@@ -23,7 +23,7 @@ public class AllyCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player p = (Player) sender;
         if(args.length == 0 || (args.length == 1 && args[0].equals("help"))){
-            p.sendMessage(ChatColor.GOLD + "/team create" +
+            p.sendMessage(ChatColor.GOLD +
                     "\n/ally accept" +
                     "\n/ally invite" +
                     "\n/ally leave" +

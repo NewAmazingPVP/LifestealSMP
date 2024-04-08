@@ -101,7 +101,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("team").setTabCompleter(new TeamCommand());
         getCommand("ally").setExecutor(new AllyCommand());
         getCommand("ally").setTabCompleter(new AllyCommand());
-        getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
+        //getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
 
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
@@ -139,7 +139,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new TeamListener(), this);
         getServer().getPluginManager().registerEvents(new DiscordListener(), this);
         getServer().getPluginManager().registerEvents(new NewbieProgression(), this);
-        getServer().getPluginManager().registerEvents(new IceCube(), this);
+        //getServer().getPluginManager().registerEvents(new IceCube(), this);
         //getServer().getPluginManager().registerEvents(new AntiPieRay(), this);
         //getServer().getPluginManager().registerEvents(new DisableEnderDragonEgg(), this);
         //getServer().getPluginManager().registerEvents(new TpsEvent(), this);
@@ -150,11 +150,18 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             }
         };
         broadcastTask.runTaskTimer(this, 0, 7200 * 20);
+        BukkitRunnable helpTask = new BukkitRunnable() {
+            @Override
+            public void run() {
+                getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** help");
+            }
+        };
+        broadcastTask.runTaskTimer(this, 0, 30 * 60 * 20);
         BukkitRunnable broadcastShopTask = new BukkitRunnable() {
             @Override
             public void run() {
                 broadcastReportBugs();
-                broadcastShop();
+                //broadcastShop();
             }
         };
         broadcastShopTask.runTaskTimer(this, 0, 3600 * 20);
@@ -189,7 +196,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
         if (essentials == null) {
             getLogger().severe("EssentialsX is not installed on this server.");
-            getServer().getPluginManager().disablePlugin(this);
+            //getServer().getPluginManager().disablePlugin(this);
             return;
         }
 
@@ -230,9 +237,11 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         if (!player.hasPlayedBefore()) {
             player.setInvulnerable(true);
             getServer().getScheduler().runTaskLater(this, () -> player.setInvulnerable(false), 200);
-            getServer().dispatchCommand(getServer().getConsoleSender(), "ep user " + player.getName() + " setgroup default");
+            //getServer().dispatchCommand(getServer().getConsoleSender(), "ep user " + player.getName() + " setgroup default");
+
 
             player.sendMessage("Welcome! \n/help\n/guide\n/rules\n/prefix\n/color\n/recipes\n/trade ");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "sudo " + player.getName() + " help");
             //giveClickableItem(player);
 
             //player.teleport(lobby);

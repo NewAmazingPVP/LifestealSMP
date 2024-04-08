@@ -38,7 +38,7 @@ public class SpawnProtection implements Listener {
                     if (isWithinSpawnRadius(damaged.getLocation())) {
                         //if (isInCombat(damager) && isInCombat(damaged)) return;
                         event.setCancelled(true);
-                        damager.sendMessage(ChatColor.RED + "You cannot damage players within the spawn protection area!");
+                        damager.sendMessage(ChatColor.RED + "You cannot damage players within the spawn protection area, go around 50-100 blocks away to be able to!");
                     }
                 } else if (event.getDamager() instanceof Arrow) {
                     Arrow arrow = (Arrow) event.getDamager();
@@ -48,7 +48,7 @@ public class SpawnProtection implements Listener {
                         if (isWithinSpawnRadius(damaged.getLocation())) {
                             //if (isInCombat(shooter) && isInCombat(damaged)) return;
                             event.setCancelled(true);
-                            shooter.sendMessage(ChatColor.RED + "You cannot shoot players within the spawn protection area!");
+                            shooter.sendMessage(ChatColor.RED + "You cannot shoot players within the spawn protection area, go around 50-100 blocks away to be able to!");
                         }
                     }
                 }
@@ -62,7 +62,7 @@ public class SpawnProtection implements Listener {
         if (isWithinSpawnRadius(event.getBlock().getLocation())) {
             //if(event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
             event.setCancelled(true);
-            event.getPlayer().sendMessage(ChatColor.RED + "You cannot break blocks within the spawn area");
+            event.getPlayer().sendMessage(ChatColor.RED + "You cannot break blocks within the spawn area, go around 50-100 blocks away to be able to");
         }
     }
 
@@ -71,7 +71,7 @@ public class SpawnProtection implements Listener {
         if (isWithinSpawnRadius(event.getBlock().getLocation())) {
             //if(event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
             event.setCancelled(true);
-            event.getPlayer().sendMessage(ChatColor.RED + "You cannot place blocks within the spawn area");
+            event.getPlayer().sendMessage(ChatColor.RED + "You cannot place blocks within the spawn area, go around 50-100 blocks away to be able to");
         }
     }
 
@@ -84,7 +84,7 @@ public class SpawnProtection implements Listener {
                     || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.WATER_BUCKET
                     || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.BOW) {*/
                 event.setCancelled(true);
-                event.getPlayer().sendMessage(ChatColor.RED + "You cannot interact within the spawn area");
+                event.getPlayer().sendMessage(ChatColor.RED + "You cannot interact within the spawn area, go around 50-100 blocks away to be able to");
             //}
         }
     }
