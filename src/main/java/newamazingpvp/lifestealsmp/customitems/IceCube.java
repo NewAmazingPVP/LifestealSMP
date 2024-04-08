@@ -14,6 +14,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.potion.PotionEffect;
@@ -50,7 +51,7 @@ public class IceCube implements Listener {
         ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
         LeatherArmorMeta chestplateMeta = (LeatherArmorMeta) chestplate.getItemMeta();
         chestplateMeta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Ice");
-        chestplateMeta.setColor(Color.fromRGB(255, 85, 0));
+        chestplateMeta.setColor(Color.fromRGB(0, 239, 255));
         chestplateMeta.setUnbreakable(true);
         List<String> CHESTPLATELORE = new ArrayList<>();
         CHESTPLATELORE.add(ChatColor.DARK_RED + "If you see this...");
@@ -67,7 +68,7 @@ public class IceCube implements Listener {
         ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
         LeatherArmorMeta legMeta = (LeatherArmorMeta) leggings.getItemMeta();
         legMeta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Ice");
-        legMeta.setColor(Color.fromRGB(255, 85, 0));
+        legMeta.setColor(Color.fromRGB(0, 239, 255));
         legMeta.setUnbreakable(true);
         List<String> LEGGINGSLORE = new ArrayList<>();
         LEGGINGSLORE.add(ChatColor.DARK_RED + "If you see this...");
@@ -84,7 +85,7 @@ public class IceCube implements Listener {
         ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
         LeatherArmorMeta bootsMeta = (LeatherArmorMeta) boots.getItemMeta();
         bootsMeta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Ice");
-        bootsMeta.setColor(Color.fromRGB(255, 85, 0));
+        bootsMeta.setColor(Color.fromRGB(0, 239, 255));
         bootsMeta.setUnbreakable(true);
         List<String> BOOTSELORE = new ArrayList<>();
         BOOTSELORE.add(ChatColor.DARK_RED + "If you see this...");
@@ -104,6 +105,7 @@ public class IceCube implements Listener {
         ItemStack item = e.getItemInHand();
         ItemMeta meta = item.getItemMeta();
         Player closestPlayer = null;
+        PlayerInventory inventory = player.getInventory();
         double minDistance = Double.MAX_VALUE;
 
         Location location = e.getBlock().getLocation();
@@ -122,15 +124,20 @@ public class IceCube implements Listener {
 
                     closestPlayer.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 10, 5));
 
+                    ItemStack[] armorContents = player.getInventory().getArmorContents();
 
                     player.getInventory().setHelmet(FrozenIceHelm());
                     player.getInventory().setChestplate(FrozenIceCP());
                     player.getInventory().setLeggings(FrozenIceLEG());
                     player.getInventory().setBoots(FrozenIceBOOTS());
 
+
                     closestPlayer.addScoreboardTag("frozen");
                     Player finalClosestPlayer = closestPlayer;
                     Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> finalClosestPlayer.removeScoreboardTag("frozen"), 40);
+                    Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> inventory.setArmorContents(armorContents), 40);
+
+
                     closestPlayer.playSound(player.getLocation(), Sound.ENTITY_PLAYER_HURT_FREEZE, 1.0f, 0.0f);
 
                 }
