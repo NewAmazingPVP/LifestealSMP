@@ -24,7 +24,7 @@ public class RulesCommand implements CommandExecutor {
             player.sendMessage(ChatColor.WHITE + "- No exploiting bugs/glitches");
             player.sendMessage(ChatColor.WHITE + "- Anything that gives advantage not allowed (with exception of some mods in ⁠❓info-faq)");
             player.sendMessage(ChatColor.WHITE + "- No lag farms/builds");
-            player.sendMessage(ChatColor.WHITE + "- Netherite armor is banned.");
+            //player.sendMessage(ChatColor.WHITE + "- Netherite armor is banned.");
             player.sendMessage(ChatColor.WHITE + "- Using newbie protection to grief bases is not allowed.");
             player.sendMessage(ChatColor.WHITE + "- No offensive/abusive behaviour/builds in game");
             player.sendMessage(ChatColor.WHITE + "- No offensive language/skins/names");
