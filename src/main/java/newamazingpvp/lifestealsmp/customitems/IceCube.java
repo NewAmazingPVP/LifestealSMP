@@ -38,7 +38,6 @@ public class IceCube implements Listener {
         SI.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Ice");
         SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> BL = new ArrayList<>();
-        BL.add(ChatColor.GOLD + "" + "Special Ability:" + ChatColor.DARK_PURPLE + " Freeze,");
         BL.add(ChatColor.DARK_RED + "If you see this...");
         BL.add(ChatColor.DARK_RED + "you are frozen.");
         SI.setLore(BL);
@@ -194,7 +193,7 @@ public class IceCube implements Listener {
     @EventHandler
     public void onMenuClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
-        if (event.getCurrentItem().getDisplayName().equalsIgnoreCase(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Ice") && event.getCurrentItem().getType() == Material.ICE) {
+        if (event.getCurrentItem().getDisplayName().equalsIgnoreCase(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Ice")) {
             player.playSound(player.getLocation(), Sound.BLOCK_GLASS_BREAK, 1.0f, 1.0f);
             event.setCancelled(true);
         }
