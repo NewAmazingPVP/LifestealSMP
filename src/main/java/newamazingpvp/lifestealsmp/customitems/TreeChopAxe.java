@@ -28,7 +28,7 @@ public class TreeChopAxe implements Listener {
         if (meta == null || !meta.hasLore()) return;
         if (meta.getLore().toString().toLowerCase().contains("tree")) {
             Block block = e.getBlock();
-            if (validLogMaterials.contains(block.getType()))
+            if (block.getType().toString().toLowerCase().contains("log") || block.getType().toString().toLowerCase().contains("stem"))
                 cutDownTree(block.getLocation(), (player.getGameMode() == GameMode.CREATIVE) ? handStack.clone() : handStack);
             handStack.setDurability((short) (handStack.getDurability() + 1));
         }
@@ -36,7 +36,8 @@ public class TreeChopAxe implements Listener {
 
 
     private void cutDownTree(Location location, ItemStack handStack) {
-        if (validLogMaterials.contains(location.getBlock().getType())) {
+        //validLogMaterials.contains(location.getBlock().getType()
+        if (location.getBlock().getType().toString().toLowerCase().contains("log") || location.getBlock().getType().toString().toLowerCase().contains("stem")) {
             location.getBlock().breakNaturally(handStack);
             for (int x = -1; x <= 1; x++) {
                 for (int y = -1; y <= 1; y++) {
