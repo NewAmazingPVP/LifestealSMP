@@ -105,7 +105,6 @@ public class IceCube implements Listener {
         ItemStack item = e.getItemInHand();
         ItemMeta meta = item.getItemMeta();
         Player closestPlayer = null;
-        PlayerInventory inventory = player.getInventory();
         double minDistance = Double.MAX_VALUE;
 
         Location location = e.getBlock().getLocation();
@@ -122,23 +121,27 @@ public class IceCube implements Listener {
                 }
                 if (closestPlayer != null) {
 
+                    PlayerInventory closeInventory = closestPlayer.getInventory();
                     closestPlayer.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 10, 5));
 
-                    ItemStack[] armorContents = player.getInventory().getArmorContents();
+                    ItemStack[] armorContents = closestPlayer.getInventory().getArmorContents();
 
-                    player.getInventory().setHelmet(FrozenIceHelm());
-                    player.getInventory().setChestplate(FrozenIceCP());
-                    player.getInventory().setLeggings(FrozenIceLEG());
-                    player.getInventory().setBoots(FrozenIceBOOTS());
-
-
-                    closestPlayer.addScoreboardTag("frozen");
-                    Player finalClosestPlayer = closestPlayer;
-                    Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> finalClosestPlayer.removeScoreboardTag("frozen"), 40);
-                    Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> inventory.setArmorContents(armorContents), 40);
-
+                    closestPlayer.getInventory().setHelmet(FrozenIceHelm());
+                    closestPlayer.getInventory().setChestplate(FrozenIceCP());
+                    closestPlayer.getInventory().setLeggings(FrozenIceLEG());
+                    closestPlayer.getInventory().setBoots(FrozenIceBOOTS());
 
                     closestPlayer.playSound(player.getLocation(), Sound.ENTITY_PLAYER_HURT_FREEZE, 1.0f, 0.0f);
+
+                    closestPlayer.sendTitle(ChatColor.AQUA + "" + ChatColor.BOLD + "" + "You Are Frozen!","", 10, 70, 20);
+                    closestPlayer.addScoreboardTag("frozen");
+                    Player finalClosestPlayer = closestPlayer;
+
+                    Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> finalClosestPlayer.removeScoreboardTag("frozen"), 40);
+                    Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> closeInventory.setArmorContents(armorContents), 40);
+
+
+
 
                 }
             }
