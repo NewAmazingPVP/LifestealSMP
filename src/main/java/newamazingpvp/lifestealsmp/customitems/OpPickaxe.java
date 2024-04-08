@@ -98,13 +98,15 @@ public class OpPickaxe implements Listener {
                         }
                     }
                 }
-                Collection<ItemStack> centerDrops = centerBlock.getDrops(item);
+                if(!blackList.contains(centerBlock.getType())) {
+                    Collection<ItemStack> centerDrops = centerBlock.getDrops(item);
 
-                for (ItemStack drop : centerDrops) {
-                    Bukkit.getScheduler().runTask(lifestealSmp, () -> centerBlock.getWorld().dropItem(centerBlock.getLocation(), drop));
+                    for (ItemStack drop : centerDrops) {
+                        Bukkit.getScheduler().runTask(lifestealSmp, () -> centerBlock.getWorld().dropItem(centerBlock.getLocation(), drop));
+                    }
+
+                    Bukkit.getScheduler().runTask(lifestealSmp, () -> centerBlock.setType(Material.AIR));
                 }
-
-                Bukkit.getScheduler().runTask(lifestealSmp, () -> centerBlock.setType(Material.AIR));
 
             }
         }.runTaskAsynchronously(lifestealSmp);
