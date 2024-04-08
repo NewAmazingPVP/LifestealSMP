@@ -103,8 +103,8 @@ public class IceCube implements Listener {
                     closestPlayer.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 10, 5));
 
                     player.getInventory().setChestplate(chestplate);
-                    player.getInventory().setChestplate(leggings);
-                    player.getInventory().setChestplate(boots);
+                    player.getInventory().setLeggings(leggings);
+                    player.getInventory().setBoots(boots);
 
                     closestPlayer.addScoreboardTag("frozen");
                     Player finalClosestPlayer = closestPlayer;
