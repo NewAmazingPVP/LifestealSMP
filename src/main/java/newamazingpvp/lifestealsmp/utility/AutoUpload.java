@@ -37,6 +37,7 @@ public class AutoUpload {
         try {
             URL url = new URL(RELEASE_URL);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            if(getApiKey().isEmpty()) return;
             connection.setRequestProperty("Authorization", "Token " + getApiKey());
 
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {

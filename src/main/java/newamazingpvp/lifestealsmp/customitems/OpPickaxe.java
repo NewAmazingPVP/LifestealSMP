@@ -54,6 +54,7 @@ public class OpPickaxe implements Listener {
             if (hasLore(item)) {
                 Block block = event.getBlock();
                 if (player.isSneaking()) return;
+                if(blackList.contains(block.getType())) return;
                 breakBlocksAround(block, item);
                 item.setDurability((short) (item.getDurability() + 1));
                 event.setCancelled(true);
