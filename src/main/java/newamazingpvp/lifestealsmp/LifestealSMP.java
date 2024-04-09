@@ -102,8 +102,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("team").setTabCompleter(new TeamCommand());
         getCommand("ally").setExecutor(new AllyCommand());
         getCommand("ally").setTabCompleter(new AllyCommand());
-        getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
-        getCommand("lockPlayer").setExecutor(new lockPlayer());
+        //getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
+        //getCommand("lockPlayer").setExecutor(new lockPlayer());
 
 
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
@@ -142,39 +142,15 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new TeamListener(), this);
         getServer().getPluginManager().registerEvents(new DiscordListener(), this);
         getServer().getPluginManager().registerEvents(new NewbieProgression(), this);
-        getServer().getPluginManager().registerEvents(new IceCube(), this);
+        //getServer().getPluginManager().registerEvents(new IceCube(), this);
         //getServer().getPluginManager().registerEvents(new AntiPieRay(), this);
         //getServer().getPluginManager().registerEvents(new DisableEnderDragonEgg(), this);
         //getServer().getPluginManager().registerEvents(new TpsEvent(), this);
-        BukkitRunnable broadcastTask = new BukkitRunnable() {
-            @Override
-            public void run() {
-                broadcastServerMessage();
-            }
-        };
-        broadcastTask.runTaskTimer(this, 0, 7200 * 20);
-        BukkitRunnable helpTask = new BukkitRunnable() {
-            @Override
-            public void run() {
-                getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** help");
-            }
-        };
-        helpTask.runTaskTimer(this, 0, 30 * 60 * 20);
-        BukkitRunnable broadcastShopTask = new BukkitRunnable() {
-            @Override
-            public void run() {
-                broadcastReportBugs();
-                //broadcastShop();
-            }
-        };
-        broadcastShopTask.runTaskTimer(this, 0, 3600 * 20);
+        getServer().getScheduler().runTaskTimer(this, () -> broadcastServerMessage(), 0, 7200 * 20);
+        getServer().getScheduler().runTaskTimer(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** help"), 0, 30 * 60 * 20);
+        getServer().getScheduler().runTaskTimer(this, () -> broadcastReportBugs(), 0, 3600 * 20);
         registerCustomRecipes();
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                monitorPlayerPings();
-            }
-        }.runTaskTimer(this, 0L, 20L);
+        getServer().getScheduler().runTaskTimer(this, () -> monitorPlayerPings(), 0L, 20L);
         scheduleRestart();
         compassUpdate();
         //checkTps();
@@ -225,36 +201,40 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+        player.sendMessage("Welcome! \n/help\n/guide\n/rules\n/prefix\n/color\n/recipes\n/trade ");
+        getServer().dispatchCommand(getServer().getConsoleSender(), "sudo " + player.getName() + " help");
         if (player.getName().equals("NewAmazingPVP") && silentMode) {
             event.setJoinMessage("");
-            //getServer().getScheduler().runTaskLater(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "vanish NewAmazingPVP"), 20);
             getServer().dispatchCommand(getServer().getConsoleSender(), "vanish NewAmazingPVP");
         }
-        //if(essentials.getUser(player.getUniqueId()).getNickname().equals(player.getName())) {
-            //player.setDisplayName(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW + player.getDisplayName());
-            //player.getDisplayName();
-            essentials.getUser(player.getUniqueId()).setNickname(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW + player.getName());
-        //}
-
+        essentials.getUser(player.getUniqueId()).setNickname(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW + player.getName());
 
         if (!player.hasPlayedBefore()) {
             player.setInvulnerable(true);
             getServer().getScheduler().runTaskLater(this, () -> player.setInvulnerable(false), 200);
-            //getServer().dispatchCommand(getServer().getConsoleSender(), "ep user " + player.getName() + " setgroup default");
-
-
-            player.sendMessage("Welcome! \n/help\n/guide\n/rules\n/prefix\n/color\n/recipes\n/trade ");
-            getServer().dispatchCommand(getServer().getConsoleSender(), "sudo " + player.getName() + " help");
-            //giveClickableItem(player);
-
+            getServer().dispatchCommand(player, "guide");
             //player.teleport(lobby);
         } else {
             if (player.getName().startsWith(".")) {
                 player.setInvulnerable(true);
-                getServer().getScheduler().runTaskLater(this, () -> player.setInvulnerable(false), 120);
+                BukkitRunnable bedrockInit = new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        player.setInvulnerable(false);
+                        essentials.getUser(player.getUniqueId()).setNickname(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW + player.getName());
+                    }
+                };
+                bedrockInit.runTaskLater(this, 120);
             } else {
                 player.setInvulnerable(true);
-                getServer().getScheduler().runTaskLater(this, () -> player.setInvulnerable(false), 60);
+                BukkitRunnable javaInit = new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        player.setInvulnerable(false);
+                        essentials.getUser(player.getUniqueId()).setNickname(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW + player.getName());
+                    }
+                };
+                javaInit.runTaskLater(this, 60);
             }
         }
     }
