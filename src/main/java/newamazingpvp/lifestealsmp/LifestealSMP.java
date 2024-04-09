@@ -159,7 +159,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
                 getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** help");
             }
         };
-        broadcastTask.runTaskTimer(this, 0, 30 * 60 * 20);
+        helpTask.runTaskTimer(this, 0, 30 * 60 * 20);
         BukkitRunnable broadcastShopTask = new BukkitRunnable() {
             @Override
             public void run() {
