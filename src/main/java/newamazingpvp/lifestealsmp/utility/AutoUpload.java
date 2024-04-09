@@ -93,7 +93,7 @@ public class AutoUpload {
     }
 
     public static boolean isAutoUploadEnabled(){
-        return !getApiKey().isEmpty();
+        return !(getApiKey() == null);
     }
 }
 
