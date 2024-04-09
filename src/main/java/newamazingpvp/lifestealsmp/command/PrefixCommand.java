@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.censorBlacklistedWords;
+import static newamazingpvp.lifestealsmp.utility.Utils.getPrefix;
 import static newamazingpvp.lifestealsmp.utility.Utils.setPrefix;
 
 public class PrefixCommand implements CommandExecutor {
@@ -27,6 +28,7 @@ public class PrefixCommand implements CommandExecutor {
                 }
 
                 setPrefix(player, originalMessage);
+                player.sendMessage(ChatColor.RED + "You successfully updated your prefix /n" + getPrefix(player));
             }
         }
         return true;
