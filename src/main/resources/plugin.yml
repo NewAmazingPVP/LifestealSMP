@@ -123,3 +123,8 @@ commands:
     usage: /gibIce
     permission: lifestealSMP.admin
     default: op
+  lockPlayer:
+    description: Locks player and does not let them do anything (for moderation)
+    usage: /lock <player>
+    permission: lifestealSMP.admin
+    default: op
