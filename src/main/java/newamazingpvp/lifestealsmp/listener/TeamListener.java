@@ -68,7 +68,7 @@ public class TeamListener implements Listener {
     }
 
     public boolean potentialSpam(Player p, String s){
-        return avoidSpam.get(p).toLowerCase().contains(s.toLowerCase());
+        return avoidSpam.get(p).toLowerCase().equals(s.toLowerCase());
     }
 
 
