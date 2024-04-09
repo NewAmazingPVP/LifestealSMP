@@ -28,7 +28,7 @@ public class PrefixCommand implements CommandExecutor {
                 }
 
                 setPrefix(player, originalMessage);
-                player.sendMessage(ChatColor.RED + "You successfully updated your prefix /n" + getPrefix(player));
+                player.sendMessage(ChatColor.GREEN + "You successfully updated your prefix \n" + ChatColor.RESET + getPrefix(player));
             }
         }
         return true;

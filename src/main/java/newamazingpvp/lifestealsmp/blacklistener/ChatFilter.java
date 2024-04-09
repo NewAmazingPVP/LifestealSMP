@@ -48,12 +48,15 @@ public class ChatFilter implements Listener {
 
         if (!originalMessage.equals(censoredMessage)) {
             event.setMessage(censoredMessage);
-            player.sendMessage(ChatColor.RED + "Some words in your message were inappropriate and have been censored.");
+            player.sendMessage(ChatColor.RED + "Some words or links in your message were inappropriate and have been censored.");
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
         }
     }
 
     public static String censorBlacklistedWords(String message) {
+        // Block URLs
+        message = message.replaceAll("(?i)\\b((?:https?|ftp|file)://[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])\\b", "*URL_BLOCKED*");
+
         StringBuilder messageWithoutSpecialChars = new StringBuilder();
         StringBuilder specialChars = new StringBuilder();
 

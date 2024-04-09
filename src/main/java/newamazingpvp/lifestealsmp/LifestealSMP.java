@@ -211,9 +211,17 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             event.setJoinMessage("");
             getServer().dispatchCommand(getServer().getConsoleSender(), "vanish NewAmazingPVP");
         }
-        if(!essentials.getUser(player.getUniqueId()).getNickname().equals(player.getName())) {
-            setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW);
-        }
+
+        BukkitRunnable prefix = new BukkitRunnable() {
+            @Override
+            public void run() {
+
+                if(essentials.getUser(player.getUniqueId()).getNickname().equals(player.getName())) {
+                    setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW);
+                }
+            }
+        };
+        prefix.runTaskTimer(this, 0, 0L);
         if (!player.hasPlayedBefore()) {
             player.setInvulnerable(true);
             getServer().getScheduler().runTaskLater(this, () -> player.setInvulnerable(false), 200);
@@ -226,9 +234,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
                     @Override
                     public void run() {
                         player.setInvulnerable(false);
-                        if(!essentials.getUser(player.getUniqueId()).getNickname().equals(player.getName())) {
-                            setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW);
-                        }
+                        prefix.cancel();
                     }
                 };
                 bedrockInit.runTaskLater(this, 120);
@@ -238,9 +244,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
                     @Override
                     public void run() {
                         player.setInvulnerable(false);
-                        if(!essentials.getUser(player.getUniqueId()).getNickname().equals(player.getName())) {
-                            setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW);
-                        }
+                        prefix.cancel();
                     }
                 };
                 javaInit.runTaskLater(this, 60);
