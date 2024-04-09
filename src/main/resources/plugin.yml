@@ -73,11 +73,9 @@ commands:
     usage: /reviveplayer <name>
     permission: lifestealSMP.admin
     default: op
-  customprefix:
-    description: Custom prefix for player!
-    usage: /customprefix <player> <prefix>
-    permission: lifestealSMP.admin
-    default: op
+  prefix:
+    description: Set a custom prefix!
+    usage: /prefix <prefix>
   vision:
     description: Enable full night vision
     usage: /vision

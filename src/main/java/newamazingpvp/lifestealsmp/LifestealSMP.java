@@ -51,6 +51,7 @@ import static newamazingpvp.lifestealsmp.utility.AutoUpload.isAutoUploadEnabled;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.startReleaseChecker;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.*;
 import static newamazingpvp.lifestealsmp.utility.LogAppender.consoleChannel;
+import static newamazingpvp.lifestealsmp.utility.Utils.setPrefix;
 import static org.bukkit.Bukkit.getPlayer;
 
 public final class LifestealSMP extends JavaPlugin implements Listener, PluginMessageListener {
@@ -103,6 +104,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("team").setTabCompleter(new TeamCommand());
         getCommand("ally").setExecutor(new AllyCommand());
         getCommand("ally").setTabCompleter(new AllyCommand());
+        getCommand("prefix").setExecutor(new PrefixCommand());
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
@@ -209,7 +211,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             event.setJoinMessage("");
             getServer().dispatchCommand(getServer().getConsoleSender(), "vanish NewAmazingPVP");
         }
-        essentials.getUser(player.getUniqueId()).setNickname(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW + player.getName());
+        setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW);
 
         if (!player.hasPlayedBefore()) {
             player.setInvulnerable(true);
@@ -223,7 +225,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
                     @Override
                     public void run() {
                         player.setInvulnerable(false);
-                        essentials.getUser(player.getUniqueId()).setNickname(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW + player.getName());
+                        if(!essentials.getUser(player.getUniqueId()).getNickname().equals(player.getName())) {
+                            setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW);
+                        }
                     }
                 };
                 bedrockInit.runTaskLater(this, 120);
@@ -233,7 +237,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
                     @Override
                     public void run() {
                         player.setInvulnerable(false);
-                        essentials.getUser(player.getUniqueId()).setNickname(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW + player.getName());
+                        if(!essentials.getUser(player.getUniqueId()).getNickname().equals(player.getName())) {
+                            setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW);
+                        }
                     }
                 };
                 javaInit.runTaskLater(this, 60);
