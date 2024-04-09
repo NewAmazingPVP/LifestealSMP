@@ -13,6 +13,7 @@ import newamazingpvp.lifestealsmp.game.Compass;
 import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
 import newamazingpvp.lifestealsmp.listener.*;
 import newamazingpvp.lifestealsmp.cometwip.GiveSekhmetSetSpeedADMINONLY;
+import newamazingpvp.lifestealsmp.modTools.lockPlayer;
 import newamazingpvp.lifestealsmp.utility.LogAppender;
 import org.apache.logging.log4j.LogManager;
 import org.bukkit.Bukkit;
@@ -101,7 +102,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("team").setTabCompleter(new TeamCommand());
         getCommand("ally").setExecutor(new AllyCommand());
         getCommand("ally").setTabCompleter(new AllyCommand());
-        //getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
+        getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
+        getCommand("lockPlayer").setExecutor(new lockPlayer());
+
 
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
@@ -139,7 +142,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new TeamListener(), this);
         getServer().getPluginManager().registerEvents(new DiscordListener(), this);
         getServer().getPluginManager().registerEvents(new NewbieProgression(), this);
-        //getServer().getPluginManager().registerEvents(new IceCube(), this);
+        getServer().getPluginManager().registerEvents(new IceCube(), this);
         //getServer().getPluginManager().registerEvents(new AntiPieRay(), this);
         //getServer().getPluginManager().registerEvents(new DisableEnderDragonEgg(), this);
         //getServer().getPluginManager().registerEvents(new TpsEvent(), this);
