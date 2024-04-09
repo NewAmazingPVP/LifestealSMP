@@ -51,7 +51,7 @@ public class PlayerPing {
                         sendDiscordEmbedPlayer("High ping during combat! Untagging player and kicking them!", Color.RED, "", player.getName());
                     }
                     player.kickPlayer(ChatColor.RED + "Your ping is too high! You are disconnected for your own safety!");
-                    String s = player.getName() + " got kicked for high ping! NO PING SPOOFING1!!1!!!1111!!";
+                    String s = player.getName() + " got kicked for high ping! NO PING SPOOFING!!!";
                     getServer().broadcastMessage(s);
                     sendDiscordEmbedPlayer(s, Color.RED, "", player.getName());
                 }
