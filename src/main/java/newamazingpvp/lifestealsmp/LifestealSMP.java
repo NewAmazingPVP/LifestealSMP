@@ -211,8 +211,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             event.setJoinMessage("");
             getServer().dispatchCommand(getServer().getConsoleSender(), "vanish NewAmazingPVP");
         }
-        setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW);
-
+        if(!essentials.getUser(player.getUniqueId()).getNickname().equals(player.getName())) {
+            setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW);
+        }
         if (!player.hasPlayedBefore()) {
             player.setInvulnerable(true);
             getServer().getScheduler().runTaskLater(this, () -> player.setInvulnerable(false), 200);
@@ -226,7 +227,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
                     public void run() {
                         player.setInvulnerable(false);
                         if(!essentials.getUser(player.getUniqueId()).getNickname().equals(player.getName())) {
-                            setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW);
+                            setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW);
                         }
                     }
                 };
@@ -238,7 +239,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
                     public void run() {
                         player.setInvulnerable(false);
                         if(!essentials.getUser(player.getUniqueId()).getNickname().equals(player.getName())) {
-                            setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW);
+                            setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW);
                         }
                     }
                 };
