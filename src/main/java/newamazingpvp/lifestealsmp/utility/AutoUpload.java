@@ -37,7 +37,7 @@ public class AutoUpload {
         try {
             URL url = new URL(RELEASE_URL);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            if(getApiKey().isEmpty()) return;
+            if(!isAutoUploadEnabled()) return;
             connection.setRequestProperty("Authorization", "Token " + getApiKey());
 
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
@@ -90,6 +90,10 @@ public class AutoUpload {
             lifestealSmp.getServer().broadcastMessage(ChatColor.RED + "Failed to download plugin: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    public static boolean isAutoUploadEnabled(){
+        return !getApiKey().isEmpty();
     }
 }
 
