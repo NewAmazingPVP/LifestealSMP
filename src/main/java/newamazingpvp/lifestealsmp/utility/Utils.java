@@ -20,7 +20,7 @@ public class Utils {
     }
 
     public static void setPrefix(Player p, String s){
-        essentials.getUser(p.getUniqueId()).setNickname(ChatColor.translateAlternateColorCodes('&', s) + p.getName());
+        essentials.getUser(p.getUniqueId()).setNickname(ChatColor.translateAlternateColorCodes('&', s) + " " + p.getName());
     }
 
 }
