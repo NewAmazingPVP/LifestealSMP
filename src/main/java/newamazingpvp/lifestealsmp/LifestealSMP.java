@@ -47,6 +47,7 @@ import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.game.PlayerPing.monitorPlayerPings;
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlacklist;
+import static newamazingpvp.lifestealsmp.utility.AutoUpload.isAutoUploadEnabled;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.startReleaseChecker;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.*;
 import static newamazingpvp.lifestealsmp.utility.LogAppender.consoleChannel;
@@ -102,10 +103,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("team").setTabCompleter(new TeamCommand());
         getCommand("ally").setExecutor(new AllyCommand());
         getCommand("ally").setTabCompleter(new AllyCommand());
-        //getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
-        //getCommand("lockPlayer").setExecutor(new lockPlayer());
-
-
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
@@ -120,20 +117,12 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new TreeChopAxe(), this);
         getServer().getPluginManager().registerEvents(new PlayerInCombat(), this);
         getServer().getPluginManager().registerEvents(new CustomHeartItems(), this);
-        //getServer().getPluginManager().registerEvents(new MontuStaffLeft(), this);
-        //getServer().getPluginManager().registerEvents(new MontuStaffRight(), this);
-        //getServer().getPluginManager().registerEvents(new MontuStaffShiftLeft(), this);
-        //getServer().getPluginManager().registerEvents(new MontuStaffShiftRight(), this);
         getServer().getPluginManager().registerEvents(new AnvilMenuListener(), this);
         getServer().getPluginManager().registerEvents(new EndFightRestrictions(), this);
         getServer().getPluginManager().registerEvents(new AntiUseListener(), this);
-        //getServer().getPluginManager().registerEvents(new SekhmetStaffDrops(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoiningServer(), this);
         getServer().getPluginManager().registerEvents(new ChatFilter(), this);
         getServer().getPluginManager().registerEvents(new HomingBow(), this);
-        //getServer().getPluginManager().registerEvents(new OtherCustomDrops(), this);
-        //getServer().getPluginManager().registerEvents(new VoidWalkerHelm(), this);
-        //getServer().getPluginManager().registerEvents(new VoidWalkerHelmEffects(), this);
         getServer().getPluginManager().registerEvents(new GracePeriod(), this);
         getServer().getPluginManager().registerEvents(new ReviveBeacon(), this);
         getServer().getPluginManager().registerEvents(new CombatLogListener(), this);
@@ -142,10 +131,23 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new TeamListener(), this);
         getServer().getPluginManager().registerEvents(new DiscordListener(), this);
         getServer().getPluginManager().registerEvents(new NewbieProgression(), this);
-        //getServer().getPluginManager().registerEvents(new IceCube(), this);
         //getServer().getPluginManager().registerEvents(new AntiPieRay(), this);
         //getServer().getPluginManager().registerEvents(new DisableEnderDragonEgg(), this);
         //getServer().getPluginManager().registerEvents(new TpsEvent(), this);
+        //TODO: Use this for beta things
+        if(isAutoUploadEnabled()) {
+            getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
+            getCommand("lockPlayer").setExecutor(new lockPlayer());
+            getServer().getPluginManager().registerEvents(new IceCube(), this);
+            //getServer().getPluginManager().registerEvents(new OtherCustomDrops(), this);
+            //getServer().getPluginManager().registerEvents(new VoidWalkerHelm(), this);
+            //getServer().getPluginManager().registerEvents(new VoidWalkerHelmEffects(), this);
+            //getServer().getPluginManager().registerEvents(new SekhmetStaffDrops(), this);
+            //getServer().getPluginManager().registerEvents(new MontuStaffLeft(), this);
+            //getServer().getPluginManager().registerEvents(new MontuStaffRight(), this);
+            //getServer().getPluginManager().registerEvents(new MontuStaffShiftLeft(), this);
+            //getServer().getPluginManager().registerEvents(new MontuStaffShiftRight(), this);
+        }
         getServer().getScheduler().runTaskTimer(this, () -> broadcastServerMessage(), 0, 7200 * 20);
         getServer().getScheduler().runTaskTimer(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** help"), 0, 30 * 60 * 20);
         getServer().getScheduler().runTaskTimer(this, () -> broadcastReportBugs(), 0, 3600 * 20);
