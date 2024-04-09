@@ -44,7 +44,9 @@ public class TeamListener implements Listener {
             }
         } else {
             if(!potentialSpam(p, event.getMessage())) {
-                event.setFormat(essentials.getUser(p.getUniqueId()).getNickname() + ChatColor.WHITE + ": " + event.getMessage());
+                if(essentials.getUser(p.getUniqueId()).getNickname() != null) {
+                    event.setFormat(essentials.getUser(p.getUniqueId()).getNickname() + ChatColor.WHITE + ": " + event.getMessage());
+                }
                 avoidSpam.put(p, event.getMessage());
             } else {
                 event.setCancelled(true);
