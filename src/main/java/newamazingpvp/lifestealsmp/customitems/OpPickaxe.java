@@ -54,7 +54,7 @@ public class OpPickaxe implements Listener {
             if (hasLore(item)) {
                 Block block = event.getBlock();
                 if (player.isSneaking()) return;
-                if(blackList.contains(block.getType())) return;
+                if(blackList.contains(block.getType()) || block.getType().toString().toLowerCase().contains("shulker_box")) return;
                 breakBlocksAround(block, item);
                 item.setDurability((short) (item.getDurability() + 1));
                 event.setCancelled(true);
@@ -82,7 +82,7 @@ public class OpPickaxe implements Listener {
                     for (int y = -1; y <= 1; y++) {
                         for (int z = -1; z <= 1; z++) {
                             Block targetBlock = centerBlock.getRelative(x, y, z);
-                            if (!blackList.contains(targetBlock.getType())
+                            if (!(blackList.contains(targetBlock.getType()) || targetBlock.getType().toString().toLowerCase().contains("shulker_box"))
                                     && targetBlock.getType().toString().equalsIgnoreCase(centerBlock.getType().toString()) &&
                                     !(targetBlock.getLocation().getX() == centerBlock.getLocation().getX() && targetBlock.getLocation().getY() == centerBlock.getLocation().getY()
                                             && targetBlock.getLocation().getZ() == centerBlock.getLocation().getZ())) {
@@ -99,7 +99,7 @@ public class OpPickaxe implements Listener {
                         }
                     }
                 }
-                if(!blackList.contains(centerBlock.getType())) {
+                if(!(blackList.contains(centerBlock.getType()) || centerBlock.getType().toString().toLowerCase().contains("shulker_box"))) {
                     Collection<ItemStack> centerDrops = centerBlock.getDrops(item);
 
                     for (ItemStack drop : centerDrops) {

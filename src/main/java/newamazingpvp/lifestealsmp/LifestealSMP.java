@@ -211,6 +211,10 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         if (!player.hasPlayedBefore()) {
             player.setInvulnerable(true);
             getServer().getScheduler().runTaskLater(this, () -> player.setInvulnerable(false), 200);
+            setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW);
+            getServer().getScheduler().runTaskLater(this, () -> setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW), 60);
+            getServer().getScheduler().runTaskLater(this, () -> setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW), 120);
+            getServer().getScheduler().runTaskLater(this, prefix::cancel, 200);
             getServer().dispatchCommand(player, "guide");
             //player.teleport(lobby);
         } else {
