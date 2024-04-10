@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.command;
+package newamazingpvp.lifestealsmp.nextSmpBeta;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
