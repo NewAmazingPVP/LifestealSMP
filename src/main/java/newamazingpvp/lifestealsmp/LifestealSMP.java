@@ -1,9 +1,6 @@
 package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
-import com.google.common.collect.Iterables;
-import com.google.common.io.ByteArrayDataOutput;
-import com.google.common.io.ByteStreams;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import newamazingpvp.lifestealsmp.blacklistener.*;
 import newamazingpvp.lifestealsmp.command.*;
@@ -13,32 +10,21 @@ import newamazingpvp.lifestealsmp.game.Compass;
 import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
 import newamazingpvp.lifestealsmp.listener.*;
 import newamazingpvp.lifestealsmp.cometwip.GiveSekhmetSetSpeedADMINONLY;
-import newamazingpvp.lifestealsmp.modTools.lockPlayer;
-import newamazingpvp.lifestealsmp.utility.LogAppender;
-import org.apache.logging.log4j.LogManager;
+import newamazingpvp.lifestealsmp.nextSmpBeta.REMOVE_THIS_COMMAND_GIVE_ICE;
+import newamazingpvp.lifestealsmp.nextSmpBeta.lockPlayer;
+import newamazingpvp.lifestealsmp.nextSmpBeta.IceCube;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
-import org.json.simple.JSONObject;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 import static newamazingpvp.lifestealsmp.discord.DiscordListener.isVanished;
 import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
