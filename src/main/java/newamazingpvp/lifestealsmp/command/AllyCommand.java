@@ -18,7 +18,7 @@ import static newamazingpvp.lifestealsmp.game.TeamsManager.*;
 
 public class AllyCommand implements CommandExecutor, TabCompleter {
 
-    private final ArrayList<String> allyFirstIndex = new ArrayList<>(List.of("invite", "accept", "chat", "kick", "leave", "list", "members"));
+    private final ArrayList<String> allyFirstIndex = new ArrayList<>(List.of("invite", "help", "accept", "chat", "kick", "leave", "list", "members"));
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player p = (Player) sender;

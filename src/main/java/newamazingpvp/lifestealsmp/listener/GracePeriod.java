@@ -24,7 +24,7 @@ import static newamazingpvp.lifestealsmp.game.TeamsManager.onSameTeam;
 import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 
 public class GracePeriod implements Listener {
-    public List<String> names = new ArrayList<>();
+    public static List<String> names = new ArrayList<>();
     public List<String> newbieViolate = new ArrayList<>();
 
     @EventHandler

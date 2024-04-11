@@ -32,16 +32,18 @@ public class TeamListener implements Listener {
         Player p = event.getPlayer();
         if(isPlayerInTeamChat(p)){
             event.setCancelled(true);
-            if(!potentialSpam(p, event.getMessage())) {
+            sendTeamMessage(p, event.getMessage());
+            /*if(!potentialSpam(p, event.getMessage())) {
                 sendTeamMessage(p, event.getMessage());
                 avoidSpam.put(p, event.getMessage());
-            }
+            }*/
         } else if(isPlayerInAllyChat(p)) {
             event.setCancelled(true);
-            if(!potentialSpam(p, event.getMessage())) {
+            sendAllyMessage(p, event.getMessage());
+            /*if(!potentialSpam(p, event.getMessage())) {
                 sendAllyMessage(p, event.getMessage());
                 avoidSpam.put(p, event.getMessage());
-            }
+            }*/
         } else {
             if(!potentialSpam(p, event.getMessage())) {
                 if(essentials.getUser(p.getUniqueId()).getNickname() != null) {
