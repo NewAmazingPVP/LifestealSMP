@@ -13,6 +13,7 @@ import newamazingpvp.lifestealsmp.cometwip.GiveSekhmetSetSpeedADMINONLY;
 import newamazingpvp.lifestealsmp.nextSmpBeta.REMOVE_THIS_COMMAND_GIVE_ICE;
 import newamazingpvp.lifestealsmp.nextSmpBeta.lockPlayer;
 import newamazingpvp.lifestealsmp.nextSmpBeta.IceCube;
+import newamazingpvp.lifestealsmp.nextSmpBeta.pingWars;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -91,6 +92,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("ally").setExecutor(new AllyCommand());
         getCommand("ally").setTabCompleter(new AllyCommand());
         getCommand("prefix").setExecutor(new PrefixCommand());
+        getCommand("pingWars").setExecutor(new pingWars());
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
