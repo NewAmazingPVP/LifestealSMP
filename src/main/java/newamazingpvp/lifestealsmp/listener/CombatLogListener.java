@@ -17,6 +17,7 @@ import java.util.List;
 
 import static newamazingpvp.lifestealsmp.game.CombatLog.*;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.extraHeart;
+import static newamazingpvp.lifestealsmp.listener.GracePeriod.names;
 
 public class CombatLogListener implements Listener {
     @EventHandler
@@ -27,42 +28,44 @@ public class CombatLogListener implements Listener {
 
     @EventHandler
     public void onPlayerDisconnect(PlayerQuitEvent e) {
-        if (isInCombat(e.getPlayer())) {
-            Player p = e.getPlayer();
+        if (!names.contains(e.getPlayer().getName())) {
+            if (isInCombat(e.getPlayer())) {
+                Player p = e.getPlayer();
 
-            if (getCombatTimer(p) < 85) {
-                p.setMaxHealth(p.getMaxHealth() - 2);
-                Player winner = getEnemies(p).get(getEnemies(p).size() - 1);
-                if (!(winner.getMaxHealth() > 38)) {
-                    winner.setMaxHealth(winner.getMaxHealth() + 2);
-                } else {
-                    if (winner.getInventory().firstEmpty() != -1) {
-                        winner.getInventory().addItem(extraHeart());
-                        winner.sendMessage(ChatColor.DARK_PURPLE + "You were given heart item because you reached max health!");
+                if (getCombatTimer(p) < 85) {
+                    p.setMaxHealth(p.getMaxHealth() - 2);
+                    Player winner = getEnemies(p).get(getEnemies(p).size() - 1);
+                    if (!(winner.getMaxHealth() > 38)) {
+                        winner.setMaxHealth(winner.getMaxHealth() + 2);
                     } else {
-                        World world = winner.getWorld();
-                        world.dropItem(winner.getLocation(), extraHeart());
-                        winner.sendMessage(ChatColor.LIGHT_PURPLE + "Heart was dropped because your inventory was full");
+                        if (winner.getInventory().firstEmpty() != -1) {
+                            winner.getInventory().addItem(extraHeart());
+                            winner.sendMessage(ChatColor.DARK_PURPLE + "You were given heart item because you reached max health!");
+                        } else {
+                            World world = winner.getWorld();
+                            world.dropItem(winner.getLocation(), extraHeart());
+                            winner.sendMessage(ChatColor.LIGHT_PURPLE + "Heart was dropped because your inventory was full");
+                        }
                     }
                 }
-            }
-            p.setHealth(0.0);
+                p.setHealth(0.0);
 
 
-            ItemStack[] inventoryContents = p.getInventory().getContents();
+                ItemStack[] inventoryContents = p.getInventory().getContents();
 
-            for (int i = 0; i < inventoryContents.length; i++) {
-                if (inventoryContents[i] == null) {
-                    inventoryContents[i] = new ItemStack(Material.AIR);
+                for (int i = 0; i < inventoryContents.length; i++) {
+                    if (inventoryContents[i] == null) {
+                        inventoryContents[i] = new ItemStack(Material.AIR);
+                    }
                 }
+
+                String deathMessage = p.getName() + " was killed instantly due to logging out during combat!";
+                PlayerDeathEvent deathEvent = new PlayerDeathEvent(p, List.of(inventoryContents), 0, 0, 0, 0, deathMessage);
+                Bukkit.getPluginManager().callEvent(deathEvent);
+
+                cancelCombatData(e.getPlayer());
+                removeEnemies(e.getPlayer());
             }
-
-            String deathMessage = p.getName() + " was killed instantly due to logging out during combat!";
-            PlayerDeathEvent deathEvent = new PlayerDeathEvent(p, List.of(inventoryContents), 0, 0, 0, 0, deathMessage);
-            Bukkit.getPluginManager().callEvent(deathEvent);
-
-            cancelCombatData(e.getPlayer());
-            removeEnemies(e.getPlayer());
         }
     }
 

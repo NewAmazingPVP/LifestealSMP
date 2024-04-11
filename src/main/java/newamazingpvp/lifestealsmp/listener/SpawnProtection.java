@@ -18,6 +18,7 @@ import org.bukkit.event.entity.*;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.silentMode;
 import static newamazingpvp.lifestealsmp.game.CombatLog.isInCombat;
 import static newamazingpvp.lifestealsmp.variables.Loc.*;
 
@@ -60,7 +61,7 @@ public class SpawnProtection implements Listener {
     @EventHandler
     public void spawnBlockBreak(BlockBreakEvent event) {
         if (isWithinSpawnRadius(event.getBlock().getLocation())) {
-            //if(event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
+            if(silentMode && event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
             event.setCancelled(true);
             event.getPlayer().sendMessage(ChatColor.RED + "You cannot break blocks within the spawn area, go around 50-100 blocks away to be able to");
         }
@@ -69,7 +70,7 @@ public class SpawnProtection implements Listener {
     @EventHandler
     public void spawnBlockPlace(BlockPlaceEvent event) {
         if (isWithinSpawnRadius(event.getBlock().getLocation())) {
-            //if(event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
+            if(silentMode && event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
             event.setCancelled(true);
             event.getPlayer().sendMessage(ChatColor.RED + "You cannot place blocks within the spawn area, go around 50-100 blocks away to be able to");
         }
@@ -78,6 +79,7 @@ public class SpawnProtection implements Listener {
     @EventHandler
     public void spawnBlockPlace(PlayerInteractEvent event) {
         if (isWithinSpawnRadius(event.getPlayer().getLocation())) {
+            if(silentMode && event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
             /*if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.LAVA_BUCKET
                     || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.FIRE_CHARGE
                     || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.FLINT_AND_STEEL
