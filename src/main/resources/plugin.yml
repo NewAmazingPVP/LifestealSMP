@@ -128,3 +128,8 @@ commands:
     usage: /lock <player>
     permission: lifestealSMP.admin
     default: op
+  pingWars:
+    description: PING WARS
+    usage: /pingwars
+    permission: lifestealSMP.admin
+    default: op
