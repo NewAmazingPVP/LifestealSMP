@@ -9,6 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
@@ -22,6 +23,8 @@ public class pingWars implements CommandExecutor {
 
             List<Integer> pings = new ArrayList<>();
 
+            List<Player> playersWithHighestPing = new ArrayList<>();
+
             Bukkit.broadcastMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "" + "==========" + "" + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "" + " [Ping Wars] " + "" + ChatColor.AQUA + "" + ChatColor.BOLD + "" + "==========");
 
 
@@ -33,13 +36,18 @@ public class pingWars implements CommandExecutor {
 
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.GRAY + "" + "Loading..."), 15);
 
-            
+            int highestPing = Collections.max(pings);
+
+
+            for (Player onlinePlayer : player.getServer().getOnlinePlayers()) {
+                if (onlinePlayer.getPing() == highestPing) {
+                    playersWithHighestPing.add(onlinePlayer);
+                }
+            }
 
 
 
-
-
-            }else{
+        }else{
                 sender.sendMessage("This command can only be executed by a player.");
             }
             return true;
