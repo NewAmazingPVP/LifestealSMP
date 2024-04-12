@@ -28,11 +28,12 @@ public class runesDrops implements Listener {
         meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + "" + ChatColor.GOLD + "" + ChatColor.BOLD + "Wither Rune" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" );
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> LORE = new ArrayList<>();
+        LORE.add(" ");
         LORE.add(ChatColor.DARK_PURPLE + "" + "[Can be combined to any weapon]");
         LORE.add(" ");
         LORE.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "RUNE ABILITY:");
-        LORE.add(ChatColor.LIGHT_PURPLE + "Will give with affect to");
-        LORE.add(ChatColor.LIGHT_PURPLE + "anything you damage " + ChatColor.DARK_PURPLE + "5sec");
+        LORE.add(ChatColor.LIGHT_PURPLE + "Will give wither effect to");
+        LORE.add(ChatColor.LIGHT_PURPLE + "anything you damage! " + ChatColor.DARK_PURPLE + "5sec");
         meta.setLore(LORE);
         ITEM.setItemMeta(meta);
         return ITEM;
@@ -53,11 +54,10 @@ public class runesDrops implements Listener {
 
         if (Math.random() <= 0.5) {
             e.getDrops().add(witherRune());
-            //e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), new ItemStack(CorruptedMobSoul()));
             killer.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "RUNE DROP!" + ChatColor.GOLD + " Wither Rune");
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 0.0f), 3);
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f), 6);
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 3.0f), 9);
+            for (int i = 0; i < 5; i++) {
+                Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 5.0f, 0.0f), 3);
+            }
             e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
         }
     }
