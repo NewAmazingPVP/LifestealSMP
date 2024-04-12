@@ -53,8 +53,7 @@ public class pingWars implements CommandExecutor {
             }
 
             players.sort(Comparator.comparingInt(Player::getPing));
-
-            sender.sendMessage("Top 3 players with the lowest pings:");
+            
             for (int i = 0; i < Math.min(3, players.size()); i++) {
                 Player p = players.get(i);
                 if(i==0){
