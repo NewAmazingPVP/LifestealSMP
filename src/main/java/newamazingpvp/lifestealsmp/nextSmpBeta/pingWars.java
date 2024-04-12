@@ -95,14 +95,14 @@ public class pingWars implements CommandExecutor {
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "" + "First : " + "" + ChatColor.GREEN + "" + ChatColor.BOLD + "" + finalFirst + "" + ChatColor.AQUA + "" + ChatColor.BOLD + "" + " : " + "" + finalFirstMS + "" + " MS"), 40);
             String finalSecond = second;
             int finalSecondMS = secondMS;
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "" + "second : " + "" +  ChatColor.GREEN + "" + ChatColor.BOLD + "" +finalSecond + "" + ChatColor.AQUA + "" + ChatColor.BOLD + "" + " : " + "" + finalSecondMS + "" + " MS"), 40);
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "" + "Second : " + "" +  ChatColor.GREEN + "" + ChatColor.BOLD + "" +finalSecond + "" + ChatColor.AQUA + "" + ChatColor.BOLD + "" + " : " + "" + finalSecondMS + "" + " MS"), 40);
             String finalThird = third;
             int finalThirdMS = thirdMS;
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "" + "third : " + "" + ChatColor.GREEN + "" + ChatColor.BOLD + "" +  finalThird + "" + ChatColor.AQUA + "" + ChatColor.BOLD + "" + " : " + "" + finalThirdMS + "" + " MS"), 40);
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "" + "Third : " + "" + ChatColor.GREEN + "" + ChatColor.BOLD + "" +  finalThird + "" + ChatColor.AQUA + "" + ChatColor.BOLD + "" + " : " + "" + finalThirdMS + "" + " MS"), 40);
 
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(" "), 40);
 
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "" + "Player with highest ping: " + "" + finalPlayerWithHighestPing), 40);
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "" + "Player With Highest Ping: " + "" + finalPlayerWithHighestPing), 40);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(" "), 40);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "" + "==============================="), 40);
 
