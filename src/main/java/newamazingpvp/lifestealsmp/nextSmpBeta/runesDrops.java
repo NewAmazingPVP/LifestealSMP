@@ -61,7 +61,7 @@ public class runesDrops implements Listener {
         ItemMeta meta = ITEM.getItemMeta();
         meta.addEnchant(Enchantment.DURABILITY, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        meta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.MAGIC + "E" + "" + ChatColor.AQUA + "" + ChatColor.BOLD + " Hell Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" );
+        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + "" + ChatColor.DARK_RED + "" + ChatColor.BOLD + " Hell Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" );
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> LORE = new ArrayList<>();
         LORE.add(ChatColor.DARK_PURPLE + "" + "[Can be combined to any sword or axe]");
@@ -74,9 +74,42 @@ public class runesDrops implements Listener {
         return ITEM;
     }
 
-    
+    public static ItemStack trollRune () {
+        ItemStack ITEM = new ItemStack(Material.BROWN_DYE);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        meta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.MAGIC + "E" + "" + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " Troll Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" );
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        List<String> LORE = new ArrayList<>();
+        LORE.add(ChatColor.DARK_PURPLE + "" + "[Can be combined leather armor]");
+        LORE.add(" ");
+        LORE.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "RUNE ABILITY:");
+        LORE.add(ChatColor.LIGHT_PURPLE + "When you have leather armor");
+        LORE.add(ChatColor.LIGHT_PURPLE + "on, gain resistance 5");
+        meta.setLore(LORE);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
 
-
+    public static ItemStack lightningRune () {
+        ItemStack ITEM = new ItemStack(Material.YELLOW_DYE);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        meta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.MAGIC + "E" + "" + ChatColor.YELLOW + "" + ChatColor.BOLD + " Lightning Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" );
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        List<String> LORE = new ArrayList<>();
+        LORE.add(ChatColor.DARK_PURPLE + "" + "[Can be combined to any weapon]");
+        LORE.add(" ");
+        LORE.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "RUNE ABILITY:");
+        LORE.add(ChatColor.LIGHT_PURPLE + "Gain a small chance to");
+        LORE.add(ChatColor.LIGHT_PURPLE + "strike a player with lightning");
+        LORE.add(ChatColor.LIGHT_PURPLE + "dealing" + ChatColor.DARK_RED + " TRUE DAMAGE! 5HP");
+        meta.setLore(LORE);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
 
 
 
@@ -89,9 +122,45 @@ public class runesDrops implements Listener {
 
         if (killer == null) return;
 
-        if (Math.random() <= 0.5) {
+        if (Math.random() <= 1) {
             e.getDrops().add(witherRune());
             killer.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "RUNE DROP!" + ChatColor.GOLD + " Wither Rune");
+            for (int i = 0; i < 5; i++) {
+                Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 5.0f, 0.0f), 3);
+            }
+            e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
+        }
+
+        if (Math.random() <= 1) {
+            e.getDrops().add(aquaRune());
+            killer.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "RUNE DROP!" + ChatColor.GOLD + " Aqua Rune");
+            for (int i = 0; i < 5; i++) {
+                Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 5.0f, 0.0f), 3);
+            }
+            e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
+        }
+
+        if (Math.random() <= 1) {
+            e.getDrops().add(hellRune());
+            killer.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "RUNE DROP!" + ChatColor.GOLD + " Hell Rune");
+            for (int i = 0; i < 5; i++) {
+                Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 5.0f, 0.0f), 3);
+            }
+            e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
+        }
+
+        if (Math.random() <= 1) {
+            e.getDrops().add(trollRune());
+            killer.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "RUNE DROP!" + ChatColor.GOLD + " Troll Rune");
+            for (int i = 0; i < 5; i++) {
+                Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 5.0f, 0.0f), 3);
+            }
+            e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
+        }
+
+        if (Math.random() <= 1) {
+            e.getDrops().add(lightningRune());
+            killer.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "RUNE DROP!" + ChatColor.GOLD + " Lightning Rune");
             for (int i = 0; i < 5; i++) {
                 Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 5.0f, 0.0f), 3);
             }
