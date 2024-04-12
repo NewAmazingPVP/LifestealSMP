@@ -9,6 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
@@ -24,6 +25,7 @@ public class pingWars implements CommandExecutor {
             int highestPing = 0;
             String playerWithHighestPing = "";
             List<String> pings = new ArrayList<>();
+            List<Player> players = new ArrayList<>(Bukkit.getOnlinePlayers());
 
             pings.clear();
 
@@ -39,10 +41,20 @@ public class pingWars implements CommandExecutor {
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.GRAY + "" + "Grabbing Info..."), 10);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.GRAY + "" + "Loading..."), 15);
 
-            //List of pings
+            //List of pings and top 3 lowest
             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
                 pings.add(onlinePlayer.getName() + ": " + onlinePlayer.getPing() + "ms");
             }
+
+            players.sort(Comparator.comparingInt(Player::getPing));
+
+            sender.sendMessage("Top 3 players with the lowest pings:");
+            for (int i = 0; i < Math.min(3, players.size()); i++) {
+                Player p = players.get(i);
+                sender.sendMessage(p.getName() + ": " + p.getPing() + "ms");
+            }
+
+
 
 
             //Highest Ping
