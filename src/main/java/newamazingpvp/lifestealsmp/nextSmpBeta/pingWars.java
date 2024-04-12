@@ -53,7 +53,7 @@ public class pingWars implements CommandExecutor {
             }
 
             players.sort(Comparator.comparingInt(Player::getPing));
-            
+
             for (int i = 0; i < Math.min(3, players.size()); i++) {
                 Player p = players.get(i);
                 if(i==0){
@@ -92,13 +92,13 @@ public class pingWars implements CommandExecutor {
 
             String finalFirst = first;
             int finalFirstMS = firstMS;
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "" + "First : " + "" + ChatColor.GREEN + "" + ChatColor.BOLD + "" + finalFirst + "" + ChatColor.AQUA + "" + ChatColor.BOLD + "" + " : " + "" + finalFirstMS), 40);
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "" + "First : " + "" + ChatColor.GREEN + "" + ChatColor.BOLD + "" + finalFirst + "" + ChatColor.AQUA + "" + ChatColor.BOLD + "" + " : " + "" + finalFirstMS + "" + " MS"), 40);
             String finalSecond = second;
             int finalSecondMS = secondMS;
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "" + "second : " + "" +  ChatColor.GREEN + "" + ChatColor.BOLD + "" +finalSecond + "" + ChatColor.AQUA + "" + ChatColor.BOLD + "" + " : " + "" + finalSecondMS), 40);
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "" + "second : " + "" +  ChatColor.GREEN + "" + ChatColor.BOLD + "" +finalSecond + "" + ChatColor.AQUA + "" + ChatColor.BOLD + "" + " : " + "" + finalSecondMS + "" + " MS"), 40);
             String finalThird = third;
             int finalThirdMS = thirdMS;
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "" + "third : " + "" + ChatColor.GREEN + "" + ChatColor.BOLD + "" +  finalThird + "" + ChatColor.AQUA + "" + ChatColor.BOLD + "" + " : " + "" + finalThirdMS), 40);
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "" + "third : " + "" + ChatColor.GREEN + "" + ChatColor.BOLD + "" +  finalThird + "" + ChatColor.AQUA + "" + ChatColor.BOLD + "" + " : " + "" + finalThirdMS + "" + " MS"), 40);
 
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(" "), 40);
 
