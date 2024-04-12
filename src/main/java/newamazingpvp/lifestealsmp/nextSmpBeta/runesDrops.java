@@ -25,10 +25,9 @@ public class runesDrops implements Listener {
         ItemMeta meta = ITEM.getItemMeta();
         meta.addEnchant(Enchantment.DURABILITY, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + "" + ChatColor.GOLD + "" + ChatColor.BOLD + "Wither Rune" + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" );
+        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + "" + ChatColor.GOLD + "" + ChatColor.BOLD + " Wither Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" );
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> LORE = new ArrayList<>();
-        LORE.add(" ");
         LORE.add(ChatColor.DARK_PURPLE + "" + "[Can be combined to any weapon]");
         LORE.add(" ");
         LORE.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "RUNE ABILITY:");
@@ -38,6 +37,44 @@ public class runesDrops implements Listener {
         ITEM.setItemMeta(meta);
         return ITEM;
     }
+
+    public static ItemStack aquaRune () {
+        ItemStack ITEM = new ItemStack(Material.CYAN_DYE);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + "" + ChatColor.AQUA + "" + ChatColor.BOLD + " Aqua Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" );
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        List<String> LORE = new ArrayList<>();
+        LORE.add(ChatColor.DARK_PURPLE + "" + "[Can be combined to any sword or axe]");
+        LORE.add(" ");
+        LORE.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "RUNE ABILITY:");
+        LORE.add(ChatColor.LIGHT_PURPLE + "Gain dolphins grace");
+        LORE.add(ChatColor.LIGHT_PURPLE + "when in water!");
+        meta.setLore(LORE);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
+    public static ItemStack hellRune () {
+        ItemStack ITEM = new ItemStack(Material.RED_DYE);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        meta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.MAGIC + "E" + "" + ChatColor.AQUA + "" + ChatColor.BOLD + " Hell Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" );
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        List<String> LORE = new ArrayList<>();
+        LORE.add(ChatColor.DARK_PURPLE + "" + "[Can be combined to any sword or axe]");
+        LORE.add(" ");
+        LORE.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "RUNE ABILITY:");
+        LORE.add(ChatColor.LIGHT_PURPLE + "Gain strength 1");
+        LORE.add(ChatColor.LIGHT_PURPLE + "when in the nether!");
+        meta.setLore(LORE);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
+    
 
 
 
