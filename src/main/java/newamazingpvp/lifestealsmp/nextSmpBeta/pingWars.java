@@ -27,39 +27,38 @@ public class pingWars implements CommandExecutor {
                 soundLOC1.playSound(soundLOC1.getLocation(), Sound.ENTITY_ENDER_DRAGON_GROWL, 1.0F, 1.0F);
             }
 
-                Bukkit.broadcastMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "" + "==========" + "" + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "" + " [Ping Wars] " + "" + ChatColor.AQUA + "" + ChatColor.BOLD + "" + "==========");
+            Bukkit.broadcastMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "" + "==========" + "" + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "" + " [Ping Wars] " + "" + ChatColor.AQUA + "" + ChatColor.BOLD + "" + "==========");
 
 
-                //Random BS to look "cool"
-                Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.GRAY + "" + "Grabbing Info..."), 10);
-                Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.GRAY + "" + "Loading..."), 15);
+            //Random BS to look "cool"
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.GRAY + "" + "Grabbing Info..."), 10);
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.GRAY + "" + "Loading..."), 15);
 
 
-                //Highest Ping
-                for (Player onlinePlayer : player.getServer().getOnlinePlayers()) {
-                    int currentPing = onlinePlayer.getPing();
-                    if (currentPing > highestPing) {
-                        highestPing = currentPing;
-                        playerWithHighestPing = onlinePlayer.getName();
-                    }
+            //Highest Ping
+            for (Player onlinePlayer : player.getServer().getOnlinePlayers()) {
+                int currentPing = onlinePlayer.getPing();
+                if (currentPing > highestPing) {
+                    highestPing = currentPing;
+                    playerWithHighestPing = onlinePlayer.getName();
                 }
-                String finalPlayerWithHighestPing = playerWithHighestPing;
-
-
-                //Final results display
-                for (Player soundLOC2 : Bukkit.getServer().getOnlinePlayers()) {
-                    soundLOC2.playSound(soundLOC2.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 0.0F);
-                }
-
-                    Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "" + "==========" + "" + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "" + " [Ping Wars] " + "" + ChatColor.AQUA + "" + ChatColor.BOLD + "" + "=========="), 30);
-                    Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(" "), 30);
-                    Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "" + "Player with highest ping: " + "" + finalPlayerWithHighestPing), 30);
-
-
-                }else{
-                    sender.sendMessage("This command can only be executed by a player.");
-                }
-                return true;
             }
-        }
+            String finalPlayerWithHighestPing = playerWithHighestPing;
 
+
+            //Final results display
+            for (Player soundLOC2 : Bukkit.getServer().getOnlinePlayers()) {
+                Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> soundLOC2.playSound(soundLOC2.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 0.0F), 60);
+            }
+
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "" + "==========" + "" + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "" + " [Ping Wars] " + "" + ChatColor.AQUA + "" + ChatColor.BOLD + "" + "=========="), 60);
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(" "), 60);
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "" + "Player with highest ping: " + "" + finalPlayerWithHighestPing), 60);
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "" + "================================="), 60);
+
+        } else {
+            sender.sendMessage("This command can only be executed by a player.");
+        }
+        return true;
+    }
+}
