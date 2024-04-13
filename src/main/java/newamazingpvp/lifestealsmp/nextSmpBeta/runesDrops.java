@@ -79,7 +79,7 @@ public class runesDrops implements Listener {
         ItemMeta meta = ITEM.getItemMeta();
         meta.addEnchant(Enchantment.DURABILITY, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        meta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.MAGIC + "E" + "" + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " Troll Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" );
+        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + "" + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " Troll Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" );
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> LORE = new ArrayList<>();
         LORE.add(ChatColor.DARK_PURPLE + "" + "[Can be combined leather armor]");
@@ -97,7 +97,7 @@ public class runesDrops implements Listener {
         ItemMeta meta = ITEM.getItemMeta();
         meta.addEnchant(Enchantment.DURABILITY, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        meta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.MAGIC + "E" + "" + ChatColor.YELLOW + "" + ChatColor.BOLD + " Lightning Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" );
+        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + "" + ChatColor.YELLOW + "" + ChatColor.BOLD + " Lightning Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" );
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> LORE = new ArrayList<>();
         LORE.add(ChatColor.DARK_PURPLE + "" + "[Can be combined to any weapon]");
