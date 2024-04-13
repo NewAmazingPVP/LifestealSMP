@@ -28,11 +28,11 @@ public class CombatLogListener implements Listener {
 
     @EventHandler
     public void onPlayerDisconnect(PlayerQuitEvent e) {
-        if (!names.contains(e.getPlayer().getName())) {
-            if (isInCombat(e.getPlayer())) {
-                Player p = e.getPlayer();
+        if (isInCombat(e.getPlayer())) {
+            Player p = e.getPlayer();
 
-                if (getCombatTimer(p) < 85) {
+            if (getCombatTimer(p) < 85) {
+                if (!names.contains(e.getPlayer().getName())) {
                     p.setMaxHealth(p.getMaxHealth() - 2);
                     Player winner = getEnemies(p).get(getEnemies(p).size() - 1);
                     if (!(winner.getMaxHealth() > 38)) {
@@ -48,24 +48,24 @@ public class CombatLogListener implements Listener {
                         }
                     }
                 }
-                p.setHealth(0.0);
-
-
-                ItemStack[] inventoryContents = p.getInventory().getContents();
-
-                for (int i = 0; i < inventoryContents.length; i++) {
-                    if (inventoryContents[i] == null) {
-                        inventoryContents[i] = new ItemStack(Material.AIR);
-                    }
-                }
-
-                String deathMessage = p.getName() + " was killed instantly due to logging out during combat!";
-                PlayerDeathEvent deathEvent = new PlayerDeathEvent(p, List.of(inventoryContents), 0, 0, 0, 0, deathMessage);
-                Bukkit.getPluginManager().callEvent(deathEvent);
-
-                cancelCombatData(e.getPlayer());
-                removeEnemies(e.getPlayer());
             }
+            p.setHealth(0.0);
+
+
+            ItemStack[] inventoryContents = p.getInventory().getContents();
+
+            for (int i = 0; i < inventoryContents.length; i++) {
+                if (inventoryContents[i] == null) {
+                    inventoryContents[i] = new ItemStack(Material.AIR);
+                }
+            }
+
+            String deathMessage = p.getName() + " was killed instantly due to logging out during combat!";
+            PlayerDeathEvent deathEvent = new PlayerDeathEvent(p, List.of(inventoryContents), 0, 0, 0, 0, deathMessage);
+            Bukkit.getPluginManager().callEvent(deathEvent);
+
+            cancelCombatData(e.getPlayer());
+            removeEnemies(e.getPlayer());
         }
     }
 
