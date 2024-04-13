@@ -31,6 +31,7 @@ import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.game.PlayerPing.monitorPlayerPings;
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlacklist;
+import static newamazingpvp.lifestealsmp.nextSmpBeta.runesCraft.registerCustomRecipesRunes;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.isAutoUploadEnabled;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.startReleaseChecker;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.*;
@@ -127,7 +128,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getCommand("lockPlayer").setExecutor(new lockPlayer());
             getServer().getPluginManager().registerEvents(new IceCube(), this);
             getServer().getPluginManager().registerEvents(new runesDrops(), this);
-            getServer().getPluginManager().registerEvents(new runesAnvil(), this);
+            getServer().getPluginManager().registerEvents(new runesCraft(), this);
+            //registerCustomRecipesRunes();
+
             //getServer().getPluginManager().registerEvents(new OtherCustomDrops(), this);
             //getServer().getPluginManager().registerEvents(new VoidWalkerHelm(), this);
             //getServer().getPluginManager().registerEvents(new VoidWalkerHelmEffects(), this);
