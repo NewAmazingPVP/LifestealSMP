@@ -29,7 +29,9 @@ public class runesEvents implements Listener {
             if (item != null) {
                 ItemMeta meta = item.getItemMeta();
                 if (meta.hasDisplayName() && meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + "" + ChatColor.AQUA + "" + ChatColor.BOLD + " Aqua Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E")) {
+                    player.sendMessage("test_item");
                     if (e.getPlayer().getLocation().getBlock().getType() == Material.WATER) {
+                        player.sendMessage("effect_test");
                         player.addPotionEffect(effect);
                     }
                 }
