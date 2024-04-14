@@ -5,6 +5,7 @@ package newamazingpvp.lifestealsmp.nextSmpBeta;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -17,6 +18,7 @@ import java.util.EventListener;
 
 public class runesEvents implements Listener {
 
+    @EventHandler
     public void playerMove(PlayerMoveEvent e) {
 
         //AQUA RUNE
@@ -25,15 +27,12 @@ public class runesEvents implements Listener {
         Player player = e.getPlayer();
         ItemStack[] items = player.getInventory().getContents();
 
-        player.sendMessage("test_Move");
 
         for (ItemStack item : items) {
             if (item != null) {
                 ItemMeta meta = item.getItemMeta();
                 if (meta.hasDisplayName() && meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + "" + ChatColor.AQUA + "" + ChatColor.BOLD + " Aqua Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E")) {
-                    player.sendMessage("test_item");
                     if (e.getPlayer().getLocation().getBlock().getType() == Material.WATER) {
-                        player.sendMessage("effect_test");
                         player.addPotionEffect(effect);
                     }
                 }
