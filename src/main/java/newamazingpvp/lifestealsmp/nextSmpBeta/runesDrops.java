@@ -125,7 +125,7 @@ public class runesDrops implements Listener {
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> LORE = new ArrayList<>();
         LORE.add(ChatColor.DARK_PURPLE + "" + "[Item just needs to be in your inventory]");
-        LORE.add(ChatColor.YELLOW + "" + "[10% chance to drop from the warden]");
+        LORE.add(ChatColor.YELLOW + "" + "[1% chance to drop from the warden]");
         LORE.add(" ");
         LORE.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "RUNE ABILITY:");
         LORE.add(ChatColor.LIGHT_PURPLE + "Gain a small chance to");
