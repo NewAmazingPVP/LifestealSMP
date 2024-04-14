@@ -59,10 +59,11 @@ public class runesEvents implements Listener {
                 ItemMeta meta = item.getItemMeta();
                 if (meta.hasDisplayName() && meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + "" + ChatColor.YELLOW + "" + ChatColor.BOLD + " Lightning Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E")) {
                     if (Math.random() <= 0.5) {
+
                         victim.getWorld().strikeLightningEffect(victim.getLocation());
                         victim.playSound(victim.getLocation(), Sound.BLOCK_GLASS_BREAK, 5.0f, 0.0f);
+                        victim.setHealth(victim.getHealth() - 5);
                         victim.sendMessage(ChatColor.DARK_RED + "-5 (True Damage)");
-
 
                         attacker.playSound(attacker.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 5.0f, 2.0f);
                         attacker.sendMessage(ChatColor.GREEN + "True Damage Activated!");
