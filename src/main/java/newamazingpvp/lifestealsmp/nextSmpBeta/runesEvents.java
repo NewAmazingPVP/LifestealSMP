@@ -22,7 +22,7 @@ public class runesEvents implements Listener {
     public void playerMove(PlayerMoveEvent e) {
 
         //AQUA RUNE
-        PotionEffect effect = new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 100, 2); //change if needed
+        PotionEffect effect = new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 100, 4); //change if needed
 
         Player player = e.getPlayer();
         ItemStack[] items = player.getInventory().getContents();

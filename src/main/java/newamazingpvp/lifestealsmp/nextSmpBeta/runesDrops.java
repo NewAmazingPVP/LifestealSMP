@@ -51,7 +51,7 @@ public class runesDrops implements Listener {
         LORE.add(ChatColor.YELLOW + "" + "[Vary rare chance from any mob]");
         LORE.add(" ");
         LORE.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "RUNE ABILITY:");
-        LORE.add(ChatColor.LIGHT_PURPLE + "Gain dolphins grace");
+        LORE.add(ChatColor.LIGHT_PURPLE + "Gain dolphins grace 5");
         LORE.add(ChatColor.LIGHT_PURPLE + "when in water!");
         meta.setLore(LORE);
         ITEM.setItemMeta(meta);
