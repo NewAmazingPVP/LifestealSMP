@@ -67,7 +67,7 @@ public class runesDrops implements Listener {
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> LORE = new ArrayList<>();
         LORE.add(ChatColor.DARK_PURPLE + "" + "[Item just needs to be in your inventory]");
-        LORE.add(ChatColor.YELLOW + "" + "[Rare chance to drop from piglin brute]");
+        LORE.add(ChatColor.YELLOW + "" + "[Rare chance to drop from a piglin brute]");
         LORE.add(" ");
         LORE.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "RUNE ABILITY:");
         LORE.add(ChatColor.LIGHT_PURPLE + "Gain strength 1");
