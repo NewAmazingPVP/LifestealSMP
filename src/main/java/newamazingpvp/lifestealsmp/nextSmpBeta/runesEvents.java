@@ -1,4 +1,8 @@
 package newamazingpvp.lifestealsmp.nextSmpBeta;
 
-public class runesEvents {
+
+import java.util.EventListener;
+
+public class runesEvents implements EventListener {
+
 }
