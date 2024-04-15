@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.nextSmpBeta;
+package newamazingpvp.lifestealsmp.Runes;
 
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
@@ -70,8 +70,8 @@ public class runesDrops implements Listener {
         LORE.add(ChatColor.YELLOW + "" + "[Rare chance to drop from a piglin brute]");
         LORE.add(" ");
         LORE.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "RUNE ABILITY:");
-        LORE.add(ChatColor.LIGHT_PURPLE + "Gain strength 1");
-        LORE.add(ChatColor.LIGHT_PURPLE + "when in the nether!");
+        LORE.add(ChatColor.LIGHT_PURPLE + "Gain strength 1 while ");
+        LORE.add(ChatColor.LIGHT_PURPLE + "attacking in the nether!");
         meta.setLore(LORE);
         ITEM.setItemMeta(meta);
         return ITEM;
