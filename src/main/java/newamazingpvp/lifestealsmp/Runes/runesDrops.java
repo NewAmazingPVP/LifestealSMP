@@ -90,7 +90,7 @@ public class runesDrops implements Listener {
         LORE.add(" ");
         LORE.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "RUNE ABILITY:");
         LORE.add(ChatColor.LIGHT_PURPLE + "When you have leather armor");
-        LORE.add(ChatColor.LIGHT_PURPLE + "on, gain resistance 5");
+        LORE.add(ChatColor.LIGHT_PURPLE + "on, gain resistance 5.");
         meta.setLore(LORE);
         ITEM.setItemMeta(meta);
         return ITEM;
@@ -131,6 +131,25 @@ public class runesDrops implements Listener {
         LORE.add(ChatColor.LIGHT_PURPLE + "Gain a small chance to");
         LORE.add(ChatColor.LIGHT_PURPLE + "strike a player with lightning");
         LORE.add(ChatColor.LIGHT_PURPLE + "dealing" + ChatColor.DARK_RED + " TRUE DAMAGE! 5HP");
+        meta.setLore(LORE);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
+    public static ItemStack bloodRune () {
+        ItemStack ITEM = new ItemStack(Material.BEETROOT_SOUP);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + "" + ChatColor.DARK_RED + "" + ChatColor.BOLD + " Blood Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" );
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        List<String> LORE = new ArrayList<>();
+        LORE.add(ChatColor.DARK_PURPLE + "" + "[Item just needs to be in your inventory]");
+        LORE.add(ChatColor.YELLOW + "" + "[Can drop from elder guardians]");
+        LORE.add(" ");
+        LORE.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "RUNE ABILITY:");
+        LORE.add(ChatColor.LIGHT_PURPLE + "When you kill any mob");
+        LORE.add(ChatColor.LIGHT_PURPLE + "you gain strength 5 for 5 sec! ");
         meta.setLore(LORE);
         ITEM.setItemMeta(meta);
         return ITEM;

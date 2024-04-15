@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.nextSmpBeta;
+package newamazingpvp.lifestealsmp.nextSmpHIGH;
 
 import com.destroystokyo.paper.event.player.PlayerJumpEvent;
 import org.bukkit.*;
