@@ -133,3 +133,8 @@ commands:
     usage: /pingwars
     permission: lifestealSMP.admin
     default: op
+  quickMaths:
+    description: QUICK!!!!!!!!!!!!!
+    usage: /quickmaths
+    permission: lifestealSMP.admin
+    default: op

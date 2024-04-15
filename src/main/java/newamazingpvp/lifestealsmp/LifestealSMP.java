@@ -15,6 +15,9 @@ import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
 import newamazingpvp.lifestealsmp.listener.*;
 import newamazingpvp.lifestealsmp.cometwip.GiveSekhmetSetSpeedADMINONLY;
 import newamazingpvp.lifestealsmp.nextSmpBeta.*;
+import newamazingpvp.lifestealsmp.nextSmpHIGH.IceCube;
+import newamazingpvp.lifestealsmp.nextSmpHIGH.pingWars;
+import newamazingpvp.lifestealsmp.nextSmpHIGH.quickMaths;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -129,6 +132,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         if(isAutoUploadEnabled()) {
             getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
             getCommand("lockPlayer").setExecutor(new lockPlayer());
+            getCommand("quickMaths").setExecutor(new quickMaths());
             getServer().getPluginManager().registerEvents(new IceCube(), this);
             getServer().getPluginManager().registerEvents(new runesDrops(), this);
             getServer().getPluginManager().registerEvents(new aquaRune(), this);
