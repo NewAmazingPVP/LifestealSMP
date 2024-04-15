@@ -2,6 +2,10 @@ package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
+import newamazingpvp.lifestealsmp.Runes.aquaRune;
+import newamazingpvp.lifestealsmp.Runes.hellRune;
+import newamazingpvp.lifestealsmp.Runes.lightningRune;
+import newamazingpvp.lifestealsmp.Runes.runesDrops;
 import newamazingpvp.lifestealsmp.blacklistener.*;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.customitems.*;
@@ -127,7 +131,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getCommand("lockPlayer").setExecutor(new lockPlayer());
             getServer().getPluginManager().registerEvents(new IceCube(), this);
             getServer().getPluginManager().registerEvents(new runesDrops(), this);
-            getServer().getPluginManager().registerEvents(new runesEvents(), this);
+            getServer().getPluginManager().registerEvents(new aquaRune(), this);
+            getServer().getPluginManager().registerEvents(new lightningRune(), this);
+            getServer().getPluginManager().registerEvents(new hellRune(), this);
             //registerCustomRecipesRunes();
 
             //getServer().getPluginManager().registerEvents(new OtherCustomDrops(), this);
