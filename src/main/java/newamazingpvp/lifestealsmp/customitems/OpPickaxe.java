@@ -1,7 +1,6 @@
 package newamazingpvp.lifestealsmp.customitems;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -13,12 +12,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.utility.DiscordBot.intializeBot;
-import static newamazingpvp.lifestealsmp.utility.DiscordBot.webHookClient;
 
 public class OpPickaxe implements Listener {
     private final ArrayList<Material> blackList = new ArrayList<>(List.of(
@@ -54,7 +50,8 @@ public class OpPickaxe implements Listener {
             if (hasLore(item)) {
                 Block block = event.getBlock();
                 if (player.isSneaking()) return;
-                if(blackList.contains(block.getType()) || block.getType().toString().toLowerCase().contains("shulker_box")) return;
+                if (blackList.contains(block.getType()) || block.getType().toString().toLowerCase().contains("shulker_box"))
+                    return;
                 breakBlocksAround(block, item);
                 item.setDurability((short) (item.getDurability() + 1));
                 event.setCancelled(true);
@@ -99,7 +96,7 @@ public class OpPickaxe implements Listener {
                         }
                     }
                 }
-                if(!(blackList.contains(centerBlock.getType()) || centerBlock.getType().toString().toLowerCase().contains("shulker_box"))) {
+                if (!(blackList.contains(centerBlock.getType()) || centerBlock.getType().toString().toLowerCase().contains("shulker_box"))) {
                     Collection<ItemStack> centerDrops = centerBlock.getDrops(item);
 
                     for (ItemStack drop : centerDrops) {

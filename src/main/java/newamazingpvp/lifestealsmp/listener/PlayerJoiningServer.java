@@ -7,13 +7,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-
-import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static org.bukkit.Bukkit.getServer;
-
 public class PlayerJoiningServer implements Listener {
 
     @EventHandler

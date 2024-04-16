@@ -6,10 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.NotNull;
 
-import java.net.http.WebSocket;
 import java.util.Arrays;
 import java.util.OptionalDouble;
 
@@ -36,8 +33,8 @@ public class TpsEvent implements Listener {
                     getServer().getPluginManager().callEvent(event);
                     lastTps = ticks;
                 } else {
-                    for(Player p : Bukkit.getOnlinePlayers()){
-                        p.setViewDistance(p.getViewDistance() +1);
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        p.setViewDistance(p.getViewDistance() + 1);
                         p.sendMessage("increase render");
                     }
                 }
@@ -49,9 +46,9 @@ public class TpsEvent implements Listener {
     }
 
     @EventHandler
-    public void tpsChange(TpsChangeEvent e){
-        for(Player p : Bukkit.getOnlinePlayers()){
-            p.setViewDistance(p.getViewDistance() -1);
+    public void tpsChange(TpsChangeEvent e) {
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            p.setViewDistance(p.getViewDistance() - 1);
             p.sendMessage("Decrease render");
         }
     }

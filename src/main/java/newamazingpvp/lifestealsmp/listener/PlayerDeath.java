@@ -1,17 +1,10 @@
 package newamazingpvp.lifestealsmp.listener;
 
-import com.google.common.collect.Iterables;
-import com.google.common.io.ByteArrayDataOutput;
-import com.google.common.io.ByteStreams;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.json.simple.JSONObject;
-
-import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class PlayerDeath implements Listener {
     @EventHandler

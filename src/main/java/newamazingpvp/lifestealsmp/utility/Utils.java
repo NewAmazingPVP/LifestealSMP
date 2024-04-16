@@ -19,11 +19,11 @@ public class Utils {
         }
     }
 
-    public static void setPrefix(Player p, String s){
+    public static void setPrefix(Player p, String s) {
         essentials.getUser(p.getUniqueId()).setNickname(ChatColor.translateAlternateColorCodes('&', s) + " " + p.getName());
     }
 
-    public static String getPrefix(Player p){
+    public static String getPrefix(Player p) {
         return essentials.getUser(p.getUniqueId()).getNickname();
     }
 

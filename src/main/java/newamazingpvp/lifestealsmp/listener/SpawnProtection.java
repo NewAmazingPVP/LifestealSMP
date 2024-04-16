@@ -3,10 +3,8 @@ package newamazingpvp.lifestealsmp.listener;
 import com.destroystokyo.paper.event.entity.PreCreatureSpawnEvent;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Arrow;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,11 +14,10 @@ import org.bukkit.event.block.BlockSpreadEvent;
 import org.bukkit.event.block.TNTPrimeEvent;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemStack;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.silentMode;
-import static newamazingpvp.lifestealsmp.game.CombatLog.isInCombat;
-import static newamazingpvp.lifestealsmp.variables.Loc.*;
+import static newamazingpvp.lifestealsmp.variables.Loc.spawnLoc1;
+import static newamazingpvp.lifestealsmp.variables.Loc.spawnLoc2;
 
 
 public class SpawnProtection implements Listener {
@@ -61,7 +58,7 @@ public class SpawnProtection implements Listener {
     @EventHandler
     public void spawnBlockBreak(BlockBreakEvent event) {
         if (isWithinSpawnRadius(event.getBlock().getLocation())) {
-            if(silentMode && event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
+            if (silentMode && event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
             event.setCancelled(true);
             event.getPlayer().sendMessage(ChatColor.RED + "You cannot break blocks within the spawn area, go around 50-100 blocks away to be able to");
         }
@@ -70,7 +67,7 @@ public class SpawnProtection implements Listener {
     @EventHandler
     public void spawnBlockPlace(BlockPlaceEvent event) {
         if (isWithinSpawnRadius(event.getBlock().getLocation())) {
-            if(silentMode && event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
+            if (silentMode && event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
             event.setCancelled(true);
             event.getPlayer().sendMessage(ChatColor.RED + "You cannot place blocks within the spawn area, go around 50-100 blocks away to be able to");
         }
@@ -79,14 +76,14 @@ public class SpawnProtection implements Listener {
     @EventHandler
     public void spawnBlockPlace(PlayerInteractEvent event) {
         if (isWithinSpawnRadius(event.getPlayer().getLocation())) {
-            if(silentMode && event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
+            if (silentMode && event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
             /*if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.LAVA_BUCKET
                     || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.FIRE_CHARGE
                     || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.FLINT_AND_STEEL
                     || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.WATER_BUCKET
                     || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.BOW) {*/
-                event.setCancelled(true);
-                event.getPlayer().sendMessage(ChatColor.RED + "You cannot interact within the spawn area, go around 50-100 blocks away to be able to");
+            event.setCancelled(true);
+            event.getPlayer().sendMessage(ChatColor.RED + "You cannot interact within the spawn area, go around 50-100 blocks away to be able to");
             //}
         }
     }
@@ -130,11 +127,9 @@ public class SpawnProtection implements Listener {
     }
 
     private static boolean inLocation(Location location, Location loc1, Location loc2) {
-        if(location.x() > loc1.x() && location.x() < loc2.x()){
-            if(location.y() > loc1.y() && location.y() < loc2.y()){
-                if(location.z() > loc1.z() && location.z() < loc2.z()){
-                    return true;
-                }
+        if (location.x() > loc1.x() && location.x() < loc2.x()) {
+            if (location.y() > loc1.y() && location.y() < loc2.y()) {
+                return location.z() > loc1.z() && location.z() < loc2.z();
             }
         }
         return false;
@@ -146,6 +141,7 @@ public class SpawnProtection implements Listener {
             event.setCancelled(true);
         }
     }
+
     @EventHandler
     public void onEntityExplode(EntityExplodeEvent event) {
         if (isWithinSpawnRadius(event.getLocation())) {
@@ -160,7 +156,6 @@ public class SpawnProtection implements Listener {
             event.setCancelled(true);
         }
     }
-
 
 
 }

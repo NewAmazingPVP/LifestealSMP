@@ -51,7 +51,7 @@ public class DiscordBot {
     }
 
     public static void sendDiscordMessage(String msg, String channelID) {
-        if(jda == null)return;
+        if (jda == null) return;
         if (channelID.isEmpty()) {
             channel.sendMessage(msg);
         } else {
@@ -63,7 +63,7 @@ public class DiscordBot {
     }
 
     public static void sendDiscordEmbedTitle(String msg, Color c, String channelID) {
-        if(jda == null)return;
+        if (jda == null) return;
         EmbedBuilder eb = new EmbedBuilder();
         eb.setTitle(msg);
         eb.setColor(c);
@@ -78,7 +78,7 @@ public class DiscordBot {
     }
 
     public static void sendDiscordEmbedStats(String msg, Color c, String channelID, String name) {
-        if(jda == null)return;
+        if (jda == null) return;
         EmbedBuilder eb = new EmbedBuilder();
         eb.setTitle(msg);
         eb.setColor(c);
@@ -94,7 +94,7 @@ public class DiscordBot {
     }
 
     public static void sendDiscordEmbedPlayer(String msg, Color c, String channelID, String p) {
-        if(jda == null)return;
+        if (jda == null) return;
         p = "https://minotar.net/helm/" + p;
         EmbedBuilder eb = new EmbedBuilder();
         eb.setAuthor(msg, "https://shop.nappixel.tk/", p);
@@ -108,7 +108,8 @@ public class DiscordBot {
             }
         }
     }
-    public static void webHookClient(){
+
+    public static void webHookClient() {
         WebhookClientBuilder builder = new WebhookClientBuilder(lifestealSmp.getConfig().getString("Discord.Webhook"));
         builder.setThreadFactory((job) -> {
             Thread thread = new Thread(job);
@@ -120,7 +121,7 @@ public class DiscordBot {
         client = builder.build();
     }
 
-    public static void sendWebhook(Player p, String msg){
+    public static void sendWebhook(Player p, String msg) {
         String avatar = "https://minotar.net/helm/" + p.getName();
         WebhookMessageBuilder builder = new WebhookMessageBuilder();
         builder.setUsername(p.getName());

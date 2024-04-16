@@ -1,7 +1,6 @@
 package newamazingpvp.lifestealsmp.utility;
 
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.appender.AbstractAppender;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -16,8 +15,8 @@ import static newamazingpvp.lifestealsmp.utility.DiscordBot.jda;
 
 public class LogAppender extends AbstractAppender {
 
-    private SimpleDateFormat formatter;
-    private static Map<String, String> discordMessageIds = new HashMap<>();
+    private final SimpleDateFormat formatter;
+    private static final Map<String, String> discordMessageIds = new HashMap<>();
     public static String consoleChannel = lifestealSmp.getConfig().getString("Discord.ConsoleChannel");
 
     public LogAppender() {

@@ -1,7 +1,6 @@
 package newamazingpvp.lifestealsmp.nextSmpBeta;
 
 import org.bukkit.ChatColor;
-import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
@@ -12,14 +11,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class REMOVE_THIS_COMMAND_GIVE_ICE implements CommandExecutor {
 
-    public static ItemStack IceCube () {
+    public static ItemStack IceCube() {
 
         ItemStack IceCube = new ItemStack(Material.ICE);
         ItemMeta SI = IceCube.getItemMeta();
@@ -28,10 +26,10 @@ public class REMOVE_THIS_COMMAND_GIVE_ICE implements CommandExecutor {
         SI.setDisplayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Ice Cube");
         SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> BL = new ArrayList<>();
-        BL.add(ChatColor.GOLD + "" + "Special Ability:" + ChatColor.DARK_PURPLE + " Freeze,");
-        BL.add(ChatColor.DARK_PURPLE + "" + "Freezes the closest player");
-        BL.add(ChatColor.DARK_PURPLE + "" + "by them from moving.");
-        BL.add(ChatColor.DARK_PURPLE + "" + "Freeze lasts 5 sec.");
+        BL.add(ChatColor.GOLD + "Special Ability:" + ChatColor.DARK_PURPLE + " Freeze,");
+        BL.add(ChatColor.DARK_PURPLE + "Freezes the closest player");
+        BL.add(ChatColor.DARK_PURPLE + "by them from moving.");
+        BL.add(ChatColor.DARK_PURPLE + "Freeze lasts 5 sec.");
         BL.add(ChatColor.RED + "Player can not be damaged when frozen.");
         BL.add(ChatColor.RED + "One time use and can freeze you!");
         SI.setLore(BL);
@@ -39,9 +37,6 @@ public class REMOVE_THIS_COMMAND_GIVE_ICE implements CommandExecutor {
 
         return IceCube;
     }
-
-
-
 
 
     @Override

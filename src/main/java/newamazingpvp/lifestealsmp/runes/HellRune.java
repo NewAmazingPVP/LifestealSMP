@@ -24,7 +24,7 @@ public class HellRune implements Listener {
         for (ItemStack item : items) {
             if (item != null) {
                 ItemMeta meta = item.getItemMeta();
-                if (meta.hasDisplayName() && meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + "" + ChatColor.DARK_RED + "" + ChatColor.BOLD + " Hell Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E")) {
+                if (meta.hasDisplayName() && meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + ChatColor.DARK_RED + ChatColor.BOLD + " Hell Rune " + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "E")) {
                     if (world.getEnvironment() == World.Environment.NETHER) {
                         attacker.addPotionEffect(effect);
                     }
