@@ -1,10 +1,13 @@
 package newamazingpvp.lifestealsmp.runes;
 
 
+import com.destroystokyo.paper.event.player.PlayerJumpEvent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.util.Vector;
+
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -13,16 +16,22 @@ public class AirRune implements Listener {
     private final HashMap<UUID, Integer> jumpCount = new HashMap<>();
 
     @EventHandler
-    public void onPlayerMove(PlayerMoveEvent event) {
+    public void onPlayerJump(PlayerJumpEvent event) {
         Player player = event.getPlayer();
         UUID playerId = player.getUniqueId();
 
-        if (player.isOnGround()) {
-            jumpCount.put(playerId, 0); // Reset jump count when player is on the ground
-        } else if (jumpCount.getOrDefault(playerId, 0) < 1) {
-            jumpCount.put(playerId, jumpCount.getOrDefault(playerId, 0) + 1); // Increment jump count
-        } else {
-            event.setCancelled(true); // Cancel the event if the player has already jumped once
+        if (!jumpCount.containsKey(playerId)) {
+            jumpCount.put(playerId, 0);
+        }
+
+        int currentJumpCount = jumpCount.get(playerId);
+        if (currentJumpCount < 1) {
+            jumpCount.put(playerId, currentJumpCount + 1);
+        } else if (currentJumpCount == 1) {
+            // Double jump logic here
+            // For example, you can increase the player's jump velocity
+            player.setVelocity(player.getVelocity().add(new Vector(0, 1, 0)));
+            jumpCount.put(playerId, 0); // Reset the jump count
         }
     }
 }
