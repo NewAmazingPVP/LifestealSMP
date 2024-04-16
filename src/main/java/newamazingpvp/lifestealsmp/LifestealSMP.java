@@ -213,8 +213,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         BukkitRunnable prefix = new BukkitRunnable() {
             @Override
             public void run() {
-
-                if (essentials.getUser(player.getUniqueId()).getNickname().equals(player.getName())) {
+                if (essentials.getUser(player.getUniqueId()).getNickname() != null && essentials.getUser(player.getUniqueId()).getNickname().equals(player.getName())) {
                     setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW);
                 }
             }
