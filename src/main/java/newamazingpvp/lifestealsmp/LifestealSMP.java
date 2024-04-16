@@ -2,22 +2,23 @@ package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
-import newamazingpvp.lifestealsmp.runes.AquaRune;
-import newamazingpvp.lifestealsmp.runes.HellRune;
-import newamazingpvp.lifestealsmp.runes.LightningRune;
-import newamazingpvp.lifestealsmp.runes.RunesDrops;
 import newamazingpvp.lifestealsmp.blacklistener.*;
+import newamazingpvp.lifestealsmp.cometwip.GiveSekhmetSetSpeedAdmin;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.customitems.*;
 import newamazingpvp.lifestealsmp.discord.DiscordListener;
 import newamazingpvp.lifestealsmp.game.Compass;
 import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
 import newamazingpvp.lifestealsmp.listener.*;
-import newamazingpvp.lifestealsmp.cometwip.GiveSekhmetSetSpeedADMINONLY;
-import newamazingpvp.lifestealsmp.nextSmpBeta.*;
+import newamazingpvp.lifestealsmp.nextSmpBeta.LockPlayer;
+import newamazingpvp.lifestealsmp.nextSmpBeta.REMOVE_THIS_COMMAND_GIVE_ICE;
 import newamazingpvp.lifestealsmp.nextsmphigh.IceCube;
 import newamazingpvp.lifestealsmp.nextsmphigh.PingWars;
 import newamazingpvp.lifestealsmp.nextsmphigh.QuickMaths;
+import newamazingpvp.lifestealsmp.runes.AquaRune;
+import newamazingpvp.lifestealsmp.runes.HellRune;
+import newamazingpvp.lifestealsmp.runes.LightningRune;
+import newamazingpvp.lifestealsmp.runes.RunesDrops;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -31,19 +32,19 @@ import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
 
+import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlacklist;
 import static newamazingpvp.lifestealsmp.discord.DiscordListener.isVanished;
 import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
-import static newamazingpvp.lifestealsmp.game.BroadcastMessage.*;
+import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastReportBugs;
+import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastServerMessage;
 import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.game.PlayerPing.monitorPlayerPings;
-import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlacklist;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.isAutoUploadEnabled;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.startReleaseChecker;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.*;
 import static newamazingpvp.lifestealsmp.utility.LogAppender.consoleChannel;
 import static newamazingpvp.lifestealsmp.utility.Utils.setPrefix;
-import static org.bukkit.Bukkit.getPlayer;
 
 public final class LifestealSMP extends JavaPlugin implements Listener, PluginMessageListener {
     public static LifestealSMP lifestealSmp;
@@ -73,7 +74,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("setview").setExecutor(new CustomDistance());
         getCommand("recipes").setExecutor(new RecipesCommand());
         getCommand("track").setExecutor(new Compass());
-        getCommand("GiveSekhmetSet").setExecutor(new GiveSekhmetSetSpeedADMINONLY());
+        getCommand("GiveSekhmetSet").setExecutor(new GiveSekhmetSetSpeedAdmin());
         getCommand("restart_with_warning").setExecutor(new RestartWithWarming());
         getCommand("remHP").setExecutor(new RemoveHP());
         getCommand("addHP").setExecutor(new AddHP());
@@ -129,7 +130,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         //getServer().getPluginManager().registerEvents(new DisableEnderDragonEgg(), this);
         //getServer().getPluginManager().registerEvents(new TpsEvent(), this);
         //TODO: Use this for beta things
-        if(isAutoUploadEnabled()) {
+        if (isAutoUploadEnabled()) {
             getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
             getCommand("lockPlayer").setExecutor(new LockPlayer());
             getCommand("quickMaths").setExecutor(new QuickMaths());
@@ -161,17 +162,17 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             @Override
             public void run() {
                 getServer().dispatchCommand(getServer().getConsoleSender(), "chunky continue");
-            ChannelLoggingHandler handler = new ChannelLoggingHandler(() -> jda.getTextChannelById(consoleChannel), config -> {
-                config.setColored(true);
-                config.setSplitCodeBlockForLinks(false);
-                config.setAllowLinkEmbeds(true);
-                config.mapLoggerName("net.dv8tion.jda", "JDA");
-                config.mapLoggerName("net.minecraft.server.MinecraftServer", "Server");
-                config.mapLoggerNameFriendly("net.minecraft.server", s -> "Server/" + s);
-                config.mapLoggerNameFriendly("net.minecraft", s -> "Minecraft/" + s);
-                config.mapLoggerName("github.scarsz.discordsrv.dependencies.jda", s -> "DiscordSRV/JDA/" + s);
-            }).attachLog4jLogging().schedule();
-            handler.schedule();
+                ChannelLoggingHandler handler = new ChannelLoggingHandler(() -> jda.getTextChannelById(consoleChannel), config -> {
+                    config.setColored(true);
+                    config.setSplitCodeBlockForLinks(false);
+                    config.setAllowLinkEmbeds(true);
+                    config.mapLoggerName("net.dv8tion.jda", "JDA");
+                    config.mapLoggerName("net.minecraft.server.MinecraftServer", "Server");
+                    config.mapLoggerNameFriendly("net.minecraft.server", s -> "Server/" + s);
+                    config.mapLoggerNameFriendly("net.minecraft", s -> "Minecraft/" + s);
+                    config.mapLoggerName("github.scarsz.discordsrv.dependencies.jda", s -> "DiscordSRV/JDA/" + s);
+                }).attachLog4jLogging().schedule();
+                handler.schedule();
             }
         }.runTaskLater(this, 120L);
         essentials = (Essentials) getServer().getPluginManager().getPlugin("Essentials");
@@ -179,7 +180,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         if (essentials == null) {
             getLogger().severe("EssentialsX is not installed on this server.");
             //getServer().getPluginManager().disablePlugin(this);
-            return;
         }
 
 
@@ -215,7 +215,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             @Override
             public void run() {
 
-                if(essentials.getUser(player.getUniqueId()).getNickname().equals(player.getName())) {
+                if (essentials.getUser(player.getUniqueId()).getNickname().equals(player.getName())) {
                     setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW);
                 }
             }

@@ -16,7 +16,7 @@ import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.*;
 
-public class GiveSekhmetSetDefenceADMINONLY implements CommandExecutor {
+public class GiveSekhmetSetDefenceAdmin implements CommandExecutor {
     private static final UUID RANDOM_UUID = UUID.fromString("92864445-51c5-4c3b-9039-517c9927d1b5"); // We reuse the same "random" UUID all the time
 
     public static PlayerProfile getProfile(String url) {

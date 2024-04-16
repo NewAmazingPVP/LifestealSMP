@@ -7,7 +7,6 @@ import net.md_5.bungee.api.ChatColor;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.channelId;
-import static org.bukkit.Bukkit.getServer;
 
 public class MessageEvent extends ListenerAdapter {
     @Override
@@ -25,10 +24,9 @@ public class MessageEvent extends ListenerAdapter {
         String highestRole = member != null ? member.getRoles().get(0).getName() : "No Role";
 
         net.md_5.bungee.api.ChatColor rolecolor;
-        if(member.getRoles().get(0).getColor() != null) {
+        if (member.getRoles().get(0).getColor() != null) {
             rolecolor = net.md_5.bungee.api.ChatColor.of("#" + Integer.toHexString(member.getRoles().get(0).getColor().getRGB()).substring(2));
-        }
-        else {
+        } else {
             rolecolor = ChatColor.WHITE;
         }
 

@@ -17,16 +17,16 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class RunesDrops implements Listener {
 
-    public static ItemStack witherRune () {
+    public static ItemStack witherRune() {
         ItemStack ITEM = new ItemStack(Material.WITHER_SKELETON_SKULL);
         ItemMeta meta = ITEM.getItemMeta();
         meta.addEnchant(Enchantment.DURABILITY, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + "" + ChatColor.GOLD + "" + ChatColor.BOLD + " Wither Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" );
+        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + ChatColor.GOLD + ChatColor.BOLD + " Wither Rune " + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "E");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> LORE = new ArrayList<>();
-        LORE.add(ChatColor.DARK_PURPLE + "" + "[Item just needs to be in your inventory]");
-        LORE.add(ChatColor.YELLOW + "" + "[Rare chance to drop from withers]");
+        LORE.add(ChatColor.DARK_PURPLE + "[Item just needs to be in your inventory]");
+        LORE.add(ChatColor.YELLOW + "[Rare chance to drop from withers]");
         LORE.add(" ");
         LORE.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "RUNE ABILITY:");
         LORE.add(ChatColor.LIGHT_PURPLE + "Will give wither effect to");
@@ -36,16 +36,16 @@ public class RunesDrops implements Listener {
         return ITEM;
     }
 
-    public static ItemStack aquaRune () {
+    public static ItemStack aquaRune() {
         ItemStack ITEM = new ItemStack(Material.CYAN_DYE);
         ItemMeta meta = ITEM.getItemMeta();
         meta.addEnchant(Enchantment.DURABILITY, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + "" + ChatColor.AQUA + "" + ChatColor.BOLD + " Aqua Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" );
+        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + ChatColor.AQUA + ChatColor.BOLD + " Aqua Rune " + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "E");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> LORE = new ArrayList<>();
-        LORE.add(ChatColor.DARK_PURPLE + "" + "[Item just needs to be in your inventory]");
-        LORE.add(ChatColor.YELLOW + "" + "[Vary rare chance from any mob]");
+        LORE.add(ChatColor.DARK_PURPLE + "[Item just needs to be in your inventory]");
+        LORE.add(ChatColor.YELLOW + "[Vary rare chance from any mob]");
         LORE.add(" ");
         LORE.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "RUNE ABILITY:");
         LORE.add(ChatColor.LIGHT_PURPLE + "Gain dolphins grace 5");
@@ -55,16 +55,16 @@ public class RunesDrops implements Listener {
         return ITEM;
     }
 
-    public static ItemStack hellRune () {
+    public static ItemStack hellRune() {
         ItemStack ITEM = new ItemStack(Material.RED_DYE);
         ItemMeta meta = ITEM.getItemMeta();
         meta.addEnchant(Enchantment.DURABILITY, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + "" + ChatColor.DARK_RED + "" + ChatColor.BOLD + " Hell Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" );
+        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + ChatColor.DARK_RED + ChatColor.BOLD + " Hell Rune " + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "E");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> LORE = new ArrayList<>();
-        LORE.add(ChatColor.DARK_PURPLE + "" + "[Item just needs to be in your inventory]");
-        LORE.add(ChatColor.YELLOW + "" + "[Rare chance to drop from a piglin brute]");
+        LORE.add(ChatColor.DARK_PURPLE + "[Item just needs to be in your inventory]");
+        LORE.add(ChatColor.YELLOW + "[Rare chance to drop from a piglin brute]");
         LORE.add(" ");
         LORE.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "RUNE ABILITY:");
         LORE.add(ChatColor.LIGHT_PURPLE + "Gain strength 1 while ");
@@ -74,16 +74,16 @@ public class RunesDrops implements Listener {
         return ITEM;
     }
 
-    public static ItemStack trollRune () {
+    public static ItemStack trollRune() {
         ItemStack ITEM = new ItemStack(Material.BROWN_DYE);
         ItemMeta meta = ITEM.getItemMeta();
         meta.addEnchant(Enchantment.DURABILITY, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + "" + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " Troll Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" );
+        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + ChatColor.DARK_AQUA + ChatColor.BOLD + " Troll Rune " + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "E");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> LORE = new ArrayList<>();
-        LORE.add(ChatColor.DARK_PURPLE + "" + "[Item just needs to be in your inventory]");
-        LORE.add(ChatColor.YELLOW + "" + "[Obtained rarely from killing a villager]");
+        LORE.add(ChatColor.DARK_PURPLE + "[Item just needs to be in your inventory]");
+        LORE.add(ChatColor.YELLOW + "[Obtained rarely from killing a villager]");
         LORE.add(" ");
         LORE.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "RUNE ABILITY:");
         LORE.add(ChatColor.LIGHT_PURPLE + "When you have leather armor");
@@ -93,16 +93,16 @@ public class RunesDrops implements Listener {
         return ITEM;
     }
 
-    public static ItemStack lightningRune () {
+    public static ItemStack lightningRune() {
         ItemStack ITEM = new ItemStack(Material.YELLOW_DYE);
         ItemMeta meta = ITEM.getItemMeta();
         meta.addEnchant(Enchantment.DURABILITY, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + "" + ChatColor.YELLOW + "" + ChatColor.BOLD + " Lightning Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" );
+        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + ChatColor.YELLOW + ChatColor.BOLD + " Lightning Rune " + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "E");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> LORE = new ArrayList<>();
-        LORE.add(ChatColor.DARK_PURPLE + "" + "[Item just needs to be in your inventory]");
-        LORE.add(ChatColor.YELLOW + "" + "[Obtained from killing a charged creeper]");
+        LORE.add(ChatColor.DARK_PURPLE + "[Item just needs to be in your inventory]");
+        LORE.add(ChatColor.YELLOW + "[Obtained from killing a charged creeper]");
         LORE.add(" ");
         LORE.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "RUNE ABILITY:");
         LORE.add(ChatColor.LIGHT_PURPLE + "Gain a small chance to");
@@ -113,16 +113,16 @@ public class RunesDrops implements Listener {
         return ITEM;
     }
 
-    public static ItemStack darkRune () {
+    public static ItemStack darkRune() {
         ItemStack ITEM = new ItemStack(Material.AMETHYST_CLUSTER);
         ItemMeta meta = ITEM.getItemMeta();
         meta.addEnchant(Enchantment.DURABILITY, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + "" + ChatColor.BLACK + "" + ChatColor.BOLD + " Dark Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" );
+        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + ChatColor.BLACK + ChatColor.BOLD + " Dark Rune " + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "E");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> LORE = new ArrayList<>();
-        LORE.add(ChatColor.DARK_PURPLE + "" + "[Item just needs to be in your inventory]");
-        LORE.add(ChatColor.YELLOW + "" + "[1% chance to drop from the warden]");
+        LORE.add(ChatColor.DARK_PURPLE + "[Item just needs to be in your inventory]");
+        LORE.add(ChatColor.YELLOW + "[1% chance to drop from the warden]");
         LORE.add(" ");
         LORE.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "RUNE ABILITY:");
         LORE.add(ChatColor.LIGHT_PURPLE + "Gain a small chance to");
@@ -133,16 +133,16 @@ public class RunesDrops implements Listener {
         return ITEM;
     }
 
-    public static ItemStack bloodRune () {
+    public static ItemStack bloodRune() {
         ItemStack ITEM = new ItemStack(Material.BEETROOT_SOUP);
         ItemMeta meta = ITEM.getItemMeta();
         meta.addEnchant(Enchantment.DURABILITY, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + "" + ChatColor.DARK_RED + "" + ChatColor.BOLD + " Blood Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" );
+        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + ChatColor.DARK_RED + ChatColor.BOLD + " Blood Rune " + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "E");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> LORE = new ArrayList<>();
-        LORE.add(ChatColor.DARK_PURPLE + "" + "[Item just needs to be in your inventory]");
-        LORE.add(ChatColor.YELLOW + "" + "[Can drop from elder guardians]");
+        LORE.add(ChatColor.DARK_PURPLE + "[Item just needs to be in your inventory]");
+        LORE.add(ChatColor.YELLOW + "[Can drop from elder guardians]");
         LORE.add(" ");
         LORE.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "RUNE ABILITY:");
         LORE.add(ChatColor.LIGHT_PURPLE + "When you kill any mob");
@@ -151,7 +151,6 @@ public class RunesDrops implements Listener {
         ITEM.setItemMeta(meta);
         return ITEM;
     }
-
 
 
     @EventHandler

@@ -30,7 +30,7 @@ public class IceCube implements Listener {
     //not the fucking rapper
 
 
-    public static ItemStack FrozenIceHelm () {
+    public static ItemStack FrozenIceHelm() {
 
         ItemStack IceCube = new ItemStack(Material.ICE);
         ItemMeta SI = IceCube.getItemMeta();
@@ -47,7 +47,7 @@ public class IceCube implements Listener {
         return IceCube;
     }
 
-    public static ItemStack FrozenIceCP () {
+    public static ItemStack FrozenIceCP() {
         ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
         LeatherArmorMeta chestplateMeta = (LeatherArmorMeta) chestplate.getItemMeta();
         chestplateMeta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Ice");
@@ -64,7 +64,7 @@ public class IceCube implements Listener {
         return chestplate;
     }
 
-    public static ItemStack FrozenIceLEG () {
+    public static ItemStack FrozenIceLEG() {
         ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
         LeatherArmorMeta legMeta = (LeatherArmorMeta) leggings.getItemMeta();
         legMeta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Ice");
@@ -81,7 +81,7 @@ public class IceCube implements Listener {
         return leggings;
     }
 
-    public static ItemStack FrozenIceBOOTS () {
+    public static ItemStack FrozenIceBOOTS() {
         ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
         LeatherArmorMeta bootsMeta = (LeatherArmorMeta) boots.getItemMeta();
         bootsMeta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Ice");
@@ -133,14 +133,12 @@ public class IceCube implements Listener {
 
                     closestPlayer.playSound(player.getLocation(), Sound.ENTITY_PLAYER_HURT_FREEZE, 1.0f, 0.0f);
 
-                    closestPlayer.sendTitle(ChatColor.AQUA + "" + ChatColor.BOLD + "" + "You Are Frozen!","", 10, 70, 20);
+                    closestPlayer.sendTitle(ChatColor.AQUA + "" + ChatColor.BOLD + "You Are Frozen!", "", 10, 70, 20);
                     closestPlayer.addScoreboardTag("frozen");
                     Player finalClosestPlayer = closestPlayer;
 
                     Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> finalClosestPlayer.removeScoreboardTag("frozen"), 40);
                     Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> closeInventory.setArmorContents(armorContents), 40);
-
-
 
 
                 }
@@ -153,6 +151,7 @@ public class IceCube implements Listener {
             }
         }
     }
+
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
@@ -160,6 +159,7 @@ public class IceCube implements Listener {
             event.setCancelled(true);
         }
     }
+
     @EventHandler
     public void onPlayerJump(PlayerJumpEvent event) {
         Player player = event.getPlayer();

@@ -37,7 +37,7 @@ public class AutoUpload {
         try {
             URL url = new URL(RELEASE_URL);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            if(!isAutoUploadEnabled()) return;
+            if (!isAutoUploadEnabled()) return;
             connection.setRequestProperty("Authorization", "Token " + getApiKey());
 
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
@@ -92,7 +92,7 @@ public class AutoUpload {
         }
     }
 
-    public static boolean isAutoUploadEnabled(){
+    public static boolean isAutoUploadEnabled() {
         return !(getApiKey() == null);
     }
 }

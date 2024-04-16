@@ -1,7 +1,6 @@
 package newamazingpvp.lifestealsmp.runes;
 
 
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -25,7 +24,7 @@ public class LightningRune implements Listener {
         for (ItemStack item : items) {
             if (item != null) {
                 ItemMeta meta = item.getItemMeta();
-                if (meta.hasDisplayName() && meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + "" + ChatColor.YELLOW + "" + ChatColor.BOLD + " Lightning Rune " + ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E")) {
+                if (meta.hasDisplayName() && meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + ChatColor.YELLOW + ChatColor.BOLD + " Lightning Rune " + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "E")) {
                     if (Math.random() <= 0.5) {
 
                         victim.getWorld().strikeLightningEffect(victim.getLocation());

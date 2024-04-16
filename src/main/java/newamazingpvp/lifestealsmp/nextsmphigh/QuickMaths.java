@@ -33,12 +33,12 @@ public class QuickMaths implements CommandExecutor {
             Bukkit.broadcastMessage(ChatColor.GRAY + "Loading...");
 
             //generates prob type
-            mathType = (int) (Math.random()*10);
+            mathType = (int) (Math.random() * 10);
 
             //generates numbers for problem
-            num1 = (int) (Math.random()*101);
-            num2 = (int) (Math.random()*101);
-            num3 = (int) (Math.random()*101);
+            num1 = (int) (Math.random() * 101);
+            num2 = (int) (Math.random() * 101);
+            num3 = (int) (Math.random() * 101);
 
             for (Player soundLOC1 : Bukkit.getServer().getOnlinePlayers()) {
                 soundLOC1.playSound(soundLOC1.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.0F);
@@ -89,19 +89,16 @@ public class QuickMaths implements CommandExecutor {
             }
 
 
-
             canAnswer.set(true);
 
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> canAnswer.set(false), 20*20);
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.RED + "Time Up!"), 20*20);
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> canAnswer.set(false), 20 * 20);
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.RED + "Time Up!"), 20 * 20);
             int finalAns = ans;
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.GREEN + "" + finalAns), 20*20);
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.broadcastMessage(ChatColor.GREEN + "" + finalAns), 20 * 20);
 
             for (Player soundLOC1 : Bukkit.getServer().getOnlinePlayers()) {
                 soundLOC1.playSound(soundLOC1.getLocation(), Sound.ENTITY_VILLAGER_AMBIENT, 1.0F, 2.0F);
             }
-
-
 
 
         } else {

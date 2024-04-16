@@ -15,12 +15,12 @@ public class ConsoleCommand extends ListenerAdapter {
         if (event.getAuthor().isBot() || event.isWebhookMessage()) {
             return;
         }
-        if(!event.getChannel().getId().equals(consoleChannel)) return;
+        if (!event.getChannel().getId().equals(consoleChannel)) return;
         String messageContent = event.getMessage().getContentRaw();
         Bukkit.getScheduler().runTask(lifestealSmp, () -> {
             getServer().dispatchCommand(getServer().getConsoleSender(), messageContent);
         });
-        if(messageContent.toLowerCase().contains("silent")){
+        if (messageContent.toLowerCase().contains("silent")) {
             silentMode = !silentMode;
         }
     }

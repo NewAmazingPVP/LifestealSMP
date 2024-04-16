@@ -2,7 +2,6 @@ package newamazingpvp.lifestealsmp.discord;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import org.bukkit.event.Listener;
 
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.sendDiscordMessage;
 

@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.nextSmpBeta;
 
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -53,7 +54,7 @@ public class LockPlayer implements CommandExecutor {
             sender.sendMessage(ChatColor.DARK_GREEN + playerName + " is no longer locked!");
 
             return true;
-        }else {
+        } else {
             team.addEntry(player.getName());
             sender.sendMessage(ChatColor.DARK_RED + playerName + " is now locked!");
         }

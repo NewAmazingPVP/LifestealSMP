@@ -1,46 +1,38 @@
 package newamazingpvp.lifestealsmp.discord;
 
-import com.destroystokyo.paper.event.player.PlayerAdvancementCriterionGrantEvent;
-import com.google.common.collect.Iterables;
-import com.google.common.io.ByteArrayDataOutput;
-import com.google.common.io.ByteStreams;
-import io.sentry.util.Objects;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerAdvancementDoneEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.Plugin;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
-import org.json.simple.JSONObject;
 
 import java.awt.*;
 import java.lang.reflect.Method;
 
-import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.*;
 
 public class DiscordListener implements Listener {
     @EventHandler
     public void messageSent(AsyncPlayerChatEvent event) {
-        if(!event.isCancelled()){
-            if(event.getFormat().contains(ChatColor.AQUA + "Team: ")) return;
+        if (!event.isCancelled()) {
+            if (event.getFormat().contains(ChatColor.AQUA + "Team: ")) return;
             sendWebhook(event.getPlayer(), event.getMessage());
         }
     }
 
     @EventHandler
     public void playerJoin(PlayerJoinEvent event) {
-        if(isVanished(event.getPlayer())) return;
+        if (isVanished(event.getPlayer())) return;
         Player p = event.getPlayer();
-        if(p.hasPlayedBefore()) {
+        if (p.hasPlayedBefore()) {
             String joinMessage = event.getJoinMessage();
             if (joinMessage != null && !joinMessage.isEmpty()) {
                 String s = p.getName() + " joined the SMP server";
@@ -54,7 +46,7 @@ public class DiscordListener implements Listener {
 
     @EventHandler
     public void playerLeave(PlayerQuitEvent event) {
-        if(isVanished(event.getPlayer())) return;
+        if (isVanished(event.getPlayer())) return;
         String s = event.getPlayer().getName() + " left the SMP server";
         sendDiscordEmbedPlayer(s, Color.RED, channelId, event.getPlayer().getName());
     }
@@ -102,9 +94,10 @@ public class DiscordListener implements Listener {
     private String getComponentText(Component component) {
         return PlainTextComponentSerializer.plainText().serialize((component));
     }
+
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
-        if(isVanished(event.getPlayer())) return;
+        if (isVanished(event.getPlayer())) return;
         String s = event.getDeathMessage();
         sendDiscordEmbedPlayer(s, Color.BLACK, channelId, event.getPlayer().getName());
     }

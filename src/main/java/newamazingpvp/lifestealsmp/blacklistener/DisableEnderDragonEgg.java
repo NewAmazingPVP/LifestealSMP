@@ -5,7 +5,6 @@ import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.*;
-import org.bukkit.scheduler.BukkitRunnable;
 
 public class DisableEnderDragonEgg implements Listener {
 
@@ -16,7 +15,7 @@ public class DisableEnderDragonEgg implements Listener {
         if (event.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY) {
             if (event.getCurrentItem() != null &&
                     event.getCurrentItem().getType() == Material.DRAGON_EGG) {
-                if (event.getClickedInventory().getType()!= InventoryType.PLAYER) {
+                if (event.getClickedInventory().getType() != InventoryType.PLAYER) {
                     event.setCancelled(true);
                     event.getWhoClicked().sendMessage(message);
                 }
