@@ -206,5 +206,15 @@ public class RunesDrops implements Listener {
             }
             e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
         }
+
+        if (Math.random() <= 1) {
+            e.getDrops().add(bloodRune());
+            killer.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "RUNE DROP!" + ChatColor.GOLD + " Blood Rune");
+            for (int i = 0; i < 5; i++) {
+                Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 5.0f, 0.0f), 3);
+            }
+            e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
+        }
     }
 }
+
