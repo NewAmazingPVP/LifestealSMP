@@ -1,6 +1,5 @@
-package newamazingpvp.lifestealsmp.nextSmpHIGH;
+package newamazingpvp.lifestealsmp.nextsmphigh;
 
-import kotlin.random.URandomKt;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -13,7 +12,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
-public class quickMaths implements CommandExecutor {
+public class QuickMaths implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -34,12 +33,12 @@ public class quickMaths implements CommandExecutor {
             Bukkit.broadcastMessage(ChatColor.GRAY + "Loading...");
 
             //generates prob type
-            mathType = URandomKt.nextInt(10);
+            mathType = (int) (Math.random()*10);
 
             //generates numbers for problem
-            num1 = URandomKt.nextInt(101);
-            num2 = URandomKt.nextInt(101);
-            num3 = URandomKt.nextInt(101);
+            num1 = (int) (Math.random()*101);
+            num2 = (int) (Math.random()*101);
+            num3 = (int) (Math.random()*101);
 
             for (Player soundLOC1 : Bukkit.getServer().getOnlinePlayers()) {
                 soundLOC1.playSound(soundLOC1.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.0F);

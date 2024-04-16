@@ -1,8 +1,6 @@
-package newamazingpvp.lifestealsmp.Runes;
+package newamazingpvp.lifestealsmp.runes;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,7 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class hellRune implements Listener {
+public class HellRune implements Listener {
 
     @EventHandler
     public void playerAttack(EntityDamageByEntityEvent e) {

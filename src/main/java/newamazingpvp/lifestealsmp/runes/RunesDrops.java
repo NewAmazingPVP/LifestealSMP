@@ -1,24 +1,21 @@
-package newamazingpvp.lifestealsmp.Runes;
+package newamazingpvp.lifestealsmp.runes;
 
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.game.CustomRecipe.corruptedMobSoul;
 
-public class runesDrops implements Listener {
+public class RunesDrops implements Listener {
 
     public static ItemStack witherRune () {
         ItemStack ITEM = new ItemStack(Material.WITHER_SKELETON_SKULL);
