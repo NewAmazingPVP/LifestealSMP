@@ -1,41 +1,28 @@
 package newamazingpvp.lifestealsmp.runes;
 
-import com.destroystokyo.paper.event.player.PlayerJumpEvent;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
+
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.event.player.PlayerMoveEvent;
+import java.util.HashMap;
+import java.util.UUID;
 
 public class AirRune implements Listener {
 
-    public boolean isPlayerOnGround(Player player) {
-        Block blockBelow = player.getLocation().subtract(0, 1, 0).getBlock();
-        return blockBelow.getType() != Material.AIR;
-    }
+    private final HashMap<UUID, Integer> jumpCount = new HashMap<>();
 
     @EventHandler
-    public void jump(PlayerJumpEvent e) {
+    public void onPlayerMove(PlayerMoveEvent event) {
+        Player player = event.getPlayer();
+        UUID playerId = player.getUniqueId();
 
-        Player player = e.getPlayer();
-        ItemStack[] items = player.getInventory().getContents();
-
-        Block blockBelow = player.getLocation().subtract(0, 1, 0).getBlock();
-        boolean isOnGround = blockBelow.getType() != Material.AIR;
-
-
-        for (ItemStack item : items) {
-            if (item != null) {
-                ItemMeta meta = item.getItemMeta();
-                if (meta.hasDisplayName() && meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + ChatColor.WHITE + ChatColor.BOLD + " Air Rune " + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "E")) {
-                    if (isOnGround == true) {
-
-                    }
-                }
-            }
+        if (player.isOnGround()) {
+            jumpCount.put(playerId, 0); // Reset jump count when player is on the ground
+        } else if (jumpCount.getOrDefault(playerId, 0) < 1) {
+            jumpCount.put(playerId, jumpCount.getOrDefault(playerId, 0) + 1); // Increment jump count
+        } else {
+            event.setCancelled(true); // Cancel the event if the player has already jumped once
         }
     }
 }

@@ -19,6 +19,19 @@ public class QuickMaths implements CommandExecutor {
         if (sender instanceof Player) {
 
             Player player = (Player) sender;
+            //Quick Maths Command
+
+
+            //Bukkit.broadcastMessage(ChatColor.YELLOW + "If the drug cartel was in a boat going 120.214235kph bearing 190 and the wid was going at a content speed of 15.2kph bearing 230 plus 25 degrees, what is the magnitude and direction of the boat." +
+            //        "Would they be able to get into the US border? If the boat was a EV what would the duty cycle of the pulse width modulation be for its wheels motors if the gear ratio was 5-3");
+
+            //Bukkit.broadcastMessage(ChatColor.DARK_RED + "Good Luck. If you fail YOU WILL DIE! =D");
+
+
+
+
+
+
 
             AtomicBoolean canAnswer = new AtomicBoolean(false);
 
