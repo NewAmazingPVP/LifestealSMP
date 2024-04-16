@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.nextSmpHIGH;
+package newamazingpvp.lifestealsmp.nextsmphigh;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -14,7 +14,7 @@ import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
-public class pingWars implements CommandExecutor {
+public class PingWars implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

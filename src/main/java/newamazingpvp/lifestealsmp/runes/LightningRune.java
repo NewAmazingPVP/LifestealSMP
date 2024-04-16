@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.Runes;
+package newamazingpvp.lifestealsmp.runes;
 
 
 
@@ -12,7 +12,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class lightningRune implements Listener {
+public class LightningRune implements Listener {
 
 
     @EventHandler

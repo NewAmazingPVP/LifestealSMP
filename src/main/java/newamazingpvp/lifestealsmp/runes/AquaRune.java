@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.Runes;
+package newamazingpvp.lifestealsmp.runes;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -11,7 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class aquaRune implements Listener {
+public class AquaRune implements Listener {
 
     @EventHandler
     public void playerMove(PlayerMoveEvent e) {

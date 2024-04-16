@@ -2,10 +2,10 @@ package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
-import newamazingpvp.lifestealsmp.Runes.aquaRune;
-import newamazingpvp.lifestealsmp.Runes.hellRune;
-import newamazingpvp.lifestealsmp.Runes.lightningRune;
-import newamazingpvp.lifestealsmp.Runes.runesDrops;
+import newamazingpvp.lifestealsmp.runes.AquaRune;
+import newamazingpvp.lifestealsmp.runes.HellRune;
+import newamazingpvp.lifestealsmp.runes.LightningRune;
+import newamazingpvp.lifestealsmp.runes.RunesDrops;
 import newamazingpvp.lifestealsmp.blacklistener.*;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.customitems.*;
@@ -15,9 +15,9 @@ import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
 import newamazingpvp.lifestealsmp.listener.*;
 import newamazingpvp.lifestealsmp.cometwip.GiveSekhmetSetSpeedADMINONLY;
 import newamazingpvp.lifestealsmp.nextSmpBeta.*;
-import newamazingpvp.lifestealsmp.nextSmpHIGH.IceCube;
-import newamazingpvp.lifestealsmp.nextSmpHIGH.pingWars;
-import newamazingpvp.lifestealsmp.nextSmpHIGH.quickMaths;
+import newamazingpvp.lifestealsmp.nextsmphigh.IceCube;
+import newamazingpvp.lifestealsmp.nextsmphigh.PingWars;
+import newamazingpvp.lifestealsmp.nextsmphigh.QuickMaths;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -96,7 +96,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("ally").setExecutor(new AllyCommand());
         getCommand("ally").setTabCompleter(new AllyCommand());
         getCommand("prefix").setExecutor(new PrefixCommand());
-        getCommand("pingWars").setExecutor(new pingWars());
+        getCommand("pingWars").setExecutor(new PingWars());
         getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
@@ -131,13 +131,13 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         //TODO: Use this for beta things
         if(isAutoUploadEnabled()) {
             getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
-            getCommand("lockPlayer").setExecutor(new lockPlayer());
-            getCommand("quickMaths").setExecutor(new quickMaths());
+            getCommand("lockPlayer").setExecutor(new LockPlayer());
+            getCommand("quickMaths").setExecutor(new QuickMaths());
             getServer().getPluginManager().registerEvents(new IceCube(), this);
-            getServer().getPluginManager().registerEvents(new runesDrops(), this);
-            getServer().getPluginManager().registerEvents(new aquaRune(), this);
-            getServer().getPluginManager().registerEvents(new lightningRune(), this);
-            getServer().getPluginManager().registerEvents(new hellRune(), this);
+            getServer().getPluginManager().registerEvents(new RunesDrops(), this);
+            getServer().getPluginManager().registerEvents(new AquaRune(), this);
+            getServer().getPluginManager().registerEvents(new LightningRune(), this);
+            getServer().getPluginManager().registerEvents(new HellRune(), this);
             //registerCustomRecipesRunes();
 
             //getServer().getPluginManager().registerEvents(new OtherCustomDrops(), this);
