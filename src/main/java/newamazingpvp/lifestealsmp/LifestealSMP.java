@@ -15,10 +15,7 @@ import newamazingpvp.lifestealsmp.nextSmpBeta.REMOVE_THIS_COMMAND_GIVE_ICE;
 import newamazingpvp.lifestealsmp.nextsmphigh.IceCube;
 import newamazingpvp.lifestealsmp.nextsmphigh.PingWars;
 import newamazingpvp.lifestealsmp.nextsmphigh.QuickMaths;
-import newamazingpvp.lifestealsmp.runes.AquaRune;
-import newamazingpvp.lifestealsmp.runes.HellRune;
-import newamazingpvp.lifestealsmp.runes.LightningRune;
-import newamazingpvp.lifestealsmp.runes.RunesDrops;
+import newamazingpvp.lifestealsmp.runes.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -133,12 +130,13 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         if (isAutoUploadEnabled()) {
             getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
             getCommand("lockPlayer").setExecutor(new LockPlayer());
-            getCommand("quickMaths").setExecutor(new QuickMaths());
+            //getCommand("quickMaths").setExecutor(new QuickMaths());
             getServer().getPluginManager().registerEvents(new IceCube(), this);
             getServer().getPluginManager().registerEvents(new RunesDrops(), this);
             getServer().getPluginManager().registerEvents(new AquaRune(), this);
             getServer().getPluginManager().registerEvents(new LightningRune(), this);
             getServer().getPluginManager().registerEvents(new HellRune(), this);
+            getServer().getPluginManager().registerEvents(new BloodRune(), this);
             //registerCustomRecipesRunes();
 
             //getServer().getPluginManager().registerEvents(new OtherCustomDrops(), this);
