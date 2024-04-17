@@ -21,7 +21,7 @@ public class BloodRune implements Listener {
     public void playerAttack(EntityDeathEvent e) {
 
         Player killer = e.getEntity().getKiller();
-        if(killer == null) return;
+        //if(killer == null) return;
         PotionEffect effect = new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 20 * 5, 4); //change if needed
 
         if (isRuneInInventory(killer, "blood rune")) {
