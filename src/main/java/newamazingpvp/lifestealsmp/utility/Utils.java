@@ -35,7 +35,9 @@ public class Utils {
         for (ItemStack item : items) {
             if (item != null) {
                 ItemMeta meta = item.getItemMeta();
-                if (meta.hasLore()) {
+                if (meta.getLore() != null) {
+                    p.sendMessage(meta.getLore().toString());
+                    p.sendMessage("test");
                     return meta.getLore().toString().toLowerCase().contains(rune.toLowerCase());
                 }
             }
