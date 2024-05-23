@@ -138,3 +138,8 @@ commands:
     usage: /quickmaths
     permission: lifestealSMP.admin
     default: op
+  giveBingoCardTEMP:
+    description: gives bingo card TEMP
+    usage: /giveBingoCardTEMP
+    permission: lifestealSMP.admin
+    default: op
