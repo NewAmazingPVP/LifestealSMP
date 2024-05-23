@@ -2,6 +2,7 @@ package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
+import newamazingpvp.lifestealsmp.MinecraftBINGO.BingoCardListener;
 import newamazingpvp.lifestealsmp.blacklistener.*;
 import newamazingpvp.lifestealsmp.cometwip.GiveSekhmetSetSpeedAdmin;
 import newamazingpvp.lifestealsmp.command.*;
@@ -129,6 +130,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         if (isAutoUploadEnabled()) {
             getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
             getCommand("lockPlayer").setExecutor(new LockPlayer());
+            getCommand(" giveBingoCardTEMP").setExecutor(new LockPlayer());
             //getCommand("quickMaths").setExecutor(new QuickMaths());
             getServer().getPluginManager().registerEvents(new IceCube(), this);
             getServer().getPluginManager().registerEvents(new RunesDrops(), this);
@@ -137,6 +139,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new HellRune(), this);
             getServer().getPluginManager().registerEvents(new BloodRune(), this);
             getServer().getPluginManager().registerEvents(new AirRune(), this);
+            getServer().getPluginManager().registerEvents(new BingoCardListener(), this);
             //registerCustomRecipesRunes();
 
             //getServer().getPluginManager().registerEvents(new OtherCustomDrops(), this);
