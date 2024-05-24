@@ -3,6 +3,7 @@ package newamazingpvp.lifestealsmp;
 import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import newamazingpvp.lifestealsmp.MinecraftBINGO.BingoCardListener;
+import newamazingpvp.lifestealsmp.MinecraftBINGO.GiveBingoCardTEMP;
 import newamazingpvp.lifestealsmp.blacklistener.*;
 import newamazingpvp.lifestealsmp.cometwip.GiveSekhmetSetSpeedAdmin;
 import newamazingpvp.lifestealsmp.command.*;
@@ -130,7 +131,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         if (isAutoUploadEnabled()) {
             getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
             getCommand("lockPlayer").setExecutor(new LockPlayer());
-            getCommand(" giveBingoCardTEMP").setExecutor(new LockPlayer());
+            getCommand("givebingocardtemp").setExecutor(new GiveBingoCardTEMP());
             //getCommand("quickMaths").setExecutor(new QuickMaths());
             getServer().getPluginManager().registerEvents(new IceCube(), this);
             getServer().getPluginManager().registerEvents(new RunesDrops(), this);
