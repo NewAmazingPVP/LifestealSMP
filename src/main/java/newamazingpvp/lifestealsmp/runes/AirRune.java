@@ -30,7 +30,7 @@ public class AirRune implements Listener {
         } else if (currentJumpCount == 1) {
             // Double jump logic here
             // For example, you can increase the player's jump velocity
-            player.setVelocity(player.getVelocity().add(new Vector(0, 1, 0)));
+            player.setVelocity(player.getVelocity().add(new Vector(0, 20, 0)));
             jumpCount.put(playerId, 0); // Reset the jump count
         }
     }
