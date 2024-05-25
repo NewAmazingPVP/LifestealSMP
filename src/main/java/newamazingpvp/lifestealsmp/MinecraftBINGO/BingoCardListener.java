@@ -53,8 +53,9 @@ public class BingoCardListener implements Listener {
 
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
 
-                Inventory alter = Bukkit.createInventory(player, 54, ChatColor.GOLD + "" + ChatColor.BOLD + "Bingo Card");
+                Inventory bingoCardGIU = Bukkit.createInventory(player, 54, ChatColor.GOLD + "" + ChatColor.BOLD + "Bingo Card");
 
+                player.openInventory(bingoCardGIU);
 
 
             }
