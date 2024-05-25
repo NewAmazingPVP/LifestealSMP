@@ -47,7 +47,7 @@ public class BingoCardListener implements Listener {
                 return;
             }
 
-            if (meta.getLore().toString().toLowerCase().contains("Open Bingo Card")){
+            if (meta.getLore().toString().contains("Open Bingo Card")){
 
                 e.setCancelled(true);
 
