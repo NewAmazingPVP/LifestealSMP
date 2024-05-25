@@ -15,7 +15,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoCardListener.BingoCard;
+import static newamazingpvp.lifestealsmp.MinecraftBINGO.customBingoItems.BingoCard;
 
 public class GiveBingoCardTEMP implements CommandExecutor {
 
