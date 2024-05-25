@@ -40,7 +40,7 @@ public class BingoCardGUI {
     //creates GUI and opens it
     public static void OpenTheBingoCardGUI(Player player){
 
-        Inventory bingoCardGUI = Bukkit.createInventory(player, 54, ChatColor.GOLD + "" + ChatColor.BOLD + "Bingo Card");
+        Inventory bingoCardGUI = Bukkit.createInventory(player, 63, ChatColor.GOLD + "" + ChatColor.BOLD + "Bingo Card");
 
         bingoCardGUI.setItem(0,orangeGlassGUI());
         bingoCardGUI.setItem(1,orangeGlassGUI());
