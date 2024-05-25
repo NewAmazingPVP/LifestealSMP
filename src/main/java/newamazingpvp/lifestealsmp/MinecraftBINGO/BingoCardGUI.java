@@ -62,6 +62,46 @@ public class BingoCardGUI {
         bingoCardGUI.setItem(16,orangeGlassGUI());
         bingoCardGUI.setItem(17,orangeGlassGUI());
 
+        bingoCardGUI.setItem(18,orangeGlassGUI());
+        bingoCardGUI.setItem(19,noChallengeGenerated());
+        bingoCardGUI.setItem(20,noChallengeGenerated());
+        bingoCardGUI.setItem(21,noChallengeGenerated());
+        bingoCardGUI.setItem(22,noChallengeGenerated());
+        bingoCardGUI.setItem(23,orangeGlassGUI());
+        bingoCardGUI.setItem(24,orangeGlassGUI());
+        bingoCardGUI.setItem(25,orangeGlassGUI());
+        bingoCardGUI.setItem(26,orangeGlassGUI());
+
+        bingoCardGUI.setItem(27,orangeGlassGUI());
+        bingoCardGUI.setItem(28,noChallengeGenerated());
+        bingoCardGUI.setItem(29,noChallengeGenerated());
+        bingoCardGUI.setItem(30,noChallengeGenerated());
+        bingoCardGUI.setItem(31,noChallengeGenerated());
+        bingoCardGUI.setItem(32,orangeGlassGUI());
+        bingoCardGUI.setItem(33,orangeGlassGUI());
+        bingoCardGUI.setItem(34,orangeGlassGUI());
+        bingoCardGUI.setItem(35,orangeGlassGUI());
+
+        bingoCardGUI.setItem(36,orangeGlassGUI());
+        bingoCardGUI.setItem(37,noChallengeGenerated());
+        bingoCardGUI.setItem(38,noChallengeGenerated());
+        bingoCardGUI.setItem(39,noChallengeGenerated());
+        bingoCardGUI.setItem(40,noChallengeGenerated());
+        bingoCardGUI.setItem(41,orangeGlassGUI());
+        bingoCardGUI.setItem(42,orangeGlassGUI());
+        bingoCardGUI.setItem(43,orangeGlassGUI());
+        bingoCardGUI.setItem(44,orangeGlassGUI());
+
+        bingoCardGUI.setItem(45,orangeGlassGUI());
+        bingoCardGUI.setItem(46,orangeGlassGUI());
+        bingoCardGUI.setItem(47,orangeGlassGUI());
+        bingoCardGUI.setItem(48,orangeGlassGUI());
+        bingoCardGUI.setItem(49,orangeGlassGUI());
+        bingoCardGUI.setItem(50,orangeGlassGUI());
+        bingoCardGUI.setItem(51,orangeGlassGUI());
+        bingoCardGUI.setItem(52,orangeGlassGUI());
+        bingoCardGUI.setItem(53,orangeGlassGUI());
+
 
         player.openInventory(bingoCardGUI);
 
