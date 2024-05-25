@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class BingoInvintoryProt implements Listener {
 
-    //TODO: make this something that will work for all the plugin
+    //TODO: ig this is not needed so its disabled
 
     @EventHandler
     public void onMenuClick(InventoryClickEvent event) {
