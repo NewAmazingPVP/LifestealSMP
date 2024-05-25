@@ -3,6 +3,7 @@ package newamazingpvp.lifestealsmp;
 import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import newamazingpvp.lifestealsmp.MinecraftBINGO.BingoCardListener;
+import newamazingpvp.lifestealsmp.MinecraftBINGO.BingoInvintoryProt;
 import newamazingpvp.lifestealsmp.MinecraftBINGO.GiveBingoCardTEMP;
 import newamazingpvp.lifestealsmp.blacklistener.*;
 import newamazingpvp.lifestealsmp.cometwip.GiveSekhmetSetSpeedAdmin;
@@ -141,6 +142,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new BloodRune(), this);
             getServer().getPluginManager().registerEvents(new AirRune(), this);
             getServer().getPluginManager().registerEvents(new BingoCardListener(), this);
+            getServer().getPluginManager().registerEvents(new BingoInvintoryProt(), this);
             //registerCustomRecipesRunes();
 
             //getServer().getPluginManager().registerEvents(new OtherCustomDrops(), this);
