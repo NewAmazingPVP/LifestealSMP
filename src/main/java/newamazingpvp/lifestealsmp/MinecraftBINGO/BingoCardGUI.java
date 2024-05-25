@@ -27,7 +27,7 @@ public class BingoCardGUI {
     }
 
     public static ItemStack noChallengeGenerated(){
-        ItemStack ITEM = new ItemStack(Material.PINK_STAINED_GLASS_PANE);
+        ItemStack ITEM = new ItemStack(Material.BARRIER);
         ItemMeta META = ITEM.getItemMeta();
         META.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "No Challenge Generated!");
         ITEM.setItemMeta(META);
