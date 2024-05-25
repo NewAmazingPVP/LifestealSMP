@@ -18,6 +18,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
+import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoCardGUI.OpenTheBingoCardGUI;
+
 public class BingoCardListener implements Listener {
 
 
@@ -40,9 +42,7 @@ public class BingoCardListener implements Listener {
 
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
 
-                Inventory bingoCardGIU = Bukkit.createInventory(player, 54, ChatColor.GOLD + "" + ChatColor.BOLD + "Bingo Card");
-
-                player.openInventory(bingoCardGIU);
+                OpenTheBingoCardGUI(player);
 
 
             }
