@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.MinecraftBINGO;
+package newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUI;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
