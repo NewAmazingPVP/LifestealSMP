@@ -13,26 +13,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
+import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUIItems.*;
+
 public class BingoCardGUI {
 
 
     //creates items for GUI
 
-    public static ItemStack orangeGlassGUI(){
-        ItemStack ITEM = new ItemStack(Material.PINK_STAINED_GLASS_PANE);
-        ItemMeta META = ITEM.getItemMeta();
-        META.setDisplayName(" ");
-        ITEM.setItemMeta(META);
-        return ITEM;
-    }
-
-    public static ItemStack noChallengeGenerated(){
-        ItemStack ITEM = new ItemStack(Material.BARRIER);
-        ItemMeta META = ITEM.getItemMeta();
-        META.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "No Challenge Generated!");
-        ITEM.setItemMeta(META);
-        return ITEM;
-    }
 
 
 
@@ -110,6 +97,36 @@ public class BingoCardGUI {
     public static void BingoMainMenu(Player player){
 
         Inventory bingoMainGUI = Bukkit.createInventory(player, 27, ChatColor.GOLD + "" + ChatColor.BOLD + "Bingo");
+
+        bingoMainGUI.setItem(0,orangeGlassGUI());
+        bingoMainGUI.setItem(1,orangeGlassGUI());
+        bingoMainGUI.setItem(2,orangeGlassGUI());
+        bingoMainGUI.setItem(3,orangeGlassGUI());
+        bingoMainGUI.setItem(4,orangeGlassGUI());
+        bingoMainGUI.setItem(5,orangeGlassGUI());
+        bingoMainGUI.setItem(6,orangeGlassGUI());
+        bingoMainGUI.setItem(7,orangeGlassGUI());
+        bingoMainGUI.setItem(8,orangeGlassGUI());
+
+        bingoMainGUI.setItem(9,orangeGlassGUI());
+        bingoMainGUI.setItem(10,orangeGlassGUI());
+        bingoMainGUI.setItem(11,BingoInfo());
+        bingoMainGUI.setItem(12,orangeGlassGUI());
+        bingoMainGUI.setItem(13,openBingoCard());
+        bingoMainGUI.setItem(14,orangeGlassGUI());
+        bingoMainGUI.setItem(15,BingoPickaxeGUI());
+        bingoMainGUI.setItem(16,orangeGlassGUI());
+        bingoMainGUI.setItem(17,orangeGlassGUI());
+
+        bingoMainGUI.setItem(18,orangeGlassGUI());
+        bingoMainGUI.setItem(19,orangeGlassGUI());
+        bingoMainGUI.setItem(20,orangeGlassGUI());
+        bingoMainGUI.setItem(21,orangeGlassGUI());
+        bingoMainGUI.setItem(22,orangeGlassGUI());
+        bingoMainGUI.setItem(23,orangeGlassGUI());
+        bingoMainGUI.setItem(24,orangeGlassGUI());
+        bingoMainGUI.setItem(25,orangeGlassGUI());
+        bingoMainGUI.setItem(26,orangeGlassGUI());
 
 
 

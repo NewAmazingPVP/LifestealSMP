@@ -51,6 +51,8 @@ public class customBingoItems {
     //harvest X amount of X crop
     //use 10 totems of un dyeing
     //find X mob head
+    //kill X amount of X mob in leather armor
+    //kill ender dragon in X armor
 
 
 }
