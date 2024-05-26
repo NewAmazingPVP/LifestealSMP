@@ -107,4 +107,15 @@ public class BingoCardGUI {
 
     }
 
+    public static void BingoMainMenu(Player player){
+
+        Inventory bingoMainGUI = Bukkit.createInventory(player, 27, ChatColor.GOLD + "" + ChatColor.BOLD + "Bingo");
+
+
+
+
+        player.openInventory(bingoMainGUI);
+
+    }
+
 }
