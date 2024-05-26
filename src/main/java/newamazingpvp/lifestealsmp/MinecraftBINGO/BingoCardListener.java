@@ -51,20 +51,4 @@ public class BingoCardListener implements Listener {
             }
         }
     }
-
-    @EventHandler
-    public void onMenuClick(InventoryClickEvent event) {
-        if (event.getView().getTitle().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Bingo Card") || event.getView().getTitle().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Bingo")) {
-
-
-            if (event.getCurrentItem() == null) {
-                return;
-            }
-
-            event.setCancelled(true);
-
-
-        }
-    }
-
 }
