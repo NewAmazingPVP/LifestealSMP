@@ -53,6 +53,7 @@ public class customBingoItems {
     //find X mob head
     //kill X amount of X mob in leather armor
     //kill ender dragon in X armor
+    //craft X item
 
 
 }
