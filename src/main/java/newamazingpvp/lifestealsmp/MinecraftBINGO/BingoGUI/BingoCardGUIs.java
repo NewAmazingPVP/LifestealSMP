@@ -2,8 +2,10 @@ package newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUI;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
 import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUI.BingoGUIItems.*;
 
@@ -144,9 +146,9 @@ public class BingoCardGUIs {
 
         BingoPickaxeRecipeGUI.setItem(9,orangeGlassGUI());
         BingoPickaxeRecipeGUI.setItem(10,orangeGlassGUI());
-        //BingoPickaxeRecipeGUI.setItem(11,orangeGlassGUI());
-        //BingoPickaxeRecipeGUI.setItem(12,orangeGlassGUI());
-        //BingoPickaxeRecipeGUI.setItem(13,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(11,CopperIngotGUI());
+        BingoPickaxeRecipeGUI.setItem(12,CopperIngotGUI());
+        BingoPickaxeRecipeGUI.setItem(13,CopperIngotGUI());
         BingoPickaxeRecipeGUI.setItem(14,orangeGlassGUI());
         BingoPickaxeRecipeGUI.setItem(15,orangeGlassGUI());
         BingoPickaxeRecipeGUI.setItem(16,orangeGlassGUI());
@@ -155,7 +157,7 @@ public class BingoCardGUIs {
         BingoPickaxeRecipeGUI.setItem(18,orangeGlassGUI());
         BingoPickaxeRecipeGUI.setItem(19,orangeGlassGUI());
         //BingoPickaxeRecipeGUI.setItem(20,orangeGlassGUI());
-        //BingoPickaxeRecipeGUI.setItem(21,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(21,StickGUI());
         //BingoPickaxeRecipeGUI.setItem(22,orangeGlassGUI());
         BingoPickaxeRecipeGUI.setItem(23,orangeGlassGUI());
         //BingoPickaxeRecipeGUI.setItem(24,orangeGlassGUI());
@@ -165,7 +167,7 @@ public class BingoCardGUIs {
         BingoPickaxeRecipeGUI.setItem(27,orangeGlassGUI());
         BingoPickaxeRecipeGUI.setItem(28,orangeGlassGUI());
         //BingoPickaxeRecipeGUI.setItem(29,orangeGlassGUI());
-        //BingoPickaxeRecipeGUI.setItem(30,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(30,StickGUI());
         //BingoPickaxeRecipeGUI.setItem(31,orangeGlassGUI());
         BingoPickaxeRecipeGUI.setItem(32,orangeGlassGUI());
         BingoPickaxeRecipeGUI.setItem(33,orangeGlassGUI());
