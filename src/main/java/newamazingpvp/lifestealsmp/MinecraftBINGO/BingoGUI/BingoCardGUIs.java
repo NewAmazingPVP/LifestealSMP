@@ -133,8 +133,56 @@ public class BingoCardGUIs {
         Inventory BingoPickaxeRecipeGUI = Bukkit.createInventory(player, 45, ChatColor.GOLD + "" + ChatColor.BOLD + "Bingo Pickaxe Recipe");
 
         BingoPickaxeRecipeGUI.setItem(0,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(1,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(2,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(3,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(4,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(5,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(6,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(7,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(8,orangeGlassGUI());
 
+        BingoPickaxeRecipeGUI.setItem(9,orangeGlassGUI());
+        //BingoPickaxeRecipeGUI.setItem(10,orangeGlassGUI());
+        //BingoPickaxeRecipeGUI.setItem(11,orangeGlassGUI());
+        //BingoPickaxeRecipeGUI.setItem(12,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(13,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(14,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(15,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(16,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(17,orangeGlassGUI());
 
+        BingoPickaxeRecipeGUI.setItem(18,orangeGlassGUI());
+        //BingoPickaxeRecipeGUI.setItem(19,orangeGlassGUI());
+        //BingoPickaxeRecipeGUI.setItem(20,orangeGlassGUI());
+        //BingoPickaxeRecipeGUI.setItem(21,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(22,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(23,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(24,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(25,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(26,orangeGlassGUI());
+
+        BingoPickaxeRecipeGUI.setItem(27,orangeGlassGUI());
+        //BingoPickaxeRecipeGUI.setItem(28,orangeGlassGUI());
+        //BingoPickaxeRecipeGUI.setItem(29,orangeGlassGUI());
+        //BingoPickaxeRecipeGUI.setItem(30,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(31,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(32,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(33,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(34,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(35,orangeGlassGUI());
+
+        BingoPickaxeRecipeGUI.setItem(36,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(37,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(38,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(39,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(40,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(41,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(42,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(43,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(44,orangeGlassGUI());
+
+        
 
         player.openInventory(BingoPickaxeRecipeGUI);
 
