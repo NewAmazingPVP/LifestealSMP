@@ -12,7 +12,7 @@ import java.util.List;
 
 public class GenerateBingoCard {
 
-    //bingo challenge GUI items for card
+    //bingo challenge GUI items for card ==================================
 
     public static ItemStack KillEnderDragBingoCard(){
         ItemStack ITEM = new ItemStack(Material.DRAGON_EGG);
@@ -96,6 +96,135 @@ public class GenerateBingoCard {
         return ITEM;
     }
 
+    public static ItemStack Kill2000EndermanInLeatherArmorBingoCard(){
+        ItemStack ITEM = new ItemStack(Material.ENDERMAN_SPAWN_EGG);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Kill 2,000 Enderman While In Leather Armor");
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
+
+
+    //these item stacks have variables in them
+
+    public static ItemStack KillAPlayerStandingOnXBlockBingoCard(){
+        ItemStack ITEM = new ItemStack(Material.END_GATEWAY);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "Kill A Player Standing On " + BlockToKillPlayerOn);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
+    public static ItemStack KillAPlayerInXArmorBingoCard() {
+        ItemStack ITEM = new ItemStack(Material.GOLDEN_CHESTPLATE);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Kill A Player Who Has " + KillAPlayerInXArmor + " On");
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
+    public static ItemStack Kill1500OfXMobBingoCard() {
+        ItemStack ITEM = new ItemStack(Material.ZOMBIE_HEAD);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Kill 1,500 " + MobToKill1500Of);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
+    public static ItemStack EatXAmountOfXFoodBingoCard() {
+        ItemStack ITEM = new ItemStack(Material.COOKED_BEEF);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Eat " + FoodAmount + " Of " + EatXAmountOffFoodType);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
+    public static ItemStack GetXPotionEffectBingoCard() {
+        ItemStack ITEM = new ItemStack(Material.GLASS_BOTTLE);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.setDisplayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Get " + GetXPotionEffect + " Potion Effect");
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
+    public static ItemStack BreakXAmountOfXBlockWithBingoPickBingoCard() {
+        ItemStack ITEM = new ItemStack(Material.IRON_PICKAXE);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "Mine " + BlockToBreakXAmountOf + " Of " + BlockAmountToBreak + " With Bingo Pickaxe");
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
+    public static ItemStack BreakXAmountOfAnyBlockBingoCard() {
+        ItemStack ITEM = new ItemStack(Material.DIAMOND_BLOCK);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "Mine " + BreakAnyBlockTypeNum + " Of Any Block With Bingo Pickaxe");
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
+    public static ItemStack CraftXAmountOfXBingoCard() {
+        ItemStack ITEM = new ItemStack(Material.CRAFTING_TABLE);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.setDisplayName(ChatColor.BLUE + "" + ChatColor.BOLD + "Craft " + AmountToCraft + " Of " + ThingToCraftXAmountOf);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
+    public static ItemStack BreedXAmountOfXMobBingoCard() {
+        ItemStack ITEM = new ItemStack(Material.COW_SPAWN_EGG);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "Breed " + AmountOfMobToBread + " Of " + MobToBreadXAmountOf);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
+    public static ItemStack GetToXAmountOfXPLevelsBingoCard() {
+        ItemStack ITEM = new ItemStack(Material.EXPERIENCE_BOTTLE);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Get To " + AmountOfXPLevelsToGet + " XP Levels");
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
+    public static ItemStack KillAPlayerThatIsInXArmorFromAtMost10BlocksAwayBingoCard() {
+        ItemStack ITEM = new ItemStack(Material.DIAMOND_HELMET);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Kill A Player Who Has " + ArmorYouKillPlayerInWithCrossbow + " On From At Most 10 Blocks Away");
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
+    public static ItemStack HarvestXAmountOfXCropBingoCard() {
+        ItemStack ITEM = new ItemStack(Material.WHEAT_SEEDS);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Farm"  + CropToHarvest + " Of " + AmountOfCrop);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
+    public static ItemStack FindXMobHeadBingoCard() {
+        ItemStack ITEM = new ItemStack(Material.SKELETON_SKULL);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "Find A " + MobHeadToFind);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
 
 
 
@@ -103,23 +232,23 @@ public class GenerateBingoCard {
 
 
 
+    //helps find random blocks and mobs ==================================
 
-    //helps find random blocks and mobs
 
-    String BlockToKillPlayerOn;
-    String KillAPlayerInXArmor;
-    String MobToKill500Of;
-    String EatXAmountOffFoodType; int FoodAmount;
-    String GetXPotionEffect;
-    String BlockToBreakXAmountOf; int BlockAmountToBreak;
-    int BreakAnyBlockTypeNum;
-    String ThingToCraftXAmountOf; int AmountToCraft;
-    String MobToBreadXAmountOf; int AmountOfMobToBread;
-    int AmountOfXPLevelsToGet;
-    String ArmorYouKillPlayerInWithCrossbow;
-    String CropToHarvest; int AmountOfCrop;
-    String MobHeadToFind;
-    int NumberOfEndermanToKill;
+    //variables
+    static String BlockToKillPlayerOn;
+    static String KillAPlayerInXArmor;
+    static String MobToKill1500Of;
+    static String EatXAmountOffFoodType; static int FoodAmount;
+    static String GetXPotionEffect;
+    static String BlockToBreakXAmountOf; static int BlockAmountToBreak;
+    static int BreakAnyBlockTypeNum;
+    static String ThingToCraftXAmountOf; static int AmountToCraft;
+    static String MobToBreadXAmountOf; static int AmountOfMobToBread;
+    static int AmountOfXPLevelsToGet;
+    static String ArmorYouKillPlayerInWithCrossbow;
+    static String CropToHarvest; static int AmountOfCrop;
+    static String MobHeadToFind;
 
 
 

@@ -50,27 +50,26 @@ public class customBingoItems {
     //TODO: list of challenge ideas
     //kill end dragon
     //kill wither
-    //kill a player who is standing on X block TODO:make icon
-    //kill a player in X armor TODO:make icon
-    //kill 500 amount of X mob TODO:make icon
-    //eat X amount of X food TODO:make icon
+    //kill a player who is standing on X block
+    //kill a player in X armor
+    //kill 1500 amount of X mob
+    //eat X amount of X food
     //travel 50,000 total blocks
-    //get X potion effect  TODO:make icon
+    //get X potion effect
     //break a diamond chestplate
     //only use leather armor for 2h
-    //break X amount of X block with bingo pick TODO:make icon
-    //break X amount of any block with bingo pick TODO:make icon
+    //break X amount of X block with bingo pick
+    //break X amount of any block with bingo pick
     //eat 2 god apples
-    //craft X amount of something TODO:make icon
+    //craft X amount of X
     //break a elytra
-    //breed X amount of X mod TODO:make icon
-    //get X amount of XP levels at the same time TODO:make icon
-    //kill a player in X armor with a crossbow TODO:make icon
+    //breed X amount of X mod
+    //get X amount of XP levels at the same time
+    //kill a player in X armor with a crossbow
     //put a full set of curse of binding armor on
-    //harvest X amount of X crop TODO:make icon
+    //harvest X amount of X crop
     //use 10 totems of un dyeing
-    //find X mob head TODO:make icon
-    //kill X amount of enderman in leather armor TODO:make icon
-    //kill ender dragon in X armor TODO:make icon
+    //find X mob head
+    //kill 2,000 enderman in leather armor
 
 }
