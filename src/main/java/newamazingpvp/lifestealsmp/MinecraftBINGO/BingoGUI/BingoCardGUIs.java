@@ -158,7 +158,7 @@ public class BingoCardGUIs {
         //BingoPickaxeRecipeGUI.setItem(21,orangeGlassGUI());
         //BingoPickaxeRecipeGUI.setItem(22,orangeGlassGUI());
         BingoPickaxeRecipeGUI.setItem(23,orangeGlassGUI());
-        BingoPickaxeRecipeGUI.setItem(24,orangeGlassGUI());
+        //BingoPickaxeRecipeGUI.setItem(24,orangeGlassGUI());
         BingoPickaxeRecipeGUI.setItem(25,orangeGlassGUI());
         BingoPickaxeRecipeGUI.setItem(26,orangeGlassGUI());
 
