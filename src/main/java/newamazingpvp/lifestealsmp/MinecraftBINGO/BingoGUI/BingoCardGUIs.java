@@ -7,7 +7,7 @@ import org.bukkit.inventory.Inventory;
 
 import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUI.BingoGUIItems.*;
 
-public class BingoCardGUI {
+public class BingoCardGUIs {
 
 
     //creates items for GUI
@@ -124,6 +124,19 @@ public class BingoCardGUI {
 
 
         player.openInventory(bingoMainGUI);
+
+    }
+
+
+    public static void BingoPickaxeRecipeGUI(Player player){
+
+        Inventory BingoPickaxeRecipeGUI = Bukkit.createInventory(player, 45, ChatColor.GOLD + "" + ChatColor.BOLD + "Bingo Pickaxe Recipe");
+
+        BingoPickaxeRecipeGUI.setItem(0,orangeGlassGUI());
+
+
+
+        player.openInventory(BingoPickaxeRecipeGUI);
 
     }
 

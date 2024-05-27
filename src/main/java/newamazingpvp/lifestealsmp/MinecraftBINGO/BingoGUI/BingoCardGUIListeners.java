@@ -7,10 +7,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUI.BingoCardGUI.OpenTheBingoCardGUI;
+import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUI.BingoCardGUIs.BingoPickaxeRecipeGUI;
+import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUI.BingoCardGUIs.OpenTheBingoCardGUI;
 import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUI.BingoGUIItems.BingoPickaxeGUI;
 
 public class BingoCardGUIListeners implements Listener {
@@ -22,7 +22,7 @@ public class BingoCardGUIListeners implements Listener {
         ItemStack itemInHand = event.getCurrentItem();
         Player player = (Player) event.getWhoClicked();
 
-        if (event.getView().getTitle().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Bingo Card") || event.getView().getTitle().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Bingo")) {
+        if (event.getView().getTitle().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Bingo Card") || event.getView().getTitle().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Bingo") || event.getView().getTitle().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Bingo Pickaxe Recipe")) {
 
 
             if (event.getCurrentItem() == null) {
@@ -49,9 +49,8 @@ public class BingoCardGUIListeners implements Listener {
             }
 
             if (itemInHand != null && itemInHand.getType() == Material.IRON_PICKAXE && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.RED + "" + ChatColor.BOLD + "Bingo Pickaxe")) {
-                player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
-                player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "+1 ");
                 player.getInventory().addItem(BingoPickaxeGUI());
+                BingoPickaxeRecipeGUI(player);
             }
 
 

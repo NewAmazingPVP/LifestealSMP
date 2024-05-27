@@ -49,10 +49,7 @@ public class BingoGUIItems {
         meta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "Bingo Pickaxe");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> LORE = new ArrayList<>();
-        LORE.add(ChatColor.LIGHT_PURPLE + "Use this pickaxe to do");
-        LORE.add(ChatColor.LIGHT_PURPLE + "challenges that require");
-        LORE.add(ChatColor.LIGHT_PURPLE + "you to break blocks.");
-        LORE.add(ChatColor.DARK_RED + "" + ChatColor.BOLD +  "ALL BLOCKS BROKEN WILL BE DELETED!");
+        LORE.add(ChatColor.YELLOW + "Click To View Recipe");
         meta.setLore(LORE);
         ITEM.setItemMeta(meta);
         return ITEM;
