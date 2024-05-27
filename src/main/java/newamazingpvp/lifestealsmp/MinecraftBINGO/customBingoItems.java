@@ -50,30 +50,27 @@ public class customBingoItems {
     //TODO: list of challenge ideas
     //kill end dragon
     //kill wither
-    //kill a player who is standing on X block
-    //kill a player in X armor
-    //kill X amount of X mob
-    //eat X amount of X food
-    //travel 50,000 total blocks in the over world resets if u change dimencions
-    //get 5 dif randomly decided potion effects
+    //kill a player who is standing on X block TODO:make icon
+    //kill a player in X armor TODO:make icon
+    //kill 500 amount of X mob TODO:make icon
+    //eat X amount of X food TODO:make icon
+    //travel 50,000 total blocks
+    //get X potion effect  TODO:make icon
     //break a diamond chestplate
-    //only use leather armor for 1h
-    //break X amount of X block with bingo pick
-    //break X amount of any block with bingo pick
-    //eat 2 golden apples
-    //craft X amount of something
+    //only use leather armor for 2h
+    //break X amount of X block with bingo pick TODO:make icon
+    //break X amount of any block with bingo pick TODO:make icon
+    //eat 2 god apples
+    //craft X amount of something TODO:make icon
     //break a elytra
-    //breed X amount of X mod
-    //get X amount of XP levels at the same time
-    //kill a player in X armor with a crossbow
+    //breed X amount of X mod TODO:make icon
+    //get X amount of XP levels at the same time TODO:make icon
+    //kill a player in X armor with a crossbow TODO:make icon
     //put a full set of curse of binding armor on
-    //harvest X amount of X crop
+    //harvest X amount of X crop TODO:make icon
     //use 10 totems of un dyeing
-    //find X mob head
-    //kill X amount of X mob in leather armor
-    //kill ender dragon in X armor
-    //craft X item
-    //kill a <<<<<<<<<<<<<<<<<<<<<<<<<<<<< TODO: come up with a name fir the custom mob
-    //craft a compact diamond
+    //find X mob head TODO:make icon
+    //kill X amount of enderman in leather armor TODO:make icon
+    //kill ender dragon in X armor TODO:make icon
 
 }

@@ -13,15 +13,13 @@ public class BingoRecipes {
 
     public static void registerBingoRecipes(){
 
-        //ItemStack bingoPic = new ItemStack(BingoPickaxe());
-        ShapedRecipe bingoPicRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "extra_heart"), BingoPickaxe());
+        ItemStack bingoPic = new ItemStack(BingoPickaxe());
+        ShapedRecipe bingoPicRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "extra_heart"), bingoPic);
         bingoPicRecipe.shape("CCC", "ASA", "ASA");
         bingoPicRecipe.setIngredient('S', Material.STICK);
         bingoPicRecipe.setIngredient('A', Material.AIR);
         bingoPicRecipe.setIngredient('C', Material.COPPER_INGOT);
         Bukkit.addRecipe(bingoPicRecipe);
-
-        
 
 
     }
