@@ -9,6 +9,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class GenerateBingoCard {
 
@@ -282,11 +283,13 @@ public class GenerateBingoCard {
     //generates new card also this should add it to a YML and the thing that makes the bingo card GUI should look at the YML to set what there should be
     public static void genBingoCard() {
 
+        Random random = new Random();
+
         String newBingoChallenge = null;
 
         for (int i = 0; i < 25; i++) {
 
-            
+            int randomNumber = random.nextInt(24);
 
         }
 
