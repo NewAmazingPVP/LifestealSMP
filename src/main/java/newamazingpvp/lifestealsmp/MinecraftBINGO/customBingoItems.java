@@ -27,6 +27,25 @@ public class customBingoItems {
         return ITEM;
     }
 
+    public static ItemStack BingoPickaxe(){
+        ItemStack ITEM = new ItemStack(Material.IRON_PICKAXE);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        meta.setUnbreakable(true);
+        meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        meta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "Bingo Pickaxe");
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        List<String> LORE = new ArrayList<>();
+        LORE.add(ChatColor.LIGHT_PURPLE + "Use this pickaxe to do");
+        LORE.add(ChatColor.LIGHT_PURPLE + "challenges that require");
+        LORE.add(ChatColor.LIGHT_PURPLE + "you to break blocks.");
+        LORE.add(ChatColor.DARK_RED + "" + ChatColor.BOLD +  "ALL BLOCKS BROKEN WILL BE DELETED!");
+        meta.setLore(LORE);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
 
     //TODO: list of challenge ideas
     //kill end dragon
@@ -54,6 +73,7 @@ public class customBingoItems {
     //kill X amount of X mob in leather armor
     //kill ender dragon in X armor
     //craft X item
-
+    //kill a <<<<<<<<<<<<<<<<<<<<<<<<<<<<< TODO: come up with a name fir the custom mob
+    //craft a compact diamond
 
 }

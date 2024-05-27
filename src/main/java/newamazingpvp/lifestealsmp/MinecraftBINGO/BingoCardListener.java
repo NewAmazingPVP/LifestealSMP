@@ -9,7 +9,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUI.BingoCardGUI.BingoMainMenu;
+import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUI.BingoCardGUIs.BingoMainMenu;
 
 public class BingoCardListener implements Listener {
 
