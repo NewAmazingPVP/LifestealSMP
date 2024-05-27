@@ -31,6 +31,7 @@ import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
 
+import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoRecipes.registerBingoRecipes;
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlacklist;
 import static newamazingpvp.lifestealsmp.discord.DiscordListener.isVanished;
 import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
@@ -143,6 +144,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new AirRune(), this);
             getServer().getPluginManager().registerEvents(new BingoCardListener(), this);
             getServer().getPluginManager().registerEvents(new BingoCardGUIListeners(), this);
+            registerBingoRecipes();
             //getServer().getPluginManager().registerEvents(new BingoInvintoryProt(), this);
             //registerCustomRecipesRunes();
 

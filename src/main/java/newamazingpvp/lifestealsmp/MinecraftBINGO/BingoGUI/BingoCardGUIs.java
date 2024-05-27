@@ -8,6 +8,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUI.BingoGUIItems.*;
+import static newamazingpvp.lifestealsmp.MinecraftBINGO.customBingoItems.BingoPickaxe;
 
 public class BingoCardGUIs {
 
@@ -160,7 +161,7 @@ public class BingoCardGUIs {
         BingoPickaxeRecipeGUI.setItem(21,StickGUI());
         //BingoPickaxeRecipeGUI.setItem(22,orangeGlassGUI());
         BingoPickaxeRecipeGUI.setItem(23,orangeGlassGUI());
-        //BingoPickaxeRecipeGUI.setItem(24,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(24,BingoPickaxe());
         BingoPickaxeRecipeGUI.setItem(25,orangeGlassGUI());
         BingoPickaxeRecipeGUI.setItem(26,orangeGlassGUI());
 
