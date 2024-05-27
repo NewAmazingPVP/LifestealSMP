@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
+import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUI.BingoCardGUI.OpenTheBingoCardGUI;
 import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUI.BingoCardGUIs.*;
 import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUI.BingoGUIItems.BingoPickaxeGUI;
 
