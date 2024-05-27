@@ -14,7 +14,7 @@ public class BingoRecipes {
     public static void registerBingoRecipes(){
 
         ItemStack bingoPic = new ItemStack(BingoPickaxe());
-        ShapedRecipe bingoPicRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "extra_heart"), bingoPic);
+        ShapedRecipe bingoPicRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "bingo_heart"), bingoPic);
         bingoPicRecipe.shape("CCC", "ASA", "ASA");
         bingoPicRecipe.setIngredient('S', Material.STICK);
         bingoPicRecipe.setIngredient('A', Material.AIR);
