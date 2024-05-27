@@ -46,7 +46,7 @@ public class BingoGUIItems {
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.setUnbreakable(true);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
-        meta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "Bingo Pickaxe");
+        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Bingo Pickaxe");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> LORE = new ArrayList<>();
         LORE.add(ChatColor.YELLOW + "Click To View Recipe");
