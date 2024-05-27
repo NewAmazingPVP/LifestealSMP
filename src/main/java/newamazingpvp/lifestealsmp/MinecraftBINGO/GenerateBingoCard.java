@@ -250,7 +250,33 @@ public class GenerateBingoCard {
     static String CropToHarvest; static int AmountOfCrop;
     static String MobHeadToFind;
 
+    //idk def a better way to do this we should fix
 
+    public static ItemStack bingo1 = null;
+    public static ItemStack bingo2 = null;
+    public static ItemStack bingo3 = null;
+    public static ItemStack bingo4 = null;
+    public static ItemStack bingo5 = null;
+    public static ItemStack bingo6 = null;
+    public static ItemStack bingo7 = null;
+    public static ItemStack bingo8 = null;
+    public static ItemStack bingo9 = null;
+    public static ItemStack bingo10 = null;
+    public static ItemStack bingo11 = null;
+    public static ItemStack bingo12 = null;
+    public static ItemStack bingo13 = null;
+    public static ItemStack bingo14 = null;
+    public static ItemStack bingo15 = null;
+    public static ItemStack bingo16 = null;
+    public static ItemStack bingo17 = null;
+    public static ItemStack bingo18 = null;
+    public static ItemStack bingo19 = null;
+    public static ItemStack bingo20 = null;
+    public static ItemStack bingo21 = null;
+    public static ItemStack bingo22 = null;
+    public static ItemStack bingo23 = null;
+    public static ItemStack bingo24 = null;
+    public static ItemStack bingo25 = null;
 
 
     //generates new card also this should add it to a YML and the thing that makes the bingo card GUI should look at the YML to set what there should be
@@ -260,10 +286,12 @@ public class GenerateBingoCard {
 
         for (int i = 0; i < 25; i++) {
 
-
+            
 
         }
 
     }
+
+
 
 }
