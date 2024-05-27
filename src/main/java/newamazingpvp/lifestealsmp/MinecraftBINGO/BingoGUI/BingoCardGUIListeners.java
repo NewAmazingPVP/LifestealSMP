@@ -53,7 +53,7 @@ public class BingoCardGUIListeners implements Listener {
                 BingoPickaxeRecipeGUI(player);
             }
 
-            
+
         }
 
 
