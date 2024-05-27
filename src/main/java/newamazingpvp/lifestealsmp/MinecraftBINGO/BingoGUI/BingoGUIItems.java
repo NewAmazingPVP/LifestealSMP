@@ -71,4 +71,20 @@ public class BingoGUIItems {
         return ITEM;
     }
 
+    public static ItemStack backGUI(){
+        ItemStack ITEM = new ItemStack(Material.ARROW);
+        ItemMeta META = ITEM.getItemMeta();
+        META.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Go Back");
+        ITEM.setItemMeta(META);
+        return ITEM;
+    }
+
+    public static ItemStack closeGUI(){
+        ItemStack ITEM = new ItemStack(Material.BARRIER);
+        ItemMeta META = ITEM.getItemMeta();
+        META.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "Close");
+        ITEM.setItemMeta(META);
+        return ITEM;
+    }
+
 }

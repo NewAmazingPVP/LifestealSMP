@@ -71,7 +71,7 @@ public class BingoCardGUIs {
         bingoCardGUI.setItem(43,orangeGlassGUI());
         bingoCardGUI.setItem(44,orangeGlassGUI());
 
-        bingoCardGUI.setItem(45,orangeGlassGUI());
+        bingoCardGUI.setItem(45,backGUI());
         bingoCardGUI.setItem(46,orangeGlassGUI());
         bingoCardGUI.setItem(47,orangeGlassGUI());
         bingoCardGUI.setItem(48,orangeGlassGUI());
@@ -79,7 +79,7 @@ public class BingoCardGUIs {
         bingoCardGUI.setItem(50,orangeGlassGUI());
         bingoCardGUI.setItem(51,orangeGlassGUI());
         bingoCardGUI.setItem(52,orangeGlassGUI());
-        bingoCardGUI.setItem(53,orangeGlassGUI());
+        bingoCardGUI.setItem(53,closeGUI());
 
 
         player.openInventory(bingoCardGUI);
@@ -118,7 +118,7 @@ public class BingoCardGUIs {
         bingoMainGUI.setItem(23,orangeGlassGUI());
         bingoMainGUI.setItem(24,orangeGlassGUI());
         bingoMainGUI.setItem(25,orangeGlassGUI());
-        bingoMainGUI.setItem(26,orangeGlassGUI());
+        bingoMainGUI.setItem(26,closeGUI());
 
 
 
@@ -172,7 +172,7 @@ public class BingoCardGUIs {
         BingoPickaxeRecipeGUI.setItem(34,orangeGlassGUI());
         BingoPickaxeRecipeGUI.setItem(35,orangeGlassGUI());
 
-        BingoPickaxeRecipeGUI.setItem(36,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(36,backGUI());
         BingoPickaxeRecipeGUI.setItem(37,orangeGlassGUI());
         BingoPickaxeRecipeGUI.setItem(38,orangeGlassGUI());
         BingoPickaxeRecipeGUI.setItem(39,orangeGlassGUI());
@@ -180,9 +180,9 @@ public class BingoCardGUIs {
         BingoPickaxeRecipeGUI.setItem(41,orangeGlassGUI());
         BingoPickaxeRecipeGUI.setItem(42,orangeGlassGUI());
         BingoPickaxeRecipeGUI.setItem(43,orangeGlassGUI());
-        BingoPickaxeRecipeGUI.setItem(44,orangeGlassGUI());
+        BingoPickaxeRecipeGUI.setItem(44,closeGUI());
 
-        
+
 
         player.openInventory(BingoPickaxeRecipeGUI);
 
