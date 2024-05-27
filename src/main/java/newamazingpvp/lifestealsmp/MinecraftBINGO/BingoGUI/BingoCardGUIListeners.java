@@ -48,12 +48,11 @@ public class BingoCardGUIListeners implements Listener {
 
             }
 
-            if (itemInHand != null && itemInHand.getType() == Material.PAINTING && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.RED + "" + ChatColor.BOLD + "Bingo Pickaxe")) {
+            if (itemInHand != null && itemInHand.getType() == Material.IRON_PICKAXE && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.RED + "" + ChatColor.BOLD + "Bingo Pickaxe")) {
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
                 player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "+1 ");
                 player.getInventory().addItem(BingoPickaxeGUI());
             }
-
 
 
         }
