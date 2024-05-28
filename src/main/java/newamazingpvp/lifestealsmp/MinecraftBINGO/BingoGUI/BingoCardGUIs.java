@@ -26,6 +26,7 @@ public class BingoCardGUIs {
 
         Inventory bingoMainGUI = Bukkit.createInventory(player, 27, ChatColor.GOLD + "" + ChatColor.BOLD + "Bingo");
 
+
         bingoMainGUI.setItem(0,orangeGlassGUI());
         bingoMainGUI.setItem(1,orangeGlassGUI());
         bingoMainGUI.setItem(2,orangeGlassGUI());
@@ -58,6 +59,8 @@ public class BingoCardGUIs {
 
 
         player.openInventory(bingoMainGUI);
+
+        player.sendMessage("test");
 
     }
 
