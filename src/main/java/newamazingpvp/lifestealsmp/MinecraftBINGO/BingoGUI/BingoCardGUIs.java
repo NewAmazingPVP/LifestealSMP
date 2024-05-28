@@ -57,8 +57,6 @@ public class BingoCardGUIs {
         bingoMainGUI.setItem(26,closeGUI());
 
 
-
-
         player.openInventory(bingoMainGUI);
 
     }
