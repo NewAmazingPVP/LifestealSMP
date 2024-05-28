@@ -143,3 +143,8 @@ commands:
     usage: /givebingocardtemp
     permission: lifestealSMP.admin
     default: op
+  generatenewbingogame:
+    description: restarts bingo and makes new game WARNING ONLY USE WHEN NEEDED!
+    usage: /generatenewbingogame
+    permission: lifestealSMP.admin
+    default: op
