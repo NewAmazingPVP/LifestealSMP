@@ -18,7 +18,7 @@ public class BingoRecipes {
         bingoPicRecipe.shape("CCC", "ASA", "ASA");
         bingoPicRecipe.setIngredient('S', Material.STICK);
         bingoPicRecipe.setIngredient('A', Material.AIR);
-        bingoPicRecipe.setIngredient('C', Material.COPPER_INGOT);
+        bingoPicRecipe.setIngredient('C', Material.COPPER_BLOCK);
         Bukkit.addRecipe(bingoPicRecipe);
 
 

@@ -88,7 +88,7 @@ public class BingoGUIItems {
     }
 
     public static ItemStack CopperIngotGUI(){
-        ItemStack ITEM = new ItemStack(Material.COPPER_INGOT);
+        ItemStack ITEM = new ItemStack(Material.COPPER_BLOCK);
         return ITEM;
     }
 
