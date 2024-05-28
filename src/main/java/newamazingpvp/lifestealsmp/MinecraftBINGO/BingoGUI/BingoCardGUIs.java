@@ -60,7 +60,6 @@ public class BingoCardGUIs {
 
         player.openInventory(bingoMainGUI);
 
-        player.sendMessage("test");
 
     }
 
