@@ -15,6 +15,7 @@ public class GenerateBingoCard {
 
     //bingo challenge GUI items for card ==================================
 
+
     public static ItemStack KillEnderDragBingoCard(){
         ItemStack ITEM = new ItemStack(Material.DRAGON_EGG);
         ItemMeta meta = ITEM.getItemMeta();
@@ -105,6 +106,7 @@ public class GenerateBingoCard {
         ITEM.setItemMeta(meta);
         return ITEM;
     }
+
 
 
 
@@ -290,6 +292,8 @@ public class GenerateBingoCard {
         for (int i = 0; i < 25; i++) {
 
             int randomNumber = random.nextInt(24);
+
+
 
         }
 
