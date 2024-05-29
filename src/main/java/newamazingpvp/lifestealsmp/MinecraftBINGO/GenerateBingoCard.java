@@ -115,9 +115,9 @@ public class GenerateBingoCard {
     //these item stacks have variables in them
 
     public static ItemStack KillAPlayerStandingOnXBlockBingoCard() {
-        ItemStack ITEM = new ItemStack(Material.END_GATEWAY);
+        ItemStack ITEM = new ItemStack(Material.REDSTONE_BLOCK);
         ItemMeta meta = ITEM.getItemMeta();
-        meta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "Kill A Player Standing On " + BlockToKillPlayerOn);
+        meta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "Kill A Player Who Is Standing On " + BlockToKillPlayerOn);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         ITEM.setItemMeta(meta);
         return ITEM;
@@ -162,7 +162,7 @@ public class GenerateBingoCard {
     public static ItemStack BreakXAmountOfXBlockWithBingoPickBingoCard() {
         ItemStack ITEM = new ItemStack(Material.IRON_PICKAXE);
         ItemMeta meta = ITEM.getItemMeta();
-        meta.setDisplayName(ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "Mine " + BlockToBreakXAmountOf + " Of " + BlockAmountToBreak + " With Bingo Pickaxe");
+        meta.setDisplayName(ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "Mine " + BlockAmountToBreak + " Of " + BlockToBreakXAmountOf + " With Bingo Pickaxe");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         ITEM.setItemMeta(meta);
         return ITEM;
@@ -205,9 +205,9 @@ public class GenerateBingoCard {
     }
 
     public static ItemStack KillAPlayerThatIsInXArmorFromAtMost10BlocksAwayBingoCard() {
-        ItemStack ITEM = new ItemStack(Material.DIAMOND_HELMET);
+        ItemStack ITEM = new ItemStack(Material.CROSSBOW);
         ItemMeta meta = ITEM.getItemMeta();
-        meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Kill A Player Who Has " + ArmorYouKillPlayerInWithCrossbow + " On From At Most 10 Blocks Away");
+        meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Kill A Player Who Has " + ArmorYouKillPlayerInWithCrossbow + " On From At Most 10 Blocks Away With A Crossbow");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         ITEM.setItemMeta(meta);
         return ITEM;
@@ -257,31 +257,31 @@ public class GenerateBingoCard {
 
     //idk def a better way to do this we should fix
 
-    public static ItemStack bingo1 = null;
-    public static ItemStack bingo2 = null;
-    public static ItemStack bingo3 = null;
-    public static ItemStack bingo4 = null;
-    public static ItemStack bingo5 = null;
-    public static ItemStack bingo6 = null;
-    public static ItemStack bingo7 = null;
-    public static ItemStack bingo8 = null;
-    public static ItemStack bingo9 = null;
-    public static ItemStack bingo10 = null;
-    public static ItemStack bingo11 = null;
-    public static ItemStack bingo12 = null;
-    public static ItemStack bingo13 = null;
-    public static ItemStack bingo14 = null;
-    public static ItemStack bingo15 = null;
-    public static ItemStack bingo16 = null;
-    public static ItemStack bingo17 = null;
-    public static ItemStack bingo18 = null;
-    public static ItemStack bingo19 = null;
-    public static ItemStack bingo20 = null;
-    public static ItemStack bingo21 = null;
-    public static ItemStack bingo22 = null;
-    public static ItemStack bingo23 = null;
-    public static ItemStack bingo24 = null;
-    public static ItemStack bingo25 = null;
+    public static ItemStack bingo1 = noChallengeGenerated();
+    public static ItemStack bingo2 = noChallengeGenerated();
+    public static ItemStack bingo3 = noChallengeGenerated();
+    public static ItemStack bingo4 = noChallengeGenerated();
+    public static ItemStack bingo5 = noChallengeGenerated();
+    public static ItemStack bingo6 = noChallengeGenerated();
+    public static ItemStack bingo7 = noChallengeGenerated();
+    public static ItemStack bingo8 = noChallengeGenerated();
+    public static ItemStack bingo9 = noChallengeGenerated();
+    public static ItemStack bingo10 = noChallengeGenerated();
+    public static ItemStack bingo11 = noChallengeGenerated();
+    public static ItemStack bingo12 = noChallengeGenerated();
+    public static ItemStack bingo13 = noChallengeGenerated();
+    public static ItemStack bingo14 = noChallengeGenerated();
+    public static ItemStack bingo15 = noChallengeGenerated();
+    public static ItemStack bingo16 = noChallengeGenerated();
+    public static ItemStack bingo17 = noChallengeGenerated();
+    public static ItemStack bingo18 = noChallengeGenerated();
+    public static ItemStack bingo19 = noChallengeGenerated();
+    public static ItemStack bingo20 = noChallengeGenerated();
+    public static ItemStack bingo21 = noChallengeGenerated();
+    public static ItemStack bingo22 = noChallengeGenerated();
+    public static ItemStack bingo23 = noChallengeGenerated();
+    public static ItemStack bingo24 = noChallengeGenerated();
+    public static ItemStack bingo25 = noChallengeGenerated();
 
 
     //generates new card also this should add it to a YML and the thing that makes the bingo card GUI should look at the YML to set what there should be
@@ -293,12 +293,12 @@ public class GenerateBingoCard {
 
         bingo1 = KillEnderDragBingoCard();
         bingo2 = KillWitherBingoCard();
-        bingo3 = Walk50000BlocksBingoCard();
-        bingo4 = BreakADiamondChestplateBingoCard();
+        bingo3 = CraftXAmountOfXBingoCard();
+        bingo4 = BreakAnElytraBingoCard();
         bingo5 = BreedXAmountOfXMobBingoCard();
         bingo6 = Eat2GodApplesBingoCard();
         bingo7 = PutOnCurseOfBindingCard();
-        bingo8 = BreakADiamondChestplateBingoCard();
+        bingo8 = OnlyUseLeatherArmorFor2HBingoCard();
         bingo9 = KillAPlayerInXArmorBingoCard();
         bingo10 = BreakADiamondChestplateBingoCard();
         bingo11 = BreakXAmountOfAnyBlockBingoCard();
@@ -309,14 +309,14 @@ public class GenerateBingoCard {
         bingo16 = GetXPotionEffectBingoCard();
         bingo17 = Kill1500OfXMobBingoCard();
         bingo18 = Kill2000EndermanInLeatherArmorBingoCard();
-        bingo19 = KillAPlayerInXArmorBingoCard();
+        bingo19 = HarvestXAmountOfXCropBingoCard();
         bingo20 = KillAPlayerStandingOnXBlockBingoCard();
         bingo21 = KillAPlayerThatIsInXArmorFromAtMost10BlocksAwayBingoCard();
         bingo22 = Use10TotemsOfUndyingBingoCard();
         bingo23 = Walk50000BlocksBingoCard();
         bingo24 = KillEnderDragBingoCard();
         bingo25 = BreedXAmountOfXMobBingoCard();
-        
+
 
     }
 
