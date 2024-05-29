@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.MinecraftBINGO;
 
+import net.md_5.bungee.api.chat.hover.content.Item;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -256,31 +257,31 @@ public class GenerateBingoCard {
 
     //idk def a better way to do this we should fix
 
-    public static ItemStack bingo1 = noChallengeGenerated();
-    public static ItemStack bingo2 = noChallengeGenerated();
-    public static ItemStack bingo3 = noChallengeGenerated();
-    public static ItemStack bingo4 = noChallengeGenerated();
-    public static ItemStack bingo5 = noChallengeGenerated();
-    public static ItemStack bingo6 = noChallengeGenerated();
-    public static ItemStack bingo7 = noChallengeGenerated();
-    public static ItemStack bingo8 = noChallengeGenerated();
-    public static ItemStack bingo9 = noChallengeGenerated();
-    public static ItemStack bingo10 = noChallengeGenerated();
-    public static ItemStack bingo11 = noChallengeGenerated();
-    public static ItemStack bingo12 = noChallengeGenerated();
-    public static ItemStack bingo13 = noChallengeGenerated();
-    public static ItemStack bingo14 = noChallengeGenerated();
-    public static ItemStack bingo15 = noChallengeGenerated();
-    public static ItemStack bingo16 = noChallengeGenerated();
-    public static ItemStack bingo17 = noChallengeGenerated();
-    public static ItemStack bingo18 = noChallengeGenerated();
-    public static ItemStack bingo19 = noChallengeGenerated();
-    public static ItemStack bingo20 = noChallengeGenerated();
-    public static ItemStack bingo21 = noChallengeGenerated();
-    public static ItemStack bingo22 = noChallengeGenerated();
-    public static ItemStack bingo23 = noChallengeGenerated();
-    public static ItemStack bingo24 = noChallengeGenerated();
-    public static ItemStack bingo25 = noChallengeGenerated();
+    public static ItemStack bingo1 = null;
+    public static ItemStack bingo2 = null;
+    public static ItemStack bingo3 = null;
+    public static ItemStack bingo4 = null;
+    public static ItemStack bingo5 = null;
+    public static ItemStack bingo6 = null;
+    public static ItemStack bingo7 = null;
+    public static ItemStack bingo8 = null;
+    public static ItemStack bingo9 = null;
+    public static ItemStack bingo10 = null;
+    public static ItemStack bingo11 = null;
+    public static ItemStack bingo12 = null;
+    public static ItemStack bingo13 = null;
+    public static ItemStack bingo14 = null;
+    public static ItemStack bingo15 = null;
+    public static ItemStack bingo16 = null;
+    public static ItemStack bingo17 = null;
+    public static ItemStack bingo18 = null;
+    public static ItemStack bingo19 = null;
+    public static ItemStack bingo20 = null;
+    public static ItemStack bingo21 = null;
+    public static ItemStack bingo22 = null;
+    public static ItemStack bingo23 = null;
+    public static ItemStack bingo24 = null;
+    public static ItemStack bingo25 = null;
 
 
     //generates new card also this should add it to a YML and the thing that makes the bingo card GUI should look at the YML to set what there should be
