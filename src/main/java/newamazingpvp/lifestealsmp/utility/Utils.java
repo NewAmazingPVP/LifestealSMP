@@ -7,9 +7,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.*;
+
 import static newamazingpvp.lifestealsmp.LifestealSMP.essentials;
+import static org.bukkit.Bukkit.getServer;
 
 public class Utils {
+    private static final int MAX_SIZE = 30;
+    private static List<Double> tpsList = new ArrayList<>();
 
     public static void addItemOrDrop(Player player, ItemStack itemStack, String fullInventoryMessage) {
         if (player.getInventory().firstEmpty() != -1) {
@@ -43,6 +48,60 @@ public class Utils {
             }
         }
         return false;
+    }
+
+    public static void startTPSTracking() {
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                double currentTPS = getCurrentTPS();
+                addTPS(currentTPS);
+            }
+        }, 0, 1000);
+    }
+
+    public static double getCurrentTPS() {
+        OptionalDouble tpsTest = Arrays.stream(getServer().getTPS()).findFirst();
+        double tps = tpsTest.orElse(20.0);
+        return Math.min(tps, 20.0);
+    }
+
+    public static void addTPS(double tps) {
+        if (tpsList.size() >= MAX_SIZE) {
+            tpsList.remove(0);
+        }
+        tpsList.add(tps);
+    }
+
+    public static double getLowestTPS() {
+        return tpsList.stream().min(Double::compare).orElse(20.0);
+    }
+
+    public static void adjustPerformance() {
+        double lowestTPS = getLowestTPS();
+
+        if (lowestTPS < 15.0) {
+            setViewDistance(2, 2);
+        } else if (lowestTPS < 16.0) {
+            setViewDistance(2, 3);
+        } else if (lowestTPS < 17.0) {
+            setViewDistance(2, 4);
+        } else if (lowestTPS < 18.0) {
+            setViewDistance(2, 5);
+        } else if (lowestTPS < 19.0) {
+            setViewDistance(3, 6);
+        } else {
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt reload");
+        }
+    }
+
+    private static void setViewDistance(int simulationDistance, int viewDistance) {
+        String[] worlds = {"world", "world_nether"};
+        for (String world : worlds) {
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance " + simulationDistance + " " + world);
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance " + viewDistance + " " + world);
+        }
     }
 
 }
