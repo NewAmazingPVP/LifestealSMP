@@ -17,7 +17,7 @@ import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUI.BingoGUIItems.n
 public class GenerateBingoCard {
 
     //bingo challenge GUI items for card ==================================
-
+    public static final List<ItemStack> cardGenList = new ArrayList<>();
 
     public static ItemStack KillEnderDragBingoCard() {
         ItemStack ITEM = new ItemStack(Material.DRAGON_EGG);
@@ -233,8 +233,8 @@ public class GenerateBingoCard {
 
 
     //helps find random blocks and mobs ==================================
-    List<ItemStack> cardGenList = new ArrayList<>();
-    cardGenList.add(FindXMobHeadBingoCard());
+
+
 
 
 
@@ -293,7 +293,7 @@ public class GenerateBingoCard {
         //Random random = new Random();
 
         //String newBingoChallenge = null;
-
+        cardGenList.add(FindXMobHeadBingoCard());
         bingo1 = KillEnderDragBingoCard();
         bingo2 = KillWitherBingoCard();
         bingo3 = CraftXAmountOfXBingoCard();
