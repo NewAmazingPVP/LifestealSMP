@@ -291,33 +291,32 @@ public class GenerateBingoCard {
 
         //String newBingoChallenge = null;
 
-        ItemStack bingo1 = KillEnderDragBingoCard();
-        ItemStack bingo2 = KillWitherBingoCard();
-        ItemStack bingo3 = Walk50000BlocksBingoCard();
-        ItemStack bingo4 = BreakADiamondChestplateBingoCard();
-        ItemStack bingo5 = BreedXAmountOfXMobBingoCard();
-        ItemStack bingo6 = Eat2GodApplesBingoCard();
-        ItemStack bingo7 = PutOnCurseOfBindingCard();
-        ItemStack bingo8 = BreakADiamondChestplateBingoCard();
-        ItemStack bingo9 = KillAPlayerInXArmorBingoCard();
-        ItemStack bingo10 = BreakADiamondChestplateBingoCard();
-        ItemStack bingo11 = BreakXAmountOfAnyBlockBingoCard();
-        ItemStack bingo12 = BreakXAmountOfXBlockWithBingoPickBingoCard();
-        ItemStack bingo13 = EatXAmountOfXFoodBingoCard();
-        ItemStack bingo14 = FindXMobHeadBingoCard();
-        ItemStack bingo15 = GetToXAmountOfXPLevelsBingoCard();
-        ItemStack bingo16 = GetXPotionEffectBingoCard();
-        ItemStack bingo17 = Kill1500OfXMobBingoCard();
-        ItemStack bingo18 = Kill2000EndermanInLeatherArmorBingoCard();
-        ItemStack bingo19 = KillAPlayerInXArmorBingoCard();
-        ItemStack bingo20 = KillAPlayerStandingOnXBlockBingoCard();
-        ItemStack bingo21 = KillAPlayerThatIsInXArmorFromAtMost10BlocksAwayBingoCard();
-        ItemStack bingo22 = Use10TotemsOfUndyingBingoCard();
-        ItemStack bingo23 = Walk50000BlocksBingoCard();
-        ItemStack bingo24 = KillEnderDragBingoCard();
-        ItemStack bingo25 = BreedXAmountOfXMobBingoCard();
-
-        player.sendMessage("test11111111111111");
+        bingo1 = KillEnderDragBingoCard();
+        bingo2 = KillWitherBingoCard();
+        bingo3 = Walk50000BlocksBingoCard();
+        bingo4 = BreakADiamondChestplateBingoCard();
+        bingo5 = BreedXAmountOfXMobBingoCard();
+        bingo6 = Eat2GodApplesBingoCard();
+        bingo7 = PutOnCurseOfBindingCard();
+        bingo8 = BreakADiamondChestplateBingoCard();
+        bingo9 = KillAPlayerInXArmorBingoCard();
+        bingo10 = BreakADiamondChestplateBingoCard();
+        bingo11 = BreakXAmountOfAnyBlockBingoCard();
+        bingo12 = BreakXAmountOfXBlockWithBingoPickBingoCard();
+        bingo13 = EatXAmountOfXFoodBingoCard();
+        bingo14 = FindXMobHeadBingoCard();
+        bingo15 = GetToXAmountOfXPLevelsBingoCard();
+        bingo16 = GetXPotionEffectBingoCard();
+        bingo17 = Kill1500OfXMobBingoCard();
+        bingo18 = Kill2000EndermanInLeatherArmorBingoCard();
+        bingo19 = KillAPlayerInXArmorBingoCard();
+        bingo20 = KillAPlayerStandingOnXBlockBingoCard();
+        bingo21 = KillAPlayerThatIsInXArmorFromAtMost10BlocksAwayBingoCard();
+        bingo22 = Use10TotemsOfUndyingBingoCard();
+        bingo23 = Walk50000BlocksBingoCard();
+        bingo24 = KillEnderDragBingoCard();
+        bingo25 = BreedXAmountOfXMobBingoCard();
+        
 
     }
 
