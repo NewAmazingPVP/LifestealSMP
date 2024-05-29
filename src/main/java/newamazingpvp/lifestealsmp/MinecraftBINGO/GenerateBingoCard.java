@@ -3,6 +3,7 @@ package newamazingpvp.lifestealsmp.MinecraftBINGO;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -283,11 +284,11 @@ public class GenerateBingoCard {
 
 
     //generates new card also this should add it to a YML and the thing that makes the bingo card GUI should look at the YML to set what there should be
-    public static void genBingoCard() {
+    public static void genBingoCard(Player player) {
 
-        Random random = new Random();
+        //Random random = new Random();
 
-        String newBingoChallenge = null;
+        //String newBingoChallenge = null;
 
         ItemStack bingo1 = KillEnderDragBingoCard();
         ItemStack bingo2 = KillWitherBingoCard();
@@ -314,6 +315,8 @@ public class GenerateBingoCard {
         ItemStack bingo23 = Walk50000BlocksBingoCard();
         ItemStack bingo24 = KillEnderDragBingoCard();
         ItemStack bingo25 = BreedXAmountOfXMobBingoCard();
+
+        player.sendMessage("test11111111111111");
 
     }
 

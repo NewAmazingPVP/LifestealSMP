@@ -26,9 +26,11 @@ public class CommandNewBingoGame implements CommandExecutor {
 
         player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 2.0f, 0.0f);
 
-        genBingoCard();
+        genBingoCard(player);
 
 
         return true;
     }
 }
+
+
