@@ -1,7 +1,6 @@
 package newamazingpvp.lifestealsmp.utility;
 
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -13,7 +12,7 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.essentials;
 import static org.bukkit.Bukkit.getServer;
 
 public class Utils {
-    private static final int MAX_SIZE = 30;
+    private static final int MAX_SIZE = 14;
     private static List<Double> tpsList = new ArrayList<>();
 
     public static void addItemOrDrop(Player player, ItemStack itemStack, String fullInventoryMessage) {
@@ -74,22 +73,26 @@ public class Utils {
         tpsList.add(tps);
     }
 
-    public static double getLowestTPS() {
-        return tpsList.stream().min(Double::compare).orElse(20.0);
+    public static double getAverageTPS() {
+        double total = 0.0;
+        for(int i = 0; i < tpsList.size(); i++){
+            total += tpsList.get(i);
+        }
+        return total / tpsList.size();
     }
 
     public static void adjustPerformance() {
-        double lowestTPS = getLowestTPS();
+        double averageTPS = getAverageTPS();
 
-        if (lowestTPS < 15.0) {
+        if (averageTPS < 15.0) {
             setViewDistance(2, 2);
-        } else if (lowestTPS < 16.0) {
+        } else if (averageTPS < 16.0) {
             setViewDistance(2, 3);
-        } else if (lowestTPS < 17.0) {
+        } else if (averageTPS < 17.0) {
             setViewDistance(2, 4);
-        } else if (lowestTPS < 18.0) {
+        } else if (averageTPS < 18.0) {
             setViewDistance(2, 5);
-        } else if (lowestTPS < 19.0) {
+        } else if (averageTPS < 19.0) {
             setViewDistance(3, 6);
         } else {
             getServer().dispatchCommand(getServer().getConsoleSender(), "vdt reload");
@@ -97,7 +100,7 @@ public class Utils {
     }
 
     private static void setViewDistance(int simulationDistance, int viewDistance) {
-        String[] worlds = {"world", "world_nether"};
+        String[] worlds = {"world", "world_nether", "world_the_end"};
         for (String world : worlds) {
             getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance " + simulationDistance + " " + world);
             getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance " + viewDistance + " " + world);

@@ -133,7 +133,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         //getServer().getPluginManager().registerEvents(new DisableEnderDragonEgg(), this);
         //getServer().getPluginManager().registerEvents(new TpsEvent(), this);
         startTPSTracking();
-        getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 30 * 20);
+        getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 14 * 20);
         //TODO: Use this for beta things
         if (isAutoUploadEnabled()) {
             getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
