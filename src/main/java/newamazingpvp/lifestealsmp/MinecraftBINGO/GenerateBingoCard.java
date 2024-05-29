@@ -11,13 +11,14 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUI.BingoGUIItems.noChallengeGenerated;
 
 public class GenerateBingoCard {
 
     //bingo challenge GUI items for card ==================================
-    public static final List<ItemStack> cardGenList = new ArrayList<>();
+
 
     public static ItemStack KillEnderDragBingoCard() {
         ItemStack ITEM = new ItemStack(Material.DRAGON_EGG);
@@ -237,7 +238,6 @@ public class GenerateBingoCard {
 
 
 
-
     //variables
     static String BlockToKillPlayerOn;
     static String KillAPlayerInXArmor;
@@ -287,14 +287,80 @@ public class GenerateBingoCard {
     public static ItemStack bingo25 = noChallengeGenerated();
 
 
+    public static List<ItemStack> cardGenList = new ArrayList<>();
+
+    public static List<ItemStack> generatedChallenges = new ArrayList<>();
+
+
+
     //generates new card also this should add it to a YML and the thing that makes the bingo card GUI should look at the YML to set what there should be
     public static void genBingoCard(Player player) {
 
-        //Random random = new Random();
-
-        //String newBingoChallenge = null;
+        cardGenList.add(KillEnderDragBingoCard());
+        cardGenList.add(KillWitherBingoCard());
+        cardGenList.add(CraftXAmountOfXBingoCard());
+        cardGenList.add(BreakAnElytraBingoCard());
+        cardGenList.add(BreedXAmountOfXMobBingoCard());
+        cardGenList.add(Eat2GodApplesBingoCard());
+        cardGenList.add(PutOnCurseOfBindingCard());
+        cardGenList.add(OnlyUseLeatherArmorFor2HBingoCard());
+        cardGenList.add(KillAPlayerInXArmorBingoCard());
+        cardGenList.add(BreakADiamondChestplateBingoCard());
+        cardGenList.add(BreakXAmountOfAnyBlockBingoCard());
+        cardGenList.add(BreakXAmountOfXBlockWithBingoPickBingoCard());
+        cardGenList.add(EatXAmountOfXFoodBingoCard());
         cardGenList.add(FindXMobHeadBingoCard());
-        bingo1 = KillEnderDragBingoCard();
+        cardGenList.add(GetToXAmountOfXPLevelsBingoCard());
+        cardGenList.add(GetXPotionEffectBingoCard());
+        cardGenList.add(Kill1500OfXMobBingoCard());
+        cardGenList.add(Kill2000EndermanInLeatherArmorBingoCard());
+        cardGenList.add(HarvestXAmountOfXCropBingoCard());
+        cardGenList.add(KillAPlayerStandingOnXBlockBingoCard());
+        cardGenList.add(KillAPlayerThatIsInXArmorFromAtMost10BlocksAwayBingoCard());
+        cardGenList.add(Use10TotemsOfUndyingBingoCard());
+        cardGenList.add(Walk50000BlocksBingoCard());
+
+
+        generatedChallenges.add(bingo1);
+        generatedChallenges.add(bingo2);
+        generatedChallenges.add(bingo3);
+        generatedChallenges.add(bingo4);
+        generatedChallenges.add(bingo5);
+        generatedChallenges.add(bingo6);
+        generatedChallenges.add(bingo7);
+        generatedChallenges.add(bingo8);
+        generatedChallenges.add(bingo9);
+        generatedChallenges.add(bingo10);
+        generatedChallenges.add(bingo11);
+        generatedChallenges.add(bingo12);
+        generatedChallenges.add(bingo13);
+        generatedChallenges.add(bingo14);
+        generatedChallenges.add(bingo15);
+        generatedChallenges.add(bingo16);
+        generatedChallenges.add(bingo17);
+        generatedChallenges.add(bingo18);
+        generatedChallenges.add(bingo19);
+        generatedChallenges.add(bingo20);
+        generatedChallenges.add(bingo21);
+        generatedChallenges.add(bingo22);
+        generatedChallenges.add(bingo23);
+        generatedChallenges.add(bingo24);
+        generatedChallenges.add(bingo25);
+
+
+
+
+        Random rand = new Random();
+        int randomIndex = rand.nextInt(cardGenList.size());
+
+
+        for (int i = 0; i < 5; i++) {
+            ItemStack randomItem = cardGenList.get(randomIndex);
+            generatedChallenges.set(i, randomItem);
+        }
+
+
+        /*bingo1 = randomItem;
         bingo2 = KillWitherBingoCard();
         bingo3 = CraftXAmountOfXBingoCard();
         bingo4 = BreakAnElytraBingoCard();
@@ -318,7 +384,9 @@ public class GenerateBingoCard {
         bingo22 = Use10TotemsOfUndyingBingoCard();
         bingo23 = Walk50000BlocksBingoCard();
         bingo24 = KillEnderDragBingoCard();
-        bingo25 = BreedXAmountOfXMobBingoCard();
+        bingo25 = BreedXAmountOfXMobBingoCard();*/
+
+        player.sendMessage(ChatColor.GOLD + "Generating ended!");
 
 
     }
