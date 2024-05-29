@@ -87,6 +87,7 @@ public class GenerateBingoCard {
         ItemStack ITEM = new ItemStack(Material.NETHERITE_HELMET);
         ItemMeta meta = ITEM.getItemMeta();
         meta.addEnchant(Enchantment.BINDING_CURSE, 1, false);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Put On A Full Set Of Curse Of Binding Armor");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         ITEM.setItemMeta(meta);
