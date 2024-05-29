@@ -85,26 +85,22 @@ public class Utils {
         double averageTPS = getAverageTPS();
 
         if (averageTPS < 15.0) {
-            setViewDistance(2, 2);
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 2 --duration 1");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 2 --duration 1");
         } else if (averageTPS < 16.0) {
-            setViewDistance(2, 3);
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 3 --duration 1");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 2 --duration 1");
         } else if (averageTPS < 17.0) {
-            setViewDistance(2, 4);
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 4 --duration 1");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 2 --duration 1");
         } else if (averageTPS < 18.0) {
-            setViewDistance(2, 5);
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 5 --duration 1");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 2 --duration 1");
         } else if (averageTPS < 19.0) {
-            setViewDistance(3, 6);
-        } else {
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt reload");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 6 --duration 1");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 3 --duration 1");
         }
     }
 
-    private static void setViewDistance(int simulationDistance, int viewDistance) {
-        String[] worlds = {"world", "world_nether", "world_the_end"};
-        for (String world : worlds) {
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance " + simulationDistance + " " + world);
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance " + viewDistance + " " + world);
-        }
-    }
 
 }
