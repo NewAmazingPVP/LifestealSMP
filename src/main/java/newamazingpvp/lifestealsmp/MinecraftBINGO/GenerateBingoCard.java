@@ -11,7 +11,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUI.BingoGUIItems.noChallengeGenerated;
 
@@ -234,6 +233,9 @@ public class GenerateBingoCard {
 
 
     //helps find random blocks and mobs ==================================
+    List<ItemStack> cardGenList = new ArrayList<>();
+    cardGenList.add(FindXMobHeadBingoCard());
+
 
 
     //variables
