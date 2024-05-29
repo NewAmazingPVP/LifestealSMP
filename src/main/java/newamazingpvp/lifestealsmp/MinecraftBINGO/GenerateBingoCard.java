@@ -355,8 +355,9 @@ public class GenerateBingoCard {
 
 
         for (int i = 0; i < 5; i++) {
-            ItemStack randomItem = cardGenList.get(randomIndex);
-            generatedChallenges.set(i, randomItem);
+            //ItemStack randomItem = cardGenList.get(randomIndex);
+            //generatedChallenges.set(i, randomItem);
+            generatedChallenges.set(i,Walk50000BlocksBingoCard());
         }
 
 
