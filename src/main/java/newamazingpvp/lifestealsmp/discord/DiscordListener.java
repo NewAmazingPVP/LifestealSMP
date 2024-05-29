@@ -24,6 +24,8 @@ public class DiscordListener implements Listener {
     public void messageSent(AsyncPlayerChatEvent event) {
         if (!event.isCancelled()) {
             if (event.getFormat().contains(ChatColor.AQUA + "Team: ")) return;
+            if (event.getMessage().toLowerCase().contains("@everyone")) return;
+            if (event.getMessage().toLowerCase().contains("@here")) return;
             sendWebhook(event.getPlayer(), event.getMessage());
         }
     }
