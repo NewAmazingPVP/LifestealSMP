@@ -20,6 +20,7 @@ import newamazingpvp.lifestealsmp.nextsmpbeta.REMOVE_THIS_COMMAND_GIVE_ICE;
 import newamazingpvp.lifestealsmp.nextsmphigh.IceCube;
 import newamazingpvp.lifestealsmp.nextsmphigh.PingWars;
 import newamazingpvp.lifestealsmp.runes.*;
+import newamazingpvp.lifestealsmp.utility.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -46,7 +47,7 @@ import static newamazingpvp.lifestealsmp.utility.AutoUpload.isAutoUploadEnabled;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.startReleaseChecker;
 import static newamazingpvp.lifestealsmp.utility.DiscordBot.*;
 import static newamazingpvp.lifestealsmp.utility.LogAppender.consoleChannel;
-import static newamazingpvp.lifestealsmp.utility.Utils.setPrefix;
+import static newamazingpvp.lifestealsmp.utility.Utils.*;
 
 public final class LifestealSMP extends JavaPlugin implements Listener, PluginMessageListener {
     public static LifestealSMP lifestealSmp;
@@ -131,6 +132,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         //getServer().getPluginManager().registerEvents(new AntiPieRay(), this);
         //getServer().getPluginManager().registerEvents(new DisableEnderDragonEgg(), this);
         //getServer().getPluginManager().registerEvents(new TpsEvent(), this);
+        startTPSTracking();
+        getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 30 * 20);
         //TODO: Use this for beta things
         if (isAutoUploadEnabled()) {
             getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
