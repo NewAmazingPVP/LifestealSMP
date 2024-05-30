@@ -363,7 +363,7 @@ public class GenerateBingoCard {
             generatedChallenges.set(i, randomItem);
         }
 
-        Bukkit.broadcastMessage(ChatColor.GRAY + "Generated Successfully!"); 
+        Bukkit.broadcastMessage(ChatColor.GRAY + "Generated Successfully!");
 
 
     }
