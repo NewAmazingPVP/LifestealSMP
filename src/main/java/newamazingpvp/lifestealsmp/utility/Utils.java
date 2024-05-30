@@ -99,6 +99,9 @@ public class Utils {
         } else if (averageTPS < 19.0) {
             getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 6 --duration 1");
             getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 3 --duration 1");
+        } else if (averageTPS < 19.5) {
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 8 --duration 1");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 3 --duration 1");
         }
     }
 
