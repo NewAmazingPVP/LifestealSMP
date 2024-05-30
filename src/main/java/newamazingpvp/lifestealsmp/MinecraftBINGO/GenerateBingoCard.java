@@ -302,27 +302,27 @@ public class GenerateBingoCard {
 
         cardGenList.add(KillEnderDragBingoCard());
         cardGenList.add(KillWitherBingoCard());
-        cardGenList.add(CraftXAmountOfXBingoCard());
+        cardGenList.add(CraftXAmountOfXBingoCard()); //TODO: MAKE EVENT
         cardGenList.add(BreakAnElytraBingoCard());
-        cardGenList.add(BreedXAmountOfXMobBingoCard());
-        cardGenList.add(Eat2GodApplesBingoCard());
-        cardGenList.add(PutOnCurseOfBindingCard());
-        cardGenList.add(OnlyUseLeatherArmorFor2HBingoCard());
-        cardGenList.add(KillAPlayerInXArmorBingoCard());
-        cardGenList.add(BreakADiamondChestplateBingoCard());
-        cardGenList.add(BreakXAmountOfAnyBlockBingoCard());
-        cardGenList.add(BreakXAmountOfXBlockWithBingoPickBingoCard());
-        cardGenList.add(EatXAmountOfXFoodBingoCard());
-        cardGenList.add(FindXMobHeadBingoCard());
-        cardGenList.add(GetToXAmountOfXPLevelsBingoCard());
-        cardGenList.add(GetXPotionEffectBingoCard());
-        cardGenList.add(Kill1500OfXMobBingoCard());
-        cardGenList.add(Kill2000EndermanInLeatherArmorBingoCard());
-        cardGenList.add(HarvestXAmountOfXCropBingoCard());
-        cardGenList.add(KillAPlayerStandingOnXBlockBingoCard());
-        cardGenList.add(KillAPlayerThatIsInXArmorFromAtMost10BlocksAwayBingoCard());
-        cardGenList.add(Use10TotemsOfUndyingBingoCard());
-        cardGenList.add(Walk50000BlocksBingoCard());
+        cardGenList.add(BreedXAmountOfXMobBingoCard()); //TODO: MAKE EVENT
+        cardGenList.add(Eat2GodApplesBingoCard()); //TODO: MAKE EVENT
+        cardGenList.add(PutOnCurseOfBindingCard()); //TODO: MAKE EVENT
+        cardGenList.add(OnlyUseLeatherArmorFor2HBingoCard()); //TODO: MAKE EVENT
+        cardGenList.add(KillAPlayerInXArmorBingoCard()); //TODO: MAKE EVENT
+        cardGenList.add(BreakADiamondChestplateBingoCard()); //TODO: MAKE EVENT
+        cardGenList.add(BreakXAmountOfAnyBlockBingoCard()); //TODO: MAKE EVENT
+        cardGenList.add(BreakXAmountOfXBlockWithBingoPickBingoCard()); //TODO: MAKE EVENT
+        cardGenList.add(EatXAmountOfXFoodBingoCard()); //TODO: MAKE EVENT
+        cardGenList.add(FindXMobHeadBingoCard()); //TODO: MAKE EVENT
+        cardGenList.add(GetToXAmountOfXPLevelsBingoCard()); //TODO: MAKE EVENT
+        cardGenList.add(GetXPotionEffectBingoCard()); //TODO: MAKE EVENT
+        cardGenList.add(Kill1500OfXMobBingoCard()); //TODO: MAKE EVENT
+        cardGenList.add(Kill2000EndermanInLeatherArmorBingoCard()); //TODO: MAKE EVENT
+        cardGenList.add(HarvestXAmountOfXCropBingoCard()); //TODO: MAKE EVENT
+        cardGenList.add(KillAPlayerStandingOnXBlockBingoCard()); //TODO: MAKE EVENT
+        cardGenList.add(KillAPlayerThatIsInXArmorFromAtMost10BlocksAwayBingoCard()); //TODO: MAKE EVENT
+        cardGenList.add(Use10TotemsOfUndyingBingoCard()); //TODO: MAKE EVENT
+        cardGenList.add(Walk50000BlocksBingoCard()); //TODO: MAKE EVENT
 
 
         generatedChallenges.add(noChallengeGenerated());
