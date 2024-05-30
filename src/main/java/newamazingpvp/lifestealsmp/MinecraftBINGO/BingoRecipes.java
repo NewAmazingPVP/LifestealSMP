@@ -24,12 +24,12 @@ public class BingoRecipes {
 
 
         ItemStack bingoCard = new ItemStack(BingoCard());
-        ShapedRecipe bingoCardR = new ShapedRecipe(new NamespacedKey(lifestealSmp, "bingo_card"), bingoPic);
+        ShapedRecipe bingoCardR = new ShapedRecipe(new NamespacedKey(lifestealSmp, "bingo_card"), bingoCard); 
         bingoCardR.shape("OOO", "OOO", "OOO");
         bingoCardR.setIngredient('O', Material.OAK_PLANKS);
         Bukkit.addRecipe(bingoCardR);
 
-        
+
 
     }
 
