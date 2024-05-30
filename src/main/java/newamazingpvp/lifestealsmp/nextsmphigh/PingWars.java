@@ -37,7 +37,7 @@ public class PingWars implements CommandExecutor {
 
             //Ping Wars Announcement
             for (Player soundLOC1 : Bukkit.getServer().getOnlinePlayers()) {
-                soundLOC1.playSound(soundLOC1.getLocation(), Sound.ENTITY_ENDER_DRAGON_GROWL, 1.0F, 1.0F);
+                soundLOC1.playSound(soundLOC1.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
             }
 
             Bukkit.broadcastMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "==========" + ChatColor.DARK_PURPLE + ChatColor.BOLD + " [Ping Wars] " + ChatColor.AQUA + ChatColor.BOLD + "==========");

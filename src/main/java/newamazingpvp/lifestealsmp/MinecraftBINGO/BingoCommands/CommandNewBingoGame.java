@@ -20,6 +20,7 @@ public class CommandNewBingoGame implements CommandExecutor {
             return true;
         }
 
+
         Player player = (Player) sender;
 
         player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Generating New Bingo Game!");
