@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.MinecraftBINGO;
 
 import net.md_5.bungee.api.chat.hover.content.Item;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -98,7 +99,7 @@ public class GenerateBingoCard {
     public static ItemStack Use10TotemsOfUndyingBingoCard() {
         ItemStack ITEM = new ItemStack(Material.TOTEM_OF_UNDYING);
         ItemMeta meta = ITEM.getItemMeta();
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Use 10 Totem Of Undying");
+        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Use 10 Totems Of Undying");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         ITEM.setItemMeta(meta);
         return ITEM;
@@ -296,6 +297,9 @@ public class GenerateBingoCard {
     //generates new card also this should add it to a YML and the thing that makes the bingo card GUI should look at the YML to set what there should be
     public static void genBingoCard(Player player) {
 
+        Bukkit.broadcastMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "NEW BINGO EVENT GENERATING!" );
+        Bukkit.broadcastMessage(ChatColor.GRAY + "Loading...");
+
         cardGenList.add(KillEnderDragBingoCard());
         cardGenList.add(KillWitherBingoCard());
         cardGenList.add(CraftXAmountOfXBingoCard());
@@ -350,16 +354,16 @@ public class GenerateBingoCard {
 
 
 
+        Random rand = new Random();
 
+        for (int i = 0; i < 25; i++) {
 
-        for (int i = 0; i < 10; i++) {
-            Random rand = new Random();
             int randomIndex = rand.nextInt(cardGenList.size());
             ItemStack randomItem = cardGenList.get(randomIndex);
             generatedChallenges.set(i, randomItem);
         }
 
-        player.sendMessage(ChatColor.GOLD + "Generating ended!");
+        Bukkit.broadcastMessage(ChatColor.GRAY + "Generated Successfully!"); 
 
 
     }
