@@ -11,15 +11,18 @@ import static newamazingpvp.lifestealsmp.MinecraftBINGO.ToggleBingoListeners.tog
 public class BingoFullCurseOfBindingListener implements Listener {
 
 
+
     @EventHandler
     public void itemBreak(PlayerArmorChangeEvent e) {
 
 
-        
          Player player = e.getPlayer();
 
 
+
+
         if(toggleFullCurseOfBinding == true){
+
 
 
 
