@@ -353,7 +353,7 @@ public class GenerateBingoCard {
         int randomIndex = rand.nextInt(cardGenList.size());
 
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 25; i++) {
             ItemStack randomItem = cardGenList.get(randomIndex);
             generatedChallenges.set(i, randomItem);
         }
