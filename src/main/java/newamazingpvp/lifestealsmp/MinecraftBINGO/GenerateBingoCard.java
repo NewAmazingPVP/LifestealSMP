@@ -258,9 +258,8 @@ public class GenerateBingoCard {
     static int AmountOfCrop;
     static String MobHeadToFind;
 
-    //idk def a better way to do this we should fix
 
-    public static ItemStack bingo1 = noChallengeGenerated();
+    /*public static ItemStack bingo1 = noChallengeGenerated();
     public static ItemStack bingo2 = noChallengeGenerated();
     public static ItemStack bingo3 = noChallengeGenerated();
     public static ItemStack bingo4 = noChallengeGenerated();
@@ -284,7 +283,7 @@ public class GenerateBingoCard {
     public static ItemStack bingo22 = noChallengeGenerated();
     public static ItemStack bingo23 = noChallengeGenerated();
     public static ItemStack bingo24 = noChallengeGenerated();
-    public static ItemStack bingo25 = noChallengeGenerated();
+    public static ItemStack bingo25 = noChallengeGenerated();*/
 
 
     public static List<ItemStack> cardGenList = new ArrayList<>();
@@ -321,31 +320,31 @@ public class GenerateBingoCard {
         cardGenList.add(Walk50000BlocksBingoCard());
 
 
-        generatedChallenges.add(bingo1);
-        generatedChallenges.add(bingo2);
-        generatedChallenges.add(bingo3);
-        generatedChallenges.add(bingo4);
-        generatedChallenges.add(bingo5);
-        generatedChallenges.add(bingo6);
-        generatedChallenges.add(bingo7);
-        generatedChallenges.add(bingo8);
-        generatedChallenges.add(bingo9);
-        generatedChallenges.add(bingo10);
-        generatedChallenges.add(bingo11);
-        generatedChallenges.add(bingo12);
-        generatedChallenges.add(bingo13);
-        generatedChallenges.add(bingo14);
-        generatedChallenges.add(bingo15);
-        generatedChallenges.add(bingo16);
-        generatedChallenges.add(bingo17);
-        generatedChallenges.add(bingo18);
-        generatedChallenges.add(bingo19);
-        generatedChallenges.add(bingo20);
-        generatedChallenges.add(bingo21);
-        generatedChallenges.add(bingo22);
-        generatedChallenges.add(bingo23);
-        generatedChallenges.add(bingo24);
-        generatedChallenges.add(bingo25);
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(noChallengeGenerated());
 
 
 
@@ -355,37 +354,10 @@ public class GenerateBingoCard {
 
 
         for (int i = 0; i < 5; i++) {
-            //ItemStack randomItem = cardGenList.get(randomIndex);
-            //generatedChallenges.set(i, randomItem);
-            generatedChallenges.set(i,Walk50000BlocksBingoCard());
+            ItemStack randomItem = cardGenList.get(randomIndex);
+            generatedChallenges.set(i, randomItem);
         }
 
-
-        /*bingo1 = randomItem;
-        bingo2 = KillWitherBingoCard();
-        bingo3 = CraftXAmountOfXBingoCard();
-        bingo4 = BreakAnElytraBingoCard();
-        bingo5 = BreedXAmountOfXMobBingoCard();
-        bingo6 = Eat2GodApplesBingoCard();
-        bingo7 = PutOnCurseOfBindingCard();
-        bingo8 = OnlyUseLeatherArmorFor2HBingoCard();
-        bingo9 = KillAPlayerInXArmorBingoCard();
-        bingo10 = BreakADiamondChestplateBingoCard();
-        bingo11 = BreakXAmountOfAnyBlockBingoCard();
-        bingo12 = BreakXAmountOfXBlockWithBingoPickBingoCard();
-        bingo13 = EatXAmountOfXFoodBingoCard();
-        bingo14 = FindXMobHeadBingoCard();
-        bingo15 = GetToXAmountOfXPLevelsBingoCard();
-        bingo16 = GetXPotionEffectBingoCard();
-        bingo17 = Kill1500OfXMobBingoCard();
-        bingo18 = Kill2000EndermanInLeatherArmorBingoCard();
-        bingo19 = HarvestXAmountOfXCropBingoCard();
-        bingo20 = KillAPlayerStandingOnXBlockBingoCard();
-        bingo21 = KillAPlayerThatIsInXArmorFromAtMost10BlocksAwayBingoCard();
-        bingo22 = Use10TotemsOfUndyingBingoCard();
-        bingo23 = Walk50000BlocksBingoCard();
-        bingo24 = KillEnderDragBingoCard();
-        bingo25 = BreedXAmountOfXMobBingoCard();*/
 
         player.sendMessage(ChatColor.GOLD + "Generating ended!");
 
