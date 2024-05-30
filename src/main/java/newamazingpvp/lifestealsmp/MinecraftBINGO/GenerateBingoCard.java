@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUI.BingoGUIItems.BingoInfo;
 import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUI.BingoGUIItems.noChallengeGenerated;
 
 public class GenerateBingoCard {
@@ -217,7 +218,7 @@ public class GenerateBingoCard {
     public static ItemStack HarvestXAmountOfXCropBingoCard() {
         ItemStack ITEM = new ItemStack(Material.WHEAT_SEEDS);
         ItemMeta meta = ITEM.getItemMeta();
-        meta.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Farm" + CropToHarvest + " Of " + AmountOfCrop);
+        meta.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Farm " +  AmountOfCrop + " Of " + CropToHarvest);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         ITEM.setItemMeta(meta);
         return ITEM;
@@ -337,7 +338,7 @@ public class GenerateBingoCard {
         generatedChallenges.add(noChallengeGenerated());
         generatedChallenges.add(noChallengeGenerated());
         generatedChallenges.add(noChallengeGenerated());
-        generatedChallenges.add(noChallengeGenerated());
+        generatedChallenges.add(BingoInfo());
         generatedChallenges.add(noChallengeGenerated());
         generatedChallenges.add(noChallengeGenerated());
         generatedChallenges.add(noChallengeGenerated());
@@ -353,7 +354,7 @@ public class GenerateBingoCard {
         int randomIndex = rand.nextInt(cardGenList.size());
 
 
-        for (int i = 0; i < 25; i++) {
+        for (int i = 0; i < 10; i++) {
             ItemStack randomItem = cardGenList.get(randomIndex);
             generatedChallenges.set(i, randomItem);
         }
