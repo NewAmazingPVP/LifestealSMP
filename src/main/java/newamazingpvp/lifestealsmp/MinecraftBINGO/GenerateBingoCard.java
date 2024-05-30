@@ -338,7 +338,7 @@ public class GenerateBingoCard {
         generatedChallenges.add(noChallengeGenerated());
         generatedChallenges.add(noChallengeGenerated());
         generatedChallenges.add(noChallengeGenerated());
-        generatedChallenges.add(BingoInfo());
+        generatedChallenges.add(noChallengeGenerated());
         generatedChallenges.add(noChallengeGenerated());
         generatedChallenges.add(noChallengeGenerated());
         generatedChallenges.add(noChallengeGenerated());
@@ -350,15 +350,14 @@ public class GenerateBingoCard {
 
 
 
-        Random rand = new Random();
-        int randomIndex = rand.nextInt(cardGenList.size());
 
 
         for (int i = 0; i < 10; i++) {
+            Random rand = new Random();
+            int randomIndex = rand.nextInt(cardGenList.size());
             ItemStack randomItem = cardGenList.get(randomIndex);
             generatedChallenges.set(i, randomItem);
         }
-
 
         player.sendMessage(ChatColor.GOLD + "Generating ended!");
 
