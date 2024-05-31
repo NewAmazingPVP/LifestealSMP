@@ -193,6 +193,7 @@ public class GracePeriod implements Listener {
         }
         String name = p.getName();
         names.add(name);
+        p.sendMessage("You have death protection invincibility/heart cooldown for 15 minutes but you will lose if you attack another player");
         new BukkitRunnable() {
             @Override
             public void run() {
