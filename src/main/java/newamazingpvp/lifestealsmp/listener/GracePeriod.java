@@ -40,9 +40,9 @@ public class GracePeriod implements Listener {
                     }
                     if (isPlayerDeathProt(damaged)) {
                         damager.sendMessage(ChatColor.RED + "This player was recently killed by a player and won't give heart if you kill them again");
-                        //event.setCancelled(true);
-                        //damager.sendMessage(ChatColor.RED + "You cannot damage players during their death protection unless they attack you back!");
-                        //damaged.sendMessage(ChatColor.RED + "Someone tried attacking u but was prevented because u died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
+                        event.setCancelled(true);
+                        damager.sendMessage(ChatColor.RED + "You cannot damage players during their death protection unless they attack you back!");
+                        damaged.sendMessage(ChatColor.RED + "Someone tried attacking you but was prevented because you died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
                     }
                     if (getPlaytime(damaged) < 216000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())) {
                         event.setCancelled(true);
@@ -61,7 +61,7 @@ public class GracePeriod implements Listener {
                         event.setCancelled(true);
                     }
                     if (!event.isCancelled()) {
-                        //names.remove(damager.getName());
+                        names.remove(damager.getName());
                         tagPlayer(damager, damaged);
                         tagPlayer(damaged, damager);
                     }
@@ -75,10 +75,10 @@ public class GracePeriod implements Listener {
                             shooter.sendMessage(ChatColor.RED + "You cannot shoot players during the grace period!");
                         }
                         if (isPlayerDeathProt(damaged)) {
-                            //event.setCancelled(true);
-                            //event.getDamager().sendMessage(ChatColor.RED + "You cannot shoot players during their death protection unless they attack you back!");
+                            event.setCancelled(true);
+                            event.getDamager().sendMessage(ChatColor.RED + "You cannot shoot players during their death protection unless they attack you back!");
                             shooter.sendMessage(ChatColor.RED + "This player was recently killed by a player and won't give heart if you kill them again");
-                            //event.getEntity().sendMessage(ChatColor.RED + "Someone tried attacking u but was prevented because u died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
+                            event.getEntity().sendMessage(ChatColor.RED + "Someone tried attacking you but was prevented because you died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
                         }
                         if (getPlaytime(damaged) < 216000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())) {
                             event.setCancelled(true);
@@ -96,7 +96,7 @@ public class GracePeriod implements Listener {
                             event.setCancelled(true);
                         }
                         if (!event.isCancelled()) {
-                            //names.remove(event.getDamager().getName());
+                            names.remove(event.getDamager().getName());
                             tagPlayer(shooter, damaged);
                             tagPlayer(damaged, shooter);
                         }
@@ -111,7 +111,9 @@ public class GracePeriod implements Listener {
                             shooter.sendMessage(ChatColor.RED + "You cannot tnt players during the grace period!");
                         }
                         if (isPlayerDeathProt(damaged)) {
+                            event.setCancelled(true);
                             event.getDamager().sendMessage(ChatColor.RED + "This player was recently killed by a player and won't give heart if you kill them again");
+                            damaged.sendMessage(ChatColor.AQUA + "Someone tried to TNT you during your death protection but it was prevented. If you hit them back you will lose your death protection");
                         }
                         if (getPlaytime(damaged) < 216000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())) {
                             event.setCancelled(true);
@@ -139,13 +141,18 @@ public class GracePeriod implements Listener {
                     if (getPlaytime(p) < 216000 && !newbieViolate.contains(p.getName())) {
                         newbieViolate.add(p.getName());
                         event.setCancelled(true);
-                        lifestealSmp.getServer().broadcastMessage(p.getName() + " has lost their newbie protection for 5 minutes because of potentially breaking the no griefing rule during newbie protection");
+                        lifestealSmp.getServer().broadcastMessage(ChatColor.YELLOW + p.getName() + " has lost their newbie protection for 5 minutes because of potentially breaking the no griefing rule during newbie protection");
                         new BukkitRunnable() {
                             @Override
                             public void run() {
                                 newbieViolate.remove(p.getName());
                             }
                         }.runTaskLater(lifestealSmp, 20 * 60 * 5);
+                    }
+                    if(names.contains(p.getName())) {
+                        event.setCancelled(true);
+                        names.remove(p.getName());
+                        lifestealSmp.getServer().broadcastMessage(p.getName() + ChatColor.YELLOW + " has lost their death protection for hearts & invincibility for potentially breaking the no griefing rule during death protection");
                     }
                 }
             }
