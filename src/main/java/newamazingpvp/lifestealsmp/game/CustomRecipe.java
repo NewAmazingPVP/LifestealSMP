@@ -131,6 +131,26 @@ public class CustomRecipe {
         reviveBeaconRecipe.addIngredient(2, Material.TOTEM_OF_UNDYING);
         reviveBeaconRecipe.addIngredient(1, Material.GOLDEN_APPLE);
         Bukkit.addRecipe(reviveBeaconRecipe);
+
+        NamespacedKey recipeBook = new NamespacedKey(lifestealSmp, "recipeBook");
+        ShapelessRecipe recipeBookRecipe = new ShapelessRecipe(recipeBook, recipeBook());
+        reviveBeaconRecipe.addIngredient(1, Material.CRAFTING_TABLE);
+        Bukkit.addRecipe(reviveBeaconRecipe);
+
+    }
+
+    public static ItemStack recipeBook() {
+        ItemStack recipeBook = new ItemStack(Material.BOOK);
+
+        ItemMeta meta = recipeBook.getItemMeta();
+        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Recipe Book");
+        List<String> DEFL = new ArrayList<>();
+        DEFL.add(ChatColor.YELLOW + "Right Click To View Recipes");
+        meta.setLore(DEFL);
+
+        recipeBook.setItemMeta(meta);
+
+        return recipeBook;
     }
 
     public static ItemStack createReviveBeacon() {
