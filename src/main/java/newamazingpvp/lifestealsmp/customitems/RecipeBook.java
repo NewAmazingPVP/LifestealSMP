@@ -13,10 +13,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUI.BingoGUIItems.*;
-import static newamazingpvp.lifestealsmp.MinecraftBINGO.GenerateBingoCard.generatedChallenges;
-import static newamazingpvp.lifestealsmp.MinecraftBINGO.customBingoItems.BingoPickaxe;
 
-public class recipeBook implements Listener {
+public class RecipeBook implements Listener {
 
 
     @EventHandler
