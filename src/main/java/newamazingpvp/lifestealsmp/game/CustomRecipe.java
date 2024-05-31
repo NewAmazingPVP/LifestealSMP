@@ -2,10 +2,8 @@ package newamazingpvp.lifestealsmp.game;
 
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.ItemFlag;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.inventory.ShapelessRecipe;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -14,13 +12,54 @@ import org.bukkit.profile.PlayerTextures;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class CustomRecipe {
+    public static final Map<ItemStack, ShapedRecipe> shapedRecipes = new HashMap<>();
+    public static final Map<ItemStack, ShapelessRecipe> shapelessRecipes = new HashMap<>();
+
+    public static final List<ItemStack> customItems = new ArrayList<>();
+    public static void openRecipesGUI(Player player) {
+        Inventory gui = Bukkit.createInventory(null, 54, ChatColor.GOLD + "Custom Recipes");
+
+        for (int i = 0; i < customItems.size() && i < 45; i++) {
+            gui.setItem(i, customItems.get(i));
+        }
+
+        player.openInventory(gui);
+    }
+    public static void openRecipeDetailGUI(Player player, ItemStack item) {
+        Inventory gui = Bukkit.createInventory(null, 27, ChatColor.GOLD + "Recipe for " + item.getItemMeta().getDisplayName());
+
+        if (shapedRecipes.containsKey(item)) {
+            ShapedRecipe recipe = shapedRecipes.get(item);
+            String[] shape = recipe.getShape();
+            Map<Character, ItemStack> ingredients = recipe.getIngredientMap();
+
+            for (int row = 0; row < 3; row++) {
+                for (int col = 0; col < 3; col++) {
+                    char ingredientChar = shape[row].charAt(col);
+                    ItemStack ingredient = ingredients.get(ingredientChar);
+                    if (ingredient != null) {
+                        gui.setItem(10 + row * 9 + col, ingredient);
+                    }
+                }
+            }
+        } else if (shapelessRecipes.containsKey(item)) {
+            ShapelessRecipe recipe = shapelessRecipes.get(item);
+            List<ItemStack> ingredients = new ArrayList<>();
+            recipe.getIngredientList().forEach(i -> ingredients.add(i));
+
+            for (int i = 0; i < ingredients.size(); i++) {
+                gui.setItem(10 + (i % 3) + (i / 3) * 9, ingredients.get(i));
+            }
+        }
+
+        player.openInventory(gui);
+    }
+
     public static void registerCustomRecipes() {
 
         /*ItemStack VWH = new ItemStack(VoidWalkerHEALM());
@@ -43,6 +82,8 @@ public class CustomRecipe {
         extraHeartRecipe.setIngredient('C', corruptedMobSoul());
         extraHeartRecipe.setIngredient('S', severedMobHeart());
         extraHeartRecipe.setIngredient('X', Material.AIR);
+        customItems.add(extraHeart);
+        shapedRecipes.put(extraHeart, extraHeartRecipe);
         Bukkit.addRecipe(extraHeartRecipe);
 
         ItemStack shulker = new ItemStack(Material.SHULKER_BOX);
@@ -50,6 +91,8 @@ public class CustomRecipe {
         shulkerRecipe.shape("DDD", "DCD", "DDD");
         shulkerRecipe.setIngredient('C', Material.CHEST);
         shulkerRecipe.setIngredient('D', Material.DIAMOND);
+        customItems.add(shulker);
+        shapedRecipes.put(shulker, shulkerRecipe);
         Bukkit.addRecipe(shulkerRecipe);
 
         ItemStack endStone = new ItemStack(Material.END_STONE);
@@ -58,6 +101,8 @@ public class CustomRecipe {
         endStoneRecipe.setIngredient('D', Material.DIRT);
         endStoneRecipe.setIngredient('N', Material.NETHERRACK);
         endStoneRecipe.setIngredient('E', Material.COBBLESTONE);
+        customItems.add(endStone);
+        shapedRecipes.put(endStone, endStoneRecipe);
         Bukkit.addRecipe(endStoneRecipe);
 
         ItemStack purpleBlock = new ItemStack(Material.PURPUR_BLOCK);
@@ -65,6 +110,8 @@ public class CustomRecipe {
         purpleBlockRecipe.shape("NS");
         purpleBlockRecipe.setIngredient('N', Material.NETHER_BRICKS);
         purpleBlockRecipe.setIngredient('S', Material.STONE_BRICKS);
+        customItems.add(purpleBlock);
+        shapedRecipes.put(purpleBlock, purpleBlockRecipe);
         Bukkit.addRecipe(purpleBlockRecipe);
 
         NamespacedKey recipeKey = new NamespacedKey(lifestealSmp, "teleporting_bow");
@@ -74,6 +121,8 @@ public class CustomRecipe {
         customBowRecipe.addIngredient(1, Material.BOW);
         customBowRecipe.addIngredient(1, Material.NETHER_STAR);
         customBowRecipe.addIngredient(2, Material.DIAMOND);
+        customItems.add(createCustomBow());
+        shapelessRecipes.put(createCustomBow(), customBowRecipe);
         Bukkit.addRecipe(customBowRecipe);
 
         NamespacedKey tntBow = new NamespacedKey(lifestealSmp, "tnt_bow");
@@ -83,6 +132,8 @@ public class CustomRecipe {
         tntBowRecipe.addIngredient(1, Material.BOW);
         tntBowRecipe.addIngredient(1, Material.END_CRYSTAL);
         tntBowRecipe.addIngredient(1, Material.NETHER_STAR);
+        customItems.add(createTNTBow());
+        shapelessRecipes.put(createTNTBow(), tntBowRecipe);
         Bukkit.addRecipe(tntBowRecipe);
 
         NamespacedKey featherSword = new NamespacedKey(lifestealSmp, "feather_sword");
@@ -92,6 +143,8 @@ public class CustomRecipe {
         featherSwordRecipe.addIngredient(1, Material.DIAMOND_SWORD);
         featherSwordRecipe.addIngredient(2, Material.TOTEM_OF_UNDYING);
         featherSwordRecipe.addIngredient(2, Material.NETHER_STAR);
+        customItems.add(createFeatherSword());
+        shapelessRecipes.put(createFeatherSword(), featherSwordRecipe);
         Bukkit.addRecipe(featherSwordRecipe);
 
         NamespacedKey tropChopAxe = new NamespacedKey(lifestealSmp, "trop_chop_axe");
@@ -99,6 +152,8 @@ public class CustomRecipe {
         tropChopAxeRecipe.addIngredient(1, Material.STICK);
         tropChopAxeRecipe.addIngredient(1, Material.NETHERITE_INGOT);
         tropChopAxeRecipe.addIngredient(3, Material.DIAMOND_AXE);
+        customItems.add(createCustomAxe());
+        shapelessRecipes.put(createCustomAxe(), tropChopAxeRecipe);
         Bukkit.addRecipe(tropChopAxeRecipe);
 
         NamespacedKey opPickaxe = new NamespacedKey(lifestealSmp, "op_pickaxe");
@@ -107,11 +162,15 @@ public class CustomRecipe {
         opPickaxeRecipe.addIngredient(1, Material.GOLD_BLOCK);
         opPickaxeRecipe.addIngredient(5, Material.NETHERITE_INGOT);
         opPickaxeRecipe.addIngredient(1, Material.DIAMOND_PICKAXE);
+        customItems.add(createOpPickaxe());
+        shapelessRecipes.put(createOpPickaxe(), opPickaxeRecipe);
         Bukkit.addRecipe(opPickaxeRecipe);
 
         NamespacedKey nethScraps = new NamespacedKey(lifestealSmp, "neth_scraps");
         ShapelessRecipe nethScrapsRecipe = new ShapelessRecipe(nethScraps, createNethScarps());
         nethScrapsRecipe.addIngredient(1, Material.NETHERITE_INGOT);
+        customItems.add(createNethScarps());
+        shapelessRecipes.put(createNethScarps(), nethScrapsRecipe);
         Bukkit.addRecipe(nethScrapsRecipe);
 
         NamespacedKey homingBow = new NamespacedKey(lifestealSmp, "homing_bow");
@@ -121,6 +180,8 @@ public class CustomRecipe {
         homingBowRecipe.addIngredient(2, Material.DIAMOND_BLOCK);
         homingBowRecipe.addIngredient(1, Material.NETHER_STAR);
         homingBowRecipe.addIngredient(2, Material.COMPASS);
+        customItems.add(createHomingBow());
+        shapelessRecipes.put(createHomingBow(), homingBowRecipe);
         Bukkit.addRecipe(homingBowRecipe);
 
         NamespacedKey reviveBeacon = new NamespacedKey(lifestealSmp, "revive_beacon");
@@ -130,6 +191,8 @@ public class CustomRecipe {
         reviveBeaconRecipe.addIngredient(1, Material.NETHERITE_BLOCK);
         reviveBeaconRecipe.addIngredient(2, Material.TOTEM_OF_UNDYING);
         reviveBeaconRecipe.addIngredient(1, Material.GOLDEN_APPLE);
+        customItems.add(createReviveBeacon());
+        shapelessRecipes.put(createReviveBeacon(), reviveBeaconRecipe);
         Bukkit.addRecipe(reviveBeaconRecipe);
 
         NamespacedKey recipeBook = new NamespacedKey(lifestealSmp, "recipeBook");
