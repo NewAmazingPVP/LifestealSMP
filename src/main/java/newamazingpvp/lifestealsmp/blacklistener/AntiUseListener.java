@@ -39,7 +39,9 @@ public class AntiUseListener implements Listener {
             ItemStack clickedItem = event.getCurrentItem();
 
             CustomRecipe.openRecipeDetailGUI(player, clickedItem);
-
+        }
+        if (event.getView().getTitle().startsWith(ChatColor.GOLD + "Recipe for ")) {
+            event.setCancelled(true);
         }
     }
 

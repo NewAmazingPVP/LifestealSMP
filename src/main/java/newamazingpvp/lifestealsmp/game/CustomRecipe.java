@@ -22,7 +22,7 @@ public class CustomRecipe {
 
     public static final List<ItemStack> customItems = new ArrayList<>();
     public static void openRecipesGUI(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 54, ChatColor.GOLD + "Custom Recipes");
+        Inventory gui = Bukkit.createInventory(null, 27, ChatColor.GOLD + "Custom Recipes");
 
         for (int i = 0; i < customItems.size() && i < 45; i++) {
             gui.setItem(i, customItems.get(i));
@@ -33,27 +33,41 @@ public class CustomRecipe {
     public static void openRecipeDetailGUI(Player player, ItemStack item) {
         Inventory gui = Bukkit.createInventory(null, 27, ChatColor.GOLD + "Recipe for " + item.getItemMeta().getDisplayName());
 
+        int[] slots = {0, 1, 2, 9, 10, 11, 18, 19, 20};
+        int slotIndex = 0;
+
         if (shapedRecipes.containsKey(item)) {
             ShapedRecipe recipe = shapedRecipes.get(item);
             String[] shape = recipe.getShape();
             Map<Character, ItemStack> ingredients = recipe.getIngredientMap();
 
-            for (int row = 0; row < 3; row++) {
-                for (int col = 0; col < 3; col++) {
-                    char ingredientChar = shape[row].charAt(col);
+            for (int row = 0; row < shape.length; row++) {
+                String rowShape = shape[row];
+                for (int col = 0; col < rowShape.length(); col++) {
+                    if (slotIndex >= slots.length) {
+                        break;
+                    }
+                    char ingredientChar = rowShape.charAt(col);
                     ItemStack ingredient = ingredients.get(ingredientChar);
                     if (ingredient != null) {
-                        gui.setItem(10 + row * 9 + col, ingredient);
+                        gui.setItem(slots[slotIndex], ingredient);
                     }
+                    slotIndex++;
                 }
             }
         } else if (shapelessRecipes.containsKey(item)) {
             ShapelessRecipe recipe = shapelessRecipes.get(item);
-            List<ItemStack> ingredients = new ArrayList<>();
-            recipe.getIngredientList().forEach(i -> ingredients.add(i));
+            List<ItemStack> ingredients = recipe.getIngredientList();
 
             for (int i = 0; i < ingredients.size(); i++) {
-                gui.setItem(10 + (i % 3) + (i / 3) * 9, ingredients.get(i));
+                if (slotIndex >= slots.length) {
+                    break;
+                }
+                ItemStack ingredient = ingredients.get(i);
+                if (ingredient != null) {
+                    gui.setItem(slots[slotIndex], ingredient);
+                }
+                slotIndex++;
             }
         }
 
@@ -195,10 +209,6 @@ public class CustomRecipe {
         shapelessRecipes.put(createReviveBeacon(), reviveBeaconRecipe);
         Bukkit.addRecipe(reviveBeaconRecipe);
 
-        NamespacedKey recipeBook = new NamespacedKey(lifestealSmp, "recipeBook");
-        ShapelessRecipe recipeBookRecipe = new ShapelessRecipe(recipeBook, recipeBook());
-        reviveBeaconRecipe.addIngredient(1, Material.CRAFTING_TABLE);
-        Bukkit.addRecipe(reviveBeaconRecipe);
 
     }
 
