@@ -226,6 +226,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         Player player = event.getPlayer();
         player.sendMessage("Welcome! \n/help\n/guide\n/rules\n/prefix\n/color\n/recipes\n/trade ");
         getServer().dispatchCommand(getServer().getConsoleSender(), "sudo " + player.getName() + " help");
+        player.sendMessage(ChatColor.RED + "Report any rule breakers on /discord and beware of people tricking you into taking your hearts away. Report them immediately");
         if (player.getName().equals("NewAmazingPVP") && silentMode) {
             event.setJoinMessage("");
             getServer().dispatchCommand(getServer().getConsoleSender(), "vanish NewAmazingPVP");

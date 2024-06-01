@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.command;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.World;
@@ -25,6 +26,10 @@ public class LSwithdraw implements CommandExecutor {
         }
 
         Player player = (Player) sender;
+        if(player.getLocation().distance(Bukkit.getWorld("world").getSpawnLocation()) < 500){
+            player.sendMessage(ChatColor.RED + "You are not allowed to withdraw hearts in vicinity of spawn");
+            return true;
+        }
 
         if (hasCooldown(player)) {
             long timeRemaining = getCooldownTime(player);
