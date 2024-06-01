@@ -14,6 +14,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import static newamazingpvp.lifestealsmp.game.CustomRecipe.openRecipesGUI;
+
 public class AntiUseListener implements Listener {
 
     @EventHandler
@@ -42,6 +44,14 @@ public class AntiUseListener implements Listener {
         }
         if (event.getView().getTitle().startsWith(ChatColor.GOLD + "Recipe for ")) {
             event.setCancelled(true);
+            if (event.getCurrentItem() == null || event.getCurrentItem().getType() == Material.AIR) return;
+
+            Player player = (Player) event.getWhoClicked();
+            ItemStack clickedItem = event.getCurrentItem();
+
+            if(clickedItem.getDisplayName().startsWith(ChatColor.YELLOW + "Back Button")) {
+                openRecipesGUI(player);
+            }
         }
     }
 
