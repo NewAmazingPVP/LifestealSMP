@@ -76,7 +76,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("rules").setExecutor(new RulesCommand());
         getCommand("setview").setExecutor(new CustomDistance());
         getCommand("recipes").setExecutor(new RecipesCommand());
-        getCommand("track").setExecutor(new Compass());
+        //getCommand("track").setExecutor(new Compass());
         getCommand("GiveSekhmetSet").setExecutor(new GiveSekhmetSetSpeedAdmin());
         getCommand("restart_with_warning").setExecutor(new RestartWithWarming());
         getCommand("remHP").setExecutor(new RemoveHP());
@@ -108,7 +108,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new TeleportBow(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
         getServer().getPluginManager().registerEvents(new EndCrystalWarning(), this);
-        getServer().getPluginManager().registerEvents(new Compass(), this);
+        //getServer().getPluginManager().registerEvents(new Compass(), this);
         getServer().getPluginManager().registerEvents(new TntBow(), this);
         getServer().getPluginManager().registerEvents(new FeatherSword(), this);
         getServer().getPluginManager().registerEvents(new OpPickaxe(), this);

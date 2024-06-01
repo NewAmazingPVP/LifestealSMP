@@ -29,6 +29,7 @@ public class CustomRecipe {
         }
 
         player.openInventory(gui);
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 0.0f), 3);
     }
     public static void openRecipeDetailGUI(Player player, ItemStack item) {
         Inventory gui = Bukkit.createInventory(null, 27, ChatColor.GOLD + "Recipe for " + item.getItemMeta().getDisplayName());
@@ -55,6 +56,10 @@ public class CustomRecipe {
                     slotIndex++;
                 }
             }
+            ItemStack recipeType = new ItemStack(Material.RED_STAINED_GLASS_PANE);
+            recipeType.setDisplayName(ChatColor.RED + "This is a shaped recipe");
+            gui.setItem(4, recipeType);
+
         } else if (shapelessRecipes.containsKey(item)) {
             ShapelessRecipe recipe = shapelessRecipes.get(item);
             List<ItemStack> ingredients = recipe.getIngredientList();
@@ -69,9 +74,18 @@ public class CustomRecipe {
                 }
                 slotIndex++;
             }
+            ItemStack recipeType = new ItemStack(Material.GREEN_STAINED_GLASS_PANE);
+            recipeType.setDisplayName(ChatColor.GREEN + "This is a shapeless recipe");
+            gui.setItem(4, recipeType);
+
         }
+        ItemStack backButton = new ItemStack(Material.BARRIER);
+        backButton.setDisplayName(ChatColor.YELLOW + "Back Button");
+        gui.setItem(26, backButton);
+        gui.setItem(13, item);
 
         player.openInventory(gui);
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 0.0f), 3);
     }
 
     public static void registerCustomRecipes() {
@@ -369,6 +383,7 @@ public class CustomRecipe {
         soulM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> soulL = new ArrayList<>();
         soulL.add(ChatColor.AQUA + "U$e To Cr" + ChatColor.MAGIC + "a" + ChatColor.AQUA + "ft Extra Hearts!" + ChatColor.MAGIC + "L");
+        soulL.add(ChatColor.LIGHT_PURPLE + "Rare Drop From Mobs!");
         soulM.setLore(soulL);
         corruptedMobSoul.setItemMeta(soulM);
 
@@ -385,6 +400,7 @@ public class CustomRecipe {
         heartM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> heartL = new ArrayList<>();
         heartL.add(ChatColor.AQUA + "Use To Craft Extra Hearts!");
+        heartL.add(ChatColor.LIGHT_PURPLE + "Very Rare Drop From Mobs!");
         heartM.setLore(heartL);
         severedMobHeart.setItemMeta(heartM);
 
