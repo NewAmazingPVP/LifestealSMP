@@ -23,6 +23,7 @@ commands:
   recipes:
     description: View all the custom recipes of this lifesteal server
     usage: /recipes
+    aliases: [recipe]
   track:
     description: Track a player's location
     usage: /track <player>
