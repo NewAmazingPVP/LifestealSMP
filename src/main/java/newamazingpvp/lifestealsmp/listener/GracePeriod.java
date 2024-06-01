@@ -24,7 +24,8 @@ import static newamazingpvp.lifestealsmp.game.TeamsManager.onSameTeam;
 import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 
 public class GracePeriod implements Listener {
-    public static List<String> names = new ArrayList<>();
+    public static List<String> heartCooldownPlayers = new ArrayList<>();
+    public static List<String> invincibilityPlayers = new ArrayList<>();
     public List<String> newbieViolate = new ArrayList<>();
 
     @EventHandler
@@ -34,152 +35,96 @@ public class GracePeriod implements Listener {
             if (event.getDamager() instanceof Player || event.getDamager() instanceof Arrow) {
                 if (event.getDamager() instanceof Player) {
                     Player damager = (Player) event.getDamager();
-                    if (isGracePeriod()) {
-                        event.setCancelled(true);
-                        damager.sendMessage(ChatColor.RED + "You cannot damage players during the grace period!");
-                    }
-                    if (isPlayerDeathProt(damaged)) {
-                        damager.sendMessage(ChatColor.RED + "This player was recently killed by a player and won't give heart if you kill them again");
-                        event.setCancelled(true);
-                        damager.sendMessage(ChatColor.RED + "You cannot damage players during their death protection unless they attack you back!");
-                        damaged.sendMessage(ChatColor.RED + "Someone tried attacking you but was prevented because you died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
-                    }
-                    if (getPlaytime(damaged) < 216000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())) {
-                        event.setCancelled(true);
-
-                        long remainingSeconds = getPlaytime(damaged) / 20;
-                        long finalTime = 216000 - remainingSeconds;
-
-                        int remainingMinutes = (int) ((finalTime % 3600) / 60);
-                        int remainingSecondsLeft = (int) (finalTime % 60);
-
-                        damaged.sendMessage(ChatColor.RED + "Someone tried hitting you during your newbie protection! If you hit them back you will lose your protection temporarily and will be attacked!");
-                        damager.sendMessage(ChatColor.RED + "You cannot damage during their newbie protection for " + ChatColor.YELLOW + remainingMinutes + " minutes, " +
-                                remainingSecondsLeft + " seconds.");
-                    }
-                    if (onSameTeam(damaged, damager)) {
-                        event.setCancelled(true);
-                    }
-                    if (!event.isCancelled()) {
-                        names.remove(damager.getName());
-                        tagPlayer(damager, damaged);
-                        tagPlayer(damaged, damager);
-                    }
+                    handlePlayerDamage(event, damager, damaged);
                 } else if (event.getDamager() instanceof Arrow) {
                     Arrow arrow = (Arrow) event.getDamager();
                     if (arrow.getShooter() instanceof Player) {
                         Player shooter = (Player) arrow.getShooter();
-                        if (event.getDamager().equals(shooter)) event.setCancelled(true);
-                        if (isGracePeriod()) {
-                            event.setCancelled(true);
-                            shooter.sendMessage(ChatColor.RED + "You cannot shoot players during the grace period!");
-                        }
-                        if (isPlayerDeathProt(damaged)) {
-                            event.setCancelled(true);
-                            event.getDamager().sendMessage(ChatColor.RED + "You cannot shoot players during their death protection unless they attack you back!");
-                            shooter.sendMessage(ChatColor.RED + "This player was recently killed by a player and won't give heart if you kill them again");
-                            event.getEntity().sendMessage(ChatColor.RED + "Someone tried attacking you but was prevented because you died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
-                        }
-                        if (getPlaytime(damaged) < 216000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())) {
-                            event.setCancelled(true);
-                            long remainingSeconds = getPlaytime(damaged) / 20;
-                            long finalTime = 216000 - remainingSeconds;
-
-                            int remainingMinutes = (int) ((finalTime % 3600) / 60);
-                            int remainingSecondsLeft = (int) (finalTime % 60);
-
-                            damaged.sendMessage(ChatColor.RED + "Someone tried hitting you during your newbie protection! If you hit them back you will lose your protection temporarily and will be attacked!");
-                            shooter.sendMessage(ChatColor.RED + "You cannot damage during their newbie protection for " + ChatColor.YELLOW + remainingMinutes + " minutes, " +
-                                    remainingSecondsLeft + " seconds.");
-                        }
-                        if (onSameTeam(damaged, shooter)) {
-                            event.setCancelled(true);
-                        }
-                        if (!event.isCancelled()) {
-                            names.remove(event.getDamager().getName());
-                            tagPlayer(shooter, damaged);
-                            tagPlayer(damaged, shooter);
-                        }
+                        handlePlayerDamage(event, shooter, damaged);
                     }
                 } else if (event.getDamager() instanceof TNTPrimed) {
-                    TNTPrimed arrow = (TNTPrimed) event.getDamager();
-                    if (arrow.getSource() instanceof Player) {
-                        Player shooter = (Player) arrow.getSource();
-
-                        if (isGracePeriod()) {
-                            event.setCancelled(true);
-                            shooter.sendMessage(ChatColor.RED + "You cannot tnt players during the grace period!");
-                        }
-                        if (isPlayerDeathProt(damaged)) {
-                            event.setCancelled(true);
-                            event.getDamager().sendMessage(ChatColor.RED + "This player was recently killed by a player and won't give heart if you kill them again");
-                            damaged.sendMessage(ChatColor.AQUA + "Someone tried to TNT you during your death protection but it was prevented. If you hit them back you will lose your death protection");
-                        }
-                        if (getPlaytime(damaged) < 216000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())) {
-                            event.setCancelled(true);
-                            long remainingSeconds = getPlaytime(damaged) / 20;
-                            long finalTime = 216000 - remainingSeconds;
-
-                            int remainingMinutes = (int) ((finalTime % 3600) / 60);
-                            int remainingSecondsLeft = (int) (finalTime % 60);
-
-                            damaged.sendMessage(ChatColor.RED + "Someone tried hitting you during your newbie protection! If you hit them back you will lose your protection temporarily and will be attacked!");
-                            event.getDamager().sendMessage(ChatColor.RED + "You cannot damage during their newbie protection for " + ChatColor.YELLOW + remainingMinutes + " minutes, " +
-                                    remainingSecondsLeft + " seconds.");
-                        }
-                        if (!event.isCancelled()) {
-                            tagPlayer((Player) event.getDamager(), damaged);
-                            tagPlayer(damaged, (Player) event.getDamager());
-                        }
+                    TNTPrimed tnt = (TNTPrimed) event.getDamager();
+                    if (tnt.getSource() instanceof Player) {
+                        Player shooter = (Player) tnt.getSource();
+                        handlePlayerDamage(event, shooter, damaged);
                     }
                 }
             }
-        } else {
-            if (event.getEntity() instanceof Villager) {
-                if (event.getDamager() instanceof Player) {
-                    Player p = (Player) event.getDamager();
-                    if (getPlaytime(p) < 216000 && !newbieViolate.contains(p.getName())) {
-                        newbieViolate.add(p.getName());
-                        event.setCancelled(true);
-                        lifestealSmp.getServer().broadcastMessage(ChatColor.YELLOW + p.getName() + " has lost their newbie protection for 5 minutes because of potentially breaking the no griefing rule during newbie protection");
-                        new BukkitRunnable() {
-                            @Override
-                            public void run() {
-                                newbieViolate.remove(p.getName());
-                            }
-                        }.runTaskLater(lifestealSmp, 20 * 60 * 5);
-                    }
-                    if(names.contains(p.getName())) {
-                        event.setCancelled(true);
-                        names.remove(p.getName());
-                        lifestealSmp.getServer().broadcastMessage(p.getName() + ChatColor.YELLOW + " has lost their death protection for hearts & invincibility for potentially breaking the no griefing rule during death protection");
-                    }
-                }
-            }
+        } else if (event.getEntity() instanceof Villager && event.getDamager() instanceof Player) {
+            handleVillagerDamage(event, (Player) event.getDamager());
         }
     }
 
-    public boolean isGracePeriod() {
-        LocalDateTime targetDateTime = LocalDateTime.of(2023, Month.NOVEMBER, 23, 10, 29);
+    private void handlePlayerDamage(EntityDamageByEntityEvent event, Player damager, Player damaged) {
+        if (isGracePeriod()) {
+            event.setCancelled(true);
+            damager.sendMessage(ChatColor.RED + "You cannot damage players during the grace period!");
+            return;
+        }
+        if (invincibilityPlayers.contains(damaged.getName())) {
+            event.setCancelled(true);
+            damager.sendMessage(ChatColor.RED + "This player was recently killed by a player and won't give heart if you kill them again.");
+            damager.sendMessage(ChatColor.RED + "You cannot damage players during their death protection unless they attack you back!");
+            damaged.sendMessage(ChatColor.RED + "Someone tried attacking you but was prevented because you died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
+            return;
+        }
+        if (invincibilityPlayers.contains(damager.getName())) {
+            invincibilityPlayers.remove(damager.getName());
+            damager.sendMessage(ChatColor.RED + "You have lost your death protection invincibility because you attacked another player.");
+        }
+        if (getPlaytime(damaged) < 216000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())) {
+            event.setCancelled(true);
+            long remainingSeconds = getPlaytime(damaged) / 20;
+            long finalTime = 216000 - remainingSeconds;
 
-        ZoneId estTimeZone = ZoneId.of("America/New_York");
-        ZonedDateTime estTargetDateTime = ZonedDateTime.of(targetDateTime, estTimeZone);
+            int remainingMinutes = (int) ((finalTime % 3600) / 60);
+            int remainingSecondsLeft = (int) (finalTime % 60);
 
-        ZonedDateTime currentDateTime = ZonedDateTime.now(estTimeZone);
+            damaged.sendMessage(ChatColor.RED + "Someone tried hitting you during your newbie protection! If you hit them back you will lose your protection temporarily and will be attacked!");
+            damager.sendMessage(ChatColor.RED + "You cannot damage during their newbie protection for " + ChatColor.YELLOW + remainingMinutes + " minutes, " +
+                    remainingSecondsLeft + " seconds.");
+            return;
+        }
+        if (onSameTeam(damaged, damager)) {
+            event.setCancelled(true);
+            return;
+        }
+        if (!event.isCancelled()) {
+            tagPlayer(damager, damaged);
+            tagPlayer(damaged, damager);
+        }
+    }
 
-        return currentDateTime.isBefore(estTargetDateTime);
+    private void handleVillagerDamage(EntityDamageByEntityEvent event, Player damager) {
+        if (getPlaytime(damager) < 216000 && !newbieViolate.contains(damager.getName())) {
+            newbieViolate.add(damager.getName());
+            event.setCancelled(true);
+            lifestealSmp.getServer().broadcastMessage(ChatColor.YELLOW + damager.getName() + " has lost their newbie protection for 5 minutes because of potentially breaking the no griefing rule during newbie protection");
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    newbieViolate.remove(damager.getName());
+                }
+            }.runTaskLater(lifestealSmp, 20 * 60 * 5);
+        }
+        if (invincibilityPlayers.contains(damager.getName())) {
+            event.setCancelled(true);
+            invincibilityPlayers.remove(damager.getName());
+            lifestealSmp.getServer().broadcastMessage(damager.getName() + ChatColor.YELLOW + " has lost their death protection for hearts & invincibility for potentially breaking the no griefing rule during death protection");
+        }
     }
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
-        removeEnemies(event.getPlayer());
-        LivingEntity killer = event.getEntity().getKiller();
+        Player p = event.getEntity();
+        LivingEntity killer = p.getKiller();
         if (!(killer instanceof Player)) {
             return;
         }
-        Player p = event.getEntity();
         Player slainer = (Player) killer;
-        if (!names.contains(p.getName())) {
+
+        removeEnemies(p);
+        if (!heartCooldownPlayers.contains(p.getName())) {
             if (!(p.getMaxHealth() <= 2)) {
                 p.setMaxHealth(p.getMaxHealth() - 2);
             } else {
@@ -191,18 +136,32 @@ public class GracePeriod implements Listener {
                 addItemOrDrop(slainer, extraHeart(), "Heart was dropped because your inventory was full");
             }
         }
-        String name = p.getName();
-        names.add(name);
-        p.sendMessage("You have death protection invincibility/heart cooldown for 15 minutes but you will lose if you attack another player");
+        heartCooldownPlayers.add(p.getName());
+        invincibilityPlayers.add(p.getName());
+
+        p.sendMessage("You have heart cooldown for 15 minutes. You also have death protection invincibility for up to 15 minutes but you will lose it if you attack another player.");
         new BukkitRunnable() {
             @Override
             public void run() {
-                names.remove(name);
+                heartCooldownPlayers.remove(p.getName());
+            }
+        }.runTaskLater(lifestealSmp, 20 * 60 * 15);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                invincibilityPlayers.remove(p.getName());
             }
         }.runTaskLater(lifestealSmp, 20 * 60 * 15);
     }
 
-    public boolean isPlayerDeathProt(Player p) {
-        return names.contains(p.getName());
+    public boolean isGracePeriod() {
+        LocalDateTime targetDateTime = LocalDateTime.of(2023, Month.NOVEMBER, 23, 10, 29);
+
+        ZoneId estTimeZone = ZoneId.of("America/New_York");
+        ZonedDateTime estTargetDateTime = ZonedDateTime.of(targetDateTime, estTimeZone);
+
+        ZonedDateTime currentDateTime = ZonedDateTime.now(estTimeZone);
+
+        return currentDateTime.isBefore(estTargetDateTime);
     }
 }

@@ -17,7 +17,7 @@ import java.util.List;
 
 import static newamazingpvp.lifestealsmp.game.CombatLog.*;
 import static newamazingpvp.lifestealsmp.game.CustomRecipe.extraHeart;
-import static newamazingpvp.lifestealsmp.listener.GracePeriod.names;
+import static newamazingpvp.lifestealsmp.listener.GracePeriod.heartCooldownPlayers;
 
 public class CombatLogListener implements Listener {
     @EventHandler
@@ -32,7 +32,7 @@ public class CombatLogListener implements Listener {
             Player p = e.getPlayer();
 
             if (getCombatTimer(p) < 85) {
-                if (!names.contains(e.getPlayer().getName())) {
+                if (!heartCooldownPlayers.contains(e.getPlayer().getName())) {
                     p.setMaxHealth(p.getMaxHealth() - 2);
                     Player winner = getEnemies(p).get(getEnemies(p).size() - 1);
                     if (!(winner.getMaxHealth() > 38)) {

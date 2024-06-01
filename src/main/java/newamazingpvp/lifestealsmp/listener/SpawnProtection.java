@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.listener;
 
 import com.destroystokyo.paper.event.entity.PreCreatureSpawnEvent;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -70,6 +71,24 @@ public class SpawnProtection implements Listener {
             if (silentMode && event.getPlayer().getName().equalsIgnoreCase("newamazingpvp")) return;
             event.setCancelled(true);
             event.getPlayer().sendMessage(ChatColor.RED + "You cannot place blocks within the spawn area, go around 50-100 blocks away to be able to");
+        }
+    }
+
+    @EventHandler
+    public void onPvpNearSpawn(EntityDamageByEntityEvent event) {
+        if (event.getEntity() instanceof Player && event.getDamager() instanceof Player) {
+            World.Environment spawnEnvironment = event.getEntity().getWorld().getEnvironment();
+            if (spawnEnvironment != World.Environment.NORMAL) {
+                return;
+            }
+            Player damaged = (Player) event.getEntity();
+            Player damager = (Player) event.getDamager();
+            if(damaged.getLocation().distance(Bukkit.getWorld("world").getSpawnLocation()) < 500 ||
+                    damager.getLocation().distance(Bukkit.getWorld("world").getSpawnLocation()) < 500){
+                damaged.sendMessage(ChatColor.RED + "PVP near the vicinity of spawn is discouraged, thus therefore both of you will take same damage regardless of your gear");
+                damager.sendMessage(ChatColor.RED + "PVP near the vicinity of spawn is discouraged, thus therefore both of you will take same damage regardless of your gear");
+                event.setDamage(1.0);
+            }
         }
     }
 
