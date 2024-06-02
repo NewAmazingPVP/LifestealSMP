@@ -158,5 +158,15 @@ public class CustomItemRecipes {
         shapedRecipes.put(lightFeather, lightFeatherRecipe);
         Bukkit.addRecipe(lightFeatherRecipe);
 
+        ItemStack instaboomTNT = new ItemStack(lightFeather());
+        ShapedRecipe instaboomTNTRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "instaboomTNT"), instaboomTNT);
+        instaboomTNTRecipe.shape("TDT","TET","TTT");
+        instaboomTNTRecipe.setIngredient('T', Material.TNT);
+        instaboomTNTRecipe.setIngredient('D', Material.DIAMOND);
+        instaboomTNTRecipe.setIngredient('E', Material.ECHO_SHARD);
+        customItems.add(instaboomTNT);
+        shapedRecipes.put(instaboomTNT, instaboomTNTRecipe);
+        Bukkit.addRecipe(instaboomTNTRecipe);
+
     }
 }

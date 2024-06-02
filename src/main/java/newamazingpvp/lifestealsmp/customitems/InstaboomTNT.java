@@ -9,10 +9,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.util.Vector;
 
 import java.util.List;
 
 public class InstaboomTNT implements Listener {
+
 
     @EventHandler
     public void playerPlaceBlock(BlockPlaceEvent e) {
@@ -30,6 +32,8 @@ public class InstaboomTNT implements Listener {
                 List<Player> nearbyPlayers = (List<Player>) location.getWorld().getNearbyPlayers(location, 2);
                 for (Player playernear : nearbyPlayers) {
                     playernear.addPotionEffect(new PotionEffect(PotionEffectType.DARKNESS, 1, 4));
+                    Vector direction = player.getLocation().toVector().subtract(location.toVector()).normalize();
+                    player.setVelocity(direction.multiply(5));
 
                 }
             }
