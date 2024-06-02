@@ -208,4 +208,25 @@ public class CustomItemsItemstacks {
         return SpeedFeather;
     }
 
+    public static ItemStack InstaBoomTNT() {
+
+        ItemStack InstaBoomTNT = new ItemStack(Material.TNT);
+        ItemMeta SI = InstaBoomTNT.getItemMeta();
+        SI.addEnchant(Enchantment.DURABILITY, 1, false);
+        SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        SI.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "InstaBoom TNT");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        List<String> BL = new ArrayList<>();
+        BL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Right Click:");
+        BL.add(ChatColor.DARK_PURPLE + "When placed, it will instantly");
+        BL.add(ChatColor.DARK_PURPLE + "explode dealing damage to");
+        BL.add(ChatColor.DARK_PURPLE + "ALL PLAYERS in range.");
+        SI.setLore(BL);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        InstaBoomTNT.setItemMeta(SI);
+
+        return InstaBoomTNT;
+    }
+
+
 }
