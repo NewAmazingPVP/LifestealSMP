@@ -11,6 +11,7 @@ import newamazingpvp.lifestealsmp.blacklistener.*;
 import newamazingpvp.lifestealsmp.cometwip.GiveSekhmetSetSpeedAdmin;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.customitems.*;
+import newamazingpvp.lifestealsmp.customitems.MakeCustomItems.CustomItemDrops;
 import newamazingpvp.lifestealsmp.discord.DiscordListener;
 import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
 import newamazingpvp.lifestealsmp.listener.*;
@@ -155,6 +156,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             //New Custom Items
             getServer().getPluginManager().registerEvents(new LightFeather(), this);
             getServer().getPluginManager().registerEvents(new InstaboomTNT(), this);
+            getServer().getPluginManager().registerEvents(new CustomItemDrops(), this);
 
 
 
