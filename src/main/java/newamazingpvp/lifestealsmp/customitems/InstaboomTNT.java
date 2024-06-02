@@ -28,12 +28,13 @@ public class InstaboomTNT implements Listener {
             location.getWorld().spawnParticle(Particle.EXPLOSION_LARGE, location, 10);
             e.setCancelled(true);
             for (Player onlineplayer : Bukkit.getOnlinePlayers()) {
-                onlineplayer.playSound(player.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 1.0f, 1.0f);
-                List<Player> nearbyPlayers = (List<Player>) location.getWorld().getNearbyPlayers(location, 2);
+                onlineplayer.playSound(location, Sound.ENTITY_GENERIC_EXPLODE, 5.0f, 1.0f);
+                onlineplayer.playSound(location, Sound.ENTITY_ELDER_GUARDIAN_CURSE, 5.0f, 2.0f);
+                List<Player> nearbyPlayers = (List<Player>) location.getWorld().getNearbyPlayers(location, 3);
                 for (Player playernear : nearbyPlayers) {
-                    playernear.addPotionEffect(new PotionEffect(PotionEffectType.DARKNESS, 1, 4));
+                    playernear.addPotionEffect(new PotionEffect(PotionEffectType.DARKNESS, 20, 1));
                     Vector direction = player.getLocation().toVector().subtract(location.toVector()).normalize();
-                    player.setVelocity(direction.multiply(5));
+                    player.setVelocity(direction.multiply(10));
 
                 }
             }

@@ -201,7 +201,7 @@ public class CustomItemsItemstacks {
         SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> BL = new ArrayList<>();
         BL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Right Click:" + ChatColor.DARK_PURPLE + " Get speed and jump boost for a few sec!");
-        BL.add(ChatColor.RED + "One time use.");
+        BL.add(ChatColor.RED + "One time use!");
         SI.setLore(BL);
         SpeedFeather.setItemMeta(SI);
 
@@ -217,10 +217,11 @@ public class CustomItemsItemstacks {
         SI.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "InstaBoom TNT");
         SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> BL = new ArrayList<>();
-        BL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Right Click:");
-        BL.add(ChatColor.DARK_PURPLE + "When placed, it will instantly");
-        BL.add(ChatColor.DARK_PURPLE + "explode dealing damage to");
-        BL.add(ChatColor.DARK_PURPLE + "ALL PLAYERS in range.");
+        BL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Place:");
+        BL.add(ChatColor.DARK_PURPLE + "All players within a radius");
+        BL.add(ChatColor.DARK_PURPLE + "of 3 blocks from where it is");
+        BL.add(ChatColor.DARK_PURPLE + "placed will be pushed away!");
+        BL.add(ChatColor.RED + "One Time Use!.");
         SI.setLore(BL);
         SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
         InstaBoomTNT.setItemMeta(SI);
