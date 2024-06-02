@@ -14,7 +14,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.UUID;
 
-import static newamazingpvp.lifestealsmp.game.CustomRecipe.*;
+import static newamazingpvp.lifestealsmp.customitems.unused.UnusedItemstacks.*;
+import static newamazingpvp.lifestealsmp.game.CustomRecipeGUI.*;
 
 public class GiveSekhmetSetSpeedAdmin implements CommandExecutor {
 

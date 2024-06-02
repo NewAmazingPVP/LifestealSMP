@@ -16,9 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.customitems.MakeCustomItems.CustomItemsItemstacks.extraHeart;
 import static newamazingpvp.lifestealsmp.game.CombatLog.*;
 import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
-import static newamazingpvp.lifestealsmp.game.CustomRecipe.extraHeart;
 import static newamazingpvp.lifestealsmp.game.PlayerLifeManager.eliminatePlayer;
 import static newamazingpvp.lifestealsmp.game.TeamsManager.onSameTeam;
 import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
