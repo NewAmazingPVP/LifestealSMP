@@ -229,5 +229,37 @@ public class CustomItemsItemstacks {
         return InstaBoomTNT;
     }
 
+    public static ItemStack LifestealSword() {
+
+        ItemStack InstaBoomTNT = new ItemStack(Material.DIAMOND_SWORD);
+        ItemMeta SI = InstaBoomTNT.getItemMeta();
+        SI.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Lifesteal Sword");
+        List<String> BL = new ArrayList<>();
+        BL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Ability:");
+        BL.add(ChatColor.DARK_PURPLE + "When you hit a player");
+        BL.add(ChatColor.DARK_PURPLE + "You will heal " + ChatColor.RED + "1❤");
+        SI.setLore(BL);
+        InstaBoomTNT.setItemMeta(SI);
+
+        return InstaBoomTNT;
+    }
+
+    public static ItemStack powerStick() {
+
+        ItemStack powerStick = new ItemStack(Material.STICK);
+        ItemMeta SI = powerStick.getItemMeta();
+        SI.addEnchant(Enchantment.DURABILITY, 1, false);
+        SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        SI.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Power Stick");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        List<String> BL = new ArrayList<>();
+        BL.add(ChatColor.DARK_PURPLE + "Used For Crafting");
+        SI.setLore(BL);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        powerStick.setItemMeta(SI);
+
+        return powerStick;
+    }
+
 
 }

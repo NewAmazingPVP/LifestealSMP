@@ -168,5 +168,18 @@ public class CustomItemRecipes {
         shapedRecipes.put(instaboomTNT, instaboomTNTRecipe);
         Bukkit.addRecipe(instaboomTNTRecipe);
 
+        ItemStack LifestealSword = new ItemStack(LifestealSword());
+        ShapedRecipe LifestealSwordRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "LifestealSword"), LifestealSword);
+        LifestealSwordRecipe.shape("WHW","WFW","DSN");
+        LifestealSwordRecipe.setIngredient('H', extraHeart());
+        LifestealSwordRecipe.setIngredient('F', createFeatherSword());
+        LifestealSwordRecipe.setIngredient('S', powerStick());
+        LifestealSwordRecipe.setIngredient('N', Material.NETHERITE_BLOCK);
+        LifestealSwordRecipe.setIngredient('D', Material.DIAMOND_BLOCK);
+        LifestealSwordRecipe.setIngredient('W', Material.WITHER_SKELETON_SKULL);
+        customItems.add(LifestealSword);
+        shapedRecipes.put(LifestealSword, LifestealSwordRecipe);
+        Bukkit.addRecipe(LifestealSwordRecipe);
+
     }
 }
