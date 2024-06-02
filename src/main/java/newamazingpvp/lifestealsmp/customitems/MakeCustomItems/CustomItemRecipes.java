@@ -158,7 +158,7 @@ public class CustomItemRecipes {
         shapedRecipes.put(lightFeather, lightFeatherRecipe);
         Bukkit.addRecipe(lightFeatherRecipe);
 
-        ItemStack instaboomTNT = new ItemStack(lightFeather());
+        ItemStack instaboomTNT = new ItemStack(InstaBoomTNT());
         ShapedRecipe instaboomTNTRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "instaboomTNT"), instaboomTNT);
         instaboomTNTRecipe.shape("TDT","TET","TTT");
         instaboomTNTRecipe.setIngredient('T', Material.TNT);
