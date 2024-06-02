@@ -150,7 +150,14 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new AirRune(), this);
             getServer().getPluginManager().registerEvents(new BingoCardListener(), this);
             getServer().getPluginManager().registerEvents(new BingoCardGUIListeners(), this);
+
+
+            //New Custom Items
             getServer().getPluginManager().registerEvents(new LightFeather(), this);
+            getServer().getPluginManager().registerEvents(new InstaboomTNT(), this);
+
+
+
             getServer().getPluginManager().registerEvents(new testEvent(), this); //TODO:THIS IS A TEST EVENT REMOVE THIS <<<<<<<<<<<<<<<<<<<<<<<<<<
 
             //THESE ARE THE BINGO EVENTS TO DETECT IF A PLAYER DID A PART OF IT
