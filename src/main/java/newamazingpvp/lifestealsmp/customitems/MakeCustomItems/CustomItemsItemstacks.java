@@ -1,0 +1,194 @@
+package newamazingpvp.lifestealsmp.customitems.MakeCustomItems;
+
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CustomItemsItemstacks {
+
+    public static ItemStack createReviveBeacon() {
+        ItemStack reviveBeacon = new ItemStack(Material.BEACON);
+
+        ItemMeta meta = reviveBeacon.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_PURPLE + "Revive Beacon");
+        List<String> DEFL = new ArrayList<>();
+        DEFL.add(ChatColor.GOLD + "Use to revive eliminated players!");
+        meta.setLore(DEFL);
+
+        reviveBeacon.setItemMeta(meta);
+
+        return reviveBeacon;
+    }
+
+    public static ItemStack createCustomBow() {
+        ItemStack customBow = new ItemStack(Material.BOW);
+
+        ItemMeta meta = customBow.getItemMeta();
+        //meta.setDisplayName(ChatColor.LIGHT_PURPLE + "Teleporting Bow");
+        meta.setDisplayName(ChatColor.MAGIC + "Teleporting Bow");
+        List<String> DEFL = new ArrayList<>();
+        DEFL.add(ChatColor.GOLD + "Special Ability: " + ChatColor.DARK_PURPLE + "Shoot to teleport!");
+        meta.setLore(DEFL);
+        meta.addItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+
+        customBow.setItemMeta(meta);
+
+        return customBow;
+    }
+
+    public static ItemStack createCustomAxe() {
+        ItemStack customBow = new ItemStack(Material.NETHERITE_AXE);
+
+        ItemMeta meta = customBow.getItemMeta();
+        //meta.setDisplayName(ChatColor.LIGHT_PURPLE + "Teleporting Bow");
+        meta.setDisplayName(ChatColor.AQUA + "Tree chopping axe");
+        List<String> DEFL = new ArrayList<>();
+        DEFL.add(ChatColor.GOLD + "Special Ability: " + ChatColor.DARK_PURPLE + "Breaks whole tree down with one chop!");
+        meta.setLore(DEFL);
+
+        customBow.setItemMeta(meta);
+
+        return customBow;
+    }
+
+    public static ItemStack createTNTBow() {
+        ItemStack customBow = new ItemStack(Material.BOW);
+
+        ItemMeta meta = customBow.getItemMeta();
+        //meta.setDisplayName(ChatColor.LIGHT_PURPLE + "Teleporting Bow");
+        meta.setDisplayName(ChatColor.GOLD + "TNT Bow");
+        List<String> DEFL = new ArrayList<>();
+        DEFL.add(ChatColor.GOLD + "Special Ability: " + ChatColor.DARK_PURPLE + "TNT Shooter!");
+        meta.setLore(DEFL);
+        meta.addItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+
+        customBow.setItemMeta(meta);
+
+        return customBow;
+    }
+
+    public static ItemStack createHomingBow() {
+        ItemStack customBow = new ItemStack(Material.BOW);
+
+        ItemMeta meta = customBow.getItemMeta();
+        //meta.setDisplayName(ChatColor.LIGHT_PURPLE + "Teleporting Bow");
+        meta.setDisplayName(ChatColor.GOLD + "Homing Bow");
+        List<String> DEFL = new ArrayList<>();
+        DEFL.add(ChatColor.GOLD + "Special Ability: " + ChatColor.DARK_PURPLE + "Homing Arrows!");
+        meta.setLore(DEFL);
+        meta.addItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+
+        customBow.setItemMeta(meta);
+
+        return customBow;
+    }
+
+    public static ItemStack createFeatherSword() {
+        ItemStack customBow = new ItemStack(Material.NETHERITE_SWORD);
+
+        ItemMeta meta = customBow.getItemMeta();
+        meta.setDisplayName(ChatColor.AQUA + "Feather Sword");
+        List<String> DEFL = new ArrayList<>();
+        DEFL.add(ChatColor.GOLD + "Special Ability: " + ChatColor.DARK_PURPLE + "Right click to launch yourself");
+        DEFL.add(ChatColor.LIGHT_PURPLE + "Permanent speed while holding");
+        meta.setLore(DEFL);
+        //meta.addItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS);
+        /*AttributeModifier attackSpeedModifier = new AttributeModifier(
+                UUID.randomUUID(),
+                "generic.attackSpeed",
+                -2.4,
+                AttributeModifier.Operation.ADD_NUMBER,
+                EquipmentSlot.HAND
+        );
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifier);
+
+        AttributeModifier attackDamageModifier = new AttributeModifier(
+                UUID.randomUUID(),
+                "generic.attackDamage",
+                6,
+                AttributeModifier.Operation.ADD_NUMBER,
+                EquipmentSlot.HAND
+        );
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDamageModifier);*/
+
+        customBow.setItemMeta(meta);
+
+        return customBow;
+    }
+
+    public static ItemStack createOpPickaxe() {
+        ItemStack customBow = new ItemStack(Material.NETHERITE_PICKAXE);
+
+        ItemMeta meta = customBow.getItemMeta();
+        //meta.setDisplayName(ChatColor.LIGHT_PURPLE + "Teleporting Bow");
+        meta.setDisplayName(ChatColor.GOLD + "God Pickaxe");
+        List<String> DEFL = new ArrayList<>();
+        DEFL.add(ChatColor.GOLD + "Special Ability: " + ChatColor.DARK_PURPLE + "Mine to break 3x3!");
+        meta.setLore(DEFL);
+
+        customBow.setItemMeta(meta);
+
+        return customBow;
+    }
+
+    public static ItemStack corruptedMobSoul() {
+
+        ItemStack corruptedMobSoul = new ItemStack(Material.ECHO_SHARD);
+        ItemMeta soulM = corruptedMobSoul.getItemMeta();
+        soulM.addEnchant(Enchantment.DURABILITY, 1, false);
+        soulM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        soulM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "Co" + ChatColor.MAGIC + "r" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "rupted Mob Soul" + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "LL");
+        soulM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        List<String> soulL = new ArrayList<>();
+        soulL.add(ChatColor.AQUA + "U$e To Cr" + ChatColor.MAGIC + "a" + ChatColor.AQUA + "ft Extra Hearts!" + ChatColor.MAGIC + "L");
+        soulL.add(ChatColor.LIGHT_PURPLE + "Rare Drop From Mobs!");
+        soulM.setLore(soulL);
+        corruptedMobSoul.setItemMeta(soulM);
+
+        return corruptedMobSoul;
+    }
+
+    public static ItemStack severedMobHeart() {
+
+        ItemStack severedMobHeart = new ItemStack(Material.BEETROOT);
+        ItemMeta heartM = severedMobHeart.getItemMeta();
+        heartM.addEnchant(Enchantment.DURABILITY, 1, false);
+        heartM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        heartM.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Severed Mob Heart");
+        heartM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        List<String> heartL = new ArrayList<>();
+        heartL.add(ChatColor.AQUA + "Use To Craft Extra Hearts!");
+        heartL.add(ChatColor.LIGHT_PURPLE + "Very Rare Drop From Mobs!");
+        heartM.setLore(heartL);
+        severedMobHeart.setItemMeta(heartM);
+
+        return severedMobHeart;
+    }
+
+    public static ItemStack extraHeart() {
+
+        ItemStack extraHeart = new ItemStack(Material.RED_DYE);
+        ItemMeta EheartM = extraHeart.getItemMeta();
+        EheartM.addEnchant(Enchantment.DURABILITY, 1, false);
+        EheartM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        EheartM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL" + ChatColor.DARK_RED + ChatColor.BOLD + "Extra Heart" + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "LL");
+        EheartM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        List<String> EheartL = new ArrayList<>();
+        EheartL.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Right Click:" + ChatColor.DARK_PURPLE + " For +1 Heart!");
+        EheartL.add(ChatColor.GRAY + "(max 20 hearts)");
+        EheartM.setLore(EheartL);
+        extraHeart.setItemMeta(EheartM);
+
+        return extraHeart;
+    }
+
+}

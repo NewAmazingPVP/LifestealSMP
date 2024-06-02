@@ -10,8 +10,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.game.CustomRecipe.corruptedMobSoul;
-import static newamazingpvp.lifestealsmp.game.CustomRecipe.severedMobHeart;
+import static newamazingpvp.lifestealsmp.customitems.MakeCustomItems.CustomItemsItemstacks.corruptedMobSoul;
+import static newamazingpvp.lifestealsmp.customitems.MakeCustomItems.CustomItemsItemstacks.severedMobHeart;
 
 public class CustomHeartItems implements Listener {
 

@@ -7,7 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.game.CustomRecipe.ancientSpellScroll;
+import static newamazingpvp.lifestealsmp.customitems.unused.UnusedItemstacks.ancientSpellScroll;
 
 public class SekhmetStaffDrops implements Listener {
 
