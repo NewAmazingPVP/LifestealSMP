@@ -149,5 +149,14 @@ public class CustomItemRecipes {
         shapelessRecipes.put(createReviveBeacon(), reviveBeaconRecipe);
         Bukkit.addRecipe(reviveBeaconRecipe);
 
+        ItemStack lightFeather = new ItemStack(lightFeather());
+        ShapedRecipe lightFeatherRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "lightFeather"), lightFeather);
+        lightFeatherRecipe.shape("FSF","SFS","FSF");
+        lightFeatherRecipe.setIngredient('F', Material.FEATHER);
+        lightFeatherRecipe.setIngredient('S', Material.SUGAR);
+        customItems.add(lightFeather);
+        shapedRecipes.put(lightFeather, lightFeatherRecipe);
+        Bukkit.addRecipe(lightFeatherRecipe);
+
     }
 }

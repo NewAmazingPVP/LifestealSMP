@@ -191,4 +191,21 @@ public class CustomItemsItemstacks {
         return extraHeart;
     }
 
+    public static ItemStack lightFeather() {
+
+        ItemStack SpeedFeather = new ItemStack(Material.FEATHER);
+        ItemMeta SI = SpeedFeather.getItemMeta();
+        SI.addEnchant(Enchantment.DURABILITY, 1, false);
+        SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        SI.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Light Feather");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        List<String> BL = new ArrayList<>();
+        BL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Right Click:" + ChatColor.DARK_PURPLE + " Get speed and jump boost for a few sec!");
+        BL.add(ChatColor.RED + "One time use.");
+        SI.setLore(BL);
+        SpeedFeather.setItemMeta(SI);
+
+        return SpeedFeather;
+    }
+
 }
