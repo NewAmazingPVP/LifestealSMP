@@ -14,6 +14,7 @@ import static org.bukkit.Bukkit.getServer;
 public class Utils {
     private static final int MAX_SIZE = 14;
     private static List<Double> tpsList = new ArrayList<>();
+    private static boolean isTriggered = false;
 
     public static void addItemOrDrop(Player player, ItemStack itemStack, String fullInventoryMessage) {
         if (player.getInventory().firstEmpty() != -1) {
@@ -85,23 +86,25 @@ public class Utils {
         double averageTPS = getAverageTPS();
 
         if (averageTPS < 15.0) {
+            isTriggered = true;
             getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 2 --duration 1");
             getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 2 --duration 1");
-        } else if (averageTPS < 16.0) {
+        } else if (isTriggered && averageTPS < 16.0) {
             getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 3 --duration 1");
             getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 2 --duration 1");
-        } else if (averageTPS < 17.0) {
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 4 --duration 1");
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 2 --duration 1");
-        } else if (averageTPS < 18.0) {
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 5 --duration 1");
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 2 --duration 1");
-        } else if (averageTPS < 19.0) {
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 6 --duration 1");
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 3 --duration 1");
-        } else if (averageTPS < 19.5) {
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 8 --duration 1");
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 3 --duration 1");
+        } else if (isTriggered && averageTPS < 17.0) {
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 4 --duration 2");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 2 --duration 2");
+        } else if (isTriggered && averageTPS < 18.0) {
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 5 --duration 2");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 2 --duration 2");
+        } else if (isTriggered && averageTPS < 19.0) {
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 6 --duration 3");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 3 --duration 3");
+        } else if (isTriggered && averageTPS < 19.5) {
+            isTriggered = false;
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 8 --duration 4");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 3 --duration 4");
         }
     }
 
