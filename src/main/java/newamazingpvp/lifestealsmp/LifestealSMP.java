@@ -2,6 +2,8 @@ package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
+import newamazingpvp.lifestealsmp.game.BroadcastMessage;
+import newamazingpvp.lifestealsmp.game.PlayerPing;
 import newamazingpvp.lifestealsmp.mcbingo.commands.CommandNewBingoGame;
 import newamazingpvp.lifestealsmp.mcbingo.gui.BingoCardGUIListeners;
 import newamazingpvp.lifestealsmp.mcbingo.BingoCardListener;
@@ -18,13 +20,9 @@ import newamazingpvp.lifestealsmp.wipcomet99.REMOVE_THIS_COMMAND_GIVE_ICE;
 import newamazingpvp.lifestealsmp.wipcomet99.PingWars;
 import newamazingpvp.lifestealsmp.utility.Utils;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -33,7 +31,6 @@ import org.jetbrains.annotations.NotNull;
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlacklist;
 import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.customitems.utils.DevRecipes.registerCustomRecipesDev;
-import static newamazingpvp.lifestealsmp.discord.DiscordListener.isVanished;
 import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
 import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastReportBugs;
 import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastServerMessage;
@@ -114,7 +111,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new AnvilMenuListener(), this);
         getServer().getPluginManager().registerEvents(new EndFightRestrictions(), this);
         getServer().getPluginManager().registerEvents(new AntiUseListener(), this);
-        getServer().getPluginManager().registerEvents(new PlayerJoiningServer(), this);
+        getServer().getPluginManager().registerEvents(new JoinLeave(), this);
         getServer().getPluginManager().registerEvents(new ChatFilter(), this);
         getServer().getPluginManager().registerEvents(new HomingBow(), this);
         getServer().getPluginManager().registerEvents(new CombatProtectionHandler(), this);
@@ -147,19 +144,14 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new BingoCardListener(), this);
             getServer().getPluginManager().registerEvents(new BingoCardGUIListeners(), this);
 
-
             //New Custom Items
             getServer().getPluginManager().registerEvents(new LightFeather(), this);
             getServer().getPluginManager().registerEvents(new InstaboomTNT(), this);
             getServer().getPluginManager().registerEvents(new Drops(), this);
             getServer().getPluginManager().registerEvents(new LifestealSword(), this);
-
             registerCustomRecipesDev();
 
-
             //THESE ARE THE BINGO EVENTS TO DETECT IF A PLAYER DID A PART OF IT
-
-
 
             //registerBingoRecipes();
             //getServer().getPluginManager().registerEvents(new BingoInvintoryProt(), this);
@@ -174,11 +166,11 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             //getServer().getPluginManager().registerEvents(new MontuStaffShiftLeft(), this);
             //getServer().getPluginManager().registerEvents(new MontuStaffShiftRight(), this);
         }
-        getServer().getScheduler().runTaskTimer(this, () -> broadcastServerMessage(), 0, 7200 * 20);
+        getServer().getScheduler().runTaskTimer(this, BroadcastMessage::broadcastServerMessage, 0, 7200 * 20);
         getServer().getScheduler().runTaskTimer(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** help"), 0, 30 * 60 * 20);
-        getServer().getScheduler().runTaskTimer(this, () -> broadcastReportBugs(), 0, 3600 * 20);
+        getServer().getScheduler().runTaskTimer(this, BroadcastMessage::broadcastReportBugs, 0, 3600 * 20);
         registerCustomRecipes();
-        getServer().getScheduler().runTaskTimer(this, () -> monitorPlayerPings(), 0L, 20L);
+        getServer().getScheduler().runTaskTimer(this, PlayerPing::monitorPlayerPings, 0L, 20L);
         scheduleRestart();
         compassUpdate();
         //checkTps();
@@ -215,68 +207,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             jda.shutdownNow();
         }
         sendDiscordMessage("The server has stopped🛑", "");
-    }
-
-    @EventHandler
-    public void onPlayerQuit(PlayerQuitEvent event) {
-        Player player = event.getPlayer();
-        if (player.getName().equals("NewAmazingPVP") && isVanished(player) && silentMode) {
-            event.setQuitMessage("");
-        }
-    }
-
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
-        player.sendMessage("Welcome! \n/help\n/guide\n/rules\n/prefix\n/color\n/recipes\n/trade ");
-        getServer().dispatchCommand(getServer().getConsoleSender(), "sudo " + player.getName() + " help");
-        getServer().getScheduler().runTaskLater(this, () -> player.sendMessage(ChatColor.RED + "Report any rule breakers on /discord and beware of people tricking you into taking your hearts away. Report them immediately. Make your base safe locations such as underground to prevent it from being griefed."), 200);
-        if (player.getName().equals("NewAmazingPVP") && silentMode) {
-            event.setJoinMessage("");
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vanish NewAmazingPVP");
-        }
-
-        BukkitRunnable prefix = new BukkitRunnable() {
-            @Override
-            public void run() {
-                if (essentials.getUser(player.getUniqueId()).getNickname() != null && essentials.getUser(player.getUniqueId()).getNickname().equals(player.getName())) {
-                    setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW);
-                }
-            }
-        };
-        prefix.runTaskTimer(this, 0, 0L);
-        if (!player.hasPlayedBefore()) {
-            player.setInvulnerable(true);
-            getServer().getScheduler().runTaskLater(this, () -> player.setInvulnerable(false), 200);
-            setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW);
-            getServer().getScheduler().runTaskLater(this, () -> setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW), 60);
-            getServer().getScheduler().runTaskLater(this, () -> setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW), 120);
-            getServer().getScheduler().runTaskLater(this, prefix::cancel, 200);
-            getServer().dispatchCommand(player, "guide");
-            //player.teleport(lobby);
-        } else {
-            if (player.getName().startsWith(".")) {
-                player.setInvulnerable(true);
-                BukkitRunnable bedrockInit = new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.setInvulnerable(false);
-                        prefix.cancel();
-                    }
-                };
-                bedrockInit.runTaskLater(this, 120);
-            } else {
-                player.setInvulnerable(true);
-                BukkitRunnable javaInit = new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.setInvulnerable(false);
-                        prefix.cancel();
-                    }
-                };
-                javaInit.runTaskLater(this, 60);
-            }
-        }
     }
 
     @Override
