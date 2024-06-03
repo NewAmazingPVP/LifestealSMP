@@ -237,7 +237,7 @@ public class ItemStacks {
         List<String> BL = new ArrayList<>();
         BL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Ability:");
         BL.add(ChatColor.DARK_PURPLE + "When you hit a player");
-        BL.add(ChatColor.DARK_PURPLE + "you will heal 1hp");
+        BL.add(ChatColor.DARK_PURPLE + "You will heal " + ChatColor.RED + "1❤");
         SI.setLore(BL);
         InstaBoomTNT.setItemMeta(SI);
 
