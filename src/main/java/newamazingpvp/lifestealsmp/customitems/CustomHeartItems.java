@@ -27,6 +27,8 @@ public class CustomHeartItems implements Listener {
             e.getDrops().add(corruptedMobSoul());
             //e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), new ItemStack(CorruptedMobSoul()));
             killer.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "RARE DROP!" + ChatColor.DARK_PURPLE + " Corrupted Mob Soul");
+            killer.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Used to craft hearts!");
+            killer.sendMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Be careful, this is a extremely rare drop (1 in 1k) so people might try to scam you for it");
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 0.0f), 3);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f), 6);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 3.0f), 9);
@@ -36,6 +38,8 @@ public class CustomHeartItems implements Listener {
             e.getDrops().add(severedMobHeart());
             //e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), new ItemStack(severedMobHeart()));
             killer.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "RARE DROP!" + ChatColor.DARK_PURPLE + " Severed Mob Heart");
+            killer.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Used to craft hearts!");
+            killer.sendMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Be careful, this is a extremely rare drop (1 in 2k) so people might try to scam you for it");
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 0.0f), 3);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f), 6);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 3.0f), 9);
