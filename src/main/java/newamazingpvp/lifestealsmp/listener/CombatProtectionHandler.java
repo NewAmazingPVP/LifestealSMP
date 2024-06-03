@@ -82,8 +82,12 @@ public class CombatProtectionHandler implements Listener {
 
             damaged.sendMessage(ChatColor.RED + "Someone tried hitting you during your newbie protection! If you hit them back you will lose your protection temporarily and will be attacked!");
             damager.sendMessage(ChatColor.RED + "You cannot damage during their newbie protection for " + ChatColor.YELLOW + remainingMinutes + " minutes, " +
-                    remainingSecondsLeft + " seconds.");
+                    remainingSecondsLeft + " seconds. Either way they won't give hearts until they have 3 hour playtime, so why bother?");
             return;
+        }
+        if(getPlaytime(damaged) < 216000){
+            damaged.sendMessage(ChatColor.RED + "Since you don't have 3 hours of playtime, even if you die you won't lose any hearts");
+            damager.sendMessage(ChatColor.RED + "The person you are trying to attack does not have 3 hours of playtime. Therfore they will not drop hearts when killed");
         }
         if (onSameTeam(damaged, damager)) {
             event.setCancelled(true);

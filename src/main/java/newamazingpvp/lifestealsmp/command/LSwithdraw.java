@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 import java.util.HashMap;
 
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.extraHeart;
+import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
 
 public class LSwithdraw implements CommandExecutor {
 
@@ -30,6 +31,12 @@ public class LSwithdraw implements CommandExecutor {
             player.sendMessage(ChatColor.RED + "You are not allowed to withdraw hearts in vicinity of spawn");
             return true;
         }
+
+        /*
+        if(getPlaytime(player) < 216000){
+            player.sendMessage(ChatColor.RED + "You are not allowed to withdraw hearts with less than 3 hours of playtime");
+            return true;
+        }*/
 
         if (hasCooldown(player)) {
             long timeRemaining = getCooldownTime(player);
