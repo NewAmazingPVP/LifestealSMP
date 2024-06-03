@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.game;
+package newamazingpvp.lifestealsmp.allyteams;
 
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
@@ -8,7 +8,7 @@ import org.bukkit.scoreboard.Team;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import static newamazingpvp.lifestealsmp.game.TeamsManager.sendTeamMessage;
+import static newamazingpvp.lifestealsmp.allyteams.TeamsManager.sendTeamMessage;
 
 public class AllyClass {
     HashSet<Team> allies;

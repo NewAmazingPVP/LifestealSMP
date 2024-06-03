@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.mcbingo.listeners;
+package newamazingpvp.lifestealsmp.mcbingo.challengelisteners;
 
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -6,9 +6,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 
-import static newamazingpvp.lifestealsmp.mcbingo.ToggleBingoListeners.toggleKillEnderdragon;
+import static newamazingpvp.lifestealsmp.mcbingo.ToggleBingoListeners.toggleKillWither;
 
-public class BingoKillEnderdragonListener implements Listener {
+public class BingoKillWitherListener implements Listener {
 
     @EventHandler
     public void playerKill(EntityDeathEvent e) {
@@ -17,8 +17,8 @@ public class BingoKillEnderdragonListener implements Listener {
         EntityType entityType = e.getEntity().getType();
 
 
-        if(toggleKillEnderdragon == true){
-            if(entityType == EntityType.ENDER_DRAGON){
+        if (toggleKillWither == true) {
+            if (entityType == EntityType.WITHER) {
 
                 //TODO: <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -27,3 +27,4 @@ public class BingoKillEnderdragonListener implements Listener {
         }
     }
 }
+

@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.command;
+package newamazingpvp.lifestealsmp.allyteams;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -12,9 +12,9 @@ import org.bukkit.scoreboard.Team;
 import java.util.ArrayList;
 import java.util.List;
 
-import static newamazingpvp.lifestealsmp.game.AlliesManager.*;
-import static newamazingpvp.lifestealsmp.game.TeamsManager.getPlayerTeam;
-import static newamazingpvp.lifestealsmp.game.TeamsManager.getTeam;
+import static newamazingpvp.lifestealsmp.allyteams.AlliesManager.*;
+import static newamazingpvp.lifestealsmp.allyteams.TeamsManager.getPlayerTeam;
+import static newamazingpvp.lifestealsmp.allyteams.TeamsManager.getTeam;
 
 public class AllyCommand implements CommandExecutor, TabCompleter {
 

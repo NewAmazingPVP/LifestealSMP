@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.game;
+package newamazingpvp.lifestealsmp.allyteams;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
-import static newamazingpvp.lifestealsmp.game.TeamsManager.*;
+import static newamazingpvp.lifestealsmp.allyteams.TeamsManager.*;
 
 public class AlliesManager {
 

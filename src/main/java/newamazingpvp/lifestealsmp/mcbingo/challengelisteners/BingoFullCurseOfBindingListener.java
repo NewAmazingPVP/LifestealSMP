@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.mcbingo.listeners;
+package newamazingpvp.lifestealsmp.mcbingo.challengelisteners;
 
 import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent;
 import org.bukkit.entity.Player;
