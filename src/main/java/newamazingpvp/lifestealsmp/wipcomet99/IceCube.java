@@ -27,7 +27,7 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class IceCube implements Listener {
 
-    //not the fucking rapper
+
 
 
     public static ItemStack FrozenIceHelm() {

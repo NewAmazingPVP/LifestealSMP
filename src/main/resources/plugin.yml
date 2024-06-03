@@ -2,7 +2,7 @@ name: LifestealSMP
 version: '${project.version}'
 main: newamazingpvp.lifestealsmp.LifestealSMP
 api-version: '1.20'
-authors: [NewAmazingPVP]
+authors: [NewAmazingPVP, Comet99]
 softdepend:
   - Essentials
 libraries:
@@ -28,11 +28,11 @@ commands:
     description: Track a player's location
     usage: /track <player>
     aliases: [compass]
-  GiveSekhmetSet:
+  givesekhmetset:
     description: Admins Only
-    usage: /GiveSekhmetSet
+    usage: /givesekhmetset
     permission: lifestealSMP.admin
-    aliases: dontfuckingtrytorunthisifyouarenotaadmin
+    aliases:
     default: op
   restart_with_warning:
     description: Admins Only RS server with a warning
