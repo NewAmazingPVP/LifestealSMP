@@ -124,7 +124,7 @@ public class GracePeriod implements Listener {
         Player slainer = (Player) killer;
 
         removeEnemies(p);
-        if (!heartCooldownPlayers.contains(p.getName())) {
+        if (!heartCooldownPlayers.contains(p.getName()) && getPlaytime(p) > 216000) {
             if (!(p.getMaxHealth() <= 2)) {
                 p.setMaxHealth(p.getMaxHealth() - 2);
             } else {
