@@ -142,13 +142,13 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getCommand("generatenewbingogame").setExecutor(new CommandNewBingoGame());
 
             //getCommand("quickMaths").setExecutor(new QuickMaths());
-            getServer().getPluginManager().registerEvents(new IceCube(), this);
-            getServer().getPluginManager().registerEvents(new RunesDrops(), this);
-            getServer().getPluginManager().registerEvents(new AquaRune(), this);
-            getServer().getPluginManager().registerEvents(new LightningRune(), this);
-            getServer().getPluginManager().registerEvents(new HellRune(), this);
-            getServer().getPluginManager().registerEvents(new BloodRune(), this);
-            getServer().getPluginManager().registerEvents(new AirRune(), this);
+            //getServer().getPluginManager().registerEvents(new IceCube(), this);
+            //getServer().getPluginManager().registerEvents(new RunesDrops(), this);
+            //getServer().getPluginManager().registerEvents(new AquaRune(), this);
+            //getServer().getPluginManager().registerEvents(new LightningRune(), this);
+            //getServer().getPluginManager().registerEvents(new HellRune(), this);
+            //getServer().getPluginManager().registerEvents(new BloodRune(), this);
+            //getServer().getPluginManager().registerEvents(new AirRune(), this);
             getServer().getPluginManager().registerEvents(new BingoCardListener(), this);
             getServer().getPluginManager().registerEvents(new BingoCardGUIListeners(), this);
 
@@ -159,14 +159,13 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new CustomItemDrops(), this);
 
 
-
-            getServer().getPluginManager().registerEvents(new testEvent(), this); //TODO:THIS IS A TEST EVENT REMOVE THIS <<<<<<<<<<<<<<<<<<<<<<<<<<
+            
 
             //THESE ARE THE BINGO EVENTS TO DETECT IF A PLAYER DID A PART OF IT
 
 
 
-            registerBingoRecipes();
+            //registerBingoRecipes();
             //getServer().getPluginManager().registerEvents(new BingoInvintoryProt(), this);
             //registerCustomRecipesRunes();
 
