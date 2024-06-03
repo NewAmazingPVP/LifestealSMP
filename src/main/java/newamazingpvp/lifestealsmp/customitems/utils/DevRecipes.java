@@ -17,8 +17,6 @@ public class DevRecipes {
         lightFeatherRecipe.shape("FSF","SFS","FSF");
         lightFeatherRecipe.setIngredient('F', Material.FEATHER);
         lightFeatherRecipe.setIngredient('S', Material.SUGAR);
-        //customItems.add(lightFeather);
-        //shapedRecipes.put(lightFeather, lightFeatherRecipe);
         Bukkit.addRecipe(lightFeatherRecipe);
 
         ItemStack instaboomTNT = new ItemStack(InstaBoomTNT());
@@ -40,8 +38,9 @@ public class DevRecipes {
         LifestealSwordRecipe.setIngredient('N', Material.NETHERITE_BLOCK);
         LifestealSwordRecipe.setIngredient('D', Material.DIAMOND_BLOCK);
         LifestealSwordRecipe.setIngredient('W', Material.WITHER_SKELETON_SKULL);
-        //customItems.add(LifestealSword);
-        //shapedRecipes.put(LifestealSword, LifestealSwordRecipe);
         Bukkit.addRecipe(LifestealSwordRecipe);
+
+
+
     }
 }
