@@ -89,7 +89,8 @@ public class Utils {
             isTriggered = true;
             getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 2 --duration 1");
             getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 2 --duration 1");
-        } else if (isTriggered && averageTPS < 16.0) {
+        } else if (averageTPS < 16.0) {
+            isTriggered = true;
             getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 3 --duration 1");
             getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 2 --duration 1");
         } else if (isTriggered && averageTPS < 17.0) {
