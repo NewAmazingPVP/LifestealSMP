@@ -22,7 +22,7 @@ public class LifestealSword implements Listener {
 
         if (hitPlayer instanceof Player) {
 
-            if (meta.getLore().toString().contains("you will heal 1hp")){
+            if (meta.getLore().toString().contains("You will heal " + ChatColor.RED + "1❤")){
 
                 player.sendMessage("test 123");
 
