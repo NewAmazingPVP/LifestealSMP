@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.command;
+package newamazingpvp.lifestealsmp.allyteams;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -12,7 +12,7 @@ import org.bukkit.scoreboard.Team;
 import java.util.ArrayList;
 import java.util.List;
 
-import static newamazingpvp.lifestealsmp.game.TeamsManager.*;
+import static newamazingpvp.lifestealsmp.allyteams.TeamsManager.*;
 
 public class TeamCommand implements CommandExecutor, TabCompleter {
     private final ArrayList<String> teamFirstIndex = new ArrayList<>(List.of("join", "leave", "create", "invite", "chat", "kick", "list", "members", "help"));

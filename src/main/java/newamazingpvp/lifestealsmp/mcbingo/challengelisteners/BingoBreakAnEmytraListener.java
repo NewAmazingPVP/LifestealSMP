@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.mcbingo.listeners;
+package newamazingpvp.lifestealsmp.mcbingo.challengelisteners;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.listener;
+package newamazingpvp.lifestealsmp.allyteams;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -9,10 +9,10 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import java.util.HashMap;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.essentials;
-import static newamazingpvp.lifestealsmp.game.AlliesManager.isPlayerInAllyChat;
-import static newamazingpvp.lifestealsmp.game.AlliesManager.sendAllyMessage;
-import static newamazingpvp.lifestealsmp.game.TeamsManager.isPlayerInTeamChat;
-import static newamazingpvp.lifestealsmp.game.TeamsManager.sendTeamMessage;
+import static newamazingpvp.lifestealsmp.allyteams.AlliesManager.isPlayerInAllyChat;
+import static newamazingpvp.lifestealsmp.allyteams.AlliesManager.sendAllyMessage;
+import static newamazingpvp.lifestealsmp.allyteams.TeamsManager.isPlayerInTeamChat;
+import static newamazingpvp.lifestealsmp.allyteams.TeamsManager.sendTeamMessage;
 
 public class TeamListener implements Listener {
     public HashMap<Player, String> avoidSpam = new HashMap<>();

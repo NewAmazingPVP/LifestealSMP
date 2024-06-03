@@ -2,6 +2,9 @@ package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
+import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
+import newamazingpvp.lifestealsmp.allyteams.TeamCommand;
+import newamazingpvp.lifestealsmp.allyteams.TeamListener;
 import newamazingpvp.lifestealsmp.game.BroadcastMessage;
 import newamazingpvp.lifestealsmp.game.PlayerPing;
 import newamazingpvp.lifestealsmp.mcbingo.commands.CommandNewBingoGame;
@@ -32,10 +35,7 @@ import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlac
 import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.customitems.utils.DevRecipes.registerCustomRecipesDev;
 import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
-import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastReportBugs;
-import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastServerMessage;
 import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
-import static newamazingpvp.lifestealsmp.game.PlayerPing.monitorPlayerPings;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.isAutoUploadEnabled;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.startReleaseChecker;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.*;

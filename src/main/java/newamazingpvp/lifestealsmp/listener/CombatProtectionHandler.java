@@ -20,7 +20,7 @@ import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.extraHeart
 import static newamazingpvp.lifestealsmp.game.CombatLog.*;
 import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
 import static newamazingpvp.lifestealsmp.game.PlayerLifeManager.eliminatePlayer;
-import static newamazingpvp.lifestealsmp.game.TeamsManager.onSameTeam;
+import static newamazingpvp.lifestealsmp.allyteams.TeamsManager.onSameTeam;
 import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 
 public class CombatProtectionHandler implements Listener {
