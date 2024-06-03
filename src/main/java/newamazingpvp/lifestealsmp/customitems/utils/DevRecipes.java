@@ -33,19 +33,18 @@ public class DevRecipes {
         ShapedRecipe LifestealSwordRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "LifestealSword"), LifestealSword);
         LifestealSwordRecipe.shape("WHW","WFW","DSN");
         LifestealSwordRecipe.setIngredient('H', extraHeart());
-        LifestealSwordRecipe.setIngredient('F', createFeatherSword());
+        LifestealSwordRecipe.setIngredient('F', heavyNetherStar());
         LifestealSwordRecipe.setIngredient('S', powerStick());
         LifestealSwordRecipe.setIngredient('N', Material.NETHERITE_BLOCK);
         LifestealSwordRecipe.setIngredient('D', Material.DIAMOND_BLOCK);
         LifestealSwordRecipe.setIngredient('W', Material.WITHER_SKELETON_SKULL);
         Bukkit.addRecipe(LifestealSwordRecipe);
 
-        ItemStack heavyNetherStar = new ItemStack(LifestealSword());
+        ItemStack heavyNetherStar = new ItemStack(heavyNetherStar());
         ShapedRecipe heavyNetherStarRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "heavyNetherStar"), heavyNetherStar);
         heavyNetherStarRecipe.shape("NNN","NNN","NNN");
         heavyNetherStarRecipe.setIngredient('N', Material.NETHER_STAR);
         Bukkit.addRecipe(heavyNetherStarRecipe);
-
 
 
     }
