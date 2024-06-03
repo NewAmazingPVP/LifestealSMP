@@ -6,7 +6,7 @@ import org.bukkit.Bukkit;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.LifestealSMP.silentMode;
-import static newamazingpvp.lifestealsmp.utility.LogAppender.consoleChannel;
+import static newamazingpvp.lifestealsmp.discord.LogAppender.consoleChannel;
 import static org.bukkit.Bukkit.getServer;
 
 public class ConsoleCommand extends ListenerAdapter {

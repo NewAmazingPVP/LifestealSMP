@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.md_5.bungee.api.ChatColor;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.utility.DiscordBot.channelId;
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.channelId;
 
 public class MessageEvent extends ListenerAdapter {
     @Override

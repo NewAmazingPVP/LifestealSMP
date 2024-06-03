@@ -8,8 +8,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.utility.DiscordBot.channelId;
-import static newamazingpvp.lifestealsmp.utility.DiscordBot.jda;
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.channelId;
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.jda;
 
 public class Status extends ListenerAdapter {
     @Override

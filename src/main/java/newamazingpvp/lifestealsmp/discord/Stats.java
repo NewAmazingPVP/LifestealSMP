@@ -8,7 +8,7 @@ import org.bukkit.Statistic;
 import java.awt.*;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.utility.DiscordBot.sendDiscordEmbedStats;
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordEmbedStats;
 
 public class Stats extends ListenerAdapter {
     @Override

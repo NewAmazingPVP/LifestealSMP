@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 
-import static newamazingpvp.lifestealsmp.customitems.MakeCustomItems.CustomItemsItemstacks.extraHeart;
+import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.extraHeart;
 
 public class LSwithdraw implements CommandExecutor {
 

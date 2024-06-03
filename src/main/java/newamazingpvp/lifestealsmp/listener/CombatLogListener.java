@@ -15,9 +15,9 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
-import static newamazingpvp.lifestealsmp.customitems.MakeCustomItems.CustomItemsItemstacks.extraHeart;
+import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.extraHeart;
 import static newamazingpvp.lifestealsmp.game.CombatLog.*;
-import static newamazingpvp.lifestealsmp.listener.GracePeriod.heartCooldownPlayers;
+import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.heartCooldownPlayers;
 
 public class CombatLogListener implements Listener {
     @EventHandler
