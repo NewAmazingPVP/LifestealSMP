@@ -11,8 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-import static newamazingpvp.lifestealsmp.customitems.MakeCustomItems.CustomItemsItemstacks.*;
-import static newamazingpvp.lifestealsmp.game.CustomRecipeGUI.*;
+import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
 
 public class GiveCustomItem implements CommandExecutor, TabCompleter {
 

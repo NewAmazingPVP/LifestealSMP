@@ -1,6 +1,6 @@
 package newamazingpvp.lifestealsmp.blacklistener;
 
-import newamazingpvp.lifestealsmp.game.CustomRecipeGUI;
+import newamazingpvp.lifestealsmp.customitems.utils.GUI;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import static newamazingpvp.lifestealsmp.game.CustomRecipeGUI.openRecipesGUI;
+import static newamazingpvp.lifestealsmp.customitems.utils.GUI.openRecipesGUI;
 
 public class AntiUseListener implements Listener {
 
@@ -40,7 +40,7 @@ public class AntiUseListener implements Listener {
             Player player = (Player) event.getWhoClicked();
             ItemStack clickedItem = event.getCurrentItem();
 
-            CustomRecipeGUI.openRecipeDetailGUI(player, clickedItem);
+            GUI.openRecipeDetailGUI(player, clickedItem);
         }
         if (event.getView().getTitle().startsWith(ChatColor.GOLD + "Recipe for ")) {
             event.setCancelled(true);

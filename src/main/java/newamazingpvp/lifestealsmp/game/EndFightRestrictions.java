@@ -14,7 +14,7 @@ import org.bukkit.event.player.*;
 import java.awt.*;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.utility.DiscordBot.sendDiscordEmbedPlayer;
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordEmbedPlayer;
 import static newamazingpvp.lifestealsmp.variables.Loc.*;
 import static newamazingpvp.lifestealsmp.variables.Misc.endFightParticipants;
 import static newamazingpvp.lifestealsmp.variables.Misc.isEndFightEnabled;

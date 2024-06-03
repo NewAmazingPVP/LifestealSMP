@@ -4,7 +4,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.censorBlacklistedWords;
-import static newamazingpvp.lifestealsmp.utility.DiscordBot.sendDiscordMessage;
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordMessage;
 
 public class Moderation extends ListenerAdapter {
     @Override

@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 
 import java.util.Arrays;
 
-import static newamazingpvp.lifestealsmp.utility.DiscordBot.sendDiscordMessage;
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordMessage;
 
 public class SendDiscordMessage implements CommandExecutor {
     @Override

@@ -17,7 +17,7 @@ import org.bukkit.plugin.Plugin;
 import java.awt.*;
 import java.lang.reflect.Method;
 
-import static newamazingpvp.lifestealsmp.utility.DiscordBot.*;
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.*;
 
 public class DiscordListener implements Listener {
     @EventHandler

@@ -2,24 +2,20 @@ package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
-import newamazingpvp.lifestealsmp.MinecraftBINGO.BingoCommands.CommandNewBingoGame;
-import newamazingpvp.lifestealsmp.MinecraftBINGO.BingoGUI.BingoCardGUIListeners;
-import newamazingpvp.lifestealsmp.MinecraftBINGO.BingoCardListener;
-import newamazingpvp.lifestealsmp.MinecraftBINGO.GiveBingoCardTEMP;
-import newamazingpvp.lifestealsmp.MinecraftBINGO.testEvent;
+import newamazingpvp.lifestealsmp.mcbingo.commands.CommandNewBingoGame;
+import newamazingpvp.lifestealsmp.mcbingo.gui.BingoCardGUIListeners;
+import newamazingpvp.lifestealsmp.mcbingo.BingoCardListener;
+import newamazingpvp.lifestealsmp.mcbingo.GiveBingoCardTEMP;
 import newamazingpvp.lifestealsmp.blacklistener.*;
-import newamazingpvp.lifestealsmp.cometwip.GiveSekhmetSetSpeedAdmin;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.customitems.*;
-import newamazingpvp.lifestealsmp.customitems.MakeCustomItems.CustomItemDrops;
+import newamazingpvp.lifestealsmp.customitems.utils.Drops;
 import newamazingpvp.lifestealsmp.discord.DiscordListener;
 import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
 import newamazingpvp.lifestealsmp.listener.*;
-import newamazingpvp.lifestealsmp.nextsmpbeta.LockPlayer;
-import newamazingpvp.lifestealsmp.nextsmpbeta.REMOVE_THIS_COMMAND_GIVE_ICE;
-import newamazingpvp.lifestealsmp.nextsmphigh.IceCube;
-import newamazingpvp.lifestealsmp.nextsmphigh.PingWars;
-import newamazingpvp.lifestealsmp.runes.*;
+import newamazingpvp.lifestealsmp.wipcomet99.LockPlayer;
+import newamazingpvp.lifestealsmp.wipcomet99.REMOVE_THIS_COMMAND_GIVE_ICE;
+import newamazingpvp.lifestealsmp.wipcomet99.PingWars;
 import newamazingpvp.lifestealsmp.utility.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -34,9 +30,9 @@ import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
 
-import static newamazingpvp.lifestealsmp.MinecraftBINGO.BingoRecipes.registerBingoRecipes;
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlacklist;
-import static newamazingpvp.lifestealsmp.customitems.MakeCustomItems.CustomItemRecipes.registerCustomRecipes;
+import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerCustomRecipes;
+import static newamazingpvp.lifestealsmp.customitems.utils.DevRecipes.registerCustomRecipesDev;
 import static newamazingpvp.lifestealsmp.discord.DiscordListener.isVanished;
 import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
 import static newamazingpvp.lifestealsmp.game.BroadcastMessage.broadcastReportBugs;
@@ -45,8 +41,8 @@ import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.game.PlayerPing.monitorPlayerPings;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.isAutoUploadEnabled;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.startReleaseChecker;
-import static newamazingpvp.lifestealsmp.utility.DiscordBot.*;
-import static newamazingpvp.lifestealsmp.utility.LogAppender.consoleChannel;
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.*;
+import static newamazingpvp.lifestealsmp.discord.LogAppender.consoleChannel;
 import static newamazingpvp.lifestealsmp.utility.Utils.*;
 
 public final class LifestealSMP extends JavaPlugin implements Listener, PluginMessageListener {
@@ -77,31 +73,31 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("setview").setExecutor(new CustomDistance());
         getCommand("recipes").setExecutor(new RecipesCommand());
         //getCommand("track").setExecutor(new Compass());
-        getCommand("GiveSekhmetSet").setExecutor(new GiveSekhmetSetSpeedAdmin());
+        //getCommand("GiveSekhmetSet").setExecutor(new GiveSekhmetSetSpeedAdmin());
         getCommand("restart_with_warning").setExecutor(new RestartWithWarming());
         getCommand("remHP").setExecutor(new RemoveHP());
         getCommand("addHP").setExecutor(new AddHP());
         getCommand("LSwithdraw").setExecutor(new LSwithdraw());
         getCommand("startEndFight").setExecutor(new StartEndFight());
         getCommand("stopEndFight").setExecutor(new StopEndFight());
-        getCommand("jailplayer").setExecutor(new JailPlayer());
+        //getCommand("jailplayer").setExecutor(new JailPlayer());
         getCommand("reviveplayer").setExecutor(new RevivePlayer());
         getCommand("vision").setExecutor(new NightVision());
         getCommand("senddiscordmessage").setExecutor(new SendDiscordMessage());
-        getCommand("shop").setExecutor(new ShopCommand());
+        //getCommand("shop").setExecutor(new ShopCommand());
         getCommand("discord").setExecutor(new DiscordLink());
         getCommand("help").setExecutor(new HelpCommand());
         getCommand("guide").setExecutor(new GuideCommand());
         getCommand("givecustomitem").setExecutor(new GiveCustomItem());
         getCommand("givecustomitem").setTabCompleter(new GiveCustomItem());
-        getCommand("serverruntime").setExecutor(new ServerRuntime());
+        //getCommand("serverruntime").setExecutor(new ServerRuntime());
         getCommand("team").setExecutor(new TeamCommand());
         getCommand("team").setTabCompleter(new TeamCommand());
         getCommand("ally").setExecutor(new AllyCommand());
         getCommand("ally").setTabCompleter(new AllyCommand());
         getCommand("prefix").setExecutor(new PrefixCommand());
         getCommand("pingWars").setExecutor(new PingWars());
-        getServer().getPluginManager().registerEvents(new DisableElytra(), this);
+        //getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
         getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
@@ -113,24 +109,23 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new FeatherSword(), this);
         getServer().getPluginManager().registerEvents(new OpPickaxe(), this);
         getServer().getPluginManager().registerEvents(new TreeChopAxe(), this);
-        getServer().getPluginManager().registerEvents(new PlayerInCombat(), this);
-        getServer().getPluginManager().registerEvents(new CustomHeartItems(), this);
+        //getServer().getPluginManager().registerEvents(new PlayerInCombat(), this);
+        getServer().getPluginManager().registerEvents(new HeartItems(), this);
         getServer().getPluginManager().registerEvents(new AnvilMenuListener(), this);
         getServer().getPluginManager().registerEvents(new EndFightRestrictions(), this);
         getServer().getPluginManager().registerEvents(new AntiUseListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoiningServer(), this);
         getServer().getPluginManager().registerEvents(new ChatFilter(), this);
         getServer().getPluginManager().registerEvents(new HomingBow(), this);
-        getServer().getPluginManager().registerEvents(new GracePeriod(), this);
+        getServer().getPluginManager().registerEvents(new CombatProtectionHandler(), this);
         getServer().getPluginManager().registerEvents(new ReviveBeacon(), this);
         getServer().getPluginManager().registerEvents(new CombatLogListener(), this);
-        getServer().getPluginManager().registerEvents(new DisableNetherite(), this);
-        getServer().getPluginManager().registerEvents(new BeaconInvis(), this);
+        //getServer().getPluginManager().registerEvents(new DisableNetherite(), this);
+        //getServer().getPluginManager().registerEvents(new BeaconInvis(), this);
         getServer().getPluginManager().registerEvents(new TeamListener(), this);
         getServer().getPluginManager().registerEvents(new DiscordListener(), this);
         getServer().getPluginManager().registerEvents(new NewbieProgression(), this);
         //getServer().getPluginManager().registerEvents(new AntiPieRay(), this);
-        //getServer().getPluginManager().registerEvents(new DisableEnderDragonEgg(), this);
         //getServer().getPluginManager().registerEvents(new TpsEvent(), this);
         startTPSTracking();
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
@@ -156,10 +151,10 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             //New Custom Items
             getServer().getPluginManager().registerEvents(new LightFeather(), this);
             getServer().getPluginManager().registerEvents(new InstaboomTNT(), this);
-            getServer().getPluginManager().registerEvents(new CustomItemDrops(), this);
+            getServer().getPluginManager().registerEvents(new Drops(), this);
             getServer().getPluginManager().registerEvents(new LifestealSword(), this);
 
-
+            registerCustomRecipesDev();
 
 
             //THESE ARE THE BINGO EVENTS TO DETECT IF A PLAYER DID A PART OF IT
