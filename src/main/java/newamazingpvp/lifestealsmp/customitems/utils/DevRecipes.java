@@ -40,6 +40,12 @@ public class DevRecipes {
         LifestealSwordRecipe.setIngredient('W', Material.WITHER_SKELETON_SKULL);
         Bukkit.addRecipe(LifestealSwordRecipe);
 
+        ItemStack heavyNetherStar = new ItemStack(LifestealSword());
+        ShapedRecipe heavyNetherStarRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "heavyNetherStar"), heavyNetherStar);
+        heavyNetherStarRecipe.shape("NNN","NNN","NNN");
+        heavyNetherStarRecipe.setIngredient('N', Material.NETHER_STAR);
+        Bukkit.addRecipe(heavyNetherStarRecipe);
+
 
 
     }

@@ -262,5 +262,23 @@ public class ItemStacks {
     }
 
 
+    public static ItemStack heavyNetherStar() {
+
+        ItemStack powerStick = new ItemStack(Material.NETHER_STAR);
+        ItemMeta SI = powerStick.getItemMeta();
+        SI.addEnchant(Enchantment.DURABILITY, 1, false);
+        SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        SI.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Heavy Nether Star");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        List<String> BL = new ArrayList<>();
+        BL.add(ChatColor.DARK_PURPLE + "Used For Crafting");
+        SI.setLore(BL);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        powerStick.setItemMeta(SI);
+
+        return powerStick;
+    }
+
+
 
 }
