@@ -22,8 +22,10 @@ public class LifestealSword implements Listener {
             if (meta != null && meta.getLore() != null && meta.getLore().toString().contains("You will heal " + ChatColor.RED + "1❤")){
 
                 player.sendMessage("test 123");
+                player.setHealth(player.getHealth()+1);
 
             }
         }
     }
 }
+
