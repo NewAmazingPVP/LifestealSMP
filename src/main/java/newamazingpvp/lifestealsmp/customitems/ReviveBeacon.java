@@ -12,6 +12,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -46,7 +47,7 @@ public class ReviveBeacon implements Listener {
     }
 
     @EventHandler
-    public void onPlayerChat(AsyncPlayerChatEvent e) throws SQLException {
+    public void onPlayerChat(AsyncPlayerChatEvent e) throws SQLException, IOException {
         Player player = e.getPlayer();
         UUID playerUUID = player.getUniqueId();
 
