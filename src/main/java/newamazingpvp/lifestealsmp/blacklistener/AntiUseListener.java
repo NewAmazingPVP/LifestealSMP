@@ -53,7 +53,7 @@ public class AntiUseListener implements Listener {
                 openRecipesGUI(player);
             }
         }
-        if(event.getCurrentItem().getType() == Material.DRAGON_EGG){
+        if(event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.DRAGON_EGG){
             event.setCancelled(true);
         }
     }

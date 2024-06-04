@@ -15,14 +15,11 @@ public class LifestealSword implements Listener {
     @EventHandler
     public void playerHitPlayer(EntityDamageByEntityEvent e) {
 
-        Player player = (Player) e.getDamager();
-        Entity hitPlayer = e.getEntity();
-        ItemStack itemInHand = player.getItemInHand();
-        ItemMeta meta = itemInHand.getItemMeta();
-
-        if (hitPlayer instanceof Player) {
-
-            if (meta.getLore().toString().contains("You will heal " + ChatColor.RED + "1❤")){
+        if (e.getDamager() instanceof Player) {
+            Player player = (Player) e.getDamager();
+            ItemStack itemInHand = player.getItemInHand();
+            ItemMeta meta = itemInHand.getItemMeta();
+            if (meta != null && meta.getLore() != null && meta.getLore().toString().contains("You will heal " + ChatColor.RED + "1❤")){
 
                 player.sendMessage("test 123");
 
