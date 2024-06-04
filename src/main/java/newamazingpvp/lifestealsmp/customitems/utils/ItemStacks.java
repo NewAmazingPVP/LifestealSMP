@@ -1,11 +1,13 @@
 package newamazingpvp.lifestealsmp.customitems.utils;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -278,6 +280,25 @@ public class ItemStacks {
 
         return powerStick;
     }
+
+    public static ItemStack voidBoots() {
+
+        ItemStack SekhmetBOOT1 = new ItemStack(Material.LEATHER_BOOTS);
+        LeatherArmorMeta SVBM = (LeatherArmorMeta) SekhmetBOOT1.getItemMeta();
+        SVBM.setDisplayName(ChatColor.BLACK + "" + ChatColor.BOLD + "Void Boots");
+        List<String> SVBL = new ArrayList<>();
+        SVBL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Armor Bonus:");
+        SVBL.add(ChatColor.DARK_PURPLE + "U spread darkness... or something idk");
+        SVBM.setLore(SVBL);
+        SVBM.setUnbreakable(true);
+        SVBM.addItemFlags(ItemFlag.HIDE_DYE);
+        //SVBM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SVBM.setColor(Color.fromRGB(0, 0, 0));
+        SekhmetBOOT1.setItemMeta(SVBM);
+
+        return SekhmetBOOT1;
+    }
+
 
 
 
