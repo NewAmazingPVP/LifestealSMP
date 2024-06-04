@@ -10,6 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 
 import java.util.HashMap;
@@ -34,7 +35,7 @@ public class voidBoots implements Listener {
                     block.setBlockData(block.getBlockData()); // This line might need adjustment based on actual implementation
 
                     // Schedule the block to revert back after a few seconds
-                    Bukkit.getScheduler().runTaskLater(this, () -> {
+                    Bukkit.getScheduler().runTaskLater((Plugin) this, () -> {
                         // Restore the original block type
                         block.setType(Material.GRASS); // Replace GRASS with the original material
                     }, 20L * 10); // 10 seconds delay
