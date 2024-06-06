@@ -174,7 +174,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         registerCustomRecipes();
         getServer().getScheduler().runTaskTimer(this, PlayerPing::monitorPlayerPings, 0L, 20L);
         scheduleRestart();
-        compassUpdate();
+        //compassUpdate();
         //checkTps();
         new BukkitRunnable() {
             @Override
