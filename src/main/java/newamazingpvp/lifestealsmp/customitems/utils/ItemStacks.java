@@ -233,7 +233,7 @@ public class ItemStacks {
 
     public static ItemStack LifestealStick() {
 
-        ItemStack InstaBoomTNT = new ItemStack(Material.DIAMOND_SWORD);
+        ItemStack InstaBoomTNT = new ItemStack(Material.STICK);
         ItemMeta SI = InstaBoomTNT.getItemMeta();
         SI.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Lifesteal Stick");
         List<String> BL = new ArrayList<>();
@@ -280,6 +280,7 @@ public class ItemStacks {
 
         return powerStick;
     }
+
 
 
 
