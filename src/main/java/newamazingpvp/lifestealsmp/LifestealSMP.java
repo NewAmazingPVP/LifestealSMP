@@ -2,6 +2,7 @@ package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
+import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
 import newamazingpvp.lifestealsmp.allyteams.TeamCommand;
 import newamazingpvp.lifestealsmp.allyteams.TeamListener;
@@ -90,6 +91,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         //getCommand("serverruntime").setExecutor(new ServerRuntime());
         getCommand("team").setExecutor(new TeamCommand());
         getCommand("team").setTabCompleter(new TeamCommand());
+        AlliesManager.loadAllyData();
         getCommand("ally").setExecutor(new AllyCommand());
         getCommand("ally").setTabCompleter(new AllyCommand());
         getCommand("prefix").setExecutor(new PrefixCommand());
@@ -208,6 +210,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             jda.shutdownNow();
         }
         sendDiscordMessage("The server has stopped🛑", "");
+        AlliesManager.saveAllyData();
     }
 
     @Override
