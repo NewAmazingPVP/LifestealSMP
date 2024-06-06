@@ -231,11 +231,11 @@ public class ItemStacks {
         return InstaBoomTNT;
     }
 
-    public static ItemStack LifestealSword() {
+    public static ItemStack LifestealStick() {
 
         ItemStack InstaBoomTNT = new ItemStack(Material.DIAMOND_SWORD);
         ItemMeta SI = InstaBoomTNT.getItemMeta();
-        SI.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Lifesteal Sword");
+        SI.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Lifesteal Stick");
         List<String> BL = new ArrayList<>();
         BL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Ability:");
         BL.add(ChatColor.DARK_PURPLE + "When you hit a player");
@@ -281,24 +281,8 @@ public class ItemStacks {
         return powerStick;
     }
 
-    public static ItemStack voidBoots() {
 
-        ItemStack SekhmetBOOT1 = new ItemStack(Material.LEATHER_BOOTS);
-        LeatherArmorMeta SVBM = (LeatherArmorMeta) SekhmetBOOT1.getItemMeta();
-        SVBM.setDisplayName(ChatColor.BLACK + "" + ChatColor.BOLD + "Void Boots");
-        List<String> SVBL = new ArrayList<>();
-        SVBL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Armor Bonus:");
-        SVBL.add(ChatColor.DARK_PURPLE + "U spread darkness... or something idk");
-        SVBM.setLore(SVBL);
-        SVBM.setUnbreakable(true);
-        SVBM.addItemFlags(ItemFlag.HIDE_DYE);
-        //SVBM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        SVBM.setColor(Color.fromRGB(0, 0, 0));
-        SekhmetBOOT1.setItemMeta(SVBM);
 
-        return SekhmetBOOT1;
-    }
-    
 
 
 }

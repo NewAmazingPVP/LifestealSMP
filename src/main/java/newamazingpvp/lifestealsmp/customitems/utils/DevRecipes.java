@@ -29,7 +29,7 @@ public class DevRecipes {
         //shapedRecipes.put(instaboomTNT, instaboomTNTRecipe);
         Bukkit.addRecipe(instaboomTNTRecipe);
 
-        ItemStack LifestealSword = new ItemStack(LifestealSword());
+        ItemStack LifestealSword = new ItemStack(LifestealStick());
         ShapedRecipe LifestealSwordRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "LifestealSword"), LifestealSword);
         LifestealSwordRecipe.shape("WHW","WFW","DSN");
         LifestealSwordRecipe.setIngredient('H', extraHeart());
@@ -47,12 +47,6 @@ public class DevRecipes {
         Bukkit.addRecipe(heavyNetherStarRecipe);
 
 
-        ItemStack voidBoots = new ItemStack(voidBoots());
-        ShapedRecipe voidBootsRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "voidBoots"), voidBoots);
-        voidBootsRecipe.shape("AAA","EAE","EAE");
-        voidBootsRecipe.setIngredient('E', Material.ECHO_SHARD);
-        voidBootsRecipe.setIngredient('A', Material.AIR);
-        Bukkit.addRecipe(voidBootsRecipe);
 
     }
 }
