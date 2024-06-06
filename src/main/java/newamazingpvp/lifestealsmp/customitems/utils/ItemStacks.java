@@ -159,22 +159,6 @@ public class ItemStacks {
         return corruptedMobSoul;
     }
 
-    public static ItemStack corruptedMobSoulTest() {
-
-        ItemStack corruptedMobSoul = new ItemStack(Material.ECHO_SHARD);
-        ItemMeta soulM = corruptedMobSoul.getItemMeta();
-        soulM.addEnchant(Enchantment.DURABILITY, 1, false);
-        soulM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        soulM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "Co" + ChatColor.MAGIC + "r" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "rupted Mob Soul" + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "LL");
-        soulM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        List<String> soulL = new ArrayList<>();
-        soulL.add(ChatColor.AQUA + "U$e To Cr" + ChatColor.MAGIC + "a" + ChatColor.AQUA + "ft Extra Hearts!" + ChatColor.MAGIC + "L");
-        soulM.setLore(soulL);
-        corruptedMobSoul.setItemMeta(soulM);
-
-        return corruptedMobSoul;
-    }
-
     public static ItemStack severedMobHeart() {
 
         ItemStack severedMobHeart = new ItemStack(Material.BEETROOT);
@@ -186,22 +170,6 @@ public class ItemStacks {
         List<String> heartL = new ArrayList<>();
         heartL.add(ChatColor.AQUA + "Use To Craft Extra Hearts!");
         heartL.add(ChatColor.LIGHT_PURPLE + "Very Rare Drop From Mobs!");
-        heartM.setLore(heartL);
-        severedMobHeart.setItemMeta(heartM);
-
-        return severedMobHeart;
-    }
-
-    public static ItemStack severedMobHeartTest() {
-
-        ItemStack severedMobHeart = new ItemStack(Material.BEETROOT);
-        ItemMeta heartM = severedMobHeart.getItemMeta();
-        heartM.addEnchant(Enchantment.DURABILITY, 1, false);
-        heartM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        heartM.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Severed Mob Heart");
-        heartM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        List<String> heartL = new ArrayList<>();
-        heartL.add(ChatColor.AQUA + "Use To Craft Extra Hearts!");
         heartM.setLore(heartL);
         severedMobHeart.setItemMeta(heartM);
 

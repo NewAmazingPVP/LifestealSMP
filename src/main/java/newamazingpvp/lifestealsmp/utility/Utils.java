@@ -109,5 +109,27 @@ public class Utils {
         }
     }
 
-
+    public static void updateLore(Player player) {
+        for (ItemStack item : player.getInventory().getContents()) {
+            if (item != null && item.hasItemMeta()) {
+                ItemMeta meta = item.getItemMeta();
+                if (meta != null && meta.hasLore()) {
+                    List<String> lore = meta.getLore();
+                    if (lore != null && lore.get(0).contains("Use To Craft Extra Hearts!")) {
+                        lore.clear();
+                        lore.add(ChatColor.AQUA + "Use To Craft Extra Hearts!");
+                        lore.add(ChatColor.LIGHT_PURPLE + "Very Rare Drop From Mobs!");
+                        meta.setLore(lore);
+                        item.setItemMeta(meta);
+                    } else if (lore != null && lore.get(0).contains("U$e To Cr")) {
+                        lore.clear();
+                        lore.add(ChatColor.AQUA + "U$e To Cr" + ChatColor.MAGIC + "a" + ChatColor.AQUA + "ft Extra Hearts!" + ChatColor.MAGIC + "L");
+                        lore.add(ChatColor.LIGHT_PURPLE + "Rare Drop From Mobs!");
+                        meta.setLore(lore);
+                        item.setItemMeta(meta);
+                    }
+                }
+            }
+        }
+    }
 }

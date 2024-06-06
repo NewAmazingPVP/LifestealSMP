@@ -40,18 +40,6 @@ public class Recipes {
         shapedRecipes.put(extraHeart, extraHeartRecipe);
         Bukkit.addRecipe(extraHeartRecipe);
 
-        ItemStack extraHearttest = new ItemStack(extraHeart());
-        ShapedRecipe extraHeartRecipetest = new ShapedRecipe(new NamespacedKey(lifestealSmp, "extra_heart_Test"), extraHearttest);
-        extraHeartRecipetest.shape("CXC", "DSD", "XNX");
-        extraHeartRecipetest.setIngredient('D', Material.DIAMOND_BLOCK);
-        extraHeartRecipetest.setIngredient('N', Material.NETHERITE_INGOT);
-        extraHeartRecipetest.setIngredient('C', corruptedMobSoulTest());
-        extraHeartRecipetest.setIngredient('S', severedMobHeartTest());
-        extraHeartRecipetest.setIngredient('X', Material.AIR);
-        //customItems.add(extraHeart);
-        //shapedRecipes.put(extraHeart, extraHeartRecipe);
-        Bukkit.addRecipe(extraHeartRecipetest);
-
         ItemStack shulker = new ItemStack(Material.SHULKER_BOX);
         ShapedRecipe shulkerRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "shulker_recipe"), shulker);
         shulkerRecipe.shape("DDD", "DCD", "DDD");
