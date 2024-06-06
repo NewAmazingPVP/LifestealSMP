@@ -15,6 +15,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import static newamazingpvp.lifestealsmp.customitems.utils.GUI.openRecipesGUI;
+import static newamazingpvp.lifestealsmp.utility.Utils.updateLore;
 
 public class AntiUseListener implements Listener {
 
@@ -28,6 +29,7 @@ public class AntiUseListener implements Listener {
 
             }
         }
+        updateLore(event.getPlayer());
     }
 
     @EventHandler
