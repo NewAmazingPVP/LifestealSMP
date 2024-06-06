@@ -7,7 +7,6 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -49,9 +48,9 @@ public class PlayerLifeManager {
         File file = new File(lifestealSmp.getDataFolder().getAbsolutePath() + File.separator + "friends.txt");
         Scanner input = new Scanner(file);
         ArrayList<String> names = new ArrayList<>();
-        while(input.hasNext()){
+        while (input.hasNext()) {
             String name = input.nextLine();
-            if(!name.equals(p.getName())){
+            if (!name.equals(p.getName())) {
                 names.add(name);
             } else {
                 sender.sendMessage(ChatColor.RED + "This player is not eliminated! Enter the right name again");
@@ -61,7 +60,7 @@ public class PlayerLifeManager {
         file.delete();
         File outputFIle = new File(lifestealSmp.getDataFolder().getAbsolutePath() + File.separator + "friends.txt");
         PrintWriter output = new PrintWriter(outputFIle);
-        for(String n : names){
+        for (String n : names) {
             output.println(n);
         }
         output.close();

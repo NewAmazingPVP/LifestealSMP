@@ -8,8 +8,8 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
 import static newamazingpvp.lifestealsmp.customitems.utils.GUI.*;
+import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
 
 public class Recipes {
 

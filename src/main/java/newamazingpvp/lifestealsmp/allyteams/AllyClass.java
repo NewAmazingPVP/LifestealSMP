@@ -15,7 +15,7 @@ import static newamazingpvp.lifestealsmp.allyteams.TeamsManager.sendTeamMessage;
 public class AllyClass implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private HashSet<String> allyTeamNames;
+    private final HashSet<String> allyTeamNames;
 
     public AllyClass(Team t) {
         allyTeamNames = new HashSet<>();

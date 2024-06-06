@@ -3,12 +3,10 @@ package newamazingpvp.lifestealsmp.blacklistener;
 import newamazingpvp.lifestealsmp.customitems.utils.GUI;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
@@ -18,7 +16,6 @@ import org.bukkit.potion.PotionEffectType;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.customitems.utils.GUI.openRecipesGUI;
-import static newamazingpvp.lifestealsmp.utility.Utils.setPrefix;
 import static newamazingpvp.lifestealsmp.utility.Utils.updateLore;
 import static org.bukkit.Bukkit.getServer;
 
@@ -31,8 +28,8 @@ public class AntiUseListener implements Listener {
             if (item != null && item.getType() == Material.BEETROOT && item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Severed Mob Heart")) {
                 event.setCancelled(true);
             }
-            if(item != null && item.getType() == Material.ENDER_PEARL){
-                if(event.getPlayer().getCooldown(Material.ENDER_PEARL) == 0) {
+            if (item != null && item.getType() == Material.ENDER_PEARL) {
+                if (event.getPlayer().getCooldown(Material.ENDER_PEARL) == 0) {
                     getServer().getScheduler().runTaskLater(lifestealSmp, () -> event.getPlayer().setCooldown(Material.ENDER_PEARL, 100), 1);
                 }
             }
@@ -61,11 +58,11 @@ public class AntiUseListener implements Listener {
             Player player = (Player) event.getWhoClicked();
             ItemStack clickedItem = event.getCurrentItem();
 
-            if(clickedItem.getDisplayName().startsWith(ChatColor.YELLOW + "Back Button")) {
+            if (clickedItem.getDisplayName().startsWith(ChatColor.YELLOW + "Back Button")) {
                 openRecipesGUI(player);
             }
         }
-        if(event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.DRAGON_EGG){
+        if (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.DRAGON_EGG) {
             event.setCancelled(true);
         }
     }

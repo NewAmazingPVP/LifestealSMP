@@ -1,13 +1,10 @@
 package newamazingpvp.lifestealsmp.runes;
 
-import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -18,7 +15,7 @@ public class HellRune implements Listener {
     @EventHandler
     public void playerAttack(EntityDamageByEntityEvent e) {
 
-        if(!(e.getDamager() instanceof Player)) return;
+        if (!(e.getDamager() instanceof Player)) return;
         Player attacker = (Player) e.getDamager();
         World world = attacker.getWorld();
         PotionEffect effect = new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 100, 0); //change if needed
