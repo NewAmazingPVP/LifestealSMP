@@ -2,7 +2,7 @@ name: LifestealSMP
 version: '${project.version}'
 main: newamazingpvp.lifestealsmp.LifestealSMP
 api-version: '1.20'
-authors: [NewAmazingPVP, Comet99]
+authors: [ NewAmazingPVP, Comet99 ]
 softdepend:
   - Essentials
 libraries:
@@ -23,11 +23,11 @@ commands:
   recipes:
     description: View all the custom recipes of this lifesteal server
     usage: /recipes
-    aliases: [recipe]
+    aliases: [ recipe ]
   track:
     description: Track a player's location
     usage: /track <player>
-    aliases: [compass]
+    aliases: [ compass ]
   givesekhmetset:
     description: Admins Only
     usage: /givesekhmetset

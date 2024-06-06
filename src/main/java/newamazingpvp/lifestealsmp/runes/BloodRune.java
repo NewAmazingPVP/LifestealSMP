@@ -1,14 +1,9 @@
 package newamazingpvp.lifestealsmp.runes;
 
-import org.bukkit.ChatColor;
-import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -21,7 +16,7 @@ public class BloodRune implements Listener {
     public void playerAttack(EntityDeathEvent e) {
 
         Player killer = e.getEntity().getKiller();
-        if(killer == null) return;
+        if (killer == null) return;
         PotionEffect effect = new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 20 * 5, 4); //change if needed
 
         if (isRuneInInventory(killer, "blood rune")) {

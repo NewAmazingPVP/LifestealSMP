@@ -7,7 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
+import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.powerStick;
 
 public class Drops implements Listener {
 

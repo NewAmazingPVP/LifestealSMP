@@ -8,20 +8,19 @@ import org.bukkit.inventory.ShapedRecipe;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
-import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.powerStick;
 
 public class DevRecipes {
-    public static void registerCustomRecipesDev(){
+    public static void registerCustomRecipesDev() {
         ItemStack lightFeather = new ItemStack(lightFeather());
         ShapedRecipe lightFeatherRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "lightFeather"), lightFeather);
-        lightFeatherRecipe.shape("FSF","SFS","FSF");
+        lightFeatherRecipe.shape("FSF", "SFS", "FSF");
         lightFeatherRecipe.setIngredient('F', Material.FEATHER);
         lightFeatherRecipe.setIngredient('S', Material.SUGAR);
         Bukkit.addRecipe(lightFeatherRecipe);
 
         ItemStack instaboomTNT = new ItemStack(InstaBoomTNT());
         ShapedRecipe instaboomTNTRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "instaboomTNT"), instaboomTNT);
-        instaboomTNTRecipe.shape("TDT","TET","TTT");
+        instaboomTNTRecipe.shape("TDT", "TET", "TTT");
         instaboomTNTRecipe.setIngredient('T', Material.TNT);
         instaboomTNTRecipe.setIngredient('D', Material.DIAMOND);
         instaboomTNTRecipe.setIngredient('E', Material.ECHO_SHARD);
@@ -31,7 +30,7 @@ public class DevRecipes {
 
         ItemStack LifestealSword = new ItemStack(LifestealStick());
         ShapedRecipe LifestealSwordRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "LifestealSword"), LifestealSword);
-        LifestealSwordRecipe.shape("WHW","WFW","DSN");
+        LifestealSwordRecipe.shape("WHW", "WFW", "DSN");
         LifestealSwordRecipe.setIngredient('H', extraHeart());
         LifestealSwordRecipe.setIngredient('F', heavyNetherStar());
         LifestealSwordRecipe.setIngredient('S', powerStick());
@@ -42,10 +41,9 @@ public class DevRecipes {
 
         ItemStack heavyNetherStar = new ItemStack(heavyNetherStar());
         ShapedRecipe heavyNetherStarRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "heavyNetherStar"), heavyNetherStar);
-        heavyNetherStarRecipe.shape("NNN","NNN","NNN");
+        heavyNetherStarRecipe.shape("NNN", "NNN", "NNN");
         heavyNetherStarRecipe.setIngredient('N', Material.NETHER_STAR);
         Bukkit.addRecipe(heavyNetherStarRecipe);
-
 
 
     }

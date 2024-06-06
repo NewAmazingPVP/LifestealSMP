@@ -7,9 +7,9 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordEmbedPlayer;
 import static newamazingpvp.lifestealsmp.game.CombatLog.cancelCombatData;
 import static newamazingpvp.lifestealsmp.game.CombatLog.isInCombat;
-import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordEmbedPlayer;
 import static org.bukkit.Bukkit.getServer;
 
 public class PlayerPing {

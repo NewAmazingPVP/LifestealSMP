@@ -17,11 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.allyteams.TeamsManager.onSameTeam;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.extraHeart;
 import static newamazingpvp.lifestealsmp.game.CombatLog.*;
 import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
 import static newamazingpvp.lifestealsmp.game.PlayerLifeManager.eliminatePlayer;
-import static newamazingpvp.lifestealsmp.allyteams.TeamsManager.onSameTeam;
 import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 
 public class CombatProtectionHandler implements Listener {
@@ -86,7 +86,7 @@ public class CombatProtectionHandler implements Listener {
                     remainingSecondsLeft + " seconds. Either way they won't give hearts until they have 3 hour playtime, so why bother?");
             return;
         }
-        if(getPlaytime(damaged) < 216000){
+        if (getPlaytime(damaged) < 216000) {
             damaged.sendMessage(ChatColor.RED + "Since you don't have 3 hours of playtime, even if you die you won't lose any hearts");
             damager.sendMessage(ChatColor.RED + "The person you are trying to attack does not have 3 hours of playtime. Therfore they will not drop hearts when killed");
         }

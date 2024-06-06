@@ -1,10 +1,19 @@
 package newamazingpvp.lifestealsmp.customitems.utils;
 
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.*;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.ShapelessRecipe;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
@@ -13,6 +22,7 @@ public class GUI {
     public static final Map<ItemStack, ShapelessRecipe> shapelessRecipes = new HashMap<>();
 
     public static final List<ItemStack> customItems = new ArrayList<>();
+
     public static void openRecipesGUI(Player player) {
         Inventory gui = Bukkit.createInventory(null, 27, ChatColor.GOLD + "Custom Recipes");
 
@@ -23,6 +33,7 @@ public class GUI {
         player.openInventory(gui);
         Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 0.0f), 3);
     }
+
     public static void openRecipeDetailGUI(Player player, ItemStack item) {
         Inventory gui = Bukkit.createInventory(null, 27, ChatColor.GOLD + "Recipe for " + item.getItemMeta().getDisplayName());
 
@@ -81,14 +92,10 @@ public class GUI {
     }
 
 
-
     public static ItemStack createNethScarps() {
         ItemStack customBow = new ItemStack(Material.NETHERITE_SCRAP, 4);
         return customBow;
     }
-
-
-
 
 
 }

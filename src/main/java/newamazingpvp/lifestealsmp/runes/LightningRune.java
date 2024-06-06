@@ -8,8 +8,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import static newamazingpvp.lifestealsmp.utility.Utils.isRuneInInventory;
 
@@ -18,7 +16,7 @@ public class LightningRune implements Listener {
 
     @EventHandler
     public void playerAttack(EntityDamageByEntityEvent e) {
-        if(!(e.getDamager() instanceof Player) || !(e.getEntity() instanceof Player)) return;
+        if (!(e.getDamager() instanceof Player) || !(e.getEntity() instanceof Player)) return;
         Player attacker = (Player) e.getDamager();
         Player victim = (Player) e.getEntity();
 

@@ -13,7 +13,7 @@ import static org.bukkit.Bukkit.getServer;
 
 public class Utils {
     private static final int MAX_SIZE = 14;
-    private static List<Double> tpsList = new ArrayList<>();
+    private static final List<Double> tpsList = new ArrayList<>();
     private static boolean isTriggered = false;
 
     public static void addItemOrDrop(Player player, ItemStack itemStack, String fullInventoryMessage) {
@@ -34,14 +34,14 @@ public class Utils {
         return essentials.getUser(p.getUniqueId()).getNickname();
     }
 
-    public static boolean isRuneInInventory(Player p, String rune){
+    public static boolean isRuneInInventory(Player p, String rune) {
         ItemStack[] items = p.getInventory().getContents();
 
         for (ItemStack item : items) {
             if (item != null) {
                 ItemMeta meta = item.getItemMeta();
                 if (meta.hasLore()) {
-                    if(meta.getLore().toString().toLowerCase().contains(rune.toLowerCase())){
+                    if (meta.getLore().toString().toLowerCase().contains(rune.toLowerCase())) {
                         return true;
                     }
                 }
@@ -76,7 +76,7 @@ public class Utils {
 
     public static double getAverageTPS() {
         double total = 0.0;
-        for(int i = 0; i < tpsList.size(); i++){
+        for (int i = 0; i < tpsList.size(); i++) {
             total += tpsList.get(i);
         }
         return total / tpsList.size();

@@ -17,10 +17,10 @@ public class LifestealStick implements Listener {
             Player player = (Player) e.getDamager();
             ItemStack itemInHand = player.getItemInHand();
             ItemMeta meta = itemInHand.getItemMeta();
-            if (meta != null && meta.getLore() != null && meta.getLore().toString().contains("You will heal " + ChatColor.RED + "1❤")){
+            if (meta != null && meta.getLore() != null && meta.getLore().toString().contains("You will heal " + ChatColor.RED + "1❤")) {
 
                 player.sendMessage("test 123");
-                player.setHealth(player.getHealth()+1);
+                player.setHealth(player.getHealth() + 1);
 
             }
         }
