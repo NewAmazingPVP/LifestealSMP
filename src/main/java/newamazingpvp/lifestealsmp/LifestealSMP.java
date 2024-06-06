@@ -148,8 +148,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new LightFeather(), this);
             getServer().getPluginManager().registerEvents(new InstaboomTNT(), this);
             getServer().getPluginManager().registerEvents(new Drops(), this);
-            getServer().getPluginManager().registerEvents(new LifestealSword(), this);
-            getServer().getPluginManager().registerEvents(new voidBoots(), this);
+            getServer().getPluginManager().registerEvents(new LifestealStick(), this);
             registerCustomRecipesDev();
 
 
