@@ -1,11 +1,13 @@
 package newamazingpvp.lifestealsmp.customitems.utils;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -282,8 +284,7 @@ public class ItemStacks {
     }
 
 
-<<<<<<< Updated upstream
-=======
+
     public static ItemStack QuarryArmor_CP() {
         ItemStack StarDustMineChest = new ItemStack(Material.LEATHER_CHESTPLATE);
         LeatherArmorMeta chest = (LeatherArmorMeta) StarDustMineChest.getItemMeta();
@@ -361,5 +362,5 @@ public class ItemStacks {
     }
 
 
->>>>>>> Stashed changes
+
 }
