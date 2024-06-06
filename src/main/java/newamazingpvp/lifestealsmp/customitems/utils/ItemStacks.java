@@ -236,6 +236,8 @@ public class ItemStacks {
         ItemStack InstaBoomTNT = new ItemStack(Material.STICK);
         ItemMeta SI = InstaBoomTNT.getItemMeta();
         SI.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Lifesteal Stick");
+        SI.addEnchant(Enchantment.DURABILITY, 1, false);
+        SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         List<String> BL = new ArrayList<>();
         BL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Ability:");
         BL.add(ChatColor.DARK_PURPLE + "When you hit a player");
@@ -280,6 +282,8 @@ public class ItemStacks {
 
         return powerStick;
     }
+
+    
 
 
 
