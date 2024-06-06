@@ -6,11 +6,13 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Team;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.allyteams.TeamsManager.*;
 
 public class AlliesManager {
@@ -18,6 +20,7 @@ public class AlliesManager {
     private static final ArrayList<AllyClass> allAllies = new ArrayList<>();
     private static final HashMap<Team, Team> wantedAllies = new HashMap<>();
     public static List<UUID> playerAlliesChat = new ArrayList<>();
+    private static final File allyDataFile = new File(lifestealSmp.getDataFolder().getAbsolutePath() + File.separator + "allies.dat");
 
     public static void addAlly(Team t, Team invited) {
         if (getAllyClasIndex(t, invited) != -1) {
@@ -29,6 +32,7 @@ public class AlliesManager {
         } else {
             allAllies.add(new AllyClass(t, invited));
         }
+        saveAllyData();
     }
 
     public static void wantedAlly(Team t, Team invited) {
@@ -41,11 +45,8 @@ public class AlliesManager {
         Team t = getPlayerTeam(p);
         Team invited = Bukkit.getScoreboardManager().getMainScoreboard().getTeam(inv);
         if (t == null || invited == null) return;
-        wantedAllies.put(t, invited);
-        sendTeamMessage(t, ChatColor.LIGHT_PURPLE + "Team " + invited.getName() + " has received your ally request");
-        sendTeamMessage(invited, ChatColor.LIGHT_PURPLE + "Team " + t.getName() + " has invited to ally with them. Do /ally accept");
+        wantedAlly(t, invited);
     }
-
 
     public static boolean isWantedAlly(Team t) {
         return (wantedAllies.containsKey(t) || wantedAllies.containsValue(t));
@@ -75,7 +76,6 @@ public class AlliesManager {
         if (index != -1) {
             allAllies.get(index).sendAllyMessage(msg, p);
         }
-
     }
 
     public static void allyChatMode(Player p) {
@@ -107,7 +107,6 @@ public class AlliesManager {
         return -1;
     }
 
-
     public static boolean isPlayerInAllyChat(Player p) {
         return playerAlliesChat.contains(p.getUniqueId());
     }
@@ -117,6 +116,7 @@ public class AlliesManager {
             int index = getAllyClasIndex(getPlayerTeam(p));
             if (index != -1) {
                 allAllies.get(index).removeAlly(getPlayerTeam(p));
+                saveAllyData();
             }
         }
     }
@@ -127,8 +127,8 @@ public class AlliesManager {
         int index = getAllyClasIndex(playerTeam);
         if (index == -1) return;
         allAllies.get(index).removeAlly(t);
+        saveAllyData();
     }
-
 
     public static void removeTeam(Team t) {
         for (int i = 0; i < allAllies.size(); i++) {
@@ -136,8 +136,8 @@ public class AlliesManager {
                 allAllies.get(i).removeAlly(t);
             }
         }
+        saveAllyData();
     }
-
 
     public static ArrayList<String> getAllianceMembers(Player p) {
         Team t = getPlayerTeam(p);
@@ -161,4 +161,21 @@ public class AlliesManager {
         return s;
     }
 
+    public static void saveAllyData() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(allyDataFile))) {
+            oos.writeObject(allAllies);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void loadAllyData() {
+        if (!allyDataFile.exists()) return;
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(allyDataFile))) {
+            allAllies.clear();
+            allAllies.addAll((ArrayList<AllyClass>) ois.readObject());
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }
