@@ -16,6 +16,7 @@ import newamazingpvp.lifestealsmp.customitems.*;
 import newamazingpvp.lifestealsmp.customitems.utils.Drops;
 import newamazingpvp.lifestealsmp.discord.DiscordListener;
 import newamazingpvp.lifestealsmp.game.BroadcastMessage;
+import newamazingpvp.lifestealsmp.game.Compass;
 import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
 import newamazingpvp.lifestealsmp.game.PlayerPing;
 import newamazingpvp.lifestealsmp.listener.*;
@@ -42,6 +43,7 @@ import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerCusto
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.*;
 import static newamazingpvp.lifestealsmp.discord.LogAppender.consoleChannel;
 import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
+import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.isAutoUploadEnabled;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.startReleaseChecker;
 import static newamazingpvp.lifestealsmp.utility.Utils.startTPSTracking;
@@ -73,7 +75,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("rules").setExecutor(new RulesCommand());
         getCommand("setview").setExecutor(new CustomDistance());
         getCommand("recipes").setExecutor(new RecipesCommand());
-        //getCommand("track").setExecutor(new Compass());
+        getCommand("track").setExecutor(new Compass());
         //getCommand("GiveSekhmetSet").setExecutor(new GiveSekhmetSetSpeedAdmin());
         getCommand("restart_with_warning").setExecutor(new RestartWithWarming());
         getCommand("remHP").setExecutor(new RemoveHP());
@@ -105,7 +107,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new TeleportBow(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
         getServer().getPluginManager().registerEvents(new EndCrystalWarning(), this);
-        //getServer().getPluginManager().registerEvents(new Compass(), this);
+        getServer().getPluginManager().registerEvents(new Compass(), this);
         getServer().getPluginManager().registerEvents(new TntBow(), this);
         getServer().getPluginManager().registerEvents(new FeatherSword(), this);
         getServer().getPluginManager().registerEvents(new OpPickaxe(), this);
@@ -181,7 +183,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         registerCustomRecipes();
         getServer().getScheduler().runTaskTimer(this, PlayerPing::monitorPlayerPings, 0L, 20L);
         scheduleRestart();
-        //compassUpdate();
+        compassUpdate();
         //checkTps();
         new BukkitRunnable() {
             @Override
