@@ -133,10 +133,10 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
         //TODO: Use this for beta things
         if (isAutoUploadEnabled()) {
-            getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
-            getCommand("lockPlayer").setExecutor(new LockPlayer());
-            getCommand("givebingocardtemp").setExecutor(new GiveBingoCardTEMP());
-            getCommand("generatenewbingogame").setExecutor(new CommandNewBingoGame());
+            //getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
+            //getCommand("lockPlayer").setExecutor(new LockPlayer());
+            //getCommand("givebingocardtemp").setExecutor(new GiveBingoCardTEMP());
+            //getCommand("generatenewbingogame").setExecutor(new CommandNewBingoGame());
             getCommand("jailplayer").setExecutor(new JailPlayer());
             //lil
 
@@ -148,7 +148,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             //getServer().getPluginManager().registerEvents(new HellRune(), this);
             //getServer().getPluginManager().registerEvents(new BloodRune(), this);
             //getServer().getPluginManager().registerEvents(new AirRune(), this);
-            getServer().getPluginManager().registerEvents(new BingoCardListener(), this);
+            //getServer().getPluginManager().registerEvents(new BingoCardListener(), this);
             getServer().getPluginManager().registerEvents(new BingoCardGUIListeners(), this);
 
             //New Custom Items
@@ -156,6 +156,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new InstaboomTNT(), this);
             getServer().getPluginManager().registerEvents(new Drops(), this);
             getServer().getPluginManager().registerEvents(new LifestealStick(), this);
+            getServer().getPluginManager().registerEvents(new QuarryArmor(), this);
             registerCustomRecipesDev();
 
 
