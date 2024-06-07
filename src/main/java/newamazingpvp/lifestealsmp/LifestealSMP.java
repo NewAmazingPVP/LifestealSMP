@@ -11,6 +11,7 @@ import newamazingpvp.lifestealsmp.blacklistener.AnvilMenuListener;
 import newamazingpvp.lifestealsmp.blacklistener.ChatFilter;
 import newamazingpvp.lifestealsmp.blacklistener.EndCrystalWarning;
 import newamazingpvp.lifestealsmp.command.*;
+import newamazingpvp.lifestealsmp.command.unused.JailPlayer;
 import newamazingpvp.lifestealsmp.customitems.*;
 import newamazingpvp.lifestealsmp.customitems.utils.Drops;
 import newamazingpvp.lifestealsmp.discord.DiscordListener;
@@ -80,7 +81,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("LSwithdraw").setExecutor(new LSwithdraw());
         getCommand("startEndFight").setExecutor(new StartEndFight());
         getCommand("stopEndFight").setExecutor(new StopEndFight());
-        //getCommand("jailplayer").setExecutor(new JailPlayer());
         getCommand("reviveplayer").setExecutor(new RevivePlayer());
         getCommand("vision").setExecutor(new NightVision());
         getCommand("senddiscordmessage").setExecutor(new SendDiscordMessage());
@@ -137,6 +137,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getCommand("lockPlayer").setExecutor(new LockPlayer());
             getCommand("givebingocardtemp").setExecutor(new GiveBingoCardTEMP());
             getCommand("generatenewbingogame").setExecutor(new CommandNewBingoGame());
+            getCommand("jailplayer").setExecutor(new JailPlayer());
+            //lil
 
             //getCommand("quickMaths").setExecutor(new QuickMaths());
             //getServer().getPluginManager().registerEvents(new IceCube(), this);
