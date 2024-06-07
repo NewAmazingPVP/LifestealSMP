@@ -48,11 +48,18 @@ public class PlayerLifeManager {
         File file = new File(lifestealSmp.getDataFolder().getAbsolutePath() + File.separator + "friends.txt");
         Scanner input = new Scanner(file);
         ArrayList<String> names = new ArrayList<>();
+        boolean flag = false;
         while (input.hasNext()) {
             String name = input.nextLine();
             if (!name.equals(p.getName())) {
                 names.add(name);
+            } else {
+                flag = true;
             }
+        }
+        if(!flag){
+            sender.sendMessage(ChatColor.RED + "This player is not eliminated! Enter the right name again");
+            return false;
         }
         file.delete();
         File outputFIle = new File(lifestealSmp.getDataFolder().getAbsolutePath() + File.separator + "friends.txt");
