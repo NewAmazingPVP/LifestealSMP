@@ -15,8 +15,8 @@ import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
 
 public class GiveCustomItem implements CommandExecutor, TabCompleter {
 
-    private final ArrayList<String> subcommands = new ArrayList<>(List.of("feathersword", "homingbow", "tntbow", "tpbow", "oppickaxe", "treecutteraxe", "heart", "revivebeacon", "corruptedmobsoul", "severedmobheart","lightfether","instaboomtnt","lifestealstick","powerstick","heavynetherstar"));
-    private final ArrayList<ItemStack> subItems = new ArrayList<>(List.of(createFeatherSword(), createHomingBow(), createTNTBow(), createCustomBow(), createOpPickaxe(), createCustomAxe(), extraHeart(), createReviveBeacon(), corruptedMobSoul(), severedMobHeart(),lightFeather(),InstaBoomTNT(),LifestealStick(),powerStick(),heavyNetherStar()));
+    private final ArrayList<String> subcommands = new ArrayList<>(List.of("feathersword", "homingbow", "tntbow", "tpbow", "oppickaxe", "treecutteraxe", "heart", "revivebeacon", "corruptedmobsoul", "severedmobheart","lightfether","instaboomtnt","lifestealstick","powerstick","heavynetherstar","quarryhelmet","quarrychestplate","quarryleggings","quarryboots"));
+    private final ArrayList<ItemStack> subItems = new ArrayList<>(List.of(createFeatherSword(), createHomingBow(), createTNTBow(), createCustomBow(), createOpPickaxe(), createCustomAxe(), extraHeart(), createReviveBeacon(), corruptedMobSoul(), severedMobHeart(),lightFeather(),InstaBoomTNT(),LifestealStick(),powerStick(),heavyNetherStar(),QuarryArmor_HELM(),QuarryArmor_CP(),QuarryArmor_LEGS(),QuarryArmor_BOOTS()));
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
