@@ -52,9 +52,6 @@ public class PlayerLifeManager {
             String name = input.nextLine();
             if (!name.equals(p.getName())) {
                 names.add(name);
-            } else {
-                sender.sendMessage(ChatColor.RED + "This player is not eliminated! Enter the right name again");
-                return false;
             }
         }
         file.delete();
