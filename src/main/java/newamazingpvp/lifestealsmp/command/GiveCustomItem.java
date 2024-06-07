@@ -15,8 +15,8 @@ import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
 
 public class GiveCustomItem implements CommandExecutor, TabCompleter {
 
-    private final ArrayList<String> subcommands = new ArrayList<>(List.of("feathersword", "homingbow", "tntbow", "tpbow", "oppickaxe", "treecutteraxe", "heart", "revivebeacon", "corruptedmobsoul", "severedmobheart"));
-    private final ArrayList<ItemStack> subItems = new ArrayList<>(List.of(createFeatherSword(), createHomingBow(), createTNTBow(), createCustomBow(), createOpPickaxe(), createCustomAxe(), extraHeart(), createReviveBeacon(), corruptedMobSoul(), severedMobHeart()));
+    private final ArrayList<String> subcommands = new ArrayList<>(List.of("feathersword", "homingbow", "tntbow", "tpbow", "oppickaxe", "treecutteraxe", "heart", "revivebeacon", "corruptedmobsoul", "severedmobheart","lightfether","instaboomtnt","lifestealstick","powerstick","heavynetherstar"));
+    private final ArrayList<ItemStack> subItems = new ArrayList<>(List.of(createFeatherSword(), createHomingBow(), createTNTBow(), createCustomBow(), createOpPickaxe(), createCustomAxe(), extraHeart(), createReviveBeacon(), corruptedMobSoul(), severedMobHeart(),lightFeather(),InstaBoomTNT(),LifestealStick(),powerStick(),heavyNetherStar()));
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
