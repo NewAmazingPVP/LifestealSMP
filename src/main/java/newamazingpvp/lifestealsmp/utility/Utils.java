@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.utility;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -111,7 +112,15 @@ public class Utils {
 
     public static void updateLore(Player player) {
         for (ItemStack item : player.getInventory().getContents()) {
-            if (item != null && item.hasItemMeta()) {
+            if(item == null) continue;
+            if(item.getType() == Material.DRAGON_EGG){
+                ItemMeta meta = item.getItemMeta();
+                List<String> lore = new ArrayList<>(List.of(ChatColor.DARK_PURPLE + "Have in inventory for " + ChatColor.GOLD + "10%" + ChatColor.DARK_PURPLE + " less damage!"));
+                meta.setLore(lore);
+                item.setItemMeta(meta);
+                continue;
+            }
+            if (item.hasItemMeta()) {
                 ItemMeta meta = item.getItemMeta();
                 if (meta != null && meta.hasLore()) {
                     List<String> lore = meta.getLore();
