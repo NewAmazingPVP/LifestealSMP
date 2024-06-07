@@ -266,10 +266,12 @@ public class Compass implements CommandExecutor, Listener {
                         /*if (distance != 0) {
                             msg += ChatColor.BOLD + " " + distance + " blocks";
                         }*/
-                        msg += " coordinates ";
-                        msg += (target.getLocation().x() < 0) ? "negative x" : "positive x";
-                        msg += " and ";
-                        msg += (target.getLocation().z() < 0) ? "negative z" : "positive z";
+                        if(player.getWorld().getEnvironment() == target.getWorld().getEnvironment()){
+                            msg += " coordinates ";
+                            msg += (target.getLocation().x() < 0) ? "negative x" : "positive x";
+                            msg += " and ";
+                            msg += (target.getLocation().z() < 0) ? "negative z" : "positive z";
+                        }
                         TextComponent textComponent = new TextComponent(msg);
                         player.spigot().sendMessage(ChatMessageType.ACTION_BAR, textComponent);
                         //boolean e = isMovingCloser(player, target);
