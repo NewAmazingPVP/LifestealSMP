@@ -147,7 +147,8 @@ public class Compass implements CommandExecutor, Listener {
             }*/
 
             trackingPlayers.put(player.getUniqueId(), target.getUniqueId());
-            player.sendMessage(ChatColor.GREEN + "Tracking distance to " + target.getName() + " every 45 seconds");
+            //player.sendMessage(ChatColor.GREEN + "Tracking distance to " + target.getName() + " every 45 seconds");
+            player.sendMessage(ChatColor.GREEN + "Tracking quadrant of " + target.getName() + " every 45 seconds");
             //player.sendMessage(ChatColor.GREEN + "Compass is now pointing towards " + target.getName());
             //target.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[WARNING] You are being tracked!");
             return true;
@@ -262,9 +263,13 @@ public class Compass implements CommandExecutor, Listener {
                             }
                         }
                         //String dis = calculateDistanceCategory(distance);
-                        if (distance != 0) {
+                        /*if (distance != 0) {
                             msg += ChatColor.BOLD + " " + distance + " blocks";
-                        }
+                        }*/
+                        msg += " coordinates ";
+                        msg += (target.getLocation().x() < 0) ? "negative x" : "positive x";
+                        msg += " and ";
+                        msg += (target.getLocation().z() < 0) ? "negative z" : "positive z";
                         TextComponent textComponent = new TextComponent(msg);
                         player.spigot().sendMessage(ChatMessageType.ACTION_BAR, textComponent);
                         //boolean e = isMovingCloser(player, target);
