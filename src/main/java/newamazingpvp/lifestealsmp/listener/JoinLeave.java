@@ -11,6 +11,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.*;
 import static newamazingpvp.lifestealsmp.discord.DiscordListener.isVanished;
+import static newamazingpvp.lifestealsmp.utility.Admin.admins;
 import static newamazingpvp.lifestealsmp.utility.Utils.setPrefix;
 import static org.bukkit.Bukkit.getServer;
 
@@ -35,9 +36,9 @@ public class JoinLeave implements Listener {
 
         getServer().dispatchCommand(getServer().getConsoleSender(), "sudo " + player.getName() + " help");
         getServer().getScheduler().runTaskLater(lifestealSmp, () -> player.sendMessage(ChatColor.RED + "Report any rule breakers on /discord and beware of people tricking you into taking your hearts away. Report them immediately. Make your base safe locations such as underground to prevent it from being griefed."), 200);
-        if (player.getName().equals("NewAmazingPVP") && silentMode) {
+        if ((player.getName().equals("NewAmazingPVP") || admins.contains(player.getName())) && silentMode) {
             event.setJoinMessage("");
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vanish NewAmazingPVP");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "vanish " + player.getName());
         }
 
         BukkitRunnable prefix = new BukkitRunnable() {
@@ -86,7 +87,7 @@ public class JoinLeave implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        if (player.getName().equals("NewAmazingPVP") && isVanished(player) && silentMode) {
+        if ((player.getName().equals("NewAmazingPVP") || admins.contains(player.getName())) && isVanished(player) && silentMode) {
             event.setQuitMessage("");
         }
     }
