@@ -64,6 +64,7 @@ public class FeatherSword implements Listener {
                     player.getLocation().getWorld().spawnParticle(Particle.EXPLOSION_NORMAL, player.getLocation(), 10);
                     player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 5.0f, 2.0f);
                     player.setVelocity(player.getLocation().getDirection().multiply(2));
+                    setTeleportCooldown(player);
 
                     //if (isSafeLocation(targetLocation)) {
                     //    player.teleport(targetLocation);
