@@ -70,24 +70,14 @@ public class QuarryArmor implements Listener {
         if(isHelmetOn==true && isChestplateOn==true && isLeggingsOn==true && isBootsOn==true){
             player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 100000, 2));
         }else{
-            removeHasteFromPlayer(player);
+            player.removePotionEffect(PotionEffectType.FAST_DIGGING);
         }
 
 
 
-    }
-
-    public void removeHasteFromPlayer(Player player) {
-        // Check if the player has the Haste effect
-        for (PotionEffect effect : player.getActivePotionEffects()) {
-            if (effect.getType() == PotionEffectType.FAST_DIGGING) {
-                // Remove the Haste effect
-                player.removePotionEffect(effect.getType());
-                break; // Stop checking once the effect is removed
-            }
-        }
     }
     
+
 
 }
 
