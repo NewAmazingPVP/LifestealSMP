@@ -1,8 +1,6 @@
 package newamazingpvp.lifestealsmp.customitems;
 
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
@@ -63,11 +61,16 @@ public class FeatherSword implements Listener {
                     direction.multiply(new Vector(10, 10, 10));
                     Location targetLocation = player.getLocation().add(direction);
 
+                    player.getLocation().getWorld().spawnParticle(Particle.EXPLOSION_NORMAL, player.getLocation(), 10);
+                    player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 5.0f, 2.0f);
+                    player.setVelocity(player.getLocation().getDirection().multiply(2));
+
                     if (isSafeLocation(targetLocation)) {
                         player.teleport(targetLocation);
                         setTeleportCooldown(player);
                     } else {
                         player.sendMessage(ChatColor.RED + "Teleport destination is blocked.");
+                        player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2.0f, 0.0f);
                     }
                 } else {
                     player.sendMessage(ChatColor.RED + "You must wait " + cooldownRemainingTime(player) + " for the cooldown to finish before teleporting again.");
