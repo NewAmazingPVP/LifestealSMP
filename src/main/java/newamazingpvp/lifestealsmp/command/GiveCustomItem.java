@@ -12,11 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
+import static newamazingpvp.lifestealsmp.runes.RunesDrops.*;
 
 public class GiveCustomItem implements CommandExecutor, TabCompleter {
 
-    private final ArrayList<String> subcommands = new ArrayList<>(List.of("feathersword", "homingbow", "tntbow", "tpbow", "oppickaxe", "treecutteraxe", "heart", "revivebeacon", "corruptedmobsoul", "severedmobheart","lightfether","instaboomtnt","lifestealstick","powerstick","heavynetherstar","quarryhelmet","quarrychestplate","quarryleggings","quarryboots"));
-    private final ArrayList<ItemStack> subItems = new ArrayList<>(List.of(createFeatherSword(), createHomingBow(), createTNTBow(), createCustomBow(), createOpPickaxe(), createCustomAxe(), extraHeart(), createReviveBeacon(), corruptedMobSoul(), severedMobHeart(),lightFeather(),InstaBoomTNT(),LifestealStick(),powerStick(),heavyNetherStar(),QuarryArmor_HELM(),QuarryArmor_CP(),QuarryArmor_LEGS(),QuarryArmor_BOOTS()));
+    private final ArrayList<String> subcommands = new ArrayList<>(List.of("feathersword", "homingbow", "tntbow", "tpbow", "oppickaxe", "treecutteraxe", "heart", "revivebeacon", "corruptedmobsoul", "severedmobheart","lightfether","instaboomtnt","lifestealstick","powerstick","heavynetherstar","quarryhelmet","quarrychestplate","quarryleggings","quarryboots","witherrune","aquarune","hellrune","trollrune","lightningrune","darkrune","bloodrune","airrune"));
+    private final ArrayList<ItemStack> subItems = new ArrayList<>(List.of(createFeatherSword(), createHomingBow(), createTNTBow(), createCustomBow(), createOpPickaxe(), createCustomAxe(), extraHeart(), createReviveBeacon(), corruptedMobSoul(), severedMobHeart(),lightFeather(),InstaBoomTNT(),LifestealStick(),powerStick(),heavyNetherStar(),QuarryArmor_HELM(),QuarryArmor_CP(),QuarryArmor_LEGS(),QuarryArmor_BOOTS(),witherRune(),aquaRune(),hellRune(),trollRune(),lightningRune(),darkRune(),bloodRune(),airRune()));
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
