@@ -16,10 +16,10 @@ import org.bukkit.potion.PotionEffectType;
 
 public class QuarryArmor implements Listener {
 
-    private static boolean isHelmetOn = false;
-    private static boolean isChestplateOn = false;
-    private static boolean isLeggingsOn = false;
-    private static boolean isBootsOn = false;
+    public static boolean quarryIsHelmetOn = false;
+    public static boolean quarryIsChestplateOn = false;
+    public static boolean quarryIsLeggingsOn = false;
+    public static boolean quarryIsBootsOn = false;
 
     private static boolean doubleOreDrops = false;
 
@@ -38,37 +38,32 @@ public class QuarryArmor implements Listener {
         ItemMeta leggingMetas = leggings.getItemMeta();
         ItemMeta bootsMeta = boots.getItemMeta();
 
-        if(isHelmetOn==true && isChestplateOn==true && isLeggingsOn==true && isBootsOn==true){
-            player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 100000, 2));
-        }else{
-            player.removePotionEffect(PotionEffectType.FAST_DIGGING);
-        }
 
         if (helmet != null && helmet.getType() == Material.LEATHER_HELMET && helmetMeta != null && helmetMeta.getLore() != null && helmetMeta.getLore().toString().contains("You also have unlimited haste 3.")) {
-            isHelmetOn=true;
+            quarryIsHelmetOn=true;
         }else{
-            isHelmetOn=false;
+            quarryIsHelmetOn=false;
         }
 
 
         if (chestplate != null && chestplate.getType() == Material.LEATHER_CHESTPLATE && chestplateMeta != null && chestplateMeta.getLore() != null && chestplateMeta.getLore().toString().contains("You also have unlimited haste 3.")) {
-            isChestplateOn=true;
+            quarryIsChestplateOn=true;
         }else{
-            isChestplateOn=false;
+            quarryIsChestplateOn=false;
         }
 
 
         if (leggings != null && leggings.getType() == Material.LEATHER_LEGGINGS && leggingMetas != null && leggingMetas.getLore() != null && leggingMetas.getLore().toString().contains("You also have unlimited haste 3.")) {
-            isLeggingsOn=true;
+            quarryIsLeggingsOn=true;
         }else{
-            isLeggingsOn=false;
+            quarryIsLeggingsOn=false;
         }
 
 
         if (boots != null && boots.getType() == Material.LEATHER_BOOTS && bootsMeta != null && bootsMeta.getLore() != null && bootsMeta.getLore().toString().contains("You also have unlimited haste 3.")) {
-            isBootsOn=true;
+            quarryIsBootsOn=true;
         }else{
-            isBootsOn=false;
+            quarryIsBootsOn=false;
         }
 
 

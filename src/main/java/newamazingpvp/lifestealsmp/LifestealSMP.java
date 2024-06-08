@@ -13,6 +13,7 @@ import newamazingpvp.lifestealsmp.blacklistener.EndCrystalWarning;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.command.unused.JailPlayer;
 import newamazingpvp.lifestealsmp.customitems.Armor.QuarryArmor;
+import newamazingpvp.lifestealsmp.customitems.Armor.QuarryArmorCheck;
 import newamazingpvp.lifestealsmp.customitems.Items.*;
 import newamazingpvp.lifestealsmp.customitems.utils.Drops;
 import newamazingpvp.lifestealsmp.discord.DiscordListener;
@@ -155,6 +156,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new Drops(), this);
             getServer().getPluginManager().registerEvents(new LifestealStick(), this);
             getServer().getPluginManager().registerEvents(new QuarryArmor(), this);
+            \getServer().getPluginManager().registerEvents(new QuarryArmorCheck(), this);
             registerCustomRecipesDev();
 
 
