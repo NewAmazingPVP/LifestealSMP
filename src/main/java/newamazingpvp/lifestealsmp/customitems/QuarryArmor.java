@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
@@ -20,7 +21,7 @@ public class QuarryArmor implements Listener {
     private static boolean isBootsOn = false;
 
     @EventHandler
-    public void onArmorChange(PlayerArmorChangeEvent event) {
+    public void onArmorChange(PlayerMoveEvent event) {
 
         Player player = event.getPlayer();
 
