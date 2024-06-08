@@ -20,6 +20,8 @@ public class QuarryArmor implements Listener {
     private static boolean isLeggingsOn = false;
     private static boolean isBootsOn = false;
 
+    private static boolean doubleOreDrops = false;
+
     @EventHandler
     public void onArmorChange(PlayerMoveEvent event) {
 
@@ -65,9 +67,9 @@ public class QuarryArmor implements Listener {
 
 
         if(isHelmetOn==true && isChestplateOn==true && isLeggingsOn==true && isBootsOn==true){
-            player.sendMessage(ChatColor.GREEN + "armor ability on test");
+            player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 100000, 2));
         }else{
-            player.sendMessage(ChatColor.RED + "armor ability off test");
+            player.removePotionEffect(PotionEffectType.FAST_DIGGING);
         }
 
 
