@@ -2,6 +2,7 @@ package newamazingpvp.lifestealsmp.customitems.Armor;
 
 import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent;
 import org.bukkit.ChatColor;
+import org.bukkit.Effect;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -69,12 +70,25 @@ public class QuarryArmor implements Listener {
         if(isHelmetOn==true && isChestplateOn==true && isLeggingsOn==true && isBootsOn==true){
             player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 100000, 2));
         }else{
-            player.removePotionEffect(PotionEffectType.FAST_DIGGING);
+            removeHasteFromPlayer(player);
         }
 
 
 
     }
+
+    public void removeHasteFromPlayer(Player player) {
+        // Check if the player has the Haste effect
+        for (PotionEffect effect : player.getActivePotionEffects()) {
+            if (effect.getType() == PotionEffectType.FAST_DIGGING) {
+                // Remove the Haste effect
+                player.removePotionEffect(effect.getType());
+                break; // Stop checking once the effect is removed
+            }
+        }
+    }
+    
+
 }
 
 
