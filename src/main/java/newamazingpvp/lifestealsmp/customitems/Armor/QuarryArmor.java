@@ -76,7 +76,6 @@ public class QuarryArmor implements Listener {
 
 
     }
-    
 
 
 }
