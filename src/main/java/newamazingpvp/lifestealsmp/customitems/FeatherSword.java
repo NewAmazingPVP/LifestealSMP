@@ -63,7 +63,6 @@ public class FeatherSword implements Listener {
 
                     player.getLocation().getWorld().spawnParticle(Particle.EXPLOSION_NORMAL, player.getLocation(), 10);
                     player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 5.0f, 2.0f);
-                    player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 5, 255));
                     player.setVelocity(player.getLocation().getDirection().multiply(3));
                     setTeleportCooldown(player);
 
