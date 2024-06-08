@@ -57,27 +57,28 @@ public class FeatherSword implements Listener {
             if (meta.getLore().toString().toLowerCase().contains("permanent speed")
                     && !player.getInventory().getItemInOffHand().toString().toLowerCase().contains("shield")) {
                 if (isTeleportCooldownExpired(player)) {
-                    Vector direction = player.getLocation().getDirection();
-                    direction.multiply(new Vector(10, 10, 10));
-                    Location targetLocation = player.getLocation().add(direction);
+                    //Vector direction = player.getLocation().getDirection();
+                    //direction.multiply(new Vector(10, 10, 10));
+                    //Location targetLocation = player.getLocation().add(direction);
 
                     player.getLocation().getWorld().spawnParticle(Particle.EXPLOSION_NORMAL, player.getLocation(), 10);
                     player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 5.0f, 2.0f);
                     player.setVelocity(player.getLocation().getDirection().multiply(2));
 
-                    if (isSafeLocation(targetLocation)) {
-                        player.teleport(targetLocation);
-                        setTeleportCooldown(player);
-                    } else {
-                        player.sendMessage(ChatColor.RED + "Teleport destination is blocked.");
-                        player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2.0f, 0.0f);
-                    }
+                    //if (isSafeLocation(targetLocation)) {
+                    //    player.teleport(targetLocation);
+                    //    setTeleportCooldown(player);
+                    //} else {
+                    //    player.sendMessage(ChatColor.RED + "Teleport destination is blocked.");
+                    //    player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2.0f, 0.0f);
+                    //}
                 } else {
                     player.sendMessage(ChatColor.RED + "You must wait " + cooldownRemainingTime(player) + " for the cooldown to finish before teleporting again.");
                 }
             }
         }
     }
+
 
     private boolean isSafeLocation(Location location) {
         Block block = location.getBlock();
