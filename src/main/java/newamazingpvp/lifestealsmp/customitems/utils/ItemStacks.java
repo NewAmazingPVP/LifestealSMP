@@ -295,7 +295,7 @@ public class ItemStacks {
         SCL.add(" ");
         SCL.add(ChatColor.GOLD + "" + ChatColor.BOLD +  "Full Set Bonus:");
         SCL.add(ChatColor.DARK_PURPLE + "Gain +1 extra of any ore you mine.");
-        SCL.add(ChatColor.DARK_PURPLE + "You also have unlimited haste 3");
+        SCL.add(ChatColor.DARK_PURPLE + "You also have unlimited haste 3.");
         SCL.add(" ");
         chest.setLore(SCL);
         chest.addItemFlags(ItemFlag.HIDE_DYE);
@@ -315,7 +315,7 @@ public class ItemStacks {
         SCL.add(" ");
         SCL.add(ChatColor.GOLD + "" + ChatColor.BOLD +  "Full Set Bonus:");
         SCL.add(ChatColor.DARK_PURPLE + "Gain +1 extra of any ore you mine.");
-        SCL.add(ChatColor.DARK_PURPLE + "You also have unlimited haste 3");
+        SCL.add(ChatColor.DARK_PURPLE + "You also have unlimited haste 3.");
         SCL.add(" ");
         chest.setLore(SCL);
         chest.addItemFlags(ItemFlag.HIDE_DYE);
@@ -334,7 +334,7 @@ public class ItemStacks {
         SCL.add(" ");
         SCL.add(ChatColor.GOLD + "" + ChatColor.BOLD +  "Full Set Bonus:");
         SCL.add(ChatColor.DARK_PURPLE + "Gain +1 extra of any ore you mine.");
-        SCL.add(ChatColor.DARK_PURPLE + "You also have unlimited haste 3");
+        SCL.add(ChatColor.DARK_PURPLE + "You also have unlimited haste 3.");
         SCL.add(" ");
         chest.setLore(SCL);
         chest.addItemFlags(ItemFlag.HIDE_DYE);
@@ -352,7 +352,7 @@ public class ItemStacks {
         SCL.add(" ");
         SCL.add(ChatColor.GOLD + "" + ChatColor.BOLD +  "Full Set Bonus:");
         SCL.add(ChatColor.DARK_PURPLE + "Gain +1 extra of any ore you mine.");
-        SCL.add(ChatColor.DARK_PURPLE + "You also have unlimited haste 3");
+        SCL.add(ChatColor.DARK_PURPLE + "You also have unlimited haste 3.");
         SCL.add(" ");
         chest.setLore(SCL);
         chest.addItemFlags(ItemFlag.HIDE_DYE);
