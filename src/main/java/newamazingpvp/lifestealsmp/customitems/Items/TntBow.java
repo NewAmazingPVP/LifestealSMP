@@ -1,11 +1,9 @@
-package newamazingpvp.lifestealsmp.customitems;
+package newamazingpvp.lifestealsmp.customitems.Items;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.Arrow;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -19,12 +17,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import static newamazingpvp.lifestealsmp.customitems.FeatherSword.getString;
+import static newamazingpvp.lifestealsmp.customitems.Items.FeatherSword.getString;
+import static newamazingpvp.lifestealsmp.listener.SpawnProtection.isWithinSpawnRadius;
 
-public class TeleportBow implements Listener {
+public class TntBow implements Listener {
     private final HashMap<UUID, ItemStack> playerHeldItems = new HashMap<>();
     private final Map<Player, Long> teleportCooldowns = new HashMap<>();
-    private final long teleportCooldownDuration = 10000;
+    private final long teleportCooldownDuration = 5000;
 
     @EventHandler
     public void onPlayerUseBow(PlayerInteractEvent event) {
@@ -40,7 +39,7 @@ public class TeleportBow implements Listener {
         if (isBow(mainHandItem) || isBow(offHandItem)) {
             if (!isTeleportCooldownExpired(shooter)) {
                 event.setCancelled(true);
-                shooter.sendMessage(ChatColor.RED + "You must wait " + cooldownRemainingTime(shooter) + " for the cooldown to finish before teleporting again.");
+                shooter.sendMessage(ChatColor.RED + "You must wait " + cooldownRemainingTime(shooter) + " for the cooldown to finish before using the TNT again.");
             }
         }
     }
@@ -50,13 +49,11 @@ public class TeleportBow implements Listener {
         if (event.getEntityType() == EntityType.ARROW && event.getEntity().getShooter() instanceof Player) {
             Player shooter = (Player) event.getEntity().getShooter();
             ItemStack mainHandItem = shooter.getInventory().getItemInMainHand();
-            ItemStack offHandItem = shooter.getInventory().getItemInMainHand();
+            ItemStack offHandItem = shooter.getInventory().getItemInOffHand();
 
-            // Check if the player is holding a bow when they shoot the arrow
             if (isBow(mainHandItem) || isBow(offHandItem)) {
                 playerHeldItems.put(shooter.getUniqueId(), mainHandItem);
             } else {
-                // Remove the player from the map if they switched to a non-bow item
                 playerHeldItems.remove(shooter.getUniqueId());
             }
         }
@@ -71,24 +68,28 @@ public class TeleportBow implements Listener {
             if (playerHeldItems.containsKey(shooter.getUniqueId())) {
                 if (isTeleportCooldownExpired(shooter)) {
                     Location arrowLocation = arrow.getLocation();
-                    arrowLocation.setPitch(shooter.getLocation().getPitch());
-                    arrowLocation.setYaw(shooter.getLocation().getYaw());
-
-                    shooter.teleport(arrowLocation);
+                    spawnIgnitedTNT(arrowLocation, shooter);
                     ItemStack item = playerHeldItems.get(shooter.getUniqueId());
                     playerHeldItems.remove(shooter.getUniqueId());
                     setTeleportCooldown(shooter);
                 } else {
-                    shooter.sendMessage(ChatColor.RED + "You must wait " + cooldownRemainingTime(shooter) + " for the cooldown to finish before teleporting again.");
+                    shooter.sendMessage(ChatColor.RED + "You must wait " + cooldownRemainingTime(shooter) + " for the cooldown to finish before using the TNT again.");
                 }
             }
         }
     }
 
+    public static void spawnIgnitedTNT(Location location, Entity p) {
+        if (isWithinSpawnRadius(location)) return;
+        TNTPrimed tnt = (TNTPrimed) location.getWorld().spawnEntity(location, EntityType.PRIMED_TNT);
+
+        tnt.setFuseTicks(80);
+        tnt.setSource(p);
+    }
+
     private boolean isBow(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
-        return item.getType() == Material.BOW && meta.getLore() != null && meta.getLore().toString().contains("Shoot to teleport!");
-
+        return item.getType() == Material.BOW && meta.getLore() != null && meta.getLore().toString().contains("TNT Shooter!");
     }
 
     private boolean isTeleportCooldownExpired(Player player) {

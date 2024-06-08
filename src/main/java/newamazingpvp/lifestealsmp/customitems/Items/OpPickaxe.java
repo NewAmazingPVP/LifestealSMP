@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.customitems;
+package newamazingpvp.lifestealsmp.customitems.Items;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
