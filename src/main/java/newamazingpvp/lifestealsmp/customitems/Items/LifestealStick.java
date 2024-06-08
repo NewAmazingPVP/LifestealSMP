@@ -17,7 +17,7 @@ import java.util.Map;
 public class LifestealStick implements Listener {
 
     private final Map<Player, Long> stickCooldowns = new HashMap<>();
-    private final int lifeStealStickCooldown = 5000;
+    private final int lifeStealStickCooldown = 1;
 
     @EventHandler
     public void playerHitPlayer(EntityDamageByEntityEvent e) {
@@ -29,7 +29,7 @@ public class LifestealStick implements Listener {
             ItemStack itemInHand = player.getItemInHand();
             ItemMeta meta = itemInHand.getItemMeta();
             if (meta != null && meta.getLore() != null && meta.getLore().toString().contains("You will heal " + ChatColor.RED + "1❤")) {
-                //if(damagedPlayer instanceof Player){
+                if(damagedPlayer instanceof Player){
 
                     if (isTeleportCooldownExpired(player)) {
 
@@ -37,7 +37,7 @@ public class LifestealStick implements Listener {
                         player.playSound(player.getLocation(), Sound.ENTITY_ELDER_GUARDIAN_AMBIENT, 2.0f, 2.0f);
                         setTeleportCooldown(player);
 
-                    //}
+                    }
                 }
             }
         }

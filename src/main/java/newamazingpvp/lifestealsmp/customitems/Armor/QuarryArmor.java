@@ -38,6 +38,11 @@ public class QuarryArmor implements Listener {
         ItemMeta leggingMetas = leggings.getItemMeta();
         ItemMeta bootsMeta = boots.getItemMeta();
 
+        if(isHelmetOn==true && isChestplateOn==true && isLeggingsOn==true && isBootsOn==true){
+            player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 100000, 2));
+        }else{
+            player.removePotionEffect(PotionEffectType.FAST_DIGGING);
+        }
 
         if (helmet != null && helmet.getType() == Material.LEATHER_HELMET && helmetMeta != null && helmetMeta.getLore() != null && helmetMeta.getLore().toString().contains("You also have unlimited haste 3.")) {
             isHelmetOn=true;
@@ -67,11 +72,7 @@ public class QuarryArmor implements Listener {
         }
 
 
-        if(isHelmetOn==true && isChestplateOn==true && isLeggingsOn==true && isBootsOn==true){
-            player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 100000, 2));
-        }else{
-            player.removePotionEffect(PotionEffectType.FAST_DIGGING);
-        }
+
 
 
 
