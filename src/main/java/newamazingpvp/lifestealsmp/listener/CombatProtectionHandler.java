@@ -33,22 +33,20 @@ public class CombatProtectionHandler implements Listener {
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
         if (event.getEntity() instanceof Player) {
             Player damaged = (Player) event.getEntity();
-            if (event.getDamager() instanceof Player || event.getDamager() instanceof Arrow) {
-                if (event.getDamager() instanceof Player) {
-                    Player damager = (Player) event.getDamager();
-                    handlePlayerDamage(event, damager, damaged);
-                } else if (event.getDamager() instanceof Arrow) {
-                    Arrow arrow = (Arrow) event.getDamager();
-                    if (arrow.getShooter() instanceof Player) {
-                        Player shooter = (Player) arrow.getShooter();
-                        handlePlayerDamage(event, shooter, damaged);
-                    }
-                } else if (event.getDamager() instanceof TNTPrimed) {
-                    TNTPrimed tnt = (TNTPrimed) event.getDamager();
-                    if (tnt.getSource() instanceof Player) {
-                        Player shooter = (Player) tnt.getSource();
-                        handlePlayerDamage(event, shooter, damaged);
-                    }
+            if (event.getDamager() instanceof Player) {
+                Player damager = (Player) event.getDamager();
+                handlePlayerDamage(event, damager, damaged);
+            } else if (event.getDamager() instanceof Arrow) {
+                Arrow arrow = (Arrow) event.getDamager();
+                if (arrow.getShooter() instanceof Player) {
+                    Player shooter = (Player) arrow.getShooter();
+                    handlePlayerDamage(event, shooter, damaged);
+                }
+            } else if (event.getDamager() instanceof TNTPrimed) {
+                TNTPrimed tnt = (TNTPrimed) event.getDamager();
+                if (tnt.getSource() instanceof Player) {
+                    Player shooter = (Player) tnt.getSource();
+                    handlePlayerDamage(event, shooter, damaged);
                 }
             }
         } else if (event.getEntity() instanceof Villager && event.getDamager() instanceof Player) {
@@ -57,6 +55,8 @@ public class CombatProtectionHandler implements Listener {
     }
 
     private void handlePlayerDamage(EntityDamageByEntityEvent event, Player damager, Player damaged) {
+        if (damager == null || damaged == null) return;
+
         if (isGracePeriod()) {
             event.setCancelled(true);
             damager.sendMessage(ChatColor.RED + "You cannot damage players during the grace period!");
@@ -88,7 +88,7 @@ public class CombatProtectionHandler implements Listener {
         }
         if (getPlaytime(damaged) < 216000) {
             damaged.sendMessage(ChatColor.RED + "Since you don't have 3 hours of playtime, even if you die you won't lose any hearts");
-            damager.sendMessage(ChatColor.RED + "The person you are trying to attack does not have 3 hours of playtime. Therfore they will not drop hearts when killed");
+            damager.sendMessage(ChatColor.RED + "The person you are trying to attack does not have 3 hours of playtime. Therefore they will not drop hearts when killed");
         }
         if (onSameTeam(damaged, damager)) {
             event.setCancelled(true);
@@ -101,6 +101,8 @@ public class CombatProtectionHandler implements Listener {
     }
 
     private void handleVillagerDamage(EntityDamageByEntityEvent event, Player damager) {
+        if (damager == null) return;
+
         if (getPlaytime(damager) < 216000 && !newbieViolate.contains(damager.getName())) {
             newbieViolate.add(damager.getName());
             event.setCancelled(true);
@@ -122,6 +124,8 @@ public class CombatProtectionHandler implements Listener {
     @EventHandler
     public void onDeath(PlayerDeathEvent event) throws IOException {
         Player p = event.getEntity();
+        if (p == null) return;
+
         LivingEntity killer = p.getKiller();
         if (!(killer instanceof Player)) {
             return;
