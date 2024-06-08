@@ -36,28 +36,28 @@ public class QuarryArmor implements Listener {
         ItemMeta bootsMeta = boots.getItemMeta();
 
 
-        if (helmet != null && helmet.getType() == Material.LEATHER_HELMET && helmetMeta != null && helmetMeta.getLore() != null && helmetMeta.getLore().toString().contains("You will heal " + ChatColor.RED + "1❤")) {
+        if (helmet != null && helmet.getType() == Material.LEATHER_HELMET && helmetMeta != null && helmetMeta.getLore() != null && helmetMeta.getLore().toString().contains("You also have unlimited haste 3.")) {
             isHelmetOn=true;
         }else{
             isHelmetOn=false;
         }
 
 
-        if (chestplate != null && chestplate.getType() == Material.LEATHER_CHESTPLATE && chestplateMeta != null && chestplateMeta.getLore() != null && chestplateMeta.getLore().toString().contains("You will heal " + ChatColor.RED + "1❤")) {
+        if (chestplate != null && chestplate.getType() == Material.LEATHER_CHESTPLATE && chestplateMeta != null && chestplateMeta.getLore() != null && chestplateMeta.getLore().toString().contains("You also have unlimited haste 3.")) {
             isChestplateOn=true;
         }else{
             isChestplateOn=false;
         }
 
 
-        if (leggings != null && leggings.getType() == Material.LEATHER_LEGGINGS && leggingMetas != null && leggingMetas.getLore() != null && leggingMetas.getLore().toString().contains("You will heal " + ChatColor.RED + "1❤")) {
+        if (leggings != null && leggings.getType() == Material.LEATHER_LEGGINGS && leggingMetas != null && leggingMetas.getLore() != null && leggingMetas.getLore().toString().contains("You also have unlimited haste 3.")) {
             isLeggingsOn=true;
         }else{
             isLeggingsOn=false;
         }
 
 
-        if (boots != null && boots.getType() == Material.LEATHER_BOOTS && bootsMeta != null && bootsMeta.getLore() != null && bootsMeta.getLore().toString().contains("You will heal " + ChatColor.RED + "1❤")) {
+        if (boots != null && boots.getType() == Material.LEATHER_BOOTS && bootsMeta != null && bootsMeta.getLore() != null && bootsMeta.getLore().toString().contains("You also have unlimited haste 3.")) {
             isBootsOn=true;
         }else{
             isBootsOn=false;
