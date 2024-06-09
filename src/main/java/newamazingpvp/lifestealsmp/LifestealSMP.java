@@ -96,6 +96,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("ally").setTabCompleter(new AllyCommand());
         getCommand("prefix").setExecutor(new PrefixCommand());
         getCommand("pingWars").setExecutor(new PingWars());
+        getCommand("jailplayer").setExecutor(new JailPlayer());
         //getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
@@ -135,7 +136,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             //getCommand("lockPlayer").setExecutor(new LockPlayer());
             //getCommand("givebingocardtemp").setExecutor(new GiveBingoCardTEMP());
             //getCommand("generatenewbingogame").setExecutor(new CommandNewBingoGame());
-            getCommand("jailplayer").setExecutor(new JailPlayer());
             //lil
 
             //getCommand("quickMaths").setExecutor(new QuickMaths());
