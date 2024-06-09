@@ -67,8 +67,13 @@ public class QuarryArmor implements Listener {
         }
 
 
+        if(quarryIsHelmetOn && quarryIsChestplateOn && quarryIsLeggingsOn && quarryIsBootsOn){
+            player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 100000, 2));
+        }else {
+            player.removePotionEffect(PotionEffectType.FAST_DIGGING);
+        }
 
-
+        
 
 
     }
