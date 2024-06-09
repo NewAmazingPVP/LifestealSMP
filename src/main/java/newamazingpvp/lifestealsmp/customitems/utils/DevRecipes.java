@@ -30,11 +30,11 @@ public class DevRecipes {
 
         ItemStack LifestealSword = new ItemStack(LifestealStick());
         ShapedRecipe LifestealSwordRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "LifestealSword"), LifestealSword);
-        LifestealSwordRecipe.shape("WHW", "WFW", "DSD");
+        LifestealSwordRecipe.shape("WHW", "WFW", "NSN");
         LifestealSwordRecipe.setIngredient('H', extraHeart());
         LifestealSwordRecipe.setIngredient('F', heavyNetherStar());
         LifestealSwordRecipe.setIngredient('S', powerStick());
-        LifestealSwordRecipe.setIngredient('N', Material.NETHERITE_BLOCK);
+        LifestealSwordRecipe.setIngredient('N', Material.NETHERITE_INGOT);
         LifestealSwordRecipe.setIngredient('D', Material.DIAMOND_BLOCK);
         LifestealSwordRecipe.setIngredient('W', Material.WITHER_SKELETON_SKULL);
         Bukkit.addRecipe(LifestealSwordRecipe);
