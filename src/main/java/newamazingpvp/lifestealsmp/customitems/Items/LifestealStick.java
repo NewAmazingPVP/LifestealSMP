@@ -17,7 +17,7 @@ import java.util.Map;
 public class LifestealStick implements Listener {
 
     private final Map<Player, Long> stickCooldowns = new HashMap<>();
-    private final double lifeStealStickCooldown = 0.5;
+    private final double lifeStealStickCooldown = 0.01;
 
     @EventHandler
     public void playerHitPlayer(EntityDamageByEntityEvent e) {

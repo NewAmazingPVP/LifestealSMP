@@ -30,7 +30,7 @@ public class DevRecipes {
 
         ItemStack LifestealSword = new ItemStack(LifestealStick());
         ShapedRecipe LifestealSwordRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "LifestealSword"), LifestealSword);
-        LifestealSwordRecipe.shape("WHW", "WFW", "DSN");
+        LifestealSwordRecipe.shape("WHW", "WFW", "DSD");
         LifestealSwordRecipe.setIngredient('H', extraHeart());
         LifestealSwordRecipe.setIngredient('F', heavyNetherStar());
         LifestealSwordRecipe.setIngredient('S', powerStick());
