@@ -39,28 +39,28 @@ public class QuarryArmor implements Listener {
         ItemMeta bootsMeta = boots.getItemMeta();
 
 
-        if (helmet != null && helmet.getType() == Material.LEATHER_HELMET && helmetMeta != null && helmetMeta.getLore() != null && helmetMeta.getLore().toString().contains("You also have unlimited haste 3.")) {
+        if (helmet.getType() == Material.LEATHER_HELMET && helmetMeta != null && helmetMeta.getLore() != null && helmetMeta.getLore().toString().contains("You also have unlimited haste 3.")) {
             quarryIsHelmetOn=true;
         }else{
             quarryIsHelmetOn=false;
         }
 
 
-        if (chestplate != null && chestplate.getType() == Material.LEATHER_CHESTPLATE && chestplateMeta != null && chestplateMeta.getLore() != null && chestplateMeta.getLore().toString().contains("You also have unlimited haste 3.")) {
+        if (chestplate.getType() == Material.LEATHER_CHESTPLATE && chestplateMeta != null && chestplateMeta.getLore() != null && chestplateMeta.getLore().toString().contains("You also have unlimited haste 3.")) {
             quarryIsChestplateOn=true;
         }else{
             quarryIsChestplateOn=false;
         }
 
 
-        if (leggings != null && leggings.getType() == Material.LEATHER_LEGGINGS && leggingMetas != null && leggingMetas.getLore() != null && leggingMetas.getLore().toString().contains("You also have unlimited haste 3.")) {
+        if (leggings.getType() == Material.LEATHER_LEGGINGS && leggingMetas != null && leggingMetas.getLore() != null && leggingMetas.getLore().toString().contains("You also have unlimited haste 3.")) {
             quarryIsLeggingsOn=true;
         }else{
             quarryIsLeggingsOn=false;
         }
 
 
-        if (boots != null && boots.getType() == Material.LEATHER_BOOTS && bootsMeta != null && bootsMeta.getLore() != null && bootsMeta.getLore().toString().contains("You also have unlimited haste 3.")) {
+        if (boots.getType() == Material.LEATHER_BOOTS && bootsMeta != null && bootsMeta.getLore() != null && bootsMeta.getLore().toString().contains("You also have unlimited haste 3.")) {
             quarryIsBootsOn=true;
         }else{
             quarryIsBootsOn=false;
@@ -73,7 +73,7 @@ public class QuarryArmor implements Listener {
             player.removePotionEffect(PotionEffectType.FAST_DIGGING);
         }
 
-        
+
 
 
     }
