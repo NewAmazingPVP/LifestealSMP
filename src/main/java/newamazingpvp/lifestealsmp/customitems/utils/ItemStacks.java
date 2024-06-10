@@ -285,7 +285,6 @@ public class ItemStacks {
     }
 
 
-
     public static ItemStack QuarryArmor_CP() {
         ItemStack StarDustMineChest = new ItemStack(Material.LEATHER_CHESTPLATE);
         LeatherArmorMeta chest = (LeatherArmorMeta) StarDustMineChest.getItemMeta();
@@ -294,7 +293,7 @@ public class ItemStacks {
         chest.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Quarry Chestplate");
         List<String> SCL = new ArrayList<>();
         SCL.add(" ");
-        SCL.add(ChatColor.GOLD + "" + ChatColor.BOLD +  "Full Set Bonus:");
+        SCL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Full Set Bonus:");
         SCL.add(ChatColor.DARK_PURPLE + "Gain +1 extra of any ore you mine.");
         SCL.add(ChatColor.DARK_PURPLE + "You also have unlimited haste 3.");
         SCL.add(" ");
@@ -314,7 +313,7 @@ public class ItemStacks {
         chest.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Quarry Leggings");
         List<String> SCL = new ArrayList<>();
         SCL.add(" ");
-        SCL.add(ChatColor.GOLD + "" + ChatColor.BOLD +  "Full Set Bonus:");
+        SCL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Full Set Bonus:");
         SCL.add(ChatColor.DARK_PURPLE + "Gain +1 extra of any ore you mine.");
         SCL.add(ChatColor.DARK_PURPLE + "You also have unlimited haste 3.");
         SCL.add(" ");
@@ -333,7 +332,7 @@ public class ItemStacks {
         chest.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Quarry Helmet");
         List<String> SCL = new ArrayList<>();
         SCL.add(" ");
-        SCL.add(ChatColor.GOLD + "" + ChatColor.BOLD +  "Full Set Bonus:");
+        SCL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Full Set Bonus:");
         SCL.add(ChatColor.DARK_PURPLE + "Gain +1 extra of any ore you mine.");
         SCL.add(ChatColor.DARK_PURPLE + "You also have unlimited haste 3.");
         SCL.add(" ");
@@ -343,6 +342,7 @@ public class ItemStacks {
 
         return StarDustMineChest;
     }
+
     public static ItemStack QuarryArmor_BOOTS() {
         ItemStack StarDustMineChest = new ItemStack(Material.LEATHER_BOOTS);
         LeatherArmorMeta chest = (LeatherArmorMeta) StarDustMineChest.getItemMeta();
@@ -351,7 +351,7 @@ public class ItemStacks {
         chest.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Quarry Boots");
         List<String> SCL = new ArrayList<>();
         SCL.add(" ");
-        SCL.add(ChatColor.GOLD + "" + ChatColor.BOLD +  "Full Set Bonus:");
+        SCL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Full Set Bonus:");
         SCL.add(ChatColor.DARK_PURPLE + "Gain +1 extra of any ore you mine.");
         SCL.add(ChatColor.DARK_PURPLE + "You also have unlimited haste 3.");
         SCL.add(" ");
@@ -361,7 +361,6 @@ public class ItemStacks {
 
         return StarDustMineChest;
     }
-
 
 
 }

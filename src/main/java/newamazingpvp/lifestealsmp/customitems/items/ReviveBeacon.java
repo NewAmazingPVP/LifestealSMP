@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.customitems.Items;
+package newamazingpvp.lifestealsmp.customitems.items;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
