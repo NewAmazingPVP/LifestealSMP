@@ -266,7 +266,7 @@ public class Compass implements CommandExecutor, Listener {
                         /*if (distance != 0) {
                             msg += ChatColor.BOLD + " " + distance + " blocks";
                         }*/
-                        if(!msg.contains("Cannot")){
+                        if (!msg.contains("Cannot")) {
                             msg += " coordinates ";
                             msg += (target.getLocation().x() < 0) ? "negative x" : "positive x";
                             msg += " and ";

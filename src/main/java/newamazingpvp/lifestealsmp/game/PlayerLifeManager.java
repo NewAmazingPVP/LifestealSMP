@@ -57,7 +57,7 @@ public class PlayerLifeManager {
                 flag = true;
             }
         }
-        if(!flag){
+        if (!flag) {
             sender.sendMessage(ChatColor.RED + "This player is not eliminated! Enter the right name again");
             return false;
         }
