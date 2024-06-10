@@ -112,8 +112,8 @@ public class Utils {
 
     public static void updateLore(Player player) {
         for (ItemStack item : player.getInventory().getContents()) {
-            if(item == null) continue;
-            if(item.getType() == Material.DRAGON_EGG){
+            if (item == null) continue;
+            if (item.getType() == Material.DRAGON_EGG) {
                 ItemMeta meta = item.getItemMeta();
                 List<String> lore = new ArrayList<>(List.of(ChatColor.DARK_PURPLE + "Have in inventory for " + ChatColor.GOLD + "10%" + ChatColor.DARK_PURPLE + " less damage!"));
                 meta.setLore(lore);
