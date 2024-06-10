@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.customitems.items;
 
+import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -22,8 +23,7 @@ import static newamazingpvp.lifestealsmp.listener.SpawnProtection.isWithinSpawnR
 
 public class TntBow implements Listener {
     private final HashMap<UUID, ItemStack> playerHeldItems = new HashMap<>();
-    private final Map<Player, Long> teleportCooldowns = new HashMap<>();
-    private final long teleportCooldownDuration = 5000;
+    private final Map<Player, CooldownManager> teleportCooldowns = new HashMap<>();
 
     @EventHandler
     public void onPlayerUseBow(PlayerInteractEvent event) {
@@ -37,9 +37,9 @@ public class TntBow implements Listener {
         ItemStack mainHandItem = shooter.getInventory().getItemInMainHand();
         ItemStack offHandItem = shooter.getInventory().getItemInOffHand();
         if (isBow(mainHandItem) || isBow(offHandItem)) {
-            if (!isTeleportCooldownExpired(shooter)) {
+            if (teleportCooldowns.get(shooter) != null && teleportCooldowns.get(shooter).isOnCooldown()) {
                 event.setCancelled(true);
-                shooter.sendMessage(ChatColor.RED + "You must wait " + cooldownRemainingTime(shooter) + " for the cooldown to finish before using the TNT again.");
+                shooter.sendMessage(ChatColor.RED + "You must wait " + teleportCooldowns.get(shooter).getRemainingSeconds() + " seconds for the cooldown to finish before using the TNT again.");
             }
         }
     }
@@ -66,14 +66,18 @@ public class TntBow implements Listener {
             Player shooter = (Player) arrow.getShooter();
 
             if (playerHeldItems.containsKey(shooter.getUniqueId())) {
-                if (isTeleportCooldownExpired(shooter)) {
+                if (!teleportCooldowns.containsKey(shooter) || !teleportCooldowns.get(shooter).isOnCooldown()) {
                     Location arrowLocation = arrow.getLocation();
                     spawnIgnitedTNT(arrowLocation, shooter);
                     ItemStack item = playerHeldItems.get(shooter.getUniqueId());
                     playerHeldItems.remove(shooter.getUniqueId());
-                    setTeleportCooldown(shooter);
+                    if(!teleportCooldowns.containsKey(shooter)) {
+                        teleportCooldowns.put(shooter, new CooldownManager());
+                    } else {
+                        teleportCooldowns.get(shooter).setCooldown(5);
+                    }
                 } else {
-                    shooter.sendMessage(ChatColor.RED + "You must wait " + cooldownRemainingTime(shooter) + " for the cooldown to finish before using the TNT again.");
+                    shooter.sendMessage(ChatColor.RED + "You must wait " + teleportCooldowns.get(shooter).getRemainingSeconds() + " for the cooldown to finish before using the TNT again.");
                 }
             }
         }
@@ -92,20 +96,4 @@ public class TntBow implements Listener {
         return item.getType() == Material.BOW && meta.getLore() != null && meta.getLore().toString().contains("TNT Shooter!");
     }
 
-    private boolean isTeleportCooldownExpired(Player player) {
-        if (teleportCooldowns.containsKey(player)) {
-            long lastTeleportTime = teleportCooldowns.get(player);
-            long currentTime = System.currentTimeMillis();
-            return currentTime - lastTeleportTime >= teleportCooldownDuration;
-        }
-        return true;
-    }
-
-    private void setTeleportCooldown(Player player) {
-        teleportCooldowns.put(player, System.currentTimeMillis());
-    }
-
-    private String cooldownRemainingTime(Player player) {
-        return getString(player, teleportCooldowns, teleportCooldownDuration);
-    }
 }
