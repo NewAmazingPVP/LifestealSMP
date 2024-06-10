@@ -1,13 +1,9 @@
-package newamazingpvp.lifestealsmp.customitems.Armor;
+package newamazingpvp.lifestealsmp.customitems.armor;
 
-import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent;
-import org.bukkit.ChatColor;
-import org.bukkit.Effect;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -21,7 +17,7 @@ public class QuarryArmor implements Listener {
     public static boolean quarryIsLeggingsOn = false;
     public static boolean quarryIsBootsOn = false;
 
-    private static boolean doubleOreDrops = false;
+    private static final boolean doubleOreDrops = false;
 
     @EventHandler
     public void onArmorChange(PlayerMoveEvent event) {
@@ -39,41 +35,23 @@ public class QuarryArmor implements Listener {
         ItemMeta bootsMeta = boots.getItemMeta();
 
 
-        if (helmet.getType() == Material.LEATHER_HELMET && helmetMeta != null && helmetMeta.getLore() != null && helmetMeta.getLore().toString().contains("You also have unlimited haste 3.")) {
-            quarryIsHelmetOn=true;
-        }else{
-            quarryIsHelmetOn=false;
-        }
+        quarryIsHelmetOn = helmet.getType() == Material.LEATHER_HELMET && helmetMeta != null && helmetMeta.getLore() != null && helmetMeta.getLore().toString().contains("You also have unlimited haste 3.");
 
 
-        if (chestplate.getType() == Material.LEATHER_CHESTPLATE && chestplateMeta != null && chestplateMeta.getLore() != null && chestplateMeta.getLore().toString().contains("You also have unlimited haste 3.")) {
-            quarryIsChestplateOn=true;
-        }else{
-            quarryIsChestplateOn=false;
-        }
+        quarryIsChestplateOn = chestplate.getType() == Material.LEATHER_CHESTPLATE && chestplateMeta != null && chestplateMeta.getLore() != null && chestplateMeta.getLore().toString().contains("You also have unlimited haste 3.");
 
 
-        if (leggings.getType() == Material.LEATHER_LEGGINGS && leggingMetas != null && leggingMetas.getLore() != null && leggingMetas.getLore().toString().contains("You also have unlimited haste 3.")) {
-            quarryIsLeggingsOn=true;
-        }else{
-            quarryIsLeggingsOn=false;
-        }
+        quarryIsLeggingsOn = leggings.getType() == Material.LEATHER_LEGGINGS && leggingMetas != null && leggingMetas.getLore() != null && leggingMetas.getLore().toString().contains("You also have unlimited haste 3.");
 
 
-        if (boots.getType() == Material.LEATHER_BOOTS && bootsMeta != null && bootsMeta.getLore() != null && bootsMeta.getLore().toString().contains("You also have unlimited haste 3.")) {
-            quarryIsBootsOn=true;
-        }else{
-            quarryIsBootsOn=false;
-        }
+        quarryIsBootsOn = boots.getType() == Material.LEATHER_BOOTS && bootsMeta != null && bootsMeta.getLore() != null && bootsMeta.getLore().toString().contains("You also have unlimited haste 3.");
 
 
-        if(quarryIsHelmetOn && quarryIsChestplateOn && quarryIsLeggingsOn && quarryIsBootsOn){
+        if (quarryIsHelmetOn && quarryIsChestplateOn && quarryIsLeggingsOn && quarryIsBootsOn) {
             player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 100000, 2));
-        }else {
+        } else {
             player.removePotionEffect(PotionEffectType.FAST_DIGGING);
         }
-
-
 
 
     }

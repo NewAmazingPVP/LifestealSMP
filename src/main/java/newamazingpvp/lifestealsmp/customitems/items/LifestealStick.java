@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.customitems.Items;
+package newamazingpvp.lifestealsmp.customitems.items;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -9,7 +9,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +28,7 @@ public class LifestealStick implements Listener {
             ItemStack itemInHand = player.getItemInHand();
             ItemMeta meta = itemInHand.getItemMeta();
             if (meta != null && meta.getLore() != null && meta.getLore().toString().contains("You will heal " + ChatColor.RED + "1❤")) {
-                if(damagedPlayer instanceof Player){
+                if (damagedPlayer instanceof Player) {
 
                     if (isTeleportCooldownExpired(player)) {
 
@@ -51,8 +50,6 @@ public class LifestealStick implements Listener {
         }
         return true;
     }
-
-
 
 
     private void setTeleportCooldown(Player player) {
