@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -55,6 +56,8 @@ public class LifestealStick implements Listener {
     private void setTeleportCooldown(Player player) {
         stickCooldowns.put(player, System.currentTimeMillis());
     }
+
+
 
 
 }
