@@ -20,10 +20,11 @@ public class DevRecipes {
 
         ItemStack instaboomTNT = new ItemStack(InstaBoomTNT());
         ShapedRecipe instaboomTNTRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "instaboomTNT"), instaboomTNT);
-        instaboomTNTRecipe.shape("TDT", "TET", "TTT");
+        instaboomTNTRecipe.shape("ATA", "TET", "ATA");
         instaboomTNTRecipe.setIngredient('T', Material.TNT);
-        instaboomTNTRecipe.setIngredient('D', Material.DIAMOND);
-        instaboomTNTRecipe.setIngredient('E', Material.ECHO_SHARD);
+        instaboomTNTRecipe.setIngredient('E', Material.END_CRYSTAL);
+        instaboomTNTRecipe.setIngredient('A', Material.AIR);
+
         //customItems.add(instaboomTNT);
         //shapedRecipes.put(instaboomTNT, instaboomTNTRecipe);
         Bukkit.addRecipe(instaboomTNTRecipe);
