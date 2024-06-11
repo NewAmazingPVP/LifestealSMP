@@ -202,7 +202,8 @@ public class ItemStacks {
         SI.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Light Feather");
         SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> BL = new ArrayList<>();
-        BL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Right Click:" + ChatColor.DARK_PURPLE + " Get speed and jump boost for a few sec!");
+        BL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Right Click:");
+        BL.add(ChatColor.DARK_PURPLE + "Get speed and jump boost for a few sec!");
         BL.add(ChatColor.RED + "One time use!");
         SI.setLore(BL);
         SpeedFeather.setItemMeta(SI);
