@@ -39,7 +39,7 @@ public class InstaboomTNT implements Listener {
                     if (velocity.getY() > maxHeight) {
                         velocity.setY(maxHeight);
                     }
-                    player.setVelocity(velocity);
+                    playernear.setVelocity(velocity);
 
                 }
             }
