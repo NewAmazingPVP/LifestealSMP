@@ -13,6 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -62,7 +63,12 @@ public class FeatherSword implements Listener {
 
                     player.getLocation().getWorld().spawnParticle(Particle.EXPLOSION_NORMAL, player.getLocation(), 10);
                     player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 5.0f, 2.0f);
-                    player.setVelocity(player.getLocation().getDirection().multiply(3));
+                    Vector velocity = player.getLocation().getDirection().multiply(3);
+                    double maxHeight = 14.0;
+                    if (velocity.getY() > maxHeight) {
+                        velocity.setY(maxHeight);
+                    }
+                    player.setVelocity(velocity);
                     setTeleportCooldown(player);
 
                     //if (isSafeLocation(targetLocation)) {
