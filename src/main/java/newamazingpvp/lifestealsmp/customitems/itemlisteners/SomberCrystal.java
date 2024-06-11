@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static newamazingpvp.lifestealsmp.customitems.itemlisteners.FeatherSword.getString;
+import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.totemDisabledItem;
 
 public class SomberCrystal implements Listener {
 
@@ -53,19 +54,32 @@ public class SomberCrystal implements Listener {
     @EventHandler
     public void playerMove(PlayerMoveEvent e){
         Player player = e.getPlayer();
-        replaceTotems(player);
+        removeTotems(player);
     }
 
 
 
 
-    private static void replaceTotems(Player player){
+    private static void removeTotems(Player player){
 
         for (int i = 0; i < player.getInventory().getSize(); i++) {
             ItemStack item = player.getInventory().getItem(i);
 
             if (item!= null && item.getType() == Material.TOTEM_OF_UNDYING) {
-                player.getInventory().setItem(i, new ItemStack(Material.BARRIER));
+                player.getInventory().setItem(i, new ItemStack(totemDisabledItem()));
+                break; // Stop checking once we've replaced the first Totem
+
+            }
+        }
+    }
+
+    private static void addTotems(Player player){
+
+        for (int i = 0; i < player.getInventory().getSize(); i++) {
+            ItemStack item = player.getInventory().getItem(i);
+
+            if (item!= null && item.getType() == Material.BEDROCK) {
+                player.getInventory().setItem(i, new ItemStack(Material.TOTEM_OF_UNDYING));
                 break; // Stop checking once we've replaced the first Totem
 
             }
