@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static newamazingpvp.lifestealsmp.customitems.itemlisteners.FeatherSword.getString;
+
 public class InstaboomTNT implements Listener {
 
 
@@ -30,9 +32,10 @@ public class InstaboomTNT implements Listener {
         ItemMeta meta = item.getItemMeta();
         Location location = e.getBlock().getLocation();
 
-            if (isTeleportCooldownExpired(player)) {
+
 
                 if (meta != null && meta.hasDisplayName() && meta.getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "InstaBoom TNT")) {
+                    if (isTeleportCooldownExpired(player)) {
                     location.getWorld().spawnParticle(Particle.EXPLOSION_HUGE, location, 10);
                     e.setCancelled(true);
                     for (Player onlineplayer : Bukkit.getOnlinePlayers()) {
@@ -58,10 +61,11 @@ public class InstaboomTNT implements Listener {
                         player.getInventory().setItemInMainHand(null);
                     }
                 setTeleportCooldown(player);
-            }
-        }else{
-                player.sendMessage(ChatColor.RED + "You must wait " + cooldownRemainingTime(player) + " for the cooldown to finish before using instaboom tnt again.");
-            }
+            }else{
+                        player.sendMessage(ChatColor.RED + "You must wait " + cooldownRemainingTime(player) + " for the cooldown to finish before using instaboom tnt again.");
+                    }
+
+        }
     }
 
     private boolean isTeleportCooldownExpired(Player player) {
@@ -82,22 +86,6 @@ public class InstaboomTNT implements Listener {
         return getString(player, tntCooldowns, (long) tntCooldownTime);
     }
 
-    @NotNull
-    public static String getString(Player player, Map<Player, Long> teleportCooldowns, long teleportCooldownDuration) {
-        if (teleportCooldowns.containsKey(player)) {
-            long lastTeleportTime = teleportCooldowns.get(player);
-            long currentTime = System.currentTimeMillis();
-            long remainingCooldown = teleportCooldownDuration - (currentTime - lastTeleportTime);
 
-            if (remainingCooldown <= 0) {
-                return "Cooldown is over.";
-            }
-
-            int seconds = (int) (remainingCooldown / 1000);
-            return seconds + " seconds";
-        }
-
-        return "Cooldown is over.";
-    }
 
 }
