@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.customitems.itemListeners;
+package newamazingpvp.lifestealsmp.customitems.itemlisteners;
 
 import org.bukkit.GameMode;
 import org.bukkit.Location;
