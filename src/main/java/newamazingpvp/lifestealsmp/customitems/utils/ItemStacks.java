@@ -225,6 +225,7 @@ public class ItemStacks {
         BL.add(ChatColor.DARK_PURPLE + "of 3 blocks from where it is");
         BL.add(ChatColor.DARK_PURPLE + "placed will be pushed away!");
         BL.add(ChatColor.RED + "One Time Use!.");
+        BL.add(ChatColor.RED + "10s cooldown!");
         SI.setLore(BL);
         SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
         InstaBoomTNT.setItemMeta(SI);
