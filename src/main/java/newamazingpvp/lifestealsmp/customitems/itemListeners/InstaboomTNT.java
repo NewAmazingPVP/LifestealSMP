@@ -36,32 +36,32 @@ public class InstaboomTNT implements Listener {
 
                 if (meta != null && meta.hasDisplayName() && meta.getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "InstaBoom TNT")) {
                     if (isTeleportCooldownExpired(player)) {
-                    location.getWorld().spawnParticle(Particle.EXPLOSION_HUGE, location, 10);
-                    e.setCancelled(true);
-                    for (Player onlineplayer : Bukkit.getOnlinePlayers()) {
-                        onlineplayer.playSound(location, Sound.ENTITY_GENERIC_EXPLODE, 5.0f, 1.0f);
-                        onlineplayer.playSound(location, Sound.ENTITY_ELDER_GUARDIAN_CURSE, 5.0f, 2.0f);
-                        List<Player> nearbyPlayers = (List<Player>) location.getWorld().getNearbyPlayers(location, 3);
-                        for (Player playernear : nearbyPlayers) {
-                            playernear.addPotionEffect(new PotionEffect(PotionEffectType.DARKNESS, 20, 1));
-                            Vector direction = playernear.getLocation().toVector().subtract(location.toVector()).normalize();
-                            Vector velocity = direction.multiply(20);
-                            double maxHeight = 1.0;
-                            if (velocity.getY() > maxHeight) {
-                                velocity.setY(maxHeight);
-                            }
-                            playernear.setVelocity(velocity);
+                        setTeleportCooldown(player);
+                        location.getWorld().spawnParticle(Particle.EXPLOSION_HUGE, location, 10);
+                        e.setCancelled(true);
+                        for (Player onlineplayer : Bukkit.getOnlinePlayers()) {
+                            onlineplayer.playSound(location, Sound.ENTITY_GENERIC_EXPLODE, 5.0f, 1.0f);
+                            onlineplayer.playSound(location, Sound.ENTITY_ELDER_GUARDIAN_CURSE, 5.0f, 2.0f);
+                            List<Player> nearbyPlayers = (List<Player>) location.getWorld().getNearbyPlayers(location, 3);
+                            for (Player playernear : nearbyPlayers) {
+                                playernear.addPotionEffect(new PotionEffect(PotionEffectType.DARKNESS, 20, 1));
+                                Vector direction = playernear.getLocation().toVector().subtract(location.toVector()).normalize();
+                                Vector velocity = direction.multiply(20);
+                                double maxHeight = 1.0;
+                                if (velocity.getY() > maxHeight) {
+                                    velocity.setY(maxHeight);
+                                }
+                                playernear.setVelocity(velocity);
 
+                            }
                         }
-                    }
-                    if (item.getAmount() > 1) {
-                        item.setAmount(item.getAmount() - 1);
-                        player.getInventory().setItemInMainHand(item);
-                    } else {
-                        player.getInventory().setItemInMainHand(null);
-                    }
-                setTeleportCooldown(player);
-            }else{
+                        if (item.getAmount() > 1) {
+                            item.setAmount(item.getAmount() - 1);
+                            player.getInventory().setItemInMainHand(item);
+                        } else {
+                            player.getInventory().setItemInMainHand(null);
+                        }
+                }else{
                         player.sendMessage(ChatColor.RED + "You must wait " + cooldownRemainingTime(player) + " for the cooldown to finish before using instaboom tnt again.");
                     }
 
