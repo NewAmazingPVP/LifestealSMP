@@ -35,7 +35,7 @@ public class InstaboomTNT implements Listener {
                     playernear.addPotionEffect(new PotionEffect(PotionEffectType.DARKNESS, 20, 1));
                     Vector direction = playernear.getLocation().toVector().subtract(location.toVector()).normalize();
                     Vector velocity = player.getLocation().getDirection().multiply(20);
-                    double maxHeight = 20.0;
+                    double maxHeight = 1.0;
                     if (velocity.getY() > maxHeight) {
                         velocity.setY(maxHeight);
                     }
