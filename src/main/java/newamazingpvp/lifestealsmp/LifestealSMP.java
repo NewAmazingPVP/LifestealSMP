@@ -12,6 +12,7 @@ import newamazingpvp.lifestealsmp.blacklistener.ChatFilter;
 import newamazingpvp.lifestealsmp.blacklistener.EndCrystalWarning;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.command.unused.JailPlayer;
+import newamazingpvp.lifestealsmp.command.unused.TESTsomber;
 import newamazingpvp.lifestealsmp.customitems.armorlisteners.QuarryArmor;
 import newamazingpvp.lifestealsmp.customitems.itemlisteners.*;
 import newamazingpvp.lifestealsmp.customitems.utils.Drops;
@@ -157,6 +158,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new QuarryArmor(), this);
             getServer().getPluginManager().registerEvents(new SomberCrystal(), this);
             registerCustomRecipesDev();
+
+            getCommand("sombercrystaltest").setExecutor(new TESTsomber());
+
 
 
             //THESE ARE THE BINGO EVENTS TO DETECT IF A PLAYER DID A PART OF IT

@@ -6,6 +6,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -16,11 +18,12 @@ import java.util.Map;
 
 import static newamazingpvp.lifestealsmp.customitems.itemlisteners.FeatherSword.getString;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.totemDisabledItem;
+import static newamazingpvp.lifestealsmp.wip.mcbingo.gui.BingoCardGUIs.BingoPickaxeRecipeGUI;
 
 public class SomberCrystal implements Listener {
 
-    private final Map<Player, Long> somberCooldowns = new HashMap<>();
-    private final double somberMaxTime = 2.5;
+    private static final Map<Player, Long> somberCooldowns = new HashMap<>();
+    private final long somberMaxTime = 300000;
     @EventHandler
     public void playerHitPlayer(EntityDamageByEntityEvent e) {
 
@@ -37,14 +40,15 @@ public class SomberCrystal implements Listener {
 
 
 
+                    setSomberTimer((Player) damagedPlayer);
                     for (Player onlineplayer : Bukkit.getOnlinePlayers()) {
                         onlineplayer.playSound(loc, Sound.BLOCK_GLASS_BREAK, 2.0f, 1.0f);
                         onlineplayer.playSound(loc, Sound.BLOCK_SCULK_SHRIEKER_SHRIEK, 2.0f, 0.0f);
 
 
 
-                    }
 
+                    }
                 }
             }
         }
@@ -54,9 +58,41 @@ public class SomberCrystal implements Listener {
     @EventHandler
     public void playerMove(PlayerMoveEvent e){
         Player player = e.getPlayer();
-        removeTotems(player);
+        if(!isTeleportCooldownExpired(player)){
+            removeTotems(player);
+        }else{
+            addTotems(player);
+        }
     }
 
+    @EventHandler
+    public void onPlayerRightClick(PlayerInteractEvent e) {
+
+        Player player = e.getPlayer();
+        ItemStack itemInHand = player.getItemInHand();
+
+        if (itemInHand != null && itemInHand.getType() == Material.BEDROCK && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 5min")) {
+            player.playSound(player.getLocation(), Sound.BLOCK_SCULK_SHRIEKER_SHRIEK, 1.0f, 2.0f);
+            e.setCancelled(true);
+            player.sendMessage(ChatColor.RED + "Disabled for " + cooldownRemainingTime(player) + " s");
+        }
+
+
+    }
+
+    @EventHandler
+    public void onInventoryClick(InventoryClickEvent e) {
+
+        ItemStack itemInHand = e.getCurrentItem();
+        Player player = (Player) e.getWhoClicked();
+
+        if (itemInHand != null && itemInHand.getType() == Material.BEDROCK && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 5min")) {
+            player.playSound(player.getLocation(), Sound.BLOCK_SCULK_SHRIEKER_SHRIEK, 1.0f, 2.0f);
+            e.setCancelled(true);
+            player.sendMessage(ChatColor.RED + "Disabled for " + cooldownRemainingTime(player) + " s");
+        }
+
+    }
 
 
 
@@ -98,7 +134,7 @@ public class SomberCrystal implements Listener {
     }
 
 
-    private void setTeleportCooldown(Player player) {
+    public static void setSomberTimer(Player player) {
         somberCooldowns.put(player, System.currentTimeMillis());
     }
 
