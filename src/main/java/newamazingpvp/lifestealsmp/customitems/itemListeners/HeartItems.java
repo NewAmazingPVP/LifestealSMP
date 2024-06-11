@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.customitems.items;
+package newamazingpvp.lifestealsmp.customitems.itemListeners;
 
 import org.bukkit.*;
 import org.bukkit.entity.Player;

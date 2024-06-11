@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.customitems.items;
+package newamazingpvp.lifestealsmp.customitems.itemListeners;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import static newamazingpvp.lifestealsmp.customitems.items.FeatherSword.getString;
+import static newamazingpvp.lifestealsmp.customitems.itemListeners.FeatherSword.getString;
 
 public class TeleportBow implements Listener {
     private final HashMap<UUID, ItemStack> playerHeldItems = new HashMap<>();
