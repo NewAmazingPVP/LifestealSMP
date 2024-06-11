@@ -35,10 +35,10 @@ public class InstaboomTNT implements Listener {
 
 
                 if (meta != null && meta.hasDisplayName() && meta.getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "InstaBoom TNT")) {
+                    e.setCancelled(true);
                     if (isTeleportCooldownExpired(player)) {
                         setTeleportCooldown(player);
                         location.getWorld().spawnParticle(Particle.EXPLOSION_HUGE, location, 10);
-                        e.setCancelled(true);
                         for (Player onlineplayer : Bukkit.getOnlinePlayers()) {
                             onlineplayer.playSound(location, Sound.ENTITY_GENERIC_EXPLODE, 5.0f, 1.0f);
                             onlineplayer.playSound(location, Sound.ENTITY_ELDER_GUARDIAN_CURSE, 5.0f, 2.0f);

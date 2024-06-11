@@ -149,3 +149,8 @@ commands:
     usage: /generatenewbingogame
     permission: lifestealSMP.admin
     default: op
+  sombercrystaltest:
+    description: test for somber crystal
+    usage: /sombercrystaltest
+    permission: lifestealSMP.admin
+    default: op
