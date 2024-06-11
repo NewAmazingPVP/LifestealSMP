@@ -373,7 +373,8 @@ public class ItemStacks {
         SI.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Somber Crystal");
         SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> BL = new ArrayList<>();
-        BL.add(ChatColor.DARK_PURPLE + "Use this to disable totems of undying on someone for 5min");
+        BL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Hit A Player:");
+        BL.add(ChatColor.DARK_PURPLE + "disables totems of undying on someone for 5min");
         BL.add(ChatColor.RED + "One time use!");
         SI.setLore(BL);
         SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
