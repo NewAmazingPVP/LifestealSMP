@@ -35,7 +35,6 @@ public class DevRecipes {
         LifestealSwordRecipe.setIngredient('F', heavyNetherStar());
         LifestealSwordRecipe.setIngredient('S', powerStick());
         LifestealSwordRecipe.setIngredient('N', Material.NETHERITE_INGOT);
-        LifestealSwordRecipe.setIngredient('D', Material.DIAMOND_BLOCK);
         LifestealSwordRecipe.setIngredient('W', Material.WITHER_SKELETON_SKULL);
         Bukkit.addRecipe(LifestealSwordRecipe);
 
