@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.customitems.itemListeners;
+package newamazingpvp.lifestealsmp.customitems.itemlisteners;
 
 import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.ChatColor;
