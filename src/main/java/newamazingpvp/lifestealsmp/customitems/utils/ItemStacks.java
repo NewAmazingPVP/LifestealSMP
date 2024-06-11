@@ -383,5 +383,20 @@ public class ItemStacks {
         return powerStick;
     }
 
+    public static ItemStack totemDisabledItem() {
+
+        ItemStack powerStick = new ItemStack(Material.BEDROCK);
+        ItemMeta SI = powerStick.getItemMeta();
+        SI.addEnchant(Enchantment.DURABILITY, 1, false);
+        SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        SI.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 5min");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        powerStick.setItemMeta(SI);
+
+        return powerStick;
+    }
+
+
 
 }

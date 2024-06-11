@@ -22,7 +22,7 @@ public class InstaboomTNT implements Listener {
 
 
     private final Map<Player, Long> tntCooldowns = new HashMap<>();
-    private final double tntCooldownTime = 10;
+    private final double tntCooldownTime = 10000;
 
     @EventHandler
     public void playerPlaceBlock(BlockPlaceEvent e) {
