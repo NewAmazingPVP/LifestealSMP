@@ -17,20 +17,6 @@ import static newamazingpvp.lifestealsmp.customitems.utils.GUI.*;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
 
 public class Recipes {
-    public static class FeatherSwordRecipe extends ItemStack{
-        public FeatherSwordRecipe(){
-            super(new ItemStack(Material.NETHERITE_SWORD).getType(), 1);
-            ItemMeta meta = super.getItemMeta();
-            meta.setDisplayName(ChatColor.AQUA + "Feather Sword");
-            List<String> DEFL = new ArrayList<>();
-            DEFL.add(ChatColor.GOLD + "Special Ability: " + ChatColor.DARK_PURPLE + "Right click to launch yourself");
-            DEFL.add(ChatColor.LIGHT_PURPLE + "Permanent speed while holding");
-            meta.setLore(DEFL);
-            super.setItemMeta(meta);
-        }
-    }
-
-
     public static void registerCustomRecipes() {
 
         /*ItemStack VWH = new ItemStack(VoidWalkerHEALM());
@@ -108,14 +94,14 @@ public class Recipes {
         Bukkit.addRecipe(tntBowRecipe);
 
         NamespacedKey featherSword = new NamespacedKey(lifestealSmp, "feather_sword");
-        ShapelessRecipe featherSwordRecipe = new ShapelessRecipe(featherSword, new FeatherSwordRecipe());
+        ShapelessRecipe featherSwordRecipe = new ShapelessRecipe(featherSword, createFeatherSword());
         featherSwordRecipe.addIngredient(2, Material.FEATHER);
         featherSwordRecipe.addIngredient(2, Material.NETHERITE_INGOT);
         featherSwordRecipe.addIngredient(1, Material.DIAMOND_SWORD);
         featherSwordRecipe.addIngredient(2, Material.TOTEM_OF_UNDYING);
         featherSwordRecipe.addIngredient(2, Material.NETHER_STAR);
-        customItems.add(new FeatherSwordRecipe());
-        shapelessRecipes.put(new FeatherSwordRecipe(), featherSwordRecipe);
+        customItems.add(createFeatherSword());
+        shapelessRecipes.put(createFeatherSword(), featherSwordRecipe);
         Bukkit.addRecipe(featherSwordRecipe);
 
         NamespacedKey tropChopAxe = new NamespacedKey(lifestealSmp, "trop_chop_axe");
