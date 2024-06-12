@@ -34,7 +34,8 @@ public class MusicBox implements Listener {
             if (item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Music Box")) {
                 if (meta.getLore() == null) return;
 
-
+                openMusicBoxGUI(player);
+                player.sendMessage("test");
 
 
             }
@@ -47,14 +48,13 @@ public class MusicBox implements Listener {
         Player player = e.getPlayer();
         ItemStack item = player.getInventory().getItemInMainHand();
         if (item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Music Box")) {
-            openMusicBoxGUI(player);
             e.setCancelled(true);
         }
     }
 
 
 
-    private void stopMusic(Player player){
+    private static void stopMusic(Player player){
         player.stopSound(Sound.MUSIC_DISC_13);
         player.stopSound(Sound.MUSIC_DISC_CAT);
         player.stopSound(Sound.MUSIC_DISC_BLOCKS);
@@ -75,7 +75,7 @@ public class MusicBox implements Listener {
 
 
 
-    private void openMusicBoxGUI(Player player){
+    private static void openMusicBoxGUI(Player player){
 
         player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 2.0f);
 
