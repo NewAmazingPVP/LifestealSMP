@@ -24,7 +24,7 @@ import static newamazingpvp.lifestealsmp.wip.mcbingo.gui.BingoCardGUIs.BingoPick
 public class SomberCrystal implements Listener {
 
     private static final Map<Player, Long> somberCooldowns = new HashMap<>();
-    private final long somberMaxTime = 5000;//300000
+    private final long somberMaxTime = 300000;//300000
     @EventHandler
     public void playerHitPlayer(EntityDamageByEntityEvent e) {
 
