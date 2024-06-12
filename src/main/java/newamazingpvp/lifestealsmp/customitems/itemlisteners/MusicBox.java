@@ -30,7 +30,7 @@ public class MusicBox implements Listener {
         ItemStack item = player.getInventory().getItemInMainHand();
 
         if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) &&
-                event.hasItem() && event.getItem().getType() == Material.FEATHER) {
+                event.hasItem() && event.getItem().getType() == Material.NOTE_BLOCK) {
             if (item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Music Box")) {
                 if (meta.getLore() == null) return;
 
