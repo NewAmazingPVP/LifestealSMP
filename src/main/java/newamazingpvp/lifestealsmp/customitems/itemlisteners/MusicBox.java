@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,8 +12,12 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static newamazingpvp.lifestealsmp.wip.mcbingo.gui.BingoGUIItems.*;
 
@@ -47,6 +52,10 @@ public class MusicBox implements Listener {
     }
 
 
+
+
+
+
     public static void openMusicBoxGUI(Player player){
 
         player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 2.0f);
@@ -56,12 +65,35 @@ public class MusicBox implements Listener {
         musicBoxGUI.setItem(0, orangeGlassGUI());
         musicBoxGUI.setItem(1, orangeGlassGUI());
         musicBoxGUI.setItem(2, orangeGlassGUI());
-        
+
+
 
 
         player.openInventory(musicBoxGUI);
 
     }
+
+
+
+    //GUI items for the GUI
+
+
+    ItemStack disc1 = new ItemStack(Material.NOTE_BLOCK);
+    ItemStack disc2 = new ItemStack(Material.NOTE_BLOCK);
+    ItemStack disc3 = new ItemStack(Material.NOTE_BLOCK);
+    ItemStack disc4 = new ItemStack(Material.NOTE_BLOCK);
+    ItemStack disc5 = new ItemStack(Material.NOTE_BLOCK);
+    ItemStack disc6 = new ItemStack(Material.NOTE_BLOCK);
+    ItemStack disc7 = new ItemStack(Material.NOTE_BLOCK);
+    ItemStack disc8 = new ItemStack(Material.NOTE_BLOCK);
+    ItemStack disc9 = new ItemStack(Material.NOTE_BLOCK);
+    ItemStack disc10 = new ItemStack(Material.NOTE_BLOCK);
+    ItemStack disc11 = new ItemStack(Material.NOTE_BLOCK);
+    ItemStack disc12 = new ItemStack(Material.NOTE_BLOCK);
+    ItemStack disc13 = new ItemStack(Material.NOTE_BLOCK);
+    ItemStack disc14 = new ItemStack(Material.NOTE_BLOCK);
+    ItemStack disc15 = new ItemStack(Material.NOTE_BLOCK);
+    ItemStack disc16 = new ItemStack(Material.NOTE_BLOCK);
 
 
 
