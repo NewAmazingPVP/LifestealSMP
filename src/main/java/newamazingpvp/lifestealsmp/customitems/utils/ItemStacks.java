@@ -403,7 +403,7 @@ public class ItemStacks {
         ItemMeta SI = powerStick.getItemMeta();
         SI.addEnchant(Enchantment.DURABILITY, 1, false);
         SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        SI.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Music Box");
+        SI.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Music Box");
         List<String> BL = new ArrayList<>();
         BL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Right Click:");
         BL.add(ChatColor.DARK_PURPLE + "Lets you play any music disc.");

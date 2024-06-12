@@ -31,7 +31,7 @@ public class MusicBox implements Listener {
 
         if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) &&
                 event.hasItem() && event.getItem().getType() == Material.FEATHER) {
-            if (item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Music Box")) {
+            if (item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Music Box")) {
                 if (meta.getLore() == null) return;
 
                 openMusicBoxGUI(player);
@@ -78,22 +78,22 @@ public class MusicBox implements Listener {
     //GUI items for the GUI
 
 
-    ItemStack disc1 = new ItemStack(Material.NOTE_BLOCK);
-    ItemStack disc2 = new ItemStack(Material.NOTE_BLOCK);
-    ItemStack disc3 = new ItemStack(Material.NOTE_BLOCK);
-    ItemStack disc4 = new ItemStack(Material.NOTE_BLOCK);
-    ItemStack disc5 = new ItemStack(Material.NOTE_BLOCK);
-    ItemStack disc6 = new ItemStack(Material.NOTE_BLOCK);
-    ItemStack disc7 = new ItemStack(Material.NOTE_BLOCK);
-    ItemStack disc8 = new ItemStack(Material.NOTE_BLOCK);
-    ItemStack disc9 = new ItemStack(Material.NOTE_BLOCK);
-    ItemStack disc10 = new ItemStack(Material.NOTE_BLOCK);
-    ItemStack disc11 = new ItemStack(Material.NOTE_BLOCK);
-    ItemStack disc12 = new ItemStack(Material.NOTE_BLOCK);
-    ItemStack disc13 = new ItemStack(Material.NOTE_BLOCK);
-    ItemStack disc14 = new ItemStack(Material.NOTE_BLOCK);
-    ItemStack disc15 = new ItemStack(Material.NOTE_BLOCK);
-    ItemStack disc16 = new ItemStack(Material.NOTE_BLOCK);
+    ItemStack disc1 = new ItemStack(Material.MUSIC_DISC_13);
+    ItemStack disc2 = new ItemStack(Material.MUSIC_DISC_CAT);
+    ItemStack disc3 = new ItemStack(Material.MUSIC_DISC_BLOCKS);
+    ItemStack disc4 = new ItemStack(Material.MUSIC_DISC_CHIRP);
+    ItemStack disc5 = new ItemStack(Material.MUSIC_DISC_FAR);
+    ItemStack disc6 = new ItemStack(Material.MUSIC_DISC_MALL);
+    ItemStack disc7 = new ItemStack(Material.MUSIC_DISC_MELLOHI);
+    ItemStack disc8 = new ItemStack(Material.MUSIC_DISC_STAL);
+    ItemStack disc9 = new ItemStack(Material.MUSIC_DISC_STRAD);
+    ItemStack disc10 = new ItemStack(Material.MUSIC_DISC_WARD);
+    ItemStack disc11 = new ItemStack(Material.MUSIC_DISC_11);
+    ItemStack disc12 = new ItemStack(Material.MUSIC_DISC_WAIT);
+    ItemStack disc13 = new ItemStack(Material.MUSIC_DISC_OTHERSIDE);
+    ItemStack disc14 = new ItemStack(Material.MUSIC_DISC_RELIC);
+    ItemStack disc15 = new ItemStack(Material.MUSIC_DISC_5);
+    ItemStack disc16 = new ItemStack(Material.MUSIC_DISC_PIGSTEP);
 
 
 
