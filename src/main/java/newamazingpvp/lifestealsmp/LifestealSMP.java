@@ -157,6 +157,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new LifestealStick(), this);
             getServer().getPluginManager().registerEvents(new QuarryArmor(), this);
             getServer().getPluginManager().registerEvents(new SomberCrystal(), this);
+            getServer().getPluginManager().registerEvents(new MusicBox(), this);
             registerCustomRecipesDev();
 
             getCommand("sombercrystaltest").setExecutor(new TESTsomber());
