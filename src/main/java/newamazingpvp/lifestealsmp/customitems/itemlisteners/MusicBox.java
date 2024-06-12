@@ -57,10 +57,17 @@ public class MusicBox implements Listener {
     public void onMenuClick(InventoryClickEvent event) {
 
         ItemStack itemInHand = event.getCurrentItem();
+        ItemMeta meta = itemInHand.getItemMeta();
         Player player = (Player) event.getWhoClicked();
 
         if (event.getView().getTitle().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Music Box")) {
 
+
+            if (meta != null && meta.getLore() != null && meta.getLore().toString().contains("C418 - 13")) {
+                stopMusic(player);
+                player.playSound(player.getLocation(), Sound.MUSIC_DISC_13, 1.0f, 2.0f);
+                chatMusic(player,"Disc 13");
+            }
 
 
             event.setCancelled(true);
@@ -68,7 +75,9 @@ public class MusicBox implements Listener {
         }
     }
 
-
+    private static void chatMusic(Player player, String musicName){
+        player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Now playing " + musicName);
+    }
 
 
     private static void stopMusic(Player player){
@@ -146,7 +155,7 @@ public class MusicBox implements Listener {
         musicBoxGUI.setItem(41, orangeGlassGUI());
         musicBoxGUI.setItem(42, orangeGlassGUI());
         musicBoxGUI.setItem(43, orangeGlassGUI());
-        musicBoxGUI.setItem(44, orangeGlassGUI());
+        musicBoxGUI.setItem(44, stopAllMusicItem());
 
 
 
@@ -178,7 +187,7 @@ public class MusicBox implements Listener {
     static ItemStack disc16 = new ItemStack(Material.MUSIC_DISC_PIGSTEP);
 
 
-    public static ItemStack totemDisabledItem() {
+    public static ItemStack stopAllMusicItem() {
 
         ItemStack powerStick = new ItemStack(Material.BARRIER);
         ItemMeta SI = powerStick.getItemMeta();
