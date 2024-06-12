@@ -10,6 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
@@ -35,7 +36,6 @@ public class MusicBox implements Listener {
                 if (meta.getLore() == null) return;
 
                 openMusicBoxGUI(player);
-                player.sendMessage("test");
 
 
             }
@@ -51,6 +51,23 @@ public class MusicBox implements Listener {
             e.setCancelled(true);
         }
     }
+
+
+    @EventHandler
+    public void onMenuClick(InventoryClickEvent event) {
+
+        ItemStack itemInHand = event.getCurrentItem();
+        Player player = (Player) event.getWhoClicked();
+
+        if (event.getView().getTitle().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Music Box")) {
+
+
+
+            event.setCancelled(true);
+
+        }
+    }
+
 
 
 
@@ -84,6 +101,52 @@ public class MusicBox implements Listener {
         musicBoxGUI.setItem(0, orangeGlassGUI());
         musicBoxGUI.setItem(1, orangeGlassGUI());
         musicBoxGUI.setItem(2, orangeGlassGUI());
+        musicBoxGUI.setItem(3, orangeGlassGUI());
+        musicBoxGUI.setItem(4, orangeGlassGUI());
+        musicBoxGUI.setItem(5, orangeGlassGUI());
+        musicBoxGUI.setItem(6, orangeGlassGUI());
+        musicBoxGUI.setItem(7, orangeGlassGUI());
+        musicBoxGUI.setItem(8, orangeGlassGUI());
+
+        musicBoxGUI.setItem(9, orangeGlassGUI());
+        musicBoxGUI.setItem(10, disc1);
+        musicBoxGUI.setItem(11, disc2);
+        musicBoxGUI.setItem(12, disc3);
+        musicBoxGUI.setItem(13, disc4);
+        musicBoxGUI.setItem(14, disc5);
+        musicBoxGUI.setItem(15, disc6);
+        musicBoxGUI.setItem(16, disc7);
+        musicBoxGUI.setItem(17, orangeGlassGUI());
+
+        musicBoxGUI.setItem(18, orangeGlassGUI());
+        musicBoxGUI.setItem(19, disc8);
+        musicBoxGUI.setItem(20, disc9);
+        musicBoxGUI.setItem(21, disc10);
+        musicBoxGUI.setItem(22, disc11);
+        musicBoxGUI.setItem(23, disc12);
+        musicBoxGUI.setItem(24, disc13);
+        musicBoxGUI.setItem(25, disc14);
+        musicBoxGUI.setItem(26, orangeGlassGUI());
+
+        musicBoxGUI.setItem(27, orangeGlassGUI());
+        musicBoxGUI.setItem(28, disc15);
+        musicBoxGUI.setItem(29, disc16);
+        //musicBoxGUI.setItem(30, orangeGlassGUI());
+        //musicBoxGUI.setItem(31, orangeGlassGUI());
+        //musicBoxGUI.setItem(32, orangeGlassGUI());
+        //musicBoxGUI.setItem(33, orangeGlassGUI());
+        //musicBoxGUI.setItem(34, orangeGlassGUI());
+        musicBoxGUI.setItem(35, orangeGlassGUI());
+
+        musicBoxGUI.setItem(36, orangeGlassGUI());
+        musicBoxGUI.setItem(37, orangeGlassGUI());
+        musicBoxGUI.setItem(38, orangeGlassGUI());
+        musicBoxGUI.setItem(39, orangeGlassGUI());
+        musicBoxGUI.setItem(40, orangeGlassGUI());
+        musicBoxGUI.setItem(41, orangeGlassGUI());
+        musicBoxGUI.setItem(42, orangeGlassGUI());
+        musicBoxGUI.setItem(43, orangeGlassGUI());
+        musicBoxGUI.setItem(44, orangeGlassGUI());
 
 
 
@@ -97,22 +160,22 @@ public class MusicBox implements Listener {
     //GUI items for the GUI
 
 
-    ItemStack disc1 = new ItemStack(Material.MUSIC_DISC_13);
-    ItemStack disc2 = new ItemStack(Material.MUSIC_DISC_CAT);
-    ItemStack disc3 = new ItemStack(Material.MUSIC_DISC_BLOCKS);
-    ItemStack disc4 = new ItemStack(Material.MUSIC_DISC_CHIRP);
-    ItemStack disc5 = new ItemStack(Material.MUSIC_DISC_FAR);
-    ItemStack disc6 = new ItemStack(Material.MUSIC_DISC_MALL);
-    ItemStack disc7 = new ItemStack(Material.MUSIC_DISC_MELLOHI);
-    ItemStack disc8 = new ItemStack(Material.MUSIC_DISC_STAL);
-    ItemStack disc9 = new ItemStack(Material.MUSIC_DISC_STRAD);
-    ItemStack disc10 = new ItemStack(Material.MUSIC_DISC_WARD);
-    ItemStack disc11 = new ItemStack(Material.MUSIC_DISC_11);
-    ItemStack disc12 = new ItemStack(Material.MUSIC_DISC_WAIT);
-    ItemStack disc13 = new ItemStack(Material.MUSIC_DISC_OTHERSIDE);
-    ItemStack disc14 = new ItemStack(Material.MUSIC_DISC_RELIC);
-    ItemStack disc15 = new ItemStack(Material.MUSIC_DISC_5);
-    ItemStack disc16 = new ItemStack(Material.MUSIC_DISC_PIGSTEP);
+    static ItemStack disc1 = new ItemStack(Material.MUSIC_DISC_13);
+    static ItemStack disc2 = new ItemStack(Material.MUSIC_DISC_CAT);
+    static ItemStack disc3 = new ItemStack(Material.MUSIC_DISC_BLOCKS);
+    static ItemStack disc4 = new ItemStack(Material.MUSIC_DISC_CHIRP);
+    static ItemStack disc5 = new ItemStack(Material.MUSIC_DISC_FAR);
+    static ItemStack disc6 = new ItemStack(Material.MUSIC_DISC_MALL);
+    static ItemStack disc7 = new ItemStack(Material.MUSIC_DISC_MELLOHI);
+    static ItemStack disc8 = new ItemStack(Material.MUSIC_DISC_STAL);
+    static ItemStack disc9 = new ItemStack(Material.MUSIC_DISC_STRAD);
+    static ItemStack disc10 = new ItemStack(Material.MUSIC_DISC_WARD);
+    static ItemStack disc11 = new ItemStack(Material.MUSIC_DISC_11);
+    static ItemStack disc12 = new ItemStack(Material.MUSIC_DISC_WAIT);
+    static ItemStack disc13 = new ItemStack(Material.MUSIC_DISC_OTHERSIDE);
+    static ItemStack disc14 = new ItemStack(Material.MUSIC_DISC_RELIC);
+    static ItemStack disc15 = new ItemStack(Material.MUSIC_DISC_5);
+    static ItemStack disc16 = new ItemStack(Material.MUSIC_DISC_PIGSTEP);
 
 
     public static ItemStack totemDisabledItem() {
