@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.customitems.itemlisteners;
 
+import newamazingpvp.lifestealsmp.customitems.utils.Recipes;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -51,11 +52,8 @@ public class FeatherSword implements Listener {
     public void onPlayerRightClick(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) &&
-                event.hasItem() && event.getItem().getType() == Material.NETHERITE_SWORD) {
-            ItemMeta meta = event.getItem().getItemMeta();
-            if (meta.getLore() == null) return;
-            if (meta.getLore().toString().toLowerCase().contains("permanent speed")
-                    && !player.getInventory().getItemInOffHand().toString().toLowerCase().contains("shield")) {
+                event.hasItem() && event.getItem() instanceof Recipes.FeatherSwordRecipe) {
+            if (!player.getInventory().getItemInOffHand().toString().toLowerCase().contains("shield")) {
                 if (isTeleportCooldownExpired(player)) {
                     //Vector direction = player.getLocation().getDirection();
                     //direction.multiply(new Vector(10, 10, 10));

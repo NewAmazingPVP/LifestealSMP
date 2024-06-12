@@ -1,17 +1,34 @@
 package newamazingpvp.lifestealsmp.customitems.utils;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.customitems.utils.GUI.*;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
 
 public class Recipes {
+    public static class FeatherSwordRecipe extends ItemStack{
+        public FeatherSwordRecipe(){
+            super(new ItemStack(Material.NETHERITE_SWORD).getType(), 1);
+            ItemMeta meta = super.getItemMeta();
+            meta.setDisplayName(ChatColor.AQUA + "Feather Sword");
+            List<String> DEFL = new ArrayList<>();
+            DEFL.add(ChatColor.GOLD + "Special Ability: " + ChatColor.DARK_PURPLE + "Right click to launch yourself");
+            DEFL.add(ChatColor.LIGHT_PURPLE + "Permanent speed while holding");
+            meta.setLore(DEFL);
+            super.setItemMeta(meta);
+        }
+    }
 
 
     public static void registerCustomRecipes() {
@@ -91,14 +108,14 @@ public class Recipes {
         Bukkit.addRecipe(tntBowRecipe);
 
         NamespacedKey featherSword = new NamespacedKey(lifestealSmp, "feather_sword");
-        ShapelessRecipe featherSwordRecipe = new ShapelessRecipe(featherSword, createFeatherSword());
+        ShapelessRecipe featherSwordRecipe = new ShapelessRecipe(featherSword, new FeatherSwordRecipe());
         featherSwordRecipe.addIngredient(2, Material.FEATHER);
         featherSwordRecipe.addIngredient(2, Material.NETHERITE_INGOT);
         featherSwordRecipe.addIngredient(1, Material.DIAMOND_SWORD);
         featherSwordRecipe.addIngredient(2, Material.TOTEM_OF_UNDYING);
         featherSwordRecipe.addIngredient(2, Material.NETHER_STAR);
-        customItems.add(createFeatherSword());
-        shapelessRecipes.put(createFeatherSword(), featherSwordRecipe);
+        customItems.add(new FeatherSwordRecipe());
+        shapelessRecipes.put(new FeatherSwordRecipe(), featherSwordRecipe);
         Bukkit.addRecipe(featherSwordRecipe);
 
         NamespacedKey tropChopAxe = new NamespacedKey(lifestealSmp, "trop_chop_axe");
