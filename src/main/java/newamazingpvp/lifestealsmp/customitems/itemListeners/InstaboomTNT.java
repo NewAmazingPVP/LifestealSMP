@@ -28,7 +28,7 @@ public class InstaboomTNT implements Listener {
     public void playerPlaceBlock(BlockPlaceEvent e) {
 
         Player player = e.getPlayer();
-        ItemStack item = e.getItemInHand();
+        ItemStack item = player.getInventory().getItemInMainHand();
         ItemMeta meta = item.getItemMeta();
         Location location = e.getBlock().getLocation();
 

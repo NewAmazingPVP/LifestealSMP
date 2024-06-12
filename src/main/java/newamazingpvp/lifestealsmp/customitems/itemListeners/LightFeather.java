@@ -19,7 +19,7 @@ public class LightFeather implements Listener {
     public void onPlayerRightClick(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         ItemMeta meta = event.getItem().getItemMeta();
-        ItemStack item = event.getItem();
+        ItemStack item = player.getInventory().getItemInMainHand();
 
         if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) &&
                 event.hasItem() && event.getItem().getType() == Material.FEATHER) {

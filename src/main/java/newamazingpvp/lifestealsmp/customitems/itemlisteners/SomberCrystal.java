@@ -24,7 +24,7 @@ import static newamazingpvp.lifestealsmp.wip.mcbingo.gui.BingoCardGUIs.BingoPick
 public class SomberCrystal implements Listener {
 
     private static final Map<Player, Long> somberCooldowns = new HashMap<>();
-    private final long somberMaxTime = 300000;
+    private final long somberMaxTime = 5000;//300000
     @EventHandler
     public void playerHitPlayer(EntityDamageByEntityEvent e) {
 
@@ -34,7 +34,7 @@ public class SomberCrystal implements Listener {
 
         if (e.getDamager() instanceof Player) {
             Player player = (Player) e.getDamager();
-            ItemStack itemInHand = player.getItemInHand();
+            ItemStack itemInHand = player.getInventory().getItemInMainHand();
             ItemMeta meta = itemInHand.getItemMeta();
             if (meta != null && meta.getLore() != null && meta.getLore().toString().contains("Disables totems of undying on someone for 5min")) {
                 if (damagedPlayer instanceof Player) {
