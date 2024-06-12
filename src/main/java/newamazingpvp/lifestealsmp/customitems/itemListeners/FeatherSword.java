@@ -134,4 +134,6 @@ public class FeatherSword implements Listener {
     private void removeSpeed(Player player) {
         player.removePotionEffect(PotionEffectType.SPEED);
     }
+
+
 }

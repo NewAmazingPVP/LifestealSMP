@@ -5,6 +5,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -35,7 +36,7 @@ public class SomberCrystal implements Listener {
             Player player = (Player) e.getDamager();
             ItemStack itemInHand = player.getItemInHand();
             ItemMeta meta = itemInHand.getItemMeta();
-            if (meta != null && meta.getLore() != null && meta.getLore().toString().contains("disables totems of undying on someone for 5min")) {
+            if (meta != null && meta.getLore() != null && meta.getLore().toString().contains("Disables totems of undying on someone for 5min")) {
                 if (damagedPlayer instanceof Player) {
 
 
@@ -48,6 +49,14 @@ public class SomberCrystal implements Listener {
 
 
 
+
+                    }
+
+                    if (itemInHand.getAmount() > 1) {
+                        itemInHand.setAmount(itemInHand.getAmount() - 1);
+                        player.getInventory().setItemInMainHand(itemInHand);
+                    } else {
+                        player.getInventory().setItemInMainHand(null);
                     }
                 }
             }
@@ -66,7 +75,7 @@ public class SomberCrystal implements Listener {
     }
 
     @EventHandler
-    public void onPlayerRightClick(PlayerInteractEvent e) {
+    public void onPlayerRightClick(BlockPlaceEvent e) {
 
         Player player = e.getPlayer();
         ItemStack itemInHand = player.getItemInHand();
@@ -74,9 +83,8 @@ public class SomberCrystal implements Listener {
         if (itemInHand != null && itemInHand.getType() == Material.BEDROCK && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 5min")) {
             player.playSound(player.getLocation(), Sound.BLOCK_SCULK_SHRIEKER_SHRIEK, 1.0f, 2.0f);
             e.setCancelled(true);
-            player.sendMessage(ChatColor.RED + "Disabled for " + cooldownRemainingTime(player) + " s");
+            player.sendMessage(ChatColor.RED + "Disabled for " + cooldownRemainingTime(player)+".");
         }
-
 
     }
 
@@ -89,7 +97,7 @@ public class SomberCrystal implements Listener {
         if (itemInHand != null && itemInHand.getType() == Material.BEDROCK && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 5min")) {
             player.playSound(player.getLocation(), Sound.BLOCK_SCULK_SHRIEKER_SHRIEK, 1.0f, 2.0f);
             e.setCancelled(true);
-            player.sendMessage(ChatColor.RED + "Disabled for " + cooldownRemainingTime(player) + " s");
+            player.sendMessage(ChatColor.RED + "Disabled for " + cooldownRemainingTime(player)+".");
         }
 
     }
