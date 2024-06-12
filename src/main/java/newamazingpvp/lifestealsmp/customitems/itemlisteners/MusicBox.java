@@ -34,7 +34,7 @@ public class MusicBox implements Listener {
             if (item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Music Box")) {
                 if (meta.getLore() == null) return;
 
-                openMusicBoxGUI(player);
+
 
 
             }
@@ -47,16 +47,35 @@ public class MusicBox implements Listener {
         Player player = e.getPlayer();
         ItemStack item = player.getInventory().getItemInMainHand();
         if (item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Music Box")) {
+            openMusicBoxGUI(player);
             e.setCancelled(true);
         }
     }
 
 
 
+    private void stopMusic(Player player){
+        player.stopSound(Sound.MUSIC_DISC_13);
+        player.stopSound(Sound.MUSIC_DISC_CAT);
+        player.stopSound(Sound.MUSIC_DISC_BLOCKS);
+        player.stopSound(Sound.MUSIC_DISC_CHIRP);
+        player.stopSound(Sound.MUSIC_DISC_FAR);
+        player.stopSound(Sound.MUSIC_DISC_MALL);
+        player.stopSound(Sound.MUSIC_DISC_MELLOHI);
+        player.stopSound(Sound.MUSIC_DISC_STAL);
+        player.stopSound(Sound.MUSIC_DISC_STRAD);
+        player.stopSound(Sound.MUSIC_DISC_WARD);
+        player.stopSound(Sound.MUSIC_DISC_11);
+        player.stopSound(Sound.MUSIC_DISC_WAIT);
+        player.stopSound(Sound.MUSIC_DISC_OTHERSIDE);
+        player.stopSound(Sound.MUSIC_DISC_RELIC);
+        player.stopSound(Sound.MUSIC_DISC_5);
+        player.stopSound(Sound.MUSIC_DISC_PIGSTEP);
+    }
 
 
 
-    public static void openMusicBoxGUI(Player player){
+    private void openMusicBoxGUI(Player player){
 
         player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 2.0f);
 
