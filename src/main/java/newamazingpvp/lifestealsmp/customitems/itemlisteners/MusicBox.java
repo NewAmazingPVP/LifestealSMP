@@ -47,7 +47,7 @@ public class MusicBox implements Listener {
     public void playerPlaceBlock(BlockPlaceEvent e) {
         Player player = e.getPlayer();
         ItemStack item = player.getInventory().getItemInMainHand();
-        if (item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Music Box")) {
+        if (item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Music Box")) {
             e.setCancelled(true);
         }
     }
@@ -77,9 +77,9 @@ public class MusicBox implements Listener {
 
     private static void openMusicBoxGUI(Player player){
 
-        player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 2.0f);
+        player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
 
-        Inventory musicBoxGUI = Bukkit.createInventory(player, 27, ChatColor.GOLD + "" + ChatColor.BOLD + "Music Box");
+        Inventory musicBoxGUI = Bukkit.createInventory(player, 45, ChatColor.GOLD + "" + ChatColor.BOLD + "Music Box");
 
         musicBoxGUI.setItem(0, orangeGlassGUI());
         musicBoxGUI.setItem(1, orangeGlassGUI());
@@ -115,6 +115,17 @@ public class MusicBox implements Listener {
     ItemStack disc16 = new ItemStack(Material.MUSIC_DISC_PIGSTEP);
 
 
+    public static ItemStack totemDisabledItem() {
+
+        ItemStack powerStick = new ItemStack(Material.BARRIER);
+        ItemMeta SI = powerStick.getItemMeta();
+        SI.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "Stop Music");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        powerStick.setItemMeta(SI);
+
+        return powerStick;
+    }
 
 
 

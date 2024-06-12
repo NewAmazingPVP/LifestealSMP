@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.customitems.itemlisteners;
 
 import org.bukkit.*;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,6 +11,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
@@ -18,7 +20,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static newamazingpvp.lifestealsmp.customitems.itemlisteners.FeatherSword.getString;
-import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.totemDisabledItem;
 import static newamazingpvp.lifestealsmp.wip.mcbingo.gui.BingoCardGUIs.BingoPickaxeRecipeGUI;
 
 public class SomberCrystal implements Listener {
@@ -150,5 +151,18 @@ public class SomberCrystal implements Listener {
         return getString(player, somberCooldowns, (long) somberMaxTime);
     }
 
+    public static ItemStack totemDisabledItem() {
+
+        ItemStack powerStick = new ItemStack(Material.BEDROCK);
+        ItemMeta SI = powerStick.getItemMeta();
+        SI.addEnchant(Enchantment.DURABILITY, 1, false);
+        SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        SI.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 5min");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        powerStick.setItemMeta(SI);
+
+        return powerStick;
+    }
 
 }
