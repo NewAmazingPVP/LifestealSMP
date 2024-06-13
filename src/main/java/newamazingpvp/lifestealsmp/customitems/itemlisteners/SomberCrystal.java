@@ -81,7 +81,7 @@ public class SomberCrystal implements Listener {
         Player player = e.getPlayer();
         ItemStack itemInHand = player.getItemInHand();
 
-        if (itemInHand != null && itemInHand.getType() == Material.BEDROCK && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 2min")) {
+        if (itemInHand != null && itemInHand.getType() == Material.CHARCOAL && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 2min")) {
             player.playSound(player.getLocation(), Sound.BLOCK_SCULK_SHRIEKER_SHRIEK, 1.0f, 2.0f);
             e.setCancelled(true);
             player.sendMessage(ChatColor.RED + "Disabled for " + cooldownRemainingTime(player)+".");
@@ -95,7 +95,7 @@ public class SomberCrystal implements Listener {
         ItemStack itemInHand = e.getCurrentItem();
         Player player = (Player) e.getWhoClicked();
 
-        if (itemInHand != null && itemInHand.getType() == Material.BEDROCK && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 2min")) {
+        if (itemInHand != null && itemInHand.getType() == Material.CHARCOAL && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 2min")) {
             player.playSound(player.getLocation(), Sound.BLOCK_SCULK_SHRIEKER_SHRIEK, 1.0f, 2.0f);
             e.setCancelled(true);
             player.sendMessage(ChatColor.RED + "Disabled for " + cooldownRemainingTime(player)+".");
@@ -123,7 +123,7 @@ public class SomberCrystal implements Listener {
         for (int i = 0; i < player.getInventory().getSize(); i++) {
             ItemStack item = player.getInventory().getItem(i);
 
-            if (item!= null && item.getType() == Material.BEDROCK && item.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 2min")) {
+            if (item!= null && item.getType() == Material.CHARCOAL && item.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 2min")) {
                 player.getInventory().setItem(i, new ItemStack(Material.TOTEM_OF_UNDYING));
                 break; // Stop checking once we've replaced the first Totem
 
@@ -153,7 +153,7 @@ public class SomberCrystal implements Listener {
 
     public static ItemStack totemDisabledItem() {
 
-        ItemStack powerStick = new ItemStack(Material.BEDROCK);
+        ItemStack powerStick = new ItemStack(Material.CHARCOAL);
         ItemMeta SI = powerStick.getItemMeta();
         SI.addEnchant(Enchantment.DURABILITY, 1, false);
         SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
