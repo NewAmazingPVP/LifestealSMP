@@ -35,17 +35,16 @@ public class QuarryArmor implements Listener {
         ItemMeta bootsMeta = boots.getItemMeta();
 
 
-        //helmetMeta != null
-        quarryIsHelmetOn = helmet.getType() == Material.LEATHER_HELMET &&  helmetMeta.getLore() != null && helmetMeta.getLore().toString().contains("You also have unlimited haste 3.");
+        quarryIsHelmetOn = helmet.getType() == Material.LEATHER_HELMET && helmetMeta != null && helmetMeta.getLore() != null && helmetMeta.getLore().toString().contains("You also have unlimited haste 3.");
 
 
-        quarryIsChestplateOn = chestplate.getType() == Material.LEATHER_CHESTPLATE  && chestplateMeta.getLore() != null && chestplateMeta.getLore().toString().contains("You also have unlimited haste 3.");
+        quarryIsChestplateOn = chestplate.getType() == Material.LEATHER_CHESTPLATE && chestplateMeta != null && chestplateMeta.getLore() != null && chestplateMeta.getLore().toString().contains("You also have unlimited haste 3.");
 
 
-        quarryIsLeggingsOn = leggings.getType() == Material.LEATHER_LEGGINGS  && leggingMetas.getLore() != null && leggingMetas.getLore().toString().contains("You also have unlimited haste 3.");
+        quarryIsLeggingsOn = leggings.getType() == Material.LEATHER_LEGGINGS && leggingMetas != null && leggingMetas.getLore() != null && leggingMetas.getLore().toString().contains("You also have unlimited haste 3.");
 
 
-        quarryIsBootsOn = boots.getType() == Material.LEATHER_BOOTS  && bootsMeta.getLore() != null && bootsMeta.getLore().toString().contains("You also have unlimited haste 3.");
+        quarryIsBootsOn = boots.getType() == Material.LEATHER_BOOTS && bootsMeta != null && bootsMeta.getLore() != null && bootsMeta.getLore().toString().contains("You also have unlimited haste 3.");
 
 
         if (quarryIsHelmetOn && quarryIsChestplateOn && quarryIsLeggingsOn && quarryIsBootsOn) {
