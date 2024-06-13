@@ -120,7 +120,7 @@ public class MusicBox implements Listener {
                 chatMusic(player,"Stal");
             }
 
-            if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_STRAD && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Stard")) {
+            if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_STRAD && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Strad")) {
                 stopMusic(player);
                 player.playSound(player.getLocation(), Sound.MUSIC_DISC_STRAD, 100.0f, 1.0f);
                 chatMusic(player,"Stard");
