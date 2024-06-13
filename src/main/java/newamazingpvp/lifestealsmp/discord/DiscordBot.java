@@ -96,7 +96,7 @@ public class DiscordBot {
         if (jda == null) return;
         p = "https://minotar.net/helm/" + p;
         EmbedBuilder eb = new EmbedBuilder();
-        eb.setAuthor(msg, "https://shop.nappixel.tk/", p);
+        eb.setAuthor(msg, "https://www.nappixel.tk/", p);
         eb.setColor(c);
         if (channelID.isEmpty()) {
             channel.sendMessageEmbeds(eb.build()).queue();

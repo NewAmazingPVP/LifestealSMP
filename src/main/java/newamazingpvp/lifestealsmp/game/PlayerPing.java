@@ -30,13 +30,13 @@ public class PlayerPing {
                 if (percentIncrease >= 50 && currentPing > 20 && !(lastPing < 2)) {
                     //String pingInfo = getPingModifier(percentIncrease) + player.getName() + "'s ping has increased by " + String.format("%.2f", percentIncrease) + "% to " + currentPing + " ms!!!";
                     String pingMessage = ChatColor.YELLOW + "Your ping has increased by " + ChatColor.RED + String.format("%.2f", percentIncrease) + "%" + ChatColor.YELLOW + "!!! Its recommended that you be careful as your client might lag";
-                    player.sendMessage(pingMessage);
+                    //player.sendMessage(pingMessage);
                     if (percentIncrease >= 75) {
-                        player.sendMessage(pingMessage);
+                        //player.sendMessage(pingMessage);
                     }
                     if (percentIncrease >= 100) {
-                        player.sendMessage(pingMessage + " and maybe anticheat can false detect you");
-                        player.sendMessage(pingMessage + " and maybe anticheat can false detect you");
+                        //player.sendMessage(pingMessage + " and maybe anticheat can false detect you");
+                        //player.sendMessage(pingMessage + " and maybe anticheat can false detect you");
                     }
                     //TextChannel channel = jda.getTextChannelById(discordChannelId);
                     //if (channel != null) {
