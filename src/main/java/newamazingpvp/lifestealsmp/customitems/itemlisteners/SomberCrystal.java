@@ -25,7 +25,7 @@ import static newamazingpvp.lifestealsmp.wip.mcbingo.gui.BingoCardGUIs.BingoPick
 public class SomberCrystal implements Listener {
 
     private static final Map<Player, Long> somberCooldowns = new HashMap<>();
-    private final long somberMaxTime = 300000;//300000
+    private final long somberMaxTime = 120000;//120000
     @EventHandler
     public void playerHitPlayer(EntityDamageByEntityEvent e) {
 
@@ -37,7 +37,7 @@ public class SomberCrystal implements Listener {
             Player player = (Player) e.getDamager();
             ItemStack itemInHand = player.getInventory().getItemInMainHand();
             ItemMeta meta = itemInHand.getItemMeta();
-            if (meta != null && meta.getLore() != null && meta.getLore().toString().contains("Disables totems of undying on someone for 5min")) {
+            if (meta != null && meta.getLore() != null && meta.getLore().toString().contains("Disables totems of undying on someone for 2min")) {
                 if (damagedPlayer instanceof Player) {
 
 
@@ -123,7 +123,7 @@ public class SomberCrystal implements Listener {
         for (int i = 0; i < player.getInventory().getSize(); i++) {
             ItemStack item = player.getInventory().getItem(i);
 
-            if (item!= null && item.getType() == Material.BEDROCK) {
+            if (item!= null && item.getType() == Material.BEDROCK && item.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 2min")) {
                 player.getInventory().setItem(i, new ItemStack(Material.TOTEM_OF_UNDYING));
                 break; // Stop checking once we've replaced the first Totem
 
@@ -157,7 +157,7 @@ public class SomberCrystal implements Listener {
         ItemMeta SI = powerStick.getItemMeta();
         SI.addEnchant(Enchantment.DURABILITY, 1, false);
         SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        SI.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 5min");
+        SI.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 2min");
         SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
         powerStick.setItemMeta(SI);
