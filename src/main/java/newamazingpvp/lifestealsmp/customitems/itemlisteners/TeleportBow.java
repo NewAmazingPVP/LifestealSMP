@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.customitems.itemlisteners;
 
+import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -19,28 +20,29 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import static newamazingpvp.lifestealsmp.customitems.itemlisteners.FeatherSword.getString;
-
 public class TeleportBow implements Listener {
-    private final HashMap<UUID, ItemStack> playerHeldItems = new HashMap<>();
-    private final Map<Player, Long> teleportCooldowns = new HashMap<>();
-    private final long teleportCooldownDuration = 10000;
+    private final Map<UUID, ItemStack> playerHeldItems = new HashMap<>();
+    private final Map<Player, CooldownManager> teleportCooldowns = new HashMap<>();
+    private final double teleportCooldownDuration = 10.0; // Cooldown time in seconds
 
     @EventHandler
     public void onPlayerUseBow(PlayerInteractEvent event) {
-        if (!(event.getAction() == Action.LEFT_CLICK_AIR
-                || event.getAction() == Action.LEFT_CLICK_BLOCK
-                || event.getAction() == Action.RIGHT_CLICK_AIR
-                || event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
+        if (event.getAction() != Action.LEFT_CLICK_AIR &&
+                event.getAction() != Action.LEFT_CLICK_BLOCK &&
+                event.getAction() != Action.RIGHT_CLICK_AIR &&
+                event.getAction() != Action.RIGHT_CLICK_BLOCK) {
             return;
         }
+
         Player shooter = event.getPlayer();
         ItemStack mainHandItem = shooter.getInventory().getItemInMainHand();
         ItemStack offHandItem = shooter.getInventory().getItemInOffHand();
-        if (isBow(mainHandItem) || isBow(offHandItem)) {
-            if (!isTeleportCooldownExpired(shooter)) {
+
+        if (isTeleportBow(mainHandItem) || isTeleportBow(offHandItem)) {
+            CooldownManager cooldown = teleportCooldowns.getOrDefault(shooter, new CooldownManager());
+            if (cooldown.isOnCooldown()) {
                 event.setCancelled(true);
-                shooter.sendMessage(ChatColor.RED + "You must wait " + cooldownRemainingTime(shooter) + " for the cooldown to finish before teleporting again.");
+                shooter.sendMessage(ChatColor.RED + "You must wait " + cooldown.getRemainingSeconds() + " seconds before using the Teleport Bow again.");
             }
         }
     }
@@ -50,13 +52,11 @@ public class TeleportBow implements Listener {
         if (event.getEntityType() == EntityType.ARROW && event.getEntity().getShooter() instanceof Player) {
             Player shooter = (Player) event.getEntity().getShooter();
             ItemStack mainHandItem = shooter.getInventory().getItemInMainHand();
-            ItemStack offHandItem = shooter.getInventory().getItemInMainHand();
+            ItemStack offHandItem = shooter.getInventory().getItemInOffHand();
 
-            // Check if the player is holding a bow when they shoot the arrow
-            if (isBow(mainHandItem) || isBow(offHandItem)) {
+            if (isTeleportBow(mainHandItem) || isTeleportBow(offHandItem)) {
                 playerHeldItems.put(shooter.getUniqueId(), mainHandItem);
             } else {
-                // Remove the player from the map if they switched to a non-bow item
                 playerHeldItems.remove(shooter.getUniqueId());
             }
         }
@@ -69,42 +69,31 @@ public class TeleportBow implements Listener {
             Player shooter = (Player) arrow.getShooter();
 
             if (playerHeldItems.containsKey(shooter.getUniqueId())) {
-                if (isTeleportCooldownExpired(shooter)) {
+                CooldownManager cooldown = teleportCooldowns.getOrDefault(shooter, new CooldownManager());
+
+                if (!cooldown.isOnCooldown()) {
                     Location arrowLocation = arrow.getLocation();
                     arrowLocation.setPitch(shooter.getLocation().getPitch());
                     arrowLocation.setYaw(shooter.getLocation().getYaw());
 
                     shooter.teleport(arrowLocation);
-                    ItemStack item = playerHeldItems.get(shooter.getUniqueId());
                     playerHeldItems.remove(shooter.getUniqueId());
-                    setTeleportCooldown(shooter);
+                    cooldown.setCooldown(teleportCooldownDuration);
+                    teleportCooldowns.put(shooter, cooldown);
                 } else {
-                    shooter.sendMessage(ChatColor.RED + "You must wait " + cooldownRemainingTime(shooter) + " for the cooldown to finish before teleporting again.");
+                    shooter.sendMessage(ChatColor.RED + "You must wait " + cooldown.getRemainingSeconds() + " seconds before using the Teleport Bow again.");
                 }
             }
         }
     }
 
-    private boolean isBow(ItemStack item) {
-        ItemMeta meta = item.getItemMeta();
-        return item.getType() == Material.BOW && meta.getLore() != null && meta.getLore().toString().contains("Shoot to teleport!");
-
-    }
-
-    private boolean isTeleportCooldownExpired(Player player) {
-        if (teleportCooldowns.containsKey(player)) {
-            long lastTeleportTime = teleportCooldowns.get(player);
-            long currentTime = System.currentTimeMillis();
-            return currentTime - lastTeleportTime >= teleportCooldownDuration;
+    private boolean isTeleportBow(ItemStack item) {
+        if (item != null && item.getType() == Material.BOW) {
+            ItemMeta meta = item.getItemMeta();
+            if (meta != null && meta.hasLore()) {
+                return meta.getLore().toString().contains("Shoot to teleport!");
+            }
         }
-        return true;
-    }
-
-    private void setTeleportCooldown(Player player) {
-        teleportCooldowns.put(player, System.currentTimeMillis());
-    }
-
-    private String cooldownRemainingTime(Player player) {
-        return getString(player, teleportCooldowns, teleportCooldownDuration);
+        return false;
     }
 }
