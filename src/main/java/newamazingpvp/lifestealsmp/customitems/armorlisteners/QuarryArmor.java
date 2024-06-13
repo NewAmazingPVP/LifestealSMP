@@ -29,6 +29,22 @@ public class QuarryArmor implements Listener {
         ItemStack leggings = player.getInventory().getLeggings();
         ItemStack boots = player.getInventory().getBoots();
 
+        if(chestplate.getType() == Material.AIR){
+            quarryIsChestplateOn = false;
+        }
+
+        if(helmet.getType() == Material.AIR){
+            quarryIsHelmetOn = false;
+        }
+
+        if(leggings.getType() == Material.AIR){
+            quarryIsLeggingsOn = false;
+        }
+
+        if(boots.getType() == Material.AIR){
+            quarryIsBootsOn = false;
+        }
+
         ItemMeta helmetMeta = helmet.getItemMeta();
         ItemMeta chestplateMeta = chestplate.getItemMeta();
         ItemMeta leggingMetas = leggings.getItemMeta();
@@ -45,6 +61,7 @@ public class QuarryArmor implements Listener {
 
 
         quarryIsBootsOn = boots.getType() == Material.LEATHER_BOOTS && bootsMeta != null && bootsMeta.getLore() != null && bootsMeta.getLore().toString().contains("You also have unlimited haste 3.");
+
 
 
         if (quarryIsHelmetOn && quarryIsChestplateOn && quarryIsLeggingsOn && quarryIsBootsOn) {
