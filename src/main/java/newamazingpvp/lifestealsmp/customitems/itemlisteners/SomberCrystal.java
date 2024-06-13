@@ -81,7 +81,7 @@ public class SomberCrystal implements Listener {
         Player player = e.getPlayer();
         ItemStack itemInHand = player.getItemInHand();
 
-        if (itemInHand != null && itemInHand.getType() == Material.BEDROCK && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 5min")) {
+        if (itemInHand != null && itemInHand.getType() == Material.BEDROCK && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 2min")) {
             player.playSound(player.getLocation(), Sound.BLOCK_SCULK_SHRIEKER_SHRIEK, 1.0f, 2.0f);
             e.setCancelled(true);
             player.sendMessage(ChatColor.RED + "Disabled for " + cooldownRemainingTime(player)+".");
@@ -95,7 +95,7 @@ public class SomberCrystal implements Listener {
         ItemStack itemInHand = e.getCurrentItem();
         Player player = (Player) e.getWhoClicked();
 
-        if (itemInHand != null && itemInHand.getType() == Material.BEDROCK && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 5min")) {
+        if (itemInHand != null && itemInHand.getType() == Material.BEDROCK && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 2min")) {
             player.playSound(player.getLocation(), Sound.BLOCK_SCULK_SHRIEKER_SHRIEK, 1.0f, 2.0f);
             e.setCancelled(true);
             player.sendMessage(ChatColor.RED + "Disabled for " + cooldownRemainingTime(player)+".");
