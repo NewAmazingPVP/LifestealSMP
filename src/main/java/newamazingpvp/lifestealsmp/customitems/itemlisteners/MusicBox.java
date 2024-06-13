@@ -67,17 +67,106 @@ public class MusicBox implements Listener {
             if (itemInHand != null && itemInHand.getType() == Material.BARRIER && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.RED + "" + ChatColor.BOLD + "Stop Music")) {
                 stopMusic(player);
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 0.0f);
-                player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "[Music Box] " + ChatColor.GREEN + "" + ChatColor.BOLD + " Stopped Music");
+                player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "[Music Box] " + ChatColor.GREEN + "" + ChatColor.BOLD + "Stopped Music");
 
             }
 
 
             if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_13 && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Disc 13")) {
                 stopMusic(player);
-                player.playSound(player.getLocation(), Sound.MUSIC_DISC_13, 1.0f, 2.0f);
+                player.playSound(player.getLocation(), Sound.MUSIC_DISC_13, 100.0f, 1.0f);
                 chatMusic(player,"Disc 13");
             }
 
+            if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_CAT && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Cat")) {
+                stopMusic(player);
+                player.playSound(player.getLocation(), Sound.MUSIC_DISC_CAT, 100.0f, 1.0f);
+                chatMusic(player,"Cat");
+            }
+
+            if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_BLOCKS && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Blocks")) {
+                stopMusic(player);
+                player.playSound(player.getLocation(), Sound.MUSIC_DISC_BLOCKS, 100.0f, 1.0f);
+                chatMusic(player,"Blocks");
+            }
+
+            if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_CHIRP && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Chirp")) {
+                stopMusic(player);
+                player.playSound(player.getLocation(), Sound.MUSIC_DISC_CHIRP, 100.0f, 1.0f);
+                chatMusic(player,"Chirp");
+            }
+
+            if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_FAR && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Far")) {
+                stopMusic(player);
+                player.playSound(player.getLocation(), Sound.MUSIC_DISC_FAR, 100.0f, 1.0f);
+                chatMusic(player,"Far");
+            }
+
+            if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_MALL && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Mall")) {
+                stopMusic(player);
+                player.playSound(player.getLocation(), Sound.MUSIC_DISC_MALL, 100.0f, 1.0f);
+                chatMusic(player,"Mall");
+            }
+
+            if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_MELLOHI && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Mellohi")) {
+                stopMusic(player);
+                player.playSound(player.getLocation(), Sound.MUSIC_DISC_MELLOHI, 100.0f, 1.0f);
+                chatMusic(player,"Mellohi");
+            }
+
+            if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_STAL && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Stal")) {
+                stopMusic(player);
+                player.playSound(player.getLocation(), Sound.MUSIC_DISC_STAL, 100.0f, 1.0f);
+                chatMusic(player,"Stal");
+            }
+
+            if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_STRAD && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Stard")) {
+                stopMusic(player);
+                player.playSound(player.getLocation(), Sound.MUSIC_DISC_STRAD, 100.0f, 1.0f);
+                chatMusic(player,"Stard");
+            }
+
+            if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_WARD && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Ward")) {
+                stopMusic(player);
+                player.playSound(player.getLocation(), Sound.MUSIC_DISC_WARD, 100.0f, 1.0f);
+                chatMusic(player,"Ward");
+            }
+
+            if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_11 && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Disc 11")) {
+                stopMusic(player);
+                player.playSound(player.getLocation(), Sound.MUSIC_DISC_11, 100.0f, 1.0f);
+                chatMusic(player,"Disc 11");
+            }
+
+            if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_WAIT && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Wait")) {
+                stopMusic(player);
+                player.playSound(player.getLocation(), Sound.MUSIC_DISC_WAIT, 100.0f, 1.0f);
+                chatMusic(player,"Wait");
+            }
+
+            if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_OTHERSIDE && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Otherside")) {
+                stopMusic(player);
+                player.playSound(player.getLocation(), Sound.MUSIC_DISC_OTHERSIDE, 100.0f, 1.0f);
+                chatMusic(player,"Otherside");
+            }
+
+            if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_RELIC && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Relic")) {
+                stopMusic(player);
+                player.playSound(player.getLocation(), Sound.MUSIC_DISC_RELIC, 100.0f, 1.0f);
+                chatMusic(player,"Relic");
+            }
+
+            if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_5 && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Disc 5")) {
+                stopMusic(player);
+                player.playSound(player.getLocation(), Sound.MUSIC_DISC_5, 100.0f, 1.0f);
+                chatMusic(player,"Disc 5");
+            }
+
+            if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_PIGSTEP && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Pigstep")) {
+                stopMusic(player);
+                player.playSound(player.getLocation(), Sound.MUSIC_DISC_PIGSTEP, 100.0f, 1.0f);
+                chatMusic(player,"Pigstep");
+            }
 
             event.setCancelled(true);
 
@@ -90,22 +179,22 @@ public class MusicBox implements Listener {
 
 
     private static void stopMusic(Player player){
-        player.stopSound(Sound.MUSIC_DISC_13);
-        player.stopSound(Sound.MUSIC_DISC_CAT);
-        player.stopSound(Sound.MUSIC_DISC_BLOCKS);
-        player.stopSound(Sound.MUSIC_DISC_CHIRP);
-        player.stopSound(Sound.MUSIC_DISC_FAR);
-        player.stopSound(Sound.MUSIC_DISC_MALL);
-        player.stopSound(Sound.MUSIC_DISC_MELLOHI);
-        player.stopSound(Sound.MUSIC_DISC_STAL);
-        player.stopSound(Sound.MUSIC_DISC_STRAD);
-        player.stopSound(Sound.MUSIC_DISC_WARD);
-        player.stopSound(Sound.MUSIC_DISC_11);
-        player.stopSound(Sound.MUSIC_DISC_WAIT);
-        player.stopSound(Sound.MUSIC_DISC_OTHERSIDE);
-        player.stopSound(Sound.MUSIC_DISC_RELIC);
-        player.stopSound(Sound.MUSIC_DISC_5);
-        player.stopSound(Sound.MUSIC_DISC_PIGSTEP);
+        player.stopSound(Sound.MUSIC_DISC_13);//
+        player.stopSound(Sound.MUSIC_DISC_CAT);//
+        player.stopSound(Sound.MUSIC_DISC_BLOCKS);//
+        player.stopSound(Sound.MUSIC_DISC_CHIRP);//
+        player.stopSound(Sound.MUSIC_DISC_FAR);//
+        player.stopSound(Sound.MUSIC_DISC_MALL);//
+        player.stopSound(Sound.MUSIC_DISC_MELLOHI);//
+        player.stopSound(Sound.MUSIC_DISC_STAL);//
+        player.stopSound(Sound.MUSIC_DISC_STRAD);//
+        player.stopSound(Sound.MUSIC_DISC_WARD);//
+        player.stopSound(Sound.MUSIC_DISC_11);//
+        player.stopSound(Sound.MUSIC_DISC_WAIT);//
+        player.stopSound(Sound.MUSIC_DISC_OTHERSIDE);//
+        player.stopSound(Sound.MUSIC_DISC_RELIC);//
+        player.stopSound(Sound.MUSIC_DISC_5);//
+        player.stopSound(Sound.MUSIC_DISC_PIGSTEP);//
     }
 
 
