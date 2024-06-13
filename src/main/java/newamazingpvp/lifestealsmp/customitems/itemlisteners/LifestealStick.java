@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.customitems.itemlisteners;
 
+import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
@@ -9,57 +10,48 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class LifestealStick implements Listener {
 
-    private final Map<Player, Long> stickCooldowns = new HashMap<>();
+    private final Map<Player, CooldownManager> stickCooldowns = new HashMap<>();
     private final double lifeStealStickCooldown = 2.5;
 
     @EventHandler
-    public void playerHitPlayer(EntityDamageByEntityEvent e) {
+    public void onPlayerHit(EntityDamageByEntityEvent event) {
+        Entity damagedEntity = event.getEntity();
 
-        Entity damagedPlayer = e.getEntity();
+        if (event.getDamager() instanceof Player) {
+            Player damager = (Player) event.getDamager();
+            ItemStack itemInMainHand = damager.getInventory().getItemInMainHand();
+            ItemMeta meta = itemInMainHand.getItemMeta();
 
-        if (e.getDamager() instanceof Player) {
-            Player player = (Player) e.getDamager();
-            ItemStack item = player.getInventory().getItemInMainHand();
-            ItemMeta meta = item.getItemMeta();
-            if (meta != null && meta.getLore() != null && meta.getLore().toString().contains("You will heal " + ChatColor.RED + "1❤")) {
-                if (damagedPlayer instanceof Player) {
-
-                    if (isTeleportCooldownExpired(player)) {
-
-                        player.setHealth(player.getHealth() + 1);
-                        player.playSound(player.getLocation(), Sound.ENTITY_ELDER_GUARDIAN_AMBIENT, 2.0f, 2.0f);
-                        setTeleportCooldown(player);
-
-                    }
+            if (isLifeStealStick(meta)) {
+                if (damagedEntity instanceof Player) {
+                    Player damagedPlayer = (Player) damagedEntity;
+                    handleLifeSteal(damager, damagedPlayer);
                 }
             }
         }
     }
 
-    private boolean isTeleportCooldownExpired(Player player) {
-        if (stickCooldowns.containsKey(player)) {
-            long lastTeleportTime = stickCooldowns.get(player);
-            long currentTime = System.currentTimeMillis();
-            return currentTime - lastTeleportTime >= lifeStealStickCooldown;
+    private boolean isLifeStealStick(ItemMeta meta) {
+        return meta != null && meta.hasLore() && meta.getLore().toString().contains("You will heal " + ChatColor.RED + "1❤");
+    }
+
+    private void handleLifeSteal(Player damager, Player damagedPlayer) {
+        CooldownManager cooldown = stickCooldowns.getOrDefault(damager, new CooldownManager());
+
+        if (!cooldown.isOnCooldown()) {
+            double newHealth = Math.min(damager.getHealth() + 1, damager.getAttribute(org.bukkit.attribute.Attribute.GENERIC_MAX_HEALTH).getValue());
+            damager.setHealth(newHealth);
+            damager.playSound(damager.getLocation(), Sound.ENTITY_ELDER_GUARDIAN_AMBIENT, 2.0f, 2.0f);
+            cooldown.setCooldown(lifeStealStickCooldown);
+            stickCooldowns.put(damager, cooldown);
+        } else {
+            damager.sendMessage(ChatColor.RED + "You must wait " + cooldown.getRemainingSeconds() + " seconds before using the Lifesteal Stick again.");
         }
-        return true;
     }
-
-
-    private void setTeleportCooldown(Player player) {
-        stickCooldowns.put(player, System.currentTimeMillis());
-    }
-
-
-
-
 }
-
-
