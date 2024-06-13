@@ -20,6 +20,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
+import static newamazingpvp.lifestealsmp.wip.mcbingo.gui.BingoCardGUI.OpenTheBingoCardGUI;
 import static newamazingpvp.lifestealsmp.wip.mcbingo.gui.BingoGUIItems.*;
 
 public class MusicBox implements Listener {
@@ -63,7 +64,15 @@ public class MusicBox implements Listener {
         if (event.getView().getTitle().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Music Box")) {
 
 
-            if (meta != null && meta.getLore() != null && meta.getLore().toString().contains("C418 - 13")) {
+            if (itemInHand != null && itemInHand.getType() == Material.BARRIER && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.RED + "" + ChatColor.BOLD + "Stop Music")) {
+                stopMusic(player);
+                player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 0.0f);
+                player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "[Music Box] " + ChatColor.GREEN + "" + ChatColor.BOLD + " Stopped Music");
+
+            }
+
+
+            if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_13 && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Disc 13")) {
                 stopMusic(player);
                 player.playSound(player.getLocation(), Sound.MUSIC_DISC_13, 1.0f, 2.0f);
                 chatMusic(player,"Disc 13");
@@ -76,7 +85,7 @@ public class MusicBox implements Listener {
     }
 
     private static void chatMusic(Player player, String musicName){
-        player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Now playing " + musicName);
+        player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "[Music Box] " + ChatColor.GREEN + "" + ChatColor.BOLD + "Now Playing " + musicName);
     }
 
 
@@ -118,29 +127,29 @@ public class MusicBox implements Listener {
         musicBoxGUI.setItem(8, orangeGlassGUI());
 
         musicBoxGUI.setItem(9, orangeGlassGUI());
-        musicBoxGUI.setItem(10, disc1);
-        musicBoxGUI.setItem(11, disc2);
-        musicBoxGUI.setItem(12, disc3);
-        musicBoxGUI.setItem(13, disc4);
-        musicBoxGUI.setItem(14, disc5);
-        musicBoxGUI.setItem(15, disc6);
-        musicBoxGUI.setItem(16, disc7);
+        musicBoxGUI.setItem(10, disc1());
+        musicBoxGUI.setItem(11, disc2());
+        musicBoxGUI.setItem(12, disc3());
+        musicBoxGUI.setItem(13, disc4());
+        musicBoxGUI.setItem(14, disc5());
+        musicBoxGUI.setItem(15, disc6());
+        musicBoxGUI.setItem(16, disc7());
         musicBoxGUI.setItem(17, orangeGlassGUI());
 
         musicBoxGUI.setItem(18, orangeGlassGUI());
-        musicBoxGUI.setItem(19, disc8);
-        musicBoxGUI.setItem(20, disc9);
-        musicBoxGUI.setItem(21, disc10);
-        musicBoxGUI.setItem(22, disc11);
-        musicBoxGUI.setItem(23, disc12);
-        musicBoxGUI.setItem(24, disc13);
-        musicBoxGUI.setItem(25, disc14);
+        musicBoxGUI.setItem(19, disc8());
+        musicBoxGUI.setItem(20, disc9());
+        musicBoxGUI.setItem(21, disc10());
+        musicBoxGUI.setItem(22, disc11());
+        musicBoxGUI.setItem(23, disc12());
+        musicBoxGUI.setItem(24, disc13());
+        musicBoxGUI.setItem(25, disc14());
         musicBoxGUI.setItem(26, orangeGlassGUI());
 
         musicBoxGUI.setItem(27, orangeGlassGUI());
-        musicBoxGUI.setItem(28, disc15);
-        musicBoxGUI.setItem(29, disc16);
-        //musicBoxGUI.setItem(30, orangeGlassGUI());
+        musicBoxGUI.setItem(28, disc15());
+        musicBoxGUI.setItem(29, disc16());
+        musicBoxGUI.setItem(30, stopAllMusicItem());
         //musicBoxGUI.setItem(31, orangeGlassGUI());
         //musicBoxGUI.setItem(32, orangeGlassGUI());
         //musicBoxGUI.setItem(33, orangeGlassGUI());
@@ -155,7 +164,7 @@ public class MusicBox implements Listener {
         musicBoxGUI.setItem(41, orangeGlassGUI());
         musicBoxGUI.setItem(42, orangeGlassGUI());
         musicBoxGUI.setItem(43, orangeGlassGUI());
-        musicBoxGUI.setItem(44, stopAllMusicItem());
+        musicBoxGUI.setItem(44, orangeGlassGUI());
 
 
 
@@ -169,22 +178,182 @@ public class MusicBox implements Listener {
     //GUI items for the GUI
 
 
-    static ItemStack disc1 = new ItemStack(Material.MUSIC_DISC_13);
-    static ItemStack disc2 = new ItemStack(Material.MUSIC_DISC_CAT);
-    static ItemStack disc3 = new ItemStack(Material.MUSIC_DISC_BLOCKS);
-    static ItemStack disc4 = new ItemStack(Material.MUSIC_DISC_CHIRP);
-    static ItemStack disc5 = new ItemStack(Material.MUSIC_DISC_FAR);
-    static ItemStack disc6 = new ItemStack(Material.MUSIC_DISC_MALL);
-    static ItemStack disc7 = new ItemStack(Material.MUSIC_DISC_MELLOHI);
-    static ItemStack disc8 = new ItemStack(Material.MUSIC_DISC_STAL);
-    static ItemStack disc9 = new ItemStack(Material.MUSIC_DISC_STRAD);
-    static ItemStack disc10 = new ItemStack(Material.MUSIC_DISC_WARD);
-    static ItemStack disc11 = new ItemStack(Material.MUSIC_DISC_11);
-    static ItemStack disc12 = new ItemStack(Material.MUSIC_DISC_WAIT);
-    static ItemStack disc13 = new ItemStack(Material.MUSIC_DISC_OTHERSIDE);
-    static ItemStack disc14 = new ItemStack(Material.MUSIC_DISC_RELIC);
-    static ItemStack disc15 = new ItemStack(Material.MUSIC_DISC_5);
-    static ItemStack disc16 = new ItemStack(Material.MUSIC_DISC_PIGSTEP);
+    public static ItemStack disc1() {
+
+        ItemStack disc1 = new ItemStack(Material.MUSIC_DISC_13);
+        ItemMeta SI = disc1.getItemMeta();
+        SI.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Disc 13");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        disc1.setItemMeta(SI);
+
+        return disc1;
+    }
+    public static ItemStack disc2() {
+
+        ItemStack disc2 = new ItemStack(Material.MUSIC_DISC_CAT);
+        ItemMeta SI = disc2.getItemMeta();
+        SI.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Cat");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        disc2.setItemMeta(SI);
+
+        return disc2;
+    }
+    public static ItemStack disc3() {
+
+        ItemStack disc3 = new ItemStack(Material.MUSIC_DISC_BLOCKS);
+        ItemMeta SI = disc3.getItemMeta();
+        SI.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Blocks");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        disc3.setItemMeta(SI);
+
+        return disc3;
+    }
+    public static ItemStack disc4() {
+
+        ItemStack disc4 = new ItemStack(Material.MUSIC_DISC_CHIRP);
+        ItemMeta SI = disc4.getItemMeta();
+        SI.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Chirp");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        disc4.setItemMeta(SI);
+
+        return disc4;
+    }
+    public static ItemStack disc5() {
+
+        ItemStack disc5 = new ItemStack(Material.MUSIC_DISC_FAR);
+        ItemMeta SI = disc5.getItemMeta();
+        SI.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Far");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        disc5.setItemMeta(SI);
+
+        return disc5;
+    }
+    public static ItemStack disc6() {
+
+        ItemStack disc6 = new ItemStack(Material.MUSIC_DISC_MALL);
+        ItemMeta SI = disc6.getItemMeta();
+        SI.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Mall");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        disc6.setItemMeta(SI);
+
+        return disc6;
+    }
+    public static ItemStack disc7() {
+
+        ItemStack disc7 = new ItemStack(Material.MUSIC_DISC_MELLOHI);
+        ItemMeta SI = disc7.getItemMeta();
+        SI.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Mellohi");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        disc7.setItemMeta(SI);
+
+        return disc7;
+    }
+    public static ItemStack disc8() {
+
+        ItemStack disc8 = new ItemStack(Material.MUSIC_DISC_STAL);
+        ItemMeta SI = disc8.getItemMeta();
+        SI.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Stal");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        disc8.setItemMeta(SI);
+
+        return disc8;
+    }
+    public static ItemStack disc9() {
+
+        ItemStack disc9 = new ItemStack(Material.MUSIC_DISC_STRAD);
+        ItemMeta SI = disc9.getItemMeta();
+        SI.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Strad");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        disc9.setItemMeta(SI);
+
+        return disc9;
+    }
+    public static ItemStack disc10() {
+
+        ItemStack disc10 = new ItemStack(Material.MUSIC_DISC_WARD);
+        ItemMeta SI = disc10.getItemMeta();
+        SI.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Ward");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        disc10.setItemMeta(SI);
+
+        return disc10;
+    }
+    public static ItemStack disc11() {
+
+        ItemStack disc11 = new ItemStack(Material.MUSIC_DISC_11);
+        ItemMeta SI = disc11.getItemMeta();
+        SI.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Disc 11");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        disc11.setItemMeta(SI);
+
+        return disc11;
+    }
+    public static ItemStack disc12() {
+
+        ItemStack disc12 = new ItemStack(Material.MUSIC_DISC_WAIT);
+        ItemMeta SI = disc12.getItemMeta();
+        SI.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Wait");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        disc12.setItemMeta(SI);
+
+        return disc12;
+    }
+    public static ItemStack disc13() {
+
+        ItemStack disc13 = new ItemStack(Material.MUSIC_DISC_OTHERSIDE);
+        ItemMeta SI = disc13.getItemMeta();
+        SI.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Otherside");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        disc13.setItemMeta(SI);
+
+        return disc13;
+    }
+    public static ItemStack disc14() {
+
+        ItemStack disc14 = new ItemStack(Material.MUSIC_DISC_RELIC);
+        ItemMeta SI = disc14.getItemMeta();
+        SI.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Relic");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        disc14.setItemMeta(SI);
+
+        return disc14;
+    }
+    public static ItemStack disc15() {
+
+        ItemStack disc15 = new ItemStack(Material.MUSIC_DISC_5);
+        ItemMeta SI = disc15.getItemMeta();
+        SI.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Disc 5");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        disc15.setItemMeta(SI);
+
+        return disc15;
+    }
+    public static ItemStack disc16() {
+
+        ItemStack disc16 = new ItemStack(Material.MUSIC_DISC_PIGSTEP);
+        ItemMeta SI = disc16.getItemMeta();
+        SI.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Pigstep");
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        disc16.setItemMeta(SI);
+
+        return disc16;
+    }
 
 
     public static ItemStack stopAllMusicItem() {
