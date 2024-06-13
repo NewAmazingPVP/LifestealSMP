@@ -24,7 +24,7 @@ public class DevRecipes {
         instaboomTNTRecipe.setIngredient('T', Material.TNT);
         instaboomTNTRecipe.setIngredient('E', Material.END_CRYSTAL);
         instaboomTNTRecipe.setIngredient('A', Material.AIR);
-        instaboomTNTRecipe.setIngredient('D', Material.DIAMOND); 
+        instaboomTNTRecipe.setIngredient('D', Material.DIAMOND);
 
         //customItems.add(instaboomTNT);
         //shapedRecipes.put(instaboomTNT, instaboomTNTRecipe);
