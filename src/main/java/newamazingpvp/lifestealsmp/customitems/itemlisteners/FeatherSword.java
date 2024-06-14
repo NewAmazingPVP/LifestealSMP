@@ -32,11 +32,11 @@ public class FeatherSword implements Listener {
         ItemStack offHandItem = player.getInventory().getItemInOffHand();
 
         if (isPermanentSpeedSword(mainHandItem) || isPermanentSpeedSword(offHandItem)) {
-            //player.setWalkSpeed(0.3f);
-            giveSpeed(player);
+            player.setWalkSpeed(0.3f);
+            //giveSpeed(player);
         } else {
-            //player.setWalkSpeed(0.2f);
-            removeSpeed(player);
+            player.setWalkSpeed(0.2f);
+            //removeSpeed(player);
         }
     }
 
