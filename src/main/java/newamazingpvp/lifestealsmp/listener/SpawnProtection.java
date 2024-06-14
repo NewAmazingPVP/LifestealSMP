@@ -7,6 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -76,19 +77,39 @@ public class SpawnProtection implements Listener {
 
     @EventHandler
     public void onPvpNearSpawn(EntityDamageByEntityEvent event) {
-        if (event.getEntity() instanceof Player && event.getDamager() instanceof Player) {
-            World.Environment spawnEnvironment = event.getEntity().getWorld().getEnvironment();
-            if (spawnEnvironment != World.Environment.NORMAL) {
-                return;
+        World.Environment spawnEnvironment = event.getEntity().getWorld().getEnvironment();
+        if (spawnEnvironment != World.Environment.NORMAL) {
+            return;
+        }
+        if (event.getEntity() instanceof Player) {
+            if(event.getDamager() instanceof Player) {
+                Player damaged = (Player) event.getEntity();
+                Player damager = (Player) event.getDamager();
+                vicinityPvp(event, damaged, damager);
+            } else if (event.getDamager() instanceof Arrow) {
+                Arrow arrow = (Arrow) event.getDamager();
+                if (arrow.getShooter() instanceof Player) {
+                    Player damaged = (Player) event.getEntity();
+                    Player damager = (Player) arrow.getShooter();
+                    vicinityPvp(event, damaged, damager);
+                }
+            } else if (event.getDamager() instanceof TNTPrimed){
+                TNTPrimed tnt = (TNTPrimed) event.getDamager();
+                if (tnt.getSource() instanceof Player) {
+                    Player damaged = (Player) event.getEntity();
+                    Player damager = (Player) tnt.getSource();
+                    vicinityPvp(event, damaged, damager);
+                }
             }
-            Player damaged = (Player) event.getEntity();
-            Player damager = (Player) event.getDamager();
-            if (damaged.getLocation().distance(Bukkit.getWorld("world").getSpawnLocation()) < 500 ||
-                    damager.getLocation().distance(Bukkit.getWorld("world").getSpawnLocation()) < 500) {
-                damaged.sendMessage(ChatColor.RED + "PVP near the vicinity of spawn is discouraged, thus therefore both of you will take same damage regardless of your gear");
-                damager.sendMessage(ChatColor.RED + "PVP near the vicinity of spawn is discouraged, thus therefore both of you will take same damage regardless of your gear");
-                event.setDamage(1.0);
-            }
+        }
+    }
+
+    private void vicinityPvp(EntityDamageByEntityEvent event, Player damaged, Player damager) {
+        if (damaged.getLocation().distance(Bukkit.getWorld("world").getSpawnLocation()) < 500 ||
+                damager.getLocation().distance(Bukkit.getWorld("world").getSpawnLocation()) < 500) {
+            damaged.sendMessage(ChatColor.RED + "PVP near the vicinity of spawn is discouraged, thus therefore both of you will take same damage regardless of your gear");
+            damager.sendMessage(ChatColor.RED + "PVP near the vicinity of spawn is discouraged, thus therefore both of you will take same damage regardless of your gear");
+            event.setDamage(1.0);
         }
     }
 
