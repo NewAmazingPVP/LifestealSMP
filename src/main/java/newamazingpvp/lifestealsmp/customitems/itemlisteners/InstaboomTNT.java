@@ -77,6 +77,7 @@ public class InstaboomTNT implements Listener {
     private void updateItemStack(Player player, ItemStack item) {
         if (item.getAmount() > 1) {
             item.setAmount(item.getAmount() - 1);
+            player.getInventory().setItemInMainHand(item);
         } else {
             player.getInventory().setItemInMainHand(null);
         }
