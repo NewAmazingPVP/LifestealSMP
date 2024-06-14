@@ -30,7 +30,12 @@ public class InstaboomTNT implements Listener {
 
         if (isInstaBoomTNT(meta)) {
             event.setCancelled(true);
-            CooldownManager cooldown = tntCooldowns.getOrDefault(player, new CooldownManager());
+
+            CooldownManager cooldown = tntCooldowns.get(player);
+            if (cooldown == null) {
+                cooldown = new CooldownManager(tntCooldownTime);
+                tntCooldowns.put(player, cooldown);
+            }
 
             if (!cooldown.isOnCooldown()) {
                 triggerInstaBoom(player, location);
@@ -77,7 +82,6 @@ public class InstaboomTNT implements Listener {
     private void updateItemStack(Player player, ItemStack item) {
         if (item.getAmount() > 1) {
             item.setAmount(item.getAmount() - 1);
-            player.getInventory().setItemInMainHand(item);
         } else {
             player.getInventory().setItemInMainHand(null);
         }
