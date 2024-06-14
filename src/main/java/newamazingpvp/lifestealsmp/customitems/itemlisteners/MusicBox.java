@@ -48,7 +48,11 @@ public class MusicBox implements Listener {
     public void playerPlaceBlock(BlockPlaceEvent e) {
         Player player = e.getPlayer();
         ItemStack item = player.getInventory().getItemInMainHand();
+        ItemStack offHanditem = player.getInventory().getItemInMainHand();
         if (item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Music Box")) {
+            e.setCancelled(true);
+        }
+        if (offHanditem.hasItemMeta() && offHanditem.getItemMeta().hasDisplayName() && offHanditem.getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Music Box")) {
             e.setCancelled(true);
         }
     }
