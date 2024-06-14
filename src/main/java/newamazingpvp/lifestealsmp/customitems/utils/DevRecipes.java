@@ -41,8 +41,9 @@ public class DevRecipes {
 
         ItemStack heavyNetherStar = new ItemStack(heavyNetherStar());
         ShapedRecipe heavyNetherStarRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "heavyNetherStar"), heavyNetherStar);
-        heavyNetherStarRecipe.shape("NNN", "NNN", "NNN");
+        heavyNetherStarRecipe.shape("NNN", "NSN", "NNN");
         heavyNetherStarRecipe.setIngredient('N', Material.NETHER_STAR);
+        heavyNetherStarRecipe.setIngredient('S', Material.NETHERITE_SCRAP);
         Bukkit.addRecipe(heavyNetherStarRecipe);
 
 
