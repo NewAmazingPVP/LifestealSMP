@@ -46,7 +46,7 @@ public class NewbieProgression implements Listener {
             Player damagedPlayer = (Player) event.getEntity();
             if (damagedPlayer.getName().startsWith(".")) {
                 double dmg = event.getFinalDamage();
-                double finalDmg = dmg * 0.6;
+                double finalDmg = dmg * 0.7;
 
                 if (event.getDamager() instanceof Arrow) {
                     Arrow arrow = (Arrow) event.getDamager();
