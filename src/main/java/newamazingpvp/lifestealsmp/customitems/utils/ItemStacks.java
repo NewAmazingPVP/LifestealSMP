@@ -402,22 +402,6 @@ public class ItemStacks {
         return powerStick;
     }
 
-    public static ItemStack banHammer() {
-
-        ItemStack powerStick = new ItemStack(Material.GOLDEN_AXE);
-        ItemMeta SI = powerStick.getItemMeta();
-        SI.addEnchant(Enchantment.DURABILITY, 1, false);
-        SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        List<String> BL = new ArrayList<>();
-        BL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Right Click:");
-        BL.add(ChatColor.DARK_PURPLE + "Lets you play any music disc.");
-        SI.setLore(BL);
-        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
-        powerStick.setItemMeta(SI);
-
-        return powerStick;
-    }
 
 
 }

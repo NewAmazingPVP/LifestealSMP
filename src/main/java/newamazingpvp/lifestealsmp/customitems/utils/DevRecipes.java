@@ -20,10 +20,9 @@ public class DevRecipes {
 
         ItemStack instaboomTNT = new ItemStack(InstaBoomTNT());
         ShapedRecipe instaboomTNTRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "instaboomTNT"), instaboomTNT);
-        instaboomTNTRecipe.shape("DTA", "TET", "ATD");
+        instaboomTNTRecipe.shape("TDT", "TET", "TTT");
         instaboomTNTRecipe.setIngredient('T', Material.TNT);
         instaboomTNTRecipe.setIngredient('E', Material.END_CRYSTAL);
-        instaboomTNTRecipe.setIngredient('A', Material.AIR);
         instaboomTNTRecipe.setIngredient('D', Material.DIAMOND);
 
         //customItems.add(instaboomTNT);
