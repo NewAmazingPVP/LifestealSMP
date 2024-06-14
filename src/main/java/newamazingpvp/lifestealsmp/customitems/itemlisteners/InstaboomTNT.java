@@ -46,7 +46,7 @@ public class InstaboomTNT implements Listener {
     }
 
     private boolean isInstaBoomTNT(ItemMeta meta) {
-        return meta != null && meta.hasDisplayName() && meta.getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "InstaBoom TNT");
+        return meta != null && meta.hasDisplayName() && meta.toString().contains("InstaBoom TNT");
     }
 
     private void triggerInstaBoom(Player player, Location location) {
