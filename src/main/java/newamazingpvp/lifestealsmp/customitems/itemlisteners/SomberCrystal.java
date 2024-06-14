@@ -76,7 +76,7 @@ public class SomberCrystal implements Listener {
     }
 
     @EventHandler
-    public void onPlayerRightClick(BlockPlaceEvent e) {
+    public void onPlayerRightClick(PlayerInteractEvent e) {
 
         Player player = e.getPlayer();
         ItemStack itemInHand = player.getItemInHand();
