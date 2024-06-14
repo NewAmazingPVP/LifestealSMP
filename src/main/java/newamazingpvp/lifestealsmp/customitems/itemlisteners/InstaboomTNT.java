@@ -35,6 +35,7 @@ public class InstaboomTNT implements Listener {
             if (cooldown == null) {
                 cooldown = new CooldownManager();
                 tntCooldowns.put(player, cooldown);
+                cooldown = tntCooldowns.get(player);
             }
 
             if (!cooldown.isOnCooldown()) {
