@@ -22,6 +22,8 @@ import newamazingpvp.lifestealsmp.game.Compass;
 import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
 import newamazingpvp.lifestealsmp.game.PlayerPing;
 import newamazingpvp.lifestealsmp.listener.*;
+import newamazingpvp.lifestealsmp.runes.ZombieRune;
+import newamazingpvp.lifestealsmp.runes.Rune;
 import newamazingpvp.lifestealsmp.utility.Utils;
 import newamazingpvp.lifestealsmp.wip.PingWars;
 import newamazingpvp.lifestealsmp.wip.mcbingo.gui.BingoCardGUIListeners;
@@ -148,6 +150,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             //getServer().getPluginManager().registerEvents(new BloodRune(), this);
             //getServer().getPluginManager().registerEvents(new AirRune(), this);
             //getServer().getPluginManager().registerEvents(new BingoCardListener(), this);
+            registerRune(new ZombieRune());
             getServer().getPluginManager().registerEvents(new BingoCardGUIListeners(), this);
 
             //New Custom Items
@@ -226,6 +229,10 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
     @Override
     public void onPluginMessageReceived(@NotNull String s, @NotNull Player player, @NotNull byte[] bytes) {
 
+    }
+
+    private void registerRune(Rune<?> rune) {
+        getServer().getPluginManager().registerEvents(rune, this);
     }
 
 }
