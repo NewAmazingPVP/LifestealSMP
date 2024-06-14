@@ -47,5 +47,15 @@ public class DevRecipes {
         Bukkit.addRecipe(heavyNetherStarRecipe);
 
 
+        ItemStack musicBox = new ItemStack(musicBox());
+        ShapedRecipe musicBoxRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "musicBox"), musicBox);
+        musicBoxRecipe.shape("FPF", "DJD", "FOF");
+        musicBoxRecipe.setIngredient('P', Material.MUSIC_DISC_PIGSTEP);
+        musicBoxRecipe.setIngredient('O', Material.MUSIC_DISC_OTHERSIDE);
+        musicBoxRecipe.setIngredient('F', Material.DISC_FRAGMENT_5);
+        musicBoxRecipe.setIngredient('D', Material.DIAMOND);
+        musicBoxRecipe.setIngredient('J', Material.JUKEBOX);
+        Bukkit.addRecipe(musicBoxRecipe);
+
     }
 }
