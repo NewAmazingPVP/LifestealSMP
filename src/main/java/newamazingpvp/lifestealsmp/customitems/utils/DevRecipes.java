@@ -8,6 +8,7 @@ import org.bukkit.inventory.ShapedRecipe;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
+import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.somberCrystal;
 
 public class DevRecipes {
     public static void registerCustomRecipesDev() {
@@ -56,6 +57,15 @@ public class DevRecipes {
         musicBoxRecipe.setIngredient('D', Material.DIAMOND);
         musicBoxRecipe.setIngredient('J', Material.JUKEBOX);
         Bukkit.addRecipe(musicBoxRecipe);
+
+        ItemStack somberCrystal = new ItemStack(somberCrystal());
+        ShapedRecipe somberCrystalRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "somberCrystal"), somberCrystal);
+        somberCrystalRecipe.shape("NNN", "NED", "DDD");
+        somberCrystalRecipe.setIngredient('D', Material.DIAMOND_BLOCK);
+        somberCrystalRecipe.setIngredient('E', Material.ECHO_SHARD);
+        somberCrystalRecipe.setIngredient('N', Material.NETHER_STAR);
+        Bukkit.addRecipe(somberCrystalRecipe);
+
 
     }
 }
