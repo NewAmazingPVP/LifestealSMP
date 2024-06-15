@@ -154,3 +154,6 @@ commands:
     usage: /sombercrystaltest
     permission: lifestealSMP.admin
     default: op
+  trade:
+    description: Trade with players
+    usage: /trade <player>
