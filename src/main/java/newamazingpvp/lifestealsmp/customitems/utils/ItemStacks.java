@@ -408,7 +408,7 @@ public class ItemStacks {
         ItemMeta SI = powerStick.getItemMeta();
         SI.addEnchant(Enchantment.DURABILITY, 1, false);
         SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        SI.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Music Box");
+        SI.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Magic Staff");
         List<String> BL = new ArrayList<>();
         BL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Left Click:");
         BL.add(ChatColor.DARK_PURPLE + "Shoots a beam of power dealing " + ChatColor.RED + "2❤");
