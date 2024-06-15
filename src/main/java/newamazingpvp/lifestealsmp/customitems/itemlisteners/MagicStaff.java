@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.customitems.itemlisteners;
 
+import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -43,6 +44,8 @@ import java.util.Map;
 public class MagicStaff implements Listener {
 
 
+    private final Map<Player, CooldownManager> defaultMagicStaffCooldowns = new HashMap<>();
+    private final double defaultMagicStaffCooldown = 3;
 
 
     @EventHandler
@@ -55,47 +58,53 @@ public class MagicStaff implements Listener {
                 if (meta.hasLore() && meta.getLore().toString().contains(ChatColor.DARK_PURPLE + "Shoots a beam of power dealing " + ChatColor.RED + "2❤")) {
 
                     if (event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
-                        attacker.sendActionBar(ChatColor.DARK_PURPLE + "You Used Beam!");
+
+                        CooldownManager cooldown = defaultMagicStaffCooldowns.getOrDefault(attacker, new CooldownManager());
+                        if (!cooldown.isOnCooldown()) {
+
+                            cooldown.setCooldown(defaultMagicStaffCooldown);
+                            defaultMagicStaffCooldowns.put(attacker, cooldown);
 
 
+                            Location location = attacker.getEyeLocation().add(0, 0.2, 0);
+                            Vector attackerLookDir = attacker.getLocation().getDirection();
+
+                            for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+                                attacker.playSound(attacker.getLocation(), Sound.BLOCK_BEACON_POWER_SELECT, 1.0f, 2.0f);
+                                attacker.playSound(attacker.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 1.0f, 2.0f);
+                            }
+
+                            defaultBeam(attacker, location, attackerLookDir);
 
 
-                        Location location = attacker.getEyeLocation().add(0, 0.2, 0);
-                        Vector attackerLookDir = attacker.getLocation().getDirection();
+                            Vector direction = attacker.getEyeLocation().getDirection();
+                            double range = 15;
+                            Location targetLocation = attacker.getEyeLocation().clone();
 
-                        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                            attacker.playSound(attacker.getLocation(), Sound.BLOCK_BEACON_POWER_SELECT, 1.0f, 2.0f);
-                            attacker.playSound(attacker.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 1.0f, 2.0f);
-                        }
+                            for (int i = 0; i < range; i++) {
+                                targetLocation.add(direction);
 
-                        defaultBeam(attacker,location,attackerLookDir);
-
-
-                        Vector direction = attacker.getEyeLocation().getDirection();
-                        double range = 15;
-                        Location targetLocation = attacker.getEyeLocation().clone();
-
-                        for (int i = 0; i < range; i++) {
-                            targetLocation.add(direction);
-
-                            Entity target = getTargetEntityAtLocation(targetLocation);
-                            if (target != null) {
-                                if(target instanceof Entity) {
-                                    if (event.getItem().getType() == Material.STICK) {
-                                        ((LivingEntity) target).damage(1);
-                                    } else {;
-                                        ((LivingEntity) target).damage(1);
+                                Entity target = getTargetEntityAtLocation(targetLocation);
+                                if (target != null) {
+                                    if (target instanceof Entity) {
+                                        if (event.getItem().getType() == Material.STICK) {
+                                            ((LivingEntity) target).damage(1);
+                                        } else {
+                                            ((LivingEntity) target).damage(1);
+                                        }
                                     }
+                                    break;
                                 }
-                                break;
+
+                                // Target location is obstructed by a block
+                                if (targetLocation.getBlock().getType().isSolid()) {
+                                    break;
+                                }
                             }
 
-                            // Target location is obstructed by a block
-                            if (targetLocation.getBlock().getType().isSolid()) {
-                                break;
-                            }
+                        }else{
+                            attacker.sendActionBar(ChatColor.RED + "" + ChatColor.BOLD + "Cooldown Active For " + cooldown.getRemainingSeconds());
                         }
-
                     }
                 }
 
@@ -126,6 +135,7 @@ public class MagicStaff implements Listener {
 
 
 
+    //The different beam textures
     private static void defaultBeam(Player player, Location location, Vector attackerLookDir) {
 
         for (int i = 0; i < 15; i++) {
@@ -147,23 +157,6 @@ public class MagicStaff implements Listener {
 
 
     }
-
-
-
-                /*Vector direction2 = player.getLocation().getDirection();
-                double range = 15;
-                for (Entity entity : player.getNearbyEntities(range, range, range)) {
-                    Vector entityVector = entity.getLocation().subtract(player.getLocation()).toVector();
-                    if (entityVector.normalize().equals(direction2.normalize())) {
-                                    entity.setLastDamage(2);
-                                    entity.setLastDamager(player);
-                        Event event2 = new EntityDamageByEntityEvent(entity, player, EntityDamageEvent.DamageCause.ENTITY_ATTACK, 2);
-                        Bukkit.getServer().getPluginManager().callEvent(event2);
-
-
-                    }
-                }
-            }*/
 
 
 
