@@ -4,9 +4,12 @@ import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -47,21 +50,12 @@ public class MagicStaff implements Listener {
                             attacker.playSound(attacker.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 1.0f, 2.0f);
                         }
 
-
-
-
-
                         defaultBeam(attacker,location,attackerLookDir);
 
-                        double beamLength = 15;
-                        World world = attacker.getWorld();
 
-                        // Damage entities within the beam
-                        for (Entity entity : location.getWorld().getNearbyEntities(location, beamLength, 1, 1)) {
-                            if (entity instanceof LivingEntity) {
-                                ((LivingEntity) entity).damage(2); // Apply 2 hearts of damage
-                            }
-                        }
+
+
+
 
 
                     }
@@ -80,6 +74,19 @@ public class MagicStaff implements Listener {
                 player2.getWorld().spawnParticle(Particle.REDSTONE, location, 0, new Particle.DustOptions(Color.GRAY, 2.0F));
                 player2.getWorld().spawnParticle(Particle.REDSTONE, location, 0, new Particle.DustOptions(Color.GRAY, 3.0F));
 
+                Vector direction2 = player.getLocation().getDirection();
+                double range = 15;
+                for (Entity entity : player.getNearbyEntities(range, range, range)) {
+                    Vector entityVector = entity.getLocation().subtract(player.getLocation()).toVector();
+                    if (entityVector.normalize().equals(direction2.normalize())) {
+                                    /*entity.setLastDamage(2);
+                                    entity.setLastDamager(player);*/
+                        Event event2 = new EntityDamageByEntityEvent(entity, player, EntityDamageEvent.DamageCause.ENTITY_ATTACK, 2);
+                        Bukkit.getServer().getPluginManager().callEvent(event2);
+
+
+                    }
+                }
             }
         }
     }
