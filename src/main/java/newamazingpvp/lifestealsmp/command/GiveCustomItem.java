@@ -11,13 +11,14 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
+import static newamazingpvp.lifestealsmp.customitems.MagicStaffs.MagicStaffUtils.MagicStaffItemstacks.magicStaffDefault;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
 import static newamazingpvp.lifestealsmp.runes.RunesDrops.*;
 
 public class GiveCustomItem implements CommandExecutor, TabCompleter {
 
-    private final ArrayList<String> subcommands = new ArrayList<>(List.of("feathersword", "homingbow", "tntbow", "tpbow", "oppickaxe", "treecutteraxe", "heart", "revivebeacon", "corruptedmobsoul", "severedmobheart", "lightfether", "instaboomtnt", "lifestealstick", "powerstick", "heavynetherstar", "quarryhelmet", "quarrychestplate", "quarryleggings", "quarryboots", "witherrune", "aquarune", "hellrune", "trollrune", "lightningrune", "darkrune", "bloodrune", "airrune","sombercrystal","musicbox","magicstaff"));
-    private final ArrayList<ItemStack> subItems = new ArrayList<>(List.of(createFeatherSword(), createHomingBow(), createTNTBow(), createCustomBow(), createOpPickaxe(), createCustomAxe(), extraHeart(), createReviveBeacon(), corruptedMobSoul(), severedMobHeart(), lightFeather(), InstaBoomTNT(), LifestealStick(), powerStick(), heavyNetherStar(), QuarryArmor_HELM(), QuarryArmor_CP(), QuarryArmor_LEGS(), QuarryArmor_BOOTS(), witherRune(), aquaRune(), hellRune(), trollRune(), lightningRune(), darkRune(), bloodRune(), airRune(),somberCrystal(),musicBox(),magicStaff()));
+    private final ArrayList<String> subcommands = new ArrayList<>(List.of("feathersword", "homingbow", "tntbow", "tpbow", "oppickaxe", "treecutteraxe", "heart", "revivebeacon", "corruptedmobsoul", "severedmobheart", "lightfether", "instaboomtnt", "lifestealstick", "powerstick", "heavynetherstar", "quarryhelmet", "quarrychestplate", "quarryleggings", "quarryboots", "witherrune", "aquarune", "hellrune", "trollrune", "lightningrune", "darkrune", "bloodrune", "airrune","sombercrystal","musicbox","magicstaffdefault"));
+    private final ArrayList<ItemStack> subItems = new ArrayList<>(List.of(createFeatherSword(), createHomingBow(), createTNTBow(), createCustomBow(), createOpPickaxe(), createCustomAxe(), extraHeart(), createReviveBeacon(), corruptedMobSoul(), severedMobHeart(), lightFeather(), InstaBoomTNT(), LifestealStick(), powerStick(), heavyNetherStar(), QuarryArmor_HELM(), QuarryArmor_CP(), QuarryArmor_LEGS(), QuarryArmor_BOOTS(), witherRune(), aquaRune(), hellRune(), trollRune(), lightningRune(), darkRune(), bloodRune(), airRune(),somberCrystal(),musicBox(),magicStaffDefault()));
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

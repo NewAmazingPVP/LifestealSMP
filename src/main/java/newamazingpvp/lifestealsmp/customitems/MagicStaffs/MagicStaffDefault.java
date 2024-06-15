@@ -5,45 +5,23 @@ import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Zombie;
-import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
 
 import java.util.HashMap;
-import java.util.UUID;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 
 
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.*;
-import org.bukkit.entity.*;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.util.Vector;
-
-import org.bukkit.inventory.ItemStack;
-
-import java.util.HashMap;
 import java.util.Map;
 
-import static newamazingpvp.lifestealsmp.customitems.MagicStaffs.staffBeamTexture.beamTextureMaker;
+import static newamazingpvp.lifestealsmp.customitems.MagicStaffs.MagicStaffUtils.staffBeamTexture.beamTextureMaker;
 
 
-public class MagicStaff implements Listener {
+public class MagicStaffDefault implements Listener {
 
 
     private final Map<Player, CooldownManager> defaultMagicStaffCooldowns = new HashMap<>();
@@ -76,7 +54,7 @@ public class MagicStaff implements Listener {
                                 attacker.playSound(attacker.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 1.0f, 2.0f);
                             }
 
-                            beamTextureMaker(attacker, location, attackerLookDir,Color.GRAY, 2.0F,Color.GRAY, 2.0F);
+                            beamTextureMaker(attacker, location, attackerLookDir, Color.GRAY, 2.0F, Color.GRAY, 2.0F);
 
 
                             Vector direction = attacker.getEyeLocation().getDirection();
@@ -104,19 +82,16 @@ public class MagicStaff implements Listener {
                                 }
                             }
 
-                        }else{
+                        } else {
                             attacker.sendActionBar(ChatColor.RED + "" + ChatColor.BOLD + "Cooldown Active For " + cooldown.getRemainingSeconds());
                         }
                     }
                 }
 
 
-
-
-
-                    }
-                }
             }
+        }
+    }
 
     private Entity getTargetEntityAtLocation(Location location) {
         for (Entity target : location.getWorld().getEntities()) {
@@ -124,30 +99,13 @@ public class MagicStaff implements Listener {
                     (target.getLocation().getBlock().getZ() == location.getBlock().getZ()) &&
                     (target.getLocation().getBlock().getY() >= location.getBlock().getY() - target.getHeight()) &&
                     (target.getLocation().getBlock().getY() <= location.getBlock().getY() + target.getHeight()) &&
-                    (target instanceof LivingEntity) && !(target instanceof Player)) {
+                    (target instanceof LivingEntity)) {
                 return target;
             }
         }
         return null;
     }
-
-
-
-
-
-
-
-    //The different beam textures
-
-
-
-
-
-
-
-
-
-    }
+}
 
 
 
