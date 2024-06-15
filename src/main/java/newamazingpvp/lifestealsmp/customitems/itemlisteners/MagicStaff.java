@@ -57,7 +57,7 @@ public class MagicStaff implements Listener {
                         World world = attacker.getWorld();
 
                         // Damage entities within the beam
-                        for (Entity entity : location.getWorld().getNearbyEntities(location, beamLength, beamLength, beamLength)) {
+                        for (Entity entity : location.getWorld().getNearbyEntities(location, beamLength, 1, 1)) {
                             if (entity instanceof LivingEntity) {
                                 ((LivingEntity) entity).damage(2); // Apply 2 hearts of damage
                             }
