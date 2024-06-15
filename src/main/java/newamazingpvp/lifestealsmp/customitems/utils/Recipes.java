@@ -1,45 +1,26 @@
 package newamazingpvp.lifestealsmp.customitems.utils;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.customitems.utils.GUI.*;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
-import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.lightFeather;
 
 public class Recipes {
     public static void registerCustomRecipes() {
 
-        /*ItemStack VWH = new ItemStack(VoidWalkerHEALM());
-        ShapedRecipe VWHR = new ShapedRecipe(new NamespacedKey(lifestealSmp, "VoidWalkerHealmR"), VWH);
-        VWHR.shape("DAD", "BXB", "TNT");
-        VWHR.setIngredient('D', Material.DIAMOND_BLOCK, 5);
-        VWHR.setIngredient('N', Material.NETHERITE_INGOT, 3);
-        VWHR.setIngredient('B', Material.BEACON);
-        VWHR.setIngredient('X', Material.DRAGON_HEAD);
-        VWHR.setIngredient('T', Material.DRAGON_BREATH);
-        VWHR.setIngredient('A', antimatterVile());
-
-        Bukkit.addRecipe(VWHR);*/
-
         ItemStack extraHeart = new ItemStack(extraHeart());
         ShapedRecipe extraHeartRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "extra_heart"), extraHeart);
-        extraHeartRecipe.shape("CXC", "DSD", "XNX");
+        extraHeartRecipe.shape("C C", "DSD", " N ");
         extraHeartRecipe.setIngredient('D', Material.DIAMOND_BLOCK);
         extraHeartRecipe.setIngredient('N', Material.NETHERITE_INGOT);
         extraHeartRecipe.setIngredient('C', corruptedMobSoul());
         extraHeartRecipe.setIngredient('S', severedMobHeart());
-        extraHeartRecipe.setIngredient('X', Material.AIR);
         customItems.add(extraHeart);
         shapedRecipes.put(extraHeart, extraHeartRecipe);
         Bukkit.addRecipe(extraHeartRecipe);
@@ -153,15 +134,13 @@ public class Recipes {
         shapelessRecipes.put(createReviveBeacon(), reviveBeaconRecipe);
         Bukkit.addRecipe(reviveBeaconRecipe);
 
-        //YAY UPDATE =D
-
         ItemStack lightFeather = new ItemStack(lightFeather());
         ShapedRecipe lightFeatherRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "lightFeather"), lightFeather);
         lightFeatherRecipe.shape("FSF", "SFS", "FSF");
         lightFeatherRecipe.setIngredient('F', Material.FEATHER);
         lightFeatherRecipe.setIngredient('S', Material.SUGAR);
         shapedRecipes.put(lightFeather, lightFeatherRecipe);
-        customItems.add(lightFeather());
+        customItems.add(lightFeather);
         Bukkit.addRecipe(lightFeatherRecipe);
 
         ItemStack instaboomTNT = new ItemStack(InstaBoomTNT());
@@ -192,9 +171,8 @@ public class Recipes {
         heavyNetherStarRecipe.setIngredient('N', Material.NETHER_STAR);
         heavyNetherStarRecipe.setIngredient('S', Material.NETHERITE_SCRAP);
         shapedRecipes.put(heavyNetherStar, heavyNetherStarRecipe);
-        customItems.add(heavyNetherStar());
+        customItems.add(heavyNetherStar);
         Bukkit.addRecipe(heavyNetherStarRecipe);
-
 
         ItemStack musicBox = new ItemStack(musicBox());
         ShapedRecipe musicBoxRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "musicBox"), musicBox);
@@ -205,7 +183,7 @@ public class Recipes {
         musicBoxRecipe.setIngredient('D', Material.DIAMOND);
         musicBoxRecipe.setIngredient('J', Material.JUKEBOX);
         shapedRecipes.put(musicBox, musicBoxRecipe);
-        customItems.add(musicBox());
+        customItems.add(musicBox);
         Bukkit.addRecipe(musicBoxRecipe);
 
         ItemStack somberCrystal = new ItemStack(somberCrystal());
@@ -215,9 +193,7 @@ public class Recipes {
         somberCrystalRecipe.setIngredient('E', Material.ECHO_SHARD);
         somberCrystalRecipe.setIngredient('N', Material.NETHER_STAR);
         shapedRecipes.put(somberCrystal, somberCrystalRecipe);
-        customItems.add(somberCrystal());
+        customItems.add(somberCrystal);
         Bukkit.addRecipe(somberCrystalRecipe);
-
-
     }
 }
