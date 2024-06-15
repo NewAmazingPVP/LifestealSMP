@@ -66,7 +66,7 @@ public class MagicStaff implements Listener {
 
 
 
-    private static void defaultBeam(Player player, Location location, Vector attackerLookDir){
+    private static void defaultBeam(Player player, Location location, Vector attackerLookDir) {
 
         for (int i = 0; i < 15; i++) {
             location.add(attackerLookDir);
@@ -74,17 +74,15 @@ public class MagicStaff implements Listener {
                 player2.getWorld().spawnParticle(Particle.REDSTONE, location, 0, new Particle.DustOptions(Color.GRAY, 2.0F));
                 player2.getWorld().spawnParticle(Particle.REDSTONE, location, 0, new Particle.DustOptions(Color.GRAY, 3.0F));
 
-                Vector direction2 = player.getLocation().getDirection();
-                double range = 15;
-                for (Entity entity : player.getNearbyEntities(range, range, range)) {
-                    Vector entityVector = entity.getLocation().subtract(player.getLocation()).toVector();
-                    if (entityVector.normalize().equals(direction2.normalize())) {
-                                    /*entity.setLastDamage(2);
-                                    entity.setLastDamager(player);*/
-                        Event event2 = new EntityDamageByEntityEvent(entity, player, EntityDamageEvent.DamageCause.ENTITY_ATTACK, 2);
-                        Bukkit.getServer().getPluginManager().callEvent(event2);
+                for (Entity entity : location.getWorld().getNearbyEntities(location, 15, 15, 15)) {
+                    if (entity instanceof LivingEntity) {
+                        // Calculate the distance between the player and the entity
+                        double distance = player.getLocation().distance(entity.getLocation());
 
-
+                        // If the distance is less than or equal to 15 blocks, damage the entity
+                        if (distance <= 15) {
+                            ((LivingEntity) entity).damage(2);
+                        }
                     }
                 }
             }
@@ -93,5 +91,25 @@ public class MagicStaff implements Listener {
 
 
 
+                /*Vector direction2 = player.getLocation().getDirection();
+                double range = 15;
+                for (Entity entity : player.getNearbyEntities(range, range, range)) {
+                    Vector entityVector = entity.getLocation().subtract(player.getLocation()).toVector();
+                    if (entityVector.normalize().equals(direction2.normalize())) {
+                                    entity.setLastDamage(2);
+                                    entity.setLastDamager(player);
+                        Event event2 = new EntityDamageByEntityEvent(entity, player, EntityDamageEvent.DamageCause.ENTITY_ATTACK, 2);
+                        Bukkit.getServer().getPluginManager().callEvent(event2);
 
-}
+
+                    }
+                }
+            }*/
+
+
+
+
+
+    }
+
+
