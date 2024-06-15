@@ -144,7 +144,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new SomberCrystal(), this);
         getServer().getPluginManager().registerEvents(new MusicBox(), this);
 
-
         //TODO: Use this for beta things
         if (isAutoUploadEnabled()) {
             //getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
@@ -177,7 +176,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
             getCommand("sombercrystaltest").setExecutor(new TESTsomber());
 
-
+            getCommand("trade").setExecutor(new Trade());
+            getServer().getPluginManager().registerEvents(new TradeListener(), this);
 
             //THESE ARE THE BINGO EVENTS TO DETECT IF A PLAYER DID A PART OF IT
 
