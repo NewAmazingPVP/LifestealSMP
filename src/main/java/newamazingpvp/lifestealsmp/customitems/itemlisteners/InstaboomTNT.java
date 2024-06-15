@@ -72,7 +72,7 @@ public class InstaboomTNT implements Listener {
         }
     }
 
-
+//TODO:This works but the entity never stops flying
     public void triggerInstaBoomNONPLAYER(Location location) {
         World world = location.getWorld();
         if (world != null) {
@@ -89,6 +89,12 @@ public class InstaboomTNT implements Listener {
                         Vector velocity = direction.multiply(5);
                         if (velocity.getY() > 1.0) {
                             velocity.setY(1.0);
+                        }
+                        if (velocity.getX() > 2.0) {
+                            velocity.setX(1.0);
+                        }
+                        if (velocity.getZ() > 2.0) {
+                            velocity.setZ(1.0);
                         }
                         nearbyEntity.setVelocity(velocity);
                     }
