@@ -15,6 +15,7 @@ import newamazingpvp.lifestealsmp.command.unused.JailPlayer;
 import newamazingpvp.lifestealsmp.command.unused.TESTsomber;
 import newamazingpvp.lifestealsmp.customitems.armorlisteners.QuarryArmor;
 import newamazingpvp.lifestealsmp.customitems.itemlisteners.*;
+import newamazingpvp.lifestealsmp.customitems.utils.AntiAnvil;
 import newamazingpvp.lifestealsmp.customitems.utils.Drops;
 import newamazingpvp.lifestealsmp.discord.DiscordListener;
 import newamazingpvp.lifestealsmp.game.BroadcastMessage;
@@ -162,6 +163,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new SomberCrystal(), this);
             getServer().getPluginManager().registerEvents(new MusicBox(), this);
             getServer().getPluginManager().registerEvents(new MagicStaff(), this);
+            getServer().getPluginManager().registerEvents(new AntiAnvil(), this);
             registerCustomRecipesDev();
 
             getCommand("sombercrystaltest").setExecutor(new TESTsomber());
