@@ -72,7 +72,7 @@ public class MagicStaff implements Listener {
 
 
                         Vector direction = attacker.getEyeLocation().getDirection();
-                        double range = 100;
+                        double range = 15;
                         Location targetLocation = attacker.getEyeLocation().clone();
 
                         for (int i = 0; i < range; i++) {
@@ -120,7 +120,7 @@ public class MagicStaff implements Listener {
         return null;
     }
 
-    
+
 
 
 
