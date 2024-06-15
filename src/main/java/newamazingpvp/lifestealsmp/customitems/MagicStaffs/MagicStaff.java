@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.customitems.itemlisteners;
+package newamazingpvp.lifestealsmp.customitems.MagicStaffs;
 
 import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.*;
@@ -40,6 +40,8 @@ import org.bukkit.inventory.ItemStack;
 import java.util.HashMap;
 import java.util.Map;
 
+import static newamazingpvp.lifestealsmp.customitems.MagicStaffs.staffBeamTexture.beamTextureMaker;
+
 
 public class MagicStaff implements Listener {
 
@@ -74,7 +76,7 @@ public class MagicStaff implements Listener {
                                 attacker.playSound(attacker.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 1.0f, 2.0f);
                             }
 
-                            defaultBeam(attacker, location, attackerLookDir);
+                            beamTextureMaker(attacker, location, attackerLookDir,Color.GRAY, 2.0F,Color.GRAY, 2.0F);
 
 
                             Vector direction = attacker.getEyeLocation().getDirection();
@@ -136,18 +138,7 @@ public class MagicStaff implements Listener {
 
 
     //The different beam textures
-    private static void defaultBeam(Player player, Location location, Vector attackerLookDir) {
 
-        for (int i = 0; i < 15; i++) {
-            location.add(attackerLookDir);
-            for (Player player2 : Bukkit.getOnlinePlayers()) {
-                player2.getWorld().spawnParticle(Particle.REDSTONE, location, 0, new Particle.DustOptions(Color.GRAY, 2.0F));
-                player2.getWorld().spawnParticle(Particle.REDSTONE, location, 0, new Particle.DustOptions(Color.GRAY, 3.0F));
-
-
-                }
-            }
-        }
 
 
 
