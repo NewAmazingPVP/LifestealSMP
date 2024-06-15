@@ -39,13 +39,8 @@ public class MagicStaff implements Listener {
 
 
 
-                        //the beam code (need to optimise)
-                        //World world = attacker.getWorld();
                         Location location = attacker.getEyeLocation().add(0, 0.2, 0);
                         Vector attackerLookDir = attacker.getLocation().getDirection();
-                        //double directionX = Math.cos(location.getYaw() * Math.PI / 180);
-                        //double directionZ = Math.sin(location.getYaw() * Math.PI / 180);
-                        //Location endPoint = location.add(directionX * 15, location.getY(), directionZ * 15);
 
                         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
                             attacker.playSound(attacker.getLocation(), Sound.BLOCK_BEACON_POWER_SELECT, 1.0f, 2.0f);
@@ -53,21 +48,20 @@ public class MagicStaff implements Listener {
                         }
 
 
-                        // Check for entities within the beam's range and apply damage
-                        World world = attacker.getWorld();
-                        double beamRange = 15; // Define the range of the beam
-                        for (Entity entity : world.getEntities()) {
-                            if (entity instanceof LivingEntity) { // Only apply damage to living entities
-                                double distance = entity.getLocation().distance(location);
-                                if (distance <= beamRange) {
-                                    ((LivingEntity) entity).damage(2); // Apply 2 hearts of damage
-                                }
-                            }
-                        }
+
 
 
                         defaultBeam(attacker,location,attackerLookDir);
 
+                        double beamLength = 15;
+                        World world = attacker.getWorld();
+
+                        // Damage entities within the beam
+                        for (Entity entity : location.getWorld().getNearbyEntities(location, beamLength, beamLength, beamLength)) {
+                            if (entity instanceof LivingEntity) {
+                                ((LivingEntity) entity).damage(2); // Apply 2 hearts of damage
+                            }
+                        }
 
 
                     }
