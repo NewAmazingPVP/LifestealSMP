@@ -41,7 +41,7 @@ public class InstaboomTNT implements Listener {
 
             if (!cooldown.isOnCooldown()) {
                 triggerInstaBoom(player, location);
-                triggerInstaBoomNONENTITY(location);
+                triggerInstaBoomNONPLAYER(location);
                 cooldown.setCooldown(tntCooldownTime);
                 tntCooldowns.put(player, cooldown);
                 updateItemStack(player, itemInMainHand);
@@ -73,7 +73,7 @@ public class InstaboomTNT implements Listener {
     }
 
 
-    public void triggerInstaBoomNONENTITY(Location location) {
+    public void triggerInstaBoomNONPLAYER(Location location) {
         World world = location.getWorld();
         if (world != null) {
 
@@ -86,7 +86,7 @@ public class InstaboomTNT implements Listener {
 
                     if(!(nearbyEntity  instanceof  Player)){
                         Vector direction = nearbyEntity.getLocation().toVector().subtract(location.toVector()).normalize();
-                        Vector velocity = direction.multiply(20);
+                        Vector velocity = direction.multiply(5);
                         if (velocity.getY() > 1.0) {
                             velocity.setY(1.0);
                         }
