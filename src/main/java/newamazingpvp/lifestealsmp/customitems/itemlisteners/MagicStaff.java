@@ -74,10 +74,18 @@ public class MagicStaff implements Listener {
                 player2.getWorld().spawnParticle(Particle.REDSTONE, location, 0, new Particle.DustOptions(Color.GRAY, 2.0F));
                 player2.getWorld().spawnParticle(Particle.REDSTONE, location, 0, new Particle.DustOptions(Color.GRAY, 3.0F));
 
-                
+
                 }
             }
         }
+
+
+
+
+
+
+
+
     }
 
 
@@ -101,6 +109,5 @@ public class MagicStaff implements Listener {
 
 
 
-    }
 
 
