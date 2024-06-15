@@ -4,6 +4,7 @@ import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Zombie;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,6 +21,23 @@ import java.util.HashMap;
 import java.util.UUID;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+
+
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.*;
+import org.bukkit.entity.*;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.util.Vector;
+
+import org.bukkit.inventory.ItemStack;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MagicStaff implements Listener {
@@ -53,6 +71,33 @@ public class MagicStaff implements Listener {
                         defaultBeam(attacker,location,attackerLookDir);
 
 
+                        Vector direction = attacker.getEyeLocation().getDirection();
+                        double range = 100;
+                        Location targetLocation = attacker.getEyeLocation().clone();
+
+                        for (int i = 0; i < range; i++) {
+                            targetLocation.add(direction);
+
+                            Entity target = getTargetEntityAtLocation(targetLocation);
+                            if (target != null) {
+                                if(target instanceof Entity) {
+                                    if (event.getItem().getType() == Material.GOLDEN_HOE || event.getItem().getType() == Material.GOLDEN_SHOVEL) {
+                                        ((LivingEntity) target).damage(1);
+                                    } else {;
+                                        ((LivingEntity) target).damage(1);
+                                    }
+                                }
+                                break;
+                            }
+
+                            // Target location is obstructed by a block
+                            if (targetLocation.getBlock().getType().isSolid()) {
+                                break;
+                            }
+                        }
+
+                    }
+                }
 
 
 
@@ -61,8 +106,23 @@ public class MagicStaff implements Listener {
                     }
                 }
             }
+
+    private Entity getTargetEntityAtLocation(Location location) {
+        for (Entity target : location.getWorld().getEntities()) {
+            if ((target.getLocation().getBlock().getX() == location.getBlock().getX()) &&
+                    (target.getLocation().getBlock().getZ() == location.getBlock().getZ()) &&
+                    (target.getLocation().getBlock().getY() >= location.getBlock().getY() - target.getHeight()) &&
+                    (target.getLocation().getBlock().getY() <= location.getBlock().getY() + target.getHeight()) &&
+                    (target instanceof LivingEntity) && !(target instanceof Player)) {
+                return target;
+            }
         }
+        return null;
     }
+
+    
+
+
 
 
 

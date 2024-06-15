@@ -215,7 +215,7 @@ public class Recipes {
         somberCrystalRecipe.setIngredient('E', Material.ECHO_SHARD);
         somberCrystalRecipe.setIngredient('N', Material.NETHER_STAR);
         shapedRecipes.put(somberCrystal, somberCrystalRecipe);
-        customItems.add(somberCrystal()); 
+        customItems.add(somberCrystal());
         Bukkit.addRecipe(somberCrystalRecipe);
 
 
