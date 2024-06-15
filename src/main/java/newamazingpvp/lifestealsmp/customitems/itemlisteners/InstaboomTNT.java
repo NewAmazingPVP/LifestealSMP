@@ -2,6 +2,7 @@ package newamazingpvp.lifestealsmp.customitems.itemlisteners;
 
 import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.*;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -68,6 +69,32 @@ public class InstaboomTNT implements Listener {
                 }
             }
         }
+    }
+
+
+    public void triggerInstaBoomNONENTITY(Location location) {
+        World world = location.getWorld();
+        if (world != null) {
+
+            for (Entity onlineEntity : world.getEntities()) {
+
+                //world.getNearbyEntities(location, 3);
+
+                List<Entity> nearbyEntitys = (List<Entity>) world.getNearbyEntities(location,3,3,3);
+                for (Entity nearbyEntity : nearbyEntitys) {
+
+                    Vector direction = nearbyEntity.getLocation().toVector().subtract(location.toVector()).normalize();
+                    Vector velocity = direction.multiply(20);
+                    if (velocity.getY() > 1.0) {
+                        velocity.setY(1.0);
+                    }
+                    nearbyEntity.setVelocity(velocity);
+
+                }
+            }
+        }
+
+
     }
 
     private void applyEffectsAndKnockback(Player player, Location explosionLocation) {
