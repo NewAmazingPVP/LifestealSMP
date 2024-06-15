@@ -81,7 +81,7 @@ public class MagicStaff implements Listener {
                             Entity target = getTargetEntityAtLocation(targetLocation);
                             if (target != null) {
                                 if(target instanceof Entity) {
-                                    if (event.getItem().getType() == Material.GOLDEN_HOE || event.getItem().getType() == Material.GOLDEN_SHOVEL) {
+                                    if (event.getItem().getType() == Material.STICK) {
                                         ((LivingEntity) target).damage(1);
                                     } else {;
                                         ((LivingEntity) target).damage(1);
