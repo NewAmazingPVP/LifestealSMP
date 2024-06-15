@@ -13,6 +13,7 @@ import newamazingpvp.lifestealsmp.blacklistener.EndCrystalWarning;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.command.unused.JailPlayer;
 import newamazingpvp.lifestealsmp.command.unused.TESTsomber;
+import newamazingpvp.lifestealsmp.customitems.MagicStaffs.MagicStaff;
 import newamazingpvp.lifestealsmp.customitems.armorlisteners.QuarryArmor;
 import newamazingpvp.lifestealsmp.customitems.itemlisteners.*;
 import newamazingpvp.lifestealsmp.customitems.utils.AntiAnvil;
