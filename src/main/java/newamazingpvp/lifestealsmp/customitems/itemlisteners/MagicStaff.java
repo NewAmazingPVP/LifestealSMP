@@ -74,16 +74,7 @@ public class MagicStaff implements Listener {
                 player2.getWorld().spawnParticle(Particle.REDSTONE, location, 0, new Particle.DustOptions(Color.GRAY, 2.0F));
                 player2.getWorld().spawnParticle(Particle.REDSTONE, location, 0, new Particle.DustOptions(Color.GRAY, 3.0F));
 
-                for (Entity entity : location.getWorld().getNearbyEntities(location, 15, 15, 15)) {
-                    if (entity instanceof LivingEntity) {
-                        // Calculate the distance between the player and the entity
-                        double distance = player.getLocation().distance(entity.getLocation());
-
-                        // If the distance is less than or equal to 15 blocks, damage the entity
-                        if (distance <= 15) {
-                            ((LivingEntity) entity).damage(2);
-                        }
-                    }
+                
                 }
             }
         }
