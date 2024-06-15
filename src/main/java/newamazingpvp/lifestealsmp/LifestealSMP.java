@@ -134,6 +134,15 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         //getServer().getPluginManager().registerEvents(new TpsEvent(), this);
         startTPSTracking();
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
+        //Everything under here is part of new update 6/15/24
+        getServer().getPluginManager().registerEvents(new LightFeather(), this);
+        getServer().getPluginManager().registerEvents(new InstaboomTNT(), this);
+        getServer().getPluginManager().registerEvents(new Drops(), this);
+        getServer().getPluginManager().registerEvents(new LifestealStick(), this);
+        getServer().getPluginManager().registerEvents(new SomberCrystal(), this);
+        getServer().getPluginManager().registerEvents(new MusicBox(), this);
+
+
         //TODO: Use this for beta things
         if (isAutoUploadEnabled()) {
             //getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
@@ -155,13 +164,10 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new BingoCardGUIListeners(), this);
 
             //New Custom Items
-            getServer().getPluginManager().registerEvents(new LightFeather(), this);
-            getServer().getPluginManager().registerEvents(new InstaboomTNT(), this);
-            getServer().getPluginManager().registerEvents(new Drops(), this);
-            getServer().getPluginManager().registerEvents(new LifestealStick(), this);
+
+
+
             getServer().getPluginManager().registerEvents(new QuarryArmor(), this);
-            getServer().getPluginManager().registerEvents(new SomberCrystal(), this);
-            getServer().getPluginManager().registerEvents(new MusicBox(), this);
             getServer().getPluginManager().registerEvents(new MagicStaff(), this);
             getServer().getPluginManager().registerEvents(new AntiAnvil(), this);
             registerCustomRecipesDev();
