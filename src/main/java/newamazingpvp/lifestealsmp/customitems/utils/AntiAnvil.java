@@ -23,7 +23,7 @@ public class AntiAnvil implements Listener {
 
         if (e.getClickedInventory() instanceof AnvilInventory) {
             if (itemInHand != null && itemInHand.getType() == Material.STICK && itemInHand.hasItemMeta()) {
-                if (meta.hasLore() && meta.getLore().toString().contains(ChatColor.DARK_PURPLE + "Shoots a beam of power dealing " + ChatColor.RED + "2❤")) {
+                if (meta.hasLore() && meta.getLore().toString().contains(ChatColor.DARK_PURPLE + "Shoots a beam of power dealing " + ChatColor.RED + "1❤")) {
                     player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1.0f, 0.0f);
                     e.setCancelled(true);
                     player.sendMessage(ChatColor.RED + "This item can't be used in an anvil!");
