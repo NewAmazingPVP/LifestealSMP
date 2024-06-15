@@ -90,12 +90,6 @@ public class InstaboomTNT implements Listener {
                         if (velocity.getY() > 1.0) {
                             velocity.setY(1.0);
                         }
-                        if (velocity.getX() > 2.0) {
-                            velocity.setX(1.0);
-                        }
-                        if (velocity.getZ() > 2.0) {
-                            velocity.setZ(1.0);
-                        }
                         nearbyEntity.setVelocity(velocity);
                     }
 
