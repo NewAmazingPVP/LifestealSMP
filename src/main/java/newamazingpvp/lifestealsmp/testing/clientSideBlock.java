@@ -10,5 +10,5 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.Plugin;
 
 public class clientSideBlock implements Listener {
-    
+
 }
