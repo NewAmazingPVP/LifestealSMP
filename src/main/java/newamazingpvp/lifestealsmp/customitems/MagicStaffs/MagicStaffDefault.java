@@ -35,7 +35,7 @@ public class MagicStaffDefault implements Listener {
         ItemMeta meta = itemInHand.getItemMeta();
         if (event.getAction().name().contains("LEFT_CLICK") && event.getItem() != null) {
             if (itemInHand != null && itemInHand.hasItemMeta()) {
-                if (meta.hasLore() && meta.getLore().toString().contains(ChatColor.DARK_PURPLE + "Shoots a beam of power dealing " + ChatColor.RED + "2❤")) {
+                if (meta.hasLore() && meta.getLore().toString().contains(ChatColor.DARK_PURPLE + "Shoots a beam of power dealing " + ChatColor.RED + "1❤")) {
 
                     if (event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
 
