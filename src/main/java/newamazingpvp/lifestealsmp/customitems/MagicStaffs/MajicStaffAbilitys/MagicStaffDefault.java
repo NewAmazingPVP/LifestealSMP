@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.customitems.MagicStaffs;
+package newamazingpvp.lifestealsmp.customitems.MagicStaffs.MajicStaffAbilitys;
 
 import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.*;
