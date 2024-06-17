@@ -1,9 +1,6 @@
 package newamazingpvp.lifestealsmp.customitems.utils;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -26,7 +23,7 @@ public class GUI {
     public static void openRecipesGUI(Player player) {
         Inventory gui = Bukkit.createInventory(null, 27, ChatColor.GOLD + "Custom Recipes");
 
-        for (int i = 0; i < customItems.size() && i < 27; i++) {
+        for (int i = 0; i < customItems.size(); i++) {
             gui.setItem(i, customItems.get(i));
         }
 
@@ -46,29 +43,7 @@ public class GUI {
 
         int[] slots = {0, 1, 2, 9, 10, 11, 18, 19, 20};
         int slotIndex = 0;
-        System.out.println(shapelessRecipes + "\n" + shapedRecipes);
-        boolean shapeless = false;
-        int shapelessNum = 0;
-        for (Map.Entry<ItemStack, ShapelessRecipe> entry : shapelessRecipes.entrySet()) {
-            ShapelessRecipe recipe = entry.getValue();
-            shapelessNum++;
-            if (recipe.getResult().getType() == item.getType()) {
-                shapeless = true;
-                break;
-            }
-        }
-        boolean shaped = false;
-        int shapeNum = 0;
-        for (Map.Entry<ItemStack, ShapedRecipe> entry : shapedRecipes.entrySet()) {
-            ShapedRecipe recipe = entry.getValue();
-            shapeNum++;
-            if (recipe.getResult().getType() == item.getType()) {
-                shaped = true;
-                break;
-            }
-        }
-        if (shaped) {
-            System.out.println("Yes");
+        if (shapedRecipes.containsKey(item)) {
             ShapedRecipe recipe = shapedRecipes.get(item);
             String[] shape = recipe.getShape();
             Map<Character, ItemStack> ingredients = recipe.getIngredientMap();
@@ -91,8 +66,7 @@ public class GUI {
             recipeType.setItemMeta(meta);
             gui.setItem(4, recipeType);
 
-        } else if (shapeless) {
-            System.out.println("No");
+        } else if (shapelessRecipes.containsKey(item)) {
             ShapelessRecipe recipe = shapelessRecipes.get(item);
             List<ItemStack> ingredients = recipe.getIngredientList();
 
