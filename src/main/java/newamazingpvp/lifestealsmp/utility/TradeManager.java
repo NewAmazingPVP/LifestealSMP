@@ -66,6 +66,13 @@ public class TradeManager {
 
         tradeInventory.setItem(45, confirmItem1);
         tradeInventory.setItem(53, confirmItem2);
+        tradeInventory.setItem(4, new ItemStack(Material.ORANGE_STAINED_GLASS_PANE));
+        tradeInventory.setItem(13, new ItemStack(Material.ORANGE_STAINED_GLASS_PANE));
+        tradeInventory.setItem(22, new ItemStack(Material.ORANGE_STAINED_GLASS_PANE));
+        tradeInventory.setItem(31, new ItemStack(Material.ORANGE_STAINED_GLASS_PANE));
+        tradeInventory.setItem(40, new ItemStack(Material.ORANGE_STAINED_GLASS_PANE));
+        tradeInventory.setItem(49, new ItemStack(Material.ORANGE_STAINED_GLASS_PANE));
+
 
         traders.put(player1, player2);
 
@@ -85,6 +92,10 @@ public class TradeManager {
         if (tradeAccepted.get(otherPlayer)) {
             finalizeTrade(player, otherPlayer);
         }
+    }
+
+    public static void handleTradeCancellation(Player player){
+        tradeAccepted.put(player, false);
     }
 
     public static Player getOtherPlayer(Player player) {
