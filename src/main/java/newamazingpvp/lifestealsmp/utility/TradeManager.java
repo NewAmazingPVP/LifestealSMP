@@ -146,7 +146,7 @@ public class TradeManager {
         Player otherPlayer = getOtherPlayer(player);
         if (otherPlayer != null) {
             otherPlayer.closeInventory();
-            otherPlayer.sendMessage("Trade canceled.");
+            //otherPlayer.sendMessage("Trade canceled.");
         }
         tradeInventories.remove(player);
         tradeAccepted.remove(player);
