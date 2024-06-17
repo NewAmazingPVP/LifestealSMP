@@ -100,12 +100,6 @@ public class GUI {
         if (item == null) {
             return new ItemStack(Material.AIR);
         }
-        ItemStack result = item.clone();
-        ItemMeta meta = result.getItemMeta();
-        if (meta != null) {
-            meta.setDisplayName(ChatColor.RESET.toString());
-        }
-        result.setItemMeta(meta);
-        return result;
+        return item.clone();
     }
 }
