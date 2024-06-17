@@ -13,8 +13,9 @@ import newamazingpvp.lifestealsmp.blacklistener.EndCrystalWarning;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.command.unused.JailPlayer;
 import newamazingpvp.lifestealsmp.command.unused.TESTsomber;
-import newamazingpvp.lifestealsmp.customitems.MagicStaffs.MagicStaffAir;
-import newamazingpvp.lifestealsmp.customitems.MagicStaffs.MagicStaffDefault;
+import newamazingpvp.lifestealsmp.customitems.MagicStaffs.MagicStaffAbilityMain;
+import newamazingpvp.lifestealsmp.customitems.MagicStaffs.MajicStaffAbilitys.MagicStaffAir;
+import newamazingpvp.lifestealsmp.customitems.MagicStaffs.MajicStaffAbilitys.MagicStaffDefault;
 import newamazingpvp.lifestealsmp.customitems.armorlisteners.QuarryArmor;
 import newamazingpvp.lifestealsmp.customitems.itemlisteners.*;
 import newamazingpvp.lifestealsmp.customitems.utils.AntiAnvil;
@@ -169,9 +170,12 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
 
             getServer().getPluginManager().registerEvents(new QuarryArmor(), this);
-            getServer().getPluginManager().registerEvents(new MagicStaffDefault(), this);
+            //getServer().getPluginManager().registerEvents(new MagicStaffDefault(), this);
             getServer().getPluginManager().registerEvents(new AntiAnvil(), this);
-            getServer().getPluginManager().registerEvents(new MagicStaffAir(), this);
+            //getServer().getPluginManager().registerEvents(new MagicStaffAir(), this);
+
+            getServer().getPluginManager().registerEvents(new MagicStaffAbilityMain(), this);
+
             registerCustomRecipesDev();
 
             getCommand("sombercrystaltest").setExecutor(new TESTsomber());

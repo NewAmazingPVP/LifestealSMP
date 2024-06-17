@@ -13,16 +13,18 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
 
-import java.net.http.WebSocket;
 import java.util.HashMap;
+
+
 import java.util.Map;
 
 import static newamazingpvp.lifestealsmp.customitems.MagicStaffs.MagicStaffUtils.staffBeamTexture.beamTextureMaker;
 
-public class MagicStaffAir implements Listener {
+public class MagicStaffAbilityMain implements Listener {
+
 
     private final Map<Player, CooldownManager> defaultMagicStaffCooldowns = new HashMap<>();
-    private final double defaultMagicStaffCooldown = 0.5;
+    private final double defaultMagicStaffCooldown = 3;
 
 
     @EventHandler
@@ -32,7 +34,7 @@ public class MagicStaffAir implements Listener {
         ItemMeta meta = itemInHand.getItemMeta();
         if (event.getAction().name().contains("LEFT_CLICK") && event.getItem() != null) {
             if (itemInHand != null && itemInHand.hasItemMeta()) {
-                if (meta.hasLore() && meta.getLore().toString().contains(ChatColor.DARK_PURPLE + "Shoots a beam of power pushing a player")) {
+                if (meta.hasLore() && meta.getLore().toString().contains(ChatColor.DARK_PURPLE + "Shoots a beam of power dealing " + ChatColor.RED + "1❤")) {
 
                     if (event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
 
@@ -65,15 +67,7 @@ public class MagicStaffAir implements Listener {
                                 if (target != null) {
                                     if (target instanceof Entity) {
                                         if (event.getItem().getType() == Material.STICK) {
-                                            //((LivingEntity) target).damage(1);
-                                            Vector velocity = attacker.getLocation().getDirection().multiply(3);
-                                            double maxHeight = 2.0;
-                                            if (velocity.getY() > maxHeight) {
-                                                velocity.setY(maxHeight);
-                                            }
-                                            target.setVelocity(velocity);
-                                        } else {
-                                            //((LivingEntity) target).damage(1);
+                                            ((LivingEntity) target).damage(1);
                                         }
                                     }
                                     break;
@@ -85,12 +79,14 @@ public class MagicStaffAir implements Listener {
                                 }
                             }
 
+                        } else {
+                            attacker.sendActionBar(ChatColor.RED + "" + ChatColor.BOLD + "Cooldown Active For " + cooldown.getRemainingSeconds());
                         }
                     }
                 }
+
+
             }
-
-
         }
     }
 
@@ -106,5 +102,11 @@ public class MagicStaffAir implements Listener {
         }
         return null;
     }
-
 }
+
+
+
+
+
+
+
