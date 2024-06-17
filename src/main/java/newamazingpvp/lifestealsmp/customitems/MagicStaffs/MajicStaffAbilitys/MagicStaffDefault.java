@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static newamazingpvp.lifestealsmp.customitems.MagicStaffs.MagicStaffUtils.staffBeamTexture.beamTextureMaker;
+import static newamazingpvp.lifestealsmp.customitems.MagicStaffs.MagicStaffUtils.staffSound.playMagicStaffSound;
 
 public class MagicStaffDefault implements Listener {
 
@@ -39,24 +40,22 @@ public class MagicStaffDefault implements Listener {
                         CooldownManager cooldown = defaultMagicStaffCooldowns.getOrDefault(attacker, new CooldownManager());
                         if (!cooldown.isOnCooldown()) {
 
+
                             cooldown.setCooldown(defaultMagicStaffCooldown);
                             defaultMagicStaffCooldowns.put(attacker, cooldown);
 
 
                             Location location = attacker.getEyeLocation().add(0, 0.2, 0);
                             Vector attackerLookDir = attacker.getLocation().getDirection().multiply(0.1);
+                            Vector direction = attacker.getEyeLocation().getDirection();
+                            Location targetLocation = attacker.getEyeLocation().clone();
+                            double range = 15;
 
-                            for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                                attacker.playSound(attacker.getLocation(), Sound.BLOCK_BEACON_POWER_SELECT, 1.0f, 2.0f);
-                                attacker.playSound(attacker.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 1.0f, 2.0f);
-                            }
 
+
+                            playMagicStaffSound(attacker,Sound.BLOCK_BEACON_POWER_SELECT, 2.0f, Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 2.0f);
                             beamTextureMaker(attacker, location, attackerLookDir, Color.GRAY, 2.0F, Color.GRAY, 2.0F);
 
-
-                            Vector direction = attacker.getEyeLocation().getDirection();
-                            double range = 15;
-                            Location targetLocation = attacker.getEyeLocation().clone();
 
                             for (int i = 0; i < range; i++) {
                                 targetLocation.add(direction);
@@ -65,6 +64,9 @@ public class MagicStaffDefault implements Listener {
                                 if (target != null) {
                                     if (target instanceof Entity) {
                                         if (event.getItem().getType() == Material.STICK) {
+
+                                            //Things you want staff to do goes here
+
                                             ((LivingEntity) target).damage(1);
                                         }
                                     }
@@ -87,6 +89,8 @@ public class MagicStaffDefault implements Listener {
             }
         }
     }
+
+
 
     private Entity getTargetEntityAtLocation(Location location) {
         for (Entity target : location.getWorld().getEntities()) {
