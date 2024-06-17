@@ -11,8 +11,7 @@ import org.bukkit.inventory.Inventory;
 
 import java.util.Map;
 
-import static newamazingpvp.lifestealsmp.utility.TradeManager.firstFourColumns;
-import static newamazingpvp.lifestealsmp.utility.TradeManager.traders;
+import static newamazingpvp.lifestealsmp.utility.TradeManager.*;
 
 public class TradeListener implements Listener {
 
@@ -34,12 +33,16 @@ public class TradeListener implements Listener {
                 }*/
                 if(traders.containsKey(player))
                     if(!(firstFourColumns.contains(slot))){
-                        //event.setCancelled(true);
+                        if(!event.getClickedInventory().equals(player.getInventory())) {
+                            event.setCancelled(true);
+                        }
                     }
                 }
                 if(traders.containsValue(player)){
-                    if(!(firstFourColumns.contains(slot))){
-                        //event.setCancelled(true);
+                    if(!(lastFourColumns.contains(slot))){
+                        if(!event.getClickedInventory().equals(player.getInventory())) {
+                            event.setCancelled(true);
+                        }
                     }
             }
             // Handle accept button clicks
