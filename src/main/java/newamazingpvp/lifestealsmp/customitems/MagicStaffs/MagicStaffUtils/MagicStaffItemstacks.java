@@ -51,4 +51,44 @@ public class MagicStaffItemstacks {
         return powerStick;
     }
 
+    public static ItemStack magicStaffNetheriteSpeed() {
+
+        ItemStack powerStick = new ItemStack(Material.STICK);
+        ItemMeta SI = powerStick.getItemMeta();
+        SI.addEnchant(Enchantment.DURABILITY, 1, false);
+        SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        SI.setDisplayName(ChatColor.WHITE + "" + ChatColor.BOLD + "Air Magic Staff");
+        List<String> BL = new ArrayList<>();
+        BL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Left Click:");
+        BL.add(ChatColor.DARK_PURPLE + "Shoots a beam of power pushing a player");
+        BL.add(ChatColor.RED + "0.5s cooldown!");
+        BL.add(ChatColor.RED + "Only Deals damage 30% of the time!");
+        SI.setLore(BL);
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        powerStick.setItemMeta(SI);
+
+        return powerStick;
+    }
+
+    public static ItemStack magicStaffComet() {
+
+        ItemStack powerStick = new ItemStack(Material.STICK);
+        ItemMeta SI = powerStick.getItemMeta();
+        SI.addEnchant(Enchantment.DURABILITY, 1, false);
+        SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        SI.setDisplayName(ChatColor.WHITE + "" + ChatColor.BOLD + "Air Magic Staff");
+        List<String> BL = new ArrayList<>();
+        BL.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Left Click:");
+        BL.add(ChatColor.DARK_PURPLE + "Shoots a beam of power pushing a player");
+        BL.add(ChatColor.RED + "0.5s cooldown!");
+        BL.add(ChatColor.RED + "Only Deals damage 30% of the time!");
+        SI.setLore(BL);
+        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        powerStick.setItemMeta(SI);
+
+        return powerStick;
+    }
+
 }

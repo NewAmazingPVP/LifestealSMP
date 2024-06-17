@@ -46,7 +46,7 @@ public class MagicStaffAbilityMain implements Listener {
 
 
                             Location location = attacker.getEyeLocation().add(0, 0.2, 0);
-                            Vector attackerLookDir = attacker.getLocation().getDirection().multiply(0.1);
+                            Vector attackerLookDir = attacker.getLocation().getDirection().multiply(0.1);//<<<<<<<<<<<<<<<<<<
 
                             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
                                 attacker.playSound(attacker.getLocation(), Sound.BLOCK_BEACON_POWER_SELECT, 1.0f, 2.0f);
