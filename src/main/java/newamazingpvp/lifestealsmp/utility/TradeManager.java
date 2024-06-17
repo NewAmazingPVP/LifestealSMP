@@ -119,12 +119,12 @@ public class TradeManager {
             ItemStack item1 = tradeInventory.getItem(i);
 
             if (item1 != null && firstFourColumns.contains(i)) {
-                if(!(item1.getType() == Material.GREEN_STAINED_GLASS_PANE)) {
+                if(!(item1.getType() == Material.GREEN_STAINED_GLASS_PANE) && !(item1.getType() == Material.RED_STAINED_GLASS_PANE) ) {
                     player1.getInventory().addItem(item1);
                 }
             }
             if (item1 != null && lastFourColumns.contains(i)) {
-                if(!(item1.getType() == Material.GREEN_STAINED_GLASS_PANE)) {
+                if(!(item1.getType() == Material.GREEN_STAINED_GLASS_PANE) && !(item1.getType() == Material.RED_STAINED_GLASS_PANE)) {
                     player2.getInventory().addItem(item1);
                 }
             }
