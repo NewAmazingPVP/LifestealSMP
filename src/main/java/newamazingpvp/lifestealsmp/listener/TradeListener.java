@@ -20,6 +20,10 @@ public class TradeListener implements Listener {
         Player player = (Player) event.getWhoClicked();
 
         if (TradeManager.isTradeInventory(inventory)) {
+            if(event.getClickedInventory().equals(inventory)){
+                event.setCancelled(true);
+                return;
+            }
             int slot = event.getSlot();
             Inventory clickedInventory = event.getClickedInventory();
 
@@ -108,12 +112,12 @@ public class TradeListener implements Listener {
         }
     }
 
-   /* @EventHandler
+    @EventHandler
     public void onInve(InventoryMoveItemEvent e){
-        if(TradeManager.isTradeInventory(e.)){
+        if(TradeManager.isTradeInventory(e.getInitiator()) && TradeManager.isTradeInventory(e.getDestination())){
             e.setCancelled(true);
         }
-    }*/
+    }
 
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent event) {
