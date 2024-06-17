@@ -66,7 +66,7 @@ public class TradeListener implements Listener {
                         inventory.setItem(45, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
                     }
                 }
-                if (slot == 53 && event.getCurrentItem().getType() == Material.GREEN_STAINED_GLASS_PANE) {
+                if (slot == 53 && event.getCurrentItem().getType() == Material.RED_STAINED_GLASS_PANE) {
                     if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Player 2") && TradeManager.getOtherPlayer(player) != null) {
                         TradeManager.handleTradeAcceptance(player);
                         inventory.setItem(53, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
@@ -75,7 +75,7 @@ public class TradeListener implements Listener {
             }
         }
     }
-/*
+
     @EventHandler
     public void onInventoryDrag(InventoryDragEvent event) {
         Inventory inventory = event.getInventory();
@@ -98,6 +98,20 @@ public class TradeListener implements Listener {
                     }
                 }
             }
+        }
+    }
+
+    @EventHandler
+    public void onInv(InventoryInteractEvent e){
+        if(TradeManager.isTradeInventory(e.getInventory())){
+            e.setCancelled(true);
+        }
+    }
+
+   /* @EventHandler
+    public void onInve(InventoryMoveItemEvent e){
+        if(TradeManager.isTradeInventory(e.)){
+            e.setCancelled(true);
         }
     }*/
 
