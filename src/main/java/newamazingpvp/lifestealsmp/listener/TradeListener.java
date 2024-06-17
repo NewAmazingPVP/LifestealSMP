@@ -20,10 +20,10 @@ public class TradeListener implements Listener {
         Player player = (Player) event.getWhoClicked();
 
         if (TradeManager.isTradeInventory(inventory)) {
-            if(event.getClickedInventory().equals(inventory)){
+            /*if(event.getClickedInventory().equals(inventory)){
                 event.setCancelled(true);
                 return;
-            }
+            }*/
             int slot = event.getSlot();
             Inventory clickedInventory = event.getClickedInventory();
 
