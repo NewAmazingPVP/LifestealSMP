@@ -54,12 +54,12 @@ public class TradeManager {
     private static void openTradeGui(Player player1, Player player2) {
         Inventory tradeInventory = Bukkit.createInventory(null, 54, "Trading: " + player1.getName() + " ↔ " + player2.getName());
 
-        ItemStack confirmItem1 = new ItemStack(Material.GREEN_STAINED_GLASS_PANE);
+        ItemStack confirmItem1 = new ItemStack(Material.RED_STAINED_GLASS_PANE);
         ItemMeta confirmMeta1 = confirmItem1.getItemMeta();
         confirmMeta1.setDisplayName("Accept Trade (Player 1)");
         confirmItem1.setItemMeta(confirmMeta1);
 
-        ItemStack confirmItem2 = new ItemStack(Material.GREEN_STAINED_GLASS_PANE);
+        ItemStack confirmItem2 = new ItemStack(Material.RED_STAINED_GLASS_PANE);
         ItemMeta confirmMeta2 = confirmItem2.getItemMeta();
         confirmMeta2.setDisplayName("Accept Trade (Player 2)");
         confirmItem2.setItemMeta(confirmMeta2);
