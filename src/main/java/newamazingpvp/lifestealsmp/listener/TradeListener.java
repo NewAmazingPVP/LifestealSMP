@@ -14,7 +14,7 @@ import static newamazingpvp.lifestealsmp.utility.TradeManager.*;
 
 public class TradeListener implements Listener {
 
-    @EventHandler(priority = EventPriority.LOWEST)
+    @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         Inventory inventory = event.getInventory();
         Player player = (Player) event.getWhoClicked();
@@ -23,7 +23,6 @@ public class TradeListener implements Listener {
             int slot = event.getSlot();
             Inventory clickedInventory = event.getClickedInventory();
 
-            // Prevent any form of item movement for accept buttons
             if (slot == 45 || slot == 53) {
                 event.setCancelled(true);
             }
@@ -33,16 +32,11 @@ public class TradeListener implements Listener {
             }
 
 
-            // Prevent shift-clicking and specific item actions across columns
-         /*   if (event.isShiftClick() ||
-                    event.getAction() == InventoryAction.PLACE_ALL ||
-                    event.getAction() == InventoryAction.PLACE_ONE ||
-                    event.getAction() == InventoryAction.PLACE_SOME ||
-                    event.getAction() == InventoryAction.SWAP_WITH_CURSOR ||
-                    event.getAction() == InventoryAction.COLLECT_TO_CURSOR ||
-                    event.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY) {
+            if(!(event.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY)) {
+                event.setCancelled(true);
+            }
 
-*/
+
                 if (traders.containsKey(player)) {
                     if (!(lastFourColumns.contains(slot)) && clickedInventory != player.getInventory()) {
                         event.setCancelled(true);
