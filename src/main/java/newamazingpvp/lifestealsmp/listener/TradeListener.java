@@ -9,8 +9,12 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 
-public class TradeListener implements Listener {
+import java.util.Map;
 
+import static newamazingpvp.lifestealsmp.utility.TradeManager.firstFourColumns;
+import static newamazingpvp.lifestealsmp.utility.TradeManager.traders;
+
+public class TradeListener implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
@@ -18,10 +22,38 @@ public class TradeListener implements Listener {
         Player player = (Player) event.getWhoClicked();
 
         if (TradeManager.isTradeInventory(inventory)) {
-            event.setCancelled(true);
-
-            if (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.GREEN_STAINED_GLASS_PANE) {
-                TradeManager.handleTradeAcceptance(player);
+            int slot = event.getSlot();
+            // Prevent item movement for accept buttons
+            if (slot == 45 || slot == 53) {
+                event.setCancelled(true);
+            } else if (slot >= 0 && slot < 54) {
+                // Allow item movement within the trade window
+                // Ensure that clicks in the player's own inventory are cancelled to prevent taking out items
+                /*if (event.getClickedInventory() != inventory) {
+                    event.setCancelled(true);
+                }*/
+                if(traders.containsKey(player))
+                    if(!(firstFourColumns.contains(slot))){
+                        //event.setCancelled(true);
+                    }
+                }
+                if(traders.containsValue(player)){
+                    if(!(firstFourColumns.contains(slot))){
+                        //event.setCancelled(true);
+                    }
+            }
+            // Handle accept button clicks
+            if (event.getCurrentItem() != null) {
+                if (slot == 45 && event.getCurrentItem().getType() == Material.GREEN_STAINED_GLASS_PANE) {
+                    if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Player 1") && TradeManager.getOtherPlayer(player) != null) {
+                        TradeManager.handleTradeAcceptance(player);
+                    }
+                }
+                if (slot == 53 && event.getCurrentItem().getType() == Material.GREEN_STAINED_GLASS_PANE) {
+                    if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Player 2") && TradeManager.getOtherPlayer(player) != null) {
+                        TradeManager.handleTradeAcceptance(player);
+                    }
+                }
             }
         }
     }
