@@ -6,15 +6,38 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class TradeManager {
     private static final Map<Player, Player> pendingTrades = new HashMap<>();
     private static final Map<Player, Inventory> tradeInventories = new HashMap<>();
+    public static final Map<Player, Player> traders = new HashMap<>();
     private static final Map<Player, Boolean> tradeAccepted = new HashMap<>();
+    public static final List<Integer> firstFourColumns = Arrays.asList(
+            0, 1, 2, 3,
+            9, 10, 11, 12,
+            18, 19, 20, 21,
+            27, 28, 29, 30,
+            36, 37, 38, 39,
+            45, 46, 47, 48
+    );
+
+    public static final List<Integer> lastFourColumns = Arrays.asList(
+            8, 5, 6, 7,
+            17, 14, 15, 16,
+            26, 23, 24, 25,
+            35, 32, 33, 34,
+            44, 41, 42, 43,
+            53, 50, 51, 52
+    );
+
+
 
     public static void initiateTrade(Player sender, Player receiver) {
         if (pendingTrades.containsKey(receiver) && pendingTrades.get(receiver).equals(sender)) {
@@ -24,30 +47,36 @@ public class TradeManager {
             sender.sendMessage("Trade request sent to " + receiver.getName());
             receiver.sendMessage(sender.getName() + " wants to trade with you. Type /trade " + sender.getName() + " to accept.");
             pendingTrades.put(sender, receiver);
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> pendingTrades.remove(sender), 20 * 60); // Remove the request after 1 minute
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> pendingTrades.remove(sender), 20 * 60);
         }
     }
 
     private static void openTradeGui(Player player1, Player player2) {
-        Inventory tradeInventory1 = Bukkit.createInventory(null, 27, "Trading with " + player2.getName());
-        Inventory tradeInventory2 = Bukkit.createInventory(null, 27, "Trading with " + player1.getName());
+        Inventory tradeInventory = Bukkit.createInventory(null, 54, "Trading: " + player1.getName() + " ↔ " + player2.getName());
 
-        ItemStack confirmItem = new ItemStack(Material.GREEN_STAINED_GLASS_PANE);
-        ItemMeta confirmMeta = confirmItem.getItemMeta();
-        confirmMeta.setDisplayName("Accept Trade");
-        confirmItem.setItemMeta(confirmMeta);
+        ItemStack confirmItem1 = new ItemStack(Material.GREEN_STAINED_GLASS_PANE);
+        ItemMeta confirmMeta1 = confirmItem1.getItemMeta();
+        confirmMeta1.setDisplayName("Accept Trade (Player 1)");
+        confirmItem1.setItemMeta(confirmMeta1);
 
-        tradeInventory1.setItem(26, confirmItem);
-        tradeInventory2.setItem(26, confirmItem);
+        ItemStack confirmItem2 = new ItemStack(Material.GREEN_STAINED_GLASS_PANE);
+        ItemMeta confirmMeta2 = confirmItem2.getItemMeta();
+        confirmMeta2.setDisplayName("Accept Trade (Player 2)");
+        confirmItem2.setItemMeta(confirmMeta2);
 
-        tradeInventories.put(player1, tradeInventory1);
-        tradeInventories.put(player2, tradeInventory2);
+        tradeInventory.setItem(45, confirmItem1);
+        tradeInventory.setItem(53, confirmItem2);
+
+        traders.put(player1, player2);
+
+        tradeInventories.put(player1, tradeInventory);
+        tradeInventories.put(player2, tradeInventory);
 
         tradeAccepted.put(player1, false);
         tradeAccepted.put(player2, false);
 
-        player1.openInventory(tradeInventory1);
-        player2.openInventory(tradeInventory2);
+        player1.openInventory(tradeInventory);
+        player2.openInventory(tradeInventory);
     }
 
     public static void handleTradeAcceptance(Player player) {
@@ -58,28 +87,35 @@ public class TradeManager {
         }
     }
 
-    private static Player getOtherPlayer(Player player) {
-        for (Map.Entry<Player, Inventory> entry : tradeInventories.entrySet()) {
-            if (!entry.getKey().equals(player)) {
-                return entry.getKey();
+    public static Player getOtherPlayer(Player player) {
+        if(traders.get(player) != null){
+            return traders.get(player);
+        }
+        if(traders.containsValue(player)){
+            for (Map.Entry<Player, Inventory> entry : tradeInventories.entrySet()) {
+                if (entry.getValue().equals(player)) {
+                    return entry.getKey();
+                }
             }
         }
-        return null;
+            return null;
     }
 
     private static void finalizeTrade(Player player1, Player player2) {
-        Inventory inv1 = tradeInventories.get(player1);
-        Inventory inv2 = tradeInventories.get(player2);
+        Inventory tradeInventory = tradeInventories.get(player1);
 
-        for (int i = 0; i < 26; i++) {
-            ItemStack item1 = inv1.getItem(i);
-            ItemStack item2 = inv2.getItem(i);
+        for (int i = 0; i < 54; i++) {
+            ItemStack item1 = tradeInventory.getItem(i);
 
-            if (item1 != null) {
-                player2.getInventory().addItem(item1);
+            if (item1 != null && firstFourColumns.contains(i)) {
+                if(!(item1.getType() == Material.GREEN_STAINED_GLASS_PANE)) {
+                    player1.getInventory().addItem(item1);
+                }
             }
-            if (item2 != null) {
-                player1.getInventory().addItem(item2);
+            if (item1 != null && lastFourColumns.contains(i)) {
+                if(!(item1.getType() == Material.GREEN_STAINED_GLASS_PANE)) {
+                    player2.getInventory().addItem(item1);
+                }
             }
         }
 
