@@ -32,10 +32,6 @@ public class TradeListener implements Listener {
             }
 
 
-            if(!(event.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY)) {
-                event.setCancelled(true);
-            }
-
 
                 if (traders.containsKey(player)) {
                     if (!(lastFourColumns.contains(slot)) && clickedInventory != player.getInventory()) {
@@ -62,6 +58,7 @@ public class TradeListener implements Listener {
                         }
                     } else {
                         TradeManager.handleTradeCancellation(player);
+                        inventory.setItem(45, new ItemStack(Material.RED_STAINED_GLASS_PANE));
                     }
                 }
                 if (slot == 53) {
@@ -72,6 +69,7 @@ public class TradeListener implements Listener {
                         }
                     } else {
                         TradeManager.handleTradeCancellation(player);
+                        inventory.setItem(53, new ItemStack(Material.RED_STAINED_GLASS_PANE));
                     }
                 }
             }
