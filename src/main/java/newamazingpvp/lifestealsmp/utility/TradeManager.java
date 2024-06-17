@@ -92,7 +92,7 @@ public class TradeManager {
             return traders.get(player);
         }
         if(traders.containsValue(player)){
-            for (Map.Entry<Player, Inventory> entry : tradeInventories.entrySet()) {
+            for (Map.Entry<Player, Player> entry : traders.entrySet()) {
                 if (entry.getValue().equals(player)) {
                     return entry.getKey();
                 }
