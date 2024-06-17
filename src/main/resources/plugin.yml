@@ -157,3 +157,8 @@ commands:
   trade:
     description: Trade with players
     usage: /trade <player>
+  openmagicstaffmenu:
+    description: Opens the menu for magic staffs for testing
+    usage: /openmagicstaffmenu
+    permission: lifestealSMP.admin
+    default: op

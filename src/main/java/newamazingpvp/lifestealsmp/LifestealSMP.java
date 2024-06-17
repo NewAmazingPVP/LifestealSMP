@@ -13,6 +13,7 @@ import newamazingpvp.lifestealsmp.blacklistener.EndCrystalWarning;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.command.unused.JailPlayer;
 import newamazingpvp.lifestealsmp.command.unused.TESTsomber;
+import newamazingpvp.lifestealsmp.customitems.MagicStaffs.MagicStaffUtils.MagicStaffGUIListeners;
 import newamazingpvp.lifestealsmp.customitems.MagicStaffs.MajicStaffAbilitys.MagicStaffDefault;
 import newamazingpvp.lifestealsmp.customitems.MagicStaffs.OldSystemForMaguc.MagicStaffAbilityMainOLD;
 import newamazingpvp.lifestealsmp.customitems.armorlisteners.QuarryArmor;
@@ -174,7 +175,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             //getServer().getPluginManager().registerEvents(new MagicStaffAir(), this);
 
             //magic staffs
+            getServer().getPluginManager().registerEvents(new MagicStaffGUIListeners(), this);
             getServer().getPluginManager().registerEvents(new MagicStaffDefault(), this);
+            getCommand("openmagicstaffmenu").setExecutor(new OpenMagicStaffMenuADMIN());
 
 
             registerCustomRecipesDev();

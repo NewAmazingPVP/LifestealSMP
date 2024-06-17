@@ -72,7 +72,6 @@ public class MagicStaffDefault implements Listener {
                                     }
                                     break;
                                 }
-
                                 // Target location is obstructed by a block
                                 if (targetLocation.getBlock().getType().isSolid()) {
                                     break;
@@ -84,8 +83,6 @@ public class MagicStaffDefault implements Listener {
                         }
                     }
                 }
-
-
             }
         }
     }

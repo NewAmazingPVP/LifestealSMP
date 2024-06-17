@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static newamazingpvp.lifestealsmp.customitems.MagicStaffs.MagicStaffUtils.staffBeamTexture.beamTextureMaker;
+import static newamazingpvp.lifestealsmp.customitems.MagicStaffs.MagicStaffUtils.staffSound.playMagicStaffSound;
 
 public class MagicStaffAir implements Listener {
 
@@ -45,18 +46,14 @@ public class MagicStaffAir implements Listener {
 
                             Location location = attacker.getEyeLocation().add(0, 0.2, 0);
                             Vector attackerLookDir = attacker.getLocation().getDirection();
+                            Vector direction = attacker.getEyeLocation().getDirection();
+                            Location targetLocation = attacker.getEyeLocation().clone();
+                            double range = 15;
 
-                            for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                                attacker.playSound(attacker.getLocation(), Sound.BLOCK_BEACON_POWER_SELECT, 1.0f, 2.0f);
-                                attacker.playSound(attacker.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 1.0f, 2.0f);
-                            }
 
+                            playMagicStaffSound(attacker, Sound.BLOCK_BEACON_POWER_SELECT, 2.0f, Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 2.0f);
                             beamTextureMaker(attacker, location, attackerLookDir, Color.GRAY, 2.0F, Color.GRAY, 2.0F);
 
-
-                            Vector direction = attacker.getEyeLocation().getDirection();
-                            double range = 15;
-                            Location targetLocation = attacker.getEyeLocation().clone();
 
                             for (int i = 0; i < range; i++) {
                                 targetLocation.add(direction);
@@ -65,15 +62,16 @@ public class MagicStaffAir implements Listener {
                                 if (target != null) {
                                     if (target instanceof Entity) {
                                         if (event.getItem().getType() == Material.STICK) {
-                                            //((LivingEntity) target).damage(1);
+
+
                                             Vector velocity = attacker.getLocation().getDirection().multiply(3);
                                             double maxHeight = 2.0;
                                             if (velocity.getY() > maxHeight) {
                                                 velocity.setY(maxHeight);
                                             }
                                             target.setVelocity(velocity);
-                                        } else {
-                                            //((LivingEntity) target).damage(1);
+
+
                                         }
                                     }
                                     break;
@@ -89,8 +87,6 @@ public class MagicStaffAir implements Listener {
                     }
                 }
             }
-
-
         }
     }
 
