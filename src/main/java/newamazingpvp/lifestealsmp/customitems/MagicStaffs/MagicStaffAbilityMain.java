@@ -21,8 +21,7 @@ import static newamazingpvp.lifestealsmp.customitems.MagicStaffs.MajicStaffAbili
 
 public class MagicStaffAbilityMain implements Listener {
 
-    private final Map<Player, CooldownManager> defaultMagicStaffCooldowns = new HashMap<>();
-    private final double defaultMagicStaffCooldown = 3;
+
 
 
     @EventHandler
@@ -34,12 +33,6 @@ public class MagicStaffAbilityMain implements Listener {
             if (itemInHand != null && itemInHand.hasItemMeta()) {
 
                     if (event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
-
-                        CooldownManager cooldown = defaultMagicStaffCooldowns.getOrDefault(attacker, new CooldownManager());
-                        if (!cooldown.isOnCooldown()) {
-
-                            cooldown.setCooldown(defaultMagicStaffCooldown);
-                            defaultMagicStaffCooldowns.put(attacker, cooldown);
 
 
                             Location location = attacker.getEyeLocation().add(0, 0.2, 0);
@@ -77,16 +70,11 @@ public class MagicStaffAbilityMain implements Listener {
                                     break;
                                 }
                             }
-
-                        } else {
-                            attacker.sendActionBar(ChatColor.RED + "" + ChatColor.BOLD + "Cooldown Active For " + cooldown.getRemainingSeconds());
                         }
                     }
                 }
-
-
             }
-        }
+
 
     private Entity getTargetEntityAtLocation(Location location) {
         for (Entity target : location.getWorld().getEntities()) {
