@@ -23,7 +23,7 @@ public class MagicStaffGUIListeners implements Listener {
         ItemMeta meta = itemInHand.getItemMeta();
         Player player = (Player) event.getWhoClicked();
 
-        if (event.getView().getTitle().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Music Box")) {
+        if (event.getView().getTitle().equalsIgnoreCase(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Magic Wand Admin Menu")) {
 
             if (itemInHand != null && itemInHand.getType() == Material.STICK && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GRAY + "" + ChatColor.BOLD + "Magic Staff")) {
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
@@ -34,7 +34,7 @@ public class MagicStaffGUIListeners implements Listener {
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
                 player.getInventory().addItem(magicStaffAir());
             }
-            
+
         }
     }
 }
