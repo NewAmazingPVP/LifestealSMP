@@ -60,16 +60,24 @@ public class TradeListener implements Listener {
 
             // Handle accept button clicks
             if (event.getCurrentItem() != null) {
-                if (slot == 45 && event.getCurrentItem().getType() == Material.RED_STAINED_GLASS_PANE) {
-                    if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Player 1") && TradeManager.getOtherPlayer(player) != null) {
-                        TradeManager.handleTradeAcceptance(player);
-                        inventory.setItem(45, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
+                if (slot == 45) {
+                    if(event.getCurrentItem().getType() == Material.RED_STAINED_GLASS_PANE) {
+                        if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Player 1") && TradeManager.getOtherPlayer(player) != null) {
+                            TradeManager.handleTradeAcceptance(player);
+                            inventory.setItem(45, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
+                        }
+                    } else {
+                        TradeManager.handleTradeCancellation(player);
                     }
                 }
-                if (slot == 53 && event.getCurrentItem().getType() == Material.RED_STAINED_GLASS_PANE) {
-                    if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Player 2") && TradeManager.getOtherPlayer(player) != null) {
-                        TradeManager.handleTradeAcceptance(player);
-                        inventory.setItem(53, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
+                if (slot == 53) {
+                    if(event.getCurrentItem().getType() == Material.RED_STAINED_GLASS_PANE) {
+                        if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Player 2") && TradeManager.getOtherPlayer(player) != null) {
+                            TradeManager.handleTradeAcceptance(player);
+                            inventory.setItem(53, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
+                        }
+                    } else {
+                        TradeManager.handleTradeCancellation(player);
                     }
                 }
             }
