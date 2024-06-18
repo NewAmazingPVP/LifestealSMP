@@ -10,14 +10,20 @@ import org.bukkit.event.inventory.*;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.HashMap;
+import java.util.UUID;
+
 import static newamazingpvp.lifestealsmp.utility.TradeManager.*;
 
 public class TradeListener implements Listener {
+    private final HashMap<UUID, Long> lastInteractionTime = new HashMap<>();
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         Inventory inventory = event.getInventory();
         Player player = (Player) event.getWhoClicked();
+        UUID playerUUID = player.getUniqueId();
+        long currentTime = System.currentTimeMillis();
 
         if (TradeManager.isTradeInventory(inventory)) {
             /*if(event.getClickedInventory().equals(inventory)){
@@ -50,10 +56,16 @@ public class TradeListener implements Listener {
 
 
             //}
+            if (slot == 45 || slot == 53) {
+                if (lastInteractionTime.containsKey(playerUUID) && (currentTime - lastInteractionTime.get(playerUUID)) < 50) {
+                    event.setCancelled(true);
+                    return;
+                }
 
+                lastInteractionTime.put(playerUUID, currentTime);
                 if (slot == 45) {
-                    player.sendMessage(inventory.getItem(45).getType().toString().toLowerCase());
-                    player.sendMessage(String.valueOf(inventory.getItem(45).getType().toString().toLowerCase().contains("red")));
+                    //player.sendMessage(inventory.getItem(45).getType().toString().toLowerCase());
+                    //player.sendMessage(String.valueOf(inventory.getItem(45).getType().toString().toLowerCase().contains("red")));
                     if(inventory.getItem(45).getType().toString().toLowerCase().contains("red")) {
                             TradeManager.handleTradeAcceptance(player);
                             inventory.setItem(45, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
@@ -63,15 +75,16 @@ public class TradeListener implements Listener {
                     }
                 }
                 if (slot == 53) {
-                    player.sendMessage(inventory.getItem(53).getType().toString().toLowerCase());
-                    player.sendMessage(String.valueOf(inventory.getItem(53).getType().toString().toLowerCase().contains("red")));
-                    if(inventory.getItem(53).getType().toString().toLowerCase().contains("red")) {
-                            TradeManager.handleTradeAcceptance(player);
-                            inventory.setItem(53, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
+                    //player.sendMessage(inventory.getItem(53).getType().toString().toLowerCase());
+                    //player.sendMessage(String.valueOf(inventory.getItem(53).getType().toString().toLowerCase().contains("red")));
+                    if (inventory.getItem(53).getType().toString().toLowerCase().contains("red")) {
+                        TradeManager.handleTradeAcceptance(player);
+                        inventory.setItem(53, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
                     } else {
                         TradeManager.handleTradeCancellation(player);
                         inventory.setItem(53, new ItemStack(Material.RED_STAINED_GLASS_PANE));
                     }
+                }
             }
         }
     }
