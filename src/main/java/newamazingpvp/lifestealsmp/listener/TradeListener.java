@@ -61,8 +61,6 @@ public class TradeListener implements Listener {
             if (slot == 45 || slot == 53) {
                 playerClicks.put(playerUUID, playerClicks.get(playerUUID)+2);
                 if (slot == 45) {
-                    player.sendMessage(inventory.getItem(45).getType().toString().toLowerCase());
-                    player.sendMessage(String.valueOf(inventory.getItem(45).getType().toString().toLowerCase().contains("red")));
                     if (playerClicks.get(playerUUID) % 4 != 0) {
                         TradeManager.handleTradeAcceptance(player);
                         inventory.setItem(45, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
@@ -72,9 +70,7 @@ public class TradeListener implements Listener {
                     }
                 }
                 if (slot == 53) {
-                    //player.sendMessage(inventory.getItem(53).getType().toString().toLowerCase());
-                    //player.sendMessage(String.valueOf(inventory.getItem(53).getType().toString().toLowerCase().contains("red")));
-                    if (playerClicks.get(playerUUID) % 4 != 0 && inventory.getItem(53).getType().toString().toLowerCase().contains("red")) {
+                    if (playerClicks.get(playerUUID) % 4 != 0) {
                         TradeManager.handleTradeAcceptance(player);
                         inventory.setItem(53, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
                     } else {
