@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.CustomMobs.Mobs;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -9,8 +10,18 @@ import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Zombie;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.profile.PlayerProfile;
+import org.bukkit.profile.PlayerTextures;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class lightningZombieCreate {
+
 
 
 
@@ -38,6 +49,16 @@ public class lightningZombieCreate {
 
 
     }
+
+
+
+
+
+
+
+
+
+
 
 
 
