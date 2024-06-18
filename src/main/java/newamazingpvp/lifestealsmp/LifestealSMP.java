@@ -29,6 +29,7 @@ import newamazingpvp.lifestealsmp.listener.*;
 import newamazingpvp.lifestealsmp.runes.ZombieRune;
 import newamazingpvp.lifestealsmp.runes.Rune;
 import newamazingpvp.lifestealsmp.utility.Utils;
+import newamazingpvp.lifestealsmp.visualeffects.DroppedItemParticles;
 import newamazingpvp.lifestealsmp.wip.PingWars;
 import newamazingpvp.lifestealsmp.wip.mcbingo.gui.BingoCardGUIListeners;
 import org.bukkit.Bukkit;
@@ -181,6 +182,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new MagicStaffDefault(), this);
             getCommand("openmagicstaffmenu").setExecutor(new OpenMagicStaffMenuADMIN());
 
+
+            //test
+            getServer().getPluginManager().registerEvents(new DroppedItemParticles(), this);
 
             registerCustomRecipesDev();
 
