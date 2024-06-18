@@ -16,7 +16,6 @@ import java.util.UUID;
 import static newamazingpvp.lifestealsmp.utility.TradeManager.*;
 
 public class TradeListener implements Listener {
-    private final HashMap<UUID, Long> lastInteractionTime = new HashMap<>();
     private final HashMap<UUID, Integer> playerClicks = new HashMap<>();
 
     @EventHandler
@@ -24,16 +23,11 @@ public class TradeListener implements Listener {
         Inventory inventory = event.getInventory();
         Player player = (Player) event.getWhoClicked();
         UUID playerUUID = player.getUniqueId();
-        long currentTime = System.currentTimeMillis();
         if(!playerClicks.containsKey(playerUUID)){
             playerClicks.put(playerUUID, 0);
         }
 
         if (TradeManager.isTradeInventory(inventory)) {
-            /*if(event.getClickedInventory().equals(inventory)){
-                event.setCancelled(true);
-                return;
-            }*/
             int slot = event.getSlot();
             Inventory clickedInventory = event.getClickedInventory();
 
