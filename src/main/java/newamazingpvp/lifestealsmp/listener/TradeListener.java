@@ -27,9 +27,9 @@ public class TradeListener implements Listener {
             int slot = event.getSlot();
             Inventory clickedInventory = event.getClickedInventory();
 
-            /*if (slot == 45 || slot == 53) {
+            if (slot == 45 || slot == 53) {
                 event.setCancelled(true);
-            }*/
+            }
             if (event.isShiftClick()) {
                 event.setCancelled(true);
                 return;
@@ -59,12 +59,10 @@ public class TradeListener implements Listener {
                         if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Player 1") && TradeManager.getOtherPlayer(player) != null) {
                             TradeManager.handleTradeAcceptance(player);
                             inventory.setItem(45, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
-                            event.setCancelled(true);
                         }
                     } else {
                         TradeManager.handleTradeCancellation(player);
                         inventory.setItem(45, new ItemStack(Material.RED_STAINED_GLASS_PANE));
-                        event.setCancelled(true);
                     }
                 }
                 if (slot == 53) {
@@ -72,12 +70,10 @@ public class TradeListener implements Listener {
                         if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Player 2") && TradeManager.getOtherPlayer(player) != null) {
                             TradeManager.handleTradeAcceptance(player);
                             inventory.setItem(53, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
-                            event.setCancelled(true);
                         }
                     } else {
                         TradeManager.handleTradeCancellation(player);
                         inventory.setItem(53, new ItemStack(Material.RED_STAINED_GLASS_PANE));
-                        event.setCancelled(true);
                     }
                 }
             }
