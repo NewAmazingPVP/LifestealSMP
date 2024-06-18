@@ -2,6 +2,8 @@ package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
+import newamazingpvp.lifestealsmp.CustomMobs.Mobs.LightningZombie.LightningZombieListener;
+import newamazingpvp.lifestealsmp.CustomMobs.Mobs.LightningZombie.lightningZombieCreate;
 import newamazingpvp.lifestealsmp.CustomMobs.SpawnCustomMobCommand;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
@@ -16,7 +18,6 @@ import newamazingpvp.lifestealsmp.command.unused.JailPlayer;
 import newamazingpvp.lifestealsmp.command.unused.TESTsomber;
 import newamazingpvp.lifestealsmp.customitems.MagicStaffs.MagicStaffUtils.MagicStaffGUIListeners;
 import newamazingpvp.lifestealsmp.customitems.MagicStaffs.MajicStaffAbilitys.MagicStaffDefault;
-import newamazingpvp.lifestealsmp.customitems.MagicStaffs.OldSystemForMaguc.MagicStaffAbilityMainOLD;
 import newamazingpvp.lifestealsmp.customitems.armorlisteners.QuarryArmor;
 import newamazingpvp.lifestealsmp.customitems.itemlisteners.*;
 import newamazingpvp.lifestealsmp.customitems.utils.AntiAnvil;
@@ -190,6 +191,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
             //Mob test
             getCommand("spawncustommob").setExecutor(new SpawnCustomMobCommand());
+            getServer().getPluginManager().registerEvents(new LightningZombieListener(), this); 
 
 
             registerCustomRecipesDev();

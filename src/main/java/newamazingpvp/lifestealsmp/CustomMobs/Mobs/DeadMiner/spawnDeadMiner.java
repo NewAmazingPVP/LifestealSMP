@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.CustomMobs.Mobs;
+package newamazingpvp.lifestealsmp.CustomMobs.Mobs.DeadMiner;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -58,13 +58,10 @@ public class spawnDeadMiner {
 
     private static ItemStack deadMinerHelm() {
 
-        PlayerProfile profile = getProfile("https://textures.minecraft.net/texture/5628d5cc2869a57ed43157994a4038d1a9ef9b286fab9c899617c468ea180b");
+        PlayerProfile profile = getProfile("https://textures.minecraft.net/texture/5f36e53f395593eddc81e511878456d7724e53337a3f5b1d324ffb9e160f64c");
         ItemStack montuHelm = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) montuHelm.getItemMeta();
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Sekhmet's Helmet");
-        List<String> SOPL = new ArrayList<>();
-        SOPL.add(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Required for Ancient Wand");
-        meta.setLore(SOPL);
+        meta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "If you have this, Message Comet99 on Discord!");
         meta.setOwnerProfile(profile);
         montuHelm.setItemMeta(meta);
 
