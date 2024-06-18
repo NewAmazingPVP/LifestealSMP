@@ -1,7 +1,11 @@
 package newamazingpvp.lifestealsmp.CustomMobs.Mobs.LightningZombie;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -13,14 +17,20 @@ public class LightningZombieListener implements Listener {
 
         Entity attacker = e.getDamager();
         Entity damagedEntity = e.getEntity();
+        Location loc = e.getEntity().getLocation();
 
         if (attacker instanceof LivingEntity) {
 
             if (attacker.hasMetadata("electric_zombie")) {
 
-                damagedEntity.sendMessage("test lol");
+                damagedEntity.getWorld().strikeLightningEffect(loc);
+                ((LivingEntity) damagedEntity).damage(5);
+                for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+                    onlinePlayer.playSound(loc, Sound.ENTITY_GENERIC_EXPLODE, 5.0f, 1.0f);
 
+                }
             }
         }
     }
 }
+
