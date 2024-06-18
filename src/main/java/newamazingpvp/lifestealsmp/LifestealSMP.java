@@ -144,8 +144,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new LifestealStick(), this);
         getServer().getPluginManager().registerEvents(new SomberCrystal(), this);
         getServer().getPluginManager().registerEvents(new MusicBox(), this);
-        //getCommand("trade").setExecutor(new Trade());
-        //getServer().getPluginManager().registerEvents(new TradeListener(), this);
+        getCommand("trade").setExecutor(new Trade());
+        getServer().getPluginManager().registerEvents(new TradeListener(), this);
 
         //TODO: Use this for beta things
         if (isAutoUploadEnabled()) {
