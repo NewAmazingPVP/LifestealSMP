@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.utility;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 
 public class TradeManager {
     private static final Map<Player, Player> pendingTrades = new HashMap<>();
@@ -120,12 +122,12 @@ public class TradeManager {
 
             if (item1 != null && firstFourColumns.contains(i)) {
                 if(!(item1.getType() == Material.GREEN_STAINED_GLASS_PANE) && !(item1.getType() == Material.RED_STAINED_GLASS_PANE) ) {
-                    player1.getInventory().addItem(item1);
+                    addItemOrDrop(player1, item1, ChatColor.AQUA + "Some items were dropped due to inventory being full");
                 }
             }
             if (item1 != null && lastFourColumns.contains(i)) {
                 if(!(item1.getType() == Material.GREEN_STAINED_GLASS_PANE) && !(item1.getType() == Material.RED_STAINED_GLASS_PANE)) {
-                    player2.getInventory().addItem(item1);
+                    addItemOrDrop(player2, item1, ChatColor.AQUA + "Some items were dropped due to inventory being full");
                 }
             }
         }
@@ -145,6 +147,22 @@ public class TradeManager {
     }
 
     public static void cancelTrade(Player player) {
+        Inventory tradeInventory = tradeInventories.get(player);
+
+        for (int i = 0; i < 54; i++) {
+            ItemStack item1 = tradeInventory.getItem(i);
+
+            if (item1 != null && traders.containsKey(player) && firstFourColumns.contains(i)) {
+                if(!(item1.getType() == Material.GREEN_STAINED_GLASS_PANE) && !(item1.getType() == Material.RED_STAINED_GLASS_PANE) ) {
+                    addItemOrDrop(player, item1, ChatColor.AQUA + "Some items were dropped due to inventory being full");
+                }
+            }
+            if (item1 != null && traders.containsValue(player) && lastFourColumns.contains(i)) {
+                if(!(item1.getType() == Material.GREEN_STAINED_GLASS_PANE) && !(item1.getType() == Material.RED_STAINED_GLASS_PANE)) {
+                    addItemOrDrop(player, item1, ChatColor.AQUA + "Some items were dropped due to inventory being full");
+                }
+            }
+        }
         Player otherPlayer = getOtherPlayer(player);
         if (otherPlayer != null) {
             otherPlayer.closeInventory();
