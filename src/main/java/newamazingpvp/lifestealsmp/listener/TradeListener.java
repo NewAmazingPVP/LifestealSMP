@@ -32,7 +32,6 @@ public class TradeListener implements Listener {
             }
             if (event.isShiftClick()) {
                 event.setCancelled(true);
-                return;
             }
 
 
@@ -40,12 +39,10 @@ public class TradeListener implements Listener {
                 if (traders.containsKey(player)) {
                     if (!(lastFourColumns.contains(slot)) && clickedInventory != player.getInventory()) {
                         event.setCancelled(true);
-                        return;
                     }
                 } else if (traders.containsValue(player)) {
                     if (!(firstFourColumns.contains(slot)) && clickedInventory != player.getInventory()) {
                         event.setCancelled(true);
-                        return;
                     }
                 }
 
@@ -53,22 +50,18 @@ public class TradeListener implements Listener {
             //}
 
                 if (slot == 45) {
-                    if(event.getCurrentItem().getType() == Material.RED_STAINED_GLASS_PANE) {
-                        if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Player 1") && TradeManager.getOtherPlayer(player) != null) {
+                    if(inventory.getItem(45).getType()  == Material.RED_STAINED_GLASS_PANE) {
                             TradeManager.handleTradeAcceptance(player);
                             inventory.setItem(45, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
-                        }
                     } else {
                         TradeManager.handleTradeCancellation(player);
                         inventory.setItem(45, new ItemStack(Material.RED_STAINED_GLASS_PANE));
                     }
                 }
                 if (slot == 53) {
-                    if(event.getCurrentItem().getType() == Material.RED_STAINED_GLASS_PANE) {
-                        if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Player 2") && TradeManager.getOtherPlayer(player) != null) {
+                    if(inventory.getItem(53).getType() == Material.RED_STAINED_GLASS_PANE) {
                             TradeManager.handleTradeAcceptance(player);
                             inventory.setItem(53, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
-                        }
                     } else {
                         TradeManager.handleTradeCancellation(player);
                         inventory.setItem(53, new ItemStack(Material.RED_STAINED_GLASS_PANE));
