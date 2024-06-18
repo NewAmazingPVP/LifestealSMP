@@ -167,12 +167,12 @@ public class TradeManager {
         }
         tradeInventories.remove(player);
         tradeAccepted.remove(player);
-        traders.remove(player);
         Player otherPlayer = getOtherPlayer(player);
         if (otherPlayer != null) {
             otherPlayer.closeInventory();
             otherPlayer.sendMessage("Trade canceled.");
         }
+        traders.remove(player);
 
     }
 
