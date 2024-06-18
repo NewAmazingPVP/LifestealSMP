@@ -41,7 +41,7 @@ public class spawnDeadMiner {
         DeadMiner.getEquipment().setHelmet(deadMinerHelm());
         DeadMiner.getEquipment().setChestplate(QuarryArmor_CP());
         DeadMiner.getEquipment().setLeggings(QuarryArmor_LEGS());
-        DeadMiner.getEquipment().setLeggings(QuarryArmor_BOOTS());
+        DeadMiner.getEquipment().setBoots(QuarryArmor_BOOTS());
 
         //Attributes
         Attributable DeadMinerAttributes = DeadMiner;
