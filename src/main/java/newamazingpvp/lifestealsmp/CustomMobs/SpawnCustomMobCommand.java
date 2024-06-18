@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.CustomMobs;
 
 import newamazingpvp.lifestealsmp.CustomMobs.Mobs.lightningZombieCreate;
+import newamazingpvp.lifestealsmp.CustomMobs.Mobs.spawnDeadMiner;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.*;
@@ -31,7 +32,8 @@ public class SpawnCustomMobCommand implements CommandExecutor {
             location = blockCommandSender.getBlock().getLocation();
         }
 
-        new lightningZombieCreate(location);
+        //new lightningZombieCreate(location);
+        new spawnDeadMiner(location);
 
         return true;
 
