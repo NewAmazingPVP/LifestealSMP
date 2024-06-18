@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.listener;
 
 import newamazingpvp.lifestealsmp.utility.TradeManager;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,7 +16,6 @@ import java.util.UUID;
 import static newamazingpvp.lifestealsmp.utility.TradeManager.*;
 
 public class TradeListener implements Listener {
-    private final HashMap<UUID, Long> lastInteractionTime = new HashMap<>();
     private final HashMap<UUID, Integer> playerClicks = new HashMap<>();
 
     @EventHandler
@@ -23,16 +23,11 @@ public class TradeListener implements Listener {
         Inventory inventory = event.getInventory();
         Player player = (Player) event.getWhoClicked();
         UUID playerUUID = player.getUniqueId();
-        long currentTime = System.currentTimeMillis();
         if(!playerClicks.containsKey(playerUUID)){
             playerClicks.put(playerUUID, 0);
         }
 
         if (TradeManager.isTradeInventory(inventory)) {
-            /*if(event.getClickedInventory().equals(inventory)){
-                event.setCancelled(true);
-                return;
-            }*/
             int slot = event.getSlot();
             Inventory clickedInventory = event.getClickedInventory();
 
@@ -47,11 +42,13 @@ public class TradeListener implements Listener {
             if (traders.containsKey(player)) {
                 if (!(lastFourColumns.contains(slot)) && clickedInventory != player.getInventory()) {
                     event.setCancelled(true);
+                    player.sendMessage(ChatColor.LIGHT_PURPLE + "You cannot place items in other player's reserved slots, place it bottom/top/right/left wherever your reserved spot is and it allows you to");
                     return;
                 }
             } else if (traders.containsValue(player)) {
                 if (!(firstFourColumns.contains(slot)) && clickedInventory != player.getInventory()) {
                     event.setCancelled(true);
+                    player.sendMessage(ChatColor.LIGHT_PURPLE + "You cannot place items in other player's reserved slots, place it bottom/top/right/left wherever your reserved spot is and it allows you to");
                     return;
                 }
             }
@@ -62,8 +59,11 @@ public class TradeListener implements Listener {
                 playerClicks.put(playerUUID, playerClicks.get(playerUUID)+2);
                 if (slot == 45) {
                     if (playerClicks.get(playerUUID) % 4 != 0) {
-                        TradeManager.handleTradeAcceptance(player);
-                        inventory.setItem(45, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
+                        if(TradeManager.handleTradeAcceptance(player)) {
+                            inventory.setItem(45, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
+                        } else {
+                            player.sendMessage(ChatColor.RED + "To prevent bedrock bugs, let the player who sent you the request first accept first");
+                        }
                     } else {
                         TradeManager.handleTradeCancellation(player);
                         inventory.setItem(45, new ItemStack(Material.RED_STAINED_GLASS_PANE));
@@ -71,8 +71,11 @@ public class TradeListener implements Listener {
                 }
                 if (slot == 53) {
                     if (playerClicks.get(playerUUID) % 4 != 0) {
-                        TradeManager.handleTradeAcceptance(player);
-                        inventory.setItem(53, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
+                        if(TradeManager.handleTradeAcceptance(player)){
+                            inventory.setItem(53, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
+                        } else {
+                            player.sendMessage(ChatColor.RED + "To prevent bedrock bugs, let the player who sent you the request first accept first");
+                        }
                     } else {
                         TradeManager.handleTradeCancellation(player);
                         inventory.setItem(53, new ItemStack(Material.RED_STAINED_GLASS_PANE));
