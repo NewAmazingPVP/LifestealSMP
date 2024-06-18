@@ -138,6 +138,8 @@ public class TradeManager {
 
         tradeInventories.remove(player1);
         tradeInventories.remove(player2);
+        traders.remove(player1);
+        traders.remove(player2);
         tradeAccepted.remove(player1);
         tradeAccepted.remove(player2);
     }
@@ -150,6 +152,7 @@ public class TradeManager {
         }
         tradeInventories.remove(player);
         tradeAccepted.remove(player);
+        traders.remove(player);
     }
 
     public static boolean isTradeInventory(Inventory inventory) {
