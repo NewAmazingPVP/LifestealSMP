@@ -39,10 +39,12 @@ public class TradeListener implements Listener {
                 if (traders.containsKey(player)) {
                     if (!(lastFourColumns.contains(slot)) && clickedInventory != player.getInventory()) {
                         event.setCancelled(true);
+                        return;
                     }
                 } else if (traders.containsValue(player)) {
                     if (!(firstFourColumns.contains(slot)) && clickedInventory != player.getInventory()) {
                         event.setCancelled(true);
+                        return;
                     }
                 }
 
@@ -50,7 +52,7 @@ public class TradeListener implements Listener {
             //}
 
                 if (slot == 45) {
-                    if(inventory.getItem(45).getType()  == Material.RED_STAINED_GLASS_PANE) {
+                    if(inventory.getItem(45).getType().toString().toLowerCase().contains("red")) {
                             TradeManager.handleTradeAcceptance(player);
                             inventory.setItem(45, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
                     } else {
@@ -59,7 +61,7 @@ public class TradeListener implements Listener {
                     }
                 }
                 if (slot == 53) {
-                    if(inventory.getItem(53).getType() == Material.RED_STAINED_GLASS_PANE) {
+                    if(inventory.getItem(53).getType().toString().toLowerCase().contains("red")) {
                             TradeManager.handleTradeAcceptance(player);
                             inventory.setItem(53, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
                     } else {
