@@ -132,9 +132,6 @@ public class TradeManager {
             }
         }
 
-        player1.closeInventory();
-        player2.closeInventory();
-
         player1.sendMessage("Trade completed with " + player2.getName());
         player2.sendMessage("Trade completed with " + player1.getName());
 
@@ -144,33 +141,39 @@ public class TradeManager {
         traders.remove(player2);
         tradeAccepted.remove(player1);
         tradeAccepted.remove(player2);
+
+        player1.closeInventory();
+        player2.closeInventory();
+
     }
 
     public static void cancelTrade(Player player) {
         Inventory tradeInventory = tradeInventories.get(player);
+        if(tradeInventory == null) return;
 
         for (int i = 0; i < 54; i++) {
             ItemStack item1 = tradeInventory.getItem(i);
 
-            if (item1 != null && traders.containsKey(player) && firstFourColumns.contains(i)) {
+            if (item1 != null && traders.containsValue(player) && firstFourColumns.contains(i)) {
                 if(!(item1.getType() == Material.GREEN_STAINED_GLASS_PANE) && !(item1.getType() == Material.RED_STAINED_GLASS_PANE) ) {
                     addItemOrDrop(player, item1, ChatColor.AQUA + "Some items were dropped due to inventory being full");
                 }
             }
-            if (item1 != null && traders.containsValue(player) && lastFourColumns.contains(i)) {
+            if (item1 != null && traders.containsKey(player) && lastFourColumns.contains(i)) {
                 if(!(item1.getType() == Material.GREEN_STAINED_GLASS_PANE) && !(item1.getType() == Material.RED_STAINED_GLASS_PANE)) {
                     addItemOrDrop(player, item1, ChatColor.AQUA + "Some items were dropped due to inventory being full");
                 }
             }
         }
-        Player otherPlayer = getOtherPlayer(player);
-        if (otherPlayer != null) {
-            otherPlayer.closeInventory();
-            //otherPlayer.sendMessage("Trade canceled.");
-        }
         tradeInventories.remove(player);
         tradeAccepted.remove(player);
         traders.remove(player);
+        Player otherPlayer = getOtherPlayer(player);
+        if (otherPlayer != null) {
+            otherPlayer.closeInventory();
+            otherPlayer.sendMessage("Trade canceled.");
+        }
+
     }
 
     public static boolean isTradeInventory(Inventory inventory) {
