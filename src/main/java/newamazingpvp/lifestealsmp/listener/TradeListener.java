@@ -4,7 +4,6 @@ import newamazingpvp.lifestealsmp.utility.TradeManager;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.*;
 import org.bukkit.inventory.Inventory;
@@ -17,6 +16,7 @@ import static newamazingpvp.lifestealsmp.utility.TradeManager.*;
 
 public class TradeListener implements Listener {
     private final HashMap<UUID, Long> lastInteractionTime = new HashMap<>();
+    private final HashMap<UUID, Integer> playerClicks = new HashMap<>();
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
@@ -24,6 +24,9 @@ public class TradeListener implements Listener {
         Player player = (Player) event.getWhoClicked();
         UUID playerUUID = player.getUniqueId();
         long currentTime = System.currentTimeMillis();
+        if(!playerClicks.containsKey(playerUUID)){
+            playerClicks.put(playerUUID, 0);
+        }
 
         if (TradeManager.isTradeInventory(inventory)) {
             /*if(event.getClickedInventory().equals(inventory)){
@@ -41,34 +44,28 @@ public class TradeListener implements Listener {
             }
 
 
-
-                if (traders.containsKey(player)) {
-                    if (!(lastFourColumns.contains(slot)) && clickedInventory != player.getInventory()) {
-                        event.setCancelled(true);
-                        return;
-                    }
-                } else if (traders.containsValue(player)) {
-                    if (!(firstFourColumns.contains(slot)) && clickedInventory != player.getInventory()) {
-                        event.setCancelled(true);
-                        return;
-                    }
+            if (traders.containsKey(player)) {
+                if (!(lastFourColumns.contains(slot)) && clickedInventory != player.getInventory()) {
+                    event.setCancelled(true);
+                    return;
                 }
+            } else if (traders.containsValue(player)) {
+                if (!(firstFourColumns.contains(slot)) && clickedInventory != player.getInventory()) {
+                    event.setCancelled(true);
+                    return;
+                }
+            }
 
 
             //}
             if (slot == 45 || slot == 53) {
-                if (lastInteractionTime.containsKey(playerUUID) && (currentTime - lastInteractionTime.get(playerUUID)) < 50) {
-                    event.setCancelled(true);
-                    return;
-                }
-
-                lastInteractionTime.put(playerUUID, currentTime);
+                playerClicks.put(playerUUID, playerClicks.get(playerUUID)+2);
                 if (slot == 45) {
                     //player.sendMessage(inventory.getItem(45).getType().toString().toLowerCase());
                     //player.sendMessage(String.valueOf(inventory.getItem(45).getType().toString().toLowerCase().contains("red")));
-                    if(inventory.getItem(45).getType().toString().toLowerCase().contains("red")) {
-                            TradeManager.handleTradeAcceptance(player);
-                            inventory.setItem(45, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
+                    if (playerClicks.get(playerUUID) % 4 != 0 && inventory.getItem(45).getType().toString().toLowerCase().contains("red")) {
+                        TradeManager.handleTradeAcceptance(player);
+                        inventory.setItem(45, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
                     } else {
                         TradeManager.handleTradeCancellation(player);
                         inventory.setItem(45, new ItemStack(Material.RED_STAINED_GLASS_PANE));
@@ -77,7 +74,7 @@ public class TradeListener implements Listener {
                 if (slot == 53) {
                     //player.sendMessage(inventory.getItem(53).getType().toString().toLowerCase());
                     //player.sendMessage(String.valueOf(inventory.getItem(53).getType().toString().toLowerCase().contains("red")));
-                    if (inventory.getItem(53).getType().toString().toLowerCase().contains("red")) {
+                    if (playerClicks.get(playerUUID) % 4 != 0 && inventory.getItem(53).getType().toString().toLowerCase().contains("red")) {
                         TradeManager.handleTradeAcceptance(player);
                         inventory.setItem(53, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
                     } else {
@@ -115,15 +112,15 @@ public class TradeListener implements Listener {
     }
 
     @EventHandler
-    public void onInv(InventoryInteractEvent e){
-        if(TradeManager.isTradeInventory(e.getInventory())){
+    public void onInv(InventoryInteractEvent e) {
+        if (TradeManager.isTradeInventory(e.getInventory())) {
             e.setCancelled(true);
         }
     }
 
     @EventHandler
-    public void onInve(InventoryMoveItemEvent e){
-        if(TradeManager.isTradeInventory(e.getInitiator()) && TradeManager.isTradeInventory(e.getDestination())){
+    public void onInve(InventoryMoveItemEvent e) {
+        if (TradeManager.isTradeInventory(e.getInitiator()) && TradeManager.isTradeInventory(e.getDestination())) {
             e.setCancelled(true);
         }
     }
