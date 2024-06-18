@@ -2,6 +2,7 @@ package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
+import newamazingpvp.lifestealsmp.CustomMobs.SpawnCustomMobCommand;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
 import newamazingpvp.lifestealsmp.allyteams.TeamCommand;
@@ -185,6 +186,11 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
             //test
             getServer().getPluginManager().registerEvents(new DroppedItemParticles(), this);
+
+
+            //Mob test
+            getCommand("spawncustommob").setExecutor(new SpawnCustomMobCommand());
+
 
             registerCustomRecipesDev();
 

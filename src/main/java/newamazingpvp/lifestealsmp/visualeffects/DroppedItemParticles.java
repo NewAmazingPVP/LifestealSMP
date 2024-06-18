@@ -34,7 +34,6 @@ public class DroppedItemParticles implements Listener {
                 spawnParticlesOnItem(e, entityLocation, Color.GREEN, 2.0f);
             }
 
-            
 
 
         }
