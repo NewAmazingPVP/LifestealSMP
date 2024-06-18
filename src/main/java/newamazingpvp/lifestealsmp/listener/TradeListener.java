@@ -62,7 +62,7 @@ public class TradeListener implements Listener {
                         if(TradeManager.handleTradeAcceptance(player)) {
                             inventory.setItem(45, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
                         } else {
-                            player.sendMessage(ChatColor.RED + "To prevent bedrock bugs, let the player who sent you the request first accept first");
+                            //player.sendMessage(ChatColor.RED + "To prevent bugs, let the player who sent you the request accept first");
                         }
                     } else {
                         TradeManager.handleTradeCancellation(player);
@@ -74,7 +74,7 @@ public class TradeListener implements Listener {
                         if(TradeManager.handleTradeAcceptance(player)){
                             inventory.setItem(53, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
                         } else {
-                            player.sendMessage(ChatColor.RED + "To prevent bedrock bugs, let the player who sent you the request first accept first");
+                            //player.sendMessage(ChatColor.RED + "To prevent bugs, let the player who sent you the request accept first");
                         }
                     } else {
                         TradeManager.handleTradeCancellation(player);
