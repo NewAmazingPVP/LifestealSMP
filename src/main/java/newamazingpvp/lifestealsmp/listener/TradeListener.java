@@ -52,8 +52,6 @@ public class TradeListener implements Listener {
 
             //}
 
-            // Handle accept button clicks
-            if (event.getCurrentItem() != null) {
                 if (slot == 45) {
                     if(event.getCurrentItem().getType() == Material.RED_STAINED_GLASS_PANE) {
                         if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Player 1") && TradeManager.getOtherPlayer(player) != null) {
@@ -75,7 +73,6 @@ public class TradeListener implements Listener {
                         TradeManager.handleTradeCancellation(player);
                         inventory.setItem(53, new ItemStack(Material.RED_STAINED_GLASS_PANE));
                     }
-                }
             }
         }
     }
