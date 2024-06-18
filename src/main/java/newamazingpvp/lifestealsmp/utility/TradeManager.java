@@ -90,14 +90,16 @@ public class TradeManager {
 
     public static boolean handleTradeAcceptance(Player player) {
         Player otherPlayer = getOtherPlayer(player);
-        if(otherPlayer.getName().startsWith(".") || player.getName().startsWith(".")){
-            if(traders.containsValue(player) && !tradeAccepted.get(otherPlayer)){
-                return false;
-            }
-        }
+        /*if(traders.containsValue(player) && !tradeAccepted.get(otherPlayer)){
+            return false;
+        }*/
         tradeAccepted.put(player, true);
         if (tradeAccepted.get(otherPlayer)) {
-            finalizeTrade(player, otherPlayer);
+            if(traders.containsValue(otherPlayer)) {
+                finalizeTrade(player, otherPlayer);
+            } else {
+                finalizeTrade(otherPlayer, player);
+            }
         }
         return true;
     }
