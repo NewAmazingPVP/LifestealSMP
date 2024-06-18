@@ -46,8 +46,8 @@ public class TradeManager {
             openTradeGui(sender, receiver);
             pendingTrades.remove(receiver);
         } else {
-            sender.sendMessage("Trade request sent to " + receiver.getName());
-            receiver.sendMessage(sender.getName() + " wants to trade with you. Type /trade " + sender.getName() + " to accept.");
+            sender.sendMessage(ChatColor.BLUE + "Trade request sent to " + receiver.getName());
+            receiver.sendMessage(ChatColor.AQUA + sender.getName() + " wants to trade with you. Type /trade " + sender.getName() + " to accept.");
             pendingTrades.put(sender, receiver);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> pendingTrades.remove(sender), 20 * 60);
         }
@@ -58,12 +58,12 @@ public class TradeManager {
 
         ItemStack confirmItem1 = new ItemStack(Material.RED_STAINED_GLASS_PANE);
         ItemMeta confirmMeta1 = confirmItem1.getItemMeta();
-        confirmMeta1.setDisplayName("Accept Trade (Player 1)");
+        confirmMeta1.setDisplayName(ChatColor.GOLD + "Accept Trade (Player 1)");
         confirmItem1.setItemMeta(confirmMeta1);
 
         ItemStack confirmItem2 = new ItemStack(Material.RED_STAINED_GLASS_PANE);
         ItemMeta confirmMeta2 = confirmItem2.getItemMeta();
-        confirmMeta2.setDisplayName("Accept Trade (Player 2)");
+        confirmMeta2.setDisplayName(ChatColor.GOLD + "Accept Trade (Player 2)");
         confirmItem2.setItemMeta(confirmMeta2);
 
         tradeInventory.setItem(45, confirmItem1);
@@ -138,8 +138,8 @@ public class TradeManager {
             }
         }
 
-        player1.sendMessage("Trade completed with " + player2.getName());
-        player2.sendMessage("Trade completed with " + player1.getName());
+        player1.sendMessage(ChatColor.GOLD + "Trade completed with " + player2.getName());
+        player2.sendMessage(ChatColor.GOLD + "Trade completed with " + player1.getName());
 
         tradeInventories.remove(player1);
         tradeInventories.remove(player2);
@@ -176,7 +176,7 @@ public class TradeManager {
         Player otherPlayer = getOtherPlayer(player);
         if (otherPlayer != null) {
             otherPlayer.closeInventory();
-            otherPlayer.sendMessage("Trade canceled.");
+            otherPlayer.sendMessage(ChatColor.GRAY + "Trade canceled.");
         }
         traders.remove(player);
 
