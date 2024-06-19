@@ -4,6 +4,8 @@ import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import newamazingpvp.lifestealsmp.CustomMobs.Mobs.DeadMiner.DeadMinerListener;
 import newamazingpvp.lifestealsmp.CustomMobs.Mobs.LightningZombie.LightningZombieListener;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import newamazingpvp.lifestealsmp.CustomMobs.SpawnCustomMobCommand;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
@@ -49,6 +51,8 @@ import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerCusto
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.*;
 import static newamazingpvp.lifestealsmp.discord.LogAppender.consoleChannel;
 import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
+import static newamazingpvp.lifestealsmp.game.CombatLog.cancelCombatData;
+import static newamazingpvp.lifestealsmp.game.CombatLog.removeEnemies;
 import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.isAutoUploadEnabled;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.startReleaseChecker;
@@ -65,6 +69,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
     public void onEnable() {
         //this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         //this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
+        getServer().getMessenger().registerIncomingPluginChannel(this, "nappixel:lifesteal", this);
+        getServer().getMessenger().registerOutgoingPluginChannel(this, "nappixel:lifesteal");
         saveDefaultConfig();
         config = getConfig();
         lifestealSmp = this;
@@ -199,8 +205,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
             getCommand("sombercrystaltest").setExecutor(new TESTsomber());
 
-            getCommand("trade").setExecutor(new Trade());
-            getServer().getPluginManager().registerEvents(new TradeListener(), this);
+            //getCommand("trade").setExecutor(new Trade());
+            //getServer().getPluginManager().registerEvents(new TradeListener(), this);
 
             //THESE ARE THE BINGO EVENTS TO DETECT IF A PLAYER DID A PART OF IT
 
@@ -263,7 +269,15 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
     @Override
     public void onPluginMessageReceived(@NotNull String s, @NotNull Player player, @NotNull byte[] bytes) {
+        if (!s.equals("nappixel:lifesteal")) {
+            return;
+        }
 
+        for(Player p: Bukkit.getOnlinePlayers()){
+            cancelCombatData(p);
+            removeEnemies(p);
+            p.kick(Component.text("Proxy is restarting.... Please reconnect").color(NamedTextColor.DARK_RED));
+        }
     }
 
     private void registerRune(Rune<?> rune) {
