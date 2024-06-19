@@ -16,16 +16,11 @@ import java.util.UUID;
 import static newamazingpvp.lifestealsmp.utility.TradeManager.*;
 
 public class TradeListener implements Listener {
-    private final HashMap<UUID, Integer> playerClicks = new HashMap<>();
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         Inventory inventory = event.getInventory();
         Player player = (Player) event.getWhoClicked();
-        UUID playerUUID = player.getUniqueId();
-        if(!playerClicks.containsKey(playerUUID)){
-            playerClicks.put(playerUUID, 0);
-        }
 
         if (TradeManager.isTradeInventory(inventory)) {
             int slot = event.getSlot();
@@ -54,28 +49,20 @@ public class TradeListener implements Listener {
             }
 
 
-            //}
             if (slot == 45 || slot == 53) {
-                playerClicks.put(playerUUID, playerClicks.get(playerUUID)+2);
                 if (slot == 45) {
-                    if (playerClicks.get(playerUUID) % 4 != 0) {
-                        if(TradeManager.handleTradeAcceptance(player)) {
-                            inventory.setItem(45, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
-                        } else {
-                            //player.sendMessage(ChatColor.RED + "To prevent bugs, let the player who sent you the request accept first");
-                        }
+                    if (inventory.getItem(45).getType() == Material.RED_STAINED_GLASS_PANE) {
+                        TradeManager.handleTradeAcceptance(player);
+                        inventory.setItem(45, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
                     } else {
                         TradeManager.handleTradeCancellation(player);
                         inventory.setItem(45, new ItemStack(Material.RED_STAINED_GLASS_PANE));
                     }
                 }
                 if (slot == 53) {
-                    if (playerClicks.get(playerUUID) % 4 != 0) {
-                        if(TradeManager.handleTradeAcceptance(player)){
-                            inventory.setItem(53, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
-                        } else {
-                            //player.sendMessage(ChatColor.RED + "To prevent bugs, let the player who sent you the request accept first");
-                        }
+                    if (inventory.getItem(53).getType() == Material.RED_STAINED_GLASS_PANE) {
+                        TradeManager.handleTradeAcceptance(player);
+                        inventory.setItem(53, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
                     } else {
                         TradeManager.handleTradeCancellation(player);
                         inventory.setItem(53, new ItemStack(Material.RED_STAINED_GLASS_PANE));
