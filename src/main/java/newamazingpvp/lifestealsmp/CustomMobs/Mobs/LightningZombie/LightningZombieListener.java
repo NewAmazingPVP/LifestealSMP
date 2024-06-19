@@ -26,7 +26,8 @@ public class LightningZombieListener implements Listener {
                 damagedEntity.getWorld().strikeLightningEffect(loc);
                 ((LivingEntity) damagedEntity).damage(5);
                 for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                    onlinePlayer.playSound(loc, Sound.ENTITY_GENERIC_EXPLODE, 5.0f, 1.0f);
+                    onlinePlayer.playSound(loc, Sound.ENTITY_GENERIC_EXPLODE, 1.0f, 1.0f);
+                    onlinePlayer.playSound(loc, Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 1.0f, 2.0f);
 
                 }
             }
