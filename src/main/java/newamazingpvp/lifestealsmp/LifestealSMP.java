@@ -2,8 +2,8 @@ package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
+import newamazingpvp.lifestealsmp.CustomMobs.Mobs.DeadMiner.DeadMinerListener;
 import newamazingpvp.lifestealsmp.CustomMobs.Mobs.LightningZombie.LightningZombieListener;
-import newamazingpvp.lifestealsmp.CustomMobs.Mobs.LightningZombie.lightningZombieCreate;
 import newamazingpvp.lifestealsmp.CustomMobs.SpawnCustomMobCommand;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
@@ -191,7 +191,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
             //Mob test
             getCommand("spawncustommob").setExecutor(new SpawnCustomMobCommand());
-            getServer().getPluginManager().registerEvents(new LightningZombieListener(), this); 
+            getServer().getPluginManager().registerEvents(new LightningZombieListener(), this);
+            getServer().getPluginManager().registerEvents(new DeadMinerListener(), this);
 
 
             registerCustomRecipesDev();

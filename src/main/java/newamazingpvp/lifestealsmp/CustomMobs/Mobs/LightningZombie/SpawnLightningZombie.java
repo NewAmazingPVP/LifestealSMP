@@ -1,42 +1,28 @@
 package newamazingpvp.lifestealsmp.CustomMobs.Mobs.LightningZombie;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attributable;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Zombie;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
-import org.bukkit.metadata.Metadatable;
 import org.bukkit.profile.PlayerProfile;
-import org.bukkit.profile.PlayerTextures;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.CustomMobs.PublicMobMethods.getProfile;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
-public class lightningZombieCreate {
+public class SpawnLightningZombie {
 
 
 
 
-    public lightningZombieCreate(Location location){
+    public SpawnLightningZombie(Location location){
 
         //Make zombie
         Zombie lightningZombie = (Zombie) location.getWorld().spawnEntity(location, EntityType.ZOMBIE);

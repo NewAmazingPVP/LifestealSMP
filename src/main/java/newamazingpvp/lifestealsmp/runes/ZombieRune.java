@@ -36,11 +36,11 @@ public class ZombieRune extends Rune<EntityDamageByEntityEvent> {
 
     @Override
     public void applyEffect(EntityDamageByEntityEvent event) {
-        if (!(event.getDamager() instanceof Player)) return;
+        /*if (!(event.getDamager() instanceof Player)) return;
         Player attacker = (Player) event.getDamager();
 
         if (isRuneInInventory(attacker)) {
             addPotionEffect(attacker, new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 100, 0));
-        }
+        }*/
     }
 }
