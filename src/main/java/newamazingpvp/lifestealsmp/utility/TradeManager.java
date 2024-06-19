@@ -88,7 +88,7 @@ public class TradeManager {
         player2.openInventory(tradeInventory);
     }
 
-    public static boolean handleTradeAcceptance(Player player) {
+    public static void handleTradeAcceptance(Player player) {
         Player otherPlayer = getOtherPlayer(player);
         /*if(traders.containsValue(player) && !tradeAccepted.get(otherPlayer)){
             return false;
@@ -101,7 +101,6 @@ public class TradeManager {
                 finalizeTrade(otherPlayer, player);
             }
         }
-        return true;
     }
 
     public static void handleTradeCancellation(Player player){
