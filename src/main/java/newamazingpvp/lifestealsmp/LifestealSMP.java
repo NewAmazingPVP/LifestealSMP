@@ -4,8 +4,12 @@ import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import newamazingpvp.lifestealsmp.CustomMobs.Mobs.DeadMiner.DeadMinerListener;
 import newamazingpvp.lifestealsmp.CustomMobs.Mobs.LightningZombie.LightningZombieListener;
+<<<<<<< Updated upstream
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+=======
+import newamazingpvp.lifestealsmp.CustomMobs.Mobs.Shado.ShadowMobListener;
+>>>>>>> Stashed changes
 import newamazingpvp.lifestealsmp.CustomMobs.SpawnCustomMobCommand;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
@@ -199,6 +203,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getCommand("spawncustommob").setExecutor(new SpawnCustomMobCommand());
             getServer().getPluginManager().registerEvents(new LightningZombieListener(), this);
             getServer().getPluginManager().registerEvents(new DeadMinerListener(), this);
+            getServer().getPluginManager().registerEvents(new ShadowMobListener(), this);
 
 
             registerCustomRecipesDev();

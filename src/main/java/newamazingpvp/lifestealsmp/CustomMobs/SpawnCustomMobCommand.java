@@ -2,6 +2,7 @@ package newamazingpvp.lifestealsmp.CustomMobs;
 
 import newamazingpvp.lifestealsmp.CustomMobs.Mobs.LightningZombie.SpawnLightningZombie;
 import newamazingpvp.lifestealsmp.CustomMobs.Mobs.DeadMiner.SpawnDeadMiner;
+import newamazingpvp.lifestealsmp.CustomMobs.Mobs.Shado.SpawnShadow;
 import org.bukkit.Location;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
@@ -24,6 +25,7 @@ public class SpawnCustomMobCommand implements CommandExecutor {
 
         new SpawnLightningZombie(location);
         new SpawnDeadMiner(location);
+        new SpawnShadow(location);
 
         return true;
 
