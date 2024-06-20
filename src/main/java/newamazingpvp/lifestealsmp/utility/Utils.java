@@ -85,7 +85,9 @@ public class Utils {
 
     public static void adjustPerformance() {
         double averageTPS = getAverageTPS();
-
+        //TODO: MAKE OWN DISTANCE SETTER PLUGIN
+        //            Bukkit.getWorld("world").setViewDistance(10);
+        //            Bukkit.getWorld("world").setSimulationDistance(6);
         if (averageTPS < 15.0) {
             isTriggered = true;
             getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 2 --duration 1");
