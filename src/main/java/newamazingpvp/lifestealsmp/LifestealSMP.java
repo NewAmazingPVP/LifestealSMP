@@ -4,12 +4,9 @@ import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import newamazingpvp.lifestealsmp.CustomMobs.Mobs.DeadMiner.DeadMinerListener;
 import newamazingpvp.lifestealsmp.CustomMobs.Mobs.LightningZombie.LightningZombieListener;
-<<<<<<< Updated upstream
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-=======
 import newamazingpvp.lifestealsmp.CustomMobs.Mobs.Shado.ShadowMobListener;
->>>>>>> Stashed changes
 import newamazingpvp.lifestealsmp.CustomMobs.SpawnCustomMobCommand;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
