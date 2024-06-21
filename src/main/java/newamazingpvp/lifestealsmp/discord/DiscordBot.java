@@ -30,6 +30,7 @@ public class DiscordBot {
         JDABuilder jdaBuilder = JDABuilder.createDefault(token);
         jdaBuilder.enableIntents(allIntents);
         jda = jdaBuilder.build();
+        jda.updateCommands().addCommands(Stats.getSlashCommandData()).queue();
         jda.addEventListener((new Stats()));
         jda.addEventListener((new PlayerList()));
         jda.addEventListener((new MessageEvent()));
