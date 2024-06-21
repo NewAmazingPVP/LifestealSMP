@@ -1,17 +1,18 @@
 package newamazingpvp.lifestealsmp.game;
 
 import com.destroystokyo.paper.event.player.PlayerTeleportEndGatewayEvent;
-import org.bukkit.ChatColor;
-import org.bukkit.GameMode;
-import org.bukkit.OfflinePlayer;
+import org.bukkit.*;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPortalEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
+import org.bukkit.util.Vector;
 
 import java.awt.*;
+import java.awt.Color;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordEmbedPlayer;
@@ -51,7 +52,7 @@ public class EndFightRestrictions implements Listener {
         }
     }
 
-    @EventHandler
+    /*@EventHandler
     public void playerJoin(PlayerLoginEvent e) {
         if (isEndFightEnabled) {
             OfflinePlayer f = e.getPlayer();
@@ -81,8 +82,8 @@ public class EndFightRestrictions implements Listener {
     public void onPlayerDeath(PlayerDeathEvent e) {
         if (isEndFightEnabled) {
             Player p = e.getEntity();
-            p.sendMessage(ChatColor.RED + "You were eliminated! GF!");
-            sendDiscordEmbedPlayer(p.getName() + " was eliminated from end fight! GF!", Color.YELLOW, "", p.getName());
+            p.sendMessage(ChatColor.RED + "You were eliminated GF!");
+            sendDiscordEmbedPlayer(p.getName() + " was eliminated from end fight GF!", Color.YELLOW, "", p.getName());
             lifestealSmp.getServer().broadcastMessage(ChatColor.GOLD + p.getName() + " was eliminated GF!");
         }
     }
@@ -93,6 +94,31 @@ public class EndFightRestrictions implements Listener {
             Player p = e.getPlayer();
             p.setGameMode(GameMode.SPECTATOR);
             p.teleport(endFightSpawn);
+            int survivors = 0;
+            Player survivor = null;
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                if (player.getGameMode().equals(GameMode.SURVIVAL)) {
+                    survivors++;
+                    survivor = player;
+                }
+            }
+            if(survivors == 1){
+                lifestealSmp.getServer().broadcastMessage(ChatColor.GOLD + "" + ChatColor.BOLD + survivor.getName() + " has won the end fight!");
+                survivor.setInvulnerable(true);
+                survivor.getWorld().strikeLightningEffect(survivor.getLocation());
+                World w = survivor.getWorld();
+                int diameter = 10;
+                for (int i = 0; i < 15; i++)
+                {
+                    Location newLocation = survivor.getLocation().add(new Vector(Math.random()-0.5, 0, Math.random()-0.5).multiply(diameter));
+                    w.spawnEntity(newLocation, EntityType.FIREWORK);
+                }
+                survivor.setInvulnerable(false);
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    player.sendTitle(ChatColor.GOLD + survivor.getName() + ChatColor.DARK_PURPLE + " has won the end fight!", ChatColor.AQUA + "GGs " + survivor.getName());
+                }
+                sendDiscordEmbedPlayer(survivor.getName() + " has won the end fight!", Color.BLUE, "", survivor.getName());
+            }
         }
     }
 
