@@ -38,7 +38,7 @@ public abstract class Rune<T extends org.bukkit.event.Event> implements Listener
         ItemMeta meta = item.getItemMeta();
         if (meta == null) return item;
 
-        meta.addEnchant(Enchantment.DURABILITY, 1, false);
+        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
         meta.setDisplayName(displayName);
         meta.setLore(lore);
@@ -75,7 +75,7 @@ public abstract class Rune<T extends org.bukkit.event.Event> implements Listener
             for (int i = 0; i < 5; i++) {
                 Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 5.0f, 0.0f), 3 * i);
             }
-            event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, event.getEntity().getLocation(), 100, 0, 0, 0, 0.1);
+            //event.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, event.getEntity().getLocation(), 100, 0, 0, 0, 0.1);
         }
     }
 

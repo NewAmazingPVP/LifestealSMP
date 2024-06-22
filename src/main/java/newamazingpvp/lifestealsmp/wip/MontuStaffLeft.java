@@ -62,8 +62,8 @@ public class MontuStaffLeft implements Listener {
                                         }
                                         location.add(direction);
                                         for (Player player2 : Bukkit.getOnlinePlayers()) {
-                                            player2.getWorld().spawnParticle(Particle.REDSTONE, location, 0, new Particle.DustOptions(Color.PURPLE, 2.0F));
-                                            player2.getWorld().spawnParticle(Particle.REDSTONE, location, 0, new Particle.DustOptions(Color.BLACK, 3.0F));
+                                            //player2.getWorld().spawnParticle(Particle.REDSTONE, location, 0, new Particle.DustOptions(Color.PURPLE, 2.0F));
+                                            //player2.getWorld().spawnParticle(Particle.REDSTONE, location, 0, new Particle.DustOptions(Color.BLACK, 3.0F));
 
 
                                         }

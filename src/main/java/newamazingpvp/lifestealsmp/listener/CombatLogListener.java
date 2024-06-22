@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.damage.DamageSource;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -61,7 +62,7 @@ public class CombatLogListener implements Listener {
             }
 
             String deathMessage = p.getName() + " was killed instantly due to logging out during combat!";
-            PlayerDeathEvent deathEvent = new PlayerDeathEvent(p, List.of(inventoryContents), 0, 0, 0, 0, deathMessage);
+            PlayerDeathEvent deathEvent = new PlayerDeathEvent(p, (DamageSource) getEnemies(p).get(0), List.of(inventoryContents), p.getTotalExperience(), 0, 0, 0, deathMessage);
             Bukkit.getPluginManager().callEvent(deathEvent);
 
             cancelCombatData(e.getPlayer());

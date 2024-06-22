@@ -32,7 +32,7 @@ public class IceCube implements Listener {
 
         ItemStack IceCube = new ItemStack(Material.ICE);
         ItemMeta SI = IceCube.getItemMeta();
-        SI.addEnchant(Enchantment.DURABILITY, 1, false);
+        SI.addEnchant(Enchantment.UNBREAKING, 1, false);
         SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         SI.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Ice");
         SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -107,7 +107,7 @@ public class IceCube implements Listener {
 
         Location location = e.getBlock().getLocation();
         if (meta != null && meta.hasDisplayName() && meta.getDisplayName().equals(ChatColor.AQUA + "" + ChatColor.BOLD + "Ice Cube")) {
-            location.getWorld().spawnParticle(Particle.EXPLOSION_LARGE, location, 10);
+            //location.getWorld().spawnParticle(Particle.EXPLOSION_LARGE, location, 10);
             e.setCancelled(true);
             player.playSound(player.getLocation(), Sound.BLOCK_GLASS_BREAK, 1.0f, 1.0f);
             for (Player onlineplayer : Bukkit.getOnlinePlayers()) {

@@ -53,7 +53,7 @@ public class DroppedItemParticles implements Listener {
     public static void spawnParticlesOnItem(Entity itemEntity, Location location, Color color, Float size) {
 
         for (Player player : Bukkit.getOnlinePlayers()) {
-            player.getWorld().spawnParticle(Particle.REDSTONE, location, 0, new Particle.DustOptions(color, size));
+            //player.getWorld().spawnParticle(Particle.REDSTONE, location, 0, new Particle.DustOptions(color, size));
 
         }
     }

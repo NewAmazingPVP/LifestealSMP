@@ -28,7 +28,7 @@ public class VoidWalkerHelmEffects implements Listener {
                 if (meta.hasDisplayName() && meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL " + ChatColor.DARK_RED + ChatColor.BOLD + "Void Walker Helmet" + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + " LL")) {
                     if (damageTaker instanceof Player) {
 
-                        player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 40, 0));
+                        player.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, 40, 0));
                         player.sendMessage("Detected");
 
 

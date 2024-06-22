@@ -41,7 +41,7 @@ public class UnusedItemstacks {
 
         ItemStack ancientSpellScroll = new ItemStack(Material.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE);
         ItemMeta ASM = ancientSpellScroll.getItemMeta();
-        ASM.addEnchant(Enchantment.DURABILITY, 1, false);
+        ASM.addEnchant(Enchantment.UNBREAKING, 1, false);
         ASM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         ASM.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Ancient Spell Scroll");
         ASM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -256,7 +256,7 @@ public class UnusedItemstacks {
         SOPL.add(ChatColor.LIGHT_PURPLE + "Makes a shock wave around you ripping the lad apart.");
         SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
         SOPM.setLore(SOPL);
-        SOPM.addEnchant(Enchantment.DURABILITY, 1, false);
+        SOPM.addEnchant(Enchantment.UNBREAKING, 1, false);
         SOPM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         SekhmetSTAFF1.setItemMeta(SOPM);
 
@@ -290,7 +290,7 @@ public class UnusedItemstacks {
         SOPL.add(ChatColor.LIGHT_PURPLE + "Makes a shock wave around you ripping the lad apart.");
         SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
         SOPM.setLore(SOPL);
-        SOPM.addEnchant(Enchantment.DURABILITY, 1, false);
+        SOPM.addEnchant(Enchantment.UNBREAKING, 1, false);
         SOPM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         SekhmetSTAFF2.setItemMeta(SOPM);
 
@@ -324,7 +324,7 @@ public class UnusedItemstacks {
         SOPL.add(ChatColor.LIGHT_PURPLE + "Makes a shock wave around you ripping the lad apart.");
         SOPL.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-------------------------------------");
         SOPM.setLore(SOPL);
-        SOPM.addEnchant(Enchantment.DURABILITY, 1, false);
+        SOPM.addEnchant(Enchantment.UNBREAKING, 1, false);
         SOPM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         SekhmetSTAFF3.setItemMeta(SOPM);
 
@@ -335,7 +335,7 @@ public class UnusedItemstacks {
 
         ItemStack antimatterVile = new ItemStack(Material.ECHO_SHARD);
         ItemMeta SOPM = antimatterVile.getItemMeta();
-        SOPM.addEnchant(Enchantment.DURABILITY, 1, false);
+        SOPM.addEnchant(Enchantment.UNBREAKING, 1, false);
         SOPM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         SOPM.setDisplayName(ChatColor.BLACK + "" + ChatColor.BOLD + "Antimatter Vile");
         List<String> SOPL = new ArrayList<>();

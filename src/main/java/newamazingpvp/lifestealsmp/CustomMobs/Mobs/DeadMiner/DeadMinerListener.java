@@ -43,7 +43,7 @@ public class DeadMinerListener implements Listener {
 
 
                 damagedEntity.addPotionEffect(new PotionEffect(PotionEffectType.DARKNESS, 40, 2));
-                damagedEntity.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_DIGGING, 200, 5));
+                damagedEntity.addPotionEffect(new PotionEffect(PotionEffectType.MINING_FATIGUE, 200, 5));
 
 
 

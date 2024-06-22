@@ -155,7 +155,7 @@ public class SomberCrystal implements Listener {
 
         ItemStack powerStick = new ItemStack(Material.CHARCOAL);
         ItemMeta SI = powerStick.getItemMeta();
-        SI.addEnchant(Enchantment.DURABILITY, 1, false);
+        SI.addEnchant(Enchantment.UNBREAKING, 1, false);
         SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         SI.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 2min");
         SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);

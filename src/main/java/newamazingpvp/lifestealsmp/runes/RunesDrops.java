@@ -20,7 +20,7 @@ public class RunesDrops implements Listener {
     public static ItemStack witherRune() {
         ItemStack ITEM = new ItemStack(Material.WITHER_SKELETON_SKULL);
         ItemMeta meta = ITEM.getItemMeta();
-        meta.addEnchant(Enchantment.DURABILITY, 1, false);
+        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + ChatColor.GOLD + ChatColor.BOLD + " Wither Rune " + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "E");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -39,7 +39,7 @@ public class RunesDrops implements Listener {
     public static ItemStack aquaRune() {
         ItemStack ITEM = new ItemStack(Material.CYAN_DYE);
         ItemMeta meta = ITEM.getItemMeta();
-        meta.addEnchant(Enchantment.DURABILITY, 1, false);
+        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + ChatColor.AQUA + ChatColor.BOLD + " Aqua Rune " + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "E");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -58,7 +58,7 @@ public class RunesDrops implements Listener {
     public static ItemStack hellRune() {
         ItemStack ITEM = new ItemStack(Material.RED_DYE);
         ItemMeta meta = ITEM.getItemMeta();
-        meta.addEnchant(Enchantment.DURABILITY, 1, false);
+        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + ChatColor.DARK_RED + ChatColor.BOLD + " Hell Rune " + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "E");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -77,7 +77,7 @@ public class RunesDrops implements Listener {
     public static ItemStack trollRune() {
         ItemStack ITEM = new ItemStack(Material.BROWN_DYE);
         ItemMeta meta = ITEM.getItemMeta();
-        meta.addEnchant(Enchantment.DURABILITY, 1, false);
+        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + ChatColor.DARK_AQUA + ChatColor.BOLD + " Troll Rune " + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "E");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -96,7 +96,7 @@ public class RunesDrops implements Listener {
     public static ItemStack lightningRune() {
         ItemStack ITEM = new ItemStack(Material.YELLOW_DYE);
         ItemMeta meta = ITEM.getItemMeta();
-        meta.addEnchant(Enchantment.DURABILITY, 1, false);
+        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + ChatColor.YELLOW + ChatColor.BOLD + " Lightning Rune " + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "E");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -116,7 +116,7 @@ public class RunesDrops implements Listener {
     public static ItemStack darkRune() {
         ItemStack ITEM = new ItemStack(Material.AMETHYST_CLUSTER);
         ItemMeta meta = ITEM.getItemMeta();
-        meta.addEnchant(Enchantment.DURABILITY, 1, false);
+        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + ChatColor.BLACK + ChatColor.BOLD + " Dark Rune " + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "E");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -136,7 +136,7 @@ public class RunesDrops implements Listener {
     public static ItemStack bloodRune() {
         ItemStack ITEM = new ItemStack(Material.BEETROOT_SOUP);
         ItemMeta meta = ITEM.getItemMeta();
-        meta.addEnchant(Enchantment.DURABILITY, 1, false);
+        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + ChatColor.DARK_RED + ChatColor.BOLD + " Blood Rune " + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "E");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -155,7 +155,7 @@ public class RunesDrops implements Listener {
     public static ItemStack airRune() {
         ItemStack ITEM = new ItemStack(Material.END_PORTAL_FRAME);
         ItemMeta meta = ITEM.getItemMeta();
-        meta.addEnchant(Enchantment.DURABILITY, 1, false);
+        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "E" + ChatColor.WHITE + ChatColor.BOLD + " Air Rune " + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "E");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -186,7 +186,7 @@ public class RunesDrops implements Listener {
             for (int i = 0; i < 5; i++) {
                 Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 5.0f, 0.0f), 3);
             }
-            e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
+            //e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
         }
 
         if (Math.random() <= 1) {
@@ -195,7 +195,7 @@ public class RunesDrops implements Listener {
             for (int i = 0; i < 5; i++) {
                 Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 5.0f, 0.0f), 3);
             }
-            e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
+            //e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
         }
 
         if (Math.random() <= 1) {
@@ -204,7 +204,7 @@ public class RunesDrops implements Listener {
             for (int i = 0; i < 5; i++) {
                 Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 5.0f, 0.0f), 3);
             }
-            e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
+            //e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
         }
 
         if (Math.random() <= 1) {
@@ -213,7 +213,7 @@ public class RunesDrops implements Listener {
             for (int i = 0; i < 5; i++) {
                 Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 5.0f, 0.0f), 3);
             }
-            e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
+            //e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
         }
 
         if (Math.random() <= 1) {
@@ -222,7 +222,7 @@ public class RunesDrops implements Listener {
             for (int i = 0; i < 5; i++) {
                 Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 5.0f, 0.0f), 3);
             }
-            e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
+            //e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
         }
 
         if (Math.random() <= 1) {
@@ -231,7 +231,7 @@ public class RunesDrops implements Listener {
             for (int i = 0; i < 5; i++) {
                 Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 5.0f, 0.0f), 3);
             }
-            e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
+            //e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
         }
 
         if (Math.random() <= 1) {
@@ -240,7 +240,7 @@ public class RunesDrops implements Listener {
             for (int i = 0; i < 5; i++) {
                 Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 5.0f, 0.0f), 3);
             }
-            e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
+            //e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION_LARGE, loc, 100, 0, 0, 0, 0.1);
         }
     }
 }
