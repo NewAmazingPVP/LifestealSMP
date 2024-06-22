@@ -90,25 +90,21 @@ public class Utils {
         //            Bukkit.getWorld("world").setSimulationDistance(6);
         if (averageTPS < 15.0) {
             isTriggered = true;
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 2 --duration 1");
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 2 --duration 1");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "setview 2 2");
         } else if (averageTPS < 16.0) {
             isTriggered = true;
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 3 --duration 1");
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 2 --duration 1");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "setview 3 2");
         } else if (isTriggered && averageTPS < 17.0) {
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 4 --duration 2");
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 2 --duration 2");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "setview 4 2");
         } else if (isTriggered && averageTPS < 18.0) {
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 5 --duration 2");
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 2 --duration 2");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "setview 5 3");
         } else if (isTriggered && averageTPS < 19.0) {
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 6 --duration 3");
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 3 --duration 3");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "setview 6 3");
         } else if (isTriggered && averageTPS < 19.5) {
+            getServer().dispatchCommand(getServer().getConsoleSender(), "setview 7 4");
+        } else if(isTriggered && averageTPS > 19.5){
             isTriggered = false;
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt viewdistance 8 --duration 4");
-            getServer().dispatchCommand(getServer().getConsoleSender(), "vdt simulationdistance 3 --duration 4");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "setview 10 6");
         }
     }
 

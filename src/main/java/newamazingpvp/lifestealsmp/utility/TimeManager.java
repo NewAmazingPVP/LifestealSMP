@@ -6,7 +6,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 public class TimeManager {
-    private static final ZonedDateTime SEASON_START_TIME = ZonedDateTime.of(
+    public static final ZonedDateTime SEASON_START_TIME = ZonedDateTime.of(
             2024, 6, 23, 12, 0, 0, 0, ZoneId.of("America/New_York")
     );
 
