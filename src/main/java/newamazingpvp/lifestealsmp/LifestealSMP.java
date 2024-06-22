@@ -12,10 +12,7 @@ import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
 import newamazingpvp.lifestealsmp.allyteams.TeamCommand;
 import newamazingpvp.lifestealsmp.allyteams.TeamListener;
-import newamazingpvp.lifestealsmp.blacklistener.AntiUseListener;
-import newamazingpvp.lifestealsmp.blacklistener.AnvilMenuListener;
-import newamazingpvp.lifestealsmp.blacklistener.ChatFilter;
-import newamazingpvp.lifestealsmp.blacklistener.EndCrystalWarning;
+import newamazingpvp.lifestealsmp.blacklistener.*;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.command.unused.JailPlayer;
 import newamazingpvp.lifestealsmp.command.unused.TESTsomber;
@@ -114,7 +111,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("prefix").setExecutor(new PrefixCommand());
         getCommand("pingWars").setExecutor(new PingWars());
         getCommand("jailplayer").setExecutor(new JailPlayer());
-        //getServer().getPluginManager().registerEvents(new DisableElytra(), this);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
         getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
@@ -126,7 +122,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new FeatherSword(), this);
         getServer().getPluginManager().registerEvents(new OpPickaxe(), this);
         getServer().getPluginManager().registerEvents(new TreeChopAxe(), this);
-        //getServer().getPluginManager().registerEvents(new PlayerInCombat(), this);
         getServer().getPluginManager().registerEvents(new HeartItems(), this);
         getServer().getPluginManager().registerEvents(new AnvilMenuListener(), this);
         getServer().getPluginManager().registerEvents(new EndFightRestrictions(), this);
@@ -137,14 +132,11 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new CombatProtectionHandler(), this);
         getServer().getPluginManager().registerEvents(new ReviveBeacon(), this);
         getServer().getPluginManager().registerEvents(new CombatLogListener(), this);
-        //getServer().getPluginManager().registerEvents(new DisableNetherite(), this);
-        //getServer().getPluginManager().registerEvents(new BeaconInvis(), this);
         getServer().getPluginManager().registerEvents(new TeamListener(), this);
         getServer().getPluginManager().registerEvents(new DiscordListener(), this);
+        getServer().getPluginManager().registerEvents(new DisableNetherite(), this);
         getServer().getPluginManager().registerEvents(new NewbieProgression(), this);
         getServer().getPluginManager().registerEvents(new DragonEggPerk(), this);
-        //getServer().getPluginManager().registerEvents(new AntiPieRay(), this);
-        //getServer().getPluginManager().registerEvents(new TpsEvent(), this);
         startTPSTracking();
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
         //Everything under here is part of new update 6/15/24

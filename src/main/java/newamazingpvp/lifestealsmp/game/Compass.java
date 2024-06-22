@@ -263,15 +263,17 @@ public class Compass implements CommandExecutor, Listener {
                             }
                         }
                         //String dis = calculateDistanceCategory(distance);
-                        /*if (distance != 0) {
-                            msg += ChatColor.BOLD + " " + distance + " blocks";
-                        }*/
-                        if (!msg.contains("Cannot")) {
+                        if (distance != 0) {
+                            //msg += ChatColor.BOLD + " " + distance + " blocks";
+                            msg += ChatColor.BOLD + " in vicinity of " + ((distance / 500)+1)*500 + " blocks";
+                        }
+
+                        /*if (!msg.contains("Cannot")) {
                             msg += " coordinates ";
                             msg += (target.getLocation().x() < 0) ? "negative x" : "positive x";
                             msg += " and ";
                             msg += (target.getLocation().z() < 0) ? "negative z" : "positive z";
-                        }
+                        }*/
                         TextComponent textComponent = new TextComponent(msg);
                         player.spigot().sendMessage(ChatMessageType.ACTION_BAR, textComponent);
                         //boolean e = isMovingCloser(player, target);
