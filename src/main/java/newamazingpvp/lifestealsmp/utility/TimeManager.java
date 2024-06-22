@@ -1,5 +1,7 @@
 package newamazingpvp.lifestealsmp.utility;
 
+import org.bukkit.Bukkit;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -23,12 +25,10 @@ public class TimeManager {
         ! isTimePassed(SEASON_START_TIME, currentTime, 6, 16, 0, 0)) {
             registerCustomRecipes();
             getServer().dispatchCommand(getServer().getConsoleSender(), "worldborder set 25000");
-            sendDiscordMessage("Custom items have now been enabled! Map size exapanded to 25k by 25k", "1032411739351941120");
+            sendDiscordMessage("Custom items have now been enabled! Map size expanded to 25k by 25k", "1032411739351941120");
         }
 
-        if (isWeekPassed(2, weeksPassed)) {
 
-        }
 
         if (isTimePassed(SEASON_START_TIME, currentTime, 10, 0, 0, 0)) {
 
@@ -43,12 +43,22 @@ public class TimeManager {
         }
     }
 
-    private static long getWeeksPassed(ZonedDateTime startTime, ZonedDateTime currentTime) {
+    public static void timeBasedEvents(){
+        ZonedDateTime currentTime = ZonedDateTime.now(ZoneId.of("America/New_York"));
+        long weeksPassed = getWeeksPassed(SEASON_START_TIME, currentTime);
+
+        if (isWeekPassed(2, weeksPassed)) {
+
+            Bukkit.getServer().spigot().restart();
+        }
+    }
+
+    public static long getWeeksPassed(ZonedDateTime startTime, ZonedDateTime currentTime) {
         Duration duration = Duration.between(startTime, currentTime);
         return duration.toDays() / 7;
     }
 
-    private static boolean isWeekPassed(int weekNum, long weeksPassed) {
+    public static boolean isWeekPassed(int weekNum, long weeksPassed) {
         return weeksPassed >= weekNum;
     }
 
