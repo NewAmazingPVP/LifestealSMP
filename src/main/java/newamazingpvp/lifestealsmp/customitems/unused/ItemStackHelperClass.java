@@ -28,7 +28,7 @@ public class ItemStackHelperClass {
         META.setLore(LORE);
 
         if (Glowing) {
-            META.addEnchant(Enchantment.DURABILITY, 1, false);
+            META.addEnchant(Enchantment.UNBREAKING, 1, false);
             META.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         }
 

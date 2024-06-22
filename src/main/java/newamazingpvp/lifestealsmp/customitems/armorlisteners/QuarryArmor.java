@@ -27,9 +27,9 @@ public class QuarryArmor implements Listener {
         boolean quarryIsBootsOn = isQuarryArmorPieceOn(boots, Material.LEATHER_BOOTS);
 
         if (quarryIsHelmetOn && quarryIsChestplateOn && quarryIsLeggingsOn && quarryIsBootsOn) {
-            player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 100000, 2));
+            player.addPotionEffect(new PotionEffect(PotionEffectType.HASTE, 100000, 2));
         } else {
-            player.removePotionEffect(PotionEffectType.FAST_DIGGING);
+            player.removePotionEffect(PotionEffectType.HASTE);
         }
     }
 

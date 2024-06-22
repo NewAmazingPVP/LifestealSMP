@@ -15,7 +15,7 @@ public class CustomBingoItems {
     public static ItemStack BingoCard() {
         ItemStack ITEM = new ItemStack(Material.PAINTING);
         ItemMeta meta = ITEM.getItemMeta();
-        meta.addEnchant(Enchantment.DURABILITY, 1, false);
+        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Bingo Card");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -30,7 +30,7 @@ public class CustomBingoItems {
     public static ItemStack BingoPickaxe() {
         ItemStack ITEM = new ItemStack(Material.IRON_PICKAXE);
         ItemMeta meta = ITEM.getItemMeta();
-        meta.addEnchant(Enchantment.DURABILITY, 1, false);
+        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.setUnbreakable(true);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);

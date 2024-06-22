@@ -16,7 +16,7 @@ public class MagicStaffItemstacks {
 
         ItemStack powerStick = new ItemStack(Material.STICK);
         ItemMeta SI = powerStick.getItemMeta();
-        SI.addEnchant(Enchantment.DURABILITY, 1, false);
+        SI.addEnchant(Enchantment.UNBREAKING, 1, false);
         SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         SI.setDisplayName(ChatColor.GRAY + "" + ChatColor.BOLD + "Magic Staff");
         List<String> BL = new ArrayList<>();
@@ -35,7 +35,7 @@ public class MagicStaffItemstacks {
 
         ItemStack powerStick = new ItemStack(Material.STICK);
         ItemMeta SI = powerStick.getItemMeta();
-        SI.addEnchant(Enchantment.DURABILITY, 1, false);
+        SI.addEnchant(Enchantment.UNBREAKING, 1, false);
         SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         SI.setDisplayName(ChatColor.WHITE + "" + ChatColor.BOLD + "Air Magic Staff");
         List<String> BL = new ArrayList<>();
@@ -55,7 +55,7 @@ public class MagicStaffItemstacks {
 
         ItemStack powerStick = new ItemStack(Material.STICK);
         ItemMeta SI = powerStick.getItemMeta();
-        SI.addEnchant(Enchantment.DURABILITY, 1, false);
+        SI.addEnchant(Enchantment.UNBREAKING, 1, false);
         SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         SI.setDisplayName(ChatColor.WHITE + "" + ChatColor.BOLD + "Air Magic Staff");
         List<String> BL = new ArrayList<>();
@@ -75,7 +75,7 @@ public class MagicStaffItemstacks {
 
         ItemStack powerStick = new ItemStack(Material.STICK);
         ItemMeta SI = powerStick.getItemMeta();
-        SI.addEnchant(Enchantment.DURABILITY, 1, false);
+        SI.addEnchant(Enchantment.UNBREAKING, 1, false);
         SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         SI.setDisplayName(ChatColor.WHITE + "" + ChatColor.BOLD + "Air Magic Staff");
         List<String> BL = new ArrayList<>();

@@ -84,7 +84,7 @@ public class TntBow implements Listener {
 
     public static void spawnIgnitedTNT(Location location, Entity p) {
         if (isWithinSpawnRadius(location)) return;
-        TNTPrimed tnt = (TNTPrimed) location.getWorld().spawnEntity(location, EntityType.PRIMED_TNT);
+        TNTPrimed tnt = (TNTPrimed) location.getWorld().spawnEntity(location, EntityType.TNT);
 
         tnt.setFuseTicks(80);
         tnt.setSource(p);
