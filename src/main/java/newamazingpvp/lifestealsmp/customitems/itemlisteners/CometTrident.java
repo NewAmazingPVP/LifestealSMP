@@ -24,7 +24,7 @@ public class CometTrident implements Listener {
         Player player = e.getPlayer();
         ItemMeta meta = (ItemMeta) e.getItem();
 
-        if ((e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) && e.hasItem() && e.hasItem() && e.getItem().getType() == Material.TRIDENT) {
+        if ((e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) && e.hasItem() && e.hasItem() && e.getItem().getType() == Material.STICK) {
             if (meta.getLore().toString().contains("Summons a comet that will fly into")){
 
 
