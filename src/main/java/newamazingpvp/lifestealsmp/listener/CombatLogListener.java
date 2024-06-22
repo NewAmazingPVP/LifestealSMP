@@ -13,12 +13,15 @@ import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.List;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.extraHeart;
 import static newamazingpvp.lifestealsmp.game.CombatLog.*;
 import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.heartCooldownPlayers;
+import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.invincibilityPlayers;
 
 public class CombatLogListener implements Listener {
     @EventHandler
@@ -62,8 +65,22 @@ public class CombatLogListener implements Listener {
             }
 
             String deathMessage = p.getName() + " was killed instantly due to logging out during combat!";
-            PlayerDeathEvent deathEvent = new PlayerDeathEvent(p, (DamageSource) getEnemies(p).get(0), List.of(inventoryContents), p.getTotalExperience(), 0, 0, 0, deathMessage);
+            PlayerDeathEvent deathEvent = new PlayerDeathEvent(p, (DamageSource) getEnemies(p).get(0), List.of(inventoryContents), 0, 0, 0, 0, deathMessage);
             Bukkit.getPluginManager().callEvent(deathEvent);
+            heartCooldownPlayers.add(p.getName());
+            invincibilityPlayers.add(p.getName());
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    heartCooldownPlayers.remove(p.getName());
+                }
+            }.runTaskLater(lifestealSmp, 20 * 60 * 15);
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    invincibilityPlayers.remove(p.getName());
+                }
+            }.runTaskLater(lifestealSmp, 20 * 60 * 15);
 
             cancelCombatData(e.getPlayer());
             removeEnemies(e.getPlayer());

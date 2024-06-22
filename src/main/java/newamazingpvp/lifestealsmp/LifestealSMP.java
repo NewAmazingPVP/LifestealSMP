@@ -65,8 +65,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
     @Override
     public void onEnable() {
-        //this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
-        //this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
         getServer().getMessenger().registerIncomingPluginChannel(this, "nappixel:lifesteal", this);
         getServer().getMessenger().registerOutgoingPluginChannel(this, "nappixel:lifesteal");
         saveDefaultConfig();
@@ -86,7 +84,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("setview").setExecutor(new CustomDistance());
         getCommand("recipes").setExecutor(new RecipesCommand());
         getCommand("track").setExecutor(new Compass());
-        //getCommand("GiveSekhmetSet").setExecutor(new GiveSekhmetSetSpeedAdmin());
         getCommand("restart_with_warning").setExecutor(new RestartWithWarming());
         getCommand("remHP").setExecutor(new RemoveHP());
         getCommand("addHP").setExecutor(new AddHP());
@@ -96,13 +93,12 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("reviveplayer").setExecutor(new RevivePlayer());
         getCommand("vision").setExecutor(new NightVision());
         getCommand("senddiscordmessage").setExecutor(new SendDiscordMessage());
-        //getCommand("shop").setExecutor(new ShopCommand());
         getCommand("discord").setExecutor(new DiscordLink());
         getCommand("help").setExecutor(new HelpCommand());
         getCommand("guide").setExecutor(new GuideCommand());
         getCommand("givecustomitem").setExecutor(new GiveCustomItem());
         getCommand("givecustomitem").setTabCompleter(new GiveCustomItem());
-        //getCommand("serverruntime").setExecutor(new ServerRuntime());
+        getCommand("serverruntime").setExecutor(new ServerRuntime());
         getCommand("team").setExecutor(new TeamCommand());
         getCommand("team").setTabCompleter(new TeamCommand());
         AlliesManager.loadAllyData();
