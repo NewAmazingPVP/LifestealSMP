@@ -108,6 +108,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("prefix").setExecutor(new PrefixCommand());
         getCommand("pingWars").setExecutor(new PingWars());
         getCommand("jailplayer").setExecutor(new JailPlayer());
+        getCommand("betterban").setExecutor(new BetterBan());
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
         getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
@@ -146,7 +147,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("trade").setExecutor(new Trade());
         getServer().getPluginManager().registerEvents(new TradeListener(), this);
         registerBasicRecipes();
-        registerCustomRecipes();
         //TODO: Use this for beta things
         if (isAutoUploadEnabled()) {
             //getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
