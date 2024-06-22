@@ -45,6 +45,7 @@ import org.jetbrains.annotations.NotNull;
 
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlacklist;
 import static newamazingpvp.lifestealsmp.customitems.utils.DevRecipes.registerCustomRecipesDev;
+import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerBasicRecipes;
 import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.*;
 import static newamazingpvp.lifestealsmp.discord.LogAppender.consoleChannel;
@@ -144,7 +145,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new MusicBox(), this);
         getCommand("trade").setExecutor(new Trade());
         getServer().getPluginManager().registerEvents(new TradeListener(), this);
-
+        registerBasicRecipes();
+        registerCustomRecipes();
         //TODO: Use this for beta things
         if (isAutoUploadEnabled()) {
             //getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
@@ -220,7 +222,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getScheduler().runTaskTimer(this, BroadcastMessage::broadcastServerMessage, 0, 7200 * 20);
         getServer().getScheduler().runTaskTimer(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** help"), 0, 30 * 60 * 20);
         getServer().getScheduler().runTaskTimer(this, BroadcastMessage::broadcastReportBugs, 0, 3600 * 20);
-        registerCustomRecipes();
         getServer().getScheduler().runTaskTimer(this, PlayerPing::monitorPlayerPings, 0L, 20L);
         scheduleRestart();
         compassUpdate();

@@ -13,8 +13,8 @@ import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.somberCrystal;
 
 public class Recipes {
-    public static void registerCustomRecipes() {
 
+    public static void registerBasicRecipes(){
         ItemStack extraHeart = new ItemStack(extraHeart());
         ShapedRecipe extraHeartRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "extra_heart"), extraHeart);
         extraHeartRecipe.shape("C C", "DSD", " N ");
@@ -54,6 +54,25 @@ public class Recipes {
         shapedRecipes.put(purpleBlock, purpleBlockRecipe);
         Bukkit.addRecipe(purpleBlockRecipe);
 
+        NamespacedKey nethScraps = new NamespacedKey(lifestealSmp, "neth_scraps");
+        ShapelessRecipe nethScrapsRecipe = new ShapelessRecipe(nethScraps, createNethScarps());
+        nethScrapsRecipe.addIngredient(1, Material.NETHERITE_INGOT);
+        customItems.add(createNethScarps());
+        shapelessRecipes.put(createNethScarps(), nethScrapsRecipe);
+        Bukkit.addRecipe(nethScrapsRecipe);
+
+        NamespacedKey reviveBeacon = new NamespacedKey(lifestealSmp, "revive_beacon");
+        ShapelessRecipe reviveBeaconRecipe = new ShapelessRecipe(reviveBeacon, createReviveBeacon());
+        reviveBeaconRecipe.addIngredient(1, Material.BEACON);
+        reviveBeaconRecipe.addIngredient(4, Material.DIAMOND_BLOCK);
+        reviveBeaconRecipe.addIngredient(1, Material.NETHERITE_BLOCK);
+        reviveBeaconRecipe.addIngredient(2, Material.TOTEM_OF_UNDYING);
+        reviveBeaconRecipe.addIngredient(1, Material.GOLDEN_APPLE);
+        customItems.add(createReviveBeacon());
+        shapelessRecipes.put(createReviveBeacon(), reviveBeaconRecipe);
+        Bukkit.addRecipe(reviveBeaconRecipe);
+    }
+    public static void registerCustomRecipes() {
         NamespacedKey recipeKey = new NamespacedKey(lifestealSmp, "teleporting_bow");
         ShapelessRecipe customBowRecipe = new ShapelessRecipe(recipeKey, createCustomBow());
         customBowRecipe.addIngredient(2, Material.ENDER_PEARL);
@@ -106,13 +125,6 @@ public class Recipes {
         shapelessRecipes.put(createOpPickaxe(), opPickaxeRecipe);
         Bukkit.addRecipe(opPickaxeRecipe);
 
-        NamespacedKey nethScraps = new NamespacedKey(lifestealSmp, "neth_scraps");
-        ShapelessRecipe nethScrapsRecipe = new ShapelessRecipe(nethScraps, createNethScarps());
-        nethScrapsRecipe.addIngredient(1, Material.NETHERITE_INGOT);
-        customItems.add(createNethScarps());
-        shapelessRecipes.put(createNethScarps(), nethScrapsRecipe);
-        Bukkit.addRecipe(nethScrapsRecipe);
-
         NamespacedKey homingBow = new NamespacedKey(lifestealSmp, "homing_bow");
         ShapelessRecipe homingBowRecipe = new ShapelessRecipe(homingBow, createHomingBow());
         homingBowRecipe.addIngredient(1, Material.BOW);
@@ -123,17 +135,6 @@ public class Recipes {
         customItems.add(createHomingBow());
         shapelessRecipes.put(createHomingBow(), homingBowRecipe);
         Bukkit.addRecipe(homingBowRecipe);
-
-        NamespacedKey reviveBeacon = new NamespacedKey(lifestealSmp, "revive_beacon");
-        ShapelessRecipe reviveBeaconRecipe = new ShapelessRecipe(reviveBeacon, createReviveBeacon());
-        reviveBeaconRecipe.addIngredient(1, Material.BEACON);
-        reviveBeaconRecipe.addIngredient(4, Material.DIAMOND_BLOCK);
-        reviveBeaconRecipe.addIngredient(1, Material.NETHERITE_BLOCK);
-        reviveBeaconRecipe.addIngredient(2, Material.TOTEM_OF_UNDYING);
-        reviveBeaconRecipe.addIngredient(1, Material.GOLDEN_APPLE);
-        customItems.add(createReviveBeacon());
-        shapelessRecipes.put(createReviveBeacon(), reviveBeaconRecipe);
-        Bukkit.addRecipe(reviveBeaconRecipe);
 
         ItemStack lightFeather = new ItemStack(lightFeather());
         ShapedRecipe lightFeatherRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "light_feather"), lightFeather);

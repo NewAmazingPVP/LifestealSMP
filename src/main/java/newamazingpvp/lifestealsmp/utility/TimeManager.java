@@ -15,7 +15,7 @@ public class TimeManager {
         long weeksPassed = getWeeksPassed(SEASON_START_TIME, currentTime);
 
         if (isWeekPassed(1, weeksPassed)) {
-
+            
         }
 
         if (isWeekPassed(2, weeksPassed)) {
