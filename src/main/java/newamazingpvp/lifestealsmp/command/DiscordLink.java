@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class DiscordLink implements CommandExecutor {
-    private final String discordURL = "https://discord.gg/PN8egFY3ap";
+    public static final String discordURL = "https://discord.gg/PN8egFY3ap";
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

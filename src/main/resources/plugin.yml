@@ -167,3 +167,9 @@ commands:
     usage: /spawncustommob <mob>
     permission: lifestealSMP.admin
     default: op
+  betterban:
+    description: Lets you ban someone with custom ban message
+    usage: /betterban <player>
+    permission: lifestealSMP.admin
+    default: op
+
