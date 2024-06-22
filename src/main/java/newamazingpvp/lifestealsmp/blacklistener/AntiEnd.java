@@ -21,6 +21,7 @@ public class AntiEnd implements Listener {
     @EventHandler
     public void portalLeave(PlayerPortalEvent e) {
         if(e.getTo().getWorld().getEnvironment() == World.Environment.THE_END && !isWeekPassed(2, getWeeksPassed(SEASON_START_TIME, ZonedDateTime.now(ZoneId.of("America/New_York"))))) {
+            //Duration duration = Duration.between(ZonedDateTime.now(ZoneId.of("America/New_York"), )
                /* long days = duration.toDays();
                 long hours = duration.toHours() % 24;
                 long minutes = duration.toMinutes() % 60;

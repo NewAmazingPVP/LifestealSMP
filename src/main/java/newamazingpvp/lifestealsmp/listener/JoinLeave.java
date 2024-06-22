@@ -47,6 +47,11 @@ public class JoinLeave implements Listener {
                 if (essentials.getUser(player.getUniqueId()).getNickname() != null && essentials.getUser(player.getUniqueId()).getNickname().equals(player.getName())) {
                     setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW);
                 }
+                if(essentials.getUser(player.getUniqueId()).getNickname() != null && !essentials.getUser(player.getUniqueId()).getNickname().equals(player.getName())){
+                    if(!essentials.getUser(player.getUniqueId()).getNickname().contains(player.getName())){
+                        setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW);
+                    }
+                }
             }
         };
         prefix.runTaskTimer(lifestealSmp, 0, 0L);
