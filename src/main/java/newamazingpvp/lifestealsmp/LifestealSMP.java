@@ -192,6 +192,10 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getCommand("openmagicstaffmenu").setExecutor(new OpenMagicStaffMenuADMIN());
 
 
+            //Comet Trident
+            getServer().getPluginManager().registerEvents(new CometTrident(), this);
+
+
             //test
             getServer().getPluginManager().registerEvents(new DroppedItemParticles(), this);
 
