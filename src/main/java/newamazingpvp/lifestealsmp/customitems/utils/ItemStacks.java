@@ -319,7 +319,7 @@ public class ItemStacks {
     }
 
     public static ItemStack cometTrident() {
-        ItemStack ITEM = new ItemStack(Material.STICK);
+        ItemStack ITEM = new ItemStack(Material.TRIDENT);
         ItemMeta meta = ITEM.getItemMeta();
         meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Comet Trident");
         List<String> lore = new ArrayList<>();
