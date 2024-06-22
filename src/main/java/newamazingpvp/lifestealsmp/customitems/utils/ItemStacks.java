@@ -317,4 +317,18 @@ public class ItemStacks {
         ItemStack customBow = new ItemStack(Material.NETHERITE_SCRAP, 4);
         return customBow;
     }
+
+    public static ItemStack cometTrident() {
+        ItemStack ITEM = new ItemStack(Material.STICK);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Comet Trident");
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Right Click:");
+        lore.add(ChatColor.DARK_PURPLE + "Summons a comet that will fly into");
+        lore.add(ChatColor.DARK_PURPLE + "the ground dealing damage.");
+        meta.setLore(lore);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
 }
