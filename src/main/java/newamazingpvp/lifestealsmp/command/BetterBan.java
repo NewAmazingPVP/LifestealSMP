@@ -14,7 +14,7 @@ public class BetterBan implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (args.length == 1){
             Player player = Bukkit.getPlayer(args[0]);
-            player.banPlayer(ChatColor.RED + "You were banned for breaking a rule. If you feel you were unfairly banned make an appeal in discord. " + ChatColor.AQUA + discordURL)
+            player.banPlayer(ChatColor.RED + "You were banned for breaking a rule. If you feel you were unfairly banned make an appeal in discord. " + ChatColor.AQUA + discordURL);
         }
         return true;
     }
