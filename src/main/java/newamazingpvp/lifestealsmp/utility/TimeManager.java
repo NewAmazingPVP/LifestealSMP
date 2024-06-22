@@ -21,13 +21,17 @@ public class TimeManager {
         ZonedDateTime currentTime = ZonedDateTime.now(ZoneId.of("America/New_York"));
 
         long weeksPassed = getWeeksPassed(SEASON_START_TIME, currentTime);
+        if (isTimePassed(SEASON_START_TIME, currentTime, 6, 14, 0, 0)) {
+            registerCustomRecipes();
+
+        }
+
         if (isTimePassed(SEASON_START_TIME, currentTime, 6, 14, 0, 0) &&
-        ! isTimePassed(SEASON_START_TIME, currentTime, 6, 16, 0, 0)) {
+                ! isTimePassed(SEASON_START_TIME, currentTime, 6, 16, 0, 0)) {
             registerCustomRecipes();
             getServer().dispatchCommand(getServer().getConsoleSender(), "worldborder set 25000");
             sendDiscordMessage("Custom items have now been enabled! Map size expanded to 25k by 25k", "1032411739351941120");
         }
-
 
 
         if (isTimePassed(SEASON_START_TIME, currentTime, 10, 0, 0, 0)) {
