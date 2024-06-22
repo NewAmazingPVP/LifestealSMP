@@ -33,8 +33,4 @@ public class TimeManager {
         return weeksPassed >= weekNum;
     }
 
-    public static void main(String[] args) {
-        // Example to show how doEvents works
-        doEvents();
-    }
 }
