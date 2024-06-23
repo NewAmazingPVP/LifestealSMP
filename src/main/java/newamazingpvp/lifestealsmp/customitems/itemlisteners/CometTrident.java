@@ -33,6 +33,11 @@ public class CometTrident implements Listener {
                 e.setCancelled(true);
 
                 float pitch = player.getLocation().getPitch();
+
+                if(pitch < 0 ){
+                    pitch = Math.abs(pitch + 90);
+                }
+
                 player.sendMessage("The player is looking up/down by " + pitch + " degrees.");
 
 
