@@ -172,4 +172,9 @@ commands:
     usage: /betterban <player>
     permission: lifestealSMP.admin
     default: op
+  unbanall:
+    description: Lets you unban everybody (don't use this unless you know what you are doing)
+    usage: /unbanall
+    permission: lifestealSMP.admin
+    default: op
 

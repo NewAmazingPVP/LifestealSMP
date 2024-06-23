@@ -17,6 +17,7 @@ import org.bukkit.plugin.Plugin;
 import java.awt.*;
 import java.lang.reflect.Method;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.essentials;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.*;
 
 public class DiscordListener implements Listener {
@@ -90,6 +91,7 @@ public class DiscordListener implements Listener {
         if (pl != null) {
             pl.sendPluginMessage(lifestealSmp, "BungeeCord", out.toByteArray());
         }*/
+        if(isVanished(event.getPlayer())) return;
         sendDiscordEmbedPlayer(event.getPlayer().getName() + " has made the advancement " + title + "!", Color.YELLOW, channelId, event.getPlayer().getName());
     }
 
