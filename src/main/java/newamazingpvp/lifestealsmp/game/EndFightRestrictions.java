@@ -52,13 +52,18 @@ public class EndFightRestrictions implements Listener {
         }
     }
 
-    /*@EventHandler
+    @EventHandler
     public void playerJoin(PlayerLoginEvent e) {
         if (isEndFightEnabled) {
             OfflinePlayer f = e.getPlayer();
-            if (!(endFightParticipants.contains(e.getPlayer().getName()) || lifestealSmp.getServer().getWhitelistedPlayers().contains(f))) {
+            /*if (!(endFightParticipants.contains(e.getPlayer().getName()) || lifestealSmp.getServer().getWhitelistedPlayers().contains(f))) {
                 e.disallow(PlayerLoginEvent.Result.KICK_OTHER, "Sorry you cannot join during end fight!");
                 lifestealSmp.getServer().broadcastMessage(e.getPlayer().getName() + " tried during end fight but isn't whitelisted");
+            }*/
+            if (!(endFightParticipants.contains(e.getPlayer().getName()))){
+                e.getPlayer().teleport(endSpawn);
+                e.getPlayer().sendMessage(ChatColor.AQUA + "You joined during the server final end fight and were teleported right to it!");
+                //teleport player to end spawnfor fight
             }
         }
     }
