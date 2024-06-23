@@ -62,7 +62,6 @@ public class MusicBox implements Listener {
     public void onMenuClick(InventoryClickEvent event) {
 
         ItemStack itemInHand = event.getCurrentItem();
-        ItemMeta meta = itemInHand.getItemMeta();
         Player player = (Player) event.getWhoClicked();
 
         if (event.getView().getTitle().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Music Box")) {

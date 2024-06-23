@@ -58,5 +58,15 @@ public class PlayerLagMsg implements Listener {
                 }
             }, 20);
         }
+        if (event.getMessage().toLowerCase().contains("hit me")){
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
+                @Override
+                public void run() {
+                    for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+                        p.sendMessage(ChatColor.RED + "Be careful as" + ChatColor.YELLOW + event.getPlayer().getName() + ChatColor.DARK_RED + " might be trying to get rid of newbie protection of newbies by asking to hit them");
+                    }
+                }
+            }, 20);
+        }
     }
 }

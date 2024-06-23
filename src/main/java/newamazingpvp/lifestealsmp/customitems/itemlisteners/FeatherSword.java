@@ -62,7 +62,6 @@ public class FeatherSword implements Listener {
                     //direction.multiply(new Vector(10, 10, 10));
                     //Location targetLocation = player.getLocation().add(direction);
 
-                    ItemStack e = new ItemStack(Material.MACE);
                     //player.getLocation().getWorld().spawnParticle(Particle.EXPLOSION_NORMAL, player.getLocation(), 10);
                     player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 5.0f, 2.0f);
                     Vector velocity = player.getLocation().getDirection().multiply(3);
