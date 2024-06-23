@@ -7,6 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.essentials;
 import static newamazingpvp.lifestealsmp.allyteams.AlliesManager.isPlayerInAllyChat;
@@ -15,36 +16,38 @@ import static newamazingpvp.lifestealsmp.allyteams.TeamsManager.isPlayerInTeamCh
 import static newamazingpvp.lifestealsmp.allyteams.TeamsManager.sendTeamMessage;
 
 public class TeamListener implements Listener {
-    public HashMap<Player, String> avoidSpam = new HashMap<>();
+    public HashMap<Player, String> avoidSpamMessage = new HashMap<>();
+    public HashMap<Player, Long> avoidSpamTimestamp = new HashMap<>();
 
     @EventHandler
     public void teamChatEvent(AsyncPlayerChatEvent event) {
         Player p = event.getPlayer();
         if (isPlayerInTeamChat(p)) {
             event.setCancelled(true);
-            sendTeamMessage(p, event.getMessage());
-            /*if(!potentialSpam(p, event.getMessage())) {
+            /*if (!potentialSpam(p, event.getMessage())) {
                 sendTeamMessage(p, event.getMessage());
-                avoidSpam.put(p, event.getMessage());
+                avoidSpamMessage.put(p, event.getMessage());
+                avoidSpamTimestamp.put(p, System.currentTimeMillis());
             }*/
         } else if (isPlayerInAllyChat(p)) {
             event.setCancelled(true);
-            sendAllyMessage(p, event.getMessage());
-            /*if(!potentialSpam(p, event.getMessage())) {
+            /*if (!potentialSpam(p, event.getMessage())) {
                 sendAllyMessage(p, event.getMessage());
-                avoidSpam.put(p, event.getMessage());
-            }*/
+                avoidSpamMessage.put(p, event.getMessage());
+                avoidSpamTimestamp.put(p, System.currentTimeMillis());
+             */
         } else {
             if (!potentialSpam(p, event.getMessage())) {
                 if (essentials.getUser(p.getUniqueId()).getNickname() != null) {
                     event.setFormat(essentials.getUser(p.getUniqueId()).getNickname() + ChatColor.WHITE + ": " + event.getMessage());
                 }
-                avoidSpam.put(p, event.getMessage());
+                avoidSpamMessage.put(p, event.getMessage());
+                avoidSpamTimestamp.put(p, System.currentTimeMillis());
             } else {
                 event.setCancelled(true);
                 p.sendMessage(ChatColor.RED + "Potential spam detected! Do /rules");
             }
-            /*
+                        /*
             ByteArrayDataOutput out = ByteStreams.newDataOutput();
             out.writeUTF("Server");
 
@@ -62,9 +65,9 @@ public class TeamListener implements Listener {
     }
 
     public boolean potentialSpam(Player p, String s) {
-        if (avoidSpam.get(p) == null) return false;
-        return avoidSpam.get(p).equalsIgnoreCase(s);
+        if (avoidSpamMessage.get(p) == null) return false;
+        if (!avoidSpamMessage.get(p).equalsIgnoreCase(s)) return false;
+        long lastMessageTime = avoidSpamTimestamp.getOrDefault(p, 0L);
+        return (System.currentTimeMillis() - lastMessageTime) < 2000;
     }
-
-
 }

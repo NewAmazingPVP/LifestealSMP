@@ -1,6 +1,8 @@
 package newamazingpvp.lifestealsmp.utility;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -13,6 +15,7 @@ import static org.bukkit.Bukkit.getServer;
 
 
 public class TimeManager {
+    //TODO: ALWAYS KEEP THIS A SATURDAY EVEN IF YOU STARTED ON SUNDAY
     public static final ZonedDateTime SEASON_START_TIME = ZonedDateTime.of(
             2024, 6, 23, 12, 0, 0, 0, ZoneId.of("America/New_York")
     );
@@ -23,8 +26,9 @@ public class TimeManager {
         long weeksPassed = getWeeksPassed(SEASON_START_TIME, currentTime);
         if (isTimePassed(SEASON_START_TIME, currentTime, 6, 14, 0, 0)) {
             registerCustomRecipes();
-
         }
+
+
 
         if (isTimePassed(SEASON_START_TIME, currentTime, 6, 14, 0, 0) &&
                 ! isTimePassed(SEASON_START_TIME, currentTime, 6, 16, 0, 0)) {
