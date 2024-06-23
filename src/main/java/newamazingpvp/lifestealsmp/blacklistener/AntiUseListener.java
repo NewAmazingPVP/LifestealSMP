@@ -35,7 +35,7 @@ public class AntiUseListener implements Listener {
             }
         }
 
-        updateLore(event.getPlayer());
+        //updateLore(event.getPlayer());
     }
 
 

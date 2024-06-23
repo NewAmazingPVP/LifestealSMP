@@ -45,6 +45,7 @@ public class StartEndFight implements CommandExecutor {
         for (Player p : lifestealSmp.getServer().getOnlinePlayers()) {
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> p.sendTitle(ChatColor.RED + "" + ChatColor.BOLD + "GO!", ChatColor.GOLD + "Good Luck!"), 1200);
         }
+        Bukkit.getWorld("world_the_end").getWorldBorder().setSize(300);
         return true;
     }
 }

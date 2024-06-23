@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.utility;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -10,12 +11,14 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.*;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.essentials;
+import static newamazingpvp.lifestealsmp.blacklistener.AntiEnd.isEndEnabled;
 import static org.bukkit.Bukkit.getServer;
 
 public class Utils {
     private static final int MAX_SIZE = 14;
     private static final List<Double> tpsList = new ArrayList<>();
     private static boolean isTriggered = false;
+    private static CooldownManager tpsCooldown = new CooldownManager();
 
     public static void addItemOrDrop(Player player, ItemStack itemStack, String fullInventoryMessage) {
         if (player.getInventory().firstEmpty() != -1) {
@@ -85,26 +88,49 @@ public class Utils {
 
     public static void adjustPerformance() {
         double averageTPS = getAverageTPS();
-        //TODO: MAKE OWN DISTANCE SETTER PLUGIN
-        //            Bukkit.getWorld("world").setViewDistance(10);
-        //            Bukkit.getWorld("world").setSimulationDistance(6);
+        if (tpsCooldown.isOnCooldown()) return;
+
         if (averageTPS < 15.0) {
-            isTriggered = true;
-            getServer().dispatchCommand(getServer().getConsoleSender(), "setview 2 2");
+            triggerActions("setview 2 2");
         } else if (averageTPS < 16.0) {
-            isTriggered = true;
-            getServer().dispatchCommand(getServer().getConsoleSender(), "setview 3 2");
-        } else if (isTriggered && averageTPS < 17.0) {
-            getServer().dispatchCommand(getServer().getConsoleSender(), "setview 4 2");
-        } else if (isTriggered && averageTPS < 18.0) {
-            getServer().dispatchCommand(getServer().getConsoleSender(), "setview 5 3");
-        } else if (isTriggered && averageTPS < 19.0) {
-            getServer().dispatchCommand(getServer().getConsoleSender(), "setview 6 3");
-        } else if (isTriggered && averageTPS < 19.5) {
-            getServer().dispatchCommand(getServer().getConsoleSender(), "setview 7 4");
-        } else if(isTriggered && averageTPS > 19.5){
-            isTriggered = false;
-            getServer().dispatchCommand(getServer().getConsoleSender(), "setview 10 6");
+            triggerActions("setview 3 2");
+        } else if (isTriggered) {
+            if (averageTPS < 17.0) {
+                triggerActions("setview 4 2");
+            } else if (averageTPS < 18.0) {
+                triggerActions("setview 5 2");
+            } else if (averageTPS < 19.0) {
+                triggerActions("setview 6 2");
+            } else if (averageTPS < 19.5) {
+                triggerActions("setview 7 2", "chunky continue");
+            } else if (averageTPS > 19.5) {
+                resetActions();
+            }
+        }
+    }
+
+    private static void triggerActions(String... commands) {
+        isTriggered = true;
+        for (String command : commands) {
+            getServer().dispatchCommand(getServer().getConsoleSender(), command);
+        }
+        if (!isEndEnabled()) {
+            getServer().dispatchCommand(getServer().getConsoleSender(), "setview 2 2 world_the_end");
+        }
+        tpsCooldown.setCooldown(MAX_SIZE);
+    }
+
+    private static void resetActions() {
+        isTriggered = false;
+        int onlinePlayers = Bukkit.getOnlinePlayers().size();
+        if(onlinePlayers > 24){
+            triggerActions("setview 5 2", "chunky continue");
+        } else if (onlinePlayers > 19) {
+            triggerActions("setview 7 2", "chunky continue");
+        } else if (onlinePlayers > 14) {
+            triggerActions("setview 8 3", "chunky continue");
+        } else {
+            triggerActions("setview 10 6", "chunky continue");
         }
     }
 
