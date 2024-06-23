@@ -38,7 +38,7 @@ public class AntiEnd implements Listener {
         }
     }*/
 
-    public boolean isEndEnabled(){
+    public static boolean isEndEnabled(){
         return isWeekPassed(2, getWeeksPassed(SEASON_START_TIME, ZonedDateTime.now(ZoneId.of("America/New_York"))));
     }
 

@@ -127,13 +127,13 @@ public class EndFightRestrictions implements Listener {
         }
     }
 
-    @EventHandler
+    /*@EventHandler
     public void onPlayerMove(PlayerMoveEvent e) {
-        if (isEndFightEnabled && e.getTo().distance(endSpawn) > 110) {
+        if (isEndFightEnabled) {
             e.setCancelled(true);
             e.getPlayer().sendMessage(ChatColor.YELLOW + "You cannot go outside the border!");
         }
-    }
+    }*/
 
     @EventHandler
     public void onPlayerTeleport(PlayerTeleportEvent e) {

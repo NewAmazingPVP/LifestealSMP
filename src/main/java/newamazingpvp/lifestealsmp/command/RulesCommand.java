@@ -27,6 +27,7 @@ public class RulesCommand implements CommandExecutor {
             player.sendMessage(ChatColor.WHITE + "- No toxicity");
             //player.sendMessage(ChatColor.WHITE + "- Do not trick or manipulate new players to hit you for hearts");
             player.sendMessage(ChatColor.WHITE + "- Netherite armor is banned.");
+            player.sendMessage(ChatColor.WHITE + "- Mace is banned.");
             player.sendMessage(ChatColor.WHITE + "- Do not lava cast or grief in vicinity of spawn.");
             player.sendMessage(ChatColor.WHITE + "- Using newbie protection to grief bases is not allowed.");
             player.sendMessage(ChatColor.WHITE + "- No offensive/abusive behaviour/builds in game");
