@@ -6,6 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -52,7 +53,9 @@ public class CometTrident implements Listener {
                     spawnLoc.add(direction);
                 }
 
-                ArmorStand armorStand = world.spawn(spawnLoc, ArmorStand.class);
+                EntityType entityType = EntityType.ARMOR_STAND; 
+
+                world.spawnEntity(spawnLoc, entityType);
 
                 player.sendMessage("The player is looking up/down by " + pitch + " degrees.");
                 player.sendMessage("Direction player is looking is" + direction);
