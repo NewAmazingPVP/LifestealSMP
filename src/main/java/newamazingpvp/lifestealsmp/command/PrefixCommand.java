@@ -30,8 +30,7 @@ public class PrefixCommand implements CommandExecutor {
                     player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
                 }
                 originalMessage = replace(originalMessage);
-                originalMessage = originalMessage.replace("&", "§");
-                originalMessage = ChatColor.translateAlternateColorCodes('§', originalMessage);
+                originalMessage = originalMessage.replace("§", "&");
                 setPrefix(player, originalMessage);
                 player.sendMessage(ChatColor.GREEN + "You successfully updated your prefix \n" + ChatColor.RESET + getPrefix(player));
             }

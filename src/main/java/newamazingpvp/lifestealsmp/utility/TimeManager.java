@@ -1,16 +1,18 @@
 package newamazingpvp.lifestealsmp.utility;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
+import java.awt.*;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerCustomRecipes;
-import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordMessage;
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.*;
 import static org.bukkit.Bukkit.getServer;
 
 
@@ -20,6 +22,7 @@ public class TimeManager {
             2024, 6, 23, 12, 0, 0, 0, ZoneId.of("America/New_York")
     );
 
+    //TODO: FINISH AND CALL THIS TO INIT
     public static void doEvents() {
         ZonedDateTime currentTime = ZonedDateTime.now(ZoneId.of("America/New_York"));
 
@@ -51,13 +54,16 @@ public class TimeManager {
         }
     }
 
+    //TODO: CALL THIS IN SCHEDULER EVERY 10 TICKS OR SO ALSO ADD WARNINGS
     public static void timeBasedEvents(){
         ZonedDateTime currentTime = ZonedDateTime.now(ZoneId.of("America/New_York"));
         long weeksPassed = getWeeksPassed(SEASON_START_TIME, currentTime);
 
-        if (isWeekPassed(2, weeksPassed)) {
+        if (isWeekPassed(2, weeksPassed) && !isTimePassed(SEASON_START_TIME, currentTime, 14, 0, 0, 1)) {
+            Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "End has now opened!");
+            sendDiscordEmbedTitle("End has opened!", Color.GREEN, "1032411739351941120");
 
-            Bukkit.getServer().spigot().restart();
+            sendDiscordMessage("<@&1047168915500966048> The end has opened!", "1032411739351941120");
         }
     }
 
