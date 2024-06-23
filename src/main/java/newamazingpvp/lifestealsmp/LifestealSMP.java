@@ -30,6 +30,7 @@ import newamazingpvp.lifestealsmp.game.PlayerPing;
 import newamazingpvp.lifestealsmp.listener.*;
 import newamazingpvp.lifestealsmp.runes.ZombieRune;
 import newamazingpvp.lifestealsmp.runes.Rune;
+import newamazingpvp.lifestealsmp.utility.TimeManager;
 import newamazingpvp.lifestealsmp.utility.Utils;
 import newamazingpvp.lifestealsmp.visualeffects.DroppedItemParticles;
 import newamazingpvp.lifestealsmp.wip.PingWars;
@@ -55,6 +56,8 @@ import static newamazingpvp.lifestealsmp.game.CombatLog.removeEnemies;
 import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.isAutoUploadEnabled;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.startReleaseChecker;
+import static newamazingpvp.lifestealsmp.utility.TimeManager.doEvents;
+import static newamazingpvp.lifestealsmp.utility.TimeManager.timeBasedEvents;
 import static newamazingpvp.lifestealsmp.utility.Utils.startTPSTracking;
 
 public final class LifestealSMP extends JavaPlugin implements Listener, PluginMessageListener {
@@ -149,6 +152,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("trade").setExecutor(new Trade());
         getServer().getPluginManager().registerEvents(new TradeListener(), this);
         registerBasicRecipes();
+        doEvents();
+        Bukkit.getScheduler().runTaskTimer(this, TimeManager::timeBasedEvents, 20, 20);
         //TODO: Use this for beta things
         if (isAutoUploadEnabled()) {
             //getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());

@@ -54,10 +54,17 @@ public class TimeManager {
         }
     }
 
-    //TODO: CALL THIS IN SCHEDULER EVERY 10 TICKS OR SO ALSO ADD WARNINGS
     public static void timeBasedEvents(){
         ZonedDateTime currentTime = ZonedDateTime.now(ZoneId.of("America/New_York"));
         long weeksPassed = getWeeksPassed(SEASON_START_TIME, currentTime);
+
+        if(isTimePassed(SEASON_START_TIME, currentTime, 0, 0, 0, 1) &&
+        ! isTimePassed(SEASON_START_TIME, currentTime, 0, 0, 0, 2)){
+            getServer().dispatchCommand(getServer().getConsoleSender(), "whitelist off");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "gamerule playersSleepingPercentage 1");
+            sendDiscordEmbedTitle("New season has started!!", Color.GREEN, "1032411739351941120");
+            sendDiscordMessage("<@&1047168915500966048> New season has opened!", "1032411739351941120");
+        }
 
         if (isWeekPassed(2, weeksPassed) && !isTimePassed(SEASON_START_TIME, currentTime, 14, 0, 0, 1)) {
             Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "End has now opened!");
