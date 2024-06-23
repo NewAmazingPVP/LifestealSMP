@@ -30,7 +30,7 @@ public class CometTrident implements Listener {
         ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
         ItemMeta meta = itemInMainHand.getItemMeta();
         float pitch = player.getLocation().getPitch();
-        Location spawnLoc = null;
+        Location spawnLoc = player.getLocation();
         Vector direction = player.getEyeLocation().getDirection();
         double range = 0;
         World world = player.getWorld();
