@@ -3,6 +3,8 @@ package newamazingpvp.lifestealsmp.customitems.itemlisteners;
 import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -30,6 +32,8 @@ public class CometTrident implements Listener {
         float pitch = player.getLocation().getPitch();
         Location spawnLoc = null;
         Vector direction = player.getEyeLocation().getDirection();
+        double range = 0;
+        World world = player.getWorld();
 
         if ((e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) && e.hasItem() && e.hasItem() && e.getItem().getType() == Material.TRIDENT) {
             if (meta.getLore().toString().contains("Summons a comet that will fly into")){
@@ -38,17 +42,20 @@ public class CometTrident implements Listener {
                 e.setCancelled(true);
 
 
-                if(pitch < 0 ){
+                if(pitch < 0 ) {
                     pitch = Math.abs(pitch) + 90;
                 }
 
-                spawnLoc = player.getLocation();
-                spawnLoc.add(0, 10, 0);
+                range = pitch / 10;
 
+                for (double i = 0; i < range; i++) {
+                    spawnLoc.add(direction);
+                }
+
+                ArmorStand armorStand = world.spawn(spawnLoc, ArmorStand.class);
 
                 player.sendMessage("The player is looking up/down by " + pitch + " degrees.");
                 player.sendMessage("Direction player is looking is" + direction);
-
 
 
 
