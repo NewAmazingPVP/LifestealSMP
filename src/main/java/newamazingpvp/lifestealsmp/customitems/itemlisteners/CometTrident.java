@@ -8,6 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.HashMap;
@@ -22,11 +23,14 @@ public class CometTrident implements Listener {
     @EventHandler
     public void onPlayerRightClick(PlayerInteractEvent e) {
         Player player = e.getPlayer();
-        ItemMeta meta = (ItemMeta) e.getItem();
+        ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
+        ItemMeta meta = itemInMainHand.getItemMeta();
 
         if ((e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) && e.hasItem() && e.hasItem() && e.getItem().getType() == Material.TRIDENT) {
             if (meta.getLore().toString().contains("Summons a comet that will fly into")){
 
+
+                e.setCancelled(true);
 
                 float pitch = player.getLocation().getPitch();
                 player.sendMessage("The player is looking up/down by " + pitch + " degrees.");
