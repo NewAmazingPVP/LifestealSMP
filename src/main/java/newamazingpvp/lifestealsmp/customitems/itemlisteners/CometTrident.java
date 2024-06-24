@@ -48,7 +48,7 @@ public class CometTrident implements Listener {
                     pitch = Math.abs(pitch) + 90;
                 }
 
-                range = pitch / 10;
+                range = pitch -=100;
 
                 for (double i = 0; i < range; i++) {
                     spawnLoc.add(direction);
@@ -63,6 +63,7 @@ public class CometTrident implements Listener {
                 player.sendMessage("Direction player is looking is" + direction);
 
 
+                new ItemStack(Material.MACE);
 
 
             }
