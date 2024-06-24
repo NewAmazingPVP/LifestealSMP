@@ -1,6 +1,6 @@
-package newamazingpvp.lifestealsmp.custommobs;
+package newamazingpvp.lifestealsmp.EndBossFight.custommobs;
 
-import newamazingpvp.lifestealsmp.custommobs.mobs.Shadow.SpawningShadow.SpawnShadow;
+import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.Shadow.SpawningShadow.SpawnShadow;
 import org.bukkit.Location;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;

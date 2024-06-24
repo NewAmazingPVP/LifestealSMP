@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.custommobs;
+package newamazingpvp.lifestealsmp.EndBossFight.custommobs;
 
 import org.bukkit.Bukkit;
 import org.bukkit.profile.PlayerProfile;

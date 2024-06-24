@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.custommobs.mobs.deadminer;
+package newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.Shadow.SpawningShadow;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -16,52 +16,56 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
 import org.bukkit.profile.PlayerProfile;
 
-import static newamazingpvp.lifestealsmp.custommobs.PublicMobMethods.getProfile;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.EndBossFight.custommobs.PublicMobMethods.getProfile;
+import static newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.Shadow.SpawningShadow.ShadowMobEffects.spawnArmorStandAroundShadow;
 
-public class SpawnDeadMiner {
+public class SpawnShadow {
 
 
 
-    public SpawnDeadMiner(Location location){
+    public SpawnShadow(Location location){
 
         //Make zombie
-        Zombie DeadMiner = (Zombie) location.getWorld().spawnEntity(location, EntityType.ZOMBIE);
+        Zombie Shadow = (Zombie) location.getWorld().spawnEntity(location, EntityType.HUSK);
 
         //Set name
-        DeadMiner.setCustomName(ChatColor.RED + "" + ChatColor.BOLD + "Dead Miner");
-        DeadMiner.setCustomNameVisible(true);
+        Shadow.setCustomName(ChatColor.BLACK + "" + ChatColor.BOLD + "Shadow");
+        Shadow.setCustomNameVisible(true);
+        Shadow.setInvisible(true);
+        Shadow.setAdult();
+
+
 
         //What the mob has on / is holding
-        DeadMiner.getEquipment().setItemInMainHand(new ItemStack(Material.STONE_PICKAXE,1));
-        DeadMiner.getEquipment().setHelmet(deadMinerHelm());
-        DeadMiner.getEquipment().setChestplate(chest());
-        DeadMiner.getEquipment().setLeggings(leg());
-        DeadMiner.getEquipment().setBoots(boot());
+        Shadow.getEquipment().setHelmet(shadowMobHead());
+        //Shadow.getEquipment().setChestplate(chest());
+        //Shadow.getEquipment().setLeggings(leg());
+        //Shadow.getEquipment().setBoots(boot());
 
         //Attributes
-        Attributable DeadMinerAttributes = DeadMiner;
+        Attributable ShadowAttributes = Shadow;
 
-        AttributeInstance maxHealth = DeadMinerAttributes.getAttribute(Attribute.GENERIC_MAX_HEALTH);
-        maxHealth.setBaseValue(40);
-        DeadMiner.setHealth(40);
+        AttributeInstance maxHealth = ShadowAttributes.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        maxHealth.setBaseValue(600);
+        Shadow.setHealth(600);
 
-        //AttributeInstance speed = DeadMinerAttributes.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED);
-        //speed.setBaseValue(10);
 
         // Add custom tag
-        String customTag = "dead_miner";
+        String customTag = "shadow";
         MetadataValue customTagValue = new FixedMetadataValue(lifestealSmp, customTag);
-        DeadMiner.setMetadata(customTag, customTagValue);
+        Shadow.setMetadata(customTag, customTagValue);
+
+        spawnArmorStandAroundShadow(Shadow, location);
 
     }
 
+    //Itemstacks
 
-    //Item stacks for the mob
 
-    private static ItemStack deadMinerHelm() {
+    private static ItemStack shadowMobHead() {
 
-        PlayerProfile profile = getProfile("https://textures.minecraft.net/texture/5f36e53f395593eddc81e511878456d7724e53337a3f5b1d324ffb9e160f64c");
+        PlayerProfile profile = getProfile("https://textures.minecraft.net/texture/f779cf97ec56f8204073955886b03af2c56d999b100557edb5a0bdb1b47dbe24");
         ItemStack montuHelm = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) montuHelm.getItemMeta();
         meta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "If you have this, Message Comet99 on Discord!");
@@ -75,7 +79,7 @@ public class SpawnDeadMiner {
         ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
         LeatherArmorMeta meta = (LeatherArmorMeta) chestplate.getItemMeta();
         meta.setUnbreakable(true);
-        meta.setColor(Color.BLUE);
+        meta.setColor(Color.BLACK);
         chestplate.setItemMeta(meta);
         return chestplate;
     }
@@ -84,7 +88,7 @@ public class SpawnDeadMiner {
         ItemStack chestplate = new ItemStack(Material.LEATHER_LEGGINGS);
         LeatherArmorMeta meta = (LeatherArmorMeta) chestplate.getItemMeta();
         meta.setUnbreakable(true);
-        meta.setColor(Color.BLUE);
+        meta.setColor(Color.BLACK);
         chestplate.setItemMeta(meta);
         return chestplate;
     }
@@ -93,10 +97,9 @@ public class SpawnDeadMiner {
         ItemStack chestplate = new ItemStack(Material.LEATHER_BOOTS);
         LeatherArmorMeta meta = (LeatherArmorMeta) chestplate.getItemMeta();
         meta.setUnbreakable(true);
-        meta.setColor(Color.BLUE);
+        meta.setColor(Color.BLACK);
         chestplate.setItemMeta(meta);
         return chestplate;
     }
-
 
 }

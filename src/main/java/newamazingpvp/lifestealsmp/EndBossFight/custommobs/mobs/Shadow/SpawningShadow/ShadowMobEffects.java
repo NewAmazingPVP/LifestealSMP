@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.custommobs.mobs.Shadow.SpawningShadow;
+package newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.Shadow.SpawningShadow;
 
 import org.bukkit.*;
 import org.bukkit.entity.ArmorStand;
@@ -12,8 +12,7 @@ import org.bukkit.metadata.MetadataValue;
 import org.bukkit.profile.PlayerProfile;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.custommobs.PublicMobMethods.getProfile;
-import static org.bukkit.Bukkit.getServer;
+import static newamazingpvp.lifestealsmp.EndBossFight.custommobs.PublicMobMethods.getProfile;
 
 public class ShadowMobEffects {
 
