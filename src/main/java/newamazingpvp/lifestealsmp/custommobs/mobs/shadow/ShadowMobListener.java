@@ -26,7 +26,7 @@ public class ShadowMobListener implements Listener {
             if (attacker.hasMetadata("shadow")) {
 
 
-                damagedEntity.addPotionEffect(new PotionEffect(PotionEffectType.DARKNESS, 40, 2));
+                /*damagedEntity.addPotionEffect(new PotionEffect(PotionEffectType.DARKNESS, 40, 2));
                 damagedEntity.addPotionEffect(new PotionEffect(PotionEffectType.MINING_FATIGUE, 200, 5));
 
 
@@ -34,7 +34,7 @@ public class ShadowMobListener implements Listener {
                 for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
                     onlinePlayer.playSound(loc, Sound.ENTITY_ENDERMAN_TELEPORT, 1.0f, 0.0f);
 
-                }
+                }*/
             }
         }
     }

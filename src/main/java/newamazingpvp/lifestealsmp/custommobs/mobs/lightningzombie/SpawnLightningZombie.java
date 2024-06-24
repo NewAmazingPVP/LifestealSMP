@@ -75,7 +75,7 @@ public class SpawnLightningZombie {
         PlayerProfile profile = getProfile("https://textures.minecraft.net/texture/9ac52419b99025828c89fa825945e6948e45bb5a22e4425a59e9096e4c1ac38");
         ItemStack montuHelm = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) montuHelm.getItemMeta();
-        meta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "If you have this, Message Comet99 on Discord!");
+        meta.setDisplayName(ChatColor.YELLOW + "" + ChatColor.BOLD + "Lightning");
         meta.setOwnerProfile(profile);
         montuHelm.setItemMeta(meta);
 

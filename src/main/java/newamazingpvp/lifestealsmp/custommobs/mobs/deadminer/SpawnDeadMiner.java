@@ -46,8 +46,8 @@ public class SpawnDeadMiner {
         maxHealth.setBaseValue(40);
         DeadMiner.setHealth(40);
 
-        AttributeInstance speed = DeadMinerAttributes.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED);
-        speed.setBaseValue(10);
+        //AttributeInstance speed = DeadMinerAttributes.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED);
+        //speed.setBaseValue(10);
 
         // Add custom tag
         String customTag = "dead_miner";

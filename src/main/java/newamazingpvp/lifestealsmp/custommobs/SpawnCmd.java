@@ -23,8 +23,8 @@ public class SpawnCmd implements CommandExecutor {
             location = blockCommandSender.getBlock().getLocation();
         }
 
-        new SpawnLightningZombie(location);
-        new SpawnDeadMiner(location);
+        //new SpawnLightningZombie(location);
+        //new SpawnDeadMiner(location);
         new SpawnShadow(location);
 
         return true;
