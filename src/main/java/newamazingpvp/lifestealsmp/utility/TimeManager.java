@@ -37,6 +37,7 @@ public class TimeManager {
                 ! isTimePassed(SEASON_START_TIME, currentTime, 6, 16, 0, 0)) {
             registerCustomRecipes();
             getServer().dispatchCommand(getServer().getConsoleSender(), "worldborder set 25000");
+            //TODO: manually do bukkit.getworld set border instead
             sendDiscordMessage("Custom items have now been enabled! Map size expanded to 25k by 25k", "1032411739351941120");
         }
 
