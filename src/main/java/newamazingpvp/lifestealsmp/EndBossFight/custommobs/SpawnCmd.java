@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.EndBossFight.custommobs;
 
+import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.MiniShadow.SpawnMiniShadow.SpawnMiniShadow;
 import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.Shadow.SpawningShadow.SpawnShadow;
 import org.bukkit.Location;
 import org.bukkit.command.*;
@@ -23,7 +24,8 @@ public class SpawnCmd implements CommandExecutor {
 
         //new SpawnLightningZombie(location);
         //new SpawnDeadMiner(location);
-        new SpawnShadow(location);
+        //new SpawnShadow(location);
+        new SpawnMiniShadow(location);
 
         return true;
 
