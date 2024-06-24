@@ -18,44 +18,39 @@ import static newamazingpvp.lifestealsmp.custommobs.PublicMobMethods.getProfile;
 public class ShadowMobEffects {
 
 
-
+    private static final HashMap<Entity, ArmorStand> armorStands = new HashMap<>();
 
     public static void spawnArmorStandAroundShadow(Entity entity, Location location) {
         for (int i = 0; i < 4; i++) {
+            World world = Bukkit.getWorlds().get(0); // Get the first loaded world
             ArmorStand armorStand = (ArmorStand) entity.getWorld().spawnEntity(location, EntityType.ARMOR_STAND);
             armorStand.setVisible(false);
             armorStand.setSmall(false);
             armorStand.getEquipment().setHelmet(shadowOuterHead());
 
-
-            Location playerLoc = entity.getLocation();
-            World world = armorStand.getWorld();
-
+            //armorStands.put(entity, armorStand);
 
 
             int finalI = i;
-
+            Bukkit.getScheduler().runTaskTimer(lifestealSmp, () -> {
                 if (finalI == 0) {
 
-                    Bukkit.getScheduler().runTaskTimer(lifestealSmp, () -> {
-                        Location armorStandLoc = playerLoc.clone().add(1, 0, 1);
-                        armorStandLoc.setY(playerLoc.getY());
-                        armorStand.teleport(armorStandLoc);
-                        world.spawnParticle(Particle.DUST, location, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
-                    }, 20L, 5L);
+
+                    Location playerLoc = entity.getLocation();
+                    Location armorStandLoc = playerLoc.clone().add(1, 0, 1); // Adjust the distance as needed
+                    armorStandLoc.setY(playerLoc.getY()); // Keep the ArmorStand at the same height as the player
+                    armorStand.teleport(armorStandLoc);
+
 
                 }
 
                 if (finalI == 1) {
 
 
-
-                    Bukkit.getScheduler().runTaskTimer(lifestealSmp, () -> {
-                        Location armorStandLoc = playerLoc.clone().add(-1, 0, -1);
-                        armorStandLoc.setY(playerLoc.getY());
-                        armorStand.teleport(armorStandLoc);
-                        world.spawnParticle(Particle.DUST, location, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
-                    }, 20L, 5L);
+                    Location playerLoc = entity.getLocation();
+                    Location armorStandLoc = playerLoc.clone().add(-1, 0, -1); // Adjust the distance as needed
+                    armorStandLoc.setY(playerLoc.getY()); // Keep the ArmorStand at the same height as the player
+                    armorStand.teleport(armorStandLoc);
 
 
                 }
@@ -63,25 +58,20 @@ public class ShadowMobEffects {
                 if (finalI == 2) {
 
 
-                    Bukkit.getScheduler().runTaskTimer(lifestealSmp, () -> {
-                        Location armorStandLoc = playerLoc.clone().add(-1, 0, 1);
-                        armorStandLoc.setY(playerLoc.getY());
-                        armorStand.teleport(armorStandLoc);
-                        world.spawnParticle(Particle.DUST, location, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
-                    }, 20L, 5L);
+                    Location playerLoc = entity.getLocation();
+                    Location armorStandLoc = playerLoc.clone().add(-1, 0, 1); // Adjust the distance as needed
+                    armorStandLoc.setY(playerLoc.getY()); // Keep the ArmorStand at the same height as the player
+                    armorStand.teleport(armorStandLoc);
 
 
                 }
 
                 if (finalI == 3) {
 
-
-                    Bukkit.getScheduler().runTaskTimer(lifestealSmp, () -> {
-                        Location armorStandLoc = playerLoc.clone().add(1, 0, -1);
-                        armorStandLoc.setY(playerLoc.getY());
-                        armorStand.teleport(armorStandLoc);
-                        world.spawnParticle(Particle.DUST, location, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
-                    }, 20L, 5L);
+                    Location playerLoc = entity.getLocation();
+                    Location armorStandLoc = playerLoc.clone().add(1, 0, -1); // Adjust the distance as needed
+                    armorStandLoc.setY(playerLoc.getY()); // Keep the ArmorStand at the same height as the player
+                    armorStand.teleport(armorStandLoc);
 
                 }
 
@@ -90,7 +80,7 @@ public class ShadowMobEffects {
 
 
 
-
+            }, 20L, 5L); // Adjust the interval as needed
 
         }
 
