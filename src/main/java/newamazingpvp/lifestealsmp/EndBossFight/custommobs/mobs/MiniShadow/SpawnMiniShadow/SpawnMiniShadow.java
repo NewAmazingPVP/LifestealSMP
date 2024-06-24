@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.Shadow.SpawningShadow;
+package newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.MiniShadow.SpawnMiniShadow;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -16,43 +16,45 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
 import org.bukkit.profile.PlayerProfile;
 
-import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.EndBossFight.custommobs.PublicMobMethods.getProfile;
 import static newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.Shadow.SpawningShadow.ShadowMobEffects.spawnArmorStandAroundShadow;
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
-public class SpawnShadow {
+public class SpawnMiniShadow {
 
 
 
-    public SpawnShadow(Location location){
+    public SpawnMiniShadow(Location location){
 
         //Make zombie
         Zombie Shadow = (Zombie) location.getWorld().spawnEntity(location, EntityType.HUSK);
 
         //Set name
-        Shadow.setCustomName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Shadow");
+        Shadow.setCustomName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Mini Shadow");
         Shadow.setCustomNameVisible(true);
-        Shadow.setInvisible(true);
-        Shadow.setAdult();
+        Shadow.setBaby();
 
 
 
         //What the mob has on / is holding
         Shadow.getEquipment().setHelmet(shadowMobHead());
-        //Shadow.getEquipment().setChestplate(chest());
-        //Shadow.getEquipment().setLeggings(leg());
-        //Shadow.getEquipment().setBoots(boot());
+        Shadow.getEquipment().setChestplate(chest());
+        Shadow.getEquipment().setLeggings(leg());
+        Shadow.getEquipment().setBoots(boot());
 
         //Attributes
         Attributable ShadowAttributes = Shadow;
 
         AttributeInstance maxHealth = ShadowAttributes.getAttribute(Attribute.GENERIC_MAX_HEALTH);
-        maxHealth.setBaseValue(600);
-        Shadow.setHealth(600);
+        maxHealth.setBaseValue(30);
+        Shadow.setHealth(30);
+
+        AttributeInstance speed = ShadowAttributes.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED);
+        speed.setBaseValue(2);
 
 
         // Add custom tag
-        String customTag = "shadow";
+        String customTag = "mini_shadow";
         MetadataValue customTagValue = new FixedMetadataValue(lifestealSmp, customTag);
         Shadow.setMetadata(customTag, customTagValue);
 
@@ -65,7 +67,7 @@ public class SpawnShadow {
 
     private static ItemStack shadowMobHead() {
 
-        PlayerProfile profile = getProfile("https://textures.minecraft.net/texture/f779cf97ec56f8204073955886b03af2c56d999b100557edb5a0bdb1b47dbe24");
+        PlayerProfile profile = getProfile("https://textures.minecraft.net/texture/f8e53e9a34fd1eba83b4342e45745beea1673755f5ad4135d2eae97a4afe2b2d");
         ItemStack montuHelm = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) montuHelm.getItemMeta();
         meta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "If you have this, Message Comet99 on Discord!");

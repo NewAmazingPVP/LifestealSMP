@@ -2,6 +2,8 @@ package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
+import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.MiniShadow.MiniShadowListeners.MiniShadowAttackPlayer;
+import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.MiniShadow.MiniShadowListeners.MiniShadowAttackedByPlayer;
 import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.Shadow.ShadowListeners.ShadowAttackedByPlayer;
 import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.deadminer.DeadMinerListener;
 import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.lightningzombie.LightningZombieListener;
@@ -199,10 +201,14 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             //Mob test
             getCommand("spawncustommob").setExecutor(new SpawnCmd());
             getServer().getPluginManager().registerEvents(new LightningZombieListener(), this);
+
             getServer().getPluginManager().registerEvents(new DeadMinerListener(), this);
 
             getServer().getPluginManager().registerEvents(new ShadowAttackPlayer(), this);
             getServer().getPluginManager().registerEvents(new ShadowAttackedByPlayer(), this);
+
+            getServer().getPluginManager().registerEvents(new MiniShadowAttackPlayer(), this);
+            getServer().getPluginManager().registerEvents(new MiniShadowAttackedByPlayer(), this);
 
 
             registerCustomRecipesDev();
