@@ -1,17 +1,19 @@
 package newamazingpvp.lifestealsmp.custommobs.mobs.shadow;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.profile.PlayerProfile;
 
 import java.util.HashMap;
 import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.custommobs.PublicMobMethods.getProfile;
 
 public class ShadowMobEffects {
 
@@ -22,10 +24,11 @@ public class ShadowMobEffects {
         for (int i = 0; i < 4; i++) {
             World world = Bukkit.getWorlds().get(0); // Get the first loaded world
             ArmorStand armorStand = (ArmorStand) entity.getWorld().spawnEntity(location, EntityType.ARMOR_STAND);
-            armorStand.setVisible(true);
+            armorStand.setVisible(false);
             armorStand.setSmall(false);
+            armorStand.getEquipment().setHelmet(shadowOuterHead());
 
-            armorStands.put(entity, armorStand);
+            //armorStands.put(entity, armorStand);
 
 
 
@@ -82,29 +85,18 @@ public class ShadowMobEffects {
 
     }
 
+    //Item Stacks
 
+    private static ItemStack shadowOuterHead() {
 
+        PlayerProfile profile = getProfile("https://textures.minecraft.net/texture/f8e53e9a34fd1eba83b4342e45745beea1673755f5ad4135d2eae97a4afe2b2d");
+        ItemStack montuHelm = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta meta = (SkullMeta) montuHelm.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "If you have this, Message Comet99 on Discord!");
+        meta.setOwnerProfile(profile);
+        montuHelm.setItemMeta(meta);
 
-
-
-
-
-    /*private void spawnAndAttachArmorStand(Entity entity, World world, Location spawnLoc) {
-        // Create and spawn the ArmorStand
-        ArmorStand armorStand = (ArmorStand) entity.getWorld().spawnEntity(spawnLoc, EntityType.ARMOR_STAND);
-        armorStand.setVisible(true); // Make the ArmorStand visible
-        armorStand.setSmall(true); // Optional: Makes the ArmorStand smaller
-
-        // Attach the ArmorStand to the player
-        armorStand.setPassenger(entity);
-
-        // Schedule the ArmorStand to spin around the player
-        Bukkit.getScheduler().runTaskTimer((Plugin) this, () -> {
-            double radius = 1; // Distance from the player
-            Location playerLoc = entity.getLocation();
-            Location armorStandLoc = playerLoc.clone().add(radius, 0, radius);
-            armorStand.setRotation(armorStandLoc.getYaw(), armorStandLoc.getPitch());
-        }, 20L, 1L); // Adjust the interval as needed
-    }*/
+        return montuHelm;
+    }
 
 }
