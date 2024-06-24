@@ -18,7 +18,7 @@ import static newamazingpvp.lifestealsmp.custommobs.PublicMobMethods.getProfile;
 public class ShadowMobEffects {
 
 
-    private static final HashMap<Entity, ArmorStand> armorStands = new HashMap<>();
+
 
     public static void spawnArmorStandAroundShadow(Entity entity, Location location) {
         for (int i = 0; i < 4; i++) {
@@ -28,58 +28,60 @@ public class ShadowMobEffects {
             armorStand.setSmall(false);
             armorStand.getEquipment().setHelmet(shadowOuterHead());
 
-            //armorStands.put(entity, armorStand);
+
+            Location playerLoc = entity.getLocation();
 
 
 
-            if(i==0) {
-                Bukkit.getScheduler().runTaskTimer(lifestealSmp, () -> {
-                    Entity centerEntity = entity;
+            int finalI = i;
+            Bukkit.getScheduler().runTaskTimer(lifestealSmp, () -> {
+                if (finalI == 0) {
 
-                    Location playerLoc = entity.getLocation();
+
                     Location armorStandLoc = playerLoc.clone().add(1, 0, 1); // Adjust the distance as needed
                     armorStandLoc.setY(playerLoc.getY()); // Keep the ArmorStand at the same height as the player
                     armorStand.teleport(armorStandLoc);
 
-                }, 20L, 5L); // Adjust the interval as needed
-            }
 
-            if(i==1) {
-                Bukkit.getScheduler().runTaskTimer(lifestealSmp, () -> {
-                    Entity centerEntity = entity;
+                }
 
-                    Location playerLoc = entity.getLocation();
+                if (finalI == 1) {
+
+
+
                     Location armorStandLoc = playerLoc.clone().add(-1, 0, -1); // Adjust the distance as needed
                     armorStandLoc.setY(playerLoc.getY()); // Keep the ArmorStand at the same height as the player
                     armorStand.teleport(armorStandLoc);
 
-                }, 20L, 5L); // Adjust the interval as needed
-            }
 
-            if(i==2) {
-                Bukkit.getScheduler().runTaskTimer(lifestealSmp, () -> {
-                    Entity centerEntity = entity;
+                }
 
-                    Location playerLoc = entity.getLocation();
+                if (finalI == 2) {
+
+
+
                     Location armorStandLoc = playerLoc.clone().add(-1, 0, 1); // Adjust the distance as needed
                     armorStandLoc.setY(playerLoc.getY()); // Keep the ArmorStand at the same height as the player
                     armorStand.teleport(armorStandLoc);
 
-                }, 20L, 5L); // Adjust the interval as needed
-            }
 
-            if(i==3) {
-                Bukkit.getScheduler().runTaskTimer(lifestealSmp, () -> {
-                    Entity centerEntity = entity;
+                }
 
-                    Location playerLoc = entity.getLocation();
+                if (finalI == 3) {
+
+
                     Location armorStandLoc = playerLoc.clone().add(1, 0, -1); // Adjust the distance as needed
                     armorStandLoc.setY(playerLoc.getY()); // Keep the ArmorStand at the same height as the player
                     armorStand.teleport(armorStandLoc);
 
-                }, 20L, 5L); // Adjust the interval as needed
-            }
+                }
 
+
+
+
+
+
+            }, 20L, 5L); // Adjust the interval as needed
 
         }
 
