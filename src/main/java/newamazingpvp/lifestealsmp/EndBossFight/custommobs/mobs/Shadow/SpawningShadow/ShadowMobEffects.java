@@ -48,7 +48,6 @@ public class ShadowMobEffects {
                     Location armorStandLoc = playerLoc.clone().add(1, 0, 1);
                     armorStandLoc.setY(playerLoc.getY()+0.2);
                     armorStand.teleport(armorStandLoc);
-                    armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
 
                     playerLoc.getWorld().spawnParticle(Particle.CLOUD, playerLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
 
@@ -56,6 +55,8 @@ public class ShadowMobEffects {
 
                     if(((LivingEntity) entity).getHealth()<=1){
                         armorStand.remove();
+                    }else{
+                        armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
                     }
 
                 }
@@ -69,10 +70,11 @@ public class ShadowMobEffects {
                     Location armorStandLoc = playerLoc.clone().add(-1, 0, -1);
                     armorStandLoc.setY(playerLoc.getY()+0.2);
                     armorStand.teleport(armorStandLoc);
-                    armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
 
                     if(((LivingEntity) entity).getHealth()<=1){
                         armorStand.remove();
+                    }else{
+                        armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
                     }
 
                 }
@@ -84,10 +86,11 @@ public class ShadowMobEffects {
                     Location armorStandLoc = playerLoc.clone().add(-1, 0, 1);
                     armorStandLoc.setY(playerLoc.getY()+0.2);
                     armorStand.teleport(armorStandLoc);
-                    armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
 
                     if(((LivingEntity) entity).getHealth()<=1){
                         armorStand.remove();
+                    }else{
+                        armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
                     }
 
                 }
@@ -98,10 +101,12 @@ public class ShadowMobEffects {
                     Location armorStandLoc = playerLoc.clone().add(1, 0, -1);
                     armorStandLoc.setY(playerLoc.getY()+0.2);
                     armorStand.teleport(armorStandLoc);
-                    armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
+
 
                     if(((LivingEntity) entity).getHealth()<=1){
                         armorStand.remove();
+                    }else{
+                        armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
                     }
 
                 }
