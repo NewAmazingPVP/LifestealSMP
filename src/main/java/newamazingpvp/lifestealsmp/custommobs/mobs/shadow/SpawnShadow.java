@@ -35,6 +35,9 @@ public class SpawnShadow {
         //Set name
         Shadow.setCustomName(ChatColor.BLACK + "" + ChatColor.BOLD + "Shadow");
         Shadow.setCustomNameVisible(true);
+        Shadow.setInvisible(true);
+        Shadow.setAdult();
+
 
 
         //What the mob has on / is holding
