@@ -8,6 +8,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.profile.PlayerProfile;
 
@@ -28,10 +29,13 @@ public class ShadowMobEffects {
             ArmorStand armorStand = (ArmorStand) entity.getWorld().spawnEntity(location, EntityType.ARMOR_STAND);
             armorStand.setVisible(false);
             armorStand.setSmall(true);
+            armorStand.setInvulnerable(true);
+            armorStand.setGravity(false);
             armorStand.getEquipment().setHelmet(shadowOuterHead());
             String customTag = "shadowOuterHead";
             MetadataValue customTagValue = new FixedMetadataValue(lifestealSmp, customTag);
             armorStand.setMetadata(customTag, customTagValue);
+
 
 
 
@@ -43,9 +47,15 @@ public class ShadowMobEffects {
 
                     Location playerLoc = entity.getLocation();
                     Location armorStandLoc = playerLoc.clone().add(1, 0, 1);
-                    armorStandLoc.setY(playerLoc.getY());
+                    armorStandLoc.setY(playerLoc.getY()+0.2);
                     armorStand.teleport(armorStandLoc);
                     armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
+
+                    playerLoc.getWorld().spawnParticle(Particle.CLOUD, playerLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
+
+                    if(entity.isDead()) {
+                        armorStand.remove();
+                    }
 
 
                 }
@@ -55,10 +65,13 @@ public class ShadowMobEffects {
 
                     Location playerLoc = entity.getLocation();
                     Location armorStandLoc = playerLoc.clone().add(-1, 0, -1);
-                    armorStandLoc.setY(playerLoc.getY());
+                    armorStandLoc.setY(playerLoc.getY()+0.2);
                     armorStand.teleport(armorStandLoc);
                     armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
 
+                    if(entity.isDead()) {
+                        armorStand.remove();
+                    }
 
                 }
 
@@ -67,10 +80,13 @@ public class ShadowMobEffects {
 
                     Location playerLoc = entity.getLocation();
                     Location armorStandLoc = playerLoc.clone().add(-1, 0, 1);
-                    armorStandLoc.setY(playerLoc.getY());
+                    armorStandLoc.setY(playerLoc.getY()+0.2);
                     armorStand.teleport(armorStandLoc);
                     armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
 
+                    if(entity.isDead()) {
+                        armorStand.remove();
+                    }
 
                 }
 
@@ -78,13 +94,22 @@ public class ShadowMobEffects {
 
                     Location playerLoc = entity.getLocation();
                     Location armorStandLoc = playerLoc.clone().add(1, 0, -1);
-                    armorStandLoc.setY(playerLoc.getY());
+                    armorStandLoc.setY(playerLoc.getY()+0.2);
                     armorStand.teleport(armorStandLoc);
                     armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
 
+                    if(entity.isDead()) {
+                        armorStand.remove();
+                    }
+
                 }
 
-                
+
+
+
+
+
+
 
 
 
