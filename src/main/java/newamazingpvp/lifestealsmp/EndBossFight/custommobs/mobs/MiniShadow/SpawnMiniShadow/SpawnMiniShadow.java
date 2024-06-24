@@ -50,7 +50,7 @@ public class SpawnMiniShadow {
         Shadow.setHealth(30);
 
         AttributeInstance speed = ShadowAttributes.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED);
-        speed.setBaseValue(2);
+        speed.setBaseValue(1);
 
 
         // Add custom tag
@@ -58,7 +58,6 @@ public class SpawnMiniShadow {
         MetadataValue customTagValue = new FixedMetadataValue(lifestealSmp, customTag);
         Shadow.setMetadata(customTag, customTagValue);
 
-        spawnArmorStandAroundShadow(Shadow, location);
 
     }
 
