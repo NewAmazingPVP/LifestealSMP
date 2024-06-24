@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.custommobs.mobs.Shadow.ShadowListeners;
+package newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.Shadow.ShadowListeners;
 
 import org.bukkit.event.Listener;
 

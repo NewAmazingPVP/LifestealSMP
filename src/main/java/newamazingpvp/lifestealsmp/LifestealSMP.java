@@ -2,13 +2,13 @@ package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
-import newamazingpvp.lifestealsmp.custommobs.mobs.Shadow.ShadowListeners.ShadowAttackedByPlayer;
-import newamazingpvp.lifestealsmp.custommobs.mobs.deadminer.DeadMinerListener;
-import newamazingpvp.lifestealsmp.custommobs.mobs.lightningzombie.LightningZombieListener;
+import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.Shadow.ShadowListeners.ShadowAttackedByPlayer;
+import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.deadminer.DeadMinerListener;
+import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.lightningzombie.LightningZombieListener;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import newamazingpvp.lifestealsmp.custommobs.mobs.Shadow.ShadowListeners.ShadowAttackPlayer;
-import newamazingpvp.lifestealsmp.custommobs.SpawnCmd;
+import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.Shadow.ShadowListeners.ShadowAttackPlayer;
+import newamazingpvp.lifestealsmp.EndBossFight.custommobs.SpawnCmd;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
 import newamazingpvp.lifestealsmp.allyteams.TeamCommand;

@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.custommobs.mobs.lightningzombie;
+package newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.lightningzombie;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

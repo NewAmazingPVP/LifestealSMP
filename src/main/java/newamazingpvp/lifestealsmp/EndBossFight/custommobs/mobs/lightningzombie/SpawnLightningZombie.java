@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.custommobs.mobs.lightningzombie;
+package newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.lightningzombie;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -14,7 +14,7 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
 import org.bukkit.profile.PlayerProfile;
 
-import static newamazingpvp.lifestealsmp.custommobs.PublicMobMethods.getProfile;
+import static newamazingpvp.lifestealsmp.EndBossFight.custommobs.PublicMobMethods.getProfile;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class SpawnLightningZombie {
