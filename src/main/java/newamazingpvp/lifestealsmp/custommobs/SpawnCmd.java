@@ -1,8 +1,6 @@
 package newamazingpvp.lifestealsmp.custommobs;
 
-import newamazingpvp.lifestealsmp.custommobs.mobs.lightningzombie.SpawnLightningZombie;
-import newamazingpvp.lifestealsmp.custommobs.mobs.deadminer.SpawnDeadMiner;
-import newamazingpvp.lifestealsmp.custommobs.mobs.shadow.SpawnShadow;
+import newamazingpvp.lifestealsmp.custommobs.mobs.Shadow.SpawningShadow.SpawnShadow;
 import org.bukkit.Location;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;

@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.custommobs.mobs.shadow;
+package newamazingpvp.lifestealsmp.custommobs.mobs.Shadow.SpawningShadow;
 
 import org.bukkit.*;
 import org.bukkit.entity.ArmorStand;
@@ -8,12 +8,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
-import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.profile.PlayerProfile;
-
-import java.util.HashMap;
-import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.custommobs.PublicMobMethods.getProfile;

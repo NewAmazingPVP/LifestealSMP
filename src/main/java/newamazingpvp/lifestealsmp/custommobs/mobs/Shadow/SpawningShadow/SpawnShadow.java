@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.custommobs.mobs.shadow;
+package newamazingpvp.lifestealsmp.custommobs.mobs.Shadow.SpawningShadow;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -7,7 +7,6 @@ import org.bukkit.Material;
 import org.bukkit.attribute.Attributable;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Zombie;
 import org.bukkit.inventory.ItemStack;
@@ -17,11 +16,9 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
 import org.bukkit.profile.PlayerProfile;
 
-import java.util.UUID;
-
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.custommobs.PublicMobMethods.getProfile;
-import static newamazingpvp.lifestealsmp.custommobs.mobs.shadow.ShadowMobEffects.spawnArmorStandAroundShadow;
+import static newamazingpvp.lifestealsmp.custommobs.mobs.Shadow.SpawningShadow.ShadowMobEffects.spawnArmorStandAroundShadow;
 
 public class SpawnShadow {
 
