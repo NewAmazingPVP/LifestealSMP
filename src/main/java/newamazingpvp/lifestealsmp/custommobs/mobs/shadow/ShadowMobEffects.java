@@ -6,6 +6,8 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.metadata.MetadataValue;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.profile.PlayerProfile;
 
@@ -27,6 +29,9 @@ public class ShadowMobEffects {
             armorStand.setVisible(false);
             armorStand.setSmall(true);
             armorStand.getEquipment().setHelmet(shadowOuterHead());
+            String customTag = "shadowOuterHead";
+            MetadataValue customTagValue = new FixedMetadataValue(lifestealSmp, customTag);
+            armorStand.setMetadata(customTag, customTagValue);
 
 
 
@@ -38,9 +43,9 @@ public class ShadowMobEffects {
 
                     Location playerLoc = entity.getLocation();
                     Location armorStandLoc = playerLoc.clone().add(1, 0, 1);
-                    armorStandLoc.setY(playerLoc.getY()-0.7);
+                    armorStandLoc.setY(playerLoc.getY());
                     armorStand.teleport(armorStandLoc);
-                    armorStand.getWorld().spawnParticle(Particle.DUST, location, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
+                    armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
 
 
                 }
@@ -50,9 +55,9 @@ public class ShadowMobEffects {
 
                     Location playerLoc = entity.getLocation();
                     Location armorStandLoc = playerLoc.clone().add(-1, 0, -1);
-                    armorStandLoc.setY(playerLoc.getY()-0.7);
+                    armorStandLoc.setY(playerLoc.getY());
                     armorStand.teleport(armorStandLoc);
-                    armorStand.getWorld().spawnParticle(Particle.DUST, location, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
+                    armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
 
 
                 }
@@ -62,9 +67,9 @@ public class ShadowMobEffects {
 
                     Location playerLoc = entity.getLocation();
                     Location armorStandLoc = playerLoc.clone().add(-1, 0, 1);
-                    armorStandLoc.setY(playerLoc.getY()-0.7);
+                    armorStandLoc.setY(playerLoc.getY());
                     armorStand.teleport(armorStandLoc);
-                    armorStand.getWorld().spawnParticle(Particle.DUST, location, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
+                    armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
 
 
                 }
@@ -73,18 +78,24 @@ public class ShadowMobEffects {
 
                     Location playerLoc = entity.getLocation();
                     Location armorStandLoc = playerLoc.clone().add(1, 0, -1);
-                    armorStandLoc.setY(playerLoc.getY()-0.7);
+                    armorStandLoc.setY(playerLoc.getY());
                     armorStand.teleport(armorStandLoc);
-                    armorStand.getWorld().spawnParticle(Particle.DUST, location, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
+                    armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
 
                 }
 
-
+                
 
 
 
 
             }, 20L, 5L); // Adjust the interval as needed
+
+
+
+
+
+
 
         }
 

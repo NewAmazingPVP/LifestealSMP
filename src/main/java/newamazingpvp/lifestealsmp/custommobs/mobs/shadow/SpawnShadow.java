@@ -36,6 +36,7 @@ public class SpawnShadow {
         Shadow.setCustomName(ChatColor.BLACK + "" + ChatColor.BOLD + "Shadow");
         Shadow.setCustomNameVisible(true);
 
+
         //What the mob has on / is holding
         Shadow.getEquipment().setHelmet(shadowMobHead());
         //Shadow.getEquipment().setChestplate(chest());
