@@ -2,12 +2,12 @@ package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
-import newamazingpvp.lifestealsmp.CustomMobs.Mobs.DeadMiner.DeadMinerListener;
-import newamazingpvp.lifestealsmp.CustomMobs.Mobs.LightningZombie.LightningZombieListener;
+import newamazingpvp.lifestealsmp.custommobs.mobs.deadminer.DeadMinerListener;
+import newamazingpvp.lifestealsmp.custommobs.mobs.lightningzombie.LightningZombieListener;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import newamazingpvp.lifestealsmp.CustomMobs.Mobs.Shado.ShadowMobListener;
-import newamazingpvp.lifestealsmp.CustomMobs.SpawnCustomMobCommand;
+import newamazingpvp.lifestealsmp.custommobs.mobs.shadow.ShadowMobListener;
+import newamazingpvp.lifestealsmp.custommobs.SpawnCmd;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
 import newamazingpvp.lifestealsmp.allyteams.TeamCommand;
@@ -15,13 +15,12 @@ import newamazingpvp.lifestealsmp.allyteams.TeamListener;
 import newamazingpvp.lifestealsmp.blacklistener.*;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.command.unused.JailPlayer;
-import newamazingpvp.lifestealsmp.command.unused.TESTsomber;
-import newamazingpvp.lifestealsmp.customitems.MagicStaffs.MagicStaffUtils.MagicStaffGUIListeners;
-import newamazingpvp.lifestealsmp.customitems.MagicStaffs.MajicStaffAbilitys.MagicStaffDefault;
-import newamazingpvp.lifestealsmp.customitems.armorlisteners.QuarryArmor;
-import newamazingpvp.lifestealsmp.customitems.itemlisteners.*;
+import newamazingpvp.lifestealsmp.command.unused.Somber;
+import newamazingpvp.lifestealsmp.customitems.magicstaffs.utils.GUI;
+import newamazingpvp.lifestealsmp.customitems.magicstaffs.abilities.Default;
+import newamazingpvp.lifestealsmp.customitems.armor.QuarryArmor;
+import newamazingpvp.lifestealsmp.customitems.item.*;
 import newamazingpvp.lifestealsmp.customitems.utils.AntiAnvil;
-import newamazingpvp.lifestealsmp.customitems.utils.Drops;
 import newamazingpvp.lifestealsmp.discord.DiscordListener;
 import newamazingpvp.lifestealsmp.game.BroadcastMessage;
 import newamazingpvp.lifestealsmp.game.Compass;
@@ -47,7 +46,6 @@ import org.jetbrains.annotations.NotNull;
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlacklist;
 import static newamazingpvp.lifestealsmp.customitems.utils.DevRecipes.registerCustomRecipesDev;
 import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerBasicRecipes;
-import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.*;
 import static newamazingpvp.lifestealsmp.discord.LogAppender.consoleChannel;
 import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
@@ -57,7 +55,6 @@ import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.isAutoUploadEnabled;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.startReleaseChecker;
 import static newamazingpvp.lifestealsmp.utility.TimeManager.doEvents;
-import static newamazingpvp.lifestealsmp.utility.TimeManager.timeBasedEvents;
 import static newamazingpvp.lifestealsmp.utility.Utils.startTPSTracking;
 
 public final class LifestealSMP extends JavaPlugin implements Listener, PluginMessageListener {
@@ -185,9 +182,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             //getServer().getPluginManager().registerEvents(new MagicStaffAir(), this);
 
             //magic staffs
-            getServer().getPluginManager().registerEvents(new MagicStaffGUIListeners(), this);
-            getServer().getPluginManager().registerEvents(new MagicStaffDefault(), this);
-            getCommand("openmagicstaffmenu").setExecutor(new OpenMagicStaffMenuADMIN());
+            getServer().getPluginManager().registerEvents(new GUI(), this);
+            getServer().getPluginManager().registerEvents(new Default(), this);
+            getCommand("openmagicstaffmenu").setExecutor(new MagicStaffMenu());
 
 
             //Comet Trident
@@ -199,7 +196,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
 
             //Mob test
-            getCommand("spawncustommob").setExecutor(new SpawnCustomMobCommand());
+            getCommand("spawncustommob").setExecutor(new SpawnCmd());
             getServer().getPluginManager().registerEvents(new LightningZombieListener(), this);
             getServer().getPluginManager().registerEvents(new DeadMinerListener(), this);
             getServer().getPluginManager().registerEvents(new ShadowMobListener(), this);
@@ -207,7 +204,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
             registerCustomRecipesDev();
 
-            getCommand("sombercrystaltest").setExecutor(new TESTsomber());
+            getCommand("sombercrystaltest").setExecutor(new Somber());
 
             //getCommand("trade").setExecutor(new Trade());
             //getServer().getPluginManager().registerEvents(new TradeListener(), this);
