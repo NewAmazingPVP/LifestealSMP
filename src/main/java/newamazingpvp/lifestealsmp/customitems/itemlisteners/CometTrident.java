@@ -35,6 +35,7 @@ public class CometTrident implements Listener {
         Vector direction = player.getEyeLocation().getDirection();
         double range = 0;
         World world = player.getWorld();
+        Location areaAbovePlayer = player.getLocation().add(0,10,0);
 
         if ((e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) && e.hasItem() && e.hasItem() && e.getItem().getType() == Material.TRIDENT) {
             if (meta.getLore().toString().contains("Summons a comet that will fly into")){
@@ -53,8 +54,9 @@ public class CometTrident implements Listener {
                     spawnLoc.add(direction);
                 }
 
-                EntityType entityType = EntityType.ARMOR_STAND; 
+                spawnLoc.setY(player.getY()+10);
 
+                EntityType entityType = EntityType.ARMOR_STAND;
                 world.spawnEntity(spawnLoc, entityType);
 
                 player.sendMessage("The player is looking up/down by " + pitch + " degrees.");
