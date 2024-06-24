@@ -4,6 +4,7 @@ import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -15,6 +16,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,6 +24,7 @@ public class CometTrident implements Listener {
 
     private final Map<Player, Entity> linkPlayerWithComet = new HashMap<>();
     private final Map<Player, CooldownManager> wandCooldowns = new HashMap<>();
+
 
 
     @EventHandler
@@ -43,23 +46,20 @@ public class CometTrident implements Listener {
                 e.setCancelled(true);
 
 
-                if(pitch < 0 ) {
+                /*if(pitch < 0 ) {
                     pitch = Math.abs(pitch) + 90;
                 }
-
                 range = pitch -=100;
-
                 for (double i = 0; i < range; i++) {
                     spawnLoc.add(direction);
                 }
-
                 spawnLoc.setY(player.getY()+10);
-
                 EntityType entityType = EntityType.ARMOR_STAND;
                 world.spawnEntity(spawnLoc, entityType);
-
                 player.sendMessage("The player is looking up/down by " + pitch + " degrees.");
-                player.sendMessage("Direction player is looking is" + direction);
+                player.sendMessage("Direction player is looking is" + direction);*/
+
+
 
 
                 new ItemStack(Material.MACE);
