@@ -4,6 +4,7 @@ import org.bukkit.*;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -12,6 +13,7 @@ import org.bukkit.profile.PlayerProfile;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.custommobs.PublicMobMethods.getProfile;
+import static org.bukkit.Bukkit.getServer;
 
 public class ShadowMobEffects {
 
@@ -37,6 +39,9 @@ public class ShadowMobEffects {
 
             int finalI = i;
             Bukkit.getScheduler().runTaskTimer(lifestealSmp, () -> {
+
+
+
                 if (finalI == 0) {
 
 
@@ -48,12 +53,15 @@ public class ShadowMobEffects {
 
                     playerLoc.getWorld().spawnParticle(Particle.CLOUD, playerLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
 
-                    if(entity.isDead()) {
+
+
+                    if(((LivingEntity) entity).getHealth()<=1){
                         armorStand.remove();
                     }
 
-
                 }
+
+
 
                 if (finalI == 1) {
 
@@ -64,7 +72,7 @@ public class ShadowMobEffects {
                     armorStand.teleport(armorStandLoc);
                     armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
 
-                    if(entity.isDead()) {
+                    if(((LivingEntity) entity).getHealth()<=1){
                         armorStand.remove();
                     }
 
@@ -79,7 +87,7 @@ public class ShadowMobEffects {
                     armorStand.teleport(armorStandLoc);
                     armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
 
-                    if(entity.isDead()) {
+                    if(((LivingEntity) entity).getHealth()<=1){
                         armorStand.remove();
                     }
 
@@ -93,7 +101,7 @@ public class ShadowMobEffects {
                     armorStand.teleport(armorStandLoc);
                     armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
 
-                    if(entity.isDead()) {
+                    if(((LivingEntity) entity).getHealth()<=1){
                         armorStand.remove();
                     }
 
@@ -101,15 +109,8 @@ public class ShadowMobEffects {
 
 
 
-
-
-
-
-
-
-
-
             }, 20L, 5L); // Adjust the interval as needed
+
 
 
 
