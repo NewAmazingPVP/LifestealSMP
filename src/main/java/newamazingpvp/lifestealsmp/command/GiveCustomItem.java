@@ -11,7 +11,6 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-import static newamazingpvp.lifestealsmp.customitems.MagicStaffs.MagicStaffUtils.MagicStaffItemstacks.magicStaffDefault;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
 import static newamazingpvp.lifestealsmp.runes.RunesDrops.*;
 

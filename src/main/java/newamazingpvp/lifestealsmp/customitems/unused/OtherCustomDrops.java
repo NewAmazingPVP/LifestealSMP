@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 
-import static newamazingpvp.lifestealsmp.customitems.unused.UnusedItemstacks.antimatterVile;
+import static newamazingpvp.lifestealsmp.customitems.unused.Itemstacks.antimatterVile;
 
 public class OtherCustomDrops implements Listener {
 
