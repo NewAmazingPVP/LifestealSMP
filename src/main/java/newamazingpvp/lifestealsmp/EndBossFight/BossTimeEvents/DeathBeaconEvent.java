@@ -31,6 +31,7 @@ public class DeathBeaconEvent implements Listener {
                         Bukkit.broadcastMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "The death beacon has cracked (-1/2 your HP❤)");
                         cancelTimer();
                     } else {
+                        count -=1;
                         if(count <= 10){
                             Bukkit.broadcastMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD +  "The death beacon will crack in " + count +"sec!");
                         }else{
