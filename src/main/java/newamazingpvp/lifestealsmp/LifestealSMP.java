@@ -2,6 +2,8 @@ package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
+import newamazingpvp.lifestealsmp.EndBossFight.BossTimeEvents.BeaconTestCMD;
+import newamazingpvp.lifestealsmp.EndBossFight.BossTimeEvents.DeathBeaconEvent;
 import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.MiniShadow.MiniShadowListeners.MiniShadowAttackPlayer;
 import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.MiniShadow.MiniShadowListeners.MiniShadowAttackedByPlayer;
 import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.Shadow.ShadowListeners.ShadowAttackedByPlayer;
@@ -209,11 +211,12 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
             getServer().getPluginManager().registerEvents(new MiniShadowAttackPlayer(), this);
             getServer().getPluginManager().registerEvents(new MiniShadowAttackedByPlayer(), this);
-
+            getServer().getPluginManager().registerEvents(new DeathBeaconEvent(), this);
+            getCommand("spawncustommob").setExecutor(new BeaconTestCMD());
 
             registerCustomRecipesDev();
 
-            getCommand("sombercrystaltest").setExecutor(new Somber());
+            getCommand("beathbeacontest").setExecutor(new Somber());
 
             //getCommand("trade").setExecutor(new Trade());
             //getServer().getPluginManager().registerEvents(new TradeListener(), this);

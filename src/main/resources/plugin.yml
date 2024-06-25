@@ -177,4 +177,9 @@ commands:
     usage: /unbanall
     permission: lifestealSMP.admin
     default: op
+  beathbeacontest:
+    description: Tests the death beacon
+    usage: /beathbeacontest
+    permission: lifestealSMP.admin
+    default: op
 
