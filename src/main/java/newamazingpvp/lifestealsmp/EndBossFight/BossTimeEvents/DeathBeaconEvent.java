@@ -4,50 +4,56 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.scheduler.BukkitRunnable;
 
-public class DeathBeaconEvent implements Listener{
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
-    static boolean isBeaconOut = false;
-    static int countdown = 999999;
-
-
+public class DeathBeaconEvent implements Listener {
 
 
+    private static BukkitRunnable timerRunnable;
+    private static boolean isRunning = false;
 
 
 
+    //TIMER CONTROLLER
+    public static void runDeathBeaconTimer(Player player) {
 
-    public static void triggerBeaconEvent(Player player) throws InterruptedException {
+        if (!isRunning) {
 
-        if(!isBeaconOut){
-            isBeaconOut=true;
+            isRunning = true;
+            timerRunnable = new BukkitRunnable() {
+                private int count = 30;
 
-            countdown=30;
+                @Override
+                public void run() {
+                    if (count <= 0) {
+                        Bukkit.broadcastMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "The death beacon has cracked (-1/2 your HP❤)");
+                        cancelTimer();
+                    } else {
+                        if(count <= 10){
+                            Bukkit.broadcastMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD +  "The death beacon will crack in " + count +"sec!");
+                        }else{
+                            Bukkit.broadcastMessage(String.valueOf(count));
+                        }
 
-            while(countdown > 0){
-
-                if(countdown<11){
-                    Bukkit.broadcastMessage(ChatColor.DARK_RED + "The death beacon will crack in" + countdown + "sec");
-                }else{
-                    Bukkit.broadcastMessage(ChatColor.DARK_GREEN + "The death beacon will crack in" + countdown + "sec");
+                    }
                 }
-
-
-
-                countdown-=1;
-
-
-                if(countdown==0) {
-                    isBeaconOut = false;
-                }
-
-
-                Thread.sleep(1000);
-
-
-            }
+            };
+            timerRunnable.runTaskTimer(lifestealSmp, 0L, 20L); // Start immediately and repeat every second
         }else{
-            player.sendMessage(ChatColor.RED + "Can't use when there is already a beacon");
+            player.sendMessage(ChatColor.RED + "There is already a death beacon out (only one at a time can be out)!");
+        }
+    }
+
+
+    private static void cancelTimer() {
+
+        if (timerRunnable != null && !timerRunnable.isCancelled()) {
+            timerRunnable.cancel();
+            timerRunnable = null;
+            isRunning = false;
+
         }
     }
 
