@@ -216,7 +216,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
             registerCustomRecipesDev();
 
-            getCommand("beathbeacontest").setExecutor(new Somber());
+            getCommand("deathbeacontest").setExecutor(new Somber());
 
             //getCommand("trade").setExecutor(new Trade());
             //getServer().getPluginManager().registerEvents(new TradeListener(), this);
