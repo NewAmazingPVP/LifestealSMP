@@ -2,6 +2,7 @@ package newamazingpvp.lifestealsmp.EndBossFight.BossTimeEvents;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -59,6 +60,13 @@ public class DeathBeaconEvent implements Listener {
     }
 
 
-
+    public static void deathBeaconWarnTitle(){
+        Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(ChatColor.DARK_PURPLE + "Death Beacon!", ChatColor.RED + "> 30sec To Break <", 10, 40, 10));
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Death Beacon!]", ChatColor.RED + "" + ChatColor.BOLD + ">> 30sec To Break <<", 10, 40, 10)), 15);
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Death Beacon!", ChatColor.RED + "" + ChatColor.BOLD + ">>> 30sec To Break <<<", 10, 40, 10)), 30);
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Death Beacon!]", ChatColor.RED + "" + ChatColor.BOLD + "> 30sec To Break <", 10, 40, 10)), 45);
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Death Beacon!", ChatColor.RED + "" + ChatColor.BOLD + ">> 30sec To Break <<", 10, 40, 10)), 60);
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Death Beacon!]", ChatColor.RED + "" + ChatColor.BOLD + ">>> 30sec To Break <<<", 10, 40, 10)), 75);
+    }
 
 }
