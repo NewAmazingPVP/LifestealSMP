@@ -100,7 +100,7 @@ public class TimeManager {
         return weeksPassed >= weekNum;
     }
 
-    private static boolean isTimePassed(ZonedDateTime startTime, ZonedDateTime currentTime, int days, int hours, int minutes, int seconds) {
+    public static boolean isTimePassed(ZonedDateTime startTime, ZonedDateTime currentTime, int days, int hours, int minutes, int seconds) {
         Duration duration = Duration.between(startTime, currentTime);
         Duration targetDuration = Duration.ofDays(days).plusHours(hours).plusMinutes(minutes).plusSeconds(seconds);
         return duration.compareTo(targetDuration) >= 0;
