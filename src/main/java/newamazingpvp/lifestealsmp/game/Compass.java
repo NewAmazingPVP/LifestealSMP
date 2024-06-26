@@ -147,7 +147,7 @@ public class Compass implements CommandExecutor, Listener {
             }*/
 
             trackingPlayers.put(player.getUniqueId(), target.getUniqueId());
-            //player.sendMessage(ChatColor.GREEN + "Tracking distance to " + target.getName() + " every 45 seconds");
+            player.sendMessage(ChatColor.GREEN + "Tracking vicinity to " + target.getName() + " every 45 seconds");
             //player.sendMessage(ChatColor.GREEN + "Tracking quadrant of " + target.getName() + " every 45 seconds");
             //player.sendMessage(ChatColor.GREEN + "Compass is now pointing towards " + target.getName());
             //target.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[WARNING] You are being tracked!");
@@ -265,7 +265,7 @@ public class Compass implements CommandExecutor, Listener {
                         //String dis = calculateDistanceCategory(distance);
                         if (distance != 0) {
                             //msg += ChatColor.BOLD + " " + distance + " blocks";
-                            msg += ChatColor.BOLD + " in vicinity of " + ((distance / 500)+1)*500 + " blocks";
+                            msg += ChatColor.BOLD + " in vicinity of " + ((distance / 250)+1)*250 + " blocks";
                         }
 
                         /*if (!msg.contains("Cannot")) {
