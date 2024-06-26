@@ -23,19 +23,11 @@ public class TeamListener implements Listener {
     public void teamChatEvent(AsyncPlayerChatEvent event) {
         Player p = event.getPlayer();
         if (isPlayerInTeamChat(p)) {
+            sendTeamMessage(p, event.getMessage());
             event.setCancelled(true);
-            /*if (!potentialSpam(p, event.getMessage())) {
-                sendTeamMessage(p, event.getMessage());
-                avoidSpamMessage.put(p, event.getMessage());
-                avoidSpamTimestamp.put(p, System.currentTimeMillis());
-            }*/
         } else if (isPlayerInAllyChat(p)) {
+            sendAllyMessage(p, event.getMessage());
             event.setCancelled(true);
-            /*if (!potentialSpam(p, event.getMessage())) {
-                sendAllyMessage(p, event.getMessage());
-                avoidSpamMessage.put(p, event.getMessage());
-                avoidSpamTimestamp.put(p, System.currentTimeMillis());
-             */
         } else {
             if (!potentialSpam(p, event.getMessage())) {
                 if (essentials.getUser(p.getUniqueId()).getNickname() != null) {

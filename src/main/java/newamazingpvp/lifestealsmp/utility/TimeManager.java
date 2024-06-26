@@ -2,6 +2,8 @@ package newamazingpvp.lifestealsmp.utility;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Difficulty;
+import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
@@ -17,9 +19,9 @@ import static org.bukkit.Bukkit.getServer;
 
 
 public class TimeManager {
-    //TODO: ALWAYS KEEP THIS A SATURDAY EVEN IF YOU STARTED ON SUNDAY
+    //TODO: ALWAYS KEEP THIS A SATURDAY IF POSSIBLE (START SEASONS ON SATURDAY)
     public static final ZonedDateTime SEASON_START_TIME = ZonedDateTime.of(
-            2024, 6, 23, 12, 0, 0, 0, ZoneId.of("America/New_York")
+            2024, 6, 22, 12, 0, 0, 0, ZoneId.of("America/New_York")
     );
 
     //TODO: FINISH AND CALL THIS TO INIT
@@ -36,11 +38,20 @@ public class TimeManager {
         if (isTimePassed(SEASON_START_TIME, currentTime, 6, 14, 0, 0) &&
                 ! isTimePassed(SEASON_START_TIME, currentTime, 6, 16, 0, 0)) {
             registerCustomRecipes();
-            getServer().dispatchCommand(getServer().getConsoleSender(), "worldborder set 25000");
-            //TODO: manually do bukkit.getworld set border instead
-            sendDiscordMessage("Custom items have now been enabled! Map size expanded to 25k by 25k", "1032411739351941120");
+            Bukkit.getWorld("world").getWorldBorder().setSize(25000);
+            for(World w : Bukkit.getWorlds()){
+                w.setDifficulty(Difficulty.HARD);
+            }
+            sendDiscordMessage("Custom items have now been enabled! Map size expanded to 25k by 25k and difficulty set to hard.", "1032411739351941120");
         }
 
+        if (isTimePassed(SEASON_START_TIME, currentTime, 3, 14, 0, 0) &&
+                ! isTimePassed(SEASON_START_TIME, currentTime, 3, 16, 0, 0)) {
+            for(World w : Bukkit.getWorlds()){
+                w.setDifficulty(Difficulty.NORMAL);
+            }
+            sendDiscordMessage("Difficulty on SMP now set to normal!", "1032411739351941120");
+        }
 
         if (isTimePassed(SEASON_START_TIME, currentTime, 10, 0, 0, 0)) {
 
@@ -78,6 +89,11 @@ public class TimeManager {
     public static long getWeeksPassed(ZonedDateTime startTime, ZonedDateTime currentTime) {
         Duration duration = Duration.between(startTime, currentTime);
         return duration.toDays() / 7;
+    }
+
+    public static long getDaysPassed(ZonedDateTime startTime, ZonedDateTime currentTime) {
+        Duration duration = Duration.between(startTime, currentTime);
+        return duration.toHours() / 24;
     }
 
     public static boolean isWeekPassed(int weekNum, long weeksPassed) {
