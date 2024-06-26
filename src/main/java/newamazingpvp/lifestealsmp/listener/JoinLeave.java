@@ -39,6 +39,8 @@ public class JoinLeave implements Listener {
         if ((player.getName().equals("NewAmazingPVP") || admins.contains(player.getName())) && silentMode) {
             event.setJoinMessage("");
             getServer().dispatchCommand(getServer().getConsoleSender(), "vanish " + player.getName());
+        } else {
+            event.setJoinMessage(essentials.getUser(event.getPlayer()).getNickname() + ChatColor.GOLD + " joined the game!");
         }
 
         BukkitRunnable prefix = new BukkitRunnable() {

@@ -15,7 +15,7 @@ import static newamazingpvp.lifestealsmp.blacklistener.AntiEnd.isEndEnabled;
 import static org.bukkit.Bukkit.getServer;
 
 public class Utils {
-    private static final int MAX_SIZE = 14;
+    private static final int MAX_SIZE = 30;
     private static final List<Double> tpsList = new ArrayList<>();
     private static boolean isTriggered = false;
     private static CooldownManager tpsCooldown = new CooldownManager();
