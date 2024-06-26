@@ -26,6 +26,7 @@ import newamazingpvp.lifestealsmp.customitems.magicstaffs.abilities.Default;
 import newamazingpvp.lifestealsmp.customitems.armor.QuarryArmor;
 import newamazingpvp.lifestealsmp.customitems.item.*;
 import newamazingpvp.lifestealsmp.customitems.utils.AntiAnvil;
+import newamazingpvp.lifestealsmp.customitems.utils.Drops;
 import newamazingpvp.lifestealsmp.discord.DiscordListener;
 import newamazingpvp.lifestealsmp.game.BroadcastMessage;
 import newamazingpvp.lifestealsmp.game.Compass;
@@ -48,6 +49,9 @@ import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
 
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlacklist;
 import static newamazingpvp.lifestealsmp.customitems.utils.DevRecipes.registerCustomRecipesDev;
 import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerBasicRecipes;
@@ -59,7 +63,7 @@ import static newamazingpvp.lifestealsmp.game.CombatLog.removeEnemies;
 import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.isAutoUploadEnabled;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.startReleaseChecker;
-import static newamazingpvp.lifestealsmp.utility.TimeManager.doEvents;
+import static newamazingpvp.lifestealsmp.utility.TimeManager.*;
 import static newamazingpvp.lifestealsmp.utility.Utils.startTPSTracking;
 
 public final class LifestealSMP extends JavaPlugin implements Listener, PluginMessageListener {
@@ -118,15 +122,10 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
         getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
-        //getServer().getPluginManager().registerEvents(new TeleportBow(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
         getServer().getPluginManager().registerEvents(new EndCrystalWarning(), this);
         getServer().getPluginManager().registerEvents(new DisableMace() , this);
         getServer().getPluginManager().registerEvents(new Compass(), this);
-        //getServer().getPluginManager().registerEvents(new TntBow(), this);
-        //getServer().getPluginManager().registerEvents(new FeatherSword(), this);
-        //getServer().getPluginManager().registerEvents(new OpPickaxe(), this);
-        //getServer().getPluginManager().registerEvents(new TreeChopAxe(), this);
         getServer().getPluginManager().registerEvents(new HeartItems(), this);
         getServer().getPluginManager().registerEvents(new AnvilMenuListener(), this);
         getServer().getPluginManager().registerEvents(new EndFightRestrictions(), this);
@@ -134,6 +133,18 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new JoinLeave(), this);
         getServer().getPluginManager().registerEvents(new ChatFilter(), this);
         //getServer().getPluginManager().registerEvents(new HomingBow(), this);
+        //getServer().getPluginManager().registerEvents(new TntBow(), this);
+        //getServer().getPluginManager().registerEvents(new FeatherSword(), this);
+        //getServer().getPluginManager().registerEvents(new OpPickaxe(), this);
+        //getServer().getPluginManager().registerEvents(new TreeChopAxe(), this);
+        //getServer().getPluginManager().registerEvents(new TeleportBow(), this);
+        //getServer().getPluginManager().registerEvents(new DragonEggPerk(), this);
+        //getServer().getPluginManager().registerEvents(new LightFeather(), this);
+        //getServer().getPluginManager().registerEvents(new InstaboomTNT(), this);
+        //getServer().getPluginManager().registerEvents(new Drops(), this);
+        //getServer().getPluginManager().registerEvents(new LifestealStick(), this);
+        //getServer().getPluginManager().registerEvents(new SomberCrystal(), this);
+        //getServer().getPluginManager().registerEvents(new MusicBox(), this);
         getServer().getPluginManager().registerEvents(new CombatProtectionHandler(), this);
         getServer().getPluginManager().registerEvents(new ReviveBeacon(), this);
         getServer().getPluginManager().registerEvents(new CombatLogListener(), this);
@@ -141,17 +152,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new DiscordListener(), this);
         getServer().getPluginManager().registerEvents(new DisableNetherite(), this);
         getServer().getPluginManager().registerEvents(new NewbieProgression(), this);
-        //getServer().getPluginManager().registerEvents(new DragonEggPerk(), this);
         getServer().getPluginManager().registerEvents(new AntiEnd(), this);
         startTPSTracking();
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
-        //Everything under here is part of new update 6/15/24
-        //getServer().getPluginManager().registerEvents(new LightFeather(), this);
-        //getServer().getPluginManager().registerEvents(new InstaboomTNT(), this);
-        //getServer().getPluginManager().registerEvents(new Drops(), this);
-        //getServer().getPluginManager().registerEvents(new LifestealStick(), this);
-        //getServer().getPluginManager().registerEvents(new SomberCrystal(), this);
-        //getServer().getPluginManager().registerEvents(new MusicBox(), this);
         getCommand("trade").setExecutor(new Trade());
         getServer().getPluginManager().registerEvents(new TradeListener(), this);
         registerBasicRecipes();
@@ -178,8 +181,21 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new BingoCardGUIListeners(), this);
 
             //New Custom Items
-
-
+            if(!isTimePassed(SEASON_START_TIME, ZonedDateTime.now(ZoneId.of("America/New_York")), 6, 14, 0, 0)) {
+                getServer().getPluginManager().registerEvents(new HomingBow(), this);
+                getServer().getPluginManager().registerEvents(new TntBow(), this);
+                getServer().getPluginManager().registerEvents(new FeatherSword(), this);
+                getServer().getPluginManager().registerEvents(new OpPickaxe(), this);
+                getServer().getPluginManager().registerEvents(new TreeChopAxe(), this);
+                getServer().getPluginManager().registerEvents(new TeleportBow(), this);
+                getServer().getPluginManager().registerEvents(new DragonEggPerk(), this);
+                getServer().getPluginManager().registerEvents(new LightFeather(), this);
+                getServer().getPluginManager().registerEvents(new InstaboomTnt(), this);
+                getServer().getPluginManager().registerEvents(new Drops(), this);
+                getServer().getPluginManager().registerEvents(new LifestealStick(), this);
+                getServer().getPluginManager().registerEvents(new SomberCrystal(), this);
+                getServer().getPluginManager().registerEvents(new MusicBox(), this);
+            }
 
             getServer().getPluginManager().registerEvents(new QuarryArmor(), this);
 
