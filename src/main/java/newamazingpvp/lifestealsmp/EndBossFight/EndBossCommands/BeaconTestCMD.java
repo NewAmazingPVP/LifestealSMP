@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.EndBossFight.BossTimeEvents;
+package newamazingpvp.lifestealsmp.EndBossFight.EndBossCommands;
 
 import org.bukkit.Location;
 import org.bukkit.command.Command;

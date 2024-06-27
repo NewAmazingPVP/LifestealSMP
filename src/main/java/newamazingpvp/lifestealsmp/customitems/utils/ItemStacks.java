@@ -19,7 +19,7 @@ public class ItemStacks {
         ItemMeta meta = reviveBeacon.getItemMeta();
         meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Revive Beacon");
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.DARK_PURPLE + "Use to revive eliminated players!"); 
+        lore.add(ChatColor.DARK_PURPLE + "Use to revive eliminated players!");
         meta.setLore(lore);
         reviveBeacon.setItemMeta(meta);
         return reviveBeacon;

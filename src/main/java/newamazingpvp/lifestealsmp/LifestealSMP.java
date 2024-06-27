@@ -2,7 +2,7 @@ package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
-import newamazingpvp.lifestealsmp.EndBossFight.BossTimeEvents.BeaconTestCMD;
+import newamazingpvp.lifestealsmp.EndBossFight.EndBossCommands.BeaconTestCMD;
 import newamazingpvp.lifestealsmp.EndBossFight.BossTimeEvents.DeathBeaconEvent;
 import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.MiniShadow.MiniShadowListeners.MiniShadowAttackPlayer;
 import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.MiniShadow.MiniShadowListeners.MiniShadowAttackedByPlayer;
@@ -33,14 +33,13 @@ import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
 import newamazingpvp.lifestealsmp.game.PlayerPing;
 import newamazingpvp.lifestealsmp.listener.*;
 import newamazingpvp.lifestealsmp.runes.RuneHandler;
-import newamazingpvp.lifestealsmp.runes.ZombieRune;
-import newamazingpvp.lifestealsmp.runes.RuneSample;
 import newamazingpvp.lifestealsmp.utility.TimeManager;
 import newamazingpvp.lifestealsmp.utility.Utils;
 import newamazingpvp.lifestealsmp.visualeffects.DroppedItemParticles;
 import newamazingpvp.lifestealsmp.wip.PingWars;
 import newamazingpvp.lifestealsmp.wip.mcbingo.gui.BingoCardGUIListeners;
 import org.bukkit.Bukkit;
+import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -72,6 +71,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
     public static boolean silentMode = true;
     private FileConfiguration config;
     public static Essentials essentials;
+
+    public static World SMPworld = Bukkit.getWorld("world");
 
 
     @Override
