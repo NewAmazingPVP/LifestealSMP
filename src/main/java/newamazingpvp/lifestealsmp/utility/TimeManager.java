@@ -27,7 +27,6 @@ public class TimeManager {
 
     private static CooldownManager cooldown = new CooldownManager();
 
-    //TODO: FINISH AND CALL THIS TO INIT
     public static void doEvents() {
         ZonedDateTime currentTime = ZonedDateTime.now(ZoneId.of("America/New_York"));
 
@@ -42,7 +41,7 @@ public class TimeManager {
             for(World w : Bukkit.getWorlds()){
                 w.setDifficulty(Difficulty.HARD);
             }
-            sendDiscordNewsMessage("<@&1047168915500966048> Custom items and runes are now available! Map size expanded to 25k by 25k and difficulty set to hard. \n\n**End will open next weekend in 7 days!**", "1032411739351941120");
+            sendDiscordNewsMessage("<@&1047168915500966048> Custom items and runes are now available! Map size expanded to 25k by 25k and difficulty set to hard. \n\n**End will open next weekend in " + formatDuration(Duration.between(SEASON_START_TIME.plusDays(14), ZonedDateTime.now(ZoneId.of("America/New_York")))) + "**", "1032411739351941120");
         }
 
         if (isTimePassed(SEASON_START_TIME, currentTime, 3, 14, 0, 0) &&

@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.runes;
+package newamazingpvp.lifestealsmp.runes.customrunes;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

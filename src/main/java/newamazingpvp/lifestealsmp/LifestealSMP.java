@@ -33,8 +33,6 @@ import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
 import newamazingpvp.lifestealsmp.game.PlayerPing;
 import newamazingpvp.lifestealsmp.listener.*;
 import newamazingpvp.lifestealsmp.runes.RuneHandler;
-import newamazingpvp.lifestealsmp.runes.ZombieRune;
-import newamazingpvp.lifestealsmp.runes.RuneSample;
 import newamazingpvp.lifestealsmp.utility.TimeManager;
 import newamazingpvp.lifestealsmp.utility.Utils;
 import newamazingpvp.lifestealsmp.visualeffects.DroppedItemParticles;
