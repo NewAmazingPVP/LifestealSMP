@@ -4,12 +4,26 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class DeathBeaconEvent implements Listener {
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     private static BukkitRunnable timerRunnable;
