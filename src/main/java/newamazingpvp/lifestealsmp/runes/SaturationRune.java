@@ -16,14 +16,5 @@ public class SaturationRune extends AbstractRune {
         super(name, mob, 1.0/1, lore, effect);
     }
 
-    @Override
-    public PotionEffect getEffect() {
-        return effect;
-    }
-
-    @Override
-    public String getLore() {
-        return lore;
-    }
 
 }
