@@ -63,7 +63,7 @@ public class PlayerLagMsg implements Listener {
                 @Override
                 public void run() {
                     for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-                        p.sendMessage(ChatColor.RED + "Be careful as" + ChatColor.YELLOW + event.getPlayer().getName() + ChatColor.DARK_RED + " might be trying to get rid of newbie protection of newbies by asking to hit them");
+                        p.sendMessage(ChatColor.RED + "Be careful as " + ChatColor.YELLOW + event.getPlayer().getName() + ChatColor.DARK_RED + " might be trying to get rid of newbie protection of newbies by asking to hit them");
                     }
                 }
             }, 20);

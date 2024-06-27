@@ -7,7 +7,7 @@ import org.bukkit.potion.PotionEffectType;
 
 public class RegenerationRune extends AbstractRune {
 
-    private static final String name = "&x&4&1&0&0&F&F&lR&x&5&1&0&0&F&F&le&x&6&1&0&0&F&F&lg&x&7&1&0&0&F&F&le&x&8&1&0&0&F&F&ln &x&9&2&0&0&F&F&le&x&A&2&0&0&F&F&lr&x&B&2&0&0&F&F&la&x&C&2&0&0&F&F&lt&x&D&2&0&0&F&F&li&x&E&2&0&0&F&F&lo&x&F&2&0&0&F&F&ln &x&F&2&0&0&F&F&lR&x&F&2&0&0&F&F&lu&x&F&2&0&0&F&F&ln&x&F&2&0&0&F&F&le";
+    private static final String name = "&x&4&1&0&0&F&F&lB&x&4&D&0&0&F&F&la&x&5&9&0&0&F&F&ld &x&7&1&0&0&F&F&lO&x&7&D&0&0&F&F&lm&x&8&A&0&0&F&F&le&x&9&6&0&0&F&F&ln &x&A&E&0&0&F&F&lR&x&B&A&0&0&F&F&lu&x&C&6&0&0&F&F&ln&x&D&2&0&0&F&F&le";
     private static final EntityType mob = EntityType.EVOKER;
     private static final PotionEffect effect = new PotionEffect(PotionEffectType.REGENERATION, 200, 1);
     private static final String lore = ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effect.getType().getKey().getKey()) + " " + effect.getAmplifier();
