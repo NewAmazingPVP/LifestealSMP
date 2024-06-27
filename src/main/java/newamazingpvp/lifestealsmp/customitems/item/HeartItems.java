@@ -55,7 +55,7 @@ public class HeartItems implements Listener {
         ItemStack item = player.getInventory().getItemInMainHand();
 
         if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            if (item.getType() == Material.RED_DYE && item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.getItemMeta().getDisplayName().equals(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL" + ChatColor.DARK_RED + ChatColor.BOLD + "Extra Heart" + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "LL")) {
+            if (item.getType() == Material.RED_DYE && item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Extra Heart")) {
                 if (e.getPlayer().getMaxHealth() > 38) {
 
                     player.sendMessage(ChatColor.RED + "You have the max hearts allowed! (20)");

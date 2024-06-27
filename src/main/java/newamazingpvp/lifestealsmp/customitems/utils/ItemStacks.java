@@ -17,9 +17,9 @@ public class ItemStacks {
     public static ItemStack createReviveBeacon() {
         ItemStack reviveBeacon = new ItemStack(Material.BEACON);
         ItemMeta meta = reviveBeacon.getItemMeta();
-        meta.setDisplayName(ChatColor.DARK_PURPLE + "Revive Beacon");
+        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Revive Beacon");
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.GOLD + "Use to revive eliminated players!");
+        lore.add(ChatColor.DARK_PURPLE + "Use to revive eliminated players!"); 
         meta.setLore(lore);
         reviveBeacon.setItemMeta(meta);
         return reviveBeacon;
@@ -28,9 +28,10 @@ public class ItemStacks {
     public static ItemStack createCustomBow() {
         ItemStack customBow = new ItemStack(Material.BOW);
         ItemMeta meta = customBow.getItemMeta();
-        meta.setDisplayName(ChatColor.MAGIC + "Teleporting Bow");
+        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.MAGIC + "Teleporting Bow");
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.GOLD + "Special Ability: " + ChatColor.DARK_PURPLE + "Shoot to teleport!");
+        lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Special Ability:");
+        lore.add(ChatColor.DARK_PURPLE + "Shoot to teleport!");
         meta.setLore(lore);
         //meta.addItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS, ItemFlag.HIDE_ATTRIBUTES);
         customBow.setItemMeta(meta);
@@ -40,9 +41,10 @@ public class ItemStacks {
     public static ItemStack createCustomAxe() {
         ItemStack customAxe = new ItemStack(Material.NETHERITE_AXE);
         ItemMeta meta = customAxe.getItemMeta();
-        meta.setDisplayName(ChatColor.AQUA + "Tree Chopping Axe");
+        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Tree Chopping Axe");
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.GOLD + "Special Ability: " + ChatColor.DARK_PURPLE + "Breaks whole tree down with one chop!");
+        lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Special Ability:");
+        lore.add(ChatColor.DARK_PURPLE + "Breaks whole tree down with one chop!");
         meta.setLore(lore);
         customAxe.setItemMeta(meta);
         return customAxe;
@@ -51,9 +53,10 @@ public class ItemStacks {
     public static ItemStack createTNTBow() {
         ItemStack tntBow = new ItemStack(Material.BOW);
         ItemMeta meta = tntBow.getItemMeta();
-        meta.setDisplayName(ChatColor.GOLD + "TNT Bow");
+        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "TNT Bow");
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.GOLD + "Special Ability: " + ChatColor.DARK_PURPLE + "TNT Shooter!");
+        lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Special Ability:");
+        lore.add(ChatColor.DARK_PURPLE + "TNT Shooter!");
         meta.setLore(lore);
         //meta.addItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS, ItemFlag.HIDE_ATTRIBUTES);
         tntBow.setItemMeta(meta);
@@ -63,9 +66,10 @@ public class ItemStacks {
     public static ItemStack createHomingBow() {
         ItemStack homingBow = new ItemStack(Material.BOW);
         ItemMeta meta = homingBow.getItemMeta();
-        meta.setDisplayName(ChatColor.GOLD + "Homing Bow");
+        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Homing Bow");
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.GOLD + "Special Ability: " + ChatColor.DARK_PURPLE + "Homing Arrows!");
+        lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Special Ability:");
+        lore.add(ChatColor.DARK_PURPLE + "Homing Arrows!");
         meta.setLore(lore);
         //meta.addItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS, ItemFlag.HIDE_ATTRIBUTES);
         homingBow.setItemMeta(meta);
@@ -75,10 +79,11 @@ public class ItemStacks {
     public static ItemStack createFeatherSword() {
         ItemStack featherSword = new ItemStack(Material.NETHERITE_SWORD);
         ItemMeta meta = featherSword.getItemMeta();
-        meta.setDisplayName(ChatColor.AQUA + "Feather Sword");
+        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Feather Sword");
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.GOLD + "Special Ability: " + ChatColor.DARK_PURPLE + "Right click to launch yourself");
-        lore.add(ChatColor.LIGHT_PURPLE + "Permanent speed while holding");
+        lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Special Ability: ");
+        lore.add(ChatColor.DARK_PURPLE + "Right click to launch yourself");
+        lore.add(ChatColor.DARK_PURPLE + "Permanent speed while holding");
         meta.setLore(lore);
         featherSword.setItemMeta(meta);
         return featherSword;
@@ -87,9 +92,10 @@ public class ItemStacks {
     public static ItemStack createOpPickaxe() {
         ItemStack opPickaxe = new ItemStack(Material.NETHERITE_PICKAXE);
         ItemMeta meta = opPickaxe.getItemMeta();
-        meta.setDisplayName(ChatColor.GOLD + "God Pickaxe");
+        meta.setDisplayName(ChatColor.GOLD + "" +ChatColor.BOLD + "God Pickaxe");
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.GOLD + "Special Ability: " + ChatColor.DARK_PURPLE + "Mine to break 3x3!");
+        lore.add(ChatColor.GOLD + "" + ChatColor.BOLD +" Special Ability:");
+        lore.add(ChatColor.DARK_PURPLE + "Mine to break 3x3!");
         meta.setLore(lore);
         opPickaxe.setItemMeta(meta);
         return opPickaxe;
@@ -100,10 +106,9 @@ public class ItemStacks {
         ItemMeta meta = corruptedMobSoul.getItemMeta();
         meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
-        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "Corrupted Mob Soul" + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "LL");
+        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.MAGIC + "LL" + ChatColor.GOLD + ChatColor.BOLD + "Corrupted Mob Soul" + ChatColor.GOLD + ChatColor.MAGIC + "LL");
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.AQUA + "U$e To Cr" + ChatColor.MAGIC + "a" + ChatColor.AQUA + "ft Extra Hearts!" + ChatColor.MAGIC + "L");
-        lore.add(ChatColor.LIGHT_PURPLE + "Rare Drop From Mobs!");
+        lore.add(ChatColor.DARK_PURPLE + "U$e To Cr" + ChatColor.MAGIC + "a" + ChatColor.DARK_PURPLE + "ft Extra Hearts!" + ChatColor.MAGIC + "L");
         meta.setLore(lore);
         corruptedMobSoul.setItemMeta(meta);
         return corruptedMobSoul;
@@ -114,10 +119,9 @@ public class ItemStacks {
         ItemMeta meta = severedMobHeart.getItemMeta();
         meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
-        meta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Severed Mob Heart");
+        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Severed Mob Heart");
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.AQUA + "Use To Craft Extra Hearts!");
-        lore.add(ChatColor.LIGHT_PURPLE + "Very Rare Drop From Mobs!");
+        lore.add(ChatColor.DARK_PURPLE + "Use To Craft Extra Hearts!");
         meta.setLore(lore);
         severedMobHeart.setItemMeta(meta);
         return severedMobHeart;
@@ -128,9 +132,10 @@ public class ItemStacks {
         ItemMeta meta = extraHeart.getItemMeta();
         meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
-        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.MAGIC + "LL" + ChatColor.DARK_RED + ChatColor.BOLD + "Extra Heart" + ChatColor.LIGHT_PURPLE + ChatColor.MAGIC + "LL");
+        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Extra Heart");
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Right Click:" + ChatColor.DARK_PURPLE + " For +1 Heart!");
+        lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Right Click:");
+        lore.add(ChatColor.DARK_PURPLE + "+1 Heart!");
         lore.add(ChatColor.GRAY + "(max 20 hearts)");
         meta.setLore(lore);
         extraHeart.setItemMeta(meta);
