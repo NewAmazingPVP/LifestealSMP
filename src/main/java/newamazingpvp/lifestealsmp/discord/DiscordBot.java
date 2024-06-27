@@ -6,6 +6,7 @@ import club.minnced.discord.webhook.send.WebhookMessageBuilder;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.entities.channel.concrete.NewsChannel;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import org.bukkit.entity.Player;
@@ -62,6 +63,19 @@ public class DiscordBot {
         }
     }
 
+    public static void sendDiscordNewsMessage(String msg, String channelID) {
+        if (jda == null) return;
+        if (channelID.isEmpty()) {
+            channel.sendMessage(msg);
+        } else {
+            NewsChannel tempChannel = jda.getNewsChannelById(channelID);
+            if (tempChannel != null) {
+                tempChannel.sendMessage(msg).queue();
+            }
+        }
+    }
+
+
     public static void sendDiscordEmbedTitle(String msg, Color c, String channelID) {
         if (jda == null) return;
         EmbedBuilder eb = new EmbedBuilder();
@@ -71,6 +85,21 @@ public class DiscordBot {
             channel.sendMessageEmbeds(eb.build()).queue();
         } else {
             TextChannel tempChannel = jda.getTextChannelById(channelID);
+            if (tempChannel != null) {
+                tempChannel.sendMessageEmbeds(eb.build()).queue();
+            }
+        }
+    }
+
+    public static void sendDiscordNewsEmbedTitle(String msg, Color c, String channelID) {
+        if (jda == null) return;
+        EmbedBuilder eb = new EmbedBuilder();
+        eb.setTitle(msg);
+        eb.setColor(c);
+        if (channelID.isEmpty()) {
+            channel.sendMessageEmbeds(eb.build()).queue();
+        } else {
+            NewsChannel tempChannel = jda.getNewsChannelById(channelID);
             if (tempChannel != null) {
                 tempChannel.sendMessageEmbeds(eb.build()).queue();
             }

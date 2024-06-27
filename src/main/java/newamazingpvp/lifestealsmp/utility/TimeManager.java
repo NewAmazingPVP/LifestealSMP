@@ -42,7 +42,7 @@ public class TimeManager {
             for(World w : Bukkit.getWorlds()){
                 w.setDifficulty(Difficulty.HARD);
             }
-            sendDiscordMessage("Custom items have now been enabled! Map size expanded to 25k by 25k and difficulty set to hard.", "1032411739351941120");
+            sendDiscordNewsMessage("Custom items have now been enabled! Map size expanded to 25k by 25k and difficulty set to hard.", "1032411739351941120");
         }
 
         if (isTimePassed(SEASON_START_TIME, currentTime, 3, 14, 0, 0) &&
@@ -50,7 +50,7 @@ public class TimeManager {
             for(World w : Bukkit.getWorlds()){
                 w.setDifficulty(Difficulty.NORMAL);
             }
-            sendDiscordMessage("Difficulty on SMP now set to normal!", "1032411739351941120");
+            sendDiscordNewsMessage("Difficulty on SMP now set to normal!", "1032411739351941120");
         }
 
         if (isTimePassed(SEASON_START_TIME, currentTime, 10, 0, 0, 0)) {
@@ -74,15 +74,15 @@ public class TimeManager {
         ! isTimePassed(SEASON_START_TIME, currentTime, 0, 0, 0, 2)){
             getServer().dispatchCommand(getServer().getConsoleSender(), "whitelist off");
             getServer().dispatchCommand(getServer().getConsoleSender(), "gamerule playersSleepingPercentage 1");
-            sendDiscordEmbedTitle("New season has started!!", Color.GREEN, "1032411739351941120");
-            sendDiscordMessage("<@&1047168915500966048> New season has opened!", "1032411739351941120");
+            sendDiscordNewsEmbedTitle("New season has started!!", Color.GREEN, "1032411739351941120");
+            sendDiscordNewsMessage("<@&1047168915500966048> New season has opened!", "1032411739351941120");
         }
 
         if (isWeekPassed(2, weeksPassed) && !isTimePassed(SEASON_START_TIME, currentTime, 14, 0, 0, 1)) {
             Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "End has now opened!");
-            sendDiscordEmbedTitle("End has opened!", Color.GREEN, "1032411739351941120");
+            sendDiscordNewsEmbedTitle("End has opened!", Color.GREEN, "1032411739351941120");
 
-            sendDiscordMessage("<@&1047168915500966048> The end has opened!", "1032411739351941120");
+            sendDiscordNewsMessage("<@&1047168915500966048> The end has opened!", "1032411739351941120");
         }
     }
 

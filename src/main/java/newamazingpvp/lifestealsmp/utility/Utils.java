@@ -80,8 +80,8 @@ public class Utils {
 
     public static double getAverageTPS() {
         double total = 0.0;
-        for (int i = 0; i < tpsList.size(); i++) {
-            total += tpsList.get(i);
+        for (Double aDouble : tpsList) {
+            total += aDouble;
         }
         return total / tpsList.size();
     }
@@ -121,7 +121,6 @@ public class Utils {
     }
 
     private static void resetActions() {
-        isTriggered = false;
         int onlinePlayers = Bukkit.getOnlinePlayers().size();
         if(onlinePlayers > 24){
             triggerActions("setview 5 2", "chunky continue");
@@ -132,6 +131,7 @@ public class Utils {
         } else {
             triggerActions("setview 10 6", "chunky continue");
         }
+        isTriggered = false;
     }
 
     public static void updateLore(Player player) {
