@@ -13,7 +13,8 @@ public class RunesCommand implements CommandExecutor {
         if(sender instanceof Player){
             Player p = (Player) sender;
             p.openInventory(inv);
+            return true;
         }
-        return true;
+        return false;
     }
 }
