@@ -13,6 +13,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -26,6 +28,7 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class RuneHandler implements Listener {
     private final List<Rune> runes;
+    public static Inventory inv = Bukkit.createInventory(null, 27, ChatColor.GOLD + "Runes");
 
     public RuneHandler() {
         runes = new ArrayList<>();
@@ -37,7 +40,20 @@ public class RuneHandler implements Listener {
         runes.add(new ConduitPowerRune());
         runes.add(new DolphinsGraceRune());
         runes.add(new FireResistanceRune());
-        runes.add()
+        runes.add(new HealthBoostRune());
+        runes.add(new HealthRune());
+        runes.add(new HeroOfTheVillageRune());
+        runes.add(new InvisibilityRune());
+        runes.add(new JumpBoostRune());
+        runes.add(new LuckRune());
+        runes.add(new RegenerationRune());
+        runes.add(new ResistanceRune());
+        runes.add(new SaturationRune());
+        runes.add(new SlowFallingRune());
+        runes.add(new StrengthRune());
+        for(Rune r: runes){
+            inv.addItem(createRuneItem(r));
+        }
         new BukkitRunnable(){
             @Override
             public void run() {
@@ -70,19 +86,7 @@ public class RuneHandler implements Listener {
         for (Rune rune : runes) {
             if(entity.getType() == rune.getMob()) {
                 if (random.nextDouble() < rune.getDropRate()) {
-                    ItemStack runeItem = new ItemStack(Material.PAPER);
-                    ItemMeta meta = runeItem.getItemMeta();
-                    meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',rune.getName()));
-                    meta.addEnchant(Enchantment.UNBREAKING, 1, false);
-                    meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
-                    List<String> lore = new ArrayList<>();
-                    lore.add(ChatColor.DARK_PURPLE + "[Item just needs to be in your inventory]");
-                    lore.add(ChatColor.YELLOW + "[Rare chance to drop from " + rune.getMob().toString().replace("_", " ") + "]");
-                    lore.add(" ");
-                    lore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + rune.getMob().toString().replace("_", " ") + " RUNE ABILITY:");
-                    lore.add(rune.getLore());
-                    meta.setLore(lore);
-                    runeItem.setItemMeta(meta);
+                    ItemStack runeItem = createRuneItem(rune);
                     entity.getWorld().dropItemNaturally(entity.getLocation(), runeItem);
                     player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "RUNE DROP!" + ChatColor.GOLD + " " + ChatColor.translateAlternateColorCodes('&',rune.getName()) + ": " + rune.getLore());
                 }
@@ -90,5 +94,21 @@ public class RuneHandler implements Listener {
         }
     }
 
+    public ItemStack createRuneItem(Rune rune){
+        ItemStack runeItem = new ItemStack(Material.PAPER);
+        ItemMeta meta = runeItem.getItemMeta();
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',rune.getName()));
+        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.DARK_PURPLE + "[Item just needs to be in your inventory]");
+        lore.add(ChatColor.YELLOW + "[Rare chance to drop from " + rune.getMob().toString().replace("_", " ") + "]");
+        lore.add(" ");
+        lore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + rune.getMob().toString().replace("_", " ") + " RUNE ABILITY:");
+        lore.add(rune.getLore());
+        meta.setLore(lore);
+        runeItem.setItemMeta(meta);
+        return runeItem;
+    }
 
 }

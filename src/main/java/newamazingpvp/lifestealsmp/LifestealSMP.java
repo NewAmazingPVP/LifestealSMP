@@ -121,6 +121,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("jailplayer").setExecutor(new JailPlayer());
         getCommand("betterban").setExecutor(new BetterBan());
         getCommand("unbanall").setExecutor(new UnbanAll());
+        getCommand("rune").setExecutor(new RunesCommand());
+        //Bukkit.getPluginManager().registerEvents(new RuneHandler(), lifestealSmp);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
         getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
@@ -155,6 +157,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new DisableNetherite(), this);
         getServer().getPluginManager().registerEvents(new NewbieProgression(), this);
         getServer().getPluginManager().registerEvents(new AntiEnd(), this);
+        getServer().getPluginManager().registerEvents(new ServerOpening(), this);
         startTPSTracking();
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
         getCommand("trade").setExecutor(new Trade());
@@ -162,7 +165,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         registerBasicRecipes();
         doEvents();
         Bukkit.getScheduler().runTaskTimer(this, TimeManager::timeBasedEvents, 20, 20);
-        getServer().getPluginManager().registerEvents(new RuneHandler(), this);
         //TODO: Use this for beta things
         if (isAutoUploadEnabled()) {
             //getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
@@ -299,6 +301,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
     public static void registerCustomItemsAndRunes(){
         registerCustomRecipes();
+        Bukkit.getPluginManager().registerEvents(new RuneHandler(), lifestealSmp);
         Bukkit.getPluginManager().registerEvents(new HomingBow(), lifestealSmp);
         Bukkit.getPluginManager().registerEvents(new TntBow(), lifestealSmp);
         Bukkit.getPluginManager().registerEvents(new FeatherSword(), lifestealSmp);

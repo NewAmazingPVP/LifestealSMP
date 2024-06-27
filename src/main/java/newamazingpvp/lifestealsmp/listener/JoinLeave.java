@@ -19,7 +19,6 @@ public class JoinLeave implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-
         Player player = event.getPlayer();
         player.sendTitle(ChatColor.DARK_GREEN + "Welcome!", "", 0, 70, 20);
         player.sendMessage("Welcome! \n/help\n/guide\n/rules\n/prefix\n/color\n/recipes\n/trade ");
