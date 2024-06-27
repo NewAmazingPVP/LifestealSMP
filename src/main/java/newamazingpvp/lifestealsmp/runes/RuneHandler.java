@@ -5,6 +5,7 @@ import newamazingpvp.lifestealsmp.runes.WaterRune;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.block.data.type.Fire;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -32,7 +33,11 @@ public class RuneHandler implements Listener {
         runes.add(new SpeedRune());
         runes.add(new HasteRune());
         runes.add(new AbsorptionRune());
-        runes.add(new AbsorptionRune.II());
+        runes.add(new BadOmenRune());
+        runes.add(new ConduitPowerRune());
+        runes.add(new DolphinsGraceRune());
+        runes.add(new FireResistanceRune());
+        runes.add()
         new BukkitRunnable(){
             @Override
             public void run() {
@@ -68,7 +73,7 @@ public class RuneHandler implements Listener {
                     ItemStack runeItem = new ItemStack(Material.PAPER);
                     ItemMeta meta = runeItem.getItemMeta();
                     meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',rune.getName()));
-                    meta.addEnchant(Enchantment.MENDING, 1, false);
+                    meta.addEnchant(Enchantment.UNBREAKING, 1, false);
                     meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
                     List<String> lore = new ArrayList<>();
                     lore.add(ChatColor.DARK_PURPLE + "[Item just needs to be in your inventory]");
