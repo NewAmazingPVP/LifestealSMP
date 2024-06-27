@@ -46,4 +46,19 @@ public abstract class AbstractRune implements Rune {
     public PotionEffect getEffect(){
         return effect;
     }
+
+    public static String formatEffectKey(String effectKey) {
+        String[] words = effectKey.split("_");
+        StringBuilder formattedKey = new StringBuilder();
+
+        for (String word : words) {
+            if (word.length() > 0) {
+                formattedKey.append(Character.toUpperCase(word.charAt(0)))
+                        .append(word.substring(1).toLowerCase())
+                        .append(" ");
+            }
+        }
+
+        return formattedKey.toString().trim();
+    }
 }
