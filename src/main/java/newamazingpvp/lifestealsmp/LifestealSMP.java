@@ -20,7 +20,6 @@ import newamazingpvp.lifestealsmp.allyteams.TeamListener;
 import newamazingpvp.lifestealsmp.blacklistener.*;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.command.unused.JailPlayer;
-import newamazingpvp.lifestealsmp.command.unused.Somber;
 import newamazingpvp.lifestealsmp.customitems.magicstaffs.utils.GUI;
 import newamazingpvp.lifestealsmp.customitems.magicstaffs.abilities.Default;
 import newamazingpvp.lifestealsmp.customitems.armor.QuarryArmor;
@@ -33,8 +32,9 @@ import newamazingpvp.lifestealsmp.game.Compass;
 import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
 import newamazingpvp.lifestealsmp.game.PlayerPing;
 import newamazingpvp.lifestealsmp.listener.*;
+import newamazingpvp.lifestealsmp.runes.RuneHandler;
 import newamazingpvp.lifestealsmp.runes.ZombieRune;
-import newamazingpvp.lifestealsmp.runes.Rune;
+import newamazingpvp.lifestealsmp.runes.RuneSample;
 import newamazingpvp.lifestealsmp.utility.TimeManager;
 import newamazingpvp.lifestealsmp.utility.Utils;
 import newamazingpvp.lifestealsmp.visualeffects.DroppedItemParticles;
@@ -160,6 +160,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         registerBasicRecipes();
         doEvents();
         Bukkit.getScheduler().runTaskTimer(this, TimeManager::timeBasedEvents, 20, 20);
+        getServer().getPluginManager().registerEvents(new RuneHandler(), this);
         //TODO: Use this for beta things
         if (isAutoUploadEnabled()) {
             //getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
@@ -307,7 +308,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         }
     }
 
-    private void registerRune(Rune<?> rune) {
+    private void registerRune(RuneSample<?> rune) {
         getServer().getPluginManager().registerEvents(rune, this);
     }
 

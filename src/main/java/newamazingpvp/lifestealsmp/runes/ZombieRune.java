@@ -3,15 +3,12 @@ package newamazingpvp.lifestealsmp.runes;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ZombieRune extends Rune<EntityDamageByEntityEvent> {
+public class ZombieRune extends RuneSample<EntityDamageByEntityEvent> {
 
     public ZombieRune() {
         super(

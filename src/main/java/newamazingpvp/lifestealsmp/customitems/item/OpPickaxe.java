@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.customitems.item;
 
+import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -10,9 +11,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
@@ -41,10 +40,16 @@ public class OpPickaxe implements Listener {
             Material.BEE_NEST
     ));
 
+    private HashMap<UUID, CooldownManager> playerCooldowns = new HashMap<>();
+
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
         ItemStack item = player.getInventory().getItemInMainHand();
+        if(playerCooldowns.get(player.getUniqueId()) != null){
+            playerCooldowns.put(player.getUniqueId(), new CooldownManager());
+        }
+        if(playerCooldowns.get(player.getUniqueId()).isOnCooldown()) return;
 
         if (item.getType() == Material.NETHERITE_PICKAXE) {
             if (hasLore(item)) {
@@ -55,6 +60,9 @@ public class OpPickaxe implements Listener {
                 breakBlocksAround(block, item);
                 item.setDurability((short) (item.getDurability() + 1));
                 event.setCancelled(true);
+                CooldownManager cooldown = playerCooldowns.get(player.getUniqueId());
+                cooldown.setCooldown(3.0);
+                playerCooldowns.put(player.getUniqueId(), cooldown);
             }
         }
     }
