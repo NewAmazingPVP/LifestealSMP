@@ -154,6 +154,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new DisableNetherite(), this);
         getServer().getPluginManager().registerEvents(new NewbieProgression(), this);
         getServer().getPluginManager().registerEvents(new AntiEnd(), this);
+        getServer().getPluginManager().registerEvents(new ServerOpening(), this);
         startTPSTracking();
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
         getCommand("trade").setExecutor(new Trade());
