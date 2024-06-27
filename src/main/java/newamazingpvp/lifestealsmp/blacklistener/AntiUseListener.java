@@ -64,6 +64,9 @@ public class AntiUseListener implements Listener {
         if (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.DRAGON_EGG) {
             event.setCancelled(true);
         }
+        if (event.getView().getTitle().contains("Rune")) {
+            event.setCancelled(true);
+        }
     }
 
     @EventHandler

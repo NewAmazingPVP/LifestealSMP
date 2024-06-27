@@ -122,7 +122,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("betterban").setExecutor(new BetterBan());
         getCommand("unbanall").setExecutor(new UnbanAll());
         getCommand("rune").setExecutor(new RunesCommand());
-        //Bukkit.getPluginManager().registerEvents(new RuneHandler(), lifestealSmp);
+        Bukkit.getPluginManager().registerEvents(new RuneHandler(), lifestealSmp);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
         getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
@@ -158,6 +158,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new NewbieProgression(), this);
         getServer().getPluginManager().registerEvents(new AntiEnd(), this);
         getServer().getPluginManager().registerEvents(new ServerOpening(), this);
+        getServer().getPluginManager().registerEvents(new PlayerBan(), this);
         startTPSTracking();
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
         getCommand("trade").setExecutor(new Trade());
