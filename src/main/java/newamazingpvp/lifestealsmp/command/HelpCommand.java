@@ -14,7 +14,8 @@ public class HelpCommand implements CommandExecutor {
             p.sendMessage(ChatColor.GOLD + "/rules " + ChatColor.WHITE + "for the rules of the SMP" +
                     "\n" + ChatColor.GOLD + "/discord " + ChatColor.WHITE + "for the discord link" +
                     "\n" + ChatColor.GOLD + "/recipes " + ChatColor.WHITE + "for the recipes of custom items on this SMP" +
-                    //"\n" + ChatColor.GOLD + "/track " + ChatColor.WHITE + "to track players on the server" +
+                    "\n" + ChatColor.GOLD + "/runes " + ChatColor.WHITE + "for the custom runes on this SMP" +
+                    "\n" + ChatColor.GOLD + "/track " + ChatColor.WHITE + "to track players on the server" +
                     "\n" + ChatColor.GOLD + "/prefix " + ChatColor.WHITE + "to set your custom prefix on the server" +
                     "\n" + ChatColor.GOLD + "/vision " + ChatColor.WHITE + "to toggle permanent full brightness " +
                     "\n" + ChatColor.GOLD + "/trade " + ChatColor.WHITE + "to trade with other players!" +
