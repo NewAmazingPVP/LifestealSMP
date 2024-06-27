@@ -161,7 +161,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         registerBasicRecipes();
         doEvents();
         Bukkit.getScheduler().runTaskTimer(this, TimeManager::timeBasedEvents, 20, 20);
-        getServer().getPluginManager().registerEvents(new RuneHandler(), this);
         //TODO: Use this for beta things
         if (isAutoUploadEnabled()) {
             //getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
@@ -298,6 +297,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
     public static void registerCustomItemsAndRunes(){
         registerCustomRecipes();
+        Bukkit.getPluginManager().registerEvents(new RuneHandler(), lifestealSmp);
         Bukkit.getPluginManager().registerEvents(new HomingBow(), lifestealSmp);
         Bukkit.getPluginManager().registerEvents(new TntBow(), lifestealSmp);
         Bukkit.getPluginManager().registerEvents(new FeatherSword(), lifestealSmp);

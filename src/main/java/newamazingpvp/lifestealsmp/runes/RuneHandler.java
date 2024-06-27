@@ -37,7 +37,17 @@ public class RuneHandler implements Listener {
         runes.add(new ConduitPowerRune());
         runes.add(new DolphinsGraceRune());
         runes.add(new FireResistanceRune());
-        runes.add()
+        runes.add(new HealthBoostRune());
+        runes.add(new HealthRune());
+        runes.add(new HeroOfTheVillageRune());
+        runes.add(new InvisibilityRune());
+        runes.add(new JumpBoostRune());
+        runes.add(new LuckRune());
+        runes.add(new RegenerationRune());
+        runes.add(new ResistanceRune());
+        runes.add(new SaturationRune());
+        runes.add(new SlowFallingRune());
+        runes.add(new StrengthRune());
         new BukkitRunnable(){
             @Override
             public void run() {
