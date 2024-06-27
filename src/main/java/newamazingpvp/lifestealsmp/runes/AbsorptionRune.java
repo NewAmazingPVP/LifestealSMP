@@ -17,18 +17,18 @@ public class AbsorptionRune extends AbstractRune {
 
 
     public AbsorptionRune() {
-        super("&x&4&1&0&0&F&F&lA&x&5&1&0&0&F&F&lb&x&6&1&0&0&F&F&ls&x&7&1&0&0&F&F&lo&x&8&1&0&0&F&F&lr&x&9&2&0&0&F&F&lp&x&A&2&0&0&F&F&ls&x&B&2&0&0&F&F&li&x&C&2&0&0&F&F&lo&x&D&2&0&0&F&F&ln &x&E&2&0&0&F&F&lR&x&F&2&0&0&F&F&lu&x&F&2&0&0&F&F&ln&x&F&2&0&0&F&F&le",
+        super("&x&4&1&0&0&F&F&lA&x&5&1&0&0&F&F&lb&x&6&1&0&0&F&F&ls&x&7&1&0&0&F&F&lo&x&8&1&0&0&F&F&lr&x&9&2&0&0&F&F&lp&x&A&2&0&0&F&F&lt&x&B&2&0&0&F&F&li&x&C&2&0&0&F&F&lo&x&D&2&0&0&F&F&ln I &x&E&2&0&0&F&F&lR&x&F&2&0&0&F&F&lu&x&F&2&0&0&F&F&ln&x&F&2&0&0&F&F&le",
                 EntityType.ELDER_GUARDIAN,
                 1.0/1,
-                ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effect.getType().getKey().getKey()) + " " + effect.getAmplifier(),
+                ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier()),
                 effect);
     }
      static class II extends AbstractRune {
         public II() {
-            super("&x&4&1&0&0&F&F&lA&x&5&1&0&0&F&F&lb&x&6&1&0&0&F&F&ls&x&7&1&0&0&F&F&lo&x&8&1&0&0&F&F&lr&x&9&2&0&0&F&F&lp&x&A&2&0&0&F&F&ls&x&B&2&0&0&F&F&li&x&C&2&0&0&F&F&lo&x&D&2&0&0&F&F&ln &x&E&2&0&0&F&F&lR&x&F&2&0&0&F&F&lu&x&F&2&0&0&F&F&ln&x&F&2&0&0&F&F&le II",
+            super("&x&4&1&0&0&F&F&lA&x&5&1&0&0&F&F&lb&x&6&1&0&0&F&F&ls&x&7&1&0&0&F&F&lo&x&8&1&0&0&F&F&lr&x&9&2&0&0&F&F&lp&x&A&2&0&0&F&F&lt&x&B&2&0&0&F&F&li&x&C&2&0&0&F&F&lo&x&D&2&0&0&F&F&ln II &x&E&2&0&0&F&F&lR&x&F&2&0&0&F&F&lu&x&F&2&0&0&F&F&ln&x&F&2&0&0&F&F&le",
                     EntityType.ELDER_GUARDIAN,
                     1.0/1,
-                    ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectII.getType().getKey().getKey()) + " " + effectII.getAmplifier(),
+                    ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectII.getType().getKey().getKey()) + " " + formatAmplifier(effectII.getAmplifier()),
                     effectII);
         }
     }

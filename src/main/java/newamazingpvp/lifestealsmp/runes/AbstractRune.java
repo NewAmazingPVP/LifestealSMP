@@ -61,4 +61,22 @@ public abstract class AbstractRune implements Rune {
 
         return formattedKey.toString().trim();
     }
+
+    public static String formatAmplifier(int amplifier){
+        switch (amplifier) {
+            case (0):
+                return "I";
+            case (1):
+                return "II";
+            case (2):
+                return "III";
+            case (3):
+                return "IV";
+            case (4):
+                return "V";
+            case (5):
+                return "VI";
+        }
+        return "";
+    }
 }

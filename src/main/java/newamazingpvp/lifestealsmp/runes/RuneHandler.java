@@ -5,12 +5,14 @@ import newamazingpvp.lifestealsmp.runes.WaterRune;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -66,16 +68,18 @@ public class RuneHandler implements Listener {
                     ItemStack runeItem = new ItemStack(Material.PAPER);
                     ItemMeta meta = runeItem.getItemMeta();
                     meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',rune.getName()));
+                    meta.addEnchant(Enchantment.MENDING, 1, false);
+                    meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
                     List<String> lore = new ArrayList<>();
                     lore.add(ChatColor.DARK_PURPLE + "[Item just needs to be in your inventory]");
-                    lore.add(ChatColor.YELLOW + "[Rare chance to drop from " + rune.getMob().toString() + "]");
+                    lore.add(ChatColor.YELLOW + "[Rare chance to drop from " + rune.getMob().toString().replace("_", " ") + "]");
                     lore.add(" ");
-                    lore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + rune.getMob().toString() + " RUNE ABILITY:");
+                    lore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + rune.getMob().toString().replace("_", " ") + " RUNE ABILITY:");
                     lore.add(rune.getLore());
                     meta.setLore(lore);
                     runeItem.setItemMeta(meta);
                     entity.getWorld().dropItemNaturally(entity.getLocation(), runeItem);
-                    player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "RUNE DROP!" + ChatColor.GOLD + " " + ChatColor.translateAlternateColorCodes('&',rune.getName()));
+                    player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "RUNE DROP!" + ChatColor.GOLD + " " + ChatColor.translateAlternateColorCodes('&',rune.getName()) + ": " + rune.getLore());
                 }
             }
         }
