@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.listener;
 
+import net.citizensnpcs.api.CitizensAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.*;
@@ -57,7 +58,7 @@ public class CombatProtectionHandler implements Listener {
 
     private void handlePlayerDamage(EntityDamageByEntityEvent event, Player damager, Player damaged) {
         if (damager == null || damaged == null) return;
-
+        if(CitizensAPI.getNPCRegistry().isNPC(damaged) || CitizensAPI.getNPCRegistry().isNPC(damager)) return;
         if (isGracePeriod()) {
             event.setCancelled(true);
             damager.sendMessage(ChatColor.RED + "You cannot damage players during the grace period!");

@@ -182,4 +182,9 @@ commands:
     usage: /beathbeacontest
     permission: lifestealSMP.admin
     default: op
+  rune:
+    description: View all the custom runes!
+    usage: /runes
+    aliases:
+      - runes
 
