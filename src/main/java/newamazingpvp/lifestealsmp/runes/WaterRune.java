@@ -23,5 +23,5 @@ public class WaterRune extends AbstractRune {
     public WaterRune() {
         super(name, mob, 1.0/1, lore, effect);
     }
-    
+
 }

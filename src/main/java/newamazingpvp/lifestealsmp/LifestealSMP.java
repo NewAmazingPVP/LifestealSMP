@@ -118,6 +118,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("jailplayer").setExecutor(new JailPlayer());
         getCommand("betterban").setExecutor(new BetterBan());
         getCommand("unbanall").setExecutor(new UnbanAll());
+        getCommand("rune").setExecutor(new RunesCommand());
+        Bukkit.getPluginManager().registerEvents(new RuneHandler(), lifestealSmp);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
         getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
