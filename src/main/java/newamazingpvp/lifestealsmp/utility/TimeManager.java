@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.registerCustomItemsAndRunes;
 import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.*;
 import static org.bukkit.Bukkit.getServer;
@@ -30,19 +31,18 @@ public class TimeManager {
 
         long weeksPassed = getWeeksPassed(SEASON_START_TIME, currentTime);
         if (isTimePassed(SEASON_START_TIME, currentTime, 6, 14, 0, 0)) {
-            registerCustomRecipes();
+            registerCustomItemsAndRunes();
         }
 
 
 
         if (isTimePassed(SEASON_START_TIME, currentTime, 6, 14, 0, 0) &&
                 ! isTimePassed(SEASON_START_TIME, currentTime, 6, 16, 0, 0)) {
-            registerCustomRecipes();
             Bukkit.getWorld("world").getWorldBorder().setSize(25000);
             for(World w : Bukkit.getWorlds()){
                 w.setDifficulty(Difficulty.HARD);
             }
-            sendDiscordNewsMessage("Custom items have now been enabled! Map size expanded to 25k by 25k and difficulty set to hard.", "1032411739351941120");
+            sendDiscordNewsMessage("<@&1047168915500966048> Custom items and runes are now available! Map size expanded to 25k by 25k and difficulty set to hard.", "1032411739351941120");
         }
 
         if (isTimePassed(SEASON_START_TIME, currentTime, 3, 14, 0, 0) &&
@@ -78,11 +78,20 @@ public class TimeManager {
             sendDiscordNewsMessage("<@&1047168915500966048> New season has opened!", "1032411739351941120");
         }
 
-        if (isWeekPassed(2, weeksPassed) && !isTimePassed(SEASON_START_TIME, currentTime, 14, 0, 0, 1)) {
+        if (isTimePassed(SEASON_START_TIME, currentTime, 14, 0, 0, 0)
+                && !isTimePassed(SEASON_START_TIME, currentTime, 14, 0, 0, 1)) {
             Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "End has now opened!");
             sendDiscordNewsEmbedTitle("End has opened!", Color.GREEN, "1032411739351941120");
 
             sendDiscordNewsMessage("<@&1047168915500966048> The end has opened!", "1032411739351941120");
+        }
+
+        if (isTimePassed(SEASON_START_TIME, currentTime, 6, 0, 0, 0)
+                && !isTimePassed(SEASON_START_TIME, currentTime, 6, 0, 0, 1)) {
+            Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Custom items releasing in 14 hours! Check announcements");
+            sendDiscordNewsEmbedTitle("Custom items and runes!", Color.GREEN, "1032411739351941120");
+
+            sendDiscordNewsMessage("<@&1047168915500966048> In 14 hours, custom items /recipes and runes /runes are going to be available! Map size will be expanded to 25k by 25k and difficulty will be set to hard.", "1032411739351941120");
         }
     }
 
