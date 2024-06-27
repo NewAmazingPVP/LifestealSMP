@@ -37,6 +37,8 @@ public class DeathBeaconEvent implements Listener {
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK || e.getAction() == Action.LEFT_CLICK_BLOCK) {
             Location clickedBlockLoc = e.getClickedBlock().getLocation();
 
+            player.sendMessage("Break 1");
+
             playerBreakDeathBeacon(player, clickedBlockLoc);
 
 
@@ -48,11 +50,15 @@ public class DeathBeaconEvent implements Listener {
 
     private void playerBreakDeathBeacon(Player player, Location clickedBlockLoc){
 
+        player.sendMessage("Break 2");
+
         if(clickedBlockLoc == deathBeaconLocRED || clickedBlockLoc == deathBeaconLocYellow || clickedBlockLoc == deathBeaconLocGreen || clickedBlockLoc == deathBeaconLocBlue){
+
+            player.sendMessage("Break 3");
 
             Block block = (Block) clickedBlockLoc;
             block.setType(Material.AIR);
-            clickedBlockLoc.getWorld().spawnParticle(Particle.CLOUD, player.getLocation(), 10); 
+            clickedBlockLoc.getWorld().spawnParticle(Particle.CLOUD, player.getLocation(), 10);
             String name = player.getName();
             player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "You Broke The Death Beacon!");
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2.0f, 2.0f);
@@ -63,6 +69,8 @@ public class DeathBeaconEvent implements Listener {
                 onlinePlayer.playSound(onlinePlayer.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2.0f, 2.0f);
 
             }
+
+            player.sendMessage("Break 4");
 
         }
 
@@ -88,10 +96,13 @@ public class DeathBeaconEvent implements Listener {
 
             isRunning = true;
 
+            player.sendMessage("Test 1");
+
             int randomSideIndex = rand.nextInt(arenaSides.size());
             String selectedSide = arenaSides.get(randomSideIndex);
 
 
+            player.sendMessage("Test 2");
 
 
 
@@ -113,7 +124,7 @@ public class DeathBeaconEvent implements Listener {
 
             }
 
-
+            player.sendMessage("Test 3");
 
             timerRunnable = new BukkitRunnable() {
                 private int count = 30;
@@ -155,10 +166,10 @@ public class DeathBeaconEvent implements Listener {
     public static void deathBeaconWarnTitle(){
         Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(ChatColor.DARK_PURPLE + "Death Beacon!", ChatColor.RED + "" + ChatColor.BOLD + "> 30sec To Break <", 10, 40, 5));
         Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Death Beacon!]", ChatColor.RED + "" + ChatColor.BOLD + ">30sec To Break<", 10, 40, 10)), 5);
-        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Death Beacon!", ChatColor.RED + "" + ChatColor.BOLD + "> 30sec To Break <", 10, 40, 10)), 5);
-        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Death Beacon!]", ChatColor.RED + "" + ChatColor.BOLD + ">30sec To Break<", 10, 40, 10)), 5);
-        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Death Beacon!", ChatColor.RED + "" + ChatColor.BOLD + "> 30sec To Break <", 10, 40, 10)), 5);
-        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Death Beacon!]", ChatColor.RED + "" + ChatColor.BOLD + ">30sec To Break<", 10, 40, 10)), 5);
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Death Beacon!", ChatColor.RED + "" + ChatColor.BOLD + "> 30sec To Break <", 10, 40, 10)), 10);
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Death Beacon!]", ChatColor.RED + "" + ChatColor.BOLD + ">30sec To Break<", 10, 40, 10)), 15);
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Death Beacon!", ChatColor.RED + "" + ChatColor.BOLD + "> 30sec To Break <", 10, 40, 10)), 20);
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Death Beacon!]", ChatColor.RED + "" + ChatColor.BOLD + ">30sec To Break<", 10, 40, 10)), 25);
     }
 
 }
