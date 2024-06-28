@@ -52,12 +52,10 @@ public class DeathBeaconEvent implements Listener {
 
         player.sendMessage("Break 2");
 
-        //if(clickedBlockLoc == deathBeaconLocRED || clickedBlockLoc == deathBeaconLocYellow || clickedBlockLoc == deathBeaconLocGreen || clickedBlockLoc == deathBeaconLocBlue){
+        if(clickedBlockLoc == deathBeaconLocRED || clickedBlockLoc == deathBeaconLocYellow || clickedBlockLoc == deathBeaconLocGreen || clickedBlockLoc == deathBeaconLocBlue){
 
             player.sendMessage("Break 3");
 
-            Block block = (Block) clickedBlockLoc;
-            block.setType(Material.AIR);
             clickedBlockLoc.getWorld().spawnParticle(Particle.CLOUD, player.getLocation(), 10);
             String name = player.getName();
             player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "You Broke The Death Beacon!");
@@ -70,9 +68,12 @@ public class DeathBeaconEvent implements Listener {
 
             }
 
+            Block block = (Block) clickedBlockLoc;
+            block.setType(Material.AIR);
+
             player.sendMessage("Break 4");
 
-        //}
+        }
 
     }
 
