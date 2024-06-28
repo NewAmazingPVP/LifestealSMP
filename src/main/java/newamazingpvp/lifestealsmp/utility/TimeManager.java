@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.isSmp;
 import static newamazingpvp.lifestealsmp.LifestealSMP.registerCustomItemsAndRunes;
 import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.*;
@@ -28,6 +29,7 @@ public class TimeManager {
     private static CooldownManager cooldown = new CooldownManager();
 
     public static void doEvents() {
+        if(!isSmp) return;
         ZonedDateTime currentTime = ZonedDateTime.now(ZoneId.of("America/New_York"));
 
         long weeksPassed = getWeeksPassed(SEASON_START_TIME, currentTime);
@@ -66,6 +68,7 @@ public class TimeManager {
     }
 
     public static void timeBasedEvents(){
+        if(!isSmp) return;
         ZonedDateTime currentTime = ZonedDateTime.now(ZoneId.of("America/New_York"));
         long weeksPassed = getWeeksPassed(SEASON_START_TIME, currentTime);
 
@@ -86,6 +89,7 @@ public class TimeManager {
             if(cooldown.isOnCooldown()) return;
             getServer().dispatchCommand(getServer().getConsoleSender(), "whitelist off");
             getServer().dispatchCommand(getServer().getConsoleSender(), "gamerule playersSleepingPercentage 1");
+            getServer().dispatchCommand(getServer().getConsoleSender(), "gamerule doImmediateRespawn true");
             Bukkit.getWorld("world").setTime(1000);
             Bukkit.getWorld("world").getWorldBorder().setSize(10000);
             Bukkit.getWorld("world_nether").getWorldBorder().setSize(10000);

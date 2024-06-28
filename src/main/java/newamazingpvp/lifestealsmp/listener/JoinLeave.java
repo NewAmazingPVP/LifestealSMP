@@ -39,7 +39,9 @@ public class JoinLeave implements Listener {
             event.setJoinMessage("");
             getServer().dispatchCommand(getServer().getConsoleSender(), "vanish " + player.getName());
         } else {
-            event.setJoinMessage(essentials.getUser(event.getPlayer()).getNickname() + ChatColor.GOLD + " joined the game!");
+            if(essentials.getUser(event.getPlayer()).getNickname() != null) {
+                event.setJoinMessage(essentials.getUser(event.getPlayer()).getNickname() + ChatColor.GOLD + " joined the game!");
+            }
         }
 
         BukkitRunnable prefix = new BukkitRunnable() {
