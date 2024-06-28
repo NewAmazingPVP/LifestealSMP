@@ -62,9 +62,25 @@ public class RuneHandler implements Listener {
                         if(t != null) {
                             if (t.hasItemMeta()) {
                                 if (t.hasLore()) {
-                                    for (Rune r : runes) {
-                                        if (t.getLore().contains(r.getLore())) {
-                                            p.addPotionEffect(r.getEffect());
+                                    ItemMeta meta = t.getItemMeta();
+                                    List<String> lore = meta.getLore();
+                                    if (lore.get(0).contains("Use To Craft Extra Hearts!")) {
+                                        lore.clear();
+                                        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Severed Mob Heart");
+                                        lore.add(ChatColor.DARK_PURPLE + "Use To Craft Extra Hearts!");
+                                        meta.setLore(lore);
+                                        t.setItemMeta(meta);
+                                    } else if (lore.get(0).contains("U$e To Cr")) {
+                                        lore.clear();
+                                        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.MAGIC + "LL" + ChatColor.GOLD + ChatColor.BOLD + "Corrupted Mob Soul" + ChatColor.GOLD + ChatColor.MAGIC + "LL");
+                                        lore.add(ChatColor.DARK_PURPLE + "U$e To Cr" + ChatColor.MAGIC + "a" + ChatColor.DARK_PURPLE + "ft Extra Hearts!" + ChatColor.MAGIC + "L");
+                                        meta.setLore(lore);
+                                        t.setItemMeta(meta);
+                                    } else {
+                                        for (Rune r : runes) {
+                                            if (t.getLore().contains(r.getLore())) {
+                                                p.addPotionEffect(r.getEffect());
+                                            }
                                         }
                                     }
                                 }

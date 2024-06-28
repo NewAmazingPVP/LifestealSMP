@@ -150,14 +150,14 @@ public class Utils {
                     List<String> lore = meta.getLore();
                     if (lore != null && lore.get(0).contains("Use To Craft Extra Hearts!")) {
                         lore.clear();
-                        lore.add(ChatColor.AQUA + "Use To Craft Extra Hearts!");
-                        lore.add(ChatColor.LIGHT_PURPLE + "Very Rare Drop From Mobs!");
+                        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Severed Mob Heart");
+                        lore.add(ChatColor.DARK_PURPLE + "Use To Craft Extra Hearts!");
                         meta.setLore(lore);
                         item.setItemMeta(meta);
                     } else if (lore != null && lore.get(0).contains("U$e To Cr")) {
                         lore.clear();
-                        lore.add(ChatColor.AQUA + "U$e To Cr" + ChatColor.MAGIC + "a" + ChatColor.AQUA + "ft Extra Hearts!" + ChatColor.MAGIC + "L");
-                        lore.add(ChatColor.LIGHT_PURPLE + "Rare Drop From Mobs!");
+                        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.MAGIC + "LL" + ChatColor.GOLD + ChatColor.BOLD + "Corrupted Mob Soul" + ChatColor.GOLD + ChatColor.MAGIC + "LL");
+                        lore.add(ChatColor.DARK_PURPLE + "U$e To Cr" + ChatColor.MAGIC + "a" + ChatColor.DARK_PURPLE + "ft Extra Hearts!" + ChatColor.MAGIC + "L");
                         meta.setLore(lore);
                         item.setItemMeta(meta);
                     }
