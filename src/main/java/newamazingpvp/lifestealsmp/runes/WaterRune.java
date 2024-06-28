@@ -21,7 +21,7 @@ public class WaterRune extends AbstractRune {
     private static final PotionEffect effect = new PotionEffect(PotionEffectType.WATER_BREATHING, 200, 0);
     private static final String lore = ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier());
     public WaterRune() {
-        super(name, mob, 1.0/10, lore, effect);
+        super(name, mob, 1.0/50, lore, effect);
     }
 
 }
