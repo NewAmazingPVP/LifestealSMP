@@ -13,7 +13,7 @@ public class PlayerBan implements Listener {
     public void onBan(PlayerKickEvent event){
         if(event.getCause() == PlayerKickEvent.Cause.BANNED){
             if(event.getReason().contains("appeal")) return;
-            event.setReason(event.getReason() + "You were banned for breaking a rule. If you feel you were unfairly banned make an appeal in discord. " + ChatColor.AQUA + discordURL);
+            event.setReason(event.getReason() + " You were banned for breaking a rule. If you feel you were unfairly banned make an appeal in discord. " + ChatColor.AQUA + discordURL);
         }
     }
 
@@ -21,7 +21,7 @@ public class PlayerBan implements Listener {
     public void onJoin(PlayerLoginEvent event){
         if(event.getResult() == PlayerLoginEvent.Result.KICK_BANNED){
             if(event.getKickMessage().contains("appeal")) return;
-            event.setKickMessage(event.getKickMessage() + "You were banned for breaking a rule. If you feel you were unfairly banned make an appeal in discord. " + ChatColor.AQUA + discordURL);
+            event.setKickMessage(event.getKickMessage() + " You were banned for breaking a rule. If you feel you were unfairly banned make an appeal in discord. " + ChatColor.AQUA + discordURL);
         }
     }
 }
