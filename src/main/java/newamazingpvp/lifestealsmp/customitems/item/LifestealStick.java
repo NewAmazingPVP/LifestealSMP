@@ -14,10 +14,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.HashMap;
 import java.util.Map;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static org.bukkit.Bukkit.getServer;
+
 public class LifestealStick implements Listener {
 
     private final Map<Player, CooldownManager> stickCooldowns = new HashMap<>();
-    private final double lifeStealStickCooldown = 2;
+    private final int lifeStealStickCooldown = 2;
 
     @EventHandler
     public void onPlayerHit(EntityDamageByEntityEvent event) {
@@ -49,6 +52,7 @@ public class LifestealStick implements Listener {
             damager.setHealth(newHealth);
             damager.playSound(damager.getLocation(), Sound.ENTITY_ELDER_GUARDIAN_AMBIENT, 2.0f, 2.0f);
             cooldown.setCooldown(lifeStealStickCooldown);
+            getServer().getScheduler().runTaskLater(lifestealSmp, () -> damager.setCooldown(damager.getInventory().getItemInMainHand().getType(), lifeStealStickCooldown*20), 1);
             stickCooldowns.put(damager, cooldown);
         } else {
             damager.sendMessage(ChatColor.RED + "You must wait " + cooldown.getRemainingSeconds() + " seconds before using the Lifesteal Stick again.");

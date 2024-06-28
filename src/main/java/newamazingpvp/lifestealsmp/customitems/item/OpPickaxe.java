@@ -2,6 +2,7 @@ package newamazingpvp.lifestealsmp.customitems.item;
 
 import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -14,6 +15,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.*;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static org.bukkit.Bukkit.getServer;
 
 public class OpPickaxe implements Listener {
     private final ArrayList<Material> blackList = new ArrayList<>(List.of(
@@ -46,15 +48,17 @@ public class OpPickaxe implements Listener {
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
         ItemStack item = player.getInventory().getItemInMainHand();
-        if(playerCooldowns.get(player.getUniqueId()) != null){
+        if (player.isSneaking()) return;
+        if(playerCooldowns.get(player.getUniqueId()) == null){
             playerCooldowns.put(player.getUniqueId(), new CooldownManager());
         }
-        if(playerCooldowns.get(player.getUniqueId()).isOnCooldown()) return;
-
         if (item.getType() == Material.NETHERITE_PICKAXE) {
             if (hasLore(item)) {
+                if(playerCooldowns.get(player.getUniqueId()).isOnCooldown()){
+                    player.sendMessage(ChatColor.RED + "You must wait " + playerCooldowns.get(player.getUniqueId()).getRemainingSeconds() + " seconds for the cooldown to finish before using the op pickaxe ability again.");
+                    return;
+                }
                 Block block = event.getBlock();
-                if (player.isSneaking()) return;
                 if (blackList.contains(block.getType()) || block.getType().toString().toLowerCase().contains("shulker_box"))
                     return;
                 breakBlocksAround(block, item);
@@ -62,6 +66,7 @@ public class OpPickaxe implements Listener {
                 event.setCancelled(true);
                 CooldownManager cooldown = playerCooldowns.get(player.getUniqueId());
                 cooldown.setCooldown(3.0);
+                getServer().getScheduler().runTaskLater(lifestealSmp, () -> event.getPlayer().setCooldown(item.getType(), 60), 1);
                 playerCooldowns.put(player.getUniqueId(), cooldown);
             }
         }

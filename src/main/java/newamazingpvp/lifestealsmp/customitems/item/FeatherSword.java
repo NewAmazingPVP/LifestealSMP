@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.customitems.item;
 
+import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -19,9 +20,12 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 import java.util.Map;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static org.bukkit.Bukkit.getServer;
+
 public class FeatherSword implements Listener {
-    private final Map<Player, Long> teleportCooldowns = new HashMap<>();
-    private final long teleportCooldownDuration = 5000;
+    private final Map<Player, CooldownManager> teleportCooldowns = new HashMap<>();
+    private final int teleportCooldownDuration = 5; // Cooldown duration in seconds
 
     @EventHandler
     public void onPlayerItemHeld(PlayerItemHeldEvent event) {
@@ -51,16 +55,15 @@ public class FeatherSword implements Listener {
     public void onPlayerRightClick(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) &&
-                event.hasItem() && event.hasItem() && event.getItem().getType() == Material.NETHERITE_SWORD) {
+                event.hasItem() && event.getItem().getType() == Material.NETHERITE_SWORD) {
             ItemMeta meta = event.getItem().getItemMeta();
             if (meta.getLore() == null) return;
             if (meta.getLore().toString().toLowerCase().contains("permanent speed")
                     && !player.getInventory().getItemInOffHand().toString().toLowerCase().contains("shield")) {
-                if (isTeleportCooldownExpired(player)) {
-                    //Vector direction = player.getLocation().getDirection();
-                    //direction.multiply(new Vector(10, 10, 10));
-                    //Location targetLocation = player.getLocation().add(direction);
 
+                CooldownManager cooldownManager = teleportCooldowns.getOrDefault(player, new CooldownManager());
+
+                if (!cooldownManager.isOnCooldown()) {
                     player.getLocation().getWorld().spawnParticle(Particle.CLOUD, player.getLocation(), 10);
                     player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 5.0f, 2.0f);
                     Vector velocity = player.getLocation().getDirection().multiply(3);
@@ -69,62 +72,19 @@ public class FeatherSword implements Listener {
                         velocity.setY(maxHeight);
                     }
                     player.setVelocity(velocity);
-                    setTeleportCooldown(player);
-
-                    //if (isSafeLocation(targetLocation)) {
-                    //    player.teleport(targetLocation);
-                    //    setTeleportCooldown(player);
-                    //} else {
-                    //    player.sendMessage(ChatColor.RED + "Teleport destination is blocked.");
-                    //    player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2.0f, 0.0f);
-                    //}
+                    cooldownManager.setCooldown(teleportCooldownDuration);
+                    getServer().getScheduler().runTaskLater(lifestealSmp, () -> event.getPlayer().setCooldown(event.getItem().getType(), teleportCooldownDuration*20), 1);
+                    teleportCooldowns.put(player, cooldownManager);
                 } else {
-                    player.sendMessage(ChatColor.RED + "You must wait " + cooldownRemainingTime(player) + " for the cooldown to finish before teleporting again.");
+                    player.sendMessage(ChatColor.RED + "You must wait " + cooldownManager.getRemainingSeconds() + " seconds for the cooldown to finish before teleporting again.");
                 }
             }
         }
     }
 
-
     private boolean isSafeLocation(Location location) {
         Block block = location.getBlock();
         return block.isEmpty() && block.getRelative(BlockFace.UP).isEmpty();
-    }
-
-    private boolean isTeleportCooldownExpired(Player player) {
-        if (teleportCooldowns.containsKey(player)) {
-            long lastTeleportTime = teleportCooldowns.get(player);
-            long currentTime = System.currentTimeMillis();
-            return currentTime - lastTeleportTime >= teleportCooldownDuration;
-        }
-        return true;
-    }
-
-    private String cooldownRemainingTime(Player player) {
-        return getString(player, teleportCooldowns, teleportCooldownDuration);
-    }
-
-    @NotNull
-    public static String getString(Player player, Map<Player, Long> teleportCooldowns, long teleportCooldownDuration) {
-        if (teleportCooldowns.containsKey(player)) {
-            long lastTeleportTime = teleportCooldowns.get(player);
-            long currentTime = System.currentTimeMillis();
-            long remainingCooldown = teleportCooldownDuration - (currentTime - lastTeleportTime);
-
-            if (remainingCooldown <= 0) {
-                return "Cooldown is over.";
-            }
-
-            int seconds = (int) (remainingCooldown / 1000);
-            return seconds + " seconds";
-        }
-
-        return "Cooldown is over.";
-    }
-
-
-    private void setTeleportCooldown(Player player) {
-        teleportCooldowns.put(player, System.currentTimeMillis());
     }
 
     private void giveSpeed(Player player) {
@@ -134,6 +94,4 @@ public class FeatherSword implements Listener {
     private void removeSpeed(Player player) {
         player.removePotionEffect(PotionEffectType.SPEED);
     }
-
-
 }

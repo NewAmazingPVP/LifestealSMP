@@ -17,10 +17,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static org.bukkit.Bukkit.getServer;
+
 public class InstaboomTnt implements Listener {
 
     private final Map<Player, CooldownManager> tntCooldowns = new HashMap<>();
-    private final double tntCooldownTime = 10.0;
+    private final int tntCooldownTime = 10;
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
@@ -43,6 +46,7 @@ public class InstaboomTnt implements Listener {
                 triggerInstaBoom(player, location);
                 triggerInstaBoomNONPLAYER(location);
                 cooldown.setCooldown(tntCooldownTime);
+                getServer().getScheduler().runTaskLater(lifestealSmp, () -> event.getPlayer().setCooldown(itemInMainHand.getType(), tntCooldownTime*20), 1);
                 tntCooldowns.put(player, cooldown);
                 updateItemStack(player, itemInMainHand);
             } else {
