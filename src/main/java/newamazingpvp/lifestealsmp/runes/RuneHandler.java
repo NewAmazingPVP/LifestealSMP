@@ -89,7 +89,7 @@ public class RuneHandler implements Listener {
                     }
                 }
             }
-        }.runTaskTimer(lifestealSmp, 0L, 200L);
+        }.runTaskTimer(lifestealSmp, 0L, 199L);
     }
 
     @EventHandler

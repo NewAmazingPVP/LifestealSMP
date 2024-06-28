@@ -20,10 +20,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static org.bukkit.Bukkit.getServer;
+
 public class TeleportBow implements Listener {
     private final Map<UUID, ItemStack> playerHeldItems = new HashMap<>();
     private final Map<Player, CooldownManager> teleportCooldowns = new HashMap<>();
-    private final double teleportCooldownDuration = 10.0; // Cooldown time in seconds
+    private final int teleportCooldownDuration = 10; // Cooldown time in seconds
 
     @EventHandler
     public void onPlayerUseBow(PlayerInteractEvent event) {
@@ -79,6 +82,7 @@ public class TeleportBow implements Listener {
                     shooter.teleport(arrowLocation);
                     playerHeldItems.remove(shooter.getUniqueId());
                     cooldown.setCooldown(teleportCooldownDuration);
+                    getServer().getScheduler().runTaskLater(lifestealSmp, () -> shooter.setCooldown(Material.BOW, teleportCooldownDuration*20), 1);
                     teleportCooldowns.put(shooter, cooldown);
                 } else {
                     shooter.sendMessage(ChatColor.RED + "You must wait " + cooldown.getRemainingSeconds() + " seconds before using the Teleport Bow again.");

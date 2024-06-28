@@ -18,7 +18,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.listener.SpawnProtection.isWithinSpawnRadius;
+import static org.bukkit.Bukkit.getServer;
 
 public class TntBow implements Listener {
     private final HashMap<UUID, ItemStack> playerHeldItems = new HashMap<>();
@@ -38,7 +40,7 @@ public class TntBow implements Listener {
         if (isBow(mainHandItem) || isBow(offHandItem)) {
             if (teleportCooldowns.get(shooter) != null && teleportCooldowns.get(shooter).isOnCooldown()) {
                 event.setCancelled(true);
-                shooter.sendMessage(ChatColor.RED + "You must wait " + teleportCooldowns.get(shooter).getRemainingSeconds() + " seconds for the cooldown to finish before using the TNT again.");
+                shooter.sendMessage(ChatColor.RED + "You must wait " + teleportCooldowns.get(shooter).getRemainingSeconds() + " seconds for the cooldown to finish before using the TNT bow again.");
             }
         }
     }
@@ -74,6 +76,7 @@ public class TntBow implements Listener {
                         teleportCooldowns.put(shooter, new CooldownManager());
                     } else {
                         teleportCooldowns.get(shooter).setCooldown(5);
+                        getServer().getScheduler().runTaskLater(lifestealSmp, () -> shooter.setCooldown(Material.BOW, 5*20), 1);
                     }
                 } else {
                     shooter.sendMessage(ChatColor.RED + "You must wait " + teleportCooldowns.get(shooter).getRemainingSeconds() + " for the cooldown to finish before using the TNT again.");
