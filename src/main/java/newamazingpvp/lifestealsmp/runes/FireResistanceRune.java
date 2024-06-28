@@ -13,7 +13,7 @@ public class FireResistanceRune extends AbstractRune {
     private static final String lore = ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier());
 
     public FireResistanceRune() {
-        super(name, mob, 1.0/125, lore, effect);
+        super(name, mob, 1.0/600, lore, effect);
     }
 
 

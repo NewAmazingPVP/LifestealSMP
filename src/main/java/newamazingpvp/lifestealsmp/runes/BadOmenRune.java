@@ -13,7 +13,7 @@ public class BadOmenRune extends AbstractRune {
     private static final String lore = ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier());
 
     public BadOmenRune() {
-        super(name, mob, 1.0/30, lore, effect);
+        super(name, mob, 1.0/120, lore, effect);
     }
 
 
