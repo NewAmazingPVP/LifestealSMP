@@ -108,10 +108,10 @@ public class SpawnProtection implements Listener {
     private void vicinityPvp(EntityDamageByEntityEvent event, Player damaged, Player damager) {
         if (damaged.getLocation().distance(Bukkit.getWorld("world").getSpawnLocation()) < 500 ||
                 damager.getLocation().distance(Bukkit.getWorld("world").getSpawnLocation()) < 500) {
-            damaged.sendMessage(ChatColor.RED + "PVP near the vicinity of spawn is discouraged, thus therefore both of you will take same damage regardless of your gear");
-            damager.sendMessage(ChatColor.RED + "PVP near the vicinity of spawn is discouraged, thus therefore both of you will take same damage regardless of your gear");
+            damaged.sendMessage(ChatColor.RED + "PVP near the vicinity of spawn is discouraged, thus therefore both of you will take " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "SAME DAMAGE" + ChatColor.RED + " regardless of your gear");
+            damager.sendMessage(ChatColor.RED + "PVP near the vicinity of spawn is discouraged, thus therefore both of you will take " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "SAME DAMAGE" + ChatColor.RED + " regardless of your gear");
             event.setCancelled(true);
-            damaged.damage(1.0, damager);
+            damaged.damage(1.0);
         }
     }
 
@@ -137,12 +137,12 @@ public class SpawnProtection implements Listener {
         }
     }
 
-    @EventHandler
+    /*@EventHandler
     public void hungerLose(FoodLevelChangeEvent e) {
         if (e.getEntity() instanceof Player && isWithinSpawnRadius(e.getEntity().getLocation())) {
             e.setCancelled(true);
         }
-    }
+    }*/
 
     @EventHandler
     public void spawnTNT(TNTPrimeEvent e) {

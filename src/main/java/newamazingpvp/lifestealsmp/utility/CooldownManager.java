@@ -41,6 +41,6 @@ public class CooldownManager {
     }
 
     public int getRemainingSeconds() {
-        return (int) ((cooldownEndTime - System.currentTimeMillis()) / 1000);
+        return (int) ((cooldownEndTime - System.currentTimeMillis()) / 1000) + 1;
     }
 }
