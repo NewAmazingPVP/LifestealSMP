@@ -187,4 +187,8 @@ commands:
     usage: /runes
     aliases:
       - runes
-
+  createtestnpc:
+    description: Test NPC
+    usage: /createtestnpc
+    permission: lifestealSMP.admin
+    default: op
