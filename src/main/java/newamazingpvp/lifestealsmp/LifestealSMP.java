@@ -2,8 +2,12 @@ package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
+import net.citizensnpcs.api.CitizensAPI;
+import net.citizensnpcs.api.trait.TraitInfo;
 import newamazingpvp.lifestealsmp.EndBossFight.EndBossCommands.BeaconTestCMD;
 import newamazingpvp.lifestealsmp.EndBossFight.BossTimeEvents.DeathBeaconEvent;
+import newamazingpvp.lifestealsmp.EndBossFight.EndBossCommands.NPCTestCommand;
+import newamazingpvp.lifestealsmp.EndBossFight.NPCTrates.TestNPCTrates;
 import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.MiniShadow.MiniShadowListeners.MiniShadowAttackPlayer;
 import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.MiniShadow.MiniShadowListeners.MiniShadowAttackedByPlayer;
 import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.Shadow.ShadowListeners.ShadowAttackedByPlayer;
@@ -166,6 +170,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         registerBasicRecipes();
         doEvents();
         Bukkit.getScheduler().runTaskTimer(this, TimeManager::timeBasedEvents, 20, 20);
+
+
         //TODO: Use this for beta things
         if (isAutoUploadEnabled()) {
             //getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
@@ -199,6 +205,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new GUI(), this);
             getServer().getPluginManager().registerEvents(new Default(), this);
             getCommand("openmagicstaffmenu").setExecutor(new MagicStaffMenu());
+            getCommand("createtestnpc").setExecutor(new NPCTestCommand());
 
 
             //Comet Trident
