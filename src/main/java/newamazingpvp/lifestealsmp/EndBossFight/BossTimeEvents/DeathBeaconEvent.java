@@ -52,7 +52,7 @@ public class DeathBeaconEvent implements Listener {
 
         player.sendMessage("Break 2");
 
-        if(clickedBlockLoc == deathBeaconLocRED || clickedBlockLoc == deathBeaconLocYellow || clickedBlockLoc == deathBeaconLocGreen || clickedBlockLoc == deathBeaconLocBlue){
+        //if(clickedBlockLoc == deathBeaconLocRED || clickedBlockLoc == deathBeaconLocYellow || clickedBlockLoc == deathBeaconLocGreen || clickedBlockLoc == deathBeaconLocBlue){
 
             player.sendMessage("Break 3");
 
@@ -72,7 +72,7 @@ public class DeathBeaconEvent implements Listener {
 
             player.sendMessage("Break 4");
 
-        }
+        //}
 
     }
 
