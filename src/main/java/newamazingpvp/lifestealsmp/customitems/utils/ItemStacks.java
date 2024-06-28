@@ -94,7 +94,7 @@ public class ItemStacks {
         ItemMeta meta = opPickaxe.getItemMeta();
         meta.setDisplayName(ChatColor.GOLD + "" +ChatColor.BOLD + "God Pickaxe");
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.GOLD + "" + ChatColor.BOLD +" Special Ability:");
+        lore.add(ChatColor.GOLD + "" + ChatColor.BOLD +"Special Ability:");
         lore.add(ChatColor.DARK_PURPLE + "Mine to break 3x3!");
         meta.setLore(lore);
         opPickaxe.setItemMeta(meta);
