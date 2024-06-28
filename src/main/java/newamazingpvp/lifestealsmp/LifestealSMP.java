@@ -24,6 +24,7 @@ import newamazingpvp.lifestealsmp.allyteams.TeamListener;
 import newamazingpvp.lifestealsmp.blacklistener.*;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.command.unused.JailPlayer;
+import newamazingpvp.lifestealsmp.command.unused.Somber;
 import newamazingpvp.lifestealsmp.customitems.magicstaffs.utils.GUI;
 import newamazingpvp.lifestealsmp.customitems.magicstaffs.abilities.Default;
 import newamazingpvp.lifestealsmp.customitems.armor.QuarryArmor;
@@ -75,6 +76,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
     public static boolean silentMode = true;
     private FileConfiguration config;
     public static Essentials essentials;
+    public static boolean isSmp = true;
 
     public static World SMPworld = Bukkit.getWorld("world");
 
@@ -126,7 +128,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("betterban").setExecutor(new BetterBan());
         getCommand("unbanall").setExecutor(new UnbanAll());
         getCommand("rune").setExecutor(new RunesCommand());
-        Bukkit.getPluginManager().registerEvents(new RuneHandler(), lifestealSmp);
+        //Bukkit.getPluginManager().registerEvents(new RuneHandler(), lifestealSmp);
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
         getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
@@ -170,7 +172,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         registerBasicRecipes();
         doEvents();
         Bukkit.getScheduler().runTaskTimer(this, TimeManager::timeBasedEvents, 20, 20);
-
+        if(config.get("Discord.Smp") != null){
+            isSmp = config.getBoolean("Discord.Smp");
+        }
 
         //TODO: Use this for beta things
         if (isAutoUploadEnabled()) {

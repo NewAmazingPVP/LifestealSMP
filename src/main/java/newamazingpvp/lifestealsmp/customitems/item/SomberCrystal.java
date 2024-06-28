@@ -2,164 +2,166 @@ package newamazingpvp.lifestealsmp.customitems.item;
 
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.server.PluginDisableEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.scheduler.BukkitRunnable;
+
+import newamazingpvp.lifestealsmp.utility.CooldownManager;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static newamazingpvp.lifestealsmp.customitems.item.FeatherSword.getString;
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class SomberCrystal implements Listener {
 
-    private static final Map<Player, Long> somberCooldowns = new HashMap<>();
-    private final long somberMaxTime = 120000;//120000
-    @EventHandler
-    public void playerHitPlayer(EntityDamageByEntityEvent e) {
+    private static final Map<String, CooldownManager> somberCooldowns = new HashMap<>();
+    private static final double SOMBER_MAX_TIME_SECONDS = 120;
 
-
-        Entity damagedPlayer = e.getEntity();
-        Location loc = e.getDamager().getLocation();
-
-        if (e.getDamager() instanceof Player) {
-            Player player = (Player) e.getDamager();
-            ItemStack itemInHand = player.getInventory().getItemInMainHand();
-            ItemMeta meta = itemInHand.getItemMeta();
-            if (meta != null && meta.getLore() != null && meta.getLore().toString().contains("Disables totems of undying on someone for 2min")) {
-                if (damagedPlayer instanceof Player) {
-
-
-
-                    setSomberTimer((Player) damagedPlayer);
-                    for (Player onlineplayer : Bukkit.getOnlinePlayers()) {
-                        onlineplayer.playSound(loc, Sound.BLOCK_GLASS_BREAK, 2.0f, 1.0f);
-                        onlineplayer.playSound(loc, Sound.BLOCK_SCULK_SHRIEKER_SHRIEK, 2.0f, 0.0f);
-
-
-
-
-
-                    }
-
-                    if (itemInHand.getAmount() > 1) {
-                        itemInHand.setAmount(itemInHand.getAmount() - 1);
-                        player.getInventory().setItemInMainHand(itemInHand);
+    public SomberCrystal() {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    if (isCooldownExpired(player)) {
+                        addTotems(player);
                     } else {
-                        player.getInventory().setItemInMainHand(null);
+                        removeTotems(player);
                     }
                 }
             }
-        }
+        }.runTaskTimer(lifestealSmp, 0L, 20L);
     }
 
-
     @EventHandler
-    public void playerMove(PlayerMoveEvent e){
-        Player player = e.getPlayer();
-        if(!isTeleportCooldownExpired(player)){
-            removeTotems(player);
-        }else{
-            addTotems(player);
+    public void playerHitPlayer(EntityDamageByEntityEvent e) {
+        if (!(e.getDamager() instanceof Player) || !(e.getEntity() instanceof Player)) return;
+
+        Player player = (Player) e.getDamager();
+        Player damagedPlayer = (Player) e.getEntity();
+        ItemStack itemInHand = player.getInventory().getItemInMainHand();
+        ItemMeta meta = itemInHand.getItemMeta();
+
+        if (meta != null && meta.hasLore() && meta.getLore().toString().contains("Disables totems of undying on someone for 2min")) {
+            setSomberTimer(damagedPlayer);
+            Location loc = player.getLocation();
+            for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+                onlinePlayer.playSound(loc, Sound.BLOCK_GLASS_BREAK, 2.0f, 1.0f);
+                onlinePlayer.playSound(loc, Sound.BLOCK_SCULK_SHRIEKER_SHRIEK, 2.0f, 0.0f);
+            }
+
+            itemInHand.setAmount(itemInHand.getAmount() - 1);
+            player.getInventory().setItemInMainHand(itemInHand.getAmount() > 0 ? itemInHand : null);
         }
     }
 
     @EventHandler
     public void onPlayerRightClick(PlayerInteractEvent e) {
+        handleDisabledItemInteraction(e.getPlayer(), e.getItem(), e);
+    }
 
-        Player player = e.getPlayer();
-        ItemStack itemInHand = player.getItemInHand();
-
-        if (itemInHand != null && itemInHand.getType() == Material.CHARCOAL && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 2min")) {
-            player.playSound(player.getLocation(), Sound.BLOCK_SCULK_SHRIEKER_SHRIEK, 1.0f, 2.0f);
-            e.setCancelled(true);
-            player.sendMessage(ChatColor.RED + "Disabled for " + cooldownRemainingTime(player)+".");
-        }
-
+    @EventHandler
+    public void onPlayerDropItem(PlayerDropItemEvent e){
+        handleDisabledItemInteraction(e.getPlayer(), e.getItemDrop().getItemStack(), e);
     }
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e) {
+        handleDisabledItemInteraction((Player) e.getWhoClicked(), e.getCurrentItem(), e);
+    }
 
-        ItemStack itemInHand = e.getCurrentItem();
-        Player player = (Player) e.getWhoClicked();
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent e) {
+        Player player = e.getPlayer();
+        if (!isCooldownExpired(player)) {
+            removeTotems(player);
+        }
+    }
 
-        if (itemInHand != null && itemInHand.getType() == Material.CHARCOAL && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 2min")) {
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent e) {
+        Player player = e.getPlayer();
+        if (!isCooldownExpired(player)) {
+            removeTotems(player);
+        } else {
+            addTotems(player);
+        }
+    }
+
+    @EventHandler
+    public void onPluginDisable(PluginDisableEvent e) {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            if (!isCooldownExpired(player)) {
+                removeTotems(player);
+            }
+        }
+        somberCooldowns.clear();
+    }
+
+    private void handleDisabledItemInteraction(Player player, ItemStack itemInHand, Cancellable e) {
+        if (itemInHand != null && itemInHand.getType() == Material.CHARCOAL && somberCooldowns.get(player.getName()) != null && somberCooldowns.get(player.getName()).isOnCooldown()) {
             player.playSound(player.getLocation(), Sound.BLOCK_SCULK_SHRIEKER_SHRIEK, 1.0f, 2.0f);
             e.setCancelled(true);
-            player.sendMessage(ChatColor.RED + "Disabled for " + cooldownRemainingTime(player)+".");
+            player.sendMessage(ChatColor.RED + "Disabled for " + getRemainingCooldownTime(player) + " seconds.");
         }
-
     }
 
+    private void removeTotems(Player player) {
+        updateInventoryItems(player, Material.TOTEM_OF_UNDYING, totemDisabledItem());
+    }
 
+    private void addTotems(Player player) {
+        updateInventoryItems(player, Material.CHARCOAL, new ItemStack(Material.TOTEM_OF_UNDYING));
+    }
 
-    private static void removeTotems(Player player){
-
+    private void updateInventoryItems(Player player, Material targetMaterial, ItemStack replacementItem) {
         for (int i = 0; i < player.getInventory().getSize(); i++) {
             ItemStack item = player.getInventory().getItem(i);
-
-            if (item!= null && item.getType() == Material.TOTEM_OF_UNDYING) {
-                player.getInventory().setItem(i, new ItemStack(totemDisabledItem()));
-                break; // Stop checking once we've replaced the first Totem
-
+            if (item != null && item.getType() == targetMaterial) {
+                player.getInventory().setItem(i, replacementItem);
+                //this is to prevent too much performance loss
+                break;
             }
         }
     }
 
-    private static void addTotems(Player player){
-
-        for (int i = 0; i < player.getInventory().getSize(); i++) {
-            ItemStack item = player.getInventory().getItem(i);
-
-            if (item!= null && item.getType() == Material.CHARCOAL && item.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 2min")) {
-                player.getInventory().setItem(i, new ItemStack(Material.TOTEM_OF_UNDYING));
-                break; // Stop checking once we've replaced the first Totem
-
-            }
-        }
+    private boolean isCooldownExpired(Player player) {
+        CooldownManager cooldownManager = somberCooldowns.get(player.getName());
+        return cooldownManager == null || !cooldownManager.isOnCooldown();
     }
-
-
-
-    private boolean isTeleportCooldownExpired(Player player) {
-        if (somberCooldowns.containsKey(player)) {
-            long lastTeleportTime = somberCooldowns.get(player);
-            long currentTime = System.currentTimeMillis();
-            return currentTime - lastTeleportTime >= somberMaxTime;
-        }
-        return true;
-    }
-
 
     public static void setSomberTimer(Player player) {
-        somberCooldowns.put(player, System.currentTimeMillis());
+        CooldownManager cooldownManager = new CooldownManager(SOMBER_MAX_TIME_SECONDS);
+        somberCooldowns.put(player.getName(), cooldownManager);
     }
 
-    private String cooldownRemainingTime(Player player) {
-        return getString(player, somberCooldowns, (long) somberMaxTime);
+    private int getRemainingCooldownTime(Player player) {
+        CooldownManager cooldownManager = somberCooldowns.get(player.getName());
+        return cooldownManager != null ? cooldownManager.getRemainingSeconds() : 0;
     }
 
-    public static ItemStack totemDisabledItem() {
-
-        ItemStack powerStick = new ItemStack(Material.CHARCOAL);
-        ItemMeta SI = powerStick.getItemMeta();
-        SI.addEnchant(Enchantment.UNBREAKING, 1, false);
-        SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        SI.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 2min");
-        SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        SI.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
-        powerStick.setItemMeta(SI);
-
-        return powerStick;
+    private static ItemStack totemDisabledItem() {
+        ItemStack item = new ItemStack(Material.CHARCOAL);
+        //this is to prevent too much performance loss
+        /*ItemMeta meta = item.getItemMeta();
+        if (meta != null) {
+            meta.addEnchant(Enchantment.UNBREAKING, 1, false);
+            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE);
+            meta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 2min");
+            item.setItemMeta(meta);
+        }*/
+        return item;
     }
-
 }

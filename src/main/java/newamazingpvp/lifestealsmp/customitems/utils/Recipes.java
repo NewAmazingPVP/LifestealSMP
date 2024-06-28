@@ -99,7 +99,7 @@ public class Recipes {
         ShapelessRecipe featherSwordRecipe = new ShapelessRecipe(featherSword, createFeatherSword());
         featherSwordRecipe.addIngredient(2, Material.FEATHER);
         featherSwordRecipe.addIngredient(2, Material.NETHERITE_INGOT);
-        featherSwordRecipe.addIngredient(1, Material.DIAMOND_SWORD);
+        featherSwordRecipe.addIngredient(1, Material.NETHERITE_SWORD);
         featherSwordRecipe.addIngredient(2, Material.TOTEM_OF_UNDYING);
         featherSwordRecipe.addIngredient(2, Material.NETHER_STAR);
         customItems.add(createFeatherSword());
@@ -110,7 +110,7 @@ public class Recipes {
         ShapelessRecipe tropChopAxeRecipe = new ShapelessRecipe(tropChopAxe, createCustomAxe());
         tropChopAxeRecipe.addIngredient(1, Material.STICK);
         tropChopAxeRecipe.addIngredient(1, Material.NETHERITE_INGOT);
-        tropChopAxeRecipe.addIngredient(3, Material.DIAMOND_AXE);
+        tropChopAxeRecipe.addIngredient(2, Material.NETHERITE_AXE);
         customItems.add(createCustomAxe());
         shapelessRecipes.put(createCustomAxe(), tropChopAxeRecipe);
         Bukkit.addRecipe(tropChopAxeRecipe);
@@ -120,7 +120,7 @@ public class Recipes {
         opPickaxeRecipe.addIngredient(2, Material.DIAMOND_BLOCK);
         opPickaxeRecipe.addIngredient(1, Material.GOLD_BLOCK);
         opPickaxeRecipe.addIngredient(5, Material.NETHERITE_INGOT);
-        opPickaxeRecipe.addIngredient(1, Material.DIAMOND_PICKAXE);
+        opPickaxeRecipe.addIngredient(1, Material.NETHERITE_PICKAXE);
         customItems.add(createOpPickaxe());
         shapelessRecipes.put(createOpPickaxe(), opPickaxeRecipe);
         Bukkit.addRecipe(opPickaxeRecipe);

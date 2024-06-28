@@ -11,6 +11,7 @@ import net.dv8tion.jda.api.interactions.commands.build.SlashCommandData;
 
 import java.awt.*;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.isSmp;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordEmbedStats;
 
@@ -18,6 +19,7 @@ public class Stats extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
+        if(!isSmp) return;
         if (event.getAuthor().isBot() || event.isWebhookMessage()) {
             return;
         }
@@ -30,6 +32,7 @@ public class Stats extends ListenerAdapter {
 
     @Override
     public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
+        if(!isSmp) return;
         if (event.getName().equals("stats")) {
             String playerName = event.getOption("player").getAsString();
             processStats(playerName, event.getChannel().getId());

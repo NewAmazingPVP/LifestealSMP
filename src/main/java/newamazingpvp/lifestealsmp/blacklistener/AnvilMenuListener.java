@@ -12,6 +12,8 @@ import org.bukkit.inventory.ItemStack;
 
 public class AnvilMenuListener implements Listener {
 
+
+
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
@@ -54,7 +56,7 @@ public class AnvilMenuListener implements Listener {
                     player.sendMessage(ChatColor.RED + "This item can't be put in an anvil!");
                     player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1.0f, 2.0f);
                 }
-                if(itemName.contains("rune")){
+                if(itemName.toLowerCase().contains("rune")){
                     event.setCancelled(true);
                     player.sendMessage(ChatColor.RED + "This item can't be put in an anvil!");
                     player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1.0f, 2.0f);

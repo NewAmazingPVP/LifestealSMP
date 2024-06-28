@@ -110,7 +110,8 @@ public class SpawnProtection implements Listener {
                 damager.getLocation().distance(Bukkit.getWorld("world").getSpawnLocation()) < 500) {
             damaged.sendMessage(ChatColor.RED + "PVP near the vicinity of spawn is discouraged, thus therefore both of you will take same damage regardless of your gear");
             damager.sendMessage(ChatColor.RED + "PVP near the vicinity of spawn is discouraged, thus therefore both of you will take same damage regardless of your gear");
-            event.setDamage(1.0);
+            event.setCancelled(true);
+            damaged.damage(1.0, damager);
         }
     }
 
