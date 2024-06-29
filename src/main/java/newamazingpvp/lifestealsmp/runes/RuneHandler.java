@@ -27,11 +27,10 @@ import java.util.Random;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class RuneHandler implements Listener {
-    private final List<Rune> runes;
+    public static final List<Rune> runes = new ArrayList<>();;
     public static Inventory inv = Bukkit.createInventory(null, 27, ChatColor.GOLD + "Runes");
 
     public RuneHandler() {
-        runes = new ArrayList<>();
         runes.add(new WaterRune());
         runes.add(new SpeedRune());
         runes.add(new HasteRune());
@@ -110,7 +109,7 @@ public class RuneHandler implements Listener {
         }
     }
 
-    public ItemStack createRuneItem(Rune rune){
+    public static ItemStack createRuneItem(Rune rune){
         ItemStack runeItem = new ItemStack(Material.PAPER);
         ItemMeta meta = runeItem.getItemMeta();
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',rune.getName()));
