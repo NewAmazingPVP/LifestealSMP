@@ -19,7 +19,10 @@ public class AnvilMenuListener implements Listener {
     public void onInventoryClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         InventoryType inv = event.getInventory().getType();
-        InventoryType clickInv = event.getClickedInventory().getType();
+        InventoryType clickInv = null;
+        if(event.getClickedInventory() != null){
+            clickInv = event.getClickedInventory().getType();
+        }
         InventoryView view = event.getView();
         if (view.getType() == InventoryType.ANVIL || inv == InventoryType.ANVIL || clickInv == InventoryType.ANVIL) {
             ItemStack clickedItem = event.getCurrentItem();
