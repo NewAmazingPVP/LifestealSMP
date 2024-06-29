@@ -23,6 +23,8 @@ public class MusicBox implements Listener {
     @EventHandler
     public void onPlayerRightClick(PlayerInteractEvent event) {
         Player player = event.getPlayer();
+        if(!event.hasItem()) return;
+        if(!event.getItem().hasItemMeta()) return;
         ItemMeta meta = event.getItem().getItemMeta();
         ItemStack item = player.getInventory().getItemInMainHand();
 
