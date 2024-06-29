@@ -31,14 +31,12 @@ public class RuneHandler implements Listener {
     public static Inventory inv = Bukkit.createInventory(null, 27, ChatColor.GOLD + "Runes");
 
     public RuneHandler() {
-        runes.add(new WaterRune());
-        runes.add(new SpeedRune());
-        runes.add(new HasteRune());
         runes.add(new AbsorptionRune());
         runes.add(new BadOmenRune());
         runes.add(new ConduitPowerRune());
         runes.add(new DolphinsGraceRune());
         runes.add(new FireResistanceRune());
+        runes.add(new HasteRune());
         runes.add(new HealthBoostRune());
         runes.add(new HealthRune());
         runes.add(new HeroOfTheVillageRune());
@@ -49,7 +47,9 @@ public class RuneHandler implements Listener {
         runes.add(new ResistanceRune());
         runes.add(new SaturationRune());
         runes.add(new SlowFallingRune());
+        runes.add(new SpeedRune());
         runes.add(new StrengthRune());
+        runes.add(new WaterRune());
         for(Rune r: runes){
             inv.addItem(createRuneItem(r));
         }
