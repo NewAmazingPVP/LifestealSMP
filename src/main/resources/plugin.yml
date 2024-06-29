@@ -192,3 +192,8 @@ commands:
     usage: /createtestnpc
     permission: lifestealSMP.admin
     default: op
+  adminrune:
+    description: Runes for admins
+    usage: /adminrune
+    permission: lifestealSMP.admin
+    default: op
