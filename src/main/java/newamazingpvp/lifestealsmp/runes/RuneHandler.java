@@ -94,20 +94,27 @@ public class RuneHandler implements Listener {
     @EventHandler
     public void onMobDeath(EntityDeathEvent event) {
         Entity entity = event.getEntity();
-        if(event.getEntity().getKiller() == null) return;
+        if (event.getEntity().getKiller() == null) return;
         Player player = event.getEntity().getKiller();
         Random random = new Random();
 
+        ItemStack mainHandItem = player.getInventory().getItemInMainHand();
+
+        int lootingLevel = mainHandItem.getEnchantmentLevel(Enchantment.LOOTING);
+
         for (Rune rune : runes) {
-            if(entity.getType() == rune.getMob()) {
-                if (random.nextDouble() < rune.getDropRate()) {
+            if (entity.getType() == rune.getMob()) {
+                double adjustedDropRate = rune.getDropRate() * (1 + 0.10 * lootingLevel);
+
+                if (random.nextDouble() < adjustedDropRate) {
                     ItemStack runeItem = createRuneItem(rune);
                     entity.getWorld().dropItemNaturally(entity.getLocation(), runeItem);
-                    player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "RUNE DROP!" + ChatColor.GOLD + " " + ChatColor.translateAlternateColorCodes('&',rune.getName()) + ": " + rune.getLore());
+                    player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "RUNE DROP!" + ChatColor.GOLD + " " + ChatColor.translateAlternateColorCodes('&', rune.getName()) + ": " + rune.getLore());
                 }
             }
         }
     }
+
 
     public static ItemStack createRuneItem(Rune rune){
         ItemStack runeItem = new ItemStack(Material.PAPER);
