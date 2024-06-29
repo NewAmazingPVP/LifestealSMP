@@ -129,7 +129,7 @@ public class Utils {
         } else if (onlinePlayers > 14) {
             triggerActions("setview 8 3", "chunky continue");
         } else {
-            triggerActions("setview 10 6", "chunky continue");
+            triggerActions("setview 10 5", "chunky continue");
         }
         isTriggered = false;
     }

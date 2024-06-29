@@ -13,8 +13,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-import static newamazingpvp.lifestealsmp.LifestealSMP.isSmp;
-import static newamazingpvp.lifestealsmp.LifestealSMP.registerCustomItemsAndRunes;
+import static newamazingpvp.lifestealsmp.LifestealSMP.*;
 import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.*;
 import static org.bukkit.Bukkit.getServer;
@@ -43,10 +42,10 @@ public class TimeManager {
             for(World w : Bukkit.getWorlds()){
                 w.setDifficulty(Difficulty.HARD);
             }
-            sendDiscordNewsMessage("<@&1047168915500966048> Custom items and runes are now available! Map size expanded to 25k by 25k and difficulty set to hard. " +
+            getServer().getScheduler().runTaskLater(lifestealSmp, () -> sendDiscordNewsMessage("<@&1047168915500966048> Custom items and runes are now available! Map size expanded to 25k by 25k and difficulty set to hard. " +
                     "Runes give permanent effects while in inventory and custom items has special abilities. " +
                     "Various buffs/nerfs have been made so do /runes /recipes for more info! " +
-                    "\n\n**End will open next weekend in " + formatDuration(Duration.between(SEASON_START_TIME.plusDays(14), ZonedDateTime.now(ZoneId.of("America/New_York")))) + "**", "1032411739351941120");
+                    "\n\n**End will open next weekend in " + formatDuration(Duration.between(ZonedDateTime.now(ZoneId.of("America/New_York")), SEASON_START_TIME.plusDays(14).plusHours(2))) + "**", "1032411739351941120"), 1200);
         }
 
         if (isTimePassed(SEASON_START_TIME, currentTime, 3, 14, 0, 0) &&
@@ -229,6 +228,6 @@ public class TimeManager {
         long minutes = duration.toMinutes() % 60;
         long seconds = duration.getSeconds() % 60;
 
-        return String.format("%d days, %d hours, %d minutes, %d seconds", days, hours, minutes, seconds);
+        return String.format("%d days, %d hours, %d minutes, %d seconds", days, hours, minutes, seconds).replace("-", "");
     }
 }
