@@ -16,7 +16,7 @@ public class AdminRunes implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(sender instanceof Player){
             Player p = (Player) sender;
-            Inventory inv = Bukkit.createInventory(null, 27, ChatColor.GOLD + "Admin");
+            Inventory inv = Bukkit.createInventory(null, 54, ChatColor.GOLD + "Admin");
             for(Rune r: runes){
                 inv.addItem(createRuneItem(r));
             }

@@ -28,7 +28,7 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class RuneHandler implements Listener {
     public static final List<Rune> runes = new ArrayList<>();;
-    public static Inventory inv = Bukkit.createInventory(null, 27, ChatColor.GOLD + "Runes");
+    public static Inventory inv = Bukkit.createInventory(null, 54, ChatColor.GOLD + "Runes");
 
     public RuneHandler() {
         runes.add(new AbsorptionRune());
@@ -43,12 +43,14 @@ public class RuneHandler implements Listener {
         runes.add(new InvisibilityRune());
         runes.add(new JumpBoostRune());
         runes.add(new LuckRune());
+        runes.add(new RaidOmenRune());
         runes.add(new RegenerationRune());
         runes.add(new ResistanceRune());
         runes.add(new SaturationRune());
         runes.add(new SlowFallingRune());
         runes.add(new SpeedRune());
         runes.add(new StrengthRune());
+        runes.add(new TrialOmenRune());
         runes.add(new WaterRune());
         for(Rune r: runes){
             inv.addItem(createRuneItem(r));
