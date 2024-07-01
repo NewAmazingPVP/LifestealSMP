@@ -1,10 +1,13 @@
 package newamazingpvp.lifestealsmp.command;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Statistic;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.Arrays;
 
 public class AddHP implements CommandExecutor {
 

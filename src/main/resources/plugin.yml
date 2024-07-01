@@ -197,3 +197,8 @@ commands:
     usage: /adminrune
     permission: lifestealSMP.admin
     default: op
+  stat:
+    description: Stat for nerds
+    usage: /stat
+    permission: lifestealSMP.admin
+    default: op
