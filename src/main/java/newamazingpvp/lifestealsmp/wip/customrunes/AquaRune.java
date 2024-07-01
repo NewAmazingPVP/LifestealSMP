@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.runes.customrunes;
+package newamazingpvp.lifestealsmp.wip.customrunes;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
-import static newamazingpvp.lifestealsmp.runes.customrunes.RunesDrops.*;
+import static newamazingpvp.lifestealsmp.wip.customrunes.RunesDrops.*;
 
 public class GiveCustomItem implements CommandExecutor, TabCompleter {
 

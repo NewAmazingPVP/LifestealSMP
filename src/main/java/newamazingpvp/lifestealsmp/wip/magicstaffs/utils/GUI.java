@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.customitems.magicstaffs.utils;
+package newamazingpvp.lifestealsmp.wip.magicstaffs.utils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -10,8 +10,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import static newamazingpvp.lifestealsmp.customitems.magicstaffs.utils.Itemstacks.magicStaffAir;
-import static newamazingpvp.lifestealsmp.customitems.magicstaffs.utils.Itemstacks.magicStaffDefault;
+import static newamazingpvp.lifestealsmp.wip.magicstaffs.utils.Itemstacks.magicStaffAir;
+import static newamazingpvp.lifestealsmp.wip.magicstaffs.utils.Itemstacks.magicStaffDefault;
 
 public class GUI implements Listener {
 

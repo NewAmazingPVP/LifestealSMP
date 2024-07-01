@@ -8,8 +8,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
-import static newamazingpvp.lifestealsmp.customitems.magicstaffs.utils.Itemstacks.magicStaffAir;
-import static newamazingpvp.lifestealsmp.customitems.magicstaffs.utils.Itemstacks.magicStaffDefault;
+import static newamazingpvp.lifestealsmp.wip.magicstaffs.utils.Itemstacks.magicStaffAir;
+import static newamazingpvp.lifestealsmp.wip.magicstaffs.utils.Itemstacks.magicStaffDefault;
 import static newamazingpvp.lifestealsmp.wip.mcbingo.gui.BingoGUIItems.orangeGlassGUI;
 
 public class MagicStaffMenu implements CommandExecutor {

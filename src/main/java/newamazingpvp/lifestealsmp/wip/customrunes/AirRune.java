@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.runes.customrunes;
+package newamazingpvp.lifestealsmp.wip.customrunes;
 
 
 import com.destroystokyo.paper.event.player.PlayerJumpEvent;
