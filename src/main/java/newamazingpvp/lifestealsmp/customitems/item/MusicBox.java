@@ -16,7 +16,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import static newamazingpvp.lifestealsmp.wip.mcbingo.gui.BingoGUIItems.orangeGlassGUI;
+import static newamazingpvp.lifestealsmp.unused.mcbingo.gui.BingoGUIItems.orangeGlassGUI;
 
 public class MusicBox implements Listener {
 
