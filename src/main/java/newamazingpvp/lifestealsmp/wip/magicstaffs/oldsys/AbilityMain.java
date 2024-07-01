@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.customitems.magicstaffs.oldsys;
+package newamazingpvp.lifestealsmp.wip.magicstaffs.oldsys;
 
 import org.bukkit.Location;
 import org.bukkit.Material;

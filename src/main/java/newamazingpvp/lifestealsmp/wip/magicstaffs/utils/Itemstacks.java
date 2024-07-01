@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.customitems.magicstaffs.utils;
+package newamazingpvp.lifestealsmp.wip.magicstaffs.utils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.customitems.magicstaffs.abilities;
+package newamazingpvp.lifestealsmp.wip.magicstaffs.abilities;
 
 import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.*;
@@ -16,8 +16,8 @@ import org.bukkit.util.Vector;
 import java.util.HashMap;
 import java.util.Map;
 
-import static newamazingpvp.lifestealsmp.customitems.magicstaffs.utils.BeamTexture.beamTextureMaker;
-import static newamazingpvp.lifestealsmp.customitems.magicstaffs.utils.StaffSound.playMagicStaffSound;
+import static newamazingpvp.lifestealsmp.wip.magicstaffs.utils.BeamTexture.beamTextureMaker;
+import static newamazingpvp.lifestealsmp.wip.magicstaffs.utils.StaffSound.playMagicStaffSound;
 
 public class Air implements Listener {
 

@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.visualeffects;
+package newamazingpvp.lifestealsmp.wip.visualeffects;
 
 import io.papermc.paper.event.entity.EntityMoveEvent;
 import org.bukkit.Bukkit;
