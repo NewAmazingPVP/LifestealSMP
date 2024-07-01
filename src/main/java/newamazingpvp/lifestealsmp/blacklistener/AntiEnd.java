@@ -20,7 +20,6 @@ import static newamazingpvp.lifestealsmp.variables.Misc.isEndFightEnabled;
 
 public class AntiEnd implements Listener {
 
-    public static final ZonedDateTime END_OPEN_TIME = SEASON_START_TIME.plusDays(14);
     @EventHandler
     public void portalLeave(PlayerPortalEvent e) {
         if(e.getTo().getWorld().getEnvironment() == World.Environment.THE_END && !isEndEnabled()) {
@@ -39,7 +38,8 @@ public class AntiEnd implements Listener {
     }*/
 
     public static boolean isEndEnabled(){
-        return isWeekPassed(2, getWeeksPassed(SEASON_START_TIME, ZonedDateTime.now(ZoneId.of("America/New_York"))));
+        //return isWeekPassed(2, getWeeksPassed(SEASON_START_TIME, ZonedDateTime.now(ZoneId.of("America/New_York"))));
+        return isTimePassed(END_OPEN_TIME);
     }
 
     @EventHandler
