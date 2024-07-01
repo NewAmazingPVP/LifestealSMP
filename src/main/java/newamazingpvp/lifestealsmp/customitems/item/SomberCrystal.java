@@ -111,19 +111,19 @@ public class SomberCrystal implements Listener {
     }
 
     private void handleDisabledItemInteraction(Player player, ItemStack itemInHand, Cancellable e) {
-        if (itemInHand != null && itemInHand.getType() == Material.CHARCOAL && somberCooldowns.get(player.getName()) != null && somberCooldowns.get(player.getName()).isOnCooldown()) {
+        if (itemInHand != null && itemInHand.getType() == Material.BARRIER && somberCooldowns.get(player.getName()) != null && somberCooldowns.get(player.getName()).isOnCooldown()) {
             player.playSound(player.getLocation(), Sound.BLOCK_SCULK_SHRIEKER_SHRIEK, 1.0f, 2.0f);
             e.setCancelled(true);
-            player.sendMessage(ChatColor.RED + "Disabled for " + getRemainingCooldownTime(player) + " seconds.");
+            player.sendMessage(ChatColor.RED + "Totem disabled for " + getRemainingCooldownTime(player) + " seconds.");
         }
     }
 
     private void removeTotems(Player player) {
-        updateInventoryItems(player, Material.TOTEM_OF_UNDYING, totemDisabledItem());
+        updateInventoryItems(player, Material.TOTEM_OF_UNDYING, new ItemStack(Material.BARRIER));
     }
 
     private void addTotems(Player player) {
-        updateInventoryItems(player, Material.CHARCOAL, new ItemStack(Material.TOTEM_OF_UNDYING));
+        updateInventoryItems(player, Material.BARRIER, new ItemStack(Material.TOTEM_OF_UNDYING));
     }
 
     private void updateInventoryItems(Player player, Material targetMaterial, ItemStack replacementItem) {
@@ -153,7 +153,7 @@ public class SomberCrystal implements Listener {
     }
 
     private static ItemStack totemDisabledItem() {
-        ItemStack item = new ItemStack(Material.CHARCOAL);
+        ItemStack item = new ItemStack(Material.BARRIER);
         //this is to prevent too much performance loss
         /*ItemMeta meta = item.getItemMeta();
         if (meta != null) {
