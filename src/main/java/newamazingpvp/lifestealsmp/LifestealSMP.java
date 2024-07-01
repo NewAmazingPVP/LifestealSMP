@@ -1,6 +1,8 @@
 package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
+import com.google.common.io.ByteArrayDataInput;
+import com.google.common.io.ByteStreams;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -162,6 +164,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new AntiEnd(), this);
         getServer().getPluginManager().registerEvents(new ServerOpening(), this);
         getServer().getPluginManager().registerEvents(new PlayerBan(), this);
+        getServer().getPluginManager().registerEvents(new InfiniteStorage(), this);
         startTPSTracking();
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
         getCommand("trade").setExecutor(new Trade());
@@ -267,6 +270,10 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
                     config.setColored(true);
                     config.setSplitCodeBlockForLinks(false);
                     config.setAllowLinkEmbeds(true);
+                    config.addFilter(logItem -> {
+                        String message = logItem.getMessage();
+                        return message.contains("not pass event");
+                    });
                     config.mapLoggerName("net.dv8tion.jda", "JDA");
                     config.mapLoggerName("net.minecraft.server.MinecraftServer", "Server");
                     config.mapLoggerNameFriendly("net.minecraft.server", s -> "Server/" + s);
@@ -301,10 +308,15 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             return;
         }
 
-        for (Player p : Bukkit.getOnlinePlayers()) {
-            cancelCombatData(p);
-            removeEnemies(p);
-            p.kick(Component.text("Proxy is restarting.... Please reconnect").color(NamedTextColor.DARK_RED));
+        ByteArrayDataInput dataInput = ByteStreams.newDataInput(bytes);
+        String receivedMessage = dataInput.readUTF();
+
+        if (";p".equals(receivedMessage)) {
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                cancelCombatData(p);
+                removeEnemies(p);
+                p.kick(Component.text("Proxy is restarting.... Please reconnect").color(NamedTextColor.DARK_RED));
+            }
         }
     }
 

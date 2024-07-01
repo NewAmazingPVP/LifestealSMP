@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Random;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 
 public class RuneHandler implements Listener {
     public static final List<Rune> runes = new ArrayList<>();
@@ -105,8 +106,9 @@ public class RuneHandler implements Listener {
 
                 if (random.nextDouble() < adjustedDropRate) {
                     ItemStack runeItem = createRuneItem(rune);
-                    entity.getWorld().dropItemNaturally(entity.getLocation(), runeItem);
+                    //entity.getWorld().dropItemNaturally(entity.getLocation(), runeItem);
                     player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "RUNE DROP!" + ChatColor.GOLD + " " + ChatColor.translateAlternateColorCodes('&', rune.getName()) + ": " + rune.getLore());
+                    addItemOrDrop(player, runeItem, ChatColor.RED + "Rune was dropped because inventory was full!");
                 }
             }
         }
