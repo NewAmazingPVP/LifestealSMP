@@ -72,11 +72,11 @@ public class TntBow implements Listener {
                     spawnIgnitedTNT(arrowLocation, shooter);
                     ItemStack item = playerHeldItems.get(shooter.getUniqueId());
                     playerHeldItems.remove(shooter.getUniqueId());
-                    if(!teleportCooldowns.containsKey(shooter)) {
+                    if (!teleportCooldowns.containsKey(shooter)) {
                         teleportCooldowns.put(shooter, new CooldownManager());
                     } else {
                         teleportCooldowns.get(shooter).setCooldown(5);
-                        getServer().getScheduler().runTaskLater(lifestealSmp, () -> shooter.setCooldown(Material.BOW, 5*20), 1);
+                        getServer().getScheduler().runTaskLater(lifestealSmp, () -> shooter.setCooldown(Material.BOW, 5 * 20), 1);
                     }
                 } else {
                     shooter.sendMessage(ChatColor.RED + "You must wait " + teleportCooldowns.get(shooter).getRemainingSeconds() + " for the cooldown to finish before using the TNT again.");

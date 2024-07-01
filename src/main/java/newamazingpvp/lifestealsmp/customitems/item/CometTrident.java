@@ -4,9 +4,7 @@ import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,7 +14,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,7 +21,6 @@ public class CometTrident implements Listener {
 
     private final Map<Player, Entity> linkPlayerWithComet = new HashMap<>();
     private final Map<Player, CooldownManager> wandCooldowns = new HashMap<>();
-
 
 
     @EventHandler
@@ -37,10 +33,10 @@ public class CometTrident implements Listener {
         Vector direction = player.getEyeLocation().getDirection();
         double range = 0;
         World world = player.getWorld();
-        Location areaAbovePlayer = player.getLocation().add(0,10,0);
+        Location areaAbovePlayer = player.getLocation().add(0, 10, 0);
 
         if ((e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) && e.hasItem() && e.hasItem() && e.getItem().getType() == Material.TRIDENT) {
-            if (meta.getLore().toString().contains("Summons a comet that will fly into")){
+            if (meta.getLore().toString().contains("Summons a comet that will fly into")) {
 
 
                 e.setCancelled(true);
@@ -58,8 +54,6 @@ public class CometTrident implements Listener {
                 world.spawnEntity(spawnLoc, entityType);
                 player.sendMessage("The player is looking up/down by " + pitch + " degrees.");
                 player.sendMessage("Direction player is looking is" + direction);*/
-
-
 
 
                 new ItemStack(Material.MACE);

@@ -11,7 +11,6 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.util.Vector;
 
-import java.awt.*;
 import java.awt.Color;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
@@ -60,7 +59,7 @@ public class EndFightRestrictions implements Listener {
                 e.disallow(PlayerLoginEvent.Result.KICK_OTHER, "Sorry you cannot join during end fight!");
                 lifestealSmp.getServer().broadcastMessage(e.getPlayer().getName() + " tried during end fight but isn't whitelisted");
             }*/
-            if (!(endFightParticipants.contains(e.getPlayer().getName()))){
+            if (!(endFightParticipants.contains(e.getPlayer().getName()))) {
                 e.getPlayer().teleport(endSpawn);
                 e.getPlayer().sendMessage(ChatColor.AQUA + "You joined during the server final end fight and were teleported right to it!");
                 //teleport player to end spawnfor fight
@@ -107,15 +106,14 @@ public class EndFightRestrictions implements Listener {
                     survivor = player;
                 }
             }
-            if(survivors == 1){
+            if (survivors == 1) {
                 lifestealSmp.getServer().broadcastMessage(ChatColor.GOLD + "" + ChatColor.BOLD + survivor.getName() + " has won the end fight!");
                 survivor.setInvulnerable(true);
                 survivor.getWorld().strikeLightningEffect(survivor.getLocation());
                 World w = survivor.getWorld();
                 int diameter = 10;
-                for (int i = 0; i < 15; i++)
-                {
-                    Location newLocation = survivor.getLocation().add(new Vector(Math.random()-0.5, 0, Math.random()-0.5).multiply(diameter));
+                for (int i = 0; i < 15; i++) {
+                    Location newLocation = survivor.getLocation().add(new Vector(Math.random() - 0.5, 0, Math.random() - 0.5).multiply(diameter));
                     w.spawnEntity(newLocation, EntityType.FIREWORK_ROCKET);
                 }
                 survivor.setInvulnerable(false);

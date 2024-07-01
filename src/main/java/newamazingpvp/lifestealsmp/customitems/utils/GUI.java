@@ -1,6 +1,9 @@
 package newamazingpvp.lifestealsmp.customitems.utils;
 
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -33,10 +36,10 @@ public class GUI {
 
     public static void openRecipeDetailGUI(Player player, ItemStack item) {
         String name = item.getItemMeta().getDisplayName();
-        if(name.isEmpty()){
+        if (name.isEmpty()) {
             name = item.getDisplayName();
         }
-        if(name.isEmpty()){
+        if (name.isEmpty()) {
             name = item.getType().name();
         }
         Inventory gui = Bukkit.createInventory(null, 27, ChatColor.GOLD + "Recipe for " + name);

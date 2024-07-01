@@ -7,7 +7,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.essentials;
 import static newamazingpvp.lifestealsmp.allyteams.AlliesManager.isPlayerInAllyChat;

@@ -58,7 +58,7 @@ public class PlayerLagMsg implements Listener {
                 }
             }, 20);
         }
-        if (event.getMessage().toLowerCase().contains("hit me")){
+        if (event.getMessage().toLowerCase().contains("hit me")) {
             Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
                 @Override
                 public void run() {

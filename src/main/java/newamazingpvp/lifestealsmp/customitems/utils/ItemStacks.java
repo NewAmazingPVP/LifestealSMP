@@ -4,7 +4,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
@@ -92,9 +91,9 @@ public class ItemStacks {
     public static ItemStack createOpPickaxe() {
         ItemStack opPickaxe = new ItemStack(Material.NETHERITE_PICKAXE);
         ItemMeta meta = opPickaxe.getItemMeta();
-        meta.setDisplayName(ChatColor.GOLD + "" +ChatColor.BOLD + "God Pickaxe");
+        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "God Pickaxe");
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.GOLD + "" + ChatColor.BOLD +"Special Ability:");
+        lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Special Ability:");
         lore.add(ChatColor.DARK_PURPLE + "Mine to break 3x3!");
         meta.setLore(lore);
         opPickaxe.setItemMeta(meta);

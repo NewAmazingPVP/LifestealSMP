@@ -40,7 +40,6 @@ public class TradeManager {
     );
 
 
-
     public static void initiateTrade(Player sender, Player receiver) {
         if (pendingTrades.containsKey(receiver) && pendingTrades.get(receiver).equals(sender)) {
             openTradeGui(sender, receiver);
@@ -95,7 +94,7 @@ public class TradeManager {
         }*/
         tradeAccepted.put(player, true);
         if (tradeAccepted.get(otherPlayer)) {
-            if(traders.containsValue(otherPlayer)) {
+            if (traders.containsValue(otherPlayer)) {
                 finalizeTrade(player, otherPlayer);
             } else {
                 finalizeTrade(otherPlayer, player);
@@ -103,22 +102,22 @@ public class TradeManager {
         }
     }
 
-    public static void handleTradeCancellation(Player player){
+    public static void handleTradeCancellation(Player player) {
         tradeAccepted.put(player, false);
     }
 
     public static Player getOtherPlayer(Player player) {
-        if(traders.get(player) != null){
+        if (traders.get(player) != null) {
             return traders.get(player);
         }
-        if(traders.containsValue(player)){
+        if (traders.containsValue(player)) {
             for (Map.Entry<Player, Player> entry : traders.entrySet()) {
                 if (entry.getValue().equals(player)) {
                     return entry.getKey();
                 }
             }
         }
-            return null;
+        return null;
     }
 
     private static void finalizeTrade(Player player1, Player player2) {
@@ -128,12 +127,12 @@ public class TradeManager {
             ItemStack item1 = tradeInventory.getItem(i);
 
             if (item1 != null && firstFourColumns.contains(i)) {
-                if(!(item1.getType() == Material.GREEN_STAINED_GLASS_PANE) && !(item1.getType() == Material.RED_STAINED_GLASS_PANE) ) {
+                if (!(item1.getType() == Material.GREEN_STAINED_GLASS_PANE) && !(item1.getType() == Material.RED_STAINED_GLASS_PANE)) {
                     addItemOrDrop(player1, item1, ChatColor.AQUA + "Some items were dropped due to inventory being full");
                 }
             }
             if (item1 != null && lastFourColumns.contains(i)) {
-                if(!(item1.getType() == Material.GREEN_STAINED_GLASS_PANE) && !(item1.getType() == Material.RED_STAINED_GLASS_PANE)) {
+                if (!(item1.getType() == Material.GREEN_STAINED_GLASS_PANE) && !(item1.getType() == Material.RED_STAINED_GLASS_PANE)) {
                     addItemOrDrop(player2, item1, ChatColor.AQUA + "Some items were dropped due to inventory being full");
                 }
             }
@@ -156,18 +155,18 @@ public class TradeManager {
 
     public static void cancelTrade(Player player) {
         Inventory tradeInventory = tradeInventories.get(player);
-        if(tradeInventory == null) return;
+        if (tradeInventory == null) return;
 
         for (int i = 0; i < 54; i++) {
             ItemStack item1 = tradeInventory.getItem(i);
 
             if (item1 != null && traders.containsValue(player) && firstFourColumns.contains(i)) {
-                if(!(item1.getType() == Material.GREEN_STAINED_GLASS_PANE) && !(item1.getType() == Material.RED_STAINED_GLASS_PANE) ) {
+                if (!(item1.getType() == Material.GREEN_STAINED_GLASS_PANE) && !(item1.getType() == Material.RED_STAINED_GLASS_PANE)) {
                     addItemOrDrop(player, item1, ChatColor.AQUA + "Some items were dropped due to inventory being full");
                 }
             }
             if (item1 != null && traders.containsKey(player) && lastFourColumns.contains(i)) {
-                if(!(item1.getType() == Material.GREEN_STAINED_GLASS_PANE) && !(item1.getType() == Material.RED_STAINED_GLASS_PANE)) {
+                if (!(item1.getType() == Material.GREEN_STAINED_GLASS_PANE) && !(item1.getType() == Material.RED_STAINED_GLASS_PANE)) {
                     addItemOrDrop(player, item1, ChatColor.AQUA + "Some items were dropped due to inventory being full");
                 }
             }

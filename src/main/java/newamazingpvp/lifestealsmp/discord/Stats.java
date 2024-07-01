@@ -1,13 +1,13 @@
 package newamazingpvp.lifestealsmp.discord;
 
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.Statistic;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.interactions.commands.build.SlashCommandData;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.Statistic;
 
 import java.awt.*;
 
@@ -19,7 +19,7 @@ public class Stats extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        if(!isSmp) return;
+        if (!isSmp) return;
         if (event.getAuthor().isBot() || event.isWebhookMessage()) {
             return;
         }
@@ -32,7 +32,7 @@ public class Stats extends ListenerAdapter {
 
     @Override
     public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
-        if(!isSmp) return;
+        if (!isSmp) return;
         if (event.getName().equals("stats")) {
             String playerName = event.getOption("player").getAsString();
             processStats(playerName, event.getChannel().getId());

@@ -10,7 +10,7 @@ import static newamazingpvp.lifestealsmp.runes.RuneHandler.inv;
 public class RunesCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender instanceof Player){
+        if (sender instanceof Player) {
             Player p = (Player) sender;
             p.openInventory(inv);
             return true;

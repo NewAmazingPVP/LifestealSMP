@@ -10,9 +10,6 @@ import org.bukkit.event.inventory.*;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.HashMap;
-import java.util.UUID;
-
 import static newamazingpvp.lifestealsmp.utility.TradeManager.*;
 
 public class TradeListener implements Listener {

@@ -42,19 +42,19 @@ public class OpPickaxe implements Listener {
             Material.BEE_NEST
     ));
 
-    private HashMap<UUID, CooldownManager> playerCooldowns = new HashMap<>();
+    private final HashMap<UUID, CooldownManager> playerCooldowns = new HashMap<>();
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
         ItemStack item = player.getInventory().getItemInMainHand();
         if (player.isSneaking()) return;
-        if(playerCooldowns.get(player.getUniqueId()) == null){
+        if (playerCooldowns.get(player.getUniqueId()) == null) {
             playerCooldowns.put(player.getUniqueId(), new CooldownManager());
         }
         if (item.getType() == Material.NETHERITE_PICKAXE) {
             if (hasLore(item)) {
-                if(playerCooldowns.get(player.getUniqueId()).isOnCooldown()){
+                if (playerCooldowns.get(player.getUniqueId()).isOnCooldown()) {
                     player.sendMessage(ChatColor.RED + "You must wait " + playerCooldowns.get(player.getUniqueId()).getRemainingSeconds() + " seconds for the cooldown to finish before using the op pickaxe ability again.");
                     return;
                 }

@@ -1,11 +1,7 @@
 package newamazingpvp.lifestealsmp.runes;
 
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
-
-import java.util.List;
 
 public abstract class AbstractRune implements Rune {
     private final String name;
@@ -38,12 +34,12 @@ public abstract class AbstractRune implements Rune {
     }
 
     @Override
-    public String getLore(){
+    public String getLore() {
         return lore;
     }
 
     @Override
-    public PotionEffect getEffect(){
+    public PotionEffect getEffect() {
         return effect;
     }
 
@@ -62,7 +58,7 @@ public abstract class AbstractRune implements Rune {
         return formattedKey.toString().trim();
     }
 
-    public static String formatAmplifier(int amplifier){
+    public static String formatAmplifier(int amplifier) {
         switch (amplifier) {
             case (0):
                 return "I";

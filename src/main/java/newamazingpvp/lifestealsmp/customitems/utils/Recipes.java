@@ -10,11 +10,10 @@ import org.bukkit.inventory.ShapelessRecipe;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.customitems.utils.GUI.*;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
-import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.somberCrystal;
 
 public class Recipes {
 
-    public static void registerBasicRecipes(){
+    public static void registerBasicRecipes() {
         ItemStack extraHeart = new ItemStack(extraHeart());
         ShapedRecipe extraHeartRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "extra_heart"), extraHeart);
         extraHeartRecipe.shape("C C", "DSD", " N ");
@@ -72,6 +71,7 @@ public class Recipes {
         shapelessRecipes.put(createReviveBeacon(), reviveBeaconRecipe);
         Bukkit.addRecipe(reviveBeaconRecipe);
     }
+
     public static void registerCustomRecipes() {
         NamespacedKey recipeKey = new NamespacedKey(lifestealSmp, "teleporting_bow");
         ShapelessRecipe customBowRecipe = new ShapelessRecipe(recipeKey, createCustomBow());

@@ -7,12 +7,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 
 public class AnvilMenuListener implements Listener {
-
 
 
     @EventHandler
@@ -20,7 +18,7 @@ public class AnvilMenuListener implements Listener {
         Player player = (Player) event.getWhoClicked();
         InventoryType inv = event.getInventory().getType();
         InventoryType clickInv = null;
-        if(event.getClickedInventory() != null){
+        if (event.getClickedInventory() != null) {
             clickInv = event.getClickedInventory().getType();
         }
         InventoryView view = event.getView();
@@ -62,7 +60,7 @@ public class AnvilMenuListener implements Listener {
                     player.sendMessage(ChatColor.RED + "This item can't be put in an anvil!");
                     player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1.0f, 2.0f);
                 }
-                if(itemName.toLowerCase().contains("rune")){
+                if (itemName.toLowerCase().contains("rune")) {
                     event.setCancelled(true);
                     player.sendMessage(ChatColor.RED + "This item can't be put in an anvil!");
                     player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1.0f, 2.0f);

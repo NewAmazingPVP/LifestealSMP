@@ -15,7 +15,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -73,7 +72,7 @@ public class FeatherSword implements Listener {
                     }
                     player.setVelocity(velocity);
                     cooldownManager.setCooldown(teleportCooldownDuration);
-                    getServer().getScheduler().runTaskLater(lifestealSmp, () -> event.getPlayer().setCooldown(event.getItem().getType(), teleportCooldownDuration*20), 1);
+                    getServer().getScheduler().runTaskLater(lifestealSmp, () -> event.getPlayer().setCooldown(event.getItem().getType(), teleportCooldownDuration * 20), 1);
                     teleportCooldowns.put(player, cooldownManager);
                 } else {
                     player.sendMessage(ChatColor.RED + "You must wait " + cooldownManager.getRemainingSeconds() + " seconds for the cooldown to finish before teleporting again.");

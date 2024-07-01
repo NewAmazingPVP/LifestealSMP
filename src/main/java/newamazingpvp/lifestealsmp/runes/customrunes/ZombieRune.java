@@ -1,6 +1,5 @@
 package newamazingpvp.lifestealsmp.runes.customrunes;
 
-import newamazingpvp.lifestealsmp.runes.customrunes.RuneSample;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;

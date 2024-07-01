@@ -46,7 +46,7 @@ public class InstaboomTnt implements Listener {
                 triggerInstaBoom(player, location);
                 triggerInstaBoomNONPLAYER(location);
                 cooldown.setCooldown(tntCooldownTime);
-                getServer().getScheduler().runTaskLater(lifestealSmp, () -> event.getPlayer().setCooldown(itemInMainHand.getType(), tntCooldownTime*20), 1);
+                getServer().getScheduler().runTaskLater(lifestealSmp, () -> event.getPlayer().setCooldown(itemInMainHand.getType(), tntCooldownTime * 20), 1);
                 tntCooldowns.put(player, cooldown);
                 updateItemStack(player, itemInMainHand);
             } else {
@@ -76,7 +76,7 @@ public class InstaboomTnt implements Listener {
         }
     }
 
-//TODO:This works but the entity never stops flying
+    //TODO:This works but the entity never stops flying
     public void triggerInstaBoomNONPLAYER(Location location) {
         World world = location.getWorld();
         if (world != null) {
@@ -85,10 +85,10 @@ public class InstaboomTnt implements Listener {
 
                 //world.getNearbyEntities(location, 3);
 
-                List<Entity> nearbyEntitys = (List<Entity>) world.getNearbyEntities(location,3,3,3);
+                List<Entity> nearbyEntitys = (List<Entity>) world.getNearbyEntities(location, 3, 3, 3);
                 for (Entity nearbyEntity : nearbyEntitys) {
 
-                    if(!(nearbyEntity  instanceof  Player)){
+                    if (!(nearbyEntity instanceof Player)) {
                         Vector direction = nearbyEntity.getLocation().toVector().subtract(location.toVector()).normalize();
                         Vector velocity = direction.multiply(5);
                         if (velocity.getY() > 1.0) {
@@ -96,7 +96,6 @@ public class InstaboomTnt implements Listener {
                         }
                         nearbyEntity.setVelocity(velocity);
                     }
-
 
 
                 }

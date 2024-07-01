@@ -86,8 +86,6 @@ public class MagicStaffMenu implements CommandExecutor {
             player.openInventory(bingoCardGUI);
 
 
-
-
         }
         return true;
     }
