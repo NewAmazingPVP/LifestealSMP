@@ -12,7 +12,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import static newamazingpvp.lifestealsmp.wip.mcbingo.gui.BingoGUIItems.*;
+import static newamazingpvp.lifestealsmp.unused.mcbingo.gui.BingoGUIItems.*;
 
 public class RecipeBook implements Listener {
 
