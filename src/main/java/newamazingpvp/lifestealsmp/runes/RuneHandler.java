@@ -1,19 +1,14 @@
 package newamazingpvp.lifestealsmp.runes;
 
-import newamazingpvp.lifestealsmp.runes.Rune;
-import newamazingpvp.lifestealsmp.runes.WaterRune;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.block.data.type.Fire;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -27,7 +22,7 @@ import java.util.Random;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class RuneHandler implements Listener {
-    public static final List<Rune> runes = new ArrayList<>();;
+    public static final List<Rune> runes = new ArrayList<>();
     public static Inventory inv = Bukkit.createInventory(null, 54, ChatColor.GOLD + "Runes");
 
     public RuneHandler() {
@@ -52,15 +47,15 @@ public class RuneHandler implements Listener {
         runes.add(new StrengthRune());
         runes.add(new TrialOmenRune());
         runes.add(new WaterRune());
-        for(Rune r: runes){
+        for (Rune r : runes) {
             inv.addItem(createRuneItem(r));
         }
-        new BukkitRunnable(){
+        new BukkitRunnable() {
             @Override
             public void run() {
                 for (Player p : Bukkit.getOnlinePlayers()) {
                     for (ItemStack t : p.getInventory().getContents()) {
-                        if(t != null) {
+                        if (t != null) {
                             if (t.hasItemMeta()) {
                                 if (t.hasLore()) {
                                     ItemMeta meta = t.getItemMeta();
@@ -118,10 +113,10 @@ public class RuneHandler implements Listener {
     }
 
 
-    public static ItemStack createRuneItem(Rune rune){
+    public static ItemStack createRuneItem(Rune rune) {
         ItemStack runeItem = new ItemStack(Material.PAPER);
         ItemMeta meta = runeItem.getItemMeta();
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',rune.getName()));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', rune.getName()));
         meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
         List<String> lore = new ArrayList<>();

@@ -39,7 +39,7 @@ public class JoinLeave implements Listener {
             event.setJoinMessage("");
             getServer().dispatchCommand(getServer().getConsoleSender(), "vanish " + player.getName());
         } else {
-            if(essentials.getUser(event.getPlayer()).getNickname() != null) {
+            if (essentials.getUser(event.getPlayer()).getNickname() != null) {
                 event.setJoinMessage(essentials.getUser(event.getPlayer()).getNickname() + ChatColor.GOLD + " joined the game!");
             }
         }
@@ -50,8 +50,8 @@ public class JoinLeave implements Listener {
                 if (essentials.getUser(player.getUniqueId()).getNickname() != null && essentials.getUser(player.getUniqueId()).getNickname().equals(player.getName())) {
                     setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW);
                 }
-                if(essentials.getUser(player.getUniqueId()).getNickname() != null && !essentials.getUser(player.getUniqueId()).getNickname().equals(player.getName())){
-                    if(!essentials.getUser(player.getUniqueId()).getNickname().contains(player.getName())){
+                if (essentials.getUser(player.getUniqueId()).getNickname() != null && !essentials.getUser(player.getUniqueId()).getNickname().equals(player.getName())) {
+                    if (!essentials.getUser(player.getUniqueId()).getNickname().contains(player.getName())) {
                         setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW);
                     }
                 }

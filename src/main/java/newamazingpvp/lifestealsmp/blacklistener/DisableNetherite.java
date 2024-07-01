@@ -1,7 +1,6 @@
 package newamazingpvp.lifestealsmp.blacklistener;
 
 import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -9,9 +8,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
-
-import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 
 public class DisableNetherite implements Listener {
     @EventHandler
@@ -39,10 +35,11 @@ public class DisableNetherite implements Listener {
             player.sendMessage(ChatColor.RED + "Why did you try breaking a rule and wasting resources!? Do /rules");
         }
     }
+
     @EventHandler
-    public void onInventoryClick(InventoryClickEvent event){
+    public void onInventoryClick(InventoryClickEvent event) {
         if (event.getCurrentItem() != null && (event.getCurrentItem().getType() == Material.NETHERITE_CHESTPLATE
-        || event.getCurrentItem().getType() == Material.NETHERITE_LEGGINGS ||
+                || event.getCurrentItem().getType() == Material.NETHERITE_LEGGINGS ||
                 event.getCurrentItem().getType() == Material.NETHERITE_HELMET ||
                 event.getCurrentItem().getType() == Material.NETHERITE_BOOTS)) {
             event.setCancelled(true);

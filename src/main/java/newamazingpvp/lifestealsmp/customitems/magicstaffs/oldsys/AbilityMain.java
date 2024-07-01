@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.customitems.magicstaffs.oldsys;
 
-import org.bukkit.*;
+import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -16,8 +17,6 @@ import org.bukkit.util.Vector;
 public class AbilityMain implements Listener {
 
 
-
-
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player attacker = event.getPlayer();
@@ -26,47 +25,42 @@ public class AbilityMain implements Listener {
         if (event.getAction().name().contains("LEFT_CLICK") && event.getItem() != null) {
             if (itemInHand != null && itemInHand.hasItemMeta()) {
 
-                    if (event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
+                if (event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
 
 
-                            Location location = attacker.getEyeLocation().add(0, 0.2, 0);
-                            Vector attackerLookDir = attacker.getLocation().getDirection().multiply(0.1);
+                    Location location = attacker.getEyeLocation().add(0, 0.2, 0);
+                    Vector attackerLookDir = attacker.getLocation().getDirection().multiply(0.1);
 
 
-                            Vector direction = attacker.getEyeLocation().getDirection();
-                            double range = 15;
-                            Location targetLocation = attacker.getEyeLocation().clone();
+                    Vector direction = attacker.getEyeLocation().getDirection();
+                    double range = 15;
+                    Location targetLocation = attacker.getEyeLocation().clone();
 
-                            for (int i = 0; i < range; i++) {
-                                targetLocation.add(direction);
+                    for (int i = 0; i < range; i++) {
+                        targetLocation.add(direction);
 
-                                Entity target = getTargetEntityAtLocation(targetLocation);
-                                if (target != null) {
-                                    if (target instanceof Entity) {
-                                        if (event.getItem().getType() == Material.STICK) {
+                        Entity target = getTargetEntityAtLocation(targetLocation);
+                        if (target != null) {
+                            if (target instanceof Entity) {
+                                if (event.getItem().getType() == Material.STICK) {
 
-                                            //Methods for each staff ability
-
-
+                                    //Methods for each staff ability
 
 
-
-
-
-                                        }
-                                    }
-                                    break;
-                                }
-
-                                // Target location is obstructed by a block
-                                if (targetLocation.getBlock().getType().isSolid()) {
-                                    break;
                                 }
                             }
+                            break;
+                        }
+
+                        // Target location is obstructed by a block
+                        if (targetLocation.getBlock().getType().isSolid()) {
+                            break;
                         }
                     }
                 }
             }
+        }
+    }
 
 
     private Entity getTargetEntityAtLocation(Location location) {

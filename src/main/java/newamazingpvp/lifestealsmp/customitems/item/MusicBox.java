@@ -16,15 +16,15 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import static newamazingpvp.lifestealsmp.wip.mcbingo.gui.BingoGUIItems.*;
+import static newamazingpvp.lifestealsmp.wip.mcbingo.gui.BingoGUIItems.orangeGlassGUI;
 
 public class MusicBox implements Listener {
 
     @EventHandler
     public void onPlayerRightClick(PlayerInteractEvent event) {
         Player player = event.getPlayer();
-        if(!event.hasItem()) return;
-        if(!event.getItem().hasItemMeta()) return;
+        if (!event.hasItem()) return;
+        if (!event.getItem().hasItemMeta()) return;
         ItemMeta meta = event.getItem().getItemMeta();
         ItemStack item = player.getInventory().getItemInMainHand();
 
@@ -67,7 +67,7 @@ public class MusicBox implements Listener {
             if (itemInHand != null && itemInHand.getType() == Material.BARRIER && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.RED + "" + ChatColor.BOLD + "Stop Music")) {
                 stopMusic(player);
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 0.0f);
-                player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "[Music Box] " + ChatColor.GREEN + "" + ChatColor.BOLD + "Stopped Music");
+                player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "[Music Box] " + ChatColor.GREEN + ChatColor.BOLD + "Stopped Music");
 
             }
 
@@ -75,97 +75,97 @@ public class MusicBox implements Listener {
             if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_13 && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Disc 13")) {
                 stopMusic(player);
                 player.playSound(player.getLocation(), Sound.MUSIC_DISC_13, 100.0f, 1.0f);
-                chatMusic(player,"Disc 13");
+                chatMusic(player, "Disc 13");
             }
 
             if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_CAT && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Cat")) {
                 stopMusic(player);
                 player.playSound(player.getLocation(), Sound.MUSIC_DISC_CAT, 100.0f, 1.0f);
-                chatMusic(player,"Cat");
+                chatMusic(player, "Cat");
             }
 
             if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_BLOCKS && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Blocks")) {
                 stopMusic(player);
                 player.playSound(player.getLocation(), Sound.MUSIC_DISC_BLOCKS, 100.0f, 1.0f);
-                chatMusic(player,"Blocks");
+                chatMusic(player, "Blocks");
             }
 
             if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_CHIRP && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Chirp")) {
                 stopMusic(player);
                 player.playSound(player.getLocation(), Sound.MUSIC_DISC_CHIRP, 100.0f, 1.0f);
-                chatMusic(player,"Chirp");
+                chatMusic(player, "Chirp");
             }
 
             if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_FAR && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Far")) {
                 stopMusic(player);
                 player.playSound(player.getLocation(), Sound.MUSIC_DISC_FAR, 100.0f, 1.0f);
-                chatMusic(player,"Far");
+                chatMusic(player, "Far");
             }
 
             if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_MALL && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Mall")) {
                 stopMusic(player);
                 player.playSound(player.getLocation(), Sound.MUSIC_DISC_MALL, 100.0f, 1.0f);
-                chatMusic(player,"Mall");
+                chatMusic(player, "Mall");
             }
 
             if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_MELLOHI && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Mellohi")) {
                 stopMusic(player);
                 player.playSound(player.getLocation(), Sound.MUSIC_DISC_MELLOHI, 100.0f, 1.0f);
-                chatMusic(player,"Mellohi");
+                chatMusic(player, "Mellohi");
             }
 
             if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_STAL && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Stal")) {
                 stopMusic(player);
                 player.playSound(player.getLocation(), Sound.MUSIC_DISC_STAL, 100.0f, 1.0f);
-                chatMusic(player,"Stal");
+                chatMusic(player, "Stal");
             }
 
             if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_STRAD && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Strad")) {
                 stopMusic(player);
                 player.playSound(player.getLocation(), Sound.MUSIC_DISC_STRAD, 100.0f, 1.0f);
-                chatMusic(player,"Stard");
+                chatMusic(player, "Stard");
             }
 
             if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_WARD && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Ward")) {
                 stopMusic(player);
                 player.playSound(player.getLocation(), Sound.MUSIC_DISC_WARD, 100.0f, 1.0f);
-                chatMusic(player,"Ward");
+                chatMusic(player, "Ward");
             }
 
             if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_11 && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Disc 11")) {
                 stopMusic(player);
                 player.playSound(player.getLocation(), Sound.MUSIC_DISC_11, 100.0f, 1.0f);
-                chatMusic(player,"Disc 11");
+                chatMusic(player, "Disc 11");
             }
 
             if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_WAIT && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Wait")) {
                 stopMusic(player);
                 player.playSound(player.getLocation(), Sound.MUSIC_DISC_WAIT, 100.0f, 1.0f);
-                chatMusic(player,"Wait");
+                chatMusic(player, "Wait");
             }
 
             if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_OTHERSIDE && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Otherside")) {
                 stopMusic(player);
                 player.playSound(player.getLocation(), Sound.MUSIC_DISC_OTHERSIDE, 100.0f, 1.0f);
-                chatMusic(player,"Otherside");
+                chatMusic(player, "Otherside");
             }
 
             if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_RELIC && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Relic")) {
                 stopMusic(player);
                 player.playSound(player.getLocation(), Sound.MUSIC_DISC_RELIC, 100.0f, 1.0f);
-                chatMusic(player,"Relic");
+                chatMusic(player, "Relic");
             }
 
             if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_5 && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Disc 5")) {
                 stopMusic(player);
                 player.playSound(player.getLocation(), Sound.MUSIC_DISC_5, 100.0f, 1.0f);
-                chatMusic(player,"Disc 5");
+                chatMusic(player, "Disc 5");
             }
 
             if (itemInHand != null && itemInHand.getType() == Material.MUSIC_DISC_PIGSTEP && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.BOLD + "Pigstep")) {
                 stopMusic(player);
                 player.playSound(player.getLocation(), Sound.MUSIC_DISC_PIGSTEP, 100.0f, 1.0f);
-                chatMusic(player,"Pigstep");
+                chatMusic(player, "Pigstep");
             }
 
             event.setCancelled(true);
@@ -173,12 +173,12 @@ public class MusicBox implements Listener {
         }
     }
 
-    private static void chatMusic(Player player, String musicName){
-        player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "[Music Box] " + ChatColor.GREEN + "" + ChatColor.BOLD + "Now Playing " + musicName);
+    private static void chatMusic(Player player, String musicName) {
+        player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "[Music Box] " + ChatColor.GREEN + ChatColor.BOLD + "Now Playing " + musicName);
     }
 
 
-    private static void stopMusic(Player player){
+    private static void stopMusic(Player player) {
         player.stopSound(Sound.MUSIC_DISC_13);//
         player.stopSound(Sound.MUSIC_DISC_CAT);//
         player.stopSound(Sound.MUSIC_DISC_BLOCKS);//
@@ -198,8 +198,7 @@ public class MusicBox implements Listener {
     }
 
 
-
-    private static void openMusicBoxGUI(Player player){
+    private static void openMusicBoxGUI(Player player) {
 
         player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
 
@@ -256,12 +255,9 @@ public class MusicBox implements Listener {
         musicBoxGUI.setItem(44, orangeGlassGUI());
 
 
-
-
         player.openInventory(musicBoxGUI);
 
     }
-
 
 
     //GUI items for the GUI
@@ -278,6 +274,7 @@ public class MusicBox implements Listener {
 
         return disc1;
     }
+
     public static ItemStack disc2() {
 
         ItemStack disc2 = new ItemStack(Material.MUSIC_DISC_CAT);
@@ -289,6 +286,7 @@ public class MusicBox implements Listener {
 
         return disc2;
     }
+
     public static ItemStack disc3() {
 
         ItemStack disc3 = new ItemStack(Material.MUSIC_DISC_BLOCKS);
@@ -300,6 +298,7 @@ public class MusicBox implements Listener {
 
         return disc3;
     }
+
     public static ItemStack disc4() {
 
         ItemStack disc4 = new ItemStack(Material.MUSIC_DISC_CHIRP);
@@ -311,6 +310,7 @@ public class MusicBox implements Listener {
 
         return disc4;
     }
+
     public static ItemStack disc5() {
 
         ItemStack disc5 = new ItemStack(Material.MUSIC_DISC_FAR);
@@ -322,6 +322,7 @@ public class MusicBox implements Listener {
 
         return disc5;
     }
+
     public static ItemStack disc6() {
 
         ItemStack disc6 = new ItemStack(Material.MUSIC_DISC_MALL);
@@ -333,6 +334,7 @@ public class MusicBox implements Listener {
 
         return disc6;
     }
+
     public static ItemStack disc7() {
 
         ItemStack disc7 = new ItemStack(Material.MUSIC_DISC_MELLOHI);
@@ -344,6 +346,7 @@ public class MusicBox implements Listener {
 
         return disc7;
     }
+
     public static ItemStack disc8() {
 
         ItemStack disc8 = new ItemStack(Material.MUSIC_DISC_STAL);
@@ -355,6 +358,7 @@ public class MusicBox implements Listener {
 
         return disc8;
     }
+
     public static ItemStack disc9() {
 
         ItemStack disc9 = new ItemStack(Material.MUSIC_DISC_STRAD);
@@ -366,6 +370,7 @@ public class MusicBox implements Listener {
 
         return disc9;
     }
+
     public static ItemStack disc10() {
 
         ItemStack disc10 = new ItemStack(Material.MUSIC_DISC_WARD);
@@ -377,6 +382,7 @@ public class MusicBox implements Listener {
 
         return disc10;
     }
+
     public static ItemStack disc11() {
 
         ItemStack disc11 = new ItemStack(Material.MUSIC_DISC_11);
@@ -388,6 +394,7 @@ public class MusicBox implements Listener {
 
         return disc11;
     }
+
     public static ItemStack disc12() {
 
         ItemStack disc12 = new ItemStack(Material.MUSIC_DISC_WAIT);
@@ -399,6 +406,7 @@ public class MusicBox implements Listener {
 
         return disc12;
     }
+
     public static ItemStack disc13() {
 
         ItemStack disc13 = new ItemStack(Material.MUSIC_DISC_OTHERSIDE);
@@ -410,6 +418,7 @@ public class MusicBox implements Listener {
 
         return disc13;
     }
+
     public static ItemStack disc14() {
 
         ItemStack disc14 = new ItemStack(Material.MUSIC_DISC_RELIC);
@@ -421,6 +430,7 @@ public class MusicBox implements Listener {
 
         return disc14;
     }
+
     public static ItemStack disc15() {
 
         ItemStack disc15 = new ItemStack(Material.MUSIC_DISC_5);
@@ -432,6 +442,7 @@ public class MusicBox implements Listener {
 
         return disc15;
     }
+
     public static ItemStack disc16() {
 
         ItemStack disc16 = new ItemStack(Material.MUSIC_DISC_PIGSTEP);
@@ -456,8 +467,6 @@ public class MusicBox implements Listener {
 
         return powerStick;
     }
-
-
 
 
 }

@@ -265,7 +265,7 @@ public class Compass implements CommandExecutor, Listener {
                         //String dis = calculateDistanceCategory(distance);
                         if (distance != 0) {
                             //msg += ChatColor.BOLD + " " + distance + " blocks";
-                            msg += ChatColor.BOLD + " in vicinity of " + ((distance / 250)+1)*250 + " blocks";
+                            msg += ChatColor.BOLD + " in vicinity of " + ((distance / 250) + 1) * 250 + " blocks";
                         }
 
                         /*if (!msg.contains("Cannot")) {

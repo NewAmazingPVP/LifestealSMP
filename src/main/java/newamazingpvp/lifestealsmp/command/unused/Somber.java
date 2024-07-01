@@ -17,7 +17,7 @@ public class Somber implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
-            setSomberTimer((Player) player);
+            setSomberTimer(player);
 
             player.playSound(player.getLocation(), Sound.BLOCK_GLASS_BREAK, 2.0f, 1.0f);
             player.playSound(player.getLocation(), Sound.BLOCK_SCULK_SHRIEKER_SHRIEK, 2.0f, 0.0f);

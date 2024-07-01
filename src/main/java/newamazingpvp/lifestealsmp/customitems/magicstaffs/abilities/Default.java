@@ -52,8 +52,7 @@ public class Default implements Listener {
                             double range = 15;
 
 
-
-                            playMagicStaffSound(attacker,Sound.BLOCK_BEACON_POWER_SELECT, 2.0f, Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 2.0f);
+                            playMagicStaffSound(attacker, Sound.BLOCK_BEACON_POWER_SELECT, 2.0f, Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 2.0f);
                             beamTextureMaker(attacker, location, attackerLookDir, Color.GRAY, 2.0F, Color.GRAY, 2.0F);
 
 
@@ -86,7 +85,6 @@ public class Default implements Listener {
             }
         }
     }
-
 
 
     private Entity getTargetEntityAtLocation(Location location) {

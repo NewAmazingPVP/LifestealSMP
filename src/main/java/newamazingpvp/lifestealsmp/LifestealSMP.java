@@ -2,21 +2,8 @@ package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
-import net.citizensnpcs.api.CitizensAPI;
-import net.citizensnpcs.api.trait.TraitInfo;
-import newamazingpvp.lifestealsmp.EndBossFight.EndBossCommands.BeaconTestCMD;
-import newamazingpvp.lifestealsmp.EndBossFight.BossTimeEvents.DeathBeaconEvent;
-import newamazingpvp.lifestealsmp.EndBossFight.EndBossCommands.NPCTestCommand;
-import newamazingpvp.lifestealsmp.EndBossFight.NPCTrates.TestNPCTrates;
-import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.MiniShadow.MiniShadowListeners.MiniShadowAttackPlayer;
-import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.MiniShadow.MiniShadowListeners.MiniShadowAttackedByPlayer;
-import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.Shadow.ShadowListeners.ShadowAttackedByPlayer;
-import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.deadminer.DeadMinerListener;
-import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.lightningzombie.LightningZombieListener;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import newamazingpvp.lifestealsmp.EndBossFight.custommobs.mobs.Shadow.ShadowListeners.ShadowAttackPlayer;
-import newamazingpvp.lifestealsmp.EndBossFight.custommobs.SpawnCmd;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
 import newamazingpvp.lifestealsmp.allyteams.TeamCommand;
@@ -24,14 +11,23 @@ import newamazingpvp.lifestealsmp.allyteams.TeamListener;
 import newamazingpvp.lifestealsmp.blacklistener.*;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.command.unused.JailPlayer;
-import newamazingpvp.lifestealsmp.command.unused.Somber;
-import newamazingpvp.lifestealsmp.customitems.magicstaffs.utils.GUI;
-import newamazingpvp.lifestealsmp.customitems.magicstaffs.abilities.Default;
 import newamazingpvp.lifestealsmp.customitems.armor.QuarryArmor;
 import newamazingpvp.lifestealsmp.customitems.item.*;
+import newamazingpvp.lifestealsmp.customitems.magicstaffs.abilities.Default;
+import newamazingpvp.lifestealsmp.customitems.magicstaffs.utils.GUI;
 import newamazingpvp.lifestealsmp.customitems.utils.AntiAnvil;
 import newamazingpvp.lifestealsmp.customitems.utils.Drops;
 import newamazingpvp.lifestealsmp.discord.DiscordListener;
+import newamazingpvp.lifestealsmp.endbossfight.bossevents.DeathBeaconEvent;
+import newamazingpvp.lifestealsmp.endbossfight.commands.BeaconTestCMD;
+import newamazingpvp.lifestealsmp.endbossfight.commands.NPCTestCommand;
+import newamazingpvp.lifestealsmp.endbossfight.custommobs.SpawnCmd;
+import newamazingpvp.lifestealsmp.endbossfight.custommobs.mobs.deadminer.DeadMinerListener;
+import newamazingpvp.lifestealsmp.endbossfight.custommobs.mobs.lightningzombie.LightningZombieListener;
+import newamazingpvp.lifestealsmp.endbossfight.custommobs.mobs.minishadow.listeners.MiniShadowAttackPlayer;
+import newamazingpvp.lifestealsmp.endbossfight.custommobs.mobs.minishadow.listeners.MiniShadowAttackedByPlayer;
+import newamazingpvp.lifestealsmp.endbossfight.custommobs.mobs.shadow.listeners.ShadowAttackPlayer;
+import newamazingpvp.lifestealsmp.endbossfight.custommobs.mobs.shadow.listeners.ShadowAttackedByPlayer;
 import newamazingpvp.lifestealsmp.game.BroadcastMessage;
 import newamazingpvp.lifestealsmp.game.Compass;
 import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
@@ -135,7 +131,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
         getServer().getPluginManager().registerEvents(new EndCrystalWarning(), this);
-        getServer().getPluginManager().registerEvents(new DisableMace() , this);
+        getServer().getPluginManager().registerEvents(new DisableMace(), this);
         getServer().getPluginManager().registerEvents(new Compass(), this);
         getServer().getPluginManager().registerEvents(new HeartItems(), this);
         getServer().getPluginManager().registerEvents(new AnvilMenuListener(), this);
@@ -171,7 +167,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("trade").setExecutor(new Trade());
         getServer().getPluginManager().registerEvents(new TradeListener(), this);
         registerBasicRecipes();
-        if(config.get("Discord.Smp") != null){
+        if (config.get("Discord.Smp") != null) {
             isSmp = config.getBoolean("Discord.Smp");
         }
         doEvents();
@@ -197,7 +193,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new BingoCardGUIListeners(), this);
 
             //New Custom Items
-            if(!isTimePassed(SEASON_START_TIME, ZonedDateTime.now(ZoneId.of("America/New_York")), 6, 14, 0, 0)) {
+            if (!isTimePassed(SEASON_START_TIME, ZonedDateTime.now(ZoneId.of("America/New_York")), 6, 14, 0, 0)) {
                 registerCustomItemsAndRunes();
             }
 
@@ -305,14 +301,14 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             return;
         }
 
-        for(Player p: Bukkit.getOnlinePlayers()){
+        for (Player p : Bukkit.getOnlinePlayers()) {
             cancelCombatData(p);
             removeEnemies(p);
             p.kick(Component.text("Proxy is restarting.... Please reconnect").color(NamedTextColor.DARK_RED));
         }
     }
 
-    public static void registerCustomItemsAndRunes(){
+    public static void registerCustomItemsAndRunes() {
         registerCustomRecipes();
         Bukkit.getPluginManager().registerEvents(new RuneHandler(), lifestealSmp);
         Bukkit.getPluginManager().registerEvents(new HomingBow(), lifestealSmp);

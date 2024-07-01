@@ -1,7 +1,5 @@
 package newamazingpvp.lifestealsmp.listener;
 
-import net.citizensnpcs.api.CitizensAPI;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -131,18 +129,18 @@ public class CombatProtectionHandler implements Listener {
         Player slainer = null;
         LivingEntity killer = p.getKiller();
         if (!(killer instanceof Player)) {
-            if(isInCombat(p)){
-                if(getEnemies(p).isEmpty()){
+            if (isInCombat(p)) {
+                if (getEnemies(p).isEmpty()) {
                     return;
                 }
-                killer = getEnemies(p).get(getEnemies(p).size()-1);
+                killer = getEnemies(p).get(getEnemies(p).size() - 1);
             } else {
                 return;
             }
         } else {
             slainer = (Player) killer;
         }
-        if(slainer == null) return;
+        if (slainer == null) return;
         removeEnemies(p);
         if (!heartCooldownPlayers.contains(p.getName()) && getPlaytime(p) > 216000) {
             if (!(p.getMaxHealth() <= 2)) {

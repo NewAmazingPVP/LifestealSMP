@@ -18,7 +18,7 @@ public class TrialOmenRune extends AbstractRune {
     private static final String lore = ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier());
 
     public TrialOmenRune() {
-        super(name, mob, 1.0/150, lore, effect);
+        super(name, mob, 1.0 / 150, lore, effect);
     }
 
 

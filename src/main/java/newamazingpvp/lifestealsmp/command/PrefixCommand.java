@@ -15,6 +15,7 @@ import static newamazingpvp.lifestealsmp.utility.Utils.setPrefix;
 
 public class PrefixCommand implements CommandExecutor {
     private static final Pattern HEX_REGEX = Pattern.compile("&#([0-9A-F])([0-9A-F])([0-9A-F])([0-9A-F])([0-9A-F])([0-9A-F])", Pattern.CASE_INSENSITIVE);
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {

@@ -14,7 +14,7 @@ public class SpeedRune extends AbstractRune {
     private static final String lore = ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier());
 
     public SpeedRune() {
-        super(name, mob, 1.0/500, lore, effect);
+        super(name, mob, 1.0 / 500, lore, effect);
     }
 
 }

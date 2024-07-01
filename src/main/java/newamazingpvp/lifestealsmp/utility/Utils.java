@@ -18,7 +18,7 @@ public class Utils {
     private static final int MAX_SIZE = 30;
     private static final List<Double> tpsList = new ArrayList<>();
     private static boolean isTriggered = false;
-    private static CooldownManager tpsCooldown = new CooldownManager();
+    private static final CooldownManager tpsCooldown = new CooldownManager();
 
     public static void addItemOrDrop(Player player, ItemStack itemStack, String fullInventoryMessage) {
         if (player.getInventory().firstEmpty() != -1) {
@@ -122,7 +122,7 @@ public class Utils {
 
     private static void resetActions() {
         int onlinePlayers = Bukkit.getOnlinePlayers().size();
-        if(onlinePlayers > 24){
+        if (onlinePlayers > 24) {
             triggerActions("setview 5 2", "chunky continue");
         } else if (onlinePlayers > 19) {
             triggerActions("setview 7 2", "chunky continue");

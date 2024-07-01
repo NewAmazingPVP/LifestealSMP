@@ -1,7 +1,7 @@
 package newamazingpvp.lifestealsmp.customitems.item;
 
+import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.*;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.EventHandler;
@@ -13,12 +13,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.server.PluginDisableEvent;
-import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
-
-import newamazingpvp.lifestealsmp.utility.CooldownManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -73,7 +70,7 @@ public class SomberCrystal implements Listener {
     }
 
     @EventHandler
-    public void onPlayerDropItem(PlayerDropItemEvent e){
+    public void onPlayerDropItem(PlayerDropItemEvent e) {
         handleDisabledItemInteraction(e.getPlayer(), e.getItemDrop().getItemStack(), e);
     }
 

@@ -24,7 +24,7 @@ public class Trade implements CommandExecutor {
                     return true;
                 }
 
-                if(target.getName().equals(player.getName())){
+                if (target.getName().equals(player.getName())) {
                     player.sendMessage("You cannot trade with yourself!");
                     return true;
                 }

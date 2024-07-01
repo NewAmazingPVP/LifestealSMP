@@ -82,7 +82,7 @@ public class TeleportBow implements Listener {
                     shooter.teleport(arrowLocation);
                     playerHeldItems.remove(shooter.getUniqueId());
                     cooldown.setCooldown(teleportCooldownDuration);
-                    getServer().getScheduler().runTaskLater(lifestealSmp, () -> shooter.setCooldown(Material.BOW, teleportCooldownDuration*20), 1);
+                    getServer().getScheduler().runTaskLater(lifestealSmp, () -> shooter.setCooldown(Material.BOW, teleportCooldownDuration * 20), 1);
                     teleportCooldowns.put(shooter, cooldown);
                 } else {
                     shooter.sendMessage(ChatColor.RED + "You must wait " + cooldown.getRemainingSeconds() + " seconds before using the Teleport Bow again.");
