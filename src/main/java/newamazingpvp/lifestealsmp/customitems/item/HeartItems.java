@@ -12,6 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.corruptedMobSoul;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.severedMobHeart;
+import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 
 public class HeartItems implements Listener {
 
@@ -24,7 +25,8 @@ public class HeartItems implements Listener {
         if (killer == null) return;
 
         if (Math.random() <= 0.001) {
-            e.getDrops().add(corruptedMobSoul());
+            //e.getDrops().add(corruptedMobSoul());
+            addItemOrDrop(killer, corruptedMobSoul(), ChatColor.RED + "Mob soul was dropped because your inventory was full");
             //e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), new ItemStack(CorruptedMobSoul()));
             killer.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "RARE DROP!" + ChatColor.DARK_PURPLE + " Corrupted Mob Soul");
             killer.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Used to craft hearts!");
@@ -35,7 +37,8 @@ public class HeartItems implements Listener {
             e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION, loc, 100, 0, 0, 0, 0.1);
         }
         if (Math.random() <= 0.0005) {
-            e.getDrops().add(severedMobHeart());
+            //e.getDrops().add(severedMobHeart());
+            addItemOrDrop(killer, severedMobHeart(), ChatColor.RED + "Mob soul was dropped because your inventory was full");
             //e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), new ItemStack(severedMobHeart()));
             killer.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "RARE DROP!" + ChatColor.DARK_PURPLE + " Severed Mob Heart");
             killer.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Used to craft hearts!");
