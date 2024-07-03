@@ -31,23 +31,24 @@ public class DeathBeaconEvent implements Listener {
 
         Player player = e.getPlayer();
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK || e.getAction() == Action.LEFT_CLICK_BLOCK) {
-            Location clickedBlockLoc = e.getClickedBlock().getLocation();
+            Block block = e.getClickedBlock();
 
 
-            playerBreakDeathBeacon(player, clickedBlockLoc);
+            playerBreakDeathBeacon(player, block);
 
 
         }
     }
 
 
-    private void playerBreakDeathBeacon(Player player, Location clickedBlockLoc) {
+    private void playerBreakDeathBeacon(Player player, Block block) {
 
 
-        if (clickedBlockLoc == deathBeaconLocRED || clickedBlockLoc == deathBeaconLocYellow || clickedBlockLoc == deathBeaconLocGreen || clickedBlockLoc == deathBeaconLocBlue) {
+        if (block.getType()==Material.BEACON) {
 
 
-            clickedBlockLoc.getWorld().spawnParticle(Particle.CLOUD, player.getLocation(), 10);
+            cancelTimer();
+            block.getWorld().spawnParticle(Particle.CLOUD, player.getLocation(), 10);
             String name = player.getName();
             player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "You Broke The Death Beacon!");
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2.0f, 2.0f);
@@ -59,7 +60,6 @@ public class DeathBeaconEvent implements Listener {
 
             }
 
-            Block block = (Block) clickedBlockLoc;
             block.setType(Material.AIR);
 
 
