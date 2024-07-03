@@ -16,6 +16,8 @@ import newamazingpvp.lifestealsmp.command.unused.JailPlayer;
 import newamazingpvp.lifestealsmp.customitems.armor.QuarryArmor;
 import newamazingpvp.lifestealsmp.customitems.item.*;
 import newamazingpvp.lifestealsmp.endfight.GeneralBossLieteners.MiningListeners;
+import newamazingpvp.lifestealsmp.endfight.commands.StartEndBoss;
+import newamazingpvp.lifestealsmp.endfight.commands.StopEndBoss;
 import newamazingpvp.lifestealsmp.unused.magicstaffs.abilities.Default;
 import newamazingpvp.lifestealsmp.unused.magicstaffs.utils.GUI;
 import newamazingpvp.lifestealsmp.customitems.utils.AntiAnvil;
@@ -240,8 +242,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
             getCommand("deathbeacontest").setExecutor(new BeaconTestCMD());
 
-            getCommand("startendboss").setExecutor(new StartEndFight());
-            getCommand("stopendboss").setExecutor(new StopEndFight());
+            getCommand("startendboss").setExecutor(new StartEndBoss());
+            //getCommand("stopendboss").setExecutor(new StopEndBoss());
 
             //getCommand("trade").setExecutor(new Trade());
             //getServer().getPluginManager().registerEvents(new TradeListener(), this);
