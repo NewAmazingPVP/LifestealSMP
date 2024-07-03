@@ -12,7 +12,7 @@ public class IPClass extends ListenerAdapter {
         }
         String messageContent = event.getMessage().getContentRaw();
         if (messageContent.startsWith("!ip")) {
-            sendDiscordMessage("**JAVA:** NapPixel.tk\n**BEDROCK:** NapPixel.tk", event.getChannel().getId());
+            sendDiscordMessage("**JAVA:** NapPixel.tk Port: 25565\n**BEDROCK:** NapPixel.tk Port: 19132", event.getChannel().getId());
         }
     }
 }

@@ -200,9 +200,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new BingoCardGUIListeners(), this);
 
             //New Custom Items
-            if (!isTimePassed(SEASON_START_TIME, ZonedDateTime.now(ZoneId.of("America/New_York")), 6, 14, 0, 0)) {
-                registerCustomItemsAndRunes();
-            }
+            registerCustomItemsAndRunes();
+
 
             getServer().getPluginManager().registerEvents(new QuarryArmor(), this);
 
@@ -278,10 +277,12 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
                     config.setColored(true);
                     config.setSplitCodeBlockForLinks(false);
                     config.setAllowLinkEmbeds(true);
-                    config.addFilter(logItem -> {
-                        String message = logItem.getMessage();
-                        return message.contains("not pass event");
-                    });
+                    if(isSmp) {
+                        config.addFilter(logItem -> {
+                            String message = logItem.getMessage();
+                            return message.contains("not pass event");
+                        });
+                    }
                     config.mapLoggerName("net.dv8tion.jda", "JDA");
                     config.mapLoggerName("net.minecraft.server.MinecraftServer", "Server");
                     config.mapLoggerNameFriendly("net.minecraft.server", s -> "Server/" + s);
