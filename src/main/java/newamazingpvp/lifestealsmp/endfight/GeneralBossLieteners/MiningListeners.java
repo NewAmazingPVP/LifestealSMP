@@ -31,7 +31,12 @@ public class MiningListeners implements Listener {
             new BukkitRunnable() {
                 @Override
                 public void run() {
-                    block.setType(Material.END_STONE);
+
+                    if(block.getType()==Material.BEDROCK || block.getType()==Material.CHEST){
+                        block.setType(Material.END_STONE);
+                    }
+
+
                 }
             }.runTaskLater(lifestealSmp, 200);
 
