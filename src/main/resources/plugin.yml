@@ -202,3 +202,13 @@ commands:
     usage: /stat
     permission: lifestealSMP.admin
     default: op
+  startendboss:
+    description: Starts the end boss
+    usage: /startendboss
+    permission: lifestealSMP.admin
+    default: op
+  stopendboss:
+    description: Stops the end boss
+    usage: /stopendboss
+    permission: lifestealSMP.admin
+    default: op

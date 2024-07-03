@@ -31,26 +31,24 @@ public class DeathBeaconEvent implements Listener {
 
         Player player = e.getPlayer();
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK || e.getAction() == Action.LEFT_CLICK_BLOCK) {
-            Location clickedBlockLoc = e.getClickedBlock().getLocation();
+            Block block = e.getClickedBlock();
 
-            player.sendMessage("Break 1");
 
-            playerBreakDeathBeacon(player, clickedBlockLoc);
+            playerBreakDeathBeacon(player, block);
 
 
         }
     }
 
 
-    private void playerBreakDeathBeacon(Player player, Location clickedBlockLoc) {
+    private void playerBreakDeathBeacon(Player player, Block block) {
 
-        player.sendMessage("Break 2");
 
-        if (clickedBlockLoc == deathBeaconLocRED || clickedBlockLoc == deathBeaconLocYellow || clickedBlockLoc == deathBeaconLocGreen || clickedBlockLoc == deathBeaconLocBlue) {
+        if (block.getType()==Material.BEACON) {
 
-            player.sendMessage("Break 3");
 
-            clickedBlockLoc.getWorld().spawnParticle(Particle.CLOUD, player.getLocation(), 10);
+            cancelTimer();
+            block.getWorld().spawnParticle(Particle.CLOUD, player.getLocation(), 10);
             String name = player.getName();
             player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "You Broke The Death Beacon!");
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2.0f, 2.0f);
@@ -62,10 +60,8 @@ public class DeathBeaconEvent implements Listener {
 
             }
 
-            Block block = (Block) clickedBlockLoc;
             block.setType(Material.AIR);
 
-            player.sendMessage("Break 4");
 
         }
 
@@ -78,13 +74,12 @@ public class DeathBeaconEvent implements Listener {
 
             isRunning = true;
 
-            player.sendMessage("Test 1");
+
 
             int randomSideIndex = rand.nextInt(arenaSides.size());
             String selectedSide = arenaSides.get(randomSideIndex);
 
 
-            player.sendMessage("Test 2");
 
 
             if (selectedSide == "Red") {
@@ -105,7 +100,6 @@ public class DeathBeaconEvent implements Listener {
 
             }
 
-            player.sendMessage("Test 3");
 
             timerRunnable = new BukkitRunnable() {
                 private int count = 30;

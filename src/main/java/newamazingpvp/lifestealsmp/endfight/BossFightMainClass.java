@@ -2,8 +2,8 @@ package newamazingpvp.lifestealsmp.endfight;
 
 public class BossFightMainClass {
 
-    boolean preBoss = false;
-    boolean bossRunning = false;
+    public static boolean preBoss = false;
+    public static boolean bossRunning = false;
 
 
 }
