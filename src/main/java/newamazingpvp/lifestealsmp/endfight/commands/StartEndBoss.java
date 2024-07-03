@@ -19,7 +19,7 @@ public class StartEndBoss implements CommandExecutor {
             startPreBoss(player);
 
         }
-        
+
         return true;
     }
 
