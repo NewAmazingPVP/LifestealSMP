@@ -99,7 +99,7 @@ public class DeathBeaconEvent implements Listener {
                 block.setType(Material.BEACON);
 
             }
-            
+
 
             timerRunnable = new BukkitRunnable() {
                 private int count = 30;
