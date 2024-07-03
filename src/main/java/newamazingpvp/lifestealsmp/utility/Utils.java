@@ -11,6 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.*;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.essentials;
+import static newamazingpvp.lifestealsmp.LifestealSMP.isSmp;
 import static newamazingpvp.lifestealsmp.blacklistener.AntiEnd.isEndEnabled;
 import static org.bukkit.Bukkit.getServer;
 
@@ -87,6 +88,7 @@ public class Utils {
     }
 
     public static void adjustPerformance() {
+        if(!isSmp) return;
         double averageTPS = getAverageTPS();
         if (tpsCooldown.isOnCooldown()) return;
 

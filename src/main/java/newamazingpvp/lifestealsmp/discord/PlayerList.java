@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.isSmp;
 import static newamazingpvp.lifestealsmp.discord.DiscordListener.isVanished;
 
 public class PlayerList extends ListenerAdapter {
@@ -16,6 +17,7 @@ public class PlayerList extends ListenerAdapter {
         if (event.getAuthor().isBot() || event.isWebhookMessage()) {
             return;
         }
+        if(!isSmp) return;
 
         String messageContent = event.getMessage().getContentRaw();
         if (messageContent.equalsIgnoreCase("playerlist")) {
