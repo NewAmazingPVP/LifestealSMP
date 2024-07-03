@@ -37,7 +37,7 @@ public class PreBossStage {
                         if (count <= 10) {
                             Bukkit.broadcastMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "The Fight Will Start In " + count + "sec!");
                         } else {
-                            //Bukkit.broadcastMessage(String.valueOf(count));
+                            Bukkit.broadcastMessage(String.valueOf(count));
                         }
 
                     }
