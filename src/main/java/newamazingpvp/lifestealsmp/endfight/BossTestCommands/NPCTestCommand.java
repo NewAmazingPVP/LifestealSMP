@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.endfight.commands;
+package newamazingpvp.lifestealsmp.endfight.BossTestCommands;
 
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;

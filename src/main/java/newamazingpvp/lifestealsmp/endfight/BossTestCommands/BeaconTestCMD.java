@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.endfight.commands;
+package newamazingpvp.lifestealsmp.endfight.BossTestCommands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
