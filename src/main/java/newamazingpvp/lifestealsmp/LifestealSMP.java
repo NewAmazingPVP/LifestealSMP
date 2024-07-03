@@ -240,6 +240,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
             getCommand("deathbeacontest").setExecutor(new BeaconTestCMD());
 
+            getCommand("startendboss").setExecutor(new StartEndFight());
+            getCommand("stopendboss").setExecutor(new StopEndFight());     
+
             //getCommand("trade").setExecutor(new Trade());
             //getServer().getPluginManager().registerEvents(new TradeListener(), this);
 

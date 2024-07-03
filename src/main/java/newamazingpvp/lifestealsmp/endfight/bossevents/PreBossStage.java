@@ -20,6 +20,10 @@ public class PreBossStage {
             player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Pre boss phase has started! (1min long)");
             Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "The Fight Will Start In 1min!");
 
+
+
+
+
         }else{
             player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[Error] The pre boss phase has already started or the boss is already running!");
         }
