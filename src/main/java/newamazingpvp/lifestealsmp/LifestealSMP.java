@@ -52,6 +52,7 @@ import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.EOFException;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
@@ -311,16 +312,23 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         }
 
         ByteArrayDataInput dataInput = ByteStreams.newDataInput(bytes);
-        String receivedMessage = dataInput.readUTF();
 
-        if (";p".equals(receivedMessage)) {
-            for (Player p : Bukkit.getOnlinePlayers()) {
-                cancelCombatData(p);
-                removeEnemies(p);
-                p.kick(Component.text("Proxy is restarting.... Please reconnect").color(NamedTextColor.DARK_RED));
+        try {
+            String receivedMessage = dataInput.readUTF();
+            System.out.println(receivedMessage);
+            if ("forceRestart".equals(receivedMessage)) {
+                for (Player p : Bukkit.getOnlinePlayers()) {
+                    cancelCombatData(p);
+                    removeEnemies(p);
+                    p.kick(Component.text("Proxy is restarting.... Please reconnect").color(NamedTextColor.DARK_RED));
+                }
             }
+        } catch (Exception e) {
+            Bukkit.getLogger().severe("An error occurred while processing plugin message: " + e.getMessage());
+            e.printStackTrace();
         }
     }
+
 
     public static void registerCustomItemsAndRunes() {
         registerCustomRecipes();
