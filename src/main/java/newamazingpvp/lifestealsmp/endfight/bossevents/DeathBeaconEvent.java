@@ -33,7 +33,6 @@ public class DeathBeaconEvent implements Listener {
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK || e.getAction() == Action.LEFT_CLICK_BLOCK) {
             Location clickedBlockLoc = e.getClickedBlock().getLocation();
 
-            player.sendMessage("Break 1");
 
             playerBreakDeathBeacon(player, clickedBlockLoc);
 
@@ -44,11 +43,9 @@ public class DeathBeaconEvent implements Listener {
 
     private void playerBreakDeathBeacon(Player player, Location clickedBlockLoc) {
 
-        player.sendMessage("Break 2");
 
         if (clickedBlockLoc == deathBeaconLocRED || clickedBlockLoc == deathBeaconLocYellow || clickedBlockLoc == deathBeaconLocGreen || clickedBlockLoc == deathBeaconLocBlue) {
 
-            player.sendMessage("Break 3");
 
             clickedBlockLoc.getWorld().spawnParticle(Particle.CLOUD, player.getLocation(), 10);
             String name = player.getName();
@@ -65,7 +62,6 @@ public class DeathBeaconEvent implements Listener {
             Block block = (Block) clickedBlockLoc;
             block.setType(Material.AIR);
 
-            player.sendMessage("Break 4");
 
         }
 
@@ -78,13 +74,12 @@ public class DeathBeaconEvent implements Listener {
 
             isRunning = true;
 
-            player.sendMessage("Test 1");
+
 
             int randomSideIndex = rand.nextInt(arenaSides.size());
             String selectedSide = arenaSides.get(randomSideIndex);
 
 
-            player.sendMessage("Test 2");
 
 
             if (selectedSide == "Red") {
@@ -104,8 +99,7 @@ public class DeathBeaconEvent implements Listener {
                 block.setType(Material.BEACON);
 
             }
-
-            player.sendMessage("Test 3");
+            
 
             timerRunnable = new BukkitRunnable() {
                 private int count = 30;
