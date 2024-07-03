@@ -202,13 +202,18 @@ commands:
     usage: /stat
     permission: lifestealSMP.admin
     default: op
-  startendboss:
+  startboss:
     description: Starts the end boss
-    usage: /startendboss
+    usage: /startboss
     permission: lifestealSMP.admin
     default: op
-  stopendboss:
+  stopboss:
     description: Stops the end boss
-    usage: /stopendboss
+    usage: /stopboss
+    permission: lifestealSMP.admin
+    default: op
+  quickstartboss:
+    description: Starts the boss with no 1min pre stage
+    usage: /quickstartboss
     permission: lifestealSMP.admin
     default: op

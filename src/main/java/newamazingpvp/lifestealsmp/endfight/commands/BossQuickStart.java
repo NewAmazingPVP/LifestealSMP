@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.endfight.commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -9,20 +10,19 @@ import org.bukkit.entity.Player;
 import static newamazingpvp.lifestealsmp.endfight.BossFightMainClass.bossRunning;
 import static newamazingpvp.lifestealsmp.endfight.BossFightMainClass.preBoss;
 import static newamazingpvp.lifestealsmp.endfight.bossevents.PreBossStage.preBossCancelTimer;
-import static newamazingpvp.lifestealsmp.endfight.bossevents.PreBossStage.startPreBoss;
 
-public class StopEndBoss implements CommandExecutor {
-
+public class BossQuickStart implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if(sender instanceof Player){
             Player player = (Player) sender;
-            player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Stopped the boss fight!");
+            player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Quick Started the boss");
+            Bukkit.broadcastMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Fight Starting!");
 
-            bossRunning = false;
-            preBoss = false;
+            bossRunning = true;
+
             preBossCancelTimer();
 
         }

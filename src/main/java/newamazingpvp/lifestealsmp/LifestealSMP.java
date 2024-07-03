@@ -16,6 +16,7 @@ import newamazingpvp.lifestealsmp.command.unused.JailPlayer;
 import newamazingpvp.lifestealsmp.customitems.armor.QuarryArmor;
 import newamazingpvp.lifestealsmp.customitems.item.*;
 import newamazingpvp.lifestealsmp.endfight.GeneralBossLieteners.MiningListeners;
+import newamazingpvp.lifestealsmp.endfight.commands.BossQuickStart;
 import newamazingpvp.lifestealsmp.endfight.commands.StartEndBoss;
 import newamazingpvp.lifestealsmp.endfight.commands.StopEndBoss;
 import newamazingpvp.lifestealsmp.unused.magicstaffs.abilities.Default;
@@ -24,8 +25,8 @@ import newamazingpvp.lifestealsmp.customitems.utils.AntiAnvil;
 import newamazingpvp.lifestealsmp.customitems.utils.Drops;
 import newamazingpvp.lifestealsmp.discord.DiscordListener;
 import newamazingpvp.lifestealsmp.endfight.bossevents.DeathBeaconEvent;
-import newamazingpvp.lifestealsmp.endfight.commands.BeaconTestCMD;
-import newamazingpvp.lifestealsmp.endfight.commands.NPCTestCommand;
+import newamazingpvp.lifestealsmp.endfight.BossTestCommands.BeaconTestCMD;
+import newamazingpvp.lifestealsmp.endfight.BossTestCommands.NPCTestCommand;
 import newamazingpvp.lifestealsmp.endfight.custommobs.SpawnCmd;
 import newamazingpvp.lifestealsmp.endfight.custommobs.mobs.deadminer.DeadMinerListener;
 import newamazingpvp.lifestealsmp.endfight.custommobs.mobs.lightningzombie.LightningZombieListener;
@@ -53,10 +54,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
-
-import java.io.EOFException;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlacklist;
 import static newamazingpvp.lifestealsmp.customitems.utils.DevRecipes.registerCustomRecipesDev;
@@ -241,8 +238,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
             getCommand("deathbeacontest").setExecutor(new BeaconTestCMD());
 
-            getCommand("startendboss").setExecutor(new StartEndBoss());
-            //getCommand("stopendboss").setExecutor(new StopEndBoss());
+            getCommand("startboss").setExecutor(new StartEndBoss());
+            getCommand("stopboss").setExecutor(new StopEndBoss());
+            getCommand("quickstartboss").setExecutor(new BossQuickStart());
 
             //getCommand("trade").setExecutor(new Trade());
             //getServer().getPluginManager().registerEvents(new TradeListener(), this);
