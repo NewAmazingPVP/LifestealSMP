@@ -23,6 +23,7 @@ public class TimeManager {
     );
 
     public static final ZonedDateTime END_OPEN_TIME = SEASON_START_TIME.plusDays(14).plusHours(2);
+    public static final ZonedDateTime FINAL_FIGHT = SEASON_START_TIME.plusDays(35).plusHours(2);
 
     //this is because season starts 12pm est auto restart at 3am Saturday morning
     public static final ZonedDateTime CUSTOM_ITEMS_AND_RUNES = SEASON_START_TIME.plusDays(6).plusHours(14);
@@ -56,7 +57,7 @@ public class TimeManager {
             for (World w : Bukkit.getWorlds()) {
                 w.setDifficulty(Difficulty.NORMAL);
             }
-            sendDiscordNewsMessage("Difficulty on SMP now set to normal!", "1032411739351941120");
+            getServer().getScheduler().runTaskLater(lifestealSmp, () -> sendDiscordNewsMessage("Difficulty on SMP now set to normal!", "1032411739351941120"), 1200);
         }
 
         if (isTimePassed(SEASON_START_TIME, currentTime, 10, 0, 0, 0)) {
@@ -167,35 +168,35 @@ public class TimeManager {
             cooldown.setCooldown(70);
         }
 
-        if (isTimePassed(END_OPEN_TIME.minusDays(3))
-                && !isTimePassed(END_OPEN_TIME.minusDays(2).minusHours(23).minusMinutes(59))) {
+        if (isTimePassed(FINAL_FIGHT.minusDays(3))
+                && !isTimePassed(FINAL_FIGHT.minusDays(2).minusHours(23).minusMinutes(59))) {
             if (cooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage("<@&1047168915500966048> The final fight event to conclude the season will be on Saturday, at 12:00 p.m., noon EST, in " + formatDuration(Duration.between(SEASON_START_TIME.plusDays(28), ZonedDateTime.now(ZoneId.of("America/New_York")))), "1032411739351941120");
+            sendDiscordNewsMessage("<@&1047168915500966048> The final fight event to conclude the season will be on Saturday, in " + formatDuration(Duration.between(SEASON_START_TIME.plusDays(28), ZonedDateTime.now(ZoneId.of("America/New_York")))), "1032411739351941120");
             cooldown.setCooldown(70);
         }
 
-        if (isTimePassed(END_OPEN_TIME.minusDays(1))
-                && !isTimePassed(END_OPEN_TIME.minusHours(23).minusMinutes(59))) {
+        if (isTimePassed(FINAL_FIGHT.minusDays(1))
+                && !isTimePassed(FINAL_FIGHT.minusHours(23).minusMinutes(59))) {
             if (cooldown.isOnCooldown()) return;
             sendDiscordNewsMessage("<@&1047168915500966048> Final fight in a day. Be prepared, the last one standing will be the winner of this season!", "1032411739351941120");
             cooldown.setCooldown(70);
         }
 
-        if (isTimePassed(END_OPEN_TIME.minusHours(1))
-                && !isTimePassed(END_OPEN_TIME.minusMinutes(59))) {
+        if (isTimePassed(FINAL_FIGHT.minusHours(1))
+                && !isTimePassed(FINAL_FIGHT.minusMinutes(59))) {
             if (cooldown.isOnCooldown()) return;
             sendDiscordNewsMessage("<@&1047168915500966048> Final fight in " + formatDuration(Duration.between(SEASON_START_TIME.plusDays(28), ZonedDateTime.now(ZoneId.of("America/New_York")))) + "!", "1032411739351941120");
             cooldown.setCooldown(70);
         }
 
-        if (isTimePassed(END_OPEN_TIME.minusMinutes(10))
-                && !isTimePassed(END_OPEN_TIME.minusMinutes(9))) {
+        if (isTimePassed(FINAL_FIGHT.minusMinutes(10))
+                && !isTimePassed(FINAL_FIGHT.minusMinutes(9))) {
             if (cooldown.isOnCooldown()) return;
             sendDiscordNewsMessage("<@&1047168915500966048> Final fight is in 10 minutes! Be ready, you will be teleported in-game", "1032411739351941120");
             cooldown.setCooldown(70);
         }
 
-        if (isTimePassed(END_OPEN_TIME)
+        if (isTimePassed(FINAL_FIGHT)
                 && !isTimePassed(END_OPEN_TIME.plusMinutes(1))) {
             if (cooldown.isOnCooldown()) return;
             Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Final fight is starting!");
