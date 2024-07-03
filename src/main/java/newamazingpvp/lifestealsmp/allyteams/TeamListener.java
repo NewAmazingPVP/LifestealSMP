@@ -3,10 +3,12 @@ package newamazingpvp.lifestealsmp.allyteams;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.essentials;
 import static newamazingpvp.lifestealsmp.allyteams.AlliesManager.isPlayerInAllyChat;
@@ -15,18 +17,18 @@ import static newamazingpvp.lifestealsmp.allyteams.TeamsManager.isPlayerInTeamCh
 import static newamazingpvp.lifestealsmp.allyteams.TeamsManager.sendTeamMessage;
 
 public class TeamListener implements Listener {
-    public HashMap<Player, String> avoidSpamMessage = new HashMap<>();
-    public HashMap<Player, Long> avoidSpamTimestamp = new HashMap<>();
+    private final ConcurrentHashMap<Player, String> avoidSpamMessage = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<Player, Long> avoidSpamTimestamp = new ConcurrentHashMap<>();
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOW)
     public void teamChatEvent(AsyncPlayerChatEvent event) {
         Player p = event.getPlayer();
         if (isPlayerInTeamChat(p)) {
+            event.setCancelled(true);
             sendTeamMessage(p, event.getMessage());
-            event.setCancelled(true);
         } else if (isPlayerInAllyChat(p)) {
-            sendAllyMessage(p, event.getMessage());
             event.setCancelled(true);
+            sendAllyMessage(p, event.getMessage());
         } else {
             if (!potentialSpam(p, event.getMessage())) {
                 if (essentials.getUser(p.getUniqueId()).getNickname() != null) {
@@ -38,7 +40,7 @@ public class TeamListener implements Listener {
                 event.setCancelled(true);
                 p.sendMessage(ChatColor.RED + "Potential spam detected! Do /rules");
             }
-                        /*
+            /*
             ByteArrayDataOutput out = ByteStreams.newDataOutput();
             out.writeUTF("Server");
 
@@ -56,9 +58,9 @@ public class TeamListener implements Listener {
     }
 
     public boolean potentialSpam(Player p, String s) {
-        if (avoidSpamMessage.get(p) == null) return false;
-        if (!avoidSpamMessage.get(p).equalsIgnoreCase(s)) return false;
-        long lastMessageTime = avoidSpamTimestamp.getOrDefault(p, 0L);
+        String lastMessage = avoidSpamMessage.get(p);
+        if (lastMessage == null || !lastMessage.equalsIgnoreCase(s)) return false;
+        long lastMessageTime = avoidSpamTimestamp.get(p);
         return (System.currentTimeMillis() - lastMessageTime) < 2000;
     }
 }
