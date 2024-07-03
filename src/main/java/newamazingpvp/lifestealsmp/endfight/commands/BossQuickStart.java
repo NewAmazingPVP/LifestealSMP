@@ -26,9 +26,9 @@ public class BossQuickStart implements CommandExecutor {
 
                 preBossCancelTimer();
 
-            }else{
-                sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[Error] The pre boss phase has already started or the boss is already running!");
             }
+            }else{
+            sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[Error] The pre boss phase has already started or the boss is already running!");
         }
 
         return true;

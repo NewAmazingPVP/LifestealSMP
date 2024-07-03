@@ -28,10 +28,8 @@ public class LaunchPads implements Listener {
             player.setVelocity(velocity);
 
             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                onlinePlayer.playSound(loc, Sound.ENTITY_FIREWORK_ROCKET_SHOOT, 1.0f, 1.0f);
+                onlinePlayer.playSound(loc, Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1.0f, 1.0f);
             }
         }
-
     }
-
 }
