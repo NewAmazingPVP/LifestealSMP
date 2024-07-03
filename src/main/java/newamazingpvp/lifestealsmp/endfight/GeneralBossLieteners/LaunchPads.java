@@ -23,7 +23,8 @@ public class LaunchPads implements Listener {
         Block block = loc.getBlock();
 
         if(block.getType() == Material.SLIME_BLOCK){
-            Vector velocity = player.getLocation().getDirection().multiply(3);
+            //Vector velocity = player.getLocation().getDirection().multiply(3);
+            Vector velocity = new Vector(0, 11, 0);
             player.setVelocity(velocity);
 
             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
