@@ -34,7 +34,10 @@ public class DeathBeaconEvent implements Listener {
             Block block = e.getClickedBlock();
 
 
+
             playerBreakDeathBeacon(player, block);
+            e.setCancelled(true);
+
 
 
         }
