@@ -83,19 +83,19 @@ public class DeathBeaconEvent implements Listener {
 
 
             if (selectedSide == "Red") {
-                Block block = (Block) deathBeaconLocRED;
+                Block block = deathBeaconLocRED.getBlock();
                 block.setType(Material.BEACON);
 
             } else if (selectedSide == "Yellow") {
-                Block block = (Block) deathBeaconLocYellow;
+                Block block = deathBeaconLocYellow.getBlock();
                 block.setType(Material.BEACON);
 
             } else if (selectedSide == "Green") {
-                Block block = (Block) deathBeaconLocGreen;
+                Block block = deathBeaconLocGreen.getBlock();
                 block.setType(Material.BEACON);
 
             } else if (selectedSide == "Blue") {
-                Block block = (Block) deathBeaconLocBlue;
+                Block block = deathBeaconLocBlue.getBlock();
                 block.setType(Material.BEACON);
 
             }
