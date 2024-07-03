@@ -198,9 +198,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new BingoCardGUIListeners(), this);
 
             //New Custom Items
-            if (!isTimePassed(SEASON_START_TIME, ZonedDateTime.now(ZoneId.of("America/New_York")), 6, 14, 0, 0)) {
-                registerCustomItemsAndRunes();
-            }
+            registerCustomItemsAndRunes();
+
 
             getServer().getPluginManager().registerEvents(new QuarryArmor(), this);
 
