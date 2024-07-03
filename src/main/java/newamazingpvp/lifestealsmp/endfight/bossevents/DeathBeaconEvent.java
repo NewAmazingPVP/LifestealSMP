@@ -3,6 +3,7 @@ package newamazingpvp.lifestealsmp.endfight.bossevents;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -36,7 +37,10 @@ public class DeathBeaconEvent implements Listener {
 
 
             playerBreakDeathBeacon(player, block);
-            e.setCancelled(true);
+
+            if (block.getType()==Material.BEACON) {
+                e.setCancelled(true);
+            }
 
 
 
@@ -51,11 +55,11 @@ public class DeathBeaconEvent implements Listener {
 
 
             cancelTimer();
-            block.getWorld().spawnParticle(Particle.CLOUD, player.getLocation(), 10);
+            block.getWorld().spawnParticle(Particle.CLOUD, block.getLocation(), 10);
             String name = player.getName();
             player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "You Broke The Death Beacon!");
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2.0f, 2.0f);
-            Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(ChatColor.GREEN + "" + ChatColor.BOLD + name + " Broke The Beacon!", " ", 10, 40, 5));
+            Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(ChatColor.GREEN + name + " Broke The Beacon!", " ", 10, 40, 5));
             Bukkit.broadcastMessage(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + name + " Has Broken The Death Beacon!");
 
             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
