@@ -125,21 +125,21 @@ public class TimeManager {
         if (isTimePassed(END_OPEN_TIME.minusDays(3))
                 && !isTimePassed(END_OPEN_TIME.minusDays(2).minusHours(23).minusMinutes(59))) {
             if (cooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage("<@&1047168915500966048> End will be opening in " + formatDuration(Duration.between(END_OPEN_TIME, ZonedDateTime.now(ZoneId.of("America/New_York")))), "1032411739351941120");
+            sendDiscordNewsMessage("<@&1047168915500966048> End will be opening in " + formatDuration(Duration.between(END_OPEN_TIME, ZonedDateTime.now(ZoneId.of("America/New_York")))) + " exactly!", "1032411739351941120");
             cooldown.setCooldown(70);
         }
 
         if (isTimePassed(END_OPEN_TIME.minusDays(1))
                 && !isTimePassed(END_OPEN_TIME.minusHours(23).minusMinutes(59))) {
             if (cooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage("<@&1047168915500966048> End will be opening in exactly 24 hours! Be prepared, this is a mid-season 1st end fight with the 2nd one being at the end of season, and to spice things up, whoever has the dragon egg in their inventory will get a perk!", "1032411739351941120");
+            sendDiscordNewsMessage("<@&1047168915500966048> End will be opening in exactly 24 hours! Be prepared, this is a mid-season 1st end fight with the 2nd one being at the end of season, and to spice things up, whoever has the dragon egg in their inventory will get a perk! Furthermore dragon will drop 1 and only dragon rune and custom lifesteal sword when killed!", "1032411739351941120");
             cooldown.setCooldown(70);
         }
 
         if (isTimePassed(END_OPEN_TIME.minusHours(1))
                 && !isTimePassed(END_OPEN_TIME.minusMinutes(59))) {
             if (cooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage("<@&1047168915500966048> End will be opening in " + formatDuration(Duration.between(SEASON_START_TIME.plusDays(14), ZonedDateTime.now(ZoneId.of("America/New_York")))) + "!", "1032411739351941120");
+            sendDiscordNewsMessage("<@&1047168915500966048> End will be opening in " + formatDuration(Duration.between(SEASON_START_TIME.plusDays(14), ZonedDateTime.now(ZoneId.of("America/New_York")))) + " exactly!", "1032411739351941120");
             cooldown.setCooldown(70);
         }
 
@@ -171,21 +171,21 @@ public class TimeManager {
         if (isTimePassed(FINAL_FIGHT.minusDays(3))
                 && !isTimePassed(FINAL_FIGHT.minusDays(2).minusHours(23).minusMinutes(59))) {
             if (cooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage("<@&1047168915500966048> The final fight event to conclude the season will be on Saturday, in " + formatDuration(Duration.between(SEASON_START_TIME.plusDays(28), ZonedDateTime.now(ZoneId.of("America/New_York")))), "1032411739351941120");
+            sendDiscordNewsMessage("<@&1047168915500966048> The final fight event to conclude the season will be on Saturday, in " + formatDuration(Duration.between(SEASON_START_TIME.plusDays(28), ZonedDateTime.now(ZoneId.of("America/New_York")))) + " exactly!", "1032411739351941120");
             cooldown.setCooldown(70);
         }
 
         if (isTimePassed(FINAL_FIGHT.minusDays(1))
                 && !isTimePassed(FINAL_FIGHT.minusHours(23).minusMinutes(59))) {
             if (cooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage("<@&1047168915500966048> Final fight in a day. Be prepared, the last one standing will be the winner of this season!", "1032411739351941120");
+            sendDiscordNewsMessage("<@&1047168915500966048> Final fight in exactly 24 hours! Be prepared, the last one standing will be the winner of this season!", "1032411739351941120");
             cooldown.setCooldown(70);
         }
 
         if (isTimePassed(FINAL_FIGHT.minusHours(1))
                 && !isTimePassed(FINAL_FIGHT.minusMinutes(59))) {
             if (cooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage("<@&1047168915500966048> Final fight in " + formatDuration(Duration.between(SEASON_START_TIME.plusDays(28), ZonedDateTime.now(ZoneId.of("America/New_York")))) + "!", "1032411739351941120");
+            sendDiscordNewsMessage("<@&1047168915500966048> Final fight in " + formatDuration(Duration.between(SEASON_START_TIME.plusDays(28), ZonedDateTime.now(ZoneId.of("America/New_York"))))  + " exactly!", "1032411739351941120");
             cooldown.setCooldown(70);
         }
 
