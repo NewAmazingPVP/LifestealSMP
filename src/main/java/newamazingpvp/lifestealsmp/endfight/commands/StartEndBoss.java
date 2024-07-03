@@ -14,10 +14,12 @@ public class StartEndBoss implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        Player player = (Player) sender;
-        startPreBoss(player);
+        if(sender instanceof Player){
+            Player player = (Player) sender;
+            startPreBoss(player);
 
-
+        }
+        
         return true;
     }
 
