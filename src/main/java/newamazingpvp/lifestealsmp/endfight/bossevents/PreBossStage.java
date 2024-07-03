@@ -15,7 +15,7 @@ public class PreBossStage {
 
     public static void startPreBoss(Player player){
 
-        if(!preBoss) {
+        if(!preBoss && !bossRunning) {
 
 
             preBoss = true;
@@ -23,7 +23,7 @@ public class PreBossStage {
             Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "The Fight Will Start In 1min!");
 
             preBossTimerRunnable = new BukkitRunnable() {
-                private int count = 30;
+                private int count = 60;
 
                 @Override
                 public void run() {

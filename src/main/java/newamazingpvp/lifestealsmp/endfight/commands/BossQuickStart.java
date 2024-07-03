@@ -16,7 +16,7 @@ public class BossQuickStart implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if(!bossRunning) {
+        if(!bossRunning && !preBoss) {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
                 player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Quick Started the boss");
