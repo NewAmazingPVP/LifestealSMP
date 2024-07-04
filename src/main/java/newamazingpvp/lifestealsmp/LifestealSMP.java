@@ -15,6 +15,7 @@ import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.command.unused.JailPlayer;
 import newamazingpvp.lifestealsmp.customitems.armor.QuarryArmor;
 import newamazingpvp.lifestealsmp.customitems.item.*;
+import newamazingpvp.lifestealsmp.endfight.GeneralBossLieteners.BlockPushTest;
 import newamazingpvp.lifestealsmp.endfight.GeneralBossLieteners.MiningListeners;
 import newamazingpvp.lifestealsmp.endfight.GeneralBossLieteners.LaunchPads;
 import newamazingpvp.lifestealsmp.endfight.commands.BossQuickStart;
@@ -235,6 +236,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new DeathBeaconEvent(), this);
             getServer().getPluginManager().registerEvents(new MiningListeners(), this);
             getServer().getPluginManager().registerEvents(new LaunchPads(), this);
+            getServer().getPluginManager().registerEvents(new BlockPushTest(), this);
 
             registerCustomRecipesDev();
 
