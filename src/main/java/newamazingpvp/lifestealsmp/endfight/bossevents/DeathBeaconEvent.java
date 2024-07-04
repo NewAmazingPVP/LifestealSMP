@@ -89,7 +89,7 @@ public class DeathBeaconEvent implements Listener {
 
 
 
-            if (selectedSide == "Red") {
+            /*if (selectedSide == "Red") {
                 Block block = deathBeaconLocRED.getBlock();
                 block.setType(Material.BEACON);
 
@@ -105,7 +105,7 @@ public class DeathBeaconEvent implements Listener {
                 Block block = deathBeaconLocBlue.getBlock();
                 block.setType(Material.BEACON);
 
-            }
+            }*/
 
 
             timerRunnable = new BukkitRunnable() {
