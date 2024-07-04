@@ -32,30 +32,21 @@ public class MiningListeners implements Listener {
 
             block.setType(Material.BEDROCK);
 
-            if (Math.random() < 0.5) {
-
-
-                SMPworld.dropItemNaturally(loc, visualItem);
-
-
-
-
 
                 new BukkitRunnable() {
                     @Override
                     public void run() {
 
-                        if (block.getType() == Material.BEDROCK || block.getType() == Material.CHEST) {
+                        if (block.getType() == Material.BEDROCK) {
                             block.setType(Material.END_STONE);
                         }
 
 
                     }
                 }.runTaskLater(lifestealSmp, 200);
+                
 
-                e.setCancelled(true);
 
-            }
 
 
         }
