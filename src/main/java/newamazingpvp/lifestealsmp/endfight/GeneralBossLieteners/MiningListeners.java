@@ -25,7 +25,6 @@ public class MiningListeners implements Listener {
         Location locSpawn = loc;
         locSpawn.setY(loc.getY() + 1);
 
-        ItemStack visualItem = new ItemStack(Material.MAGMA_CREAM);
 
 
         if (block.getType() == Material.END_STONE) {
