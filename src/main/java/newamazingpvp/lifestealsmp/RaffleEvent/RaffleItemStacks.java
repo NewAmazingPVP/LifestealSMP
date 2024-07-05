@@ -11,7 +11,7 @@ import java.util.List;
 public class RaffleItemStacks {
 
     public static ItemStack raffleTicket(int eventNum) {
-        ItemStack raffleTicket = new ItemStack(Material.NAME_TAG);
+        ItemStack raffleTicket = new ItemStack(Material.PAPER);
         ItemMeta meta = raffleTicket.getItemMeta();
         meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Raffle Ticket");
         List<String> lore = new ArrayList<>();

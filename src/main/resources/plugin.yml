@@ -217,3 +217,13 @@ commands:
     usage: /bossquickstart
     permission: lifestealSMP.admin
     default: op
+  raffleeventstart:
+    description: Starts the raffle event
+    usage: /raffleeventstart
+    permission: lifestealSMP.admin
+    default: op
+  raffleeventstop:
+    description: Stops the raffle event before it ends if needed
+    usage: /raffleeventstop
+    permission: lifestealSMP.admin
+    default: op

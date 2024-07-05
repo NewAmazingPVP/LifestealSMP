@@ -6,6 +6,8 @@ import com.google.common.io.ByteStreams;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands.StartRaffleEvent;
+import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands.StopRaffleEvent;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEvents.RaffleMiningEvent;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleFunctions.BlockPlaceTracker;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
@@ -251,6 +253,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             //===================== Raffle Event Listeners =======================
             getServer().getPluginManager().registerEvents(new RaffleMiningEvent(), this);
             //getServer().getPluginManager().registerEvents(new BlockPlaceTracker(), this);
+            getCommand("raffleeventstart").setExecutor(new StartRaffleEvent());
+            getCommand("raffleeventstop").setExecutor(new StopRaffleEvent());
 
 
             //getCommand("trade").setExecutor(new Trade());

@@ -10,10 +10,10 @@ import java.util.Random;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.SMPworld;
 import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleItemStacks.raffleTicket;
+import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleMain.currentRaffleEventID;
 
 public class RaffleNormalMining {
 
-    private static int tempTestNum = 2383847;
 
     public static void playerMineRaffleNormal(Player player, Location loc){
 
@@ -26,7 +26,7 @@ public class RaffleNormalMining {
 
             player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+1 Ticket]");
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
-            player.getWorld().dropItemNaturally(loc, raffleTicket(tempTestNum));
+            player.getWorld().dropItemNaturally(loc, raffleTicket(currentRaffleEventID));
 
 
         }
