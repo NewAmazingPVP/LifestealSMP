@@ -39,16 +39,17 @@ public class RaffleMain {
             onlinePlayer.playSound(onlinePlayer.getLocation(), Sound.ENTITY_ENDER_DRAGON_GROWL, 5.0f, 1.0f);
         }
 
-            Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "====================== Raffle Event ======================");
+            Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "======= Raffle Event =======");
             Bukkit.broadcastMessage(ChatColor.GOLD + "Break blocks and kill mobs / players to get");
             Bukkit.broadcastMessage(ChatColor.GOLD + "raffle tickets! Submit tickets by going within");
             Bukkit.broadcastMessage(ChatColor.GOLD + "150 blocks of spawn and right clicking them!");
             Bukkit.broadcastMessage(ChatColor.GOLD + "The more raffle tickets you have in your inventory");
-            Bukkit.broadcastMessage(ChatColor.GOLD + "The higher the chance" + ChatColor.DARK_RED + " special mobs will spawn!");
+            Bukkit.broadcastMessage(ChatColor.GOLD + "the higher the chance" + ChatColor.DARK_RED + " special mobs will spawn!");
             Bukkit.broadcastMessage(ChatColor.GREEN + ("(Could be a good thing)"));
-            Bukkit.broadcastMessage(ChatColor.GOLD + "There will be winners." + ChatColor.STRIKETHROUGH + " Have Fun!");
-            Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "==========================================================");
-            Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "This event ID: " + currentRaffleEventID + " (for moderation)");
+            Bukkit.broadcastMessage(ChatColor.GOLD + "There will be 3 winners." + ChatColor.STRIKETHROUGH + " Have Fun!");
+            Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "============================");
+            Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "This event ID: " + currentRaffleEventID);
+            Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "(for moderation)");
 
         }
 
