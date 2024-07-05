@@ -132,7 +132,7 @@ public class TimeManager {
         if (isTimePassed(END_OPEN_TIME.minusDays(1))
                 && !isTimePassed(END_OPEN_TIME.minusHours(23).minusMinutes(59))) {
             if (cooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage("<@&1047168915500966048> End will be opening in exactly 24 hours! Be prepared, this is a mid-season 1st end fight with the 2nd one being at the end of season, and to spice things up, whoever has the dragon egg in their inventory will get a perk! Furthermore dragon will drop 1 and only dragon rune and custom lifesteal sword when killed!", "1032411739351941120");
+            sendDiscordNewsMessage("<@&1047168915500966048> End will be opening in exactly 24 hours! Be prepared, this is a mid-season 1st end fight with the 2nd one being at the end of season, and to spice things up, whoever has the dragon egg in their inventory will get a perk! Furthermore dragon will drop 1 and only dragon rune and custom lifesteal stick when killed!", "1032411739351941120");
             cooldown.setCooldown(70);
         }
 
