@@ -22,7 +22,6 @@ public class RaffleMiningEvent implements Listener {
         Location loc = block.getLocation();
 
 
-        player.sendMessage("test1");
 
         playerMineRaffleNormal(player, loc);
 
