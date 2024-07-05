@@ -78,6 +78,13 @@ public class RuneHandler implements Listener {
                 for (Player p : Bukkit.getOnlinePlayers()) {
                     for (ItemStack t : p.getInventory().getContents()) {
                         if (t != null) {
+                            if (t.getType() == Material.DRAGON_EGG) {
+                                ItemMeta meta = t.getItemMeta();
+                                List<String> lore = new ArrayList<>(List.of(ChatColor.DARK_PURPLE + "Have in inventory for " + ChatColor.GOLD + "10%" + ChatColor.DARK_PURPLE + " less damage!"));
+                                meta.setLore(lore);
+                                t.setItemMeta(meta);
+                                continue;
+                            }
                             if (t.hasItemMeta()) {
                                 if (t.hasLore()) {
                                     ItemMeta meta = t.getItemMeta();
