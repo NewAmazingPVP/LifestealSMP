@@ -11,19 +11,26 @@ import org.bukkit.event.block.BlockBreakEvent;
 import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleFunctions.RaffleNormalMining.playerMineRaffleNormal;
+import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleMain.isRaffleEventRunning;
 
 public class RaffleMiningEvent implements Listener {
 
     @EventHandler
     public void playerBreakBlock(BlockBreakEvent e){
 
-        Player player = e.getPlayer();
-        Block block = e.getBlock();
-        Location loc = block.getLocation();
+        if(isRaffleEventRunning){
+
+            Player player = e.getPlayer();
+            Block block = e.getBlock();
+            Location loc = block.getLocation();
 
 
 
-        playerMineRaffleNormal(player, loc);
+            playerMineRaffleNormal(player, loc);
+
+
+        }
+
 
     }
 
