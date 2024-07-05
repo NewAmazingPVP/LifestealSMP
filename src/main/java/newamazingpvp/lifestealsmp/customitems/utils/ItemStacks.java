@@ -174,7 +174,7 @@ public class ItemStacks {
         return instaboomTNT;
     }
 
-    public static ItemStack LifestealStick() {
+    public static ItemStack lifestealStick() {
         ItemStack lifestealStick = new ItemStack(Material.STICK);
         ItemMeta meta = lifestealStick.getItemMeta();
         meta.addEnchant(Enchantment.UNBREAKING, 1, false);

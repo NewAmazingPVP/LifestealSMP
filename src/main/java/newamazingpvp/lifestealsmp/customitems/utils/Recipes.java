@@ -155,7 +155,7 @@ public class Recipes {
         shapedRecipes.put(instaboomTNT, instaboomTNTRecipe);
         Bukkit.addRecipe(instaboomTNTRecipe);
 
-        ItemStack lifestealSword = new ItemStack(LifestealStick());
+        ItemStack lifestealSword = new ItemStack(lifestealStick());
         ShapedRecipe lifestealSwordRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "lifesteal_sword"), lifestealSword);
         lifestealSwordRecipe.shape("WHW", "WFW", "NSN");
         lifestealSwordRecipe.setIngredient('H', extraHeart());
