@@ -7,10 +7,11 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class RaffleItemStacks {
 
-    public static ItemStack raffleTicket(int eventNum) {
+    public static ItemStack raffleTicket(UUID eventNum) {
         ItemStack raffleTicket = new ItemStack(Material.PAPER);
         ItemMeta meta = raffleTicket.getItemMeta();
         meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Raffle Ticket");
