@@ -26,6 +26,7 @@ import newamazingpvp.lifestealsmp.endfight.GeneralBossLieteners.LaunchPads;
 import newamazingpvp.lifestealsmp.endfight.commands.BossQuickStart;
 import newamazingpvp.lifestealsmp.endfight.commands.StartEndBoss;
 import newamazingpvp.lifestealsmp.endfight.commands.StopEndBoss;
+import newamazingpvp.lifestealsmp.runes.DragonRune;
 import newamazingpvp.lifestealsmp.unused.magicstaffs.abilities.Default;
 import newamazingpvp.lifestealsmp.unused.magicstaffs.utils.GUI;
 import newamazingpvp.lifestealsmp.customitems.utils.AntiAnvil;
@@ -353,6 +354,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
     public static void registerCustomItemsAndRunes() {
         registerCustomRecipes();
+        Bukkit.getPluginManager().registerEvents(new DragonRune(), lifestealSmp);
         Bukkit.getPluginManager().registerEvents(new RuneHandler(), lifestealSmp);
         Bukkit.getPluginManager().registerEvents(new HomingBow(), lifestealSmp);
         Bukkit.getPluginManager().registerEvents(new TntBow(), lifestealSmp);
