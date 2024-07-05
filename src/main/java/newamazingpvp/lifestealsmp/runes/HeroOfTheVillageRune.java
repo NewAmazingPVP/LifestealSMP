@@ -18,8 +18,50 @@ public class HeroOfTheVillageRune extends AbstractRune {
     private static final String lore = ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier());
 
     public HeroOfTheVillageRune() {
-        super(name, mob, 1.0 / 50, lore, effect);
+        super(name,
+                mob,
+                1.0 / 50,
+                lore,
+                effect);
     }
 
+    static class II extends AbstractRune {
+        public II() {
+            super(name + " II",
+                    mob,
+                    1.0 / 100,
+                    ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectII.getType().getKey().getKey()) + " " + formatAmplifier(effectII.getAmplifier()),
+                    effectII);
+        }
+    }
 
+    static class III extends AbstractRune {
+        public III() {
+            super(name + " III",
+                    mob,
+                    1.0 / 150,
+                    ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectIII.getType().getKey().getKey()) + " " + formatAmplifier(effectIII.getAmplifier()),
+                    effectIII);
+        }
+    }
+
+    static class IV extends AbstractRune {
+        public IV() {
+            super(name + " IV",
+                    mob,
+                    1.0 / 200,
+                    ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectIV.getType().getKey().getKey()) + " " + formatAmplifier(effectIV.getAmplifier()),
+                    effectIV);
+        }
+    }
+
+    static class V extends AbstractRune {
+        public V() {
+            super(name + " V",
+                    mob,
+                    1.0 / 250,
+                    ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectV.getType().getKey().getKey()) + " " + formatAmplifier(effectV.getAmplifier()),
+                    effectV);
+        }
+    }
 }

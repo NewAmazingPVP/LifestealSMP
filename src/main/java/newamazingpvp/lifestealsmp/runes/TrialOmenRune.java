@@ -15,11 +15,46 @@ public class TrialOmenRune extends AbstractRune {
     private static final PotionEffect effectIV = new PotionEffect(PotionEffectType.TRIAL_OMEN, 200, 3);
     private static final PotionEffect effectV = new PotionEffect(PotionEffectType.TRIAL_OMEN, 200, 4);
 
-    private static final String lore = ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier());
-
     public TrialOmenRune() {
-        super(name, mob, 1.0 / 150, lore, effect);
+        super(name,
+                mob,
+                1.0 / 150,
+                ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier()), effect);
     }
 
+    static class II extends AbstractRune {
+        public II() {
+            super(name + " II",
+                    mob,
+                    1.0 / 300,
+                    ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectII.getType().getKey().getKey()) + " " + formatAmplifier(effectII.getAmplifier()), effectII);
+        }
+    }
 
+    static class III extends AbstractRune {
+        public III() {
+            super(name + " II",
+                    mob,
+                    1.0 / 450,
+                    ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectIII.getType().getKey().getKey()) + " " + formatAmplifier(effectIII.getAmplifier()), effectIII);
+        }
+    }
+
+    static class IV extends AbstractRune {
+        public IV() {
+            super(name + " IV",
+                    mob,
+                    1.0 / 600,
+                    ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectIV.getType().getKey().getKey()) + " " + formatAmplifier(effectIV.getAmplifier()), effectIV);
+        }
+    }
+
+    static class V extends AbstractRune {
+        public V() {
+            super(name + " V",
+                    mob,
+                    1.0 / 750,
+                    ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectV.getType().getKey().getKey()) + " " + formatAmplifier(effectV.getAmplifier()), effectV);
+        }
+    }
 }
