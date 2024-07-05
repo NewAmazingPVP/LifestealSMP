@@ -13,14 +13,16 @@ public class RaffleNormalMining {
 
     private static int tempTestNum = 2383847;
 
-    public static void playerMineRaffleNormal(Player player, Location loc, Block block){
+    public static void playerMineRaffleNormal(Player player, Location loc){
 
+        player.sendMessage("test2");
 
         if (Math.random() < 0.5){
 
             SMPworld.dropItemNaturally(loc, raffleTicket(tempTestNum));
             player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+1 Ticket]");
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
+            player.sendMessage("test3");
 
 
         }
