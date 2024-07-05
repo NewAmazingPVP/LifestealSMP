@@ -5,6 +5,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+
 public class StrengthRune extends AbstractRune {
 
     private static final String name = "&x&4&1&0&0&F&F&lS&x&5&1&0&0&F&F&ltr&x&6&1&0&0&F&F&le&x&7&1&0&0&F&F&ln&x&8&1&0&0&F&F&lg&x&A&2&0&0&F&F&lth &x&B&2&0&0&F&F&lR&x&C&2&0&0&F&F&lu&x&D&2&0&0&F&F&ln&x&E&2&0&0&F&F&le";
@@ -14,7 +15,20 @@ public class StrengthRune extends AbstractRune {
     private static final String lore = ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier());
 
     public StrengthRune() {
-        super(name, mob, 1.0 / 200, lore, effect);
+        super(name,
+                mob,
+                1.0 / 200,
+                lore,
+                effect);
     }
 
+    static class II extends AbstractRune {
+        public II() {
+            super(name + " II",
+                    mob,
+                    1.0 / 400,
+                    ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectII.getType().getKey().getKey()) + " " + formatAmplifier(effectII.getAmplifier()),
+                    effectII);
+        }
+    }
 }
