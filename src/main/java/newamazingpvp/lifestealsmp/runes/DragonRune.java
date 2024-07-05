@@ -64,7 +64,7 @@ public class DragonRune implements Listener {
         }
     }
 
-    public ItemStack dragonRune(){
+    public static ItemStack dragonRune(){
         ItemStack rune = new ItemStack(Material.AMETHYST_SHARD);
         ItemMeta meta = rune.getItemMeta();
         meta.addEnchant(Enchantment.UNBREAKING, 1, false);
