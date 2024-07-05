@@ -26,7 +26,7 @@ public class RaffleNormalMining {
 
             player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+1 Ticket]");
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
-            SMPworld.dropItemNaturally(loc, raffleTicket(tempTestNum));
+            player.getWorld().dropItemNaturally(loc, raffleTicket(tempTestNum));
 
 
         }
