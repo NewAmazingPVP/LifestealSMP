@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleMain.isRaffleEventRunning;
+import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleMain.startRaffleEvent;
 
 public class StartRaffleEvent implements CommandExecutor {
 
@@ -20,6 +21,7 @@ public class StartRaffleEvent implements CommandExecutor {
             if(!isRaffleEventRunning){
                 isRaffleEventRunning = true;
                 player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Starting raffle event" );
+                startRaffleEvent();
             }else{
                 player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Event is already toggled on you fucking idiot!" );
             }
