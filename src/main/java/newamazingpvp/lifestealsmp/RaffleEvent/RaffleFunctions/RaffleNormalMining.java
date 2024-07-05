@@ -6,6 +6,8 @@ import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
+import java.util.Random;
+
 import static newamazingpvp.lifestealsmp.LifestealSMP.SMPworld;
 import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleItemStacks.raffleTicket;
 
@@ -15,14 +17,15 @@ public class RaffleNormalMining {
 
     public static void playerMineRaffleNormal(Player player, Location loc){
 
-        player.sendMessage("test2");
 
-        if (Math.random() < 0.5){
+        Random rand = new Random();
+        double randomNumber = rand.nextDouble();
+
+        if (randomNumber > 0.5){
 
             SMPworld.dropItemNaturally(loc, raffleTicket(tempTestNum));
             player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+1 Ticket]");
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
-            player.sendMessage("test3");
 
 
         }
