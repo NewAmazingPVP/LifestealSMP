@@ -10,6 +10,7 @@ import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands.StartRaffleEve
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands.StopRaffleEvent;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEvents.ClearOldBingoTags;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEvents.RaffleMiningEvent;
+import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEvents.RaffleSubmittingTickets;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleFunctions.BlockPlaceTracker;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
@@ -255,6 +256,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             //===================== Raffle Event Listeners =======================
             getServer().getPluginManager().registerEvents(new RaffleMiningEvent(), this);
             getServer().getPluginManager().registerEvents(new ClearOldBingoTags(), this);
+            getServer().getPluginManager().registerEvents(new RaffleSubmittingTickets(), this);
             //getServer().getPluginManager().registerEvents(new BlockPlaceTracker(), this);
             getCommand("raffleeventstart").setExecutor(new StartRaffleEvent());
             getCommand("raffleeventstop").setExecutor(new StopRaffleEvent());

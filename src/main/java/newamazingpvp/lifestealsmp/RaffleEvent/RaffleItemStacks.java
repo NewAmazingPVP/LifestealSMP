@@ -16,8 +16,9 @@ public class RaffleItemStacks {
         ItemMeta meta = raffleTicket.getItemMeta();
         meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Raffle Ticket");
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.DARK_PURPLE + "Turn in at a drop off point");
-        lore.add(ChatColor.DARK_PURPLE + "to submit it to the raffle!");
+        lore.add(ChatColor.DARK_PURPLE + "Right click within 150 blocks");
+        lore.add(ChatColor.DARK_PURPLE + "of spawn to submit!");
+        lore.add(" ");
         lore.add(ChatColor.DARK_GRAY + "E " + eventNum);
         meta.setLore(lore);
         raffleTicket.setItemMeta(meta);

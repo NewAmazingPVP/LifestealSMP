@@ -47,7 +47,7 @@ public class ClearOldBingoTags implements Listener {
             if (item != null && item.getType() != Material.AIR) {
                 ItemMeta meta = item.getItemMeta();
                 if(item.getType() == Material.PAPER){
-                    if (meta.getLore().toString().contains("to submit it to the raffle!")){
+                    if (meta.getLore().toString().contains("Right click within 150 blocks")){
 
                         if(!(meta.getLore().toString().contains("E " + currentRaffleEventID))){
                             itemsToRemove.add(item);

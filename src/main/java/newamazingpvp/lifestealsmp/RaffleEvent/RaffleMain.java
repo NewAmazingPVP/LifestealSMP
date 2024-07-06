@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
+import java.util.HashMap;
 import java.util.Random;
 import java.util.UUID;
 
@@ -15,17 +16,21 @@ public class RaffleMain {
 
     public static UUID currentRaffleEventID;
 
+
+    public static int totalNumOfRaffleTicketsAdded = 0;
+
+    public static HashMap<Player, Integer> numOfTicketsAddedByAPlayer = new HashMap<>();
+
+
+
     static Random random = new Random();
 
 
     public static void startRaffleEvent() {
 
-        /*for (int i = 0; i < 11; i++) {
+        totalNumOfRaffleTicketsAdded = 0;
 
-            int randomNumber = random.nextInt(10) + 1;
-            currentRaffleEventID += randomNumber;
-
-        }*/
+        numOfTicketsAddedByAPlayer.clear(); 
 
         UUID uuid = UUID.randomUUID();
 
