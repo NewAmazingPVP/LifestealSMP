@@ -80,7 +80,7 @@ public class RuneHandler implements Listener {
                         if (t != null) {
                             if (t.getType() == Material.DRAGON_EGG) {
                                 ItemMeta meta = t.getItemMeta();
-                                List<String> lore = new ArrayList<>(List.of(ChatColor.DARK_PURPLE + "Have in inventory for " + ChatColor.GOLD + "10%" + ChatColor.DARK_PURPLE + " less damage!"));
+                                List<String> lore = new ArrayList<>(List.of(ChatColor.DARK_PURPLE + "Have in inventory for " + ChatColor.GOLD + "15%" + ChatColor.DARK_PURPLE + " less damage!"));
                                 meta.setLore(lore);
                                 t.setItemMeta(meta);
                                 continue;

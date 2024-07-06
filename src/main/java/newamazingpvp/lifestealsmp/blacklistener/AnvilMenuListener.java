@@ -60,13 +60,7 @@ public class AnvilMenuListener implements Listener {
                     player.sendMessage(ChatColor.RED + "This item can't be put in an anvil!");
                     player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1.0f, 2.0f);
                 }
-                if (itemName.toLowerCase().contains("rune")) {
-                    event.setCancelled(true);
-                    player.sendMessage(ChatColor.RED + "This item can't be put in an anvil!");
-                    player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1.0f, 2.0f);
-                }
-                //TODO: CHECK LORE INSTEAD
-                if(itemName.contains("&x&F&B&0&8&7&4&lD&x&F&8&1&9&8&2&lr&x&F&5&2&9&8&F&la&x&F&3&3&A&9&D&lg&x&F&0&4&A&A&B&lo&x&E&D&5&B&B&9&ln &x&E&7&7&C&D&4&lR&x&E&5&8&C&E&2&lu&x&E&2&9&D&E&F&ln&x&D&F&A&D&F&D&le")){
+                if (ChatColor.stripColor(itemName).toLowerCase().contains("rune")) {
                     event.setCancelled(true);
                     player.sendMessage(ChatColor.RED + "This item can't be put in an anvil!");
                     player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1.0f, 2.0f);
