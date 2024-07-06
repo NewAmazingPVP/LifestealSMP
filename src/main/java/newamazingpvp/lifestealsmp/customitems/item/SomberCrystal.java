@@ -21,6 +21,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.endfight.custommobs.mobs.deadminer.DeadMinerListener.general_ID_manager_for_logging;
+import static org.bukkit.Bukkit.getServer;
 
 public class SomberCrystal implements Listener {
 
@@ -45,6 +47,8 @@ public class SomberCrystal implements Listener {
     @EventHandler
     public void playerHitPlayer(EntityDamageByEntityEvent e) {
         if (!(e.getDamager() instanceof Player) || !(e.getEntity() instanceof Player)) return;
+
+        general_ID_manager_for_logging();
 
         Player player = (Player) e.getDamager();
         Player damagedPlayer = (Player) e.getEntity();

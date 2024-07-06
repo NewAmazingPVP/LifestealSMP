@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -19,6 +20,7 @@ public class StopRaffleEvent implements CommandExecutor {
         if(isRaffleEventRunning){
             isRaffleEventRunning = false;
             player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Stopping raffle event" );
+            Bukkit.broadcastMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Event was stopped!");
         }else{
             player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Event is already toggled off you fucking idiot!" );
         }
