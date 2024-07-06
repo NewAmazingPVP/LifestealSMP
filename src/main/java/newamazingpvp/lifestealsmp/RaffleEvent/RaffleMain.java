@@ -30,7 +30,7 @@ public class RaffleMain {
 
         totalNumOfRaffleTicketsAdded = 0;
 
-        numOfTicketsAddedByAPlayer.clear(); 
+        numOfTicketsAddedByAPlayer.clear();
 
         UUID uuid = UUID.randomUUID();
 
