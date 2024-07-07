@@ -49,6 +49,7 @@ import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
 import newamazingpvp.lifestealsmp.game.PlayerPing;
 import newamazingpvp.lifestealsmp.listener.*;
 import newamazingpvp.lifestealsmp.runes.RuneHandler;
+import newamazingpvp.lifestealsmp.utility.Metrics;
 import newamazingpvp.lifestealsmp.utility.TimeManager;
 import newamazingpvp.lifestealsmp.utility.Utils;
 import newamazingpvp.lifestealsmp.unused.visualeffects.DroppedItemParticles;
@@ -87,10 +88,14 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
     public static boolean isSmp = true;
 
     public static World SMPworld = Bukkit.getWorld("world");
+    public static final String PLUGIN_WATERMARK = "© 2024 [NewAmazingPVP & Comet99] - [LifestealSMP]";
 
 
     @Override
     public void onEnable() {
+        getLogger().info("Starting " + PLUGIN_WATERMARK);
+        getLogger().info("This plugin was developed by NewAmazingPVP and Comet99. Please provide attribution if you use it and abide by the licenses. You are not allowed to use this if you are not an active contributor");
+        new Metrics(this, 22552);
         getServer().getMessenger().registerIncomingPluginChannel(this, "nappixel:lifesteal", this);
         getServer().getMessenger().registerOutgoingPluginChannel(this, "nappixel:lifesteal");
         saveDefaultConfig();
