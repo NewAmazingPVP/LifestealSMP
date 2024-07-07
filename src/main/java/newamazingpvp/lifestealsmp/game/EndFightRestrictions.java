@@ -14,7 +14,7 @@ import org.bukkit.util.Vector;
 import java.awt.Color;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordEmbedPlayer;
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.*;
 import static newamazingpvp.lifestealsmp.variables.Loc.*;
 import static newamazingpvp.lifestealsmp.variables.Misc.endFightParticipants;
 import static newamazingpvp.lifestealsmp.variables.Misc.isEndFightEnabled;
@@ -121,6 +121,7 @@ public class EndFightRestrictions implements Listener {
                     player.sendTitle(ChatColor.GOLD + survivor.getName() + ChatColor.DARK_PURPLE + " has won the end fight!", ChatColor.AQUA + "GGs " + survivor.getName());
                 }
                 sendDiscordEmbedPlayer(survivor.getName() + " has won the end fight!", Color.BLUE, "", survivor.getName());
+                sendDiscordNewsEmbedPlayer(survivor.getName() + " has won the end fight!", Color.BLUE, "1032411739351941120", survivor.getName());
             }
         }
     }

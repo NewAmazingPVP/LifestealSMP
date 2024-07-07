@@ -23,7 +23,7 @@ public class TimeManager {
     );
 
     public static final ZonedDateTime END_OPEN_TIME = SEASON_START_TIME.plusDays(14).plusHours(2);
-    public static final ZonedDateTime FINAL_FIGHT = SEASON_START_TIME.plusDays(35).plusHours(2);
+    public static final ZonedDateTime FINAL_FIGHT = SEASON_START_TIME.plusDays(21).plusHours(2);
 
     //this is because season starts 12pm est auto restart at 3am Saturday morning
     public static final ZonedDateTime CUSTOM_ITEMS_AND_RUNES = SEASON_START_TIME.plusDays(6).plusHours(14);
