@@ -17,7 +17,12 @@ public class StopRaffleEvent implements CommandExecutor {
 
         Player player = (Player) sender;
 
-        endRaffleEvent(player);
+        if(isRaffleEventRunning){
+            player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Stopping raffle event" );
+            Bukkit.broadcastMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Event was stopped!");
+        }else{
+            player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Event is already toggled off you fucking idiot!" );
+        }
 
 
         return true;

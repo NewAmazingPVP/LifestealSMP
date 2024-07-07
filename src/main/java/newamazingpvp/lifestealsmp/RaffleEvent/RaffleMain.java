@@ -33,9 +33,11 @@ public class RaffleMain {
 
     public static int raffleTimerCount = 0;
 
-    public static BossBar raffleTimerBossBar = Bukkit.createBossBar(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Raffle Event: " + raffleTimerCount, BarColor.BLUE, BarStyle.SOLID);
+    public static BossBar raffleTimerBossBar = Bukkit.createBossBar(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Raffle Event: " + raffleTimerCount, BarColor.BLUE, BarStyle.SEGMENTED_20);
 
     public static void startRaffleEvent(Player player) {
+
+        raffleTimerBossBar.setVisible(true);
 
         raffleTimerCount = 60;
 
@@ -45,12 +47,11 @@ public class RaffleMain {
             @Override
             public void run() {
                 if (raffleTimerCount <= 0) {
-                    preBoss = false;
-                    bossRunning = true;
                     endRaffleMainTimerRunnable();
+                    endRaffleEvent();
                 } else {
                     raffleTimerCount -= 1;
-                    raffleTimerBossBar.setTitle("Raffle Event: " + raffleTimerCount);
+                    raffleTimerBossBar.setTitle(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Raffle Event: " + raffleTimerCount);
                     if (raffleTimerCount <= 10) {
                         Bukkit.broadcastMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "The Event Will End In " + raffleTimerCount + "sec!");
                     } else {
@@ -89,8 +90,6 @@ public class RaffleMain {
         Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "(for moderation)");
 
 
-        raffleTimerBossBar.setVisible(true);
-
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
             onlinePlayer.playSound(onlinePlayer.getLocation(), Sound.ENTITY_ENDER_DRAGON_GROWL, 5.0f, 1.0f);
 
@@ -104,29 +103,30 @@ public class RaffleMain {
     }
 
 
-
-    private static void endRaffleMainTimerRunnable(){
+    private static void endRaffleMainTimerRunnable() {
         if (raffleMainTimerRunnable != null && !raffleMainTimerRunnable.isCancelled()) {
             raffleMainTimerRunnable.cancel();
             raffleMainTimerRunnable = null;
 
+
+        }
+    }
+
+
+    public static void endRaffleEvent() {
+        isRaffleEventRunning = false;
+        raffleTimerBossBar.setVisible(false);
+
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            onlinePlayer.playSound(onlinePlayer.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 5.0f, 0.0f); 
+
         }
     }
 
 
 
-    public static void endRaffleEvent(Player player){
-        if(isRaffleEventRunning){
-            isRaffleEventRunning = false;
-            player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Stopping raffle event" );
-            raffleTimerBossBar.setVisible(false);
-            Bukkit.broadcastMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Event was stopped!");
-        }else{
-            player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Event is already toggled off you fucking idiot!" );
-        }
-    }
 
 
+}
 
-    }
 
