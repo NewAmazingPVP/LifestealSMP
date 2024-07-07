@@ -5,9 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.TNTPrimed;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -101,6 +99,20 @@ public class SpawnProtection implements Listener {
                 if (tnt.getSource() instanceof Player) {
                     Player damaged = (Player) event.getEntity();
                     Player damager = (Player) tnt.getSource();
+                    vicinityPvp(event, damaged, damager);
+                }
+            }  else if (event.getDamager() instanceof ThrownPotion) {
+                ThrownPotion potion = (ThrownPotion) event.getDamager();
+                if (potion.getShooter() instanceof Player) {
+                    Player damaged = (Player) event.getEntity();
+                    Player damager = (Player) potion.getShooter();
+                    vicinityPvp(event, damaged, damager);
+                }
+            } else if (event.getDamager() instanceof Trident) {
+                Trident trident = (Trident) event.getDamager();
+                if (trident.getShooter() instanceof Player) {
+                    Player damaged = (Player) event.getEntity();
+                    Player damager = (Player) trident.getShooter();
                     vicinityPvp(event, damaged, damager);
                 }
             }
