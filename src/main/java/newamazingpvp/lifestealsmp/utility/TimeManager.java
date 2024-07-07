@@ -136,10 +136,18 @@ public class TimeManager {
             cooldown.setCooldown(70);
         }
 
+        if (isTimePassed(END_OPEN_TIME.minusHours(4))
+                && !isTimePassed(END_OPEN_TIME.minusHours(3).minusMinutes(59))) {
+            if (cooldown.isOnCooldown()) return;
+            sendDiscordNewsMessage("<@&1047168915500966048> End will be opening in " + formatDuration(Duration.between(SEASON_START_TIME.plusDays(14), ZonedDateTime.now(ZoneId.of("America/New_York")))) + " exactly! Make sure to find a stronghold and portal!", "1032411739351941120");
+            cooldown.setCooldown(70);
+        }
+
+
         if (isTimePassed(END_OPEN_TIME.minusHours(1))
                 && !isTimePassed(END_OPEN_TIME.minusMinutes(59))) {
             if (cooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage("<@&1047168915500966048> End will be opening in " + formatDuration(Duration.between(SEASON_START_TIME.plusDays(14), ZonedDateTime.now(ZoneId.of("America/New_York")))) + " exactly!", "1032411739351941120");
+            sendDiscordNewsMessage("<@&1047168915500966048> End will be opening in " + formatDuration(Duration.between(SEASON_START_TIME.plusDays(14), ZonedDateTime.now(ZoneId.of("America/New_York")))) + " exactly! Make sure to find a stronghold and portal!", "1032411739351941120");
             cooldown.setCooldown(70);
         }
 
@@ -179,6 +187,13 @@ public class TimeManager {
                 && !isTimePassed(FINAL_FIGHT.minusHours(23).minusMinutes(59))) {
             if (cooldown.isOnCooldown()) return;
             sendDiscordNewsMessage("<@&1047168915500966048> Final fight in exactly 24 hours! Be prepared, the last one standing will be the winner of this season!", "1032411739351941120");
+            cooldown.setCooldown(70);
+        }
+
+        if (isTimePassed(FINAL_FIGHT.minusHours(4))
+                && !isTimePassed(FINAL_FIGHT.minusHours(3).minusMinutes(59))) {
+            if (cooldown.isOnCooldown()) return;
+            sendDiscordNewsMessage("<@&1047168915500966048> Final fight in " + formatDuration(Duration.between(SEASON_START_TIME.plusDays(28), ZonedDateTime.now(ZoneId.of("America/New_York"))))  + " exactly!", "1032411739351941120");
             cooldown.setCooldown(70);
         }
 
@@ -240,30 +255,31 @@ public class TimeManager {
         StringBuilder formattedDuration = new StringBuilder();
 
         if (days != 0) {
-            formattedDuration.append(days).append(" days");
+            formattedDuration.append(days).append(" day").append(days > 1 ? "s" : "");
         }
 
         if (hours != 0) {
             if (formattedDuration.length() > 0) {
                 formattedDuration.append(", ");
             }
-            formattedDuration.append(hours).append(" hours");
+            formattedDuration.append(hours).append(" hour").append(hours > 1 ? "s" : "");
         }
 
         if (minutes != 0) {
             if (formattedDuration.length() > 0) {
                 formattedDuration.append(", ");
             }
-            formattedDuration.append(minutes).append(" minutes");
+            formattedDuration.append(minutes).append(" minute").append(minutes > 1 ? "s" : "");
         }
 
         if (seconds != 0) {
             if (formattedDuration.length() > 0) {
                 formattedDuration.append(", ");
             }
-            formattedDuration.append(seconds).append(" seconds");
+            formattedDuration.append(seconds).append(" second").append(seconds > 1 ? "s" : "");
         }
 
-        return formattedDuration.toString().replace("-", "");
+        return formattedDuration.toString();
     }
+
 }
