@@ -9,6 +9,7 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands.StartRaffleEvent;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands.StopRaffleEvent;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEvents.ClearOldBingoTags;
+import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEvents.RaffleAddPlayersToBossBar;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEvents.RaffleMiningEvent;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEvents.RaffleSubmittingTickets;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
@@ -259,6 +260,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new RaffleMiningEvent(), this);
             getServer().getPluginManager().registerEvents(new ClearOldBingoTags(), this);
             getServer().getPluginManager().registerEvents(new RaffleSubmittingTickets(), this);
+            getServer().getPluginManager().registerEvents(new RaffleAddPlayersToBossBar(), this);
             //getServer().getPluginManager().registerEvents(new BlockPlaceTracker(), this);
             getCommand("raffleeventstart").setExecutor(new StartRaffleEvent());
             getCommand("raffleeventstop").setExecutor(new StopRaffleEvent());

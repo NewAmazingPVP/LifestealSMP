@@ -7,8 +7,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleMain.isRaffleEventRunning;
-import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleMain.killRaffleBossBar;
+import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleMain.*;
 
 public class StopRaffleEvent implements CommandExecutor {
 
@@ -18,18 +17,13 @@ public class StopRaffleEvent implements CommandExecutor {
 
         Player player = (Player) sender;
 
-        if(isRaffleEventRunning){
-            isRaffleEventRunning = false;
-            player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Stopping raffle event" );
-            killRaffleBossBar();
-            Bukkit.broadcastMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Event was stopped!");
-        }else{
-            player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Event is already toggled off you fucking idiot!" );
-        }
+        endRaffleEvent(player);
 
 
         return true;
     }
+
+
 
 
 }

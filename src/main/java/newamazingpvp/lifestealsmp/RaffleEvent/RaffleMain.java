@@ -7,10 +7,15 @@ import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
 import java.util.Random;
 import java.util.UUID;
+
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.unused.endfight.BossFightMainClass.bossRunning;
+import static newamazingpvp.lifestealsmp.unused.endfight.BossFightMainClass.preBoss;
 
 public class RaffleMain {
 
@@ -24,14 +29,38 @@ public class RaffleMain {
 
     public static HashMap<Player, Integer> numOfTicketsAddedByAPlayer = new HashMap<>();
 
+    public static BukkitRunnable raffleMainTimerRunnable;
 
+    public static int raffleTimerCount = 0;
 
-    static Random random = new Random();
-
-
-    static BossBar raffleTimberBossBar = Bukkit.createBossBar("Raffle Event", BarColor.BLUE, BarStyle.SOLID);
+    public static BossBar raffleTimerBossBar = Bukkit.createBossBar(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Raffle Event: " + raffleTimerCount, BarColor.BLUE, BarStyle.SOLID);
 
     public static void startRaffleEvent(Player player) {
+
+        raffleTimerCount = 60;
+
+        raffleMainTimerRunnable = new BukkitRunnable() {
+
+
+            @Override
+            public void run() {
+                if (raffleTimerCount <= 0) {
+                    preBoss = false;
+                    bossRunning = true;
+                    endRaffleMainTimerRunnable();
+                } else {
+                    raffleTimerCount -= 1;
+                    if (raffleTimerCount <= 10) {
+                        Bukkit.broadcastMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "The Event Will End In " + raffleTimerCount + "sec!");
+                    } else {
+
+                    }
+
+                }
+            }
+        };
+        raffleMainTimerRunnable.runTaskTimer(lifestealSmp, 0L, 20L); // Start immediately and repeat every second
+
 
         totalNumOfRaffleTicketsAdded = 0;
 
@@ -46,51 +75,55 @@ public class RaffleMain {
         Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(ChatColor.GOLD + "" + ChatColor.BOLD + "Event Starting!", " ", 10, 40, 5));
 
 
-            Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "======= Raffle Event =========");
-            Bukkit.broadcastMessage(ChatColor.GOLD + "Break blocks and kill mobs / players to get");
-            Bukkit.broadcastMessage(ChatColor.GOLD + "raffle tickets! Submit tickets by going within");
-            Bukkit.broadcastMessage(ChatColor.GOLD + "150 blocks of spawn and right clicking them!");
-            Bukkit.broadcastMessage(ChatColor.GOLD + "The more raffle tickets you have in your inventory");
-            Bukkit.broadcastMessage(ChatColor.GOLD + "the higher the chance" + ChatColor.DARK_RED + " special mobs will spawn!");
-            Bukkit.broadcastMessage(ChatColor.GREEN + ("(Could be a good thing)"));
-            Bukkit.broadcastMessage(ChatColor.GOLD + "There will be 3 winners." + ChatColor.STRIKETHROUGH + " Have Fun!");
-            Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "============================");
-            Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "This event ID: " + currentRaffleEventID);
-            Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "(for moderation)");
+        Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "======= Raffle Event =========");
+        Bukkit.broadcastMessage(ChatColor.GOLD + "Break blocks and kill mobs / players to get");
+        Bukkit.broadcastMessage(ChatColor.GOLD + "raffle tickets! Submit tickets by going within");
+        Bukkit.broadcastMessage(ChatColor.GOLD + "150 blocks of spawn and right clicking them!");
+        Bukkit.broadcastMessage(ChatColor.GOLD + "The more raffle tickets you have in your inventory");
+        Bukkit.broadcastMessage(ChatColor.GOLD + "the higher the chance" + ChatColor.DARK_RED + " special mobs will spawn!");
+        Bukkit.broadcastMessage(ChatColor.GREEN + ("(Could be a good thing)"));
+        Bukkit.broadcastMessage(ChatColor.GOLD + "There will be 3 winners." + ChatColor.STRIKETHROUGH + " Have Fun!");
+        Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "============================");
+        Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "This event ID: " + currentRaffleEventID);
+        Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "(for moderation)");
 
 
-
-        raffleTimberBossBar.setVisible(true);
+        raffleTimerBossBar.setVisible(true);
 
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
             onlinePlayer.playSound(onlinePlayer.getLocation(), Sound.ENTITY_ENDER_DRAGON_GROWL, 5.0f, 1.0f);
 
-             onlinePlayer = Bukkit.getPlayer("playerName");
+            onlinePlayer = Bukkit.getPlayer("playerName");
 
             if (player != null) {
                 // Add the player to the boss bar
-                raffleTimberBossBar.addPlayer(player);
+                raffleTimerBossBar.addPlayer(player);
             }
+        }
+    }
+
+
+
+    private static void endRaffleMainTimerRunnable(){
+        if (raffleMainTimerRunnable != null && !raffleMainTimerRunnable.isCancelled()) {
+            raffleMainTimerRunnable.cancel();
+            raffleMainTimerRunnable = null;
 
         }
+    }
 
 
+
+    public static void endRaffleEvent(Player player){
+        if(isRaffleEventRunning){
+            isRaffleEventRunning = false;
+            player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Stopping raffle event" );
+            raffleTimerBossBar.setVisible(false);
+            Bukkit.broadcastMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Event was stopped!");
+        }else{
+            player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Event is already toggled off you fucking idiot!" );
         }
-
-
-
-
-        public static void killRaffleBossBar(){
-
-            raffleTimberBossBar.setVisible(false); // Makes the boss bar invisible
-
-            for (Player player : Bukkit.getOnlinePlayers()) {
-                raffleTimberBossBar.removePlayer(player);
-            }
-
-            raffleTimberBossBar = null;
-
-        }
+    }
 
 
 
