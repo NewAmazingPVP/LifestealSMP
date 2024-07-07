@@ -48,6 +48,18 @@ public class CombatProtectionHandler implements Listener {
                     Player shooter = (Player) tnt.getSource();
                     handlePlayerDamage(event, shooter, damaged);
                 }
+            } else if (event.getDamager() instanceof ThrownPotion) {
+                ThrownPotion potion = (ThrownPotion) event.getDamager();
+                if (potion.getShooter() instanceof Player) {
+                    Player shooter = (Player) potion.getShooter();
+                    handlePlayerDamage(event, shooter, damaged);
+                }
+            } else if (event.getDamager() instanceof Trident) {
+                Trident trident = (Trident) event.getDamager();
+                if (trident.getShooter() instanceof Player) {
+                    Player shooter = (Player) trident.getShooter();
+                    handlePlayerDamage(event, shooter, damaged);
+                }
             }
         } else if (event.getEntity() instanceof Villager && event.getDamager() instanceof Player) {
             handleVillagerDamage(event, (Player) event.getDamager());

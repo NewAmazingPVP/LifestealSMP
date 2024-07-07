@@ -197,5 +197,16 @@ public class Recipes {
         Bukkit.addRecipe(somberCrystalRecipe);
         customItems.add(somberCrystal);
         shapedRecipes.put(somberCrystal, somberCrystalRecipe);
+/*
+        ItemStack heartEqualizer = createHeartEqualizer();
+        ShapedRecipe heartEqualizerRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "heart_equalizer"), heartEqualizer);
+        heartEqualizerRecipe.shape("NNN", "DED", "DID");
+        heartEqualizerRecipe.setIngredient('D', Material.DIAMOND_BLOCK);
+        heartEqualizerRecipe.setIngredient('E', Material.ENCHANTED_GOLDEN_APPLE);
+        heartEqualizerRecipe.setIngredient('N', Material.NETHER_STAR);
+        heartEqualizerRecipe.setIngredient('I', Material.NETHERITE_INGOT);
+        Bukkit.addRecipe(heartEqualizerRecipe);
+        customItems.add(heartEqualizer);
+        shapedRecipes.put(heartEqualizer, heartEqualizerRecipe);*/
     }
 }
