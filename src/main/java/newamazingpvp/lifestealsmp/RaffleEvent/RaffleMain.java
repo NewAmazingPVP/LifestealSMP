@@ -3,6 +3,9 @@ package newamazingpvp.lifestealsmp.RaffleEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
+import org.bukkit.boss.BarColor;
+import org.bukkit.boss.BarStyle;
+import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -26,7 +29,9 @@ public class RaffleMain {
     static Random random = new Random();
 
 
-    public static void startRaffleEvent() {
+    static BossBar raffleTimberBossBar = Bukkit.createBossBar("Raffle Event", BarColor.BLUE, BarStyle.SOLID);
+
+    public static void startRaffleEvent(Player player) {
 
         totalNumOfRaffleTicketsAdded = 0;
 
@@ -40,11 +45,8 @@ public class RaffleMain {
 
         Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(ChatColor.GOLD + "" + ChatColor.BOLD + "Event Starting!", " ", 10, 40, 5));
 
-        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-            onlinePlayer.playSound(onlinePlayer.getLocation(), Sound.ENTITY_ENDER_DRAGON_GROWL, 5.0f, 1.0f);
-        }
 
-            Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "======= Raffle Event =======");
+            Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "======= Raffle Event =========");
             Bukkit.broadcastMessage(ChatColor.GOLD + "Break blocks and kill mobs / players to get");
             Bukkit.broadcastMessage(ChatColor.GOLD + "raffle tickets! Submit tickets by going within");
             Bukkit.broadcastMessage(ChatColor.GOLD + "150 blocks of spawn and right clicking them!");
@@ -56,9 +58,39 @@ public class RaffleMain {
             Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "This event ID: " + currentRaffleEventID);
             Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "(for moderation)");
 
+
+
+        raffleTimberBossBar.setVisible(true);
+
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            onlinePlayer.playSound(onlinePlayer.getLocation(), Sound.ENTITY_ENDER_DRAGON_GROWL, 5.0f, 1.0f);
+
+             onlinePlayer = Bukkit.getPlayer("playerName");
+
+            if (player != null) {
+                // Add the player to the boss bar
+                raffleTimberBossBar.addPlayer(player);
+            }
+
         }
 
 
+        }
+
+
+
+
+        public static void killRaffleBossBar(){
+
+            raffleTimberBossBar.setVisible(false); // Makes the boss bar invisible
+
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                raffleTimberBossBar.removePlayer(player);
+            }
+
+            raffleTimberBossBar = null;
+
+        }
 
 
 
