@@ -138,6 +138,22 @@ public class DiscordBot {
         }
     }
 
+    public static void sendDiscordNewsEmbedPlayer(String msg, Color c, String channelID, String p) {
+        if (jda == null) return;
+        p = "https://minotar.net/helm/" + p;
+        EmbedBuilder eb = new EmbedBuilder();
+        eb.setAuthor(msg, "https://www.nappixel.tk/", p);
+        eb.setColor(c);
+        if (channelID.isEmpty()) {
+            channel.sendMessageEmbeds(eb.build()).queue();
+        } else {
+            NewsChannel tempChannel = jda.getNewsChannelById(channelID);
+            if (tempChannel != null) {
+                tempChannel.sendMessageEmbeds(eb.build()).queue();
+            }
+        }
+    }
+
     public static void webHookClient() {
         WebhookClientBuilder builder = new WebhookClientBuilder(lifestealSmp.getConfig().getString("Discord.Webhook"));
         builder.setThreadFactory((job) -> {

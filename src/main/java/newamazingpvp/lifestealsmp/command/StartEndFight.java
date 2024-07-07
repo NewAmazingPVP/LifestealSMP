@@ -23,7 +23,7 @@ public class StartEndFight implements CommandExecutor {
         World world = getServer().getWorld("world_the_end");
         WorldBorder worldBorder = world.getWorldBorder();
         worldBorder.setCenter(0, 0);
-        worldBorder.setSize(300);
+        worldBorder.setSize(310);
         new BukkitRunnable() {
             int minutesPassed = 0;
             @Override
@@ -38,7 +38,7 @@ public class StartEndFight implements CommandExecutor {
                 worldBorder.setSize(newSize);
                 minutesPassed++;
             }
-        }.runTaskTimer(lifestealSmp, 0, 20 * 60);
+        }.runTaskTimer(lifestealSmp, 1200, 20 * 60);
         for (Player p : lifestealSmp.getServer().getOnlinePlayers()) {
             p.teleport(endFightSpawn);
             p.setInvulnerable(true);
@@ -64,7 +64,7 @@ public class StartEndFight implements CommandExecutor {
         for (Player p : lifestealSmp.getServer().getOnlinePlayers()) {
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> p.sendTitle(ChatColor.RED + "" + ChatColor.BOLD + "GO!", ChatColor.GOLD + "Good Luck!"), 1200);
         }
-        Bukkit.getWorld("world_the_end").getWorldBorder().setSize(300);
+        //Bukkit.getWorld("world_the_end").getWorldBorder().setSize(300);
         return true;
     }
 }
