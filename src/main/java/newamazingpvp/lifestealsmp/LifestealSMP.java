@@ -210,6 +210,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
             //New Custom Items
             registerCustomItemsAndRunes();
+            getServer().getPluginManager().registerEvents(new HeartEqualizer(), this);
 
 
             getServer().getPluginManager().registerEvents(new QuarryArmor(), this);
