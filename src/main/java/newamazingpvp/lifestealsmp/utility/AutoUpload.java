@@ -17,6 +17,7 @@ public class AutoUpload {
     private static String defaultUrl = "https://api.github.com/repos/NewAmazingPVP/LifestealSMP/releases/latest";
     private static String downloadUrl = null;
 
+    //we dont use this anymore
     public static void startReleaseChecker() {
         new BukkitRunnable() {
             @Override

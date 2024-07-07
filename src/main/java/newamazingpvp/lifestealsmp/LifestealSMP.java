@@ -76,7 +76,6 @@ import static newamazingpvp.lifestealsmp.game.CombatLog.cancelCombatData;
 import static newamazingpvp.lifestealsmp.game.CombatLog.removeEnemies;
 import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.utility.AutoUpload.isAutoUploadEnabled;
-import static newamazingpvp.lifestealsmp.utility.AutoUpload.startReleaseChecker;
 import static newamazingpvp.lifestealsmp.utility.TimeManager.*;
 import static newamazingpvp.lifestealsmp.utility.Utils.startTPSTracking;
 
@@ -108,7 +107,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
                 webHookClient();
             }
         }.runTaskLaterAsynchronously(this, 0L);
-        startReleaseChecker();
+        //startReleaseChecker();
         initializeBlacklist();
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
         getCommand("rules").setExecutor(new RulesCommand());
@@ -192,7 +191,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         Bukkit.getScheduler().runTaskTimer(this, TimeManager::timeBasedEvents, 20, 20);
 
         //TODO: Use this for beta things
-        if (isAutoUploadEnabled()) {
+        if (!isSmp) {
             //getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
             //getCommand("lockPlayer").setExecutor(new LockPlayer());
             //getCommand("givebingocardtemp").setExecutor(new GiveBingoCardTEMP());
