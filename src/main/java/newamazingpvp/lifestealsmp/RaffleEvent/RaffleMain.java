@@ -31,17 +31,16 @@ public class RaffleMain {
 
     public static BukkitRunnable raffleMainTimerRunnable;
 
-
+    public static int raffleTimerCount = 0;
 
     public static BossBar raffleTimerBossBar = Bukkit.createBossBar(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Raffle Event: " + raffleTimerCount, BarColor.BLUE, BarStyle.SOLID);
 
     public static void startRaffleEvent(Player player) {
 
-
+        raffleTimerCount = 60;
 
         raffleMainTimerRunnable = new BukkitRunnable() {
 
-            int raffleTimerCount = 60;
 
             @Override
             public void run() {
