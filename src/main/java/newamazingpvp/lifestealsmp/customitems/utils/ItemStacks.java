@@ -142,12 +142,14 @@ public class ItemStacks {
     }
 
     public static ItemStack createHeartEqualizer() {
-        ItemStack heartEqualizer = new ItemStack(Material.ENCHANTED_BOOK);
+        ItemStack heartEqualizer = new ItemStack(Material.AMETHYST_SHARD);
         ItemMeta meta = heartEqualizer.getItemMeta();
         meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Heart Equalizer");
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Special Ability:");
-        lore.add(ChatColor.DARK_PURPLE + "Takes into account max health and balances all players' damages during PvP fights.");
+        lore.add(ChatColor.DARK_PURPLE + "Takes into account max health");
+        lore.add(ChatColor.DARK_PURPLE + "and balances all players' damages");
+        lore.add(ChatColor.DARK_PURPLE + "during PvP fights.");
         meta.setLore(lore);
         heartEqualizer.setItemMeta(meta);
         return heartEqualizer;
