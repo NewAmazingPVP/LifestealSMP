@@ -1,9 +1,7 @@
 package newamazingpvp.lifestealsmp.listener;
 
 import org.bukkit.Difficulty;
-import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.TNTPrimed;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -32,6 +30,18 @@ public class NewbieProgression implements Listener {
                             return;
                         }
                     }
+                    if (event.getDamager() instanceof ThrownPotion) {
+                        ThrownPotion potion = (ThrownPotion) event.getDamager();
+                        if (potion.getShooter() instanceof Player) {
+                            return;
+                        }
+                    }
+                    if (event.getDamager() instanceof Trident) {
+                        Trident trident = (Trident) event.getDamager();
+                        if (trident.getShooter() instanceof Player) {
+                            return;
+                        }
+                    }
 
                     event.setDamage(finalDmg);
                 }
@@ -56,6 +66,18 @@ public class NewbieProgression implements Listener {
                 if (event.getDamager() instanceof TNTPrimed) {
                     TNTPrimed tnt = (TNTPrimed) event.getDamager();
                     if (tnt.getSource() instanceof Player) {
+                        return;
+                    }
+                }
+                if (event.getDamager() instanceof ThrownPotion) {
+                    ThrownPotion potion = (ThrownPotion) event.getDamager();
+                    if (potion.getShooter() instanceof Player) {
+                        return;
+                    }
+                }
+                if (event.getDamager() instanceof Trident) {
+                    Trident trident = (Trident) event.getDamager();
+                    if (trident.getShooter() instanceof Player) {
                         return;
                     }
                 }
