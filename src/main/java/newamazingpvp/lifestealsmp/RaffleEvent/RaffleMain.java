@@ -39,7 +39,8 @@ public class RaffleMain {
 
         raffleTimerBossBar.setVisible(true);
 
-        raffleTimerCount = 60;
+        raffleTimerCount = 60;  //3600
+        raffleTimerBossBar.setProgress(raffleTimerCount);
 
         raffleMainTimerRunnable = new BukkitRunnable() {
 
@@ -52,6 +53,7 @@ public class RaffleMain {
                 } else {
                     raffleTimerCount -= 1;
                     raffleTimerBossBar.setTitle(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Raffle Event: " + raffleTimerCount);
+                    raffleTimerBossBar.setProgress(raffleTimerCount);
                     if (raffleTimerCount <= 10) {
                         Bukkit.broadcastMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "The Event Will End In " + raffleTimerCount + "sec!");
                     } else {
@@ -118,9 +120,11 @@ public class RaffleMain {
         raffleTimerBossBar.setVisible(false);
 
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-            onlinePlayer.playSound(onlinePlayer.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 5.0f, 0.0f); 
+            onlinePlayer.playSound(onlinePlayer.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 5.0f, 0.0f);
 
         }
+
+
     }
 
 
