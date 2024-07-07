@@ -50,6 +50,7 @@ public class RaffleMain {
                     endRaffleMainTimerRunnable();
                 } else {
                     raffleTimerCount -= 1;
+                    raffleTimerCount.setTitle("Raffle Event: " + raffleTimerCount);
                     if (raffleTimerCount <= 10) {
                         Bukkit.broadcastMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "The Event Will End In " + raffleTimerCount + "sec!");
                     } else {
