@@ -2,10 +2,13 @@ package newamazingpvp.lifestealsmp.command;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.World;
+import org.bukkit.WorldBorder;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.variables.Loc.endFightSpawn;
@@ -17,9 +20,25 @@ public class StartEndFight implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         isEndFightEnabled = true;
-        //WorldBorder worldBorder = lifestealSmp.getServer().getWorld("world_the_end").getWorldBorder();
-        //worldBorder.setCenter(0, 0);
-        //worldBorder.setSize(150);
+        World world = getServer().getWorld("world_the_end");
+        WorldBorder worldBorder = world.getWorldBorder();
+        worldBorder.setCenter(0, 0);
+        worldBorder.setSize(300);
+        new BukkitRunnable() {
+            int minutesPassed = 0;
+            @Override
+            public void run() {
+                if (minutesPassed >= 30) {
+                    this.cancel();
+                    return;
+                }
+
+                double newSize = worldBorder.getSize() - 10;
+                Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_PURPLE + "Border is now " + newSize + " blocks!");
+                worldBorder.setSize(newSize);
+                minutesPassed++;
+            }
+        }.runTaskTimer(lifestealSmp, 0, 20 * 60);
         for (Player p : lifestealSmp.getServer().getOnlinePlayers()) {
             p.teleport(endFightSpawn);
             p.setInvulnerable(true);

@@ -21,8 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.endfight.custommobs.mobs.deadminer.DeadMinerListener.general_ID_manager_for_logging;
-import static org.bukkit.Bukkit.getServer;
+import static newamazingpvp.lifestealsmp.unused.endfight.custommobs.mobs.deadminer.DeadMinerListener.general_ID_manager_for_logging;
 
 public class SomberCrystal implements Listener {
 
