@@ -21,7 +21,7 @@ public class StartRaffleEvent implements CommandExecutor {
             if(!isRaffleEventRunning){
                 isRaffleEventRunning = true;
                 player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Starting raffle event" );
-                startRaffleEvent();
+                startRaffleEvent(player);
             }else{
                 player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Event is already toggled on you fucking idiot!" );
             }
