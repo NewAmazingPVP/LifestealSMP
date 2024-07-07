@@ -27,14 +27,12 @@ public class GiveCustomItem implements CommandExecutor, TabCompleter {
             if (index == -1) return false;
             Player p = (Player) sender;
             p.getInventory().addItem(subItems.get(index));
-            p.sendMessage("It works!");
         } else if (args.length == 2) {
             {
                 Player p = Bukkit.getPlayer(args[0]);
                 int index = subcommands.indexOf(args[1].toLowerCase());
                 if (index == -1 || p == null) return false;
                 p.getInventory().addItem(subItems.get(index));
-                p.sendMessage("It works!");
             }
         }
         return true;
