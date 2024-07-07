@@ -141,6 +141,18 @@ public class ItemStacks {
         return extraHeart;
     }
 
+    public static ItemStack createHeartEqualizer() {
+        ItemStack heartEqualizer = new ItemStack(Material.ENCHANTED_BOOK);
+        ItemMeta meta = heartEqualizer.getItemMeta();
+        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Heart Equalizer");
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Special Ability:");
+        lore.add(ChatColor.DARK_PURPLE + "Takes into account max health and balances all players' damages during PvP fights.");
+        meta.setLore(lore);
+        heartEqualizer.setItemMeta(meta);
+        return heartEqualizer;
+    }
+
     public static ItemStack lightFeather() {
         ItemStack lightFeather = new ItemStack(Material.FEATHER);
         ItemMeta meta = lightFeather.getItemMeta();
