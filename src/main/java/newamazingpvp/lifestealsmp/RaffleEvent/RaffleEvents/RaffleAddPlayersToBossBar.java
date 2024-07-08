@@ -5,6 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleMain.isRaffleEventRunning;
 import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleMain.raffleTimerBossBar;
 
 public class RaffleAddPlayersToBossBar implements Listener {
@@ -14,6 +15,10 @@ public class RaffleAddPlayersToBossBar implements Listener {
         Player player = e.getPlayer();
 
         raffleTimerBossBar.addPlayer(player);
+
+        if(!isRaffleEventRunning) {
+            raffleTimerBossBar.setVisible(false);
+        }
 
     }
 
