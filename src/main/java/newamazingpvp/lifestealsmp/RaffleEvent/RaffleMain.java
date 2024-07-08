@@ -36,7 +36,6 @@ public class RaffleMain {
             @Override
             public void run() {
                 if (raffleTimerCount <= 0) {
-                    endRaffleMainTimerRunnable();
                     endRaffleEvent();
                 } else {
                     raffleTimerCount -= 1;
@@ -87,6 +86,7 @@ public class RaffleMain {
     }
 
     public static void endRaffleEvent() {
+        endRaffleMainTimerRunnable();
         isRaffleEventRunning = false;
         raffleTimerBossBar.setVisible(false);
 
