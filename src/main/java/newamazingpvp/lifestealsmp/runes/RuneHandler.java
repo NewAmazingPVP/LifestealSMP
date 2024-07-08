@@ -87,9 +87,9 @@ public class RuneHandler implements Listener {
                             }
                             if (t.hasItemMeta()) {
                                 if (t.hasLore()) {
-                                    ItemMeta meta = t.getItemMeta();
-                                    List<String> lore = meta.getLore();
-                                    if (lore.get(0).contains("Use To Craft Extra Hearts!")) {
+                                    //ItemMeta meta = t.getItemMeta();
+                                    //List<String> lore = meta.getLore();
+                                    /*if (lore.get(0).contains("Use To Craft Extra Hearts!")) {
                                         lore.clear();
                                         meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Severed Mob Heart");
                                         lore.add(ChatColor.DARK_PURPLE + "Use To Craft Extra Hearts!");
@@ -101,13 +101,13 @@ public class RuneHandler implements Listener {
                                         lore.add(ChatColor.DARK_PURPLE + "U$e To Cr" + ChatColor.MAGIC + "a" + ChatColor.DARK_PURPLE + "ft Extra Hearts!" + ChatColor.MAGIC + "L");
                                         meta.setLore(lore);
                                         t.setItemMeta(meta);
-                                    } else {
+                                    } else {*/
                                         for (Rune r : runes) {
                                             if (t.getLore().contains(r.getLore())) {
                                                 p.addPotionEffect(r.getEffect());
                                             }
                                         }
-                                    }
+                                    //}
                                 }
                             }
                         }
