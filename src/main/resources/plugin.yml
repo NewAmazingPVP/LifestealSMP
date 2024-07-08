@@ -87,9 +87,6 @@ commands:
     usage: /senddiscordmessage <msg> <channelID>
     permission: lifestealSMP.admin
     default: op
-  shop:
-    description: Get link for the shop
-    usage: /shop
   discord:
     description: Get link for the discord server
     usage: /discord

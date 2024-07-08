@@ -34,6 +34,7 @@ public class RulesCommand implements CommandExecutor {
             player.sendMessage(ChatColor.WHITE + "- No offensive language/skins/names");
             player.sendMessage(ChatColor.WHITE + "- No advertising");
             player.sendMessage(ChatColor.WHITE + "- Do not start arguments or instigate old dramas");
+            player.sendMessage(ChatColor.WHITE + "- Do not bring any drama from other servers into this server");
             player.sendMessage(ChatColor.WHITE + "- No bedrock invis skin bug abusing");
             player.sendMessage(ChatColor.WHITE + "- No spamming");
             player.sendMessage(ChatColor.WHITE + "- Not asking admins to give back your stuff when you die");
