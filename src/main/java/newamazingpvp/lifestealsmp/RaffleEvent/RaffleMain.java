@@ -29,7 +29,7 @@ public class RaffleMain {
     public static void startRaffleEvent(Player player) {
 
         raffleTimerBossBar.setVisible(true);
-        raffleTimerCount = 3600;  //3600 seconds (1 hour)
+        raffleTimerCount = 60;  //3600 seconds (1 hour)
         raffleTimerBossBar.setProgress(1.0);
 
         raffleMainTimerRunnable = new BukkitRunnable() {
