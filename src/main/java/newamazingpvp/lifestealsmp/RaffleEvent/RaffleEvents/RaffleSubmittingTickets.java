@@ -46,7 +46,7 @@ public class RaffleSubmittingTickets implements Listener {
                         //player.sendMessage("Total" + totalNumOfRaffleTicketsAdded);
 
                         int specificNumber = numOfTicketsAddedByAPlayer.get(player);
-                        player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "You have a total of" + specificNumber);
+                        player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "You have a total of " + specificNumber);
                         player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 5.0f, 1.0f);
 
                     }
