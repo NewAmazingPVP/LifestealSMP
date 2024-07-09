@@ -7,6 +7,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.EnigmaEvents.EnigmaGUI.startEnigmaMobPuzzle;
 import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleMain.*;
 
 public class StopRaffleEvent implements CommandExecutor {
@@ -25,6 +26,7 @@ public class StopRaffleEvent implements CommandExecutor {
             player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Event is already toggled off you fucking idiot!" );
         }
 
+        startEnigmaMobPuzzle(player);
 
         return true;
     }

@@ -10,8 +10,15 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
+import static newamazingpvp.lifestealsmp.unused.mcbingo.gui.BingoGUIItems.orangeGlassGUI;
 
 public class EnigmaGUI {
+
+    private static final List<ItemStack> GUIItems = List.of(redGUI(), orangeGUI(), yellowGUI(), greenGUI(),blueGUI());
+
+
 
     public static void startEnigmaMobPuzzle(Player player){
 
@@ -26,12 +33,25 @@ public class EnigmaGUI {
         Inventory EnigmaGUI9 = Bukkit.createInventory(player, 54, ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "[Click The Blue]");
         Inventory EnigmaGUI10 = Bukkit.createInventory(player, 54, ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "[Click The Blue]");
 
+        fillEnigmaGUIWithThings(EnigmaGUI1);
+
+        player.openInventory(EnigmaGUI1);
+
+
     }
 
-    public static void fillEnigmaGUIWithThings(Inventory gui){
+    public static void fillEnigmaGUIWithThings(Inventory gui) {
 
-        int randomNum = (int)(Math.random() * 54);
+        Random random = new Random();
 
+        for (int i = 0; i < gui.getSize(); i++) {
+
+            int randomIndex = random.nextInt(GUIItems.size());
+            ItemStack generatedItem = GUIItems.get(randomIndex);
+
+            gui.setItem(i, generatedItem);
+
+        }
     }
 
 
@@ -97,7 +117,7 @@ public class EnigmaGUI {
         raffleTicket.setItemMeta(meta);
         return raffleTicket;
     }
-    
+
 
 
 }
