@@ -24,7 +24,7 @@ public class RaffleGenerateWinners {
 
     public static void showRaffleWinnerAnimation(){
 
-        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(org.bukkit.ChatColor.DARK_PURPLE + "" + org.bukkit.ChatColor.BOLD + "Death Beacon!", org.bukkit.ChatColor.RED + "" + org.bukkit.ChatColor.BOLD + ">30sec To Break<", 10, 40, 10)), 5);
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.getOnlinePlayers().forEach(p -> p.sendTitle(org.bukkit.ChatColor.DARK_PURPLE + "" + org.bukkit.ChatColor.BOLD + "Death Beacon!", org.bukkit.ChatColor.RED + "" + org.bukkit.ChatColor.BOLD + ">30sec To Break<", 0, 40, 0)), 5);
 
     }
 
