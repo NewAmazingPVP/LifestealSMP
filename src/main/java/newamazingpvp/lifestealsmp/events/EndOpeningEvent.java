@@ -1,0 +1,48 @@
+package newamazingpvp.lifestealsmp.events;
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+
+import java.awt.*;
+import java.time.Duration;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsEmbedTitle;
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsMessage;
+import static newamazingpvp.lifestealsmp.utility.TimeManager.*;
+
+public class EndOpeningEvent extends BaseEvent {
+
+    private static final ZonedDateTime trackingDay = SEASON_START_TIME.plusWeeks(2);
+    public EndOpeningEvent() {
+        super(trackingDay, trackingDay.plusHours(1));
+    }
+
+    @Override
+    public void onEventStart() {
+        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "End has now opened!");
+        sendDiscordNewsEmbedTitle("End has opened!", Color.GREEN, "1032411739351941120");
+        sendDiscordNewsMessage(mcServer + " The end has opened!", "1032411739351941120");
+    }
+
+    @Override
+    public void onEventEnd() {
+
+    }
+
+    @Override
+    public void doWarning() {
+        sendDiscordNewsMessage(eventRole + " End will be opening in "  + formatDuration(Duration.between(SEASON_START_TIME.plusDays(14), ZonedDateTime.now(ZoneId.of("America/New_York")))) + " exactly! Be prepared by **finding a stronghold/portal** to enter for the fight, whoever has the dragon egg in their inventory will get a perk! Furthermore dragon will drop 1 and only dragon rune and custom lifesteal stick when killed!", "1032411739351941120");
+    }
+
+    @Override
+    public EventType getType() {
+        return EventType.HOUR;
+    }
+
+    @Override
+    public void runContinuously() {
+        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "End has opened! Find a stronghold to enter!");
+    }
+}
