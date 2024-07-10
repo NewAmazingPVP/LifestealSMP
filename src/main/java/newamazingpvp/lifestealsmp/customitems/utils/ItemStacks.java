@@ -17,7 +17,10 @@ public class ItemStacks {
 
     public static Component gradient(String itemName) {
         var mm = MiniMessage.miniMessage();
-        return mm.deserialize("<bold><gradient:#FF0000:#EFADFD>" + itemName +  "</gradient></bold>");
+        //red gradient (now its blue)
+        //#FF0000
+        //#EFADFD
+        return mm.deserialize("<bold><gradient:#0045FF:#ADE6FD>" + itemName +  "</gradient></bold>");
     }
 
     public static ItemStack createReviveBeacon() {
