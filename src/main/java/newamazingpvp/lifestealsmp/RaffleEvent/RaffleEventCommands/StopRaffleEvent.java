@@ -32,7 +32,6 @@ public class StopRaffleEvent implements CommandExecutor {
         Location location = null;
         location = player.getLocation();
 
-        //new SpawnEnigma(location);
         new SpawnMage(location);
 
         return true;
