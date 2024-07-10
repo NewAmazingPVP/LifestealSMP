@@ -10,6 +10,8 @@ import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.EnigmaEven
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.EnigmaEvents.EnigmaDamagedAndKilled;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.EnigmaEvents.EnigmaGUI;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Mage.MageEvents.MageAttack;
+import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Mage.SpawnMage.MaceListener;
+import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Mage.SpawnMage.SpawnMage;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands.StartRaffleEvent;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands.StopRaffleEvent;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEvents.ClearOldBingoTags;
@@ -212,7 +214,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             //getServer().getPluginManager().registerEvents(new AirRune(), this);
             //getServer().getPluginManager().registerEvents(new BingoCardListener(), this);
             getServer().getPluginManager().registerEvents(new BingoCardGUIListeners(), this);
-
             //New Custom Items
             registerCustomItemsAndRunes();
             getServer().getPluginManager().registerEvents(new HeartEqualizer(), this);
