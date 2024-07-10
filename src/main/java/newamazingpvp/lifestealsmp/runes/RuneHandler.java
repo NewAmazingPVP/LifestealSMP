@@ -25,6 +25,7 @@ import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 public class RuneHandler implements Listener {
     public static final List<Rune> runes = new ArrayList<>();
     public static Inventory inv = Bukkit.createInventory(null, 54, ChatColor.GOLD + "Runes");
+    public static double runeMultiplier = 1;
 
     public RuneHandler() {
         runes.add(new AbsorptionRune());
@@ -132,7 +133,7 @@ public class RuneHandler implements Listener {
             if (entity.getType() == rune.getMob()) {
                 double adjustedDropRate = rune.getDropRate() * (1 + 0.10 * lootingLevel);
 
-                if (random.nextDouble() < adjustedDropRate) {
+                if (random.nextDouble() < adjustedDropRate * runeMultiplier) {
                     ItemStack runeItem = createRuneItem(rune);
                     //entity.getWorld().dropItemNaturally(entity.getLocation(), runeItem);
                     player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "RUNE DROP!" + ChatColor.GOLD + " " + ChatColor.translateAlternateColorCodes('&', rune.getName()) + ": " + rune.getLore());
