@@ -16,6 +16,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.List;
 import java.util.Random;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleItemStacks.raffleTicket;
 import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleMain.currentRaffleEventID;
 import static newamazingpvp.lifestealsmp.unused.mcbingo.gui.BingoCardGUI.OpenTheBingoCardGUI;
@@ -253,27 +254,27 @@ public class EnigmaGUI implements Listener {
     public void playerClick(InventoryCloseEvent e) {
 
         Player player = (Player) e.getPlayer();
-        Inventory savedMenu = e.getInventory();
+
 
         if (e.getView().getTitle().equalsIgnoreCase(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Click All The Red]")) {
 
-            player.openInventory(savedMenu);
+            startEnigmaMobPuzzle(player);
 
         } else if (e.getView().getTitle().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "[Click All The Orange]")) {
 
-            player.openInventory(savedMenu);
+            startEnigmaMobPuzzle(player);
 
         } else if (e.getView().getTitle().equalsIgnoreCase(ChatColor.YELLOW + "" + ChatColor.BOLD + "[Click All The Yellow]")) {
 
-            player.openInventory(savedMenu);
+            startEnigmaMobPuzzle(player);
 
         } else if (e.getView().getTitle().equalsIgnoreCase(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "[Click All The Green]")) {
 
-            player.openInventory(savedMenu);
+            startEnigmaMobPuzzle(player);
 
         } else if (e.getView().getTitle().equalsIgnoreCase(ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "[Click All The Blue]")) {
 
-            player.openInventory(savedMenu);
+            startEnigmaMobPuzzle(player);
 
         }
 
@@ -314,6 +315,22 @@ public class EnigmaGUI implements Listener {
         fillEnigmaGUIWithThings(selectedMenu);
 
         player.openInventory(selectedMenu);
+
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> player.playSound(player.getLocation(), Sound.ENTITY_ITEM_PICKUP, 2.0f, 1.0f), 5);
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> fillEnigmaGUIWithThings(selectedMenu) ,5);
+
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> player.playSound(player.getLocation(), Sound.ENTITY_ITEM_PICKUP, 2.0f, 1.0f), 10);
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> fillEnigmaGUIWithThings(selectedMenu) ,10);
+
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> player.playSound(player.getLocation(), Sound.ENTITY_ITEM_PICKUP, 2.0f, 1.0f), 15);
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> fillEnigmaGUIWithThings(selectedMenu) ,15);
+
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> player.playSound(player.getLocation(), Sound.ENTITY_ITEM_PICKUP, 2.0f, 1.0f), 20);
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> fillEnigmaGUIWithThings(selectedMenu) ,20);
+
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> player.playSound(player.getLocation(), Sound.ENTITY_ITEM_PICKUP, 2.0f, 1.0f), 25);
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> fillEnigmaGUIWithThings(selectedMenu) ,25);
+
 
 
     }
