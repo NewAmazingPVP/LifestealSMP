@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands;
 
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.SpawnEnigma.SpawnEnigma;
+import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Mage.SpawnMage.SpawnMage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -31,7 +32,8 @@ public class StopRaffleEvent implements CommandExecutor {
         Location location = null;
         location = player.getLocation();
 
-        new SpawnEnigma(location);
+        //new SpawnEnigma(location);
+        new SpawnMage(location);
 
         return true;
     }

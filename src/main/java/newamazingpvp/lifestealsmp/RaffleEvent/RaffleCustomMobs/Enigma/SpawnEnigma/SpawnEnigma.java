@@ -29,6 +29,8 @@ public class SpawnEnigma {
         //Set name
         enigmaZombie.setCustomName(ChatColor.DARK_PURPLE + "" + ChatColor.MAGIC + "E" + ChatColor.DARK_PURPLE + " Enigma " + ChatColor.MAGIC + "E");
         enigmaZombie.setCustomNameVisible(true);
+        enigmaZombie.setInvisible(false);
+        enigmaZombie.setAdult();
 
         //What the mob has on / is holding
         enigmaZombie.getEquipment().setItemInMainHand(enigmaZombieHandItem());
@@ -36,7 +38,7 @@ public class SpawnEnigma {
         enigmaZombie.getEquipment().setChestplate(chest());
         enigmaZombie.getEquipment().setLeggings(leg());
         enigmaZombie.getEquipment().setBoots(boot());
- 
+
         //Attributes
         Attributable lightningZombieAttributes = enigmaZombie;
 
