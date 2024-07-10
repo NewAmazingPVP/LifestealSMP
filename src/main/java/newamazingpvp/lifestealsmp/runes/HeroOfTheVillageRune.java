@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.runes;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.EntityType;
 import org.bukkit.potion.PotionEffect;
@@ -7,7 +8,7 @@ import org.bukkit.potion.PotionEffectType;
 
 public class HeroOfTheVillageRune extends AbstractRune {
 
-    private static final String name = "&x&4&1&0&0&F&F&lH&x&5&1&0&0&F&F&le&x&6&1&0&0&F&F&lr&x&7&1&0&0&F&F&lo o&x&8&1&0&0&F&F&lf &x&9&2&0&0&F&F&lt&x&A&2&0&0&F&F&lh&x&B&2&0&0&F&F&le &x&C&2&0&0&F&F&lV&x&D&2&0&0&F&F&li&x&E&2&0&0&F&F&ll&x&F&2&0&0&F&F&la&x&F&2&0&0&F&F&lg&x&F&2&0&0&F&F&le &x&F&2&0&0&F&F&lR&x&F&2&0&0&F&F&lu&x&F&2&0&0&F&F&ln&x&F&2&0&0&F&F&le";
+    private static final Component name = runeGradient("Hero of the Village Rune");
     private static final EntityType mob = EntityType.RAVAGER;
     private static final PotionEffect effect = new PotionEffect(PotionEffectType.HERO_OF_THE_VILLAGE, 200, 0);
     private static final PotionEffect effectII = new PotionEffect(PotionEffectType.HERO_OF_THE_VILLAGE, 200, 1);
@@ -27,7 +28,7 @@ public class HeroOfTheVillageRune extends AbstractRune {
 
     static class II extends AbstractRune {
         public II() {
-            super(name + " II",
+            super(name.append(deserialize(" II")),
                     mob,
                     1.0 / 100,
                     ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectII.getType().getKey().getKey()) + " " + formatAmplifier(effectII.getAmplifier()),
@@ -37,7 +38,7 @@ public class HeroOfTheVillageRune extends AbstractRune {
 
     static class III extends AbstractRune {
         public III() {
-            super(name + " III",
+            super(name.append(deserialize(" III")),
                     mob,
                     1.0 / 150,
                     ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectIII.getType().getKey().getKey()) + " " + formatAmplifier(effectIII.getAmplifier()),
@@ -47,7 +48,7 @@ public class HeroOfTheVillageRune extends AbstractRune {
 
     static class IV extends AbstractRune {
         public IV() {
-            super(name + " IV",
+            super(name.append(deserialize(" IV")),
                     mob,
                     1.0 / 200,
                     ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectIV.getType().getKey().getKey()) + " " + formatAmplifier(effectIV.getAmplifier()),
@@ -57,7 +58,7 @@ public class HeroOfTheVillageRune extends AbstractRune {
 
     static class V extends AbstractRune {
         public V() {
-            super(name + " V",
+            super(name.append(deserialize(" V")),
                     mob,
                     1.0 / 250,
                     ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectV.getType().getKey().getKey()) + " " + formatAmplifier(effectV.getAmplifier()),
