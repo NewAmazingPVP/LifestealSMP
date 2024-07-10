@@ -69,6 +69,7 @@ public class EnigmaGUI implements Listener {
                 }
             }
 
+            e.setCancelled(true);
 
         }
 
@@ -113,6 +114,7 @@ public class EnigmaGUI implements Listener {
                 }
             }
 
+            e.setCancelled(true);
 
 
         }
@@ -156,6 +158,7 @@ public class EnigmaGUI implements Listener {
             }
 
 
+            e.setCancelled(true);
 
         }
 
@@ -197,6 +200,7 @@ public class EnigmaGUI implements Listener {
                 }
             }
 
+            e.setCancelled(true);
 
 
         }
@@ -236,6 +240,8 @@ public class EnigmaGUI implements Listener {
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                 }
+
+                e.setCancelled(true);
             }
 
 
@@ -246,7 +252,7 @@ public class EnigmaGUI implements Listener {
 
 
 
-        e.setCancelled(true);
+
 
 
 
