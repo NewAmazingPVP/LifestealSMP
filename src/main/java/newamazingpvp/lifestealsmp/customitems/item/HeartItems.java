@@ -16,6 +16,7 @@ import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 
 public class HeartItems implements Listener {
 
+    public static double heartMultipliers = 1;
     @EventHandler
     public void onPlayerKill(EntityDeathEvent e) {
 
@@ -24,7 +25,7 @@ public class HeartItems implements Listener {
 
         if (killer == null) return;
 
-        if (Math.random() <= 0.001) {
+        if (Math.random() <= 0.001 * heartMultipliers) {
             //e.getDrops().add(corruptedMobSoul());
             addItemOrDrop(killer, corruptedMobSoul(), ChatColor.RED + "Mob soul was dropped because your inventory was full");
             //e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), new ItemStack(CorruptedMobSoul()));
@@ -36,7 +37,7 @@ public class HeartItems implements Listener {
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 3.0f), 9);
             e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION, loc, 100, 0, 0, 0, 0.1);
         }
-        if (Math.random() <= 0.0005) {
+        if (Math.random() <= 0.0005 * heartMultipliers) {
             //e.getDrops().add(severedMobHeart());
             addItemOrDrop(killer, severedMobHeart(), ChatColor.RED + "Mob soul was dropped because your inventory was full");
             //e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), new ItemStack(severedMobHeart()));

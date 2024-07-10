@@ -30,6 +30,7 @@ public class Compass implements CommandExecutor, Listener {
     private static final HashMap<UUID, UUID> trackingPlayers = new HashMap<>();
     private static final HashMap<UUID, Location> lastPortalLocations = new HashMap<>();
     private static final HashMap<UUID, Long> elytraTrackCooldown = new HashMap<>();
+    public static int trackingDist = 250;
     private boolean logOffTracking;
 
     @EventHandler
@@ -265,7 +266,7 @@ public class Compass implements CommandExecutor, Listener {
                         //String dis = calculateDistanceCategory(distance);
                         if (distance != 0) {
                             //msg += ChatColor.BOLD + " " + distance + " blocks";
-                            msg += ChatColor.BOLD + " in vicinity of " + ((distance / 250) + 1) * 250 + " blocks";
+                            msg += ChatColor.BOLD + " in vicinity of " + ((distance / trackingDist) + 1) * trackingDist + " blocks";
                         }
 
                         /*if (!msg.contains("Cannot")) {
