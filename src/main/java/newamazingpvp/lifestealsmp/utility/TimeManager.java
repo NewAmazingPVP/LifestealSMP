@@ -28,9 +28,9 @@ public class TimeManager {
     //this is because season starts 12pm est auto restart at 3am Saturday morning
     public static final ZonedDateTime CUSTOM_ITEMS_AND_RUNES = SEASON_START_TIME.plusDays(6).plusHours(14);
 
-    private static final CooldownManager cooldown = new CooldownManager();
-    private static String eventRole = "<@&1259526654204575896>";
-    private static String mcServer = "<@&1047168915500966048>";
+    public static final CooldownManager eventCooldown = new CooldownManager();
+    public static String eventRole = "<@&1259526654204575896>";
+    public static String mcServer = "<@&1047168915500966048>";
 
 
     //TODO: ADD EVENTS like
@@ -45,19 +45,6 @@ public class TimeManager {
         long weeksPassed = getWeeksPassed(SEASON_START_TIME, currentTime);
         if (isTimePassed(CUSTOM_ITEMS_AND_RUNES)) {
             registerCustomItemsAndRunes();
-        }
-
-        if (isTimePassed(CUSTOM_ITEMS_AND_RUNES) &&
-                !isTimePassed(CUSTOM_ITEMS_AND_RUNES.plusHours(2))) {
-            Bukkit.getWorld("world").getWorldBorder().setSize(25000);
-            Bukkit.getWorld("world_nether").getWorldBorder().setSize(25000);
-            for (World w : Bukkit.getWorlds()) {
-                w.setDifficulty(Difficulty.HARD);
-            }
-            getServer().getScheduler().runTaskLater(lifestealSmp, () -> sendDiscordNewsMessage("<@&1047168915500966048> Custom items and runes are now available! Map size expanded to 25k by 25k and difficulty set to hard. " +
-                    "Runes give permanent effects while in inventory and custom items has special abilities. " +
-                    "Various buffs/nerfs have been made so do /runes /recipes for more info! " +
-                    "\n\n**End will open next weekend in " + formatDuration(Duration.between(ZonedDateTime.now(ZoneId.of("America/New_York")), SEASON_START_TIME.plusDays(14).plusHours(2))) + "**", "1032411739351941120"), 1200);
         }
 
         if (isTimePassed(SEASON_START_TIME, currentTime, 3, 14, 0, 0) &&
@@ -83,150 +70,49 @@ public class TimeManager {
 
     public static void timeBasedEvents() {
         if (!isSmp) return;
-        ZonedDateTime currentTime = ZonedDateTime.now(ZoneId.of("America/New_York"));
-        long weeksPassed = getWeeksPassed(SEASON_START_TIME, currentTime);
-
-        if (isTimePassed(SEASON_START_TIME.minusDays(1), currentTime, 0, 0, 0, 1) &&
-                !isTimePassed(SEASON_START_TIME.minusDays(1), currentTime, 0, 0, 1, 0)) {
-            if (cooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage(mcServer + " The new season will be released in a day!", "1032411739351941120");
-        }
-
-        if (isTimePassed(SEASON_START_TIME.minusHours(1), currentTime, 0, 0, 0, 1) &&
-                !isTimePassed(SEASON_START_TIME.minusHours(1), currentTime, 0, 0, 1, 0)) {
-            if (cooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage(mcServer + " The new season will be released in " + formatDuration(Duration.between(SEASON_START_TIME, ZonedDateTime.now(ZoneId.of("America/New_York")))), "1032411739351941120");
-        }
-
-        if (isTimePassed(SEASON_START_TIME) &&
-                !isTimePassed(SEASON_START_TIME.plusMinutes(1))) {
-            if (cooldown.isOnCooldown()) return;
-            getServer().dispatchCommand(getServer().getConsoleSender(), "whitelist off");
-            getServer().dispatchCommand(getServer().getConsoleSender(), "gamerule playersSleepingPercentage 1");
-            getServer().dispatchCommand(getServer().getConsoleSender(), "gamerule doImmediateRespawn true");
-            Bukkit.getWorld("world").setTime(1000);
-            Bukkit.getWorld("world").getWorldBorder().setSize(10000);
-            Bukkit.getWorld("world_nether").getWorldBorder().setSize(10000);
-            sendDiscordNewsEmbedTitle("New season has started!!", Color.GREEN, "1032411739351941120");
-            sendDiscordNewsMessage(mcServer + " The server has opened!\n" +
-                    "\n" +
-                    "**Rules and Info**\n" +
-                    "- The end will open in 2 weeks\n" +
-                    "- 10k by 10k map size (will be expanded to 25k by 25k next weekend)\n" +
-                    "- Custom items /recipes and runes /runes will be enabled next weekend\n" +
-                    "- Current difficulty easy, will be set to normal on Wednesday and hard next weekend\n" +
-                    "- Combat logging (90 seconds)\n" +
-                    "- [/prefix for custom prefix with rgb colors](https://www.birdflop.com/resources/rgb/) \n" +
-                    "- Do /help /rules in game for more\n" +
-                    "\n" +
-                    "Java IP is **NapPixel.tk** and port is **25565** if needed.\n" +
-                    "For bedrock its **NapPixel.tk** and port is **19132** if needed.\n" +
-                    "**1.21** is the recommended version, but it is compatible with **1.7-1.21**\n" +
-                    "\n" +
-                    "**NOTE**\n" +
-                    "Each person will have their own individual newbie protection for 3 hours along with 5 hours playtime tracking protection. \n" +
-                    "\n" +
-                    "Anyways goodluck! And fyi if you don't want to be tracked you and use an invis potion!", "1032411739351941120");
-            cooldown.setCooldown(70);
-        }
-
-        if (isTimePassed(END_OPEN_TIME.minusDays(3))
-                && !isTimePassed(END_OPEN_TIME.minusDays(2).minusHours(23).minusMinutes(59))) {
-            if (cooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage(eventRole + " End will be opening in " + formatDuration(Duration.between(END_OPEN_TIME, ZonedDateTime.now(ZoneId.of("America/New_York")))) + " exactly!", "1032411739351941120");
-            cooldown.setCooldown(70);
-        }
-
-        if (isTimePassed(END_OPEN_TIME.minusDays(1))
-                && !isTimePassed(END_OPEN_TIME.minusHours(23).minusMinutes(59))) {
-            if (cooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage(mcServer + " End will be opening in exactly 24 hours! Be prepared, this is a mid-season 1st end fight with the 2nd one being at the end of season, and to spice things up, whoever has the dragon egg in their inventory will get a perk! Furthermore dragon will drop 1 and only dragon rune and custom lifesteal stick when killed!", "1032411739351941120");
-            cooldown.setCooldown(70);
-        }
-
-        if (isTimePassed(END_OPEN_TIME.minusHours(4))
-                && !isTimePassed(END_OPEN_TIME.minusHours(3).minusMinutes(59))) {
-            if (cooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage(eventRole + " End will be opening in " + formatDuration(Duration.between(SEASON_START_TIME.plusDays(14), ZonedDateTime.now(ZoneId.of("America/New_York")))) + " exactly! Make sure to find a stronghold and portal!", "1032411739351941120");
-            cooldown.setCooldown(70);
-        }
-
-
-        if (isTimePassed(END_OPEN_TIME.minusHours(1))
-                && !isTimePassed(END_OPEN_TIME.minusMinutes(59))) {
-            if (cooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage(mcServer + " End will be opening in " + formatDuration(Duration.between(SEASON_START_TIME.plusDays(14), ZonedDateTime.now(ZoneId.of("America/New_York")))) + " exactly! Make sure to find a stronghold and portal!", "1032411739351941120");
-            cooldown.setCooldown(70);
-        }
-
-        if (isTimePassed(END_OPEN_TIME.minusMinutes(10))
-                && !isTimePassed(END_OPEN_TIME.minusMinutes(9))) {
-            if (cooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage(mcServer + " End will be opening in 10 minutes! Make sure to find a stronghold and portal!", "1032411739351941120");
-            cooldown.setCooldown(70);
-        }
-
-        if (isTimePassed(END_OPEN_TIME)
-                && !isTimePassed(END_OPEN_TIME.plusMinutes(1))) {
-            if (cooldown.isOnCooldown()) return;
-            Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "End has now opened!");
-            sendDiscordNewsEmbedTitle("End has opened!", Color.GREEN, "1032411739351941120");
-            sendDiscordNewsMessage(mcServer + " The end has opened!", "1032411739351941120");
-            cooldown.setCooldown(70);
-        }
-
-        if (isTimePassed(CUSTOM_ITEMS_AND_RUNES.minusHours(14))
-                && !isTimePassed(CUSTOM_ITEMS_AND_RUNES.minusHours(13).minusMinutes(59))) {
-            if (cooldown.isOnCooldown()) return;
-            Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Custom items releasing in " + formatDuration(Duration.between(CUSTOM_ITEMS_AND_RUNES, ZonedDateTime.now(ZoneId.of("America/New_York")))) + " hours! Check announcements");
-            sendDiscordNewsEmbedTitle("Custom items and runes!", Color.GREEN, "1032411739351941120");
-            sendDiscordNewsMessage(eventRole + " In " + formatDuration(Duration.between(CUSTOM_ITEMS_AND_RUNES, ZonedDateTime.now(ZoneId.of("America/New_York")))) + ", custom items /recipes and runes /runes are going to be available! Map size will be expanded to 25k by 25k and difficulty will be set to hard.", "1032411739351941120");
-            cooldown.setCooldown(70);
-        }
-
         if (isTimePassed(FINAL_FIGHT.minusDays(3))
                 && !isTimePassed(FINAL_FIGHT.minusDays(2).minusHours(23).minusMinutes(59))) {
-            if (cooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage(eventRole + " The final fight event to conclude the season will be on Saturday, in " + formatDuration(Duration.between(SEASON_START_TIME.plusDays(28), ZonedDateTime.now(ZoneId.of("America/New_York")))) + " exactly!", "1032411739351941120");
-            cooldown.setCooldown(70);
+            if (eventCooldown.isOnCooldown()) return;
+            sendDiscordNewsMessage(eventRole + " The final fight event to conclude the season will be on Saturday, in " + formatDuration(Duration.between(FINAL_FIGHT, ZonedDateTime.now(ZoneId.of("America/New_York")))) + " exactly!", "1032411739351941120");
+            eventCooldown.setCooldown(70);
         }
 
         if (isTimePassed(FINAL_FIGHT.minusDays(1))
                 && !isTimePassed(FINAL_FIGHT.minusHours(23).minusMinutes(59))) {
-            if (cooldown.isOnCooldown()) return;
+            if (eventCooldown.isOnCooldown()) return;
             sendDiscordNewsMessage(mcServer + " Final fight in exactly 24 hours! Be prepared, the last one standing will be the winner of this season!", "1032411739351941120");
-            cooldown.setCooldown(70);
+            eventCooldown.setCooldown(70);
         }
 
         if (isTimePassed(FINAL_FIGHT.minusHours(4))
                 && !isTimePassed(FINAL_FIGHT.minusHours(3).minusMinutes(59))) {
-            if (cooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage(eventRole + " Final fight in " + formatDuration(Duration.between(SEASON_START_TIME.plusDays(28), ZonedDateTime.now(ZoneId.of("America/New_York"))))  + " exactly!", "1032411739351941120");
-            cooldown.setCooldown(70);
+            if (eventCooldown.isOnCooldown()) return;
+            sendDiscordNewsMessage(eventRole + " Final fight in " + formatDuration(Duration.between(FINAL_FIGHT, ZonedDateTime.now(ZoneId.of("America/New_York"))))  + " exactly!", "1032411739351941120");
+            eventCooldown.setCooldown(70);
         }
 
         if (isTimePassed(FINAL_FIGHT.minusHours(1))
                 && !isTimePassed(FINAL_FIGHT.minusMinutes(59))) {
-            if (cooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage(mcServer + " Final fight in " + formatDuration(Duration.between(SEASON_START_TIME.plusDays(28), ZonedDateTime.now(ZoneId.of("America/New_York"))))  + " exactly!", "1032411739351941120");
-            cooldown.setCooldown(70);
+            if (eventCooldown.isOnCooldown()) return;
+            sendDiscordNewsMessage(mcServer + " Final fight in " + formatDuration(Duration.between(FINAL_FIGHT, ZonedDateTime.now(ZoneId.of("America/New_York"))))  + " exactly!", "1032411739351941120");
+            eventCooldown.setCooldown(70);
         }
 
         if (isTimePassed(FINAL_FIGHT.minusMinutes(10))
                 && !isTimePassed(FINAL_FIGHT.minusMinutes(9))) {
-            if (cooldown.isOnCooldown()) return;
+            if (eventCooldown.isOnCooldown()) return;
             sendDiscordNewsMessage(mcServer + " Final fight is in 10 minutes! Be ready, you will be teleported in-game", "1032411739351941120");
-            cooldown.setCooldown(70);
+            eventCooldown.setCooldown(70);
         }
 
         if (isTimePassed(FINAL_FIGHT)
                 && !isTimePassed(END_OPEN_TIME.plusMinutes(1))) {
-            if (cooldown.isOnCooldown()) return;
+            if (eventCooldown.isOnCooldown()) return;
             Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Final fight is starting!");
             sendDiscordNewsEmbedTitle("Final fight is on!", Color.GREEN, "1032411739351941120");
             sendDiscordNewsMessage(mcServer + " Final fight has begun! May the best win goodluck!", "1032411739351941120");
             getServer().dispatchCommand(getServer().getConsoleSender(), "startendfight");
-            cooldown.setCooldown(70);
+            eventCooldown.setCooldown(70);
         }
     }
 
@@ -288,7 +174,7 @@ public class TimeManager {
             formattedDuration.append(seconds).append(" second").append(seconds > 1 ? "s" : "");
         }
 
-        return formattedDuration.toString();
+        return formattedDuration.toString().replace("-", "");
     }
 
 }

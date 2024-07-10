@@ -17,6 +17,7 @@ public class ItemStacks {
 
     public static Component gradient(String itemName) {
         var mm = MiniMessage.miniMessage();
+        //https://docs.advntr.dev/minimessage/format.html
         //red gradient (now its blue)
         //#FF0000
         //#EFADFD
