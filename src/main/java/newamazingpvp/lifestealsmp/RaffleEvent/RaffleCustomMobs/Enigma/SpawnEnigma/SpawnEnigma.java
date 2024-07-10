@@ -36,7 +36,7 @@ public class SpawnEnigma {
         enigmaZombie.getEquipment().setChestplate(chest());
         enigmaZombie.getEquipment().setLeggings(leg());
         enigmaZombie.getEquipment().setBoots(boot());
-
+ 
         //Attributes
         Attributable lightningZombieAttributes = enigmaZombie;
 
