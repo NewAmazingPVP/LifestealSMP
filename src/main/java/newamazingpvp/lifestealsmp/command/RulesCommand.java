@@ -19,7 +19,7 @@ public class RulesCommand implements CommandExecutor {
             player.sendMessage(ChatColor.WHITE + "- Xraying not allowed");
             player.sendMessage(ChatColor.WHITE + "- No spawn killing/camping");
             player.sendMessage(ChatColor.WHITE + "- No heart farming and griefing with death protection");
-            player.sendMessage(ChatColor.WHITE + "- No farming alts for hearts");
+            player.sendMessage(ChatColor.WHITE + "- No alts");
             player.sendMessage(ChatColor.WHITE + "- Respect players");
             player.sendMessage(ChatColor.WHITE + "- No exploiting bugs/glitches");
             player.sendMessage(ChatColor.WHITE + "- Anything that gives advantage not allowed (with exception of some mods in ⁠❓info-faq)");

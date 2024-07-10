@@ -224,3 +224,8 @@ commands:
     usage: /raffleeventstop
     permission: lifestealSMP.admin
     default: op
+  worldteleport:
+    description: Teleport to a world
+    usage: /worldteleport [world]
+    permission: lifestealSMP.admin
+    default: op
