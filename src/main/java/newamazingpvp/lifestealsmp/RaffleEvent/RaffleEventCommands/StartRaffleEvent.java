@@ -1,6 +1,8 @@
 package newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands;
 
+import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.SpawnEnigma.SpawnEnigma;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -17,6 +19,10 @@ public class StartRaffleEvent implements CommandExecutor {
         if (sender instanceof Player){
 
             Player player = (Player) sender;
+
+            Location location = null;
+            location = player.getLocation();
+            new SpawnEnigma(location);
 
             if(!isRaffleEventRunning){
                 isRaffleEventRunning = true;
