@@ -15,6 +15,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.List;
 import java.util.Random;
 
+import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleItemStacks.raffleTicket;
+import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleMain.currentRaffleEventID;
 import static newamazingpvp.lifestealsmp.unused.mcbingo.gui.BingoCardGUI.OpenTheBingoCardGUI;
 
 
@@ -26,6 +28,7 @@ public class EnigmaGUI implements Listener {
 
         Player player = (Player) e.getWhoClicked();
         ItemStack itemInHand = e.getCurrentItem();
+        Inventory inv = e.getClickedInventory();
 
 
         //GUI RED
@@ -45,8 +48,27 @@ public class EnigmaGUI implements Listener {
                 player.damage(hpToDamage);
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 2.0f, 0.0f);
                 player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Fail!] -1/2 your current HP! (" + hpToDamage + " ❤)");
+                player.closeInventory();
             }
-            
+
+            ItemStack[] items = inv.getContents();
+            for (int i = 0; i < items.length; i++) {
+                ItemStack item = items[i];
+                if (item != null && item.getType() == Material.RED_CONCRETE) {
+                    break;
+                }else if (i>=53){
+                    player.closeInventory();
+                    player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2.0f, 1.0f);
+                    player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]");
+                    player.sendTitle(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]"," ", 0, 80, 0);
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                }
+            }
+
 
         }
 
@@ -70,7 +92,29 @@ public class EnigmaGUI implements Listener {
                 player.damage(hpToDamage);
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 2.0f, 0.0f);
                 player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Fail!] -1/2 your current HP! (" + hpToDamage + " ❤)");
+                player.closeInventory();
             }
+
+            ItemStack[] items = inv.getContents();
+            for (int i = 0; i < items.length; i++) {
+                ItemStack item = items[i];
+                if (item != null && item.getType() == Material.ORANGE_CONCRETE) {
+                    break;
+                }else if (i>=53){
+                    player.closeInventory();
+                    player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2.0f, 1.0f);
+                    player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]");
+                    player.sendTitle(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]"," ", 0, 80, 0);
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                }
+            }
+
+
+
         }
 
         //GUI YELLOW
@@ -90,7 +134,29 @@ public class EnigmaGUI implements Listener {
                 player.damage(hpToDamage);
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 2.0f, 0.0f);
                 player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Fail!] -1/2 your current HP! (" + hpToDamage + " ❤)");
+                player.closeInventory();
             }
+
+            ItemStack[] items = inv.getContents();
+            for (int i = 0; i < items.length; i++) {
+                ItemStack item = items[i];
+                if (item != null && item.getType() == Material.YELLOW_CONCRETE) {
+                    break;
+                }else if (i>=53){
+                    player.closeInventory();
+                    player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2.0f, 1.0f);
+                    player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]");
+                    player.sendTitle(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]"," ", 0, 80, 0);
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                }
+            }
+
+
+
         }
 
         //GUI GREEN
@@ -110,7 +176,29 @@ public class EnigmaGUI implements Listener {
                 player.damage(hpToDamage);
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 2.0f, 0.0f);
                 player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Fail!] -1/2 your current HP! (" + hpToDamage + " ❤)");
+                player.closeInventory();
             }
+
+            ItemStack[] items = inv.getContents();
+            for (int i = 0; i < items.length; i++) {
+                ItemStack item = items[i];
+                if (item != null && item.getType() == Material.GREEN_CONCRETE) {
+                    break;
+                }else if (i>=53){
+                    player.closeInventory();
+                    player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2.0f, 1.0f);
+                    player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]");
+                    player.sendTitle(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]"," ", 0, 80, 0);
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                }
+            }
+
+
+
         }
 
         if (e.getView().getTitle().equalsIgnoreCase(ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "[Click All The Blue]")) {
@@ -129,8 +217,26 @@ public class EnigmaGUI implements Listener {
                 player.damage(hpToDamage);
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 2.0f, 0.0f);
                 player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Fail!] -1/2 your current HP! (" + hpToDamage + " ❤)");
+                player.closeInventory();
             }
 
+            ItemStack[] items = inv.getContents();
+            for (int i = 0; i < items.length; i++) {
+                ItemStack item = items[i];
+                if (item != null && item.getType() == Material.BLUE_CONCRETE) {
+                    break;
+                }else if (i>=53){
+                    player.closeInventory();
+                    player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2.0f, 1.0f);
+                    player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]");
+                    player.sendTitle(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]"," ", 0, 80, 0);
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                }
+            }
 
 
         }
