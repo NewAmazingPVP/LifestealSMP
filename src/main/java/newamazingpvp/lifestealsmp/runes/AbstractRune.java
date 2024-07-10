@@ -84,7 +84,7 @@ public abstract class AbstractRune implements Rune {
     }
 
     public static Component deserialize(String s){
-        MiniMessage.miniMessage().deserialize(s);
+        return MiniMessage.miniMessage().deserialize(s);
     }
 
 }
