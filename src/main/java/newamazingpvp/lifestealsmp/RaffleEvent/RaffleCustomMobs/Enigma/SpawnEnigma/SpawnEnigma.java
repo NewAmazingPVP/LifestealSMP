@@ -83,7 +83,7 @@ public class SpawnEnigma {
         ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
         LeatherArmorMeta meta = (LeatherArmorMeta) chestplate.getItemMeta();
         meta.setUnbreakable(true);
-        meta.setColor(Color.BLUE);
+        meta.setColor(Color.BLACK);
         chestplate.setItemMeta(meta);
         return chestplate;
     }
@@ -92,7 +92,7 @@ public class SpawnEnigma {
         ItemStack chestplate = new ItemStack(Material.LEATHER_LEGGINGS);
         LeatherArmorMeta meta = (LeatherArmorMeta) chestplate.getItemMeta();
         meta.setUnbreakable(true);
-        meta.setColor(Color.BLUE);
+        meta.setColor(Color.BLACK);
         chestplate.setItemMeta(meta);
         return chestplate;
     }
@@ -101,7 +101,7 @@ public class SpawnEnigma {
         ItemStack chestplate = new ItemStack(Material.LEATHER_BOOTS);
         LeatherArmorMeta meta = (LeatherArmorMeta) chestplate.getItemMeta();
         meta.setUnbreakable(true);
-        meta.setColor(Color.BLUE);
+        meta.setColor(Color.BLACK);
         chestplate.setItemMeta(meta);
         return chestplate;
     }
