@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -24,7 +25,7 @@ public class EnigmaGUI implements Listener {
 
 
     @EventHandler
-    public void playerClick(InventoryClickEvent e){
+    public void playerClick(InventoryClickEvent e) {
 
         Player player = (Player) e.getWhoClicked();
         ItemStack itemInHand = e.getCurrentItem();
@@ -41,10 +42,10 @@ public class EnigmaGUI implements Listener {
             if (itemInHand != null && itemInHand.getType() == Material.RED_CONCRETE && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Red]")) {
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 2.0f, 2.0f);
                 e.setCurrentItem(new ItemStack(correctGlass()));
-            }else if (itemInHand != null && itemInHand.getType() == Material.LIME_STAINED_GLASS && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_GREEN + "✔")){
+            } else if (itemInHand != null && itemInHand.getType() == Material.LIME_STAINED_GLASS && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_GREEN + "✔")) {
                 player.playSound(player.getLocation(), Sound.ENTITY_ITEM_PICKUP, 2.0f, 0.0f);
-            }else{
-                double hpToDamage = (player.getHealth()/2);
+            } else {
+                double hpToDamage = (player.getHealth() / 2);
                 player.damage(hpToDamage);
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 2.0f, 0.0f);
                 player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Fail!] -1/2 your current HP! (" + hpToDamage + " ❤)");
@@ -56,11 +57,11 @@ public class EnigmaGUI implements Listener {
                 ItemStack item = items[i];
                 if (item != null && item.getType() == Material.RED_CONCRETE) {
                     break;
-                }else if (i>=53){
+                } else if (i >= 53) {
                     player.closeInventory();
                     player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2.0f, 1.0f);
                     player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]");
-                    player.sendTitle(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]"," ", 0, 80, 0);
+                    player.sendTitle(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]", " ", 0, 80, 0);
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
@@ -74,8 +75,6 @@ public class EnigmaGUI implements Listener {
         }
 
 
-
-
         //GUI ORANGE
         if (e.getView().getTitle().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "[Click All The Orange]")) {
 
@@ -86,10 +85,10 @@ public class EnigmaGUI implements Listener {
             if (itemInHand != null && itemInHand.getType() == Material.ORANGE_CONCRETE && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "[Orange]")) {
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 2.0f, 2.0f);
                 e.setCurrentItem(new ItemStack(correctGlass()));
-            }else if (itemInHand != null && itemInHand.getType() == Material.LIME_STAINED_GLASS && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_GREEN + "✔")){
+            } else if (itemInHand != null && itemInHand.getType() == Material.LIME_STAINED_GLASS && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_GREEN + "✔")) {
                 player.playSound(player.getLocation(), Sound.ENTITY_ITEM_PICKUP, 2.0f, 0.0f);
-            }else{
-                double hpToDamage = (player.getHealth()/2);
+            } else {
+                double hpToDamage = (player.getHealth() / 2);
                 player.damage(hpToDamage);
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 2.0f, 0.0f);
                 player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Fail!] -1/2 your current HP! (" + hpToDamage + " ❤)");
@@ -101,11 +100,11 @@ public class EnigmaGUI implements Listener {
                 ItemStack item = items[i];
                 if (item != null && item.getType() == Material.ORANGE_CONCRETE) {
                     break;
-                }else if (i>=53){
+                } else if (i >= 53) {
                     player.closeInventory();
                     player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2.0f, 1.0f);
                     player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]");
-                    player.sendTitle(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]"," ", 0, 80, 0);
+                    player.sendTitle(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]", " ", 0, 80, 0);
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
@@ -129,10 +128,10 @@ public class EnigmaGUI implements Listener {
             if (itemInHand != null && itemInHand.getType() == Material.YELLOW_CONCRETE && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.YELLOW + "" + ChatColor.BOLD + "[Yellow]")) {
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 2.0f, 2.0f);
                 e.setCurrentItem(new ItemStack(correctGlass()));
-            }else if (itemInHand != null && itemInHand.getType() == Material.LIME_STAINED_GLASS && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_GREEN + "✔")){
+            } else if (itemInHand != null && itemInHand.getType() == Material.LIME_STAINED_GLASS && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_GREEN + "✔")) {
                 player.playSound(player.getLocation(), Sound.ENTITY_ITEM_PICKUP, 2.0f, 0.0f);
-            }else{
-                double hpToDamage = (player.getHealth()/2);
+            } else {
+                double hpToDamage = (player.getHealth() / 2);
                 player.damage(hpToDamage);
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 2.0f, 0.0f);
                 player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Fail!] -1/2 your current HP! (" + hpToDamage + " ❤)");
@@ -144,11 +143,11 @@ public class EnigmaGUI implements Listener {
                 ItemStack item = items[i];
                 if (item != null && item.getType() == Material.YELLOW_CONCRETE) {
                     break;
-                }else if (i>=53){
+                } else if (i >= 53) {
                     player.closeInventory();
                     player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2.0f, 1.0f);
                     player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]");
-                    player.sendTitle(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]"," ", 0, 80, 0);
+                    player.sendTitle(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]", " ", 0, 80, 0);
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
@@ -172,10 +171,10 @@ public class EnigmaGUI implements Listener {
             if (itemInHand != null && itemInHand.getType() == Material.GREEN_CONCRETE && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "[Green]")) {
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 2.0f, 2.0f);
                 e.setCurrentItem(new ItemStack(correctGlass()));
-            }else if (itemInHand != null && itemInHand.getType() == Material.LIME_STAINED_GLASS && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_GREEN + "✔")){
+            } else if (itemInHand != null && itemInHand.getType() == Material.LIME_STAINED_GLASS && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_GREEN + "✔")) {
                 player.playSound(player.getLocation(), Sound.ENTITY_ITEM_PICKUP, 2.0f, 0.0f);
-            }else{
-                double hpToDamage = (player.getHealth()/2);
+            } else {
+                double hpToDamage = (player.getHealth() / 2);
                 player.damage(hpToDamage);
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 2.0f, 0.0f);
                 player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Fail!] -1/2 your current HP! (" + hpToDamage + " ❤)");
@@ -187,11 +186,11 @@ public class EnigmaGUI implements Listener {
                 ItemStack item = items[i];
                 if (item != null && item.getType() == Material.GREEN_CONCRETE) {
                     break;
-                }else if (i>=53){
+                } else if (i >= 53) {
                     player.closeInventory();
                     player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2.0f, 1.0f);
                     player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]");
-                    player.sendTitle(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]"," ", 0, 80, 0);
+                    player.sendTitle(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]", " ", 0, 80, 0);
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
@@ -214,10 +213,10 @@ public class EnigmaGUI implements Listener {
             if (itemInHand != null && itemInHand.getType() == Material.BLUE_CONCRETE && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "[Blue]")) {
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 2.0f, 2.0f);
                 e.setCurrentItem(new ItemStack(correctGlass()));
-            }else if (itemInHand != null && itemInHand.getType() == Material.LIME_STAINED_GLASS && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_GREEN + "✔")){
+            } else if (itemInHand != null && itemInHand.getType() == Material.LIME_STAINED_GLASS && itemInHand.hasItemMeta() && itemInHand.getItemMeta().hasDisplayName() && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.DARK_GREEN + "✔")) {
                 player.playSound(player.getLocation(), Sound.ENTITY_ITEM_PICKUP, 2.0f, 0.0f);
-            }else{
-                double hpToDamage = (player.getHealth()/2);
+            } else {
+                double hpToDamage = (player.getHealth() / 2);
                 player.damage(hpToDamage);
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 2.0f, 0.0f);
                 player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Fail!] -1/2 your current HP! (" + hpToDamage + " ❤)");
@@ -229,11 +228,11 @@ public class EnigmaGUI implements Listener {
                 ItemStack item = items[i];
                 if (item != null && item.getType() == Material.BLUE_CONCRETE) {
                     break;
-                }else if (i>=53){
+                } else if (i >= 53) {
                     player.closeInventory();
                     player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2.0f, 1.0f);
                     player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]");
-                    player.sendTitle(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]"," ", 0, 80, 0);
+                    player.sendTitle(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]", " ", 0, 80, 0);
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
@@ -248,12 +247,35 @@ public class EnigmaGUI implements Listener {
         }
 
 
+    }
 
+    @EventHandler
+    public void playerClick(InventoryCloseEvent e) {
 
+        Player player = (Player) e.getPlayer();
+        Inventory savedMenu = e.getInventory();
 
+        if (e.getView().getTitle().equalsIgnoreCase(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Click All The Red]")) {
 
+            player.openInventory(savedMenu);
 
+        } else if (e.getView().getTitle().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "[Click All The Orange]")) {
 
+            player.openInventory(savedMenu);
+
+        } else if (e.getView().getTitle().equalsIgnoreCase(ChatColor.YELLOW + "" + ChatColor.BOLD + "[Click All The Yellow]")) {
+
+            player.openInventory(savedMenu);
+
+        } else if (e.getView().getTitle().equalsIgnoreCase(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "[Click All The Green]")) {
+
+            player.openInventory(savedMenu);
+
+        } else if (e.getView().getTitle().equalsIgnoreCase(ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "[Click All The Blue]")) {
+
+            player.openInventory(savedMenu);
+
+        }
 
 
 
