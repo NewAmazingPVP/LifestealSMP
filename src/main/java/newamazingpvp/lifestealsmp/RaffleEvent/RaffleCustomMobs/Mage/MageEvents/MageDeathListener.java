@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Mage.SpawnMage;
+package newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Mage.MageEvents;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -8,7 +8,7 @@ import org.bukkit.metadata.MetadataValue;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Mage.SpawnMage.SpawnMage.mageMobAttackRate;
 
-public class MaceListener implements Listener {
+public class MageDeathListener implements Listener {
     @EventHandler
     public void onMageDeath(EntityDeathEvent event) {
         if (event.getEntity().hasMetadata("mage_mob")) {
