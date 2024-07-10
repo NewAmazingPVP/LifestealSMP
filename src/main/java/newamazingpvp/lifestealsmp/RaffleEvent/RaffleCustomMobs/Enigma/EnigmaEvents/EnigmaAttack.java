@@ -49,9 +49,14 @@ public class EnigmaAttack implements Listener {
     @EventHandler
     public void whenPlayerHit(EntityMoveEvent e) {
 
-        Location loc = e.getEntity().getLocation();
-        loc.getWorld().spawnParticle(Particle.DRIPPING_OBSIDIAN_TEAR, loc, 3);
+        Entity entity = e.getEntity();
 
+        if (entity.hasMetadata("enigma_mob")) {
+
+            Location loc = e.getEntity().getLocation();
+            loc.getWorld().spawnParticle(Particle.DRIPPING_OBSIDIAN_TEAR, loc, 3);
+
+        }
     }
 
 }

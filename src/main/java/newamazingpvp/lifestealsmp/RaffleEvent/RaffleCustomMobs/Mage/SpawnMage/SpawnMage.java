@@ -78,7 +78,7 @@ public class SpawnMage {
 
 
 
-                                ((LivingEntity) target).damage(2);
+                                ((LivingEntity) target).damage(5);
                             }
 
                         break;
@@ -92,7 +92,7 @@ public class SpawnMage {
 
             }
         };
-        mageMobAttackRate.runTaskTimer(lifestealSmp, 0L, 40L); // Start immediately and repeat every second
+        mageMobAttackRate.runTaskTimer(lifestealSmp, 0L, 20L); // Start immediately and repeat every second
 
 
     }

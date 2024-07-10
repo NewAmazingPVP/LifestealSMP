@@ -3,6 +3,7 @@ package newamazingpvp.lifestealsmp.unused.magicstaffs.utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
@@ -13,8 +14,8 @@ public class BeamTexture {
         for (double i = 0; i < 150; i++) {
             location.add(attackerLookDir);
             for (Player player2 : Bukkit.getOnlinePlayers()) {
-                //player2.getWorld().spawnParticle(Particle.REDSTONE, location, 0, new Particle.DustOptions(color1, size1));
-                //player2.getWorld().spawnParticle(Particle.REDSTONE, location, 0, new Particle.DustOptions(color2, Size2));
+                player2.getWorld().spawnParticle(Particle.DUST, location, 0, new Particle.DustOptions(color1, size1));
+                player2.getWorld().spawnParticle(Particle.DUST, location, 0, new Particle.DustOptions(color2, Size2));
 
 
             }
