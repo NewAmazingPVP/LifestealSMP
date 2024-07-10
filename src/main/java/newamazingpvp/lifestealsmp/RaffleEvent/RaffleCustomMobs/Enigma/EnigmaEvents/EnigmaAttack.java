@@ -1,7 +1,9 @@
 package newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.EnigmaEvents;
 
+import io.papermc.paper.event.entity.EntityMoveEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -42,6 +44,14 @@ public class EnigmaAttack implements Listener {
 
             }
         }
+    }
+
+    @EventHandler
+    public void whenPlayerHit(EntityMoveEvent e) {
+
+        Location loc = e.getEntity().getLocation();
+        loc.getWorld().spawnParticle(Particle.DRIPPING_OBSIDIAN_TEAR, loc, 3);
+
     }
 
 }
