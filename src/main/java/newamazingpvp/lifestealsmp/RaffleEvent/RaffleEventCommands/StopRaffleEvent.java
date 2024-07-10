@@ -1,7 +1,9 @@
 package newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands;
 
+import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.SpawnEnigma.SpawnEnigma;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -26,7 +28,10 @@ public class StopRaffleEvent implements CommandExecutor {
             player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Event is already toggled off you fucking idiot!" );
         }
 
-        startEnigmaMobPuzzle(player);
+        Location location = null;
+        location = player.getLocation();
+
+        new SpawnEnigma(location);
 
         return true;
     }
