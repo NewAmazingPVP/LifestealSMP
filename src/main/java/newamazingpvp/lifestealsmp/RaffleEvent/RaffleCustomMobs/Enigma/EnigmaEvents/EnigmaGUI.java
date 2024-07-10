@@ -250,7 +250,7 @@ public class EnigmaGUI implements Listener {
 
     }
 
-    @EventHandler
+    /*@EventHandler
     public void playerClick(InventoryCloseEvent e) {
 
         Player player = (Player) e.getPlayer();
@@ -280,7 +280,7 @@ public class EnigmaGUI implements Listener {
 
 
 
-    }
+    }*/
 
 
 
