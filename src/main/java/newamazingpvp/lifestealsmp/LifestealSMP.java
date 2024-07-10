@@ -10,7 +10,6 @@ import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.EnigmaEven
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.EnigmaEvents.EnigmaDamagedAndKilled;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.EnigmaEvents.EnigmaGUI;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Mage.MageEvents.MageAttack;
-import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Mage.MageEvents.MageDeathListener;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands.StartRaffleEvent;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands.StopRaffleEvent;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEvents.ClearOldBingoTags;
@@ -271,7 +270,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new EnigmaAttack(), this);
             getServer().getPluginManager().registerEvents(new EnigmaDamagedAndKilled(), this);
             getServer().getPluginManager().registerEvents(new MageAttack(), this);
-            getServer().getPluginManager().registerEvents(new MageDeathListener(), this); 
             //getServer().getPluginManager().registerEvents(new BlockPlaceTracker(), this);
             getCommand("raffleeventstart").setExecutor(new StartRaffleEvent());
             getCommand("raffleeventstop").setExecutor(new StopRaffleEvent());
