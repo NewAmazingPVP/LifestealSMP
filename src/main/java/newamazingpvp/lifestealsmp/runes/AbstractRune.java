@@ -1,16 +1,18 @@
 package newamazingpvp.lifestealsmp.runes;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.entity.EntityType;
 import org.bukkit.potion.PotionEffect;
 
 public abstract class AbstractRune implements Rune {
-    private final String name;
+    private final Component name;
     private final EntityType mob;
     private final double dropRate;
     private final String lore;
     private final PotionEffect effect;
 
-    public AbstractRune(String name, EntityType mob, double dropRate, String lore, PotionEffect effect) {
+    public AbstractRune(Component name, EntityType mob, double dropRate, String lore, PotionEffect effect) {
         this.name = name;
         this.mob = mob;
         this.dropRate = dropRate;
@@ -19,7 +21,7 @@ public abstract class AbstractRune implements Rune {
     }
 
     @Override
-    public String getName() {
+    public Component getName() {
         return name;
     }
 
@@ -75,4 +77,14 @@ public abstract class AbstractRune implements Rune {
         }
         return "";
     }
+
+    public static Component runeGradient(String itemName) {
+        var mm = MiniMessage.miniMessage();
+        return mm.deserialize("<bold><gradient:#4100FF:#D200FF>" + itemName +  "</gradient></bold>");
+    }
+
+    public static Component deserialize(String s){
+        MiniMessage.miniMessage().deserialize(s);
+    }
+
 }

@@ -1,5 +1,7 @@
 package newamazingpvp.lifestealsmp.customitems.utils;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -13,10 +15,15 @@ import java.util.List;
 
 public class ItemStacks {
 
+    public static Component gradient(String itemName) {
+        var mm = MiniMessage.miniMessage();
+        return mm.deserialize("<bold><gradient:#ffd700:#ffc107>" + itemName +  "</gradient></bold>");
+    }
+
     public static ItemStack createReviveBeacon() {
         ItemStack reviveBeacon = new ItemStack(Material.BEACON);
         ItemMeta meta = reviveBeacon.getItemMeta();
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Revive Beacon");
+        meta.displayName(gradient("Revive Beacon"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.DARK_PURPLE + "Use to revive eliminated players!");
         meta.setLore(lore);
@@ -27,7 +34,7 @@ public class ItemStacks {
     public static ItemStack createCustomBow() {
         ItemStack customBow = new ItemStack(Material.BOW);
         ItemMeta meta = customBow.getItemMeta();
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.MAGIC + "Teleporting Bow");
+        meta.displayName(gradient("Teleporting Bow"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Special Ability:");
         lore.add(ChatColor.DARK_PURPLE + "Shoot to teleport!");
@@ -40,7 +47,7 @@ public class ItemStacks {
     public static ItemStack createCustomAxe() {
         ItemStack customAxe = new ItemStack(Material.NETHERITE_AXE);
         ItemMeta meta = customAxe.getItemMeta();
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Tree Chopping Axe");
+        meta.displayName(gradient("Tree Chopping Axe"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Special Ability:");
         lore.add(ChatColor.DARK_PURPLE + "Breaks whole tree down with one chop!");
@@ -52,7 +59,7 @@ public class ItemStacks {
     public static ItemStack createTNTBow() {
         ItemStack tntBow = new ItemStack(Material.BOW);
         ItemMeta meta = tntBow.getItemMeta();
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "TNT Bow");
+        meta.displayName(gradient("TNT Bow"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Special Ability:");
         lore.add(ChatColor.DARK_PURPLE + "TNT Shooter!");
@@ -65,7 +72,7 @@ public class ItemStacks {
     public static ItemStack createHomingBow() {
         ItemStack homingBow = new ItemStack(Material.BOW);
         ItemMeta meta = homingBow.getItemMeta();
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Homing Bow");
+        meta.displayName(gradient("Homing Bow"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Special Ability:");
         lore.add(ChatColor.DARK_PURPLE + "Homing Arrows!");
@@ -78,7 +85,7 @@ public class ItemStacks {
     public static ItemStack createFeatherSword() {
         ItemStack featherSword = new ItemStack(Material.NETHERITE_SWORD);
         ItemMeta meta = featherSword.getItemMeta();
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Feather Sword");
+        meta.displayName(gradient("Feather Sword"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Special Ability: ");
         lore.add(ChatColor.DARK_PURPLE + "Right click to launch yourself");
@@ -91,7 +98,7 @@ public class ItemStacks {
     public static ItemStack createOpPickaxe() {
         ItemStack opPickaxe = new ItemStack(Material.NETHERITE_PICKAXE);
         ItemMeta meta = opPickaxe.getItemMeta();
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "God Pickaxe");
+        meta.displayName(gradient("God Pickaxe"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Special Ability:");
         lore.add(ChatColor.DARK_PURPLE + "Mine to break 3x3!");
@@ -105,7 +112,7 @@ public class ItemStacks {
         ItemMeta meta = corruptedMobSoul.getItemMeta();
         meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.MAGIC + "LL" + ChatColor.GOLD + ChatColor.BOLD + "Corrupted Mob Soul" + ChatColor.GOLD + ChatColor.MAGIC + "LL");
+        meta.displayName(gradient("Corrupted Mob Soul"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.DARK_PURPLE + "U$e To Cr" + ChatColor.MAGIC + "a" + ChatColor.DARK_PURPLE + "ft Extra Hearts!" + ChatColor.MAGIC + "L");
         meta.setLore(lore);
@@ -118,7 +125,7 @@ public class ItemStacks {
         ItemMeta meta = severedMobHeart.getItemMeta();
         meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Severed Mob Heart");
+        meta.displayName(gradient("Severed Mob Heart"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.DARK_PURPLE + "Use To Craft Extra Hearts!");
         meta.setLore(lore);
@@ -131,7 +138,7 @@ public class ItemStacks {
         ItemMeta meta = extraHeart.getItemMeta();
         meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Extra Heart");
+        meta.displayName(gradient("Extra Heart"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Right Click:");
         lore.add(ChatColor.DARK_PURPLE + "+1 Heart!");
@@ -144,7 +151,7 @@ public class ItemStacks {
     public static ItemStack createHeartEqualizer() {
         ItemStack heartEqualizer = new ItemStack(Material.AMETHYST_SHARD);
         ItemMeta meta = heartEqualizer.getItemMeta();
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Heart Equalizer");
+        meta.displayName(gradient("Heart Equalizer"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Special Ability:");
         lore.add(ChatColor.DARK_PURPLE + "Takes into account max health");
@@ -160,7 +167,7 @@ public class ItemStacks {
         ItemMeta meta = lightFeather.getItemMeta();
         meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Light Feather");
+        meta.displayName(gradient("Light Feather"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Right Click:");
         lore.add(ChatColor.DARK_PURPLE + "Get speed and jump boost for a few sec!");
@@ -175,7 +182,7 @@ public class ItemStacks {
         ItemMeta meta = instaboomTNT.getItemMeta();
         meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE);
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "InstaBoom TNT");
+        meta.displayName(gradient("InstaBoom TNT"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Place:");
         lore.add(ChatColor.DARK_PURPLE + "All players within a radius");
@@ -193,7 +200,7 @@ public class ItemStacks {
         ItemMeta meta = lifestealStick.getItemMeta();
         meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Lifesteal Stick");
+        meta.displayName(gradient("Lifesteal Stick"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Ability:");
         lore.add(ChatColor.DARK_PURPLE + "When you hit a player");
@@ -209,7 +216,7 @@ public class ItemStacks {
         ItemMeta meta = powerStick.getItemMeta();
         meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE);
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Power Stick");
+        meta.displayName(gradient("Power Stick"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.DARK_PURPLE + "Used For Crafting");
         meta.setLore(lore);
@@ -222,7 +229,7 @@ public class ItemStacks {
         ItemMeta meta = heavyNetherStar.getItemMeta();
         meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE);
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Heavy Nether Star");
+        meta.displayName(gradient("Heavy Nether Star"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.DARK_PURPLE + "Used For Crafting");
         meta.setLore(lore);
@@ -235,7 +242,7 @@ public class ItemStacks {
         LeatherArmorMeta meta = (LeatherArmorMeta) chestplate.getItemMeta();
         meta.setColor(Color.BLUE);
         meta.addEnchant(Enchantment.UNBREAKING, 3, true);
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Quarry Chestplate");
+        meta.displayName(gradient("Quarry Chestplate"));
         List<String> lore = new ArrayList<>();
         lore.add(" ");
         lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Full Set Bonus:");
@@ -253,7 +260,7 @@ public class ItemStacks {
         LeatherArmorMeta meta = (LeatherArmorMeta) leggings.getItemMeta();
         meta.setColor(Color.BLUE);
         meta.addEnchant(Enchantment.UNBREAKING, 3, true);
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Quarry Leggings");
+        meta.displayName(gradient("Quarry Leggings"));
         List<String> lore = new ArrayList<>();
         lore.add(" ");
         lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Full Set Bonus:");
@@ -271,7 +278,7 @@ public class ItemStacks {
         LeatherArmorMeta meta = (LeatherArmorMeta) helmet.getItemMeta();
         meta.setColor(Color.BLUE);
         meta.addEnchant(Enchantment.UNBREAKING, 3, true);
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Quarry Helmet");
+        meta.displayName(gradient("Quarry Helmet"));
         List<String> lore = new ArrayList<>();
         lore.add(" ");
         lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Full Set Bonus:");
@@ -289,7 +296,7 @@ public class ItemStacks {
         LeatherArmorMeta meta = (LeatherArmorMeta) boots.getItemMeta();
         meta.setColor(Color.BLUE);
         meta.addEnchant(Enchantment.UNBREAKING, 3, true);
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Quarry Boots");
+        meta.displayName(gradient("Quarry Boots"));
         List<String> lore = new ArrayList<>();
         lore.add(" ");
         lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Full Set Bonus:");
@@ -307,7 +314,7 @@ public class ItemStacks {
         ItemMeta meta = somberCrystal.getItemMeta();
         meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE);
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Somber Crystal");
+        meta.displayName(gradient("Somber Crystal"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Hit A Player:");
         lore.add(ChatColor.DARK_PURPLE + "Disables totems of undying on someone for 2min");
@@ -322,7 +329,7 @@ public class ItemStacks {
         ItemMeta meta = musicBox.getItemMeta();
         meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE);
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Music Box");
+        meta.displayName(gradient("Music Box"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Right Click:");
         lore.add(ChatColor.DARK_PURPLE + "Lets you play any music disc.");
@@ -339,7 +346,7 @@ public class ItemStacks {
     public static ItemStack cometTrident() {
         ItemStack ITEM = new ItemStack(Material.TRIDENT);
         ItemMeta meta = ITEM.getItemMeta();
-        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Comet Trident");
+        meta.displayName(gradient("Comet Trident"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Right Click:");
         lore.add(ChatColor.DARK_PURPLE + "Summons a comet that will fly into");
@@ -348,5 +355,4 @@ public class ItemStacks {
         ITEM.setItemMeta(meta);
         return ITEM;
     }
-
 }

@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.runes;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.EntityType;
 import org.bukkit.potion.PotionEffect;
@@ -7,7 +8,7 @@ import org.bukkit.potion.PotionEffectType;
 
 public class RaidOmenRune extends AbstractRune {
 
-    private static final String name = "&x&4&1&0&0&F&F&lR&x&4&C&0&0&F&F&la&x&5&7&0&0&F&F&li&x&6&2&0&0&F&F&ld &x&7&9&0&0&F&F&lO&x&8&4&0&0&F&F&lm&x&8&F&0&0&F&F&le&x&9&A&0&0&F&F&ln &x&B&1&0&0&F&F&lR&x&B&C&0&0&F&F&lu&x&C&7&0&0&F&F&ln&x&D&2&0&0&F&F&le";
+    private static final Component name = runeGradient("Raid Omen Rune");
     private static final EntityType mob = EntityType.EVOKER;
     private static final PotionEffect effect = new PotionEffect(PotionEffectType.RAID_OMEN, 200, 0);
     private static final PotionEffect effectII = new PotionEffect(PotionEffectType.RAID_OMEN, 200, 1);
@@ -27,7 +28,7 @@ public class RaidOmenRune extends AbstractRune {
 
     static class II extends AbstractRune {
         public II() {
-            super(name + " II",
+            super(name.append(deserialize(" II")),
                     mob,
                     1.0 / 200,
                     ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectII.getType().getKey().getKey()) + " " + formatAmplifier(effectII.getAmplifier()),
@@ -37,7 +38,7 @@ public class RaidOmenRune extends AbstractRune {
 
     static class III extends AbstractRune {
         public III() {
-            super(name + " III",
+            super(name.append(deserialize(" III")),
                     mob,
                     1.0 / 300,
                     ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectIII.getType().getKey().getKey()) + " " + formatAmplifier(effectIII.getAmplifier()),
@@ -47,7 +48,7 @@ public class RaidOmenRune extends AbstractRune {
 
     static class IV extends AbstractRune {
         public IV() {
-            super(name + " IV",
+            super(name.append(deserialize(" IV")),
                     mob,
                     1.0 / 400,
                     ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectIV.getType().getKey().getKey()) + " " + formatAmplifier(effectIV.getAmplifier()),
@@ -57,7 +58,7 @@ public class RaidOmenRune extends AbstractRune {
 
     static class V extends AbstractRune {
         public V() {
-            super(name + " V",
+            super(name.append(deserialize(" V")),
                     mob,
                     1.0 / 500,
                     ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectV.getType().getKey().getKey()) + " " + formatAmplifier(effectV.getAmplifier()),

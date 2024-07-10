@@ -1,5 +1,9 @@
 package newamazingpvp.lifestealsmp.runes;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -20,6 +24,7 @@ import java.util.List;
 import java.util.Random;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.runes.AbstractRune.deserialize;
 import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 
 public class RuneHandler implements Listener {
@@ -136,7 +141,8 @@ public class RuneHandler implements Listener {
                 if (random.nextDouble() < adjustedDropRate * runeMultiplier) {
                     ItemStack runeItem = createRuneItem(rune);
                     //entity.getWorld().dropItemNaturally(entity.getLocation(), runeItem);
-                    player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "RUNE DROP!" + ChatColor.GOLD + " " + ChatColor.translateAlternateColorCodes('&', rune.getName()) + ": " + rune.getLore());
+                    //player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "RUNE DROP!" + ChatColor.GOLD + " " + rune.getName() + ": " + rune.getLore());
+                    player.sendMessage(deserialize("RUNE DROP!").color(NamedTextColor.GOLD).decorate(TextDecoration.BOLD).append(deserialize(" ")).append(rune.getName()).append(deserialize(": ").append(deserialize(rune.getLore()))));
                     addItemOrDrop(player, runeItem, ChatColor.RED + "Rune was dropped because inventory was full!");
                 }
             }
@@ -147,7 +153,7 @@ public class RuneHandler implements Listener {
     public static ItemStack createRuneItem(Rune rune) {
         ItemStack runeItem = new ItemStack(Material.PAPER);
         ItemMeta meta = runeItem.getItemMeta();
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', rune.getName()));
+        meta.displayName(rune.getName());
         meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
         List<String> lore = new ArrayList<>();
