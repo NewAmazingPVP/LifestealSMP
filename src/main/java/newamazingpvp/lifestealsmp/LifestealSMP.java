@@ -12,7 +12,6 @@ import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.EnigmaEven
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Hydra.HydraEvents.HydraAttack;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Hydra.HydraEvents.HydraDamagedOrKilled;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Mage.MageEvents.MageHitAndKilled;
-import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands.SpawnRaffleMobCommand;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands.StartRaffleEvent;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands.StopRaffleEvent;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEvents.ClearOldBingoTags;
@@ -43,7 +42,7 @@ import newamazingpvp.lifestealsmp.discord.DiscordListener;
 import newamazingpvp.lifestealsmp.unused.endfight.bossevents.DeathBeaconEvent;
 import newamazingpvp.lifestealsmp.unused.endfight.BossTestCommands.BeaconTestCMD;
 import newamazingpvp.lifestealsmp.unused.endfight.BossTestCommands.NPCTestCommand;
-import newamazingpvp.lifestealsmp.unused.endfight.custommobs.SpawnCmd;
+import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands.SpawnCmd;
 import newamazingpvp.lifestealsmp.unused.endfight.custommobs.mobs.deadminer.DeadMinerListener;
 import newamazingpvp.lifestealsmp.unused.endfight.custommobs.mobs.lightningzombie.LightningZombieListener;
 import newamazingpvp.lifestealsmp.unused.endfight.custommobs.mobs.minishadow.listeners.MiniShadowAttackPlayer;
@@ -243,7 +242,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
 
             //Mob test
-            getCommand("spawncustommob").setExecutor(new SpawnCmd());
             getServer().getPluginManager().registerEvents(new LightningZombieListener(), this);
 
             getServer().getPluginManager().registerEvents(new DeadMinerListener(), this);
@@ -280,7 +278,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             //getServer().getPluginManager().registerEvents(new BlockPlaceTracker(), this);
             getCommand("raffleeventstart").setExecutor(new StartRaffleEvent());
             getCommand("raffleeventstop").setExecutor(new StopRaffleEvent());
-            getCommand("spawnrafflemob").setExecutor(new SpawnRaffleMobCommand());
+            getCommand("spawncustommob").setExecutor(new SpawnCmd());
 
 
             //getCommand("trade").setExecutor(new Trade());
