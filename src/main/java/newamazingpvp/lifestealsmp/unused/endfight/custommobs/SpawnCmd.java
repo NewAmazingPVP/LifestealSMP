@@ -1,18 +1,31 @@
 package newamazingpvp.lifestealsmp.unused.endfight.custommobs;
 
+import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Bomber.SpawnBomber.SpawnBomber;
+import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.SpawnEnigma.SpawnEnigma;
+import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Hydra.SpawnHydra.SpawnHydra;
+import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Mage.SpawnMage.SpawnMage;
 import newamazingpvp.lifestealsmp.unused.endfight.custommobs.mobs.minishadow.spawning.SpawnMiniShadow;
 import org.bukkit.Location;
 import org.bukkit.command.BlockCommandSender;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
-public class SpawnCmd implements CommandExecutor {
+import java.util.ArrayList;
+import java.util.List;
 
+public class SpawnCmd implements CommandExecutor, TabCompleter {
+
+    private final ArrayList<String> subcommands = new ArrayList<>(List.of("mage", "hydra", "enigma", "bomber", "minishadow"));
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (args.length == 0) {
+            sender.sendMessage("Please specify a mob to spawn.");
+            return false;
+        }
 
         Location location = null;
 
@@ -24,14 +37,46 @@ public class SpawnCmd implements CommandExecutor {
             location = blockCommandSender.getBlock().getLocation();
         }
 
-        //new SpawnLightningZombie(location);
-        //new SpawnDeadMiner(location);
-        //new SpawnShadow(location);
-        new SpawnMiniShadow(location);
+        if (location == null) {
+            sender.sendMessage("Could not determine location to spawn mob.");
+            return false;
+        }
+
+        switch (args[0].toLowerCase()) {
+            case "mage":
+                new SpawnMage(location);
+                break;
+            case "hydra":
+                new SpawnHydra(location);
+                break;
+            case "enigma":
+                new SpawnEnigma(location);
+                break;
+            case "bomber":
+                new SpawnBomber(location);
+                break;
+            case "minishadow":
+                new SpawnMiniShadow(location);
+                break;
+            default:
+                sender.sendMessage("Unknown mob type.");
+                return false;
+        }
 
         return true;
+    }
 
-
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        if (args.length == 1) {
+            List<String> completions = new ArrayList<>();
+            for (String subcommand : subcommands) {
+                if (subcommand.startsWith(args[0].toLowerCase())) {
+                    completions.add(subcommand);
+                }
+            }
+            return completions;
+        }
+        return null;
     }
 }
-
