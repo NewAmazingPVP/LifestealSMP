@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.unused.endfight.custommobs;
+package newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands;
 
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Bomber.SpawnBomber.SpawnBomber;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.SpawnEnigma.SpawnEnigma;
@@ -18,7 +18,7 @@ import java.util.List;
 
 public class SpawnCmd implements CommandExecutor, TabCompleter {
 
-    private final ArrayList<String> subcommands = new ArrayList<>(List.of("mage", "hydra", "enigma", "bomber", "minishadow"));
+    private final ArrayList<String> subcommands = new ArrayList<>(List.of("mage", "hydra", "enigma"));
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -51,12 +51,6 @@ public class SpawnCmd implements CommandExecutor, TabCompleter {
                 break;
             case "enigma":
                 new SpawnEnigma(location);
-                break;
-            case "bomber":
-                new SpawnBomber(location);
-                break;
-            case "minishadow":
-                new SpawnMiniShadow(location);
                 break;
             default:
                 sender.sendMessage("Unknown mob type.");

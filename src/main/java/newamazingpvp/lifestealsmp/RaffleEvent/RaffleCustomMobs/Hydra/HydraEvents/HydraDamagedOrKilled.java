@@ -26,7 +26,7 @@ public class HydraDamagedOrKilled implements Listener {
 
 
         }
-        
+
 
     }
 }
