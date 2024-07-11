@@ -234,3 +234,8 @@ commands:
     usage: /spawnrafflemob
     permission: lifestealSMP.admin
     default: op
+  teleport:
+    description: Teleport to a world
+    usage: /worldteleport [world]
+    permission: lifestealSMP.admin
+    default: op
