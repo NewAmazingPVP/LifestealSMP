@@ -40,6 +40,8 @@ public class HydraAttack implements Listener {
 
                 for (int i = 0; i < 7; i++) {
 
+                    damagedEntity.sendMessage("sucsessfull attack" + i);
+
                     damagedEntity.damage(1);
                     Vector randomDirection = new Vector(randomX, 0, randomZ);
                     randomDirection.normalize();
