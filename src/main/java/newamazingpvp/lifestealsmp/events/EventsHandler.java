@@ -16,7 +16,7 @@ public class EventsHandler implements Listener {
     public EventsHandler() {
         // events.add(new CustomItemsAndRunes());
         // events.add(new TrackingDay(SEASON_START_TIME.plusDays(2), 1));
-        events.add(new UHCPvPEvent(SEASON_START_TIME.plusDays(19).plusHours(5).plusMinutes(1)));
+        // events.add(new UHCPvPEvent(SEASON_START_TIME.plusDays(19).plusHours(5).plusMinutes(1)));
 
         new BukkitRunnable() {
             @Override
