@@ -2,6 +2,7 @@ package newamazingpvp.lifestealsmp.runes;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.entity.EntityType;
 import org.bukkit.potion.PotionEffect;
 
@@ -84,7 +85,12 @@ public abstract class AbstractRune implements Rune {
     }
 
     public static Component deserialize(String s){
-        return MiniMessage.miniMessage().deserialize(s);
+        LegacyComponentSerializer serializer = LegacyComponentSerializer.builder()
+                .character('&')
+                .hexColors()
+                .build();
+        return serializer.deserialize(s);
+        //return MiniMessage.miniMessage().deserialize(s);
     }
 
 }
