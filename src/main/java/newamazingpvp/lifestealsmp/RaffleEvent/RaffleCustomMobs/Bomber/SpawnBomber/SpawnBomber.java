@@ -1,13 +1,16 @@
-package newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Mage.SpawnMage;
+package newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Bomber.SpawnBomber;
 
-import org.bukkit.*;
+import org.bukkit.ChatColor;
+import org.bukkit.Color;
+import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.attribute.Attributable;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
-import org.bukkit.entity.*;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Stray;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
@@ -21,21 +24,20 @@ import org.bukkit.util.Vector;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.unused.endfight.custommobs.PublicMobMethods.getProfile;
 import static newamazingpvp.lifestealsmp.unused.magicstaffs.utils.BeamTexture.beamTextureMaker;
-import static newamazingpvp.lifestealsmp.unused.magicstaffs.utils.StaffSound.playMagicStaffSound;
 
-public class SpawnMage {
+public class SpawnBomber {
 
-    public static BukkitRunnable mageMobAttackRate;
+    public static BukkitRunnable bomberMobAttackRate;
 
     private static final double beamRange = 15;
 
-    public SpawnMage(Location location) {
+    public SpawnBomber(Location location) {
 
         // Make zombie
         Stray mageZombie = (Stray) location.getWorld().spawnEntity(location, EntityType.STRAY);
 
         // Set name
-        mageZombie.setCustomName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Mage");
+        mageZombie.setCustomName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Bomber");
         mageZombie.setCustomNameVisible(true);
         mageZombie.setInvisible(false);
 
@@ -50,15 +52,15 @@ public class SpawnMage {
         Attributable lightningZombieAttributes = mageZombie;
 
         AttributeInstance maxHealth = lightningZombieAttributes.getAttribute(Attribute.GENERIC_MAX_HEALTH);
-        maxHealth.setBaseValue(150);
-        mageZombie.setHealth(150);
+        maxHealth.setBaseValue(100);
+        mageZombie.setHealth(100);
 
         // Add custom tag
         String customTag = "mage_mob";
         MetadataValue customTagValue = new FixedMetadataValue(lifestealSmp, customTag);
         mageZombie.setMetadata(customTag, customTagValue);
 
-        mageMobAttackRate = new BukkitRunnable() {
+        bomberMobAttackRate = new BukkitRunnable() {
             @Override
             public void run() {
 
@@ -67,7 +69,7 @@ public class SpawnMage {
                     return;
                 }
 
-                Location location = mageZombie.getEyeLocation().add(0, 0, 0);
+                Location location = mageZombie.getEyeLocation().add(0, 0.2, 0);
                 Vector attackerLookDir = mageZombie.getLocation().getDirection().multiply(0.1);
                 Vector direction = mageZombie.getEyeLocation().getDirection();
                 Location targetLocation = mageZombie.getEyeLocation().clone();
@@ -91,7 +93,7 @@ public class SpawnMage {
                 }
             }
         };
-        mageMobAttackRate.runTaskTimer(lifestealSmp, 0L, 20L); // Start immediately and repeat every second
+        bomberMobAttackRate.runTaskTimer(lifestealSmp, 0L, 20L); // Start immediately and repeat every second
     }
 
     // Item stacks for the mob
@@ -106,7 +108,7 @@ public class SpawnMage {
     }
 
     private static ItemStack mageZombieHandItem() {
-        ItemStack chestplate = new ItemStack(Material.TRIDENT);
+        ItemStack chestplate = new ItemStack(Material.STICK);
         ItemMeta meta = chestplate.getItemMeta();
         meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Magic");
         chestplate.setItemMeta(meta);

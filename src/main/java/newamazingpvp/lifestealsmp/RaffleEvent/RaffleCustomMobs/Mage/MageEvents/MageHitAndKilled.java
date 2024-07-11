@@ -26,7 +26,7 @@ public class MageHitAndKilled implements Listener {
         if (damagedEntity.hasMetadata("mage_mob")) {
 
             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                onlinePlayer.playSound(loc, Sound.ENTITY_ELDER_GUARDIAN_CURSE, 1.0f, 2.0f);
+                onlinePlayer.playSound(loc, Sound.ENTITY_ENDER_DRAGON_HURT, 1.0f, 1.0f);
                 damagedEntity.getLocation().getWorld().spawnParticle(Particle.CLOUD, damagedEntity.getLocation(), 10);
 
             }
@@ -53,7 +53,7 @@ public class MageHitAndKilled implements Listener {
                     killer.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     killer.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     killer.getInventory().addItem(raffleTicket(currentRaffleEventID));
-                    killer.getInventory().addItem(raffleTicket(currentRaffleEventID)); 
+                    killer.getInventory().addItem(raffleTicket(currentRaffleEventID));
 
                 }
             }
