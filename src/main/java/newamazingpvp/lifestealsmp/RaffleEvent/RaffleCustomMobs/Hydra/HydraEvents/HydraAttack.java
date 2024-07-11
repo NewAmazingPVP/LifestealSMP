@@ -20,7 +20,7 @@ public class HydraAttack implements Listener {
     public void whenPlayerHit(EntityDamageByEntityEvent e) {
 
         Entity attacker = e.getDamager();
-        Entity damagedEntity = e.getEntity();
+        Player damagedEntity = (Player) e.getEntity();
         //Location loc = e.getEntity().getLocation();
 
 
@@ -30,8 +30,10 @@ public class HydraAttack implements Listener {
 
             if (attacker.hasMetadata("hydra_mob_charged")) {
 
+                damagedEntity.sendMessage("test1");
                 attacker.removeMetadata(customTag, (Plugin) customTagValue);
                 ((LivingEntity) attacker).getEquipment().setItemInMainHand((NOTHING_ITEM));
+                damagedEntity.sendMessage("test2");
 
 
                 double randomX = Math.random() * 2 - 1; // Random value between -1 and 1
