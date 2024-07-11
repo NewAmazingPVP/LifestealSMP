@@ -21,9 +21,7 @@ public class StartRaffleEvent implements CommandExecutor {
 
             Player player = (Player) sender;
 
-            Location location = null;
-            location = player.getLocation();
-            new SpawnHydra(location);
+
 
             if(!isRaffleEventRunning){
                 isRaffleEventRunning = true;
