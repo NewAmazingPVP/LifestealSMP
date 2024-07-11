@@ -23,10 +23,12 @@ public class HydraAttack implements Listener {
         Player damagedEntity = (Player) e.getEntity();
         //Location loc = e.getEntity().getLocation();
 
-
+        damagedEntity.sendMessage("test-1");
 
 
         if (attacker instanceof LivingEntity) {
+
+            damagedEntity.sendMessage("test0");
 
             if (attacker.hasMetadata("hydra_mob_charged")) {
 
