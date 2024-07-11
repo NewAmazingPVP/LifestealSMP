@@ -23,15 +23,10 @@ public class HydraDamagedOrKilled implements Listener {
 
         if (damagedEntity.hasMetadata("hydra_mob")) {
 
-            player.sendMessage("Is Hydra");
+
 
         }
-
-        if (damagedEntity.hasMetadata("hydra_mob_charged")) {
-
-            player.sendMessage("Is Hydra and is charged");
-
-        }
+        
 
     }
 }

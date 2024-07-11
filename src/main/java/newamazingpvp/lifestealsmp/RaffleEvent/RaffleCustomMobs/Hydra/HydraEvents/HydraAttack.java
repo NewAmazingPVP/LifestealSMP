@@ -20,7 +20,7 @@ public class HydraAttack implements Listener {
     public void whenPlayerHit(EntityDamageByEntityEvent e) {
 
         Entity attacker = e.getDamager();
-        Player damagedEntity = (Player) e.getEntity();
+        Entity damagedEntity = e.getEntity();
         //Location loc = e.getEntity().getLocation();
 
 
@@ -28,21 +28,19 @@ public class HydraAttack implements Listener {
 
         if (attacker instanceof LivingEntity) {
 
-            if (attacker.hasMetadata("enigma_mob_charged")) {
+            if (attacker.hasMetadata("hydra_mob_charged")) {
 
                 attacker.removeMetadata(customTag, (Plugin) customTagValue);
                 ((LivingEntity) attacker).getEquipment().setItemInMainHand((NOTHING_ITEM));
 
-                //Vector velocity = damagedEntity.getLocation().getDirection().multiply(1);
 
                 double randomX = Math.random() * 2 - 1; // Random value between -1 and 1
                 double randomZ = Math.random() * 2 - 1; // Random value between -1 and 1
 
                 for (int i = 0; i < 7; i++) {
 
-                    damagedEntity.sendMessage("sucsessfull attack" + i);
 
-                    damagedEntity.damage(1);
+                    ((LivingEntity) damagedEntity).damage(2);
                     Vector randomDirection = new Vector(randomX, 0, randomZ);
                     randomDirection.normalize();
                     Vector velocity = randomDirection.multiply(2); // Speed of 1
