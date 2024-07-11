@@ -7,14 +7,17 @@ import java.time.Duration;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsMessage;
 import static newamazingpvp.lifestealsmp.game.Compass.trackingDist;
 import static newamazingpvp.lifestealsmp.utility.TimeManager.*;
 import static newamazingpvp.lifestealsmp.utility.TimeManager.CUSTOM_ITEMS_AND_RUNES;
+import static org.bukkit.Bukkit.getServer;
 
 public class TrackingDay extends BaseEvent {
 
     private final int blocks;
+    //TODO: CHANGE WORDING FROM EXACT BLOCKS TO WHATERVER BLOCKS ANMD SEPARSAE FOR NO TRACKING DAY
 
     public TrackingDay(ZonedDateTime startTime, int blocks) {
         super(startTime, startTime.plusDays(1));
@@ -24,7 +27,7 @@ public class TrackingDay extends BaseEvent {
     @Override
     public void onEventStart() {
         Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Exact block /track day happening, Check announcements /discord");
-        sendDiscordNewsMessage(eventRole + "/track will now show exact blocks away, for a day.", "1032411739351941120");
+        getServer().getScheduler().runTaskLater(lifestealSmp, () -> sendDiscordNewsMessage(eventRole + "/track will now show exact blocks away, for a day.", "1032411739351941120"), 1200);
         trackingDist = blocks;
     }
 

