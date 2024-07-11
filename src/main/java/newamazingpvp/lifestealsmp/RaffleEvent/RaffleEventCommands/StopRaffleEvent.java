@@ -29,10 +29,7 @@ public class StopRaffleEvent implements CommandExecutor {
             player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Event is already toggled off you fucking idiot!" );
         }
 
-        Location location = null;
-        location = player.getLocation();
-
-        new SpawnMage(location);
+        
 
         return true;
     }
