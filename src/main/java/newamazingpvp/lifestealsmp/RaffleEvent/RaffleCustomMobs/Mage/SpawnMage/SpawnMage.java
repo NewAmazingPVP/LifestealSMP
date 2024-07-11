@@ -80,7 +80,7 @@ public class SpawnMage {
                     Entity target = getTargetEntityAtLocation(targetLocation);
                     if (target != null) {
                         if (target instanceof Entity) {
-                            ((LivingEntity) target).damage(2.5);
+                            ((LivingEntity) target).damage(4);
                         }
                         break;
                     }
