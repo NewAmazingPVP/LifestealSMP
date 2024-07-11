@@ -1,5 +1,7 @@
 package newamazingpvp.lifestealsmp.events;
 
+import newamazingpvp.lifestealsmp.utility.CooldownManager;
+
 import java.time.ZonedDateTime;
 
 public interface Event {
@@ -11,4 +13,6 @@ public interface Event {
     void doWarning();
 
     void runContinuously();
+
+    CooldownManager getCooldownManager();
 }
