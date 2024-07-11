@@ -43,9 +43,9 @@ public class EventsHandler implements Listener {
                         e.doWarning();
                         eventCooldown.setCooldown(70);
                     } else if(isTimePassed(e.getStartTime()) &&
-                            !isTimePassed(e.getStartTime().plusMinutes(1))) {
+                            !isTimePassed(e.getStartTime().plusMinutes(5))) {
                         e.onEventStart();
-                        eventCooldown.setCooldown(70);
+                        eventCooldown.setCooldown(350);
                     } else if(isTimePassed(e.getEndTime()) &&
                             !isTimePassed(e.getStartTime().plusMinutes(1))) {
                         if (!(e.getType() == EventType.ONETIME)) {
