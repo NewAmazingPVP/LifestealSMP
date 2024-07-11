@@ -140,6 +140,10 @@ public class TimeManager {
         return ZonedDateTime.now(ZoneId.of("America/New_York")).compareTo(time) >= 0;
     }
 
+    public static String formatDuration(ZonedDateTime time){
+        return formatDuration(Duration.between(time, ZonedDateTime.now(ZoneId.of("America/New_York"))));
+    }
+
 
     public static String formatDuration(Duration duration) {
         long days = duration.toDays();
