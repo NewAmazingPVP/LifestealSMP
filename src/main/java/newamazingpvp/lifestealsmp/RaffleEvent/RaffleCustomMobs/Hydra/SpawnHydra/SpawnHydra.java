@@ -38,7 +38,7 @@ public class SpawnHydra {
     public SpawnHydra(Location location) {
 
         //Make zombie
-        Drowned enigmaZombie = (Drowned) location.getWorld().spawnEntity(location, EntityType.DROWNED);
+        Zombie enigmaZombie = (Zombie) location.getWorld().spawnEntity(location, EntityType.ZOMBIE);
 
         //Set name
         enigmaZombie.setCustomName(ChatColor.DARK_BLUE + "" + ChatColor.ITALIC + "Hydra");
@@ -120,7 +120,7 @@ public class SpawnHydra {
         ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
         LeatherArmorMeta meta = (LeatherArmorMeta) chestplate.getItemMeta();
         meta.setUnbreakable(true);
-        meta.setColor(Color.BLUE);
+        meta.setColor(Color.GREEN);
         chestplate.setItemMeta(meta);
         return chestplate;
     }
@@ -129,7 +129,7 @@ public class SpawnHydra {
         ItemStack chestplate = new ItemStack(Material.LEATHER_LEGGINGS);
         LeatherArmorMeta meta = (LeatherArmorMeta) chestplate.getItemMeta();
         meta.setUnbreakable(true);
-        meta.setColor(Color.BLUE);
+        meta.setColor(Color.GREEN);
         chestplate.setItemMeta(meta);
         return chestplate;
     }
@@ -138,7 +138,7 @@ public class SpawnHydra {
         ItemStack chestplate = new ItemStack(Material.LEATHER_BOOTS);
         LeatherArmorMeta meta = (LeatherArmorMeta) chestplate.getItemMeta();
         meta.setUnbreakable(true);
-        meta.setColor(Color.BLUE);
+        meta.setColor(Color.GREEN);
         chestplate.setItemMeta(meta);
         return chestplate;
     }

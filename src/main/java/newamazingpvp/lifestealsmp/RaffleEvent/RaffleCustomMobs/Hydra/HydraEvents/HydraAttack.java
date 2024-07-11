@@ -31,7 +31,7 @@ public class HydraAttack implements Listener {
             if (attacker.hasMetadata("enigma_mob_charged")) {
 
                 attacker.removeMetadata(customTag, (Plugin) customTagValue);
-                ((LivingEntity) attacker).getEquipment().setItemInMainHand((NOTHING_ITEM)); 
+                ((LivingEntity) attacker).getEquipment().setItemInMainHand((NOTHING_ITEM));
 
                 //Vector velocity = damagedEntity.getLocation().getDirection().multiply(1);
 
