@@ -229,3 +229,8 @@ commands:
     usage: /worldteleport [world]
     permission: lifestealSMP.admin
     default: op
+  spawnrafflemob:
+    description: Can spawn any mob from the raffle event
+    usage: /spawnrafflemob
+    permission: lifestealSMP.admin
+    default: op
