@@ -53,7 +53,7 @@ public class MageHitAndKilled implements Listener {
                     killer.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     killer.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     killer.getInventory().addItem(raffleTicket(currentRaffleEventID));
-                    killer.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    killer.getInventory().addItem(raffleTicket(currentRaffleEventID)); 
 
                 }
             }
