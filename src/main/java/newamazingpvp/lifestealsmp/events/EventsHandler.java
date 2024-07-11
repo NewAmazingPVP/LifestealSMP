@@ -12,8 +12,9 @@ import static newamazingpvp.lifestealsmp.utility.TimeManager.*;
 public class EventsHandler implements Listener {
     public static final List<Event> events = new ArrayList<>();
     public EventsHandler(){
-        events.add(new CustomItemsAndRunes());
-        events.add(new TrackingDay(SEASON_START_TIME.plusDays(2), 1));
+        //events.add(new CustomItemsAndRunes());
+        //events.add(new TrackingDay(SEASON_START_TIME.plusDays(2), 1));
+        events.add(new UHCPvPEvent(SEASON_START_TIME.plusDays(19).plusHours(5).plusMinutes(1)));
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -47,10 +48,10 @@ public class EventsHandler implements Listener {
                         e.onEventStart();
                         eventCooldown.setCooldown(350);
                     } else if(isTimePassed(e.getEndTime()) &&
-                            !isTimePassed(e.getStartTime().plusMinutes(1))) {
+                            !isTimePassed(e.getEndTime().plusMinutes(5))) {
                         if (!(e.getType() == EventType.ONETIME)) {
                             e.onEventEnd();
-                            eventCooldown.setCooldown(70);
+                            eventCooldown.setCooldown(350);
                         }
                     }
                 }

@@ -26,6 +26,7 @@ import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.command.unused.JailPlayer;
 import newamazingpvp.lifestealsmp.customitems.armor.QuarryArmor;
 import newamazingpvp.lifestealsmp.customitems.item.*;
+import newamazingpvp.lifestealsmp.events.EventsHandler;
 import newamazingpvp.lifestealsmp.unused.endfight.GeneralBossLieteners.MiningListeners;
 import newamazingpvp.lifestealsmp.unused.endfight.GeneralBossLieteners.LaunchPads;
 import newamazingpvp.lifestealsmp.unused.endfight.commands.BossQuickStart;
@@ -146,6 +147,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("adminrune").setExecutor(new AdminRunes());
         getCommand("stat").setExecutor(new StatisticManager());
         getCommand("worldteleport").setExecutor(new WorldTeleport());
+        getCommand("teleport").setExecutor(new UhcTeleport());
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new AntiBurn(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
@@ -371,6 +373,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
     public static void registerCustomItemsAndRunes() {
         registerCustomRecipes();
+        Bukkit.getPluginManager().registerEvents(new EventsHandler(), lifestealSmp);
         Bukkit.getPluginManager().registerEvents(new DragonRune(), lifestealSmp);
         Bukkit.getPluginManager().registerEvents(new RuneHandler(), lifestealSmp);
         Bukkit.getPluginManager().registerEvents(new HomingBow(), lifestealSmp);

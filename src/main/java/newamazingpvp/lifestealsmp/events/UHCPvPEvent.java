@@ -1,10 +1,6 @@
 package newamazingpvp.lifestealsmp.events;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.WorldCreator;
-import org.bukkit.WorldType;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 
 import java.time.Duration;
@@ -19,8 +15,9 @@ import static newamazingpvp.lifestealsmp.utility.TimeManager.*;
 import static org.bukkit.Bukkit.getServer;
 
 public class UHCPvPEvent extends BaseEvent {
-    private final Map<Player, World> playerOriginalWorlds = new HashMap<>();
-    private final World pvpWorld;
+    public static final Map<Player, Location> playerOriginalWorlds = new HashMap<>();
+    private static World pvpWorld = null;
+    public static boolean isUhcEvent = false;
 
     public UHCPvPEvent(ZonedDateTime startTime) {
         super(startTime, startTime.plusHours(1));
@@ -31,6 +28,7 @@ public class UHCPvPEvent extends BaseEvent {
     public void onEventStart() {
         Bukkit.getServer().broadcastMessage(ChatColor.RED + "UHC PvP event starting now! Type /teleportworld to join the PvP world. Check announcements /discord");
         getServer().getScheduler().runTaskLater(lifestealSmp, () -> sendDiscordNewsMessage(eventRole + " UHC PvP event is now active. Type /teleportworld to join the PvP world! May the best win!", "1032411739351941120"), 1200);
+        isUhcEvent = true;
     }
 
     @Override
@@ -39,10 +37,11 @@ public class UHCPvPEvent extends BaseEvent {
         sendDiscordNewsMessage("UHC PvP event is now over. Returning players to the original world.", "1032411739351941120");
 
         for (Player player : playerOriginalWorlds.keySet()) {
-            player.teleport(playerOriginalWorlds.get(player).getSpawnLocation());
+            player.teleport(playerOriginalWorlds.get(player));
         }
         playerOriginalWorlds.clear();
         Bukkit.unloadWorld(pvpWorld, false);
+        isUhcEvent = false;
     }
 
     @Override
@@ -58,12 +57,13 @@ public class UHCPvPEvent extends BaseEvent {
 
     @Override
     public void runContinuously() {
-        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "UHC PvP event is going on! Do /teleportworld to be in the event and /teleportback to return!");
+        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "UHC PvP event is going on! Do '/teleport' to be in the event and '/teleport back' to return!");
+        isUhcEvent = true;
     }
 
-    public void teleportToPvPWorld(Player player) {
+    public static void teleportToPvPWorld(Player player) {
         if (!playerOriginalWorlds.containsKey(player)) {
-            playerOriginalWorlds.put(player, player.getWorld());
+            playerOriginalWorlds.put(player, player.getLocation());
             player.teleport(pvpWorld.getSpawnLocation());
             player.sendMessage(ChatColor.GREEN + "You have been teleported to the PvP world!");
         } else {
@@ -71,9 +71,9 @@ public class UHCPvPEvent extends BaseEvent {
         }
     }
 
-    public void teleportBack(Player player) {
+    public static void teleportBack(Player player) {
         if (playerOriginalWorlds.containsKey(player)) {
-            player.teleport(playerOriginalWorlds.get(player).getSpawnLocation());
+            player.teleport(playerOriginalWorlds.get(player));
             playerOriginalWorlds.remove(player);
             player.sendMessage(ChatColor.GREEN + "You have been teleported back to your original world!");
         } else {
