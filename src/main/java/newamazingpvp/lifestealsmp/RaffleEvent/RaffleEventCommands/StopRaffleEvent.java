@@ -29,7 +29,7 @@ public class StopRaffleEvent implements CommandExecutor {
             player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Event is already toggled off you fucking idiot!" );
         }
 
-        
+
 
         return true;
     }
