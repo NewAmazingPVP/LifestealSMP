@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.events;
 
 import newamazingpvp.lifestealsmp.events.Event;
+import newamazingpvp.lifestealsmp.utility.CooldownManager;
 
 import java.time.Duration;
 import java.time.ZonedDateTime;
@@ -8,10 +9,12 @@ import java.time.ZonedDateTime;
 public abstract class BaseEvent implements Event {
     public final ZonedDateTime startTime;
     public final ZonedDateTime endTime;
+    private final CooldownManager cooldownManager;
 
     public BaseEvent(ZonedDateTime startTime, ZonedDateTime endTime) {
         this.startTime = startTime;
         this.endTime = endTime;
+        this.cooldownManager = new CooldownManager();
     }
 
     @Override
@@ -38,4 +41,9 @@ public abstract class BaseEvent implements Event {
 
     @Override
     public abstract void runContinuously();
+
+    @Override
+    public CooldownManager getCooldownManager() {
+        return cooldownManager;
+    }
 }
