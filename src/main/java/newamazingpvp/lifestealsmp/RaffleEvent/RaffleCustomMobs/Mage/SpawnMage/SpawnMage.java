@@ -72,7 +72,7 @@ public class SpawnMage {
                 Vector direction = mageZombie.getEyeLocation().getDirection();
                 Location targetLocation = mageZombie.getEyeLocation().clone();
 
-                beamTextureMaker(mageZombie, location, attackerLookDir, Color.PURPLE, 3.0F, Color.BLACK, 2.0F);
+                beamTextureMaker(mageZombie, location, attackerLookDir, Color.PURPLE, 1.5F, Color.BLACK, 1.0F);
 
                 for (int i = 0; i < beamRange; i++) {
                     targetLocation.add(direction);
@@ -80,7 +80,7 @@ public class SpawnMage {
                     Entity target = getTargetEntityAtLocation(targetLocation);
                     if (target != null) {
                         if (target instanceof Entity) {
-                            ((LivingEntity) target).damage(5);
+                            ((LivingEntity) target).damage(2.5);
                         }
                         break;
                     }
