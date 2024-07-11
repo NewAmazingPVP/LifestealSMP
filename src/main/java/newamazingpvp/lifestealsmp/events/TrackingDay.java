@@ -40,9 +40,9 @@ public class TrackingDay extends BaseEvent {
 
     @Override
     public void doWarning() {
-        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Exact block /track day happening in " + formatDuration(Duration.between(CUSTOM_ITEMS_AND_RUNES, ZonedDateTime.now(ZoneId.of("America/New_York")))) + " hours! Check announcements /discord");
+        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Exact block /track day happening in " + formatDuration(startTime) + " hours! Check announcements /discord");
         //sendDiscordNewsEmbedTitle("Custom items and runes!", Color.GREEN, "1032411739351941120");
-        sendDiscordNewsMessage(eventRole + " In " + formatDuration(Duration.between(startTime, ZonedDateTime.now(ZoneId.of("America/New_York")))) + ", /track will be made to show exact blocks away, for a day.", "1032411739351941120");
+        sendDiscordNewsMessage(eventRole + " In " + formatDuration(startTime) + ", /track will be made to show exact blocks away, for a day.", "1032411739351941120");
     }
 
     @Override

@@ -44,9 +44,9 @@ public class CustomItemsAndRunes extends BaseEvent {
 
     @Override
     public void doWarning() {
-        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Custom items releasing in " + formatDuration(Duration.between(CUSTOM_ITEMS_AND_RUNES, ZonedDateTime.now(ZoneId.of("America/New_York")))) + " hours! Check announcements");
+        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Custom items releasing in " + formatDuration(startTime) + " hours! Check announcements");
         //sendDiscordNewsEmbedTitle("Custom items and runes!", Color.GREEN, "1032411739351941120");
-        sendDiscordNewsMessage(eventRole + " In " + formatDuration(Duration.between(CUSTOM_ITEMS_AND_RUNES, ZonedDateTime.now(ZoneId.of("America/New_York")))) + ", custom items /recipes and runes /runes are going to be available! Map size will be expanded to 25k by 25k and difficulty will be set to hard.", "1032411739351941120");
+        sendDiscordNewsMessage(eventRole + " In " + formatDuration(startTime) + ", custom items /recipes and runes /runes are going to be available! Map size will be expanded to 25k by 25k and difficulty will be set to hard.", "1032411739351941120");
     }
 
     @Override
