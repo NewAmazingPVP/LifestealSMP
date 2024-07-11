@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands;
 
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.SpawnEnigma.SpawnEnigma;
+import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Hydra.SpawnHydra.SpawnHydra;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -22,7 +23,7 @@ public class StartRaffleEvent implements CommandExecutor {
 
             Location location = null;
             location = player.getLocation();
-            new SpawnEnigma(location);
+            new SpawnHydra(location);
 
             if(!isRaffleEventRunning){
                 isRaffleEventRunning = true;

@@ -9,6 +9,7 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.EnigmaEvents.EnigmaAttack;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.EnigmaEvents.EnigmaDamagedAndKilled;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.EnigmaEvents.EnigmaGUI;
+import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Hydra.HydraEvents.HydraAttack;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Mage.MageEvents.MageHitAndKilled;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands.SpawnRaffleMobCommand;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands.StartRaffleEvent;
@@ -271,6 +272,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new EnigmaAttack(), this);
             getServer().getPluginManager().registerEvents(new EnigmaDamagedAndKilled(), this);
             getServer().getPluginManager().registerEvents(new MageHitAndKilled(), this);
+            getServer().getPluginManager().registerEvents(new HydraAttack(), this);
             //getServer().getPluginManager().registerEvents(new BlockPlaceTracker(), this);
             getCommand("raffleeventstart").setExecutor(new StartRaffleEvent());
             getCommand("raffleeventstop").setExecutor(new StopRaffleEvent());
