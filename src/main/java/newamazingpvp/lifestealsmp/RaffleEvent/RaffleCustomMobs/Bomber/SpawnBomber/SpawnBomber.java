@@ -7,10 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.attribute.Attributable;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Stray;
+import org.bukkit.entity.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
@@ -22,8 +19,10 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Bomber.BomberEvents.thrownTNTEntityListener.spawnBomberThrowable;
 import static newamazingpvp.lifestealsmp.unused.endfight.custommobs.PublicMobMethods.getProfile;
 import static newamazingpvp.lifestealsmp.unused.magicstaffs.utils.BeamTexture.beamTextureMaker;
+
 
 public class SpawnBomber {
 
@@ -34,10 +33,10 @@ public class SpawnBomber {
     public SpawnBomber(Location location) {
 
         // Make zombie
-        Stray mageZombie = (Stray) location.getWorld().spawnEntity(location, EntityType.STRAY);
+        Skeleton mageZombie = (Skeleton) location.getWorld().spawnEntity(location, EntityType.SKELETON);
 
         // Set name
-        mageZombie.setCustomName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Bomber");
+        mageZombie.setCustomName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Detonator");
         mageZombie.setCustomNameVisible(true);
         mageZombie.setInvisible(false);
 
@@ -56,7 +55,7 @@ public class SpawnBomber {
         mageZombie.setHealth(100);
 
         // Add custom tag
-        String customTag = "mage_mob";
+        String customTag = "bomber_mob";
         MetadataValue customTagValue = new FixedMetadataValue(lifestealSmp, customTag);
         mageZombie.setMetadata(customTag, customTagValue);
 
@@ -69,36 +68,25 @@ public class SpawnBomber {
                     return;
                 }
 
-                Location location = mageZombie.getEyeLocation().add(0, 0.2, 0);
-                Vector attackerLookDir = mageZombie.getLocation().getDirection().multiply(0.1);
-                Vector direction = mageZombie.getEyeLocation().getDirection();
-                Location targetLocation = mageZombie.getEyeLocation().clone();
+                Location bomberLoc = mageZombie.getLocation();
 
-                beamTextureMaker(mageZombie, location, attackerLookDir, Color.PURPLE, 1.5F, Color.BLACK, 1.0F);
 
-                for (int i = 0; i < beamRange; i++) {
-                    targetLocation.add(direction);
+                Vector attackerLookDir = mageZombie.getLocation().getDirection().multiply(1);
 
-                    Entity target = getTargetEntityAtLocation(targetLocation);
-                    if (target != null) {
-                        if (target instanceof Entity) {
-                            ((LivingEntity) target).damage(2.5);
-                        }
-                        break;
-                    }
-                    // Target location is obstructed by a block
-                    if (targetLocation.getBlock().getType().isSolid()) {
-                        break;
-                    }
+
+                spawnBomberThrowable(mageZombie, bomberLoc, attackerLookDir);
+
+
+
+
                 }
-            }
         };
-        bomberMobAttackRate.runTaskTimer(lifestealSmp, 0L, 20L); // Start immediately and repeat every second
+        bomberMobAttackRate.runTaskTimer(lifestealSmp, 0L, 80L); // Start immediately and repeat every second
     }
 
     // Item stacks for the mob
     private static ItemStack mageZombieHead() {
-        PlayerProfile profile = getProfile("https://textures.minecraft.net/texture/42047a0cbd19c0d65cec385352bc6936d5c29b4b47e86039dc27763a91c5883d");
+        PlayerProfile profile = getProfile("https://textures.minecraft.net/texture/1464eb8e99e2878f343803a742ef57ceafacc2283e67b88edec16821316f9f");
         ItemStack montuHelm = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) montuHelm.getItemMeta();
         meta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "If you have this, Message Comet99 on Discord!");
@@ -108,9 +96,9 @@ public class SpawnBomber {
     }
 
     private static ItemStack mageZombieHandItem() {
-        ItemStack chestplate = new ItemStack(Material.STICK);
+        ItemStack chestplate = new ItemStack(Material.TNT);
         ItemMeta meta = chestplate.getItemMeta();
-        meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Magic");
+        meta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Bomb");
         chestplate.setItemMeta(meta);
         return chestplate;
     }
@@ -119,7 +107,7 @@ public class SpawnBomber {
         ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
         LeatherArmorMeta meta = (LeatherArmorMeta) chestplate.getItemMeta();
         meta.setUnbreakable(true);
-        meta.setColor(Color.PURPLE);
+        meta.setColor(Color.RED);
         chestplate.setItemMeta(meta);
         return chestplate;
     }
@@ -128,7 +116,7 @@ public class SpawnBomber {
         ItemStack chestplate = new ItemStack(Material.LEATHER_LEGGINGS);
         LeatherArmorMeta meta = (LeatherArmorMeta) chestplate.getItemMeta();
         meta.setUnbreakable(true);
-        meta.setColor(Color.PURPLE);
+        meta.setColor(Color.RED);
         chestplate.setItemMeta(meta);
         return chestplate;
     }
@@ -137,7 +125,7 @@ public class SpawnBomber {
         ItemStack chestplate = new ItemStack(Material.LEATHER_BOOTS);
         LeatherArmorMeta meta = (LeatherArmorMeta) chestplate.getItemMeta();
         meta.setUnbreakable(true);
-        meta.setColor(Color.PURPLE);
+        meta.setColor(Color.RED);
         chestplate.setItemMeta(meta);
         return chestplate;
     }
