@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.EnigmaEvents;
+package newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Enigma.EnigmaEvents;
 
 import io.papermc.paper.event.entity.EntityMoveEvent;
 import org.bukkit.Bukkit;

@@ -1,9 +1,6 @@
-package newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Hydra.HydraEvents;
+package newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Hydra.HydraEvents;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Particle;
-import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Bomber.SpawnBomber;
+package newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Bomber.SpawnBomber;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -19,9 +19,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Bomber.BomberEvents.thrownTNTEntityListener.spawnBomberThrowable;
+import static newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Bomber.BomberEvents.thrownTNTEntityListener.spawnBomberThrowable;
 import static newamazingpvp.lifestealsmp.unused.endfight.custommobs.PublicMobMethods.getProfile;
-import static newamazingpvp.lifestealsmp.unused.magicstaffs.utils.BeamTexture.beamTextureMaker;
 
 
 public class SpawnBomber {

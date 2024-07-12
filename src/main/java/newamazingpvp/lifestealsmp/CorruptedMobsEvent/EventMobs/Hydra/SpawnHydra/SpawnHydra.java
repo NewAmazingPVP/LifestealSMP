@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Hydra.SpawnHydra;
+package newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Hydra.SpawnHydra;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -9,18 +9,15 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.*;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
 import org.bukkit.profile.PlayerProfile;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.util.Vector;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.unused.endfight.custommobs.PublicMobMethods.getProfile;
-import static newamazingpvp.lifestealsmp.unused.magicstaffs.utils.BeamTexture.beamTextureMaker;
 
 public class SpawnHydra {
 

@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.EnigmaEvents;
+package newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Enigma.EnigmaEvents;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -8,8 +8,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -19,7 +17,6 @@ import java.util.Random;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleItemStacks.raffleTicket;
 import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleMain.currentRaffleEventID;
-import static newamazingpvp.lifestealsmp.unused.mcbingo.gui.BingoCardGUI.OpenTheBingoCardGUI;
 
 
 public class EnigmaGUI implements Listener {
@@ -61,13 +58,13 @@ public class EnigmaGUI implements Listener {
                 } else if (i >= 53) {
                     player.closeInventory();
                     player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2.0f, 1.0f);
-                    player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]");
+                    /*player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]");
                     player.sendTitle(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]", " ", 0, 80, 0);
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
-                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));*/
                 }
             }
 
@@ -104,13 +101,13 @@ public class EnigmaGUI implements Listener {
                 } else if (i >= 53) {
                     player.closeInventory();
                     player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2.0f, 1.0f);
-                    player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]");
+                    /*player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]");
                     player.sendTitle(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]", " ", 0, 80, 0);
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
-                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));*/
                 }
             }
 
@@ -147,13 +144,13 @@ public class EnigmaGUI implements Listener {
                 } else if (i >= 53) {
                     player.closeInventory();
                     player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2.0f, 1.0f);
-                    player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]");
+                    /*player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]");
                     player.sendTitle(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]", " ", 0, 80, 0);
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
-                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));*/
                 }
             }
 
@@ -190,13 +187,13 @@ public class EnigmaGUI implements Listener {
                 } else if (i >= 53) {
                     player.closeInventory();
                     player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2.0f, 1.0f);
-                    player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]");
+                    /*player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]");
                     player.sendTitle(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]", " ", 0, 80, 0);
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
-                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));*/
                 }
             }
 
@@ -232,13 +229,13 @@ public class EnigmaGUI implements Listener {
                 } else if (i >= 53) {
                     player.closeInventory();
                     player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2.0f, 1.0f);
-                    player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]");
+                    /*player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]");
                     player.sendTitle(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[+5 Tickets]", " ", 0, 80, 0);
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
                     player.getInventory().addItem(raffleTicket(currentRaffleEventID));
-                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));
+                    player.getInventory().addItem(raffleTicket(currentRaffleEventID));*/
                 }
 
                 e.setCancelled(true);
