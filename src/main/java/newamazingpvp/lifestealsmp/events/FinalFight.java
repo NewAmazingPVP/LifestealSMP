@@ -32,7 +32,11 @@ public class FinalFight extends BaseEvent{
 
     @Override
     public void doWarning() {
-        sendDiscordNewsMessage(eventRole + " Final fight in exactly " + formatDuration(startTime) + "! Be prepared, for this fight you will be teleported automatically in-game and the last one standing will be the winner of this season!", "1032411739351941120");
+        if(!isTimePassed(startTime.minusHours(25))) {
+            sendDiscordNewsMessage(eventRole + " Final fight in exactly " + formatDuration(startTime) + "! Be prepared, for this fight you will be teleported automatically in-game and the last one standing will be the winner of this season!", "1032411739351941120");
+        } else {
+            sendDiscordNewsMessage(mcServer + " Final fight in exactly " + formatDuration(startTime) + "! Be prepared, for this fight you will be teleported automatically in-game and the last one standing will be the winner of this season!", "1032411739351941120");
+        }
     }
 
     @Override

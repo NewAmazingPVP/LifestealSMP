@@ -17,6 +17,7 @@ public class EventsHandler implements Listener {
         // events.add(new CustomItemsAndRunes());
         // events.add(new TrackingDay(SEASON_START_TIME.plusDays(2), 1));
         // events.add(new UHCPvPEvent(SEASON_START_TIME.plusDays(19).plusHours(5).plusMinutes(1)));
+        // TODO: ADD ALL EVENTS
         events.add(new FinalFight(SEASON_START_TIME.plusDays(21).plusHours(2)));
         new BukkitRunnable() {
             @Override
@@ -52,14 +53,14 @@ public class EventsHandler implements Listener {
                         e.doWarning();
                         eventCooldown.setCooldown(70);
                     } else if (isTimePassed(e.getStartTime()) &&
-                            !isTimePassed(e.getStartTime().plusMinutes(2))) {
+                            !isTimePassed(e.getStartTime().plusMinutes(3))) {
                         e.onEventStart();
-                        eventCooldown.setCooldown(120);
+                        eventCooldown.setCooldown(180);
                     } else if (isTimePassed(e.getEndTime()) &&
-                            !isTimePassed(e.getEndTime().plusMinutes(2))) {
+                            !isTimePassed(e.getEndTime().plusMinutes(3))) {
                         if (!(e.getType() == EventType.ONETIME)) {
                             e.onEventEnd();
-                            eventCooldown.setCooldown(120);
+                            eventCooldown.setCooldown(180);
                         }
                     }
                 }
