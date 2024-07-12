@@ -33,11 +33,6 @@ public class TimeManager {
     public static String mcServer = "<@&1047168915500966048>";
 
 
-    //TODO: ADD EVENTS like
-    // Exact tracking days, no tracking days
-    // Rune and heart multiplier days
-    // Pvp events uhc optional, custom boss raffle ticket (comet working)
-
     public static void doEvents() {
         if (!isSmp) return;
         ZonedDateTime currentTime = ZonedDateTime.now(ZoneId.of("America/New_York"));
@@ -70,50 +65,6 @@ public class TimeManager {
 
     public static void timeBasedEvents() {
         if (!isSmp) return;
-        if (isTimePassed(FINAL_FIGHT.minusDays(3))
-                && !isTimePassed(FINAL_FIGHT.minusDays(2).minusHours(23).minusMinutes(59))) {
-            if (eventCooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage(eventRole + " The final fight event to conclude the season will be on Saturday, in " + formatDuration(Duration.between(FINAL_FIGHT, ZonedDateTime.now(ZoneId.of("America/New_York")))) + " exactly!", "1032411739351941120");
-            eventCooldown.setCooldown(70);
-        }
-
-        if (isTimePassed(FINAL_FIGHT.minusDays(1))
-                && !isTimePassed(FINAL_FIGHT.minusHours(23).minusMinutes(59))) {
-            if (eventCooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage(mcServer + " Final fight in exactly 24 hours! Be prepared, the last one standing will be the winner of this season!", "1032411739351941120");
-            eventCooldown.setCooldown(70);
-        }
-
-        if (isTimePassed(FINAL_FIGHT.minusHours(4))
-                && !isTimePassed(FINAL_FIGHT.minusHours(3).minusMinutes(59))) {
-            if (eventCooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage(eventRole + " Final fight in " + formatDuration(Duration.between(FINAL_FIGHT, ZonedDateTime.now(ZoneId.of("America/New_York"))))  + " exactly!", "1032411739351941120");
-            eventCooldown.setCooldown(70);
-        }
-
-        if (isTimePassed(FINAL_FIGHT.minusHours(1))
-                && !isTimePassed(FINAL_FIGHT.minusMinutes(59))) {
-            if (eventCooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage(mcServer + " Final fight in " + formatDuration(Duration.between(FINAL_FIGHT, ZonedDateTime.now(ZoneId.of("America/New_York"))))  + " exactly!", "1032411739351941120");
-            eventCooldown.setCooldown(70);
-        }
-
-        if (isTimePassed(FINAL_FIGHT.minusMinutes(10))
-                && !isTimePassed(FINAL_FIGHT.minusMinutes(9))) {
-            if (eventCooldown.isOnCooldown()) return;
-            sendDiscordNewsMessage(mcServer + " Final fight is in 10 minutes! Be ready, you will be teleported in-game", "1032411739351941120");
-            eventCooldown.setCooldown(70);
-        }
-
-        if (isTimePassed(FINAL_FIGHT)
-                && !isTimePassed(END_OPEN_TIME.plusMinutes(1))) {
-            if (eventCooldown.isOnCooldown()) return;
-            Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Final fight is starting!");
-            sendDiscordNewsEmbedTitle("Final fight is on!", Color.GREEN, "1032411739351941120");
-            sendDiscordNewsMessage(mcServer + " Final fight has begun! May the best win goodluck!", "1032411739351941120");
-            getServer().dispatchCommand(getServer().getConsoleSender(), "startendfight");
-            eventCooldown.setCooldown(70);
-        }
     }
 
     public static long getWeeksPassed(ZonedDateTime startTime, ZonedDateTime currentTime) {
