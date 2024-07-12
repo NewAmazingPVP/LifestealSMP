@@ -18,7 +18,7 @@ import java.util.List;
 
 public class SpawnCmd implements CommandExecutor, TabCompleter {
 
-    private final ArrayList<String> subcommands = new ArrayList<>(List.of("mage", "hydra", "enigma"));
+    private final ArrayList<String> subcommands = new ArrayList<>(List.of("mage", "hydra", "enigma", "detonator"));
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -51,6 +51,9 @@ public class SpawnCmd implements CommandExecutor, TabCompleter {
                 break;
             case "enigma":
                 new SpawnEnigma(location);
+                break;
+            case "detonator":
+                new SpawnBomber(location);
                 break;
             default:
                 sender.sendMessage("Unknown mob type.");

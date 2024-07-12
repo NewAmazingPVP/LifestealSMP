@@ -6,6 +6,7 @@ import com.google.common.io.ByteStreams;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Bomber.BomberEvents.thrownTNTEntityListener;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.EnigmaEvents.EnigmaAttack;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.EnigmaEvents.EnigmaDamagedAndKilled;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.EnigmaEvents.EnigmaGUI;
@@ -276,6 +277,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new MageHitAndKilled(), this);
             getServer().getPluginManager().registerEvents(new HydraAttack(), this);
             getServer().getPluginManager().registerEvents(new HydraDamagedOrKilled(), this);
+            getServer().getPluginManager().registerEvents(new thrownTNTEntityListener(), this);
             //getServer().getPluginManager().registerEvents(new BlockPlaceTracker(), this);
             getCommand("raffleeventstart").setExecutor(new StartRaffleEvent());
             getCommand("raffleeventstop").setExecutor(new StopRaffleEvent());
