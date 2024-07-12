@@ -29,6 +29,7 @@ public class UHCPvPEvent extends BaseEvent {
         Bukkit.getServer().broadcastMessage(ChatColor.RED + "UHC PvP event starting now! Type /teleportworld to join the PvP world. Check announcements /discord");
         getServer().getScheduler().runTaskLater(lifestealSmp, () -> sendDiscordNewsMessage(eventRole + " UHC PvP event is now active. Type /teleportworld to join the PvP world! May the best win!", "1032411739351941120"), 1200);
         isUhcEvent = true;
+        Bukkit.getWorld("uhcpvp_world").getWorldBorder().setSize(500);
     }
 
     @Override

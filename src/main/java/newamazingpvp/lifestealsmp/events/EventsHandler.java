@@ -52,14 +52,14 @@ public class EventsHandler implements Listener {
                         e.doWarning();
                         eventCooldown.setCooldown(70);
                     } else if (isTimePassed(e.getStartTime()) &&
-                            !isTimePassed(e.getStartTime().plusMinutes(5))) {
+                            !isTimePassed(e.getStartTime().plusMinutes(2))) {
                         e.onEventStart();
-                        eventCooldown.setCooldown(350);
+                        eventCooldown.setCooldown(120);
                     } else if (isTimePassed(e.getEndTime()) &&
-                            !isTimePassed(e.getEndTime().plusMinutes(5))) {
+                            !isTimePassed(e.getEndTime().plusMinutes(2))) {
                         if (!(e.getType() == EventType.ONETIME)) {
                             e.onEventEnd();
-                            eventCooldown.setCooldown(350);
+                            eventCooldown.setCooldown(120);
                         }
                     }
                 }
