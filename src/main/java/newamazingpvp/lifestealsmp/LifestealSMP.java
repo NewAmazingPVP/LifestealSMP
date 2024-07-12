@@ -187,6 +187,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new ServerOpening(), this);
         getServer().getPluginManager().registerEvents(new PlayerBan(), this);
         getServer().getPluginManager().registerEvents(new InfiniteStorage(), this);
+        getServer().getPluginManager().registerEvents(new EventsHandler(), this);
         startTPSTracking();
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
         getCommand("trade").setExecutor(new Trade());
@@ -375,7 +376,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
     public static void registerCustomItemsAndRunes() {
         registerCustomRecipes();
-        Bukkit.getPluginManager().registerEvents(new EventsHandler(), lifestealSmp);
         Bukkit.getPluginManager().registerEvents(new DragonRune(), lifestealSmp);
         Bukkit.getPluginManager().registerEvents(new RuneHandler(), lifestealSmp);
         Bukkit.getPluginManager().registerEvents(new HomingBow(), lifestealSmp);

@@ -32,6 +32,7 @@ public class Compass implements CommandExecutor, Listener {
     private static final HashMap<UUID, Long> elytraTrackCooldown = new HashMap<>();
     public static int trackingDist = 250;
     private boolean logOffTracking;
+    public static boolean noTrackingDay = false;
 
     @EventHandler
     public void onPlayerPortalEvent(PlayerPortalEvent event) {
@@ -60,6 +61,10 @@ public class Compass implements CommandExecutor, Listener {
             }
 
             Player player = (Player) sender;
+
+            if(noTrackingDay){
+                sender.sendMessage("Today is the no tracking day event, check /discord announcements!");
+            }
 
             if (args.length == 0) {
                 sender.sendMessage("Usage: /track <player>");
@@ -91,7 +96,7 @@ public class Compass implements CommandExecutor, Listener {
             }
 
             if (isPlayerElytraCooldown(g)) {
-                sender.sendMessage(ChatColor.RED + "You have used elytra in last two hours so you cannot track!");
+                sender.sendMessage(ChatColor.RED + "You have used elytra in last 30 minutes so you cannot track!");
                 return true;
             }
 
@@ -199,7 +204,7 @@ public class Compass implements CommandExecutor, Listener {
 
         if (isElytratest(newArmorPiece)) {
             elytraTrackCooldown.remove(player.getUniqueId());
-            elytraTrackCooldown.put(player.getUniqueId(), System.currentTimeMillis() + 900000);
+            elytraTrackCooldown.put(player.getUniqueId(), System.currentTimeMillis() + 1800000);
         }
     }
 
