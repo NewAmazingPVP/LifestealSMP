@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.SpawnEnigma;
+package newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Enigma.SpawnEnigma;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Color;

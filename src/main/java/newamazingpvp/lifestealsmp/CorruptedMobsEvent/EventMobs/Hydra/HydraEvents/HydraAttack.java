@@ -1,19 +1,14 @@
-package newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Hydra.HydraEvents;
+package newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Hydra.HydraEvents;
 
-import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.metadata.MetadataValue;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.util.Vector;
 
-import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Hydra.SpawnHydra.SpawnHydra.*;
+import static newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Hydra.SpawnHydra.SpawnHydra.*;
 
 public class HydraAttack implements Listener {
 
