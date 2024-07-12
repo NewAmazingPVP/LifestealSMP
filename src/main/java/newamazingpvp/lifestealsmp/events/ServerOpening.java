@@ -25,6 +25,7 @@ public class ServerOpening extends BaseEvent {
         getServer().dispatchCommand(getServer().getConsoleSender(), "whitelist off");
         getServer().dispatchCommand(getServer().getConsoleSender(), "gamerule playersSleepingPercentage 1");
         getServer().dispatchCommand(getServer().getConsoleSender(), "gamerule doImmediateRespawn true");
+        getServer().dispatchCommand(getServer().getConsoleSender(), "unbanall");
         Bukkit.getWorld("world").setTime(1000);
         for (World w : Bukkit.getWorlds()) {
             w.setDifficulty(Difficulty.EASY);

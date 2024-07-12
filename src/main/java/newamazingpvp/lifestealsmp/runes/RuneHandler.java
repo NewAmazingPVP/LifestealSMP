@@ -1,12 +1,11 @@
 package newamazingpvp.lifestealsmp.runes;
 
-import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.block.ShulkerBox;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -16,6 +15,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BlockStateMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -90,11 +90,20 @@ public class RuneHandler implements Listener {
                                 meta.setLore(lore);
                                 t.setItemMeta(meta);
                                 continue;
-                            }
-                            if (t.hasItemMeta()) {
+                            } else if (ChatColor.stripColor(t.getDisplayName()).toLowerCase().contains("rune pouch")) {
+                                BlockStateMeta bsm = (BlockStateMeta) t.getItemMeta();
+                                ShulkerBox shulkerBox = (ShulkerBox) bsm.getBlockState();
+                                for (ItemStack f : shulkerBox.getInventory().getContents()) {
+                                    for (Rune r : runes) {
+                                        if (f.getLore().contains(r.getLore())) {
+                                            p.addPotionEffect(r.getEffect());
+                                        }
+                                    }
+                                }
+                            } else if (t.hasItemMeta()) {
                                 if (t.hasLore()) {
-                                    //ItemMeta meta = t.getItemMeta();
-                                    //List<String> lore = meta.getLore();
+                                    ItemMeta meta = t.getItemMeta();
+                                    List<String> lore = meta.getLore();
                                     /*if (lore.get(0).contains("Use To Craft Extra Hearts!")) {
                                         lore.clear();
                                         meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Severed Mob Heart");
@@ -106,13 +115,13 @@ public class RuneHandler implements Listener {
                                         meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.MAGIC + "LL" + ChatColor.GOLD + ChatColor.BOLD + "Corrupted Mob Soul" + ChatColor.GOLD + ChatColor.MAGIC + "LL");
                                         lore.add(ChatColor.DARK_PURPLE + "U$e To Cr" + ChatColor.MAGIC + "a" + ChatColor.DARK_PURPLE + "ft Extra Hearts!" + ChatColor.MAGIC + "L");
                                         meta.setLore(lore);
-                                        t.setItemMeta(meta);
-                                    } else {*/
-                                        for (Rune r : runes) {
-                                            if (t.getLore().contains(r.getLore())) {
-                                                p.addPotionEffect(r.getEffect());
-                                            }
+                                        t.setItemMeta(meta);*/
+                                    //} else {
+                                    for (Rune r : runes) {
+                                        if (t.getLore().contains(r.getLore())) {
+                                            p.addPotionEffect(r.getEffect());
                                         }
+                                    }
                                     //}
                                 }
                             }
