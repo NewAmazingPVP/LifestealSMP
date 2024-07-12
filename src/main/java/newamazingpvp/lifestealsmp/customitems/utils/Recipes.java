@@ -197,7 +197,7 @@ public class Recipes {
         Bukkit.addRecipe(somberCrystalRecipe);
         customItems.add(somberCrystal);
         shapedRecipes.put(somberCrystal, somberCrystalRecipe);
-/*
+
         ItemStack heartEqualizer = createHeartEqualizer();
         ShapedRecipe heartEqualizerRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "heart_equalizer"), heartEqualizer);
         heartEqualizerRecipe.shape("NNN", "DED", "DID");
@@ -207,6 +207,17 @@ public class Recipes {
         heartEqualizerRecipe.setIngredient('I', Material.NETHERITE_INGOT);
         Bukkit.addRecipe(heartEqualizerRecipe);
         customItems.add(heartEqualizer);
-        shapedRecipes.put(heartEqualizer, heartEqualizerRecipe);*/
+        shapedRecipes.put(heartEqualizer, heartEqualizerRecipe);
+
+        ItemStack runePouch = createRunePouch();
+        ShapedRecipe runePouchRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "rune_pouch"), runePouch);
+        runePouchRecipe.shape("NNN", "DED", "DID");
+        runePouchRecipe.setIngredient('D', Material.DIAMOND);
+        runePouchRecipe.setIngredient('E', Material.GOLDEN_APPLE);
+        runePouchRecipe.setIngredient('N', Material.SHULKER_BOX);
+        runePouchRecipe.setIngredient('I', Material.NETHERITE_INGOT);
+        Bukkit.addRecipe(runePouchRecipe);
+        customItems.add(runePouch);
+        shapedRecipes.put(runePouch, runePouchRecipe);
     }
 }

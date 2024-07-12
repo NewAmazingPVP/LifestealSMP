@@ -7,6 +7,7 @@ import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import java.util.ArrayList;
 import java.util.List;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.isSmp;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.utility.TimeManager.*;
 
@@ -22,6 +23,7 @@ public class EventsHandler implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
+                if(!isSmp) return;
                 for (Event e : events) {
                     CooldownManager eventCooldown = e.getCooldownManager();
 

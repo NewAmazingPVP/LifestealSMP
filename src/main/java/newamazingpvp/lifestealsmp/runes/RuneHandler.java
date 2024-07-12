@@ -55,11 +55,11 @@ public class RuneHandler implements Listener {
         runes.add(new JumpBoostRune());
         runes.add(new JumpBoostRune.II());
         runes.add(new LuckRune());
-        runes.add(new RaidOmenRune());
-        runes.add(new RaidOmenRune.II());
-        runes.add(new RaidOmenRune.III());
-        runes.add(new RaidOmenRune.IV());
-        runes.add(new RaidOmenRune.V());
+        //runes.add(new RaidOmenRune());
+       // runes.add(new RaidOmenRune.II());
+        //runes.add(new RaidOmenRune.III());
+        //runes.add(new RaidOmenRune.IV());
+        //runes.add(new RaidOmenRune.V());
         runes.add(new RegenerationRune());
         //runes.add(new RegenerationRune.II());
         runes.add(new ResistanceRune());
@@ -69,11 +69,11 @@ public class RuneHandler implements Listener {
         runes.add(new SpeedRune.II());
         runes.add(new StrengthRune());
         runes.add(new StrengthRune.II());
-        runes.add(new TrialOmenRune());
-        runes.add(new TrialOmenRune.II());
-        runes.add(new TrialOmenRune.III());
-        runes.add(new TrialOmenRune.IV());
-        runes.add(new TrialOmenRune.V());
+        //runes.add(new TrialOmenRune());
+        //runes.add(new TrialOmenRune.II());
+        //runes.add(new TrialOmenRune.III());
+        //runes.add(new TrialOmenRune.IV());
+        //runes.add(new TrialOmenRune.V());
         runes.add(new WaterRune());
         for (Rune r : runes) {
             inv.addItem(createRuneItem(r));

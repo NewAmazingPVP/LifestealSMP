@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -29,6 +30,11 @@ public class Utils {
             world.dropItem(player.getLocation(), itemStack);
             player.sendMessage(ChatColor.GRAY + fullInventoryMessage);
         }
+    }
+
+    public static Player returnAnyDamager(Entity damager){
+
+        return null;
     }
 
     public static void setPrefix(Player p, String s) {
