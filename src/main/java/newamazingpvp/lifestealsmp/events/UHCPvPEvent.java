@@ -26,8 +26,8 @@ public class UHCPvPEvent extends BaseEvent {
 
     @Override
     public void onEventStart() {
-        Bukkit.getServer().broadcastMessage(ChatColor.RED + "UHC PvP event starting now! Type /teleportworld to join the PvP world. Check announcements /discord");
-        getServer().getScheduler().runTaskLater(lifestealSmp, () -> sendDiscordNewsMessage(eventRole + " UHC PvP event is now active. Type /teleportworld to join the PvP world! May the best win!", "1032411739351941120"), 1200);
+        Bukkit.getServer().broadcastMessage(ChatColor.RED + "UHC PvP event starting now! Type /teleport to join the PvP world. Check announcements /discord");
+        getServer().getScheduler().runTaskLater(lifestealSmp, () -> sendDiscordNewsMessage(eventRole + " UHC PvP event is now active. Type /teleport to join the PvP world! May the best win!", "1032411739351941120"), 1200);
         isUhcEvent = true;
         Bukkit.getWorld("uhcpvp_world").getWorldBorder().setSize(500);
     }
@@ -48,7 +48,7 @@ public class UHCPvPEvent extends BaseEvent {
     @Override
     public void doWarning() {
         Bukkit.getServer().broadcastMessage(ChatColor.RED + "UHC PvP event happening in " + formatDuration(startTime) + " hours! Check announcements /discord");
-        sendDiscordNewsMessage(eventRole + " In " + formatDuration(startTime) + ", the UHC PvP event will start. Type /teleportworld to join the PvP world!", "1032411739351941120");
+        sendDiscordNewsMessage(eventRole + " In " + formatDuration(startTime) + ", the UHC PvP event will start. Type /teleport to join the PvP world!", "1032411739351941120");
     }
 
     @Override
