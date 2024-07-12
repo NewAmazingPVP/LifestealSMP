@@ -19,13 +19,13 @@ public class NerfOpItems implements Listener {
                     e.getDamager() instanceof Bed ||
                     e.getDamager() instanceof RespawnAnchor ||
                     e.getDamager() instanceof Minecart) {
-                e.setDamage(e.getDamage()*0.35);
-            } else if(e.getDamager() instanceof Player){
+                e.setDamage(e.getDamage()*0.20);
+            } else if (e.getDamager() instanceof Player){
                 Player damage = (Player) e.getDamager();
                 if(damage.getInventory().getItemInMainHand().getType().equals(Material.MACE)){
                     //double finalDmg = e.getFinalDamage()*0.25;
                     //p.damage(e.getFinalDamage()*0.25);
-                    e.setDamage(e.getDamage()*0.35);
+                    e.setDamage(e.getDamage()*0.20);
                     //p.setHealth(p.getHealth()-finalDmg);
                 }
             }
