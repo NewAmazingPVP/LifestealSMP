@@ -23,6 +23,7 @@ import static newamazingpvp.lifestealsmp.game.CombatLog.*;
 import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
 import static newamazingpvp.lifestealsmp.game.PlayerLifeManager.eliminatePlayer;
 import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
+import static newamazingpvp.lifestealsmp.variables.Misc.maxHp;
 
 public class CombatProtectionHandler implements Listener {
     public static List<String> heartCooldownPlayers = new ArrayList<>();
@@ -161,7 +162,7 @@ public class CombatProtectionHandler implements Listener {
             } else {
                 eliminatePlayer(p);
             }
-            if (!(killer.getMaxHealth() > 38)) {
+            if (!(killer.getMaxHealth() > maxHp)) {
                 killer.setMaxHealth(killer.getMaxHealth() + 2);
             } else {
                 addItemOrDrop(slainer, extraHeart(), "Heart was dropped because your inventory was full");
