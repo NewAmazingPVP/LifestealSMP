@@ -17,7 +17,6 @@ import static org.bukkit.Bukkit.getServer;
 public class TrackingDay extends BaseEvent {
 
     private final int blocks;
-    //TODO: CHANGE WORDING FROM EXACT BLOCKS TO WHATERVER BLOCKS ANMD SEPARSAE FOR NO TRACKING DAY
 
     public TrackingDay(ZonedDateTime startTime, int blocks) {
         super(startTime, startTime.plusDays(1));

@@ -12,8 +12,8 @@ import static newamazingpvp.lifestealsmp.utility.TimeManager.*;
 import static org.bukkit.Bukkit.getServer;
 
 public class CustomItemsAndRunes extends BaseEvent {
-    public CustomItemsAndRunes() {
-        super(SEASON_START_TIME.plusHours(6).plusHours(14), SEASON_START_TIME.plusHours(6).plusHours(16));
+    public CustomItemsAndRunes(ZonedDateTime time) {
+        super(time, time.plusHours(2));
     }
 
     @Override

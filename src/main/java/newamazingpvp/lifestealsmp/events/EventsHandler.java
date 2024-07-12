@@ -14,10 +14,10 @@ public class EventsHandler implements Listener {
     public static final List<Event> events = new ArrayList<>();
 
     public EventsHandler() {
-        // events.add(new CustomItemsAndRunes());
+        // events.add(new CustomItemsAndRunes(CUSTOM_ITEMS_AND_RUNES));
         // events.add(new TrackingDay(SEASON_START_TIME.plusDays(2), 1));
         // events.add(new UHCPvPEvent(SEASON_START_TIME.plusDays(19).plusHours(5).plusMinutes(1)));
-        // TODO: ADD ALL EVENTS
+        // TODO: ADD ALL EVENTS decide all days timeline
         events.add(new FinalFight(SEASON_START_TIME.plusDays(21).plusHours(2)));
         new BukkitRunnable() {
             @Override
