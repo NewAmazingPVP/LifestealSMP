@@ -4,8 +4,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
+import org.bukkit.block.Bed;
+import org.bukkit.entity.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -32,10 +32,32 @@ public class Utils {
         }
     }
 
-    public static Player returnAnyDamager(Entity damager){
-
-        return null;
-    }
+    /*public static Player returnPlayerDamager(Entity damager){
+        if (damager instanceof Arrow) {
+            Arrow arrow = (Arrow) damager;
+            if (arrow.getShooter() instanceof Player) {
+                damager = (Player) arrow.getShooter();
+            }
+        } else if (damager instanceof TNTPrimed) {
+            TNTPrimed tnt = (TNTPrimed) damager;
+            if (tnt.getSource() instanceof Player) {
+                damager = (Player) tnt.getSource();
+            }
+        } else if (damager instanceof ThrownPotion) {
+            ThrownPotion potion = (ThrownPotion) damager;
+            if (potion.getShooter() instanceof Player) {
+                damager = (Player) potion.getShooter();
+            }
+        } else if (damager instanceof Trident) {
+            Trident trident = (Trident) damager;
+            if (trident.getShooter() instanceof Player) {
+                damager = (Player) trident.getShooter();
+            }
+        } else {
+            damager = null;
+        }
+        return damager;
+    }*/
 
     public static void setPrefix(Player p, String s) {
         essentials.getUser(p.getUniqueId()).setNickname(ChatColor.translateAlternateColorCodes('&', s) + " " + p.getName());
