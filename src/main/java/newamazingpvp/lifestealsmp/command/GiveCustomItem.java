@@ -11,14 +11,15 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
+import static newamazingpvp.lifestealsmp.CorruptedMobsEvent.Utilitys.CorruptedMobsItemStacks.*;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
 import static newamazingpvp.lifestealsmp.runes.DragonRune.dragonRune;
 import static newamazingpvp.lifestealsmp.unused.customrunes.RunesDrops.*;
 
 public class GiveCustomItem implements CommandExecutor, TabCompleter {
 
-    private final ArrayList<String> subcommands = new ArrayList<>(List.of("feathersword", "homingbow", "tntbow", "tpbow", "oppickaxe", "treecutteraxe", "heart", "revivebeacon", "corruptedmobsoul", "severedmobheart", "lightfether", "instaboomtnt", "lifestealstick", "powerstick", "heavynetherstar", "quarryhelmet", "quarrychestplate", "quarryleggings", "quarryboots", "witherrune", "aquarune", "hellrune", "trollrune", "lightningrune", "darkrune", "bloodrune", "airrune", "sombercrystal", "musicbox", "comettrident", "dragonrune", "heartequalizer", "runepouch"));
-    private final ArrayList<ItemStack> subItems = new ArrayList<>(List.of(createFeatherSword(), createHomingBow(), createTNTBow(), createCustomBow(), createOpPickaxe(), createCustomAxe(), extraHeart(), createReviveBeacon(), corruptedMobSoul(), severedMobHeart(), lightFeather(), InstaBoomTNT(), lifestealStick(), powerStick(), heavyNetherStar(), QuarryArmor_HELM(), QuarryArmor_CP(), QuarryArmor_LEGS(), QuarryArmor_BOOTS(), witherRune(), aquaRune(), hellRune(), trollRune(), lightningRune(), darkRune(), bloodRune(), airRune(), somberCrystal(), musicBox(), cometTrident(), dragonRune(), createHeartEqualizer(), createRunePouch()));
+    private final ArrayList<String> subcommands = new ArrayList<>(List.of("feathersword", "homingbow", "tntbow", "tpbow", "oppickaxe", "treecutteraxe", "heart", "revivebeacon", "corruptedmobsoul", "severedmobheart", "lightfether", "instaboomtnt", "lifestealstick", "powerstick", "heavynetherstar", "quarryhelmet", "quarrychestplate", "quarryleggings", "quarryboots", "witherrune", "aquarune", "hellrune", "trollrune", "lightningrune", "darkrune", "bloodrune", "airrune", "sombercrystal", "musicbox", "comettrident", "dragonrune", "heartequalizer", "runepouch","corruptedcoret1","corruptedcoret2","corruptedcoret3","corruptedcoret4","corruptedcoret5"));
+    private final ArrayList<ItemStack> subItems = new ArrayList<>(List.of(createFeatherSword(), createHomingBow(), createTNTBow(), createCustomBow(), createOpPickaxe(), createCustomAxe(), extraHeart(), createReviveBeacon(), corruptedMobSoul(), severedMobHeart(), lightFeather(), InstaBoomTNT(), lifestealStick(), powerStick(), heavyNetherStar(), QuarryArmor_HELM(), QuarryArmor_CP(), QuarryArmor_LEGS(), QuarryArmor_BOOTS(), witherRune(), aquaRune(), hellRune(), trollRune(), lightningRune(), darkRune(), bloodRune(), airRune(), somberCrystal(), musicBox(), cometTrident(), dragonRune(), createHeartEqualizer(), createRunePouch(),corruptedCoreT1(),corruptedCoreT2(),corruptedCoreT3(),corruptedCoreT4(),corruptedCoreT5()));
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
