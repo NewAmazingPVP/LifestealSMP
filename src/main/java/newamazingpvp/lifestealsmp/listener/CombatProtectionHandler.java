@@ -54,7 +54,7 @@ public class CombatProtectionHandler implements Listener {
                     Player shooter = (Player) potion.getShooter();
                     handlePlayerDamage(event, shooter, damaged);
                 }
-            } else if (event.getDamager() instanceof Trident) {
+                } else if (event.getDamager() instanceof Trident) {
                 Trident trident = (Trident) event.getDamager();
                 if (trident.getShooter() instanceof Player) {
                     Player shooter = (Player) trident.getShooter();

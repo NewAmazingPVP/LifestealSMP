@@ -166,6 +166,21 @@ public class ItemStacks {
         return heartEqualizer;
     }
 
+    public static ItemStack createRunePouch() {
+        ItemStack runePouch = new ItemStack(Material.SHULKER_BOX);
+        ItemMeta meta = runePouch.getItemMeta();
+        meta.displayName(gradient("Rune Pouch"));
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Special Ability:");
+        lore.add(ChatColor.DARK_PURPLE + "Keep /runes in pouch");
+        lore.add(ChatColor.DARK_PURPLE + "And pouch in inventory");
+        lore.add(ChatColor.DARK_PURPLE + "To get all effects!");
+        meta.setLore(lore);
+        runePouch.setItemMeta(meta);
+        return runePouch;
+    }
+
+
     public static ItemStack lightFeather() {
         ItemStack lightFeather = new ItemStack(Material.FEATHER);
         ItemMeta meta = lightFeather.getItemMeta();
