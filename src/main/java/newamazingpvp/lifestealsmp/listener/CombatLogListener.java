@@ -22,6 +22,7 @@ import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.extraHeart
 import static newamazingpvp.lifestealsmp.game.CombatLog.*;
 import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.heartCooldownPlayers;
 import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.invincibilityPlayers;
+import static newamazingpvp.lifestealsmp.variables.Misc.maxHp;
 
 public class CombatLogListener implements Listener {
     @EventHandler
@@ -39,7 +40,7 @@ public class CombatLogListener implements Listener {
                 if (!heartCooldownPlayers.contains(e.getPlayer().getName())) {
                     p.setMaxHealth(p.getMaxHealth() - 2);
                     Player winner = getEnemies(p).get(getEnemies(p).size() - 1);
-                    if (!(winner.getMaxHealth() > 38)) {
+                    if (!(winner.getMaxHealth() > maxHp)) {
                         winner.setMaxHealth(winner.getMaxHealth() + 2);
                     } else {
                         if (winner.getInventory().firstEmpty() != -1) {

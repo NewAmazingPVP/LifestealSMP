@@ -13,6 +13,7 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.corruptedMobSoul;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.severedMobHeart;
 import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
+import static newamazingpvp.lifestealsmp.variables.Misc.maxHp;
 
 public class HeartItems implements Listener {
 
@@ -60,7 +61,7 @@ public class HeartItems implements Listener {
 
         if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
             if (item.getType() == Material.RED_DYE && item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.hasLore() && item.getLore().toString().toLowerCase().contains("max 20 hearts")) {
-                if (e.getPlayer().getMaxHealth() > 38) {
+                if (e.getPlayer().getMaxHealth() > maxHp) {
                     player.sendMessage(ChatColor.RED + "You have the max hearts allowed! (20)");
                     e.setCancelled(true);
 
