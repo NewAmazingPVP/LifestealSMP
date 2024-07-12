@@ -1,9 +1,6 @@
 package newamazingpvp.lifestealsmp.events;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Difficulty;
-import org.bukkit.World;
+import org.bukkit.*;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -21,15 +18,10 @@ public class CustomItemsAndRunes extends BaseEvent {
 
     @Override
     public void onEventStart() {
-        Bukkit.getWorld("world").getWorldBorder().setSize(25000);
-        Bukkit.getWorld("world_nether").getWorldBorder().setSize(25000);
         for (World w : Bukkit.getWorlds()) {
             w.setDifficulty(Difficulty.HARD);
-        }
-        Bukkit.getWorld("world").getWorldBorder().setSize(25000);
-        Bukkit.getWorld("world_nether").getWorldBorder().setSize(25000);
-        for (World w : Bukkit.getWorlds()) {
-            w.setDifficulty(Difficulty.HARD);
+            w.getWorldBorder().setCenter(new Location(w, 0, 0, 0));
+            w.getWorldBorder().setSize(25000);
         }
         getServer().getScheduler().runTaskLater(lifestealSmp, () -> sendDiscordNewsMessage(mcServer + " Custom items and runes are now available! Map size expanded to 25k by 25k and difficulty set to hard. " +
                 "Runes give permanent effects while in inventory and custom items has special abilities. " +
