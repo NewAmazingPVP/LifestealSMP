@@ -1,6 +1,9 @@
 package newamazingpvp.lifestealsmp.events;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Difficulty;
+import org.bukkit.Location;
+import org.bukkit.World;
 
 import java.awt.*;
 import java.time.Duration;
@@ -23,8 +26,11 @@ public class ServerOpening extends BaseEvent {
         getServer().dispatchCommand(getServer().getConsoleSender(), "gamerule playersSleepingPercentage 1");
         getServer().dispatchCommand(getServer().getConsoleSender(), "gamerule doImmediateRespawn true");
         Bukkit.getWorld("world").setTime(1000);
-        Bukkit.getWorld("world").getWorldBorder().setSize(10000);
-        Bukkit.getWorld("world_nether").getWorldBorder().setSize(10000);
+        for (World w : Bukkit.getWorlds()) {
+            w.setDifficulty(Difficulty.EASY);
+            w.getWorldBorder().setCenter(new Location(w, 0, 0, 0));
+            w.getWorldBorder().setSize(10000);
+        }
         sendDiscordNewsEmbedTitle("New season has started!!", Color.GREEN, "1032411739351941120");
         sendDiscordNewsMessage(mcServer + " The server has opened!\n" +
                 "\n" +
