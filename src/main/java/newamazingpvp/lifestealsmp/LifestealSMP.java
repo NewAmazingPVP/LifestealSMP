@@ -152,7 +152,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new AntiBurn(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
-        getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
         getServer().getPluginManager().registerEvents(new EndCrystalWarning(), this);
         getServer().getPluginManager().registerEvents(new DisableMace(), this);
@@ -196,6 +195,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         registerBasicRecipes();
         if (config.get("Discord.Smp") != null) {
             isSmp = config.getBoolean("Discord.Smp");
+        }
+        if(isSmp){
+            getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
         }
         doEvents();
         Bukkit.getScheduler().runTaskTimer(this, TimeManager::timeBasedEvents, 20, 20);
