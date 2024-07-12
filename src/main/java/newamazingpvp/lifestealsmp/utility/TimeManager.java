@@ -28,7 +28,6 @@ public class TimeManager {
     //this is because season starts 12pm est auto restart at 3am Saturday morning
     public static final ZonedDateTime CUSTOM_ITEMS_AND_RUNES = SEASON_START_TIME.plusDays(6).plusHours(14);
 
-    public static final CooldownManager eventCooldown = new CooldownManager();
     public static String eventRole = "<@&1259526654204575896>";
     public static String mcServer = "<@&1047168915500966048>";
 
@@ -37,7 +36,6 @@ public class TimeManager {
         if (!isSmp) return;
         ZonedDateTime currentTime = ZonedDateTime.now(ZoneId.of("America/New_York"));
 
-        long weeksPassed = getWeeksPassed(SEASON_START_TIME, currentTime);
         if (isTimePassed(CUSTOM_ITEMS_AND_RUNES)) {
             registerCustomItemsAndRunes();
         }
