@@ -277,7 +277,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new MageHitAndKilled(), this);
             getServer().getPluginManager().registerEvents(new HydraAttack(), this);
             getServer().getPluginManager().registerEvents(new HydraDamagedOrKilled(), this);
-            getServer().getPluginManager().registerEvents(new thrownTNTEntityListener(), this);
             //getServer().getPluginManager().registerEvents(new BlockPlaceTracker(), this);
             getCommand("raffleeventstart").setExecutor(new StartRaffleEvent());
             getCommand("raffleeventstop").setExecutor(new StopRaffleEvent());

@@ -71,7 +71,7 @@ public class SpawnBomber {
                 Location bomberLoc = mageZombie.getLocation();
 
 
-                Vector attackerLookDir = mageZombie.getLocation().getDirection().multiply(1);
+                Vector attackerLookDir = mageZombie.getLocation().getDirection().multiply(3);
 
 
                 spawnBomberThrowable(mageZombie, bomberLoc, attackerLookDir);
