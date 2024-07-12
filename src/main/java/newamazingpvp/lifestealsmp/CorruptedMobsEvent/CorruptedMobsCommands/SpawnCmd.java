@@ -1,10 +1,9 @@
-package newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands;
+package newamazingpvp.lifestealsmp.CorruptedMobsEvent.CorruptedMobsCommands;
 
-import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Bomber.SpawnBomber.SpawnBomber;
-import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Enigma.SpawnEnigma.SpawnEnigma;
-import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Hydra.SpawnHydra.SpawnHydra;
-import newamazingpvp.lifestealsmp.RaffleEvent.RaffleCustomMobs.Mage.SpawnMage.SpawnMage;
-import newamazingpvp.lifestealsmp.unused.endfight.custommobs.mobs.minishadow.spawning.SpawnMiniShadow;
+import newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Bomber.SpawnBomber.SpawnBomber;
+import newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Enigma.SpawnEnigma.SpawnEnigma;
+import newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Hydra.SpawnHydra.SpawnHydra;
+import newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Mage.SpawnMage.SpawnMage;
 import org.bukkit.Location;
 import org.bukkit.command.BlockCommandSender;
 import org.bukkit.command.Command;
