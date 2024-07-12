@@ -12,6 +12,7 @@ import newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Enigma.EnigmaEven
 import newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Hydra.HydraEvents.HydraAttack;
 import newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Hydra.HydraEvents.HydraDamagedOrKilled;
 import newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Mage.MageEvents.MageHitAndKilled;
+import newamazingpvp.lifestealsmp.CorruptedMobsEvent.Utilitys.CorruptedMobsAntiVinillaItemUse;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands.StartRaffleEvent;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands.StopRaffleEvent;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEvents.ClearOldBingoTags;
@@ -277,6 +278,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new EnigmaAttack(), this);
             getServer().getPluginManager().registerEvents(new EnigmaDamagedAndKilled(), this);
             getServer().getPluginManager().registerEvents(new MageHitAndKilled(), this);
+            getServer().getPluginManager().registerEvents(new CorruptedMobsAntiVinillaItemUse(), this);
             getServer().getPluginManager().registerEvents(new HydraAttack(), this);
             getServer().getPluginManager().registerEvents(new HydraDamagedOrKilled(), this);
             //getServer().getPluginManager().registerEvents(new BlockPlaceTracker(), this);
