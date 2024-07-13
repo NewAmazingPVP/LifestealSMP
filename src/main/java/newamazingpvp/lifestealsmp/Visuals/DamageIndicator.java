@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.Visuals;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.ArmorStand;
@@ -8,6 +9,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.util.Vector;
 
 public class DamageIndicator implements Listener {
@@ -37,18 +39,25 @@ public class DamageIndicator implements Listener {
         }else if(damageAmount > 4 && damageAmount <=5){
             armorStand.setCustomName(ChatColor.RED + "" + ChatColor.BOLD + damageAmount + ChatColor.RED + "❤");
         }else if(damageAmount > 5 && damageAmount <=6){
-            armorStand.setCustomName(ChatColor.DARK_RED + "" + ChatColor.BOLD + damageAmount + ChatColor.DARK_RED + "❤");
+            armorStand.setCustomName(ChatColor.RED + "" + ChatColor.BOLD + damageAmount + ChatColor.DARK_RED + "❤");
         }else if(damageAmount > 6 && damageAmount <=7){
-            armorStand.setCustomName(ChatColor.BLACK + "" + ChatColor.BOLD + damageAmount + ChatColor.BLACK + "❤");
+            armorStand.setCustomName(ChatColor.RED + "" + ChatColor.BOLD + damageAmount + ChatColor.BLACK + "❤");
         }else if(damageAmount > 7) {
-
+            armorStand.setCustomName(ChatColor.DARK_RED + "" + ChatColor.BOLD + damageAmount + ChatColor.BLACK + "❤");
         }
 
         double randomX = Math.random() * 2 - 1; // Random value between -1 and 1
         double randomZ = Math.random() * 2 - 1; // Random value between -1 and 1
 
-        org.bukkit.util.Vector velocity = new Vector(randomX, 2, randomZ);
+        double randomXFix = randomX/2;
+        double randomZFix = randomZ/2;
+
+        org.bukkit.util.Vector velocity = new Vector(randomXFix, .2, randomZFix);
         armorStand.setVelocity(velocity);
+
+        Bukkit.getScheduler().runTaskLater((Plugin) this, () -> {
+            armorStand.remove();
+        }, 100);
 
 
 
