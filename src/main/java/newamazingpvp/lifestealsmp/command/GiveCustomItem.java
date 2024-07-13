@@ -1,11 +1,14 @@
 package newamazingpvp.lifestealsmp.command;
 
+import newamazingpvp.lifestealsmp.runes.Rune;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
@@ -14,6 +17,8 @@ import java.util.List;
 import static newamazingpvp.lifestealsmp.CorruptedMobsEvent.Utilitys.CorruptedMobsItemStacks.*;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
 import static newamazingpvp.lifestealsmp.runes.DragonRune.dragonRune;
+import static newamazingpvp.lifestealsmp.runes.RuneHandler.createRuneItem;
+import static newamazingpvp.lifestealsmp.runes.RuneHandler.runes;
 import static newamazingpvp.lifestealsmp.unused.customrunes.RunesDrops.*;
 
 public class GiveCustomItem implements CommandExecutor, TabCompleter {
@@ -23,7 +28,16 @@ public class GiveCustomItem implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (args.length == 1) {
+    if(args.length == 0){
+        if (sender instanceof Player) {
+            Player p = (Player) sender;
+            Inventory inv = Bukkit.createInventory(null, 54, ChatColor.GOLD + "CustomItems");
+            for (ItemStack r : subItems) {
+                inv.addItem(r);
+            }
+            p.openInventory(inv);
+        }
+    } else if (args.length == 1) {
             int index = subcommands.indexOf(args[0].toLowerCase());
             if (index == -1) return false;
             Player p = (Player) sender;
