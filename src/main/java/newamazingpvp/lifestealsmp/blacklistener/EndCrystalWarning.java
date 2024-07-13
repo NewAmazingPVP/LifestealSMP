@@ -8,21 +8,24 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.CraftItemEvent;
 
 public class EndCrystalWarning implements Listener {
+
     @EventHandler
     public void onCraftItem(CraftItemEvent event) {
         if (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.END_CRYSTAL) {
-            event.getWhoClicked().sendMessage(ChatColor.RED + "You can only use crystals to respawn dragon and not for PVP!");
+            event.getWhoClicked().sendMessage(ChatColor.RED + "End crystals are allowed for PvP but are nerfed for balance. You can also use them to respawn the dragon.");
             Player player = (Player) event.getView().getPlayer();
-            player.sendTitle(ChatColor.RED + "WARNING!", "You can only use crystals to respawn dragon and not for PVP!");
+            player.sendTitle(ChatColor.RED + "WARNING!", "End crystals are allowed but are nerfed in PVP for balance.");
         }
     }
 
     @EventHandler
     public void onDangerousCraft(CraftItemEvent event) {
-        if (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.RESPAWN_ANCHOR || event.getCurrentItem().getType() == Material.TNT_MINECART) {
-            event.getWhoClicked().sendMessage(ChatColor.RED + "You cannot use this for PVP! Do /rules");
+        if (event.getCurrentItem() != null &&
+                (event.getCurrentItem().getType() == Material.RESPAWN_ANCHOR || event.getCurrentItem().getType() == Material.TNT_MINECART)) {
+
+            event.getWhoClicked().sendMessage(ChatColor.RED + "This item is allowed but is nerfed in PVP for balance. Check /rules for more information.");
             Player player = (Player) event.getView().getPlayer();
-            player.sendTitle(ChatColor.RED + "WARNING!", "You cannot use this for PVP! Do /rules");
+            player.sendTitle(ChatColor.RED + "WARNING!", "This item is allowed but is nerfed in PVP for balance.");
         }
     }
 }
