@@ -19,6 +19,7 @@ import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEvents.ClearOldBingoTags;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEvents.RaffleAddPlayersToBossBar;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEvents.RaffleMiningEvent;
 import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEvents.RaffleSubmittingTickets;
+import newamazingpvp.lifestealsmp.Visuals.DamageIndicator;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
 import newamazingpvp.lifestealsmp.allyteams.TeamCommand;
@@ -268,6 +269,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getCommand("bossstart").setExecutor(new StartEndBoss());
             getCommand("bossstop").setExecutor(new StopEndBoss());
             getCommand("bossquickstart").setExecutor(new BossQuickStart());
+
+            getServer().getPluginManager().registerEvents(new DamageIndicator(), this);
 
             //===================== Raffle Event Listeners =======================
             getServer().getPluginManager().registerEvents(new RaffleMiningEvent(), this);
