@@ -63,7 +63,9 @@ public class AnvilMenuListener implements Listener {
                 if (ChatColor.stripColor(itemName).toLowerCase().contains("rune") ||
                         ChatColor.stripColor(itemName).toLowerCase().contains("light feather") ||
                         ChatColor.stripColor(itemName).toLowerCase().contains("lifesteal stick") ||
-                        ChatColor.stripColor(itemName).toLowerCase().contains("somber crystal")) {
+                        ChatColor.stripColor(itemName).toLowerCase().contains("somber crystal") ||
+                        ChatColor.stripColor(itemName).toLowerCase().contains("instaboom tnt") ||
+                        ChatColor.stripColor(itemName).toLowerCase().contains("music box")) {
                     event.setCancelled(true);
                     player.sendMessage(ChatColor.RED + "This item can't be put in an anvil!");
                     player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1.0f, 2.0f);
