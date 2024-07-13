@@ -20,9 +20,9 @@ public class CorruptedMobsItemStacks {
         SkullMeta meta = (SkullMeta) montuHelm.getItemMeta();
         meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Corrupted Core" + ChatColor.AQUA + "" + ChatColor.ITALIC + "" + ChatColor.BOLD + " I");
         List<String> lore = new ArrayList<>();
-        lore.add(" ");
         lore.add(ChatColor.DARK_PURPLE + "When you kill a mob you have a");
         lore.add(ChatColor.DARK_PURPLE + "chance to spawn a T1 corrupted mob!");
+        lore.add(ChatColor.DARK_GREEN + "Just needs to be in your inventory!");
         meta.setLore(lore);
         meta.setOwnerProfile(profile);
         montuHelm.setItemMeta(meta);
@@ -38,9 +38,9 @@ public class CorruptedMobsItemStacks {
         SkullMeta meta = (SkullMeta) montuHelm.getItemMeta();
         meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Corrupted Core" + ChatColor.AQUA + "" + ChatColor.ITALIC + "" + ChatColor.BOLD + " II");
         List<String> lore = new ArrayList<>();
-        lore.add(" ");
         lore.add(ChatColor.DARK_PURPLE + "When you kill a mob you have a");
         lore.add(ChatColor.DARK_PURPLE + "chance to spawn a T2 corrupted mob!");
+        lore.add(ChatColor.DARK_GREEN + "Just needs to be in your inventory!");
         meta.setLore(lore);
         meta.setOwnerProfile(profile);
         montuHelm.setItemMeta(meta);
@@ -55,9 +55,9 @@ public class CorruptedMobsItemStacks {
         SkullMeta meta = (SkullMeta) montuHelm.getItemMeta();
         meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Corrupted Core" + ChatColor.AQUA + "" + ChatColor.ITALIC + "" + ChatColor.BOLD + " III");
         List<String> lore = new ArrayList<>();
-        lore.add(" ");
         lore.add(ChatColor.DARK_PURPLE + "When you kill a mob you have a");
         lore.add(ChatColor.DARK_PURPLE + "chance to spawn a T3 corrupted mob!");
+        lore.add(ChatColor.DARK_GREEN + "Just needs to be in your inventory!");
         meta.setLore(lore);
         meta.setOwnerProfile(profile);
         montuHelm.setItemMeta(meta);
@@ -72,9 +72,9 @@ public class CorruptedMobsItemStacks {
         SkullMeta meta = (SkullMeta) montuHelm.getItemMeta();
         meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Corrupted Core" + ChatColor.AQUA + "" + ChatColor.ITALIC + "" + ChatColor.BOLD + " IV");
         List<String> lore = new ArrayList<>();
-        lore.add(" ");
         lore.add(ChatColor.DARK_PURPLE + "When you kill a mob you have a");
         lore.add(ChatColor.DARK_PURPLE + "chance to spawn a T4 corrupted mob!");
+        lore.add(ChatColor.DARK_GREEN + "Just needs to be in your inventory!");
         meta.setLore(lore);
         meta.setOwnerProfile(profile);
         montuHelm.setItemMeta(meta);
@@ -89,9 +89,9 @@ public class CorruptedMobsItemStacks {
         SkullMeta meta = (SkullMeta) montuHelm.getItemMeta();
         meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Corrupted Core" + ChatColor.AQUA + "" + ChatColor.ITALIC + "" + ChatColor.BOLD + " V");
         List<String> lore = new ArrayList<>();
-        lore.add(" ");
         lore.add(ChatColor.DARK_PURPLE + "When you kill a mob you have a");
         lore.add(ChatColor.DARK_PURPLE + "chance to spawn a T5 corrupted mob!");
+        lore.add(ChatColor.DARK_GREEN + "Just needs to be in your inventory!");
         meta.setLore(lore);
         meta.setOwnerProfile(profile);
         montuHelm.setItemMeta(meta);
