@@ -20,7 +20,7 @@ public class PrefixCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             if (args.length == 1) {
-                String originalMessage = args[0];
+                String originalMessage = ChatColor.stripColor(args[0]);
                 Player player = (Player) sender;
 
                 String censoredMessage = censorBlacklistedWords(originalMessage);
@@ -29,6 +29,7 @@ public class PrefixCommand implements CommandExecutor {
                     originalMessage = censoredMessage;
                     player.sendMessage(ChatColor.RED + "Some words/phrases in your prefix were inappropriate and have been censored.");
                     player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
+                    return true;
                 }
                 originalMessage = replace(originalMessage);
                 originalMessage = originalMessage.replace("§", "&");
