@@ -21,7 +21,7 @@ public class CorruptedMobsAntiVinillaItemUse implements Listener {
 
 
         if (meta.getLore().toString().contains("When you kill a mob you have a")){
-            e.setCancelled(true); 
+            e.setCancelled(true);
         }
     }
 
