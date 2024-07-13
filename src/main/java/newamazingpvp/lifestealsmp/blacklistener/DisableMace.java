@@ -11,10 +11,10 @@ public class DisableMace implements Listener {
     @EventHandler
     public void onCraftItem(CraftItemEvent event) {
         if (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.MACE) {
-            event.setCancelled(true);
-            event.getWhoClicked().sendMessage(ChatColor.RED + "Mace is not allowed on the server /rules!");
+            //         event.setCancelled(true);
+            event.getWhoClicked().sendMessage(ChatColor.RED + "The mace is allowed but is nerfed in PVP for balance. Please refer to /rules for more information.");
             Player player = (Player) event.getView().getPlayer();
-            player.sendTitle(ChatColor.RED + "WARNING!", "Mace is not allowed on the server /rules!");
+            player.sendTitle(ChatColor.RED + "WARNING!", "The mace is allowed but is nerfed in PVP for balance.");
         }
     }
 }
