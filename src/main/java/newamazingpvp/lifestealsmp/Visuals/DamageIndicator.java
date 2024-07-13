@@ -8,6 +8,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.util.Vector;
 
 public class DamageIndicator implements Listener {
 
@@ -23,7 +24,7 @@ public class DamageIndicator implements Listener {
         armorStand.setSmall(true);
         armorStand.setInvulnerable(true);
         armorStand.setGravity(true);
-        armorStand.setCustomNameVisible(true); 
+        armorStand.setCustomNameVisible(true);
 
         if(damageAmount<=1){
             armorStand.setCustomName(ChatColor.GREEN + "" + ChatColor.BOLD + damageAmount + ChatColor.GREEN + "❤");
@@ -42,6 +43,12 @@ public class DamageIndicator implements Listener {
         }else if(damageAmount > 7) {
 
         }
+
+        double randomX = Math.random() * 2 - 1; // Random value between -1 and 1
+        double randomZ = Math.random() * 2 - 1; // Random value between -1 and 1
+
+        org.bukkit.util.Vector velocity = new Vector(randomX, 2, randomZ);
+        armorStand.setVelocity(velocity);
 
 
 
