@@ -119,6 +119,7 @@ public class ItemStacks {
         meta.displayName(gradient("Corrupted Mob Soul"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.DARK_PURPLE + "U$e To Cr" + ChatColor.MAGIC + "a" + ChatColor.DARK_PURPLE + "ft Extra Hearts!" + ChatColor.MAGIC + "L");
+        lore.add(ChatColor.LIGHT_PURPLE + "Very rare drop from mobs!");
         meta.setLore(lore);
         corruptedMobSoul.setItemMeta(meta);
         return corruptedMobSoul;
@@ -132,6 +133,7 @@ public class ItemStacks {
         meta.displayName(gradient("Severed Mob Heart"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.DARK_PURPLE + "Use To Craft Extra Hearts!");
+        lore.add(ChatColor.LIGHT_PURPLE + "Very rare drop from mobs!");
         meta.setLore(lore);
         severedMobHeart.setItemMeta(meta);
         return severedMobHeart;
@@ -238,6 +240,7 @@ public class ItemStacks {
         meta.displayName(gradient("Power Stick"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.DARK_PURPLE + "Used For Crafting");
+        lore.add(ChatColor.DARK_PURPLE + "Lifesteal Stick!");
         meta.setLore(lore);
         powerStick.setItemMeta(meta);
         return powerStick;
@@ -251,6 +254,7 @@ public class ItemStacks {
         meta.displayName(gradient("Heavy Nether Star"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.DARK_PURPLE + "Used For Crafting");
+        lore.add(ChatColor.DARK_PURPLE + "Lifesteal Stick!");
         meta.setLore(lore);
         heavyNetherStar.setItemMeta(meta);
         return heavyNetherStar;

@@ -46,6 +46,6 @@ public class FinalFight extends BaseEvent{
 
     @Override
     public void runContinuously() {
-        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Final fight event is happening! May the best win this season!");
+        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Final fight event is happening! May the best win this season! Note: Do not use portals during fight, it will instant eliminate you");
     }
 }
