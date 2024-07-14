@@ -19,7 +19,7 @@ import static org.bukkit.Bukkit.getServer;
 public class TimeManager {
     //TODO: ALWAYS KEEP THIS A SATURDAY IF POSSIBLE (START SEASONS ON SATURDAY)
     public static final ZonedDateTime SEASON_START_TIME = ZonedDateTime.of(
-            2024, 6, 22, 12, 0, 0, 0, ZoneId.of("America/New_York")
+            2024, 7, 20, 12, 0, 0, 0, ZoneId.of("America/New_York")
     );
 
     public static final ZonedDateTime END_OPEN_TIME = SEASON_START_TIME.plusDays(14).plusHours(2);

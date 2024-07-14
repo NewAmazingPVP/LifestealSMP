@@ -17,7 +17,7 @@ public class ServerOpening implements Listener {
     @EventHandler
     public void onJoin(PlayerLoginEvent event) {
         ZonedDateTime now = ZonedDateTime.now(ZoneId.of("America/New_York"));
-        if (!Bukkit.getWhitelistedPlayers().contains(event.getPlayer())) {
+        if (Bukkit.getWhitelistedPlayers().contains(event.getPlayer())) {
             return;
         }
         if (now.isBefore(SEASON_START_TIME)) {

@@ -2,11 +2,14 @@ package newamazingpvp.lifestealsmp.blacklistener;
 
 import io.papermc.paper.event.player.PlayerBedFailEnterEvent;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.block.Bed;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.type.RespawnAnchor;
 import org.bukkit.entity.EnderCrystal;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
@@ -18,6 +21,8 @@ import org.bukkit.event.player.PlayerBedEnterEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 
+import java.util.List;
+
 public class NerfOpItems implements Listener {
 
     @EventHandler
@@ -26,12 +31,19 @@ public class NerfOpItems implements Listener {
             Player player = (Player) event.getEntity();
 
             if (event.getDamager() instanceof EnderCrystal ||
-                    event.getDamager() instanceof Bed ||
-                    event.getDamager() instanceof RespawnAnchor ||
                     event.getDamager() instanceof Minecart) {
+                List<Entity> nearbyEntities = (List<Entity>) event.getDamager().getWorld().getNearbyEntities(event.getDamager().getLocation(), 14, 14, 14);
 
-                event.setDamage(event.getDamage() * 0.20);
-                player.sendMessage(ChatColor.YELLOW + "You were damaged by an overpowered explosive. These items are allowed on the server but are nerfed for balanced PvP. You should still be able to fight back.");
+                int count = 0;
+                for(Entity e : nearbyEntities){
+                    if(e instanceof Player){
+                        count++;
+                    }
+                }
+
+                if(count <= 1) return;
+                event.setDamage(event.getDamage() * 0.15);
+                player.sendMessage(ChatColor.YELLOW + "You were damaged by an overpowered explosive in PVP. These items are allowed on the server but are nerfed for balanced PvP. You should still be able to fight back.");
             }
             else if (event.getDamager() instanceof Player) {
                 Player damager = (Player) event.getDamager();
@@ -54,11 +66,27 @@ public class NerfOpItems implements Listener {
 
     @EventHandler
     public void onBedEnterFail(final PlayerBedFailEnterEvent event) {
+        if(event.getBed().getLocation().getWorld().getEnvironment() == World.Environment.NORMAL) return;
+        Location bedLocation = event.getBed().getLocation();
+
+        List<Entity> nearbyEntities = (List<Entity>) bedLocation.getWorld().getNearbyEntities(bedLocation, 14, 14, 14);
+
+        int count = 0;
+        for(Entity e : nearbyEntities){
+            if(e instanceof Player){
+                count++;
+            }
+        }
+        if(count <= 1) return;
         event.setWillExplode(false);
+        event.getBed().breakNaturally();
+        event.getPlayer().sendMessage("You attacked another player with a bed. The bed damage is nerfed for balanced PvP on this server, so it won't give you a significant advantage.");
+        bedLocation.getWorld().createExplosion(bedLocation, 2.0F, true, true);
     }
 
     @EventHandler
     public void onAnchorInteract(final PlayerInteractEvent event) {
+        if(event.getClickedBlock().getLocation().getWorld().getEnvironment() == World.Environment.NETHER) return;
         final Player player = event.getPlayer();
 
         final Block block = event.getClickedBlock();
@@ -70,8 +98,22 @@ public class NerfOpItems implements Listener {
             return;
         }
 
-        if (this.willExplode(anchor, event.getMaterial())) {
+        List<Entity> nearbyEntities = (List<Entity>) event.getClickedBlock().getLocation().getWorld().getNearbyEntities(event.getClickedBlock().getLocation(), 14, 14, 14);
+
+        int count = 0;
+        for(Entity e : nearbyEntities){
+            if(e instanceof Player){
+                count++;
+            }
+        }
+        if(count <= 1) return;
+
+        if (willExplode(anchor, event.getMaterial())) {
             event.setCancelled(true);
+            player.sendMessage("You attacked another player with a respawn anchor. The anchor damage is nerfed for balanced PvP on this server, so it won't give you a significant advantage.");
+            Location anchorLocation = event.getClickedBlock().getLocation();
+            event.getClickedBlock().breakNaturally();
+            anchorLocation.getWorld().createExplosion(anchorLocation, 3.0F, true, true);
         }
     }
 
