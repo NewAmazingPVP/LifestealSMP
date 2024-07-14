@@ -10,6 +10,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import static newamazingpvp.lifestealsmp.utility.TimeManager.*;
+
 public class RecipesCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -74,7 +76,11 @@ public class RecipesCommand implements CommandExecutor {
             message.addExtra("\n");
 
 
-            player.spigot().sendMessage(message);
+            //player.spigot().sendMessage(message);
+            player.sendMessage(ChatColor.AQUA + "Custom items are craftable! Click on each for recipe.");
+            if(!isTimePassed(CUSTOM_ITEMS_AND_RUNES)){
+                player.sendMessage(ChatColor.YELLOW + "Some custom items are not enabled yet (not the first 6). They will enable in" + formatDuration(CUSTOM_ITEMS_AND_RUNES));
+            }
             GUI.openRecipesGUI(player);
 
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
@@ -82,7 +88,6 @@ public class RecipesCommand implements CommandExecutor {
         return true;
     }
 
-    // Helper method to add a link to a TextComponent
     private void addRecipeLink(TextComponent textComponent, String link) {
         TextComponent linkText = new TextComponent(" [Link]");
         linkText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, link));
