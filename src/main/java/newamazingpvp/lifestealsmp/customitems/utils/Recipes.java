@@ -17,7 +17,7 @@ import static newamazingpvp.lifestealsmp.utility.TimeManager.isTimePassed;
 
 public class Recipes {
 
-    public static void addRecipes(){
+    /*public static void addRecipes(){
         if(!isTimePassed(CUSTOM_ITEMS_AND_RUNES)) return;
         for(Map.Entry<ItemStack, ShapedRecipe> e : shapedRecipes.entrySet()){
             if(Bukkit.getRecipe(e.getValue().getKey()) == null) {
@@ -29,7 +29,7 @@ public class Recipes {
                 Bukkit.addRecipe(e.getValue());
             }
         }
-    }
+    }*/
 
     public static void registerBasicRecipes() {
         ItemStack extraHeart = new ItemStack(extraHeart());
@@ -40,6 +40,7 @@ public class Recipes {
         extraHeartRecipe.setIngredient('C', corruptedMobSoul());
         extraHeartRecipe.setIngredient('S', severedMobHeart());
         customItems.add(extraHeart);
+        basicItems.add(extraHeart);
         shapedRecipes.put(extraHeart, extraHeartRecipe);
         Bukkit.addRecipe(extraHeartRecipe);
 
@@ -49,6 +50,7 @@ public class Recipes {
         shulkerRecipe.setIngredient('C', Material.CHEST);
         shulkerRecipe.setIngredient('D', Material.DIAMOND);
         customItems.add(shulker);
+        basicItems.add(shulker);
         shapedRecipes.put(shulker, shulkerRecipe);
         Bukkit.addRecipe(shulkerRecipe);
 
@@ -59,6 +61,7 @@ public class Recipes {
         endStoneRecipe.setIngredient('N', Material.NETHERRACK);
         endStoneRecipe.setIngredient('E', Material.COBBLESTONE);
         customItems.add(endStone);
+        basicItems.add(endStone);
         shapedRecipes.put(endStone, endStoneRecipe);
         Bukkit.addRecipe(endStoneRecipe);
 
@@ -68,6 +71,7 @@ public class Recipes {
         purpleBlockRecipe.setIngredient('N', Material.NETHER_BRICKS);
         purpleBlockRecipe.setIngredient('S', Material.STONE_BRICKS);
         customItems.add(purpleBlock);
+        basicItems.add(purpleBlock);
         shapedRecipes.put(purpleBlock, purpleBlockRecipe);
         Bukkit.addRecipe(purpleBlockRecipe);
 
@@ -75,6 +79,7 @@ public class Recipes {
         ShapelessRecipe nethScrapsRecipe = new ShapelessRecipe(nethScraps, createNethScarps());
         nethScrapsRecipe.addIngredient(1, Material.NETHERITE_INGOT);
         customItems.add(createNethScarps());
+        basicItems.add(createNethScarps());
         shapelessRecipes.put(createNethScarps(), nethScrapsRecipe);
         Bukkit.addRecipe(nethScrapsRecipe);
 
@@ -86,6 +91,7 @@ public class Recipes {
         reviveBeaconRecipe.addIngredient(2, Material.TOTEM_OF_UNDYING);
         reviveBeaconRecipe.addIngredient(1, Material.GOLDEN_APPLE);
         customItems.add(createReviveBeacon());
+        basicItems.add(createReviveBeacon());
         shapelessRecipes.put(createReviveBeacon(), reviveBeaconRecipe);
         Bukkit.addRecipe(reviveBeaconRecipe);
     }
@@ -100,7 +106,7 @@ public class Recipes {
         customBowRecipe.addIngredient(2, Material.DIAMOND);
         customItems.add(createCustomBow());
         shapelessRecipes.put(createCustomBow(), customBowRecipe);
-        //Bukkit.addRecipe(customBowRecipe);
+        Bukkit.addRecipe(customBowRecipe);
 
         NamespacedKey tntBow = new NamespacedKey(lifestealSmp, "tnt_bow");
         ShapelessRecipe tntBowRecipe = new ShapelessRecipe(tntBow, createTNTBow());
@@ -111,7 +117,7 @@ public class Recipes {
         tntBowRecipe.addIngredient(1, Material.NETHER_STAR);
         customItems.add(createTNTBow());
         shapelessRecipes.put(createTNTBow(), tntBowRecipe);
-        //Bukkit.addRecipe(tntBowRecipe);
+        Bukkit.addRecipe(tntBowRecipe);
 
         NamespacedKey featherSword = new NamespacedKey(lifestealSmp, "feather_sword");
         ShapelessRecipe featherSwordRecipe = new ShapelessRecipe(featherSword, createFeatherSword());
@@ -122,7 +128,7 @@ public class Recipes {
         featherSwordRecipe.addIngredient(2, Material.NETHER_STAR);
         customItems.add(createFeatherSword());
         shapelessRecipes.put(createFeatherSword(), featherSwordRecipe);
-        //Bukkit.addRecipe(featherSwordRecipe);
+        Bukkit.addRecipe(featherSwordRecipe);
 
         NamespacedKey tropChopAxe = new NamespacedKey(lifestealSmp, "trop_chop_axe");
         ShapelessRecipe tropChopAxeRecipe = new ShapelessRecipe(tropChopAxe, createCustomAxe());
@@ -131,7 +137,7 @@ public class Recipes {
         tropChopAxeRecipe.addIngredient(2, Material.NETHERITE_AXE);
         customItems.add(createCustomAxe());
         shapelessRecipes.put(createCustomAxe(), tropChopAxeRecipe);
-        //Bukkit.addRecipe(tropChopAxeRecipe);
+        Bukkit.addRecipe(tropChopAxeRecipe);
 
         NamespacedKey opPickaxe = new NamespacedKey(lifestealSmp, "op_pickaxe");
         ShapelessRecipe opPickaxeRecipe = new ShapelessRecipe(opPickaxe, createOpPickaxe());
@@ -141,7 +147,7 @@ public class Recipes {
         opPickaxeRecipe.addIngredient(1, Material.NETHERITE_PICKAXE);
         customItems.add(createOpPickaxe());
         shapelessRecipes.put(createOpPickaxe(), opPickaxeRecipe);
-        //Bukkit.addRecipe(opPickaxeRecipe);
+        Bukkit.addRecipe(opPickaxeRecipe);
 
         NamespacedKey homingBow = new NamespacedKey(lifestealSmp, "homing_bow");
         ShapelessRecipe homingBowRecipe = new ShapelessRecipe(homingBow, createHomingBow());
@@ -152,7 +158,7 @@ public class Recipes {
         homingBowRecipe.addIngredient(2, Material.COMPASS);
         customItems.add(createHomingBow());
         shapelessRecipes.put(createHomingBow(), homingBowRecipe);
-        //Bukkit.addRecipe(homingBowRecipe);
+        Bukkit.addRecipe(homingBowRecipe);
 
         ItemStack lightFeather = new ItemStack(lightFeather());
         ShapedRecipe lightFeatherRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "light_feather"), lightFeather);
@@ -161,7 +167,7 @@ public class Recipes {
         lightFeatherRecipe.setIngredient('S', Material.SUGAR);
         customItems.add(lightFeather);
         shapedRecipes.put(lightFeather, lightFeatherRecipe);
-        //Bukkit.addRecipe(lightFeatherRecipe);
+        Bukkit.addRecipe(lightFeatherRecipe);
 
         ItemStack instaboomTNT = new ItemStack(InstaBoomTNT());
         ShapedRecipe instaboomTNTRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "instaboom_tnt"), instaboomTNT);
@@ -171,7 +177,7 @@ public class Recipes {
         instaboomTNTRecipe.setIngredient('D', Material.DIAMOND);
         customItems.add(instaboomTNT);
         shapedRecipes.put(instaboomTNT, instaboomTNTRecipe);
-        //Bukkit.addRecipe(instaboomTNTRecipe);
+        Bukkit.addRecipe(instaboomTNTRecipe);
 
         ItemStack lifestealSword = new ItemStack(lifestealStick());
         ShapedRecipe lifestealSwordRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "lifesteal_sword"), lifestealSword);
@@ -183,7 +189,7 @@ public class Recipes {
         lifestealSwordRecipe.setIngredient('W', Material.WITHER_SKELETON_SKULL);
         customItems.add(lifestealSword);
         shapedRecipes.put(lifestealSword, lifestealSwordRecipe);
-        //Bukkit.addRecipe(lifestealSwordRecipe);
+        Bukkit.addRecipe(lifestealSwordRecipe);
 
         ItemStack heavyNetherStar = new ItemStack(heavyNetherStar());
         ShapedRecipe heavyNetherStarRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "heavy_nether_star"), heavyNetherStar);
@@ -192,7 +198,7 @@ public class Recipes {
         heavyNetherStarRecipe.setIngredient('S', Material.NETHERITE_SCRAP);
         customItems.add(heavyNetherStar);
         shapedRecipes.put(heavyNetherStar, heavyNetherStarRecipe);
-        //Bukkit.addRecipe(heavyNetherStarRecipe);
+        Bukkit.addRecipe(heavyNetherStarRecipe);
 
         ItemStack musicBox = new ItemStack(musicBox());
         ShapedRecipe musicBoxRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "music_box"), musicBox);
@@ -204,7 +210,7 @@ public class Recipes {
         musicBoxRecipe.setIngredient('J', Material.JUKEBOX);
         customItems.add(musicBox);
         shapedRecipes.put(musicBox, musicBoxRecipe);
-        //Bukkit.addRecipe(musicBoxRecipe);
+        Bukkit.addRecipe(musicBoxRecipe);
 
         ItemStack somberCrystal = somberCrystal();
         ShapedRecipe somberCrystalRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "somber_crystal"), somberCrystal);
@@ -212,7 +218,7 @@ public class Recipes {
         somberCrystalRecipe.setIngredient('D', Material.DIAMOND_BLOCK);
         somberCrystalRecipe.setIngredient('E', Material.ECHO_SHARD);
         somberCrystalRecipe.setIngredient('N', Material.NETHER_STAR);
-        //Bukkit.addRecipe(somberCrystalRecipe);
+        Bukkit.addRecipe(somberCrystalRecipe);
         customItems.add(somberCrystal);
         shapedRecipes.put(somberCrystal, somberCrystalRecipe);
 
@@ -223,7 +229,7 @@ public class Recipes {
         heartEqualizerRecipe.setIngredient('E', Material.ENCHANTED_GOLDEN_APPLE);
         heartEqualizerRecipe.setIngredient('N', Material.NETHER_STAR);
         heartEqualizerRecipe.setIngredient('I', Material.NETHERITE_INGOT);
-        //Bukkit.addRecipe(heartEqualizerRecipe);
+        Bukkit.addRecipe(heartEqualizerRecipe);
         customItems.add(heartEqualizer);
         shapedRecipes.put(heartEqualizer, heartEqualizerRecipe);
 
@@ -234,10 +240,10 @@ public class Recipes {
         runePouchRecipe.setIngredient('E', Material.GOLDEN_APPLE);
         runePouchRecipe.setIngredient('N', Material.SHULKER_BOX);
         runePouchRecipe.setIngredient('I', Material.NETHERITE_INGOT);
-        //Bukkit.addRecipe(runePouchRecipe);
+        Bukkit.addRecipe(runePouchRecipe);
         customItems.add(runePouch);
         shapedRecipes.put(runePouch, runePouchRecipe);
 
-        addRecipes();
+        //addRecipes();
     }
 }
