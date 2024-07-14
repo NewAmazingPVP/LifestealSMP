@@ -86,6 +86,7 @@ public class NerfOpItems implements Listener {
 
     @EventHandler
     public void onAnchorInteract(final PlayerInteractEvent event) {
+        if(event.getClickedBlock() == null) return;
         if(event.getClickedBlock().getLocation().getWorld().getEnvironment() == World.Environment.NETHER) return;
         final Player player = event.getPlayer();
 
