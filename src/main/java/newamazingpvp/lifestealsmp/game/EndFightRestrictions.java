@@ -18,6 +18,7 @@ import static newamazingpvp.lifestealsmp.discord.DiscordBot.*;
 import static newamazingpvp.lifestealsmp.variables.Loc.*;
 import static newamazingpvp.lifestealsmp.variables.Misc.endFightParticipants;
 import static newamazingpvp.lifestealsmp.variables.Misc.isEndFightEnabled;
+import static org.bukkit.Bukkit.getServer;
 
 public class EndFightRestrictions implements Listener {
     @EventHandler
@@ -59,10 +60,11 @@ public class EndFightRestrictions implements Listener {
                 e.disallow(PlayerLoginEvent.Result.KICK_OTHER, "Sorry you cannot join during end fight!");
                 lifestealSmp.getServer().broadcastMessage(e.getPlayer().getName() + " tried during end fight but isn't whitelisted");
             }*/
+
             if (!(endFightParticipants.contains(e.getPlayer().getName()))) {
-                e.getPlayer().teleport(endSpawn);
-                e.getPlayer().sendMessage(ChatColor.AQUA + "You joined during the server final end fight and were teleported right to it!");
-                //teleport player to end spawnfor fight
+                Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> e.getPlayer().teleport(endSpawn), 20);
+                Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> e.getPlayer().sendMessage(ChatColor.AQUA + "You joined during the server final end fight and were teleported right to it!"), 20);
+                //teleport player to end spawn for fight
             }
         }
     }
@@ -122,6 +124,7 @@ public class EndFightRestrictions implements Listener {
                 }
                 sendDiscordEmbedPlayer(survivor.getName() + " has won the end fight!", Color.BLUE, "", survivor.getName());
                 sendDiscordNewsEmbedPlayer(survivor.getName() + " has won the end fight!", Color.BLUE, "1032411739351941120", survivor.getName());
+                getServer().dispatchCommand(getServer().getConsoleSender(), "stopendfight");
             }
         }
     }
@@ -134,11 +137,11 @@ public class EndFightRestrictions implements Listener {
         }
     }*/
 
-    @EventHandler
+    /*@EventHandler
     public void onPlayerTeleport(PlayerTeleportEvent e) {
         if (isEndFightEnabled && e.getTo().distance(endSpawn) > 110) {
             e.setCancelled(true);
             e.getPlayer().sendMessage(ChatColor.YELLOW + "You cannot go outside the border!");
         }
-    }
+    }*/
 }

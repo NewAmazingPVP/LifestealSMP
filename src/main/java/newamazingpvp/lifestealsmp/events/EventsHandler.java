@@ -31,10 +31,7 @@ public class EventsHandler implements Listener {
                         continue;
                     }
 
-                    if (isEventInProgress(e)) {
-                        e.runContinuously();
-                        eventCooldown.setCooldown(70);
-                    } else if (isTimePassed(e.getStartTime().minusDays(3)) &&
+                    if (isTimePassed(e.getStartTime().minusDays(3)) &&
                             !isTimePassed(e.getStartTime().minusDays(2).minusHours(23).minusMinutes(59))) {
                         e.doWarning();
                         eventCooldown.setCooldown(70);
@@ -58,6 +55,9 @@ public class EventsHandler implements Listener {
                             !isTimePassed(e.getStartTime().plusMinutes(3))) {
                         e.onEventStart();
                         eventCooldown.setCooldown(180);
+                    } else if (isEventInProgress(e)) {
+                        e.runContinuously();
+                        eventCooldown.setCooldown(70);
                     } else if (isTimePassed(e.getEndTime()) &&
                             !isTimePassed(e.getEndTime().plusMinutes(3))) {
                         if (!(e.getType() == EventType.ONETIME)) {

@@ -1,15 +1,22 @@
 package newamazingpvp.lifestealsmp.blacklistener;
 
+import io.papermc.paper.event.player.PlayerBedFailEnterEvent;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Bed;
+import org.bukkit.block.Block;
 import org.bukkit.block.data.type.RespawnAnchor;
 import org.bukkit.entity.EnderCrystal;
 import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.player.PlayerBedEnterEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.EquipmentSlot;
 
 public class NerfOpItems implements Listener {
 
@@ -39,4 +46,42 @@ public class NerfOpItems implements Listener {
             }
         }
     }
+
+    /*@EventHandler
+    public void onBedEnter(final PlayerBedEnterEvent event) {
+        event.setUseBed(Event.Result.ALLOW);
+    }(/*/
+
+    @EventHandler
+    public void onBedEnterFail(final PlayerBedFailEnterEvent event) {
+        event.setWillExplode(false);
+    }
+
+    @EventHandler
+    public void onAnchorInteract(final PlayerInteractEvent event) {
+        final Player player = event.getPlayer();
+
+        final Block block = event.getClickedBlock();
+        if (event.getAction() != Action.RIGHT_CLICK_BLOCK
+                || event.getHand() != EquipmentSlot.HAND
+                || block == null
+                || block.getType() != Material.RESPAWN_ANCHOR
+                || !(block.getBlockData() instanceof RespawnAnchor anchor)) {
+            return;
+        }
+
+        if (this.willExplode(anchor, event.getMaterial())) {
+            event.setCancelled(true);
+        }
+    }
+
+
+    private boolean willExplode(final RespawnAnchor anchor, final Material heldMaterial) {
+        // if the held block is glowstone and anchor has max charge
+        // OR
+        // if the held block is not glowstone and anchor has any charge at all
+        return (heldMaterial == Material.GLOWSTONE && anchor.getCharges() >= anchor.getMaximumCharges())
+                || (heldMaterial != Material.GLOWSTONE && anchor.getCharges() > 0);
+    }
+
 }
