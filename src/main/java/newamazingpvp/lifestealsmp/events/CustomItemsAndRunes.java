@@ -26,7 +26,7 @@ public class CustomItemsAndRunes extends BaseEvent {
         getServer().getScheduler().runTaskLater(lifestealSmp, () -> sendDiscordNewsMessage(mcServer + " Custom items and runes are now available! Map size expanded to 25k by 25k and difficulty set to hard. " +
                 "Runes give permanent effects while in inventory and custom items has special abilities. " +
                 "Various buffs/nerfs have been made so do /runes /recipes for more info! " +
-                "\n\n**End will open next weekend in " + formatDuration(Duration.between(ZonedDateTime.now(ZoneId.of("America/New_York")), SEASON_START_TIME.plusDays(14).plusHours(2))) + "**", "1032411739351941120"), 1200);
+                "\n\n**End will open in " + formatDuration(END_OPEN_TIME) + "**", "1032411739351941120"), 1200);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class CustomItemsAndRunes extends BaseEvent {
 
     @Override
     public void doWarning() {
-        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Custom items releasing in " + formatDuration(startTime) + " hours! Check announcements");
+        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Custom items releasing in " + formatDuration(startTime) + "! Check announcements");
         //sendDiscordNewsEmbedTitle("Custom items and runes!", Color.GREEN, "1032411739351941120");
         sendDiscordNewsMessage(eventRole + " In " + formatDuration(startTime) + ", custom items /recipes and runes /runes are going to be available! Map size will be expanded to 25k by 25k and difficulty will be set to hard.", "1032411739351941120");
     }

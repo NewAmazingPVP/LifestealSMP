@@ -34,7 +34,7 @@ public class NoTrackingDay extends BaseEvent {
 
     @Override
     public void doWarning() {
-        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "No Tracking Day starting in " + formatDuration(startTime) + " hours! Check announcements on Discord.");
+        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "No Tracking Day starting in " + formatDuration(startTime) + "! Check announcements on Discord.");
         sendDiscordNewsMessage(eventRole + " In " + formatDuration(startTime) + ", /track will be disabled for an entire day.", "1032411739351941120");
     }
 
