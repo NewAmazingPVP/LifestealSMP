@@ -25,11 +25,7 @@ public class nameTagHPMobs implements Listener {
 
                 double maxHealth = entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
 
-                if (isMobHostile(entity)) {
-                    entity.setCustomName(ChatColor.DARK_RED + "" + ChatColor.BOLD + maxHealth + ChatColor.DARK_RED + "❤");
-                } else {
-                    entity.setCustomName(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + maxHealth + ChatColor.DARK_GREEN + "❤");
-                }
+                entity.setCustomName(ChatColor.DARK_RED + "" + ChatColor.BOLD + maxHealth + ChatColor.DARK_RED + "❤");
 
 
                 entity.setCustomNameVisible(true);
@@ -51,11 +47,8 @@ public class nameTagHPMobs implements Listener {
 
         if (!damagedEntity.hasMetadata("isCustomMob")) {
 
-            if (isMobHostile(damagedEntity)) {
-                damagedEntity.setCustomName(ChatColor.DARK_RED + "" + ChatColor.BOLD + df.format(maxHealth) + " / " + df.format(currentHealth) + ChatColor.DARK_RED + "❤");
-            } else {
-                damagedEntity.setCustomName(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + df.format(maxHealth) + " / " + df.format(currentHealth) + ChatColor.DARK_GREEN + "❤");
-            }
+            damagedEntity.setCustomName(ChatColor.DARK_RED + "" + ChatColor.BOLD + df.format(currentHealth) + " / " + df.format(maxHealth) + ChatColor.DARK_RED + "❤");
+
         }
 
     }
@@ -63,19 +56,5 @@ public class nameTagHPMobs implements Listener {
 
 
 
-    public boolean isMobHostile(LivingEntity mob) {
-        // Check if the mob has a target
-        if (mob.getTargetEntity(100) != null) {
-            // Cast the target to an Entity to allow further checks
-            Entity target = mob.getTargetEntity(100);
-
-            // Check if the target is a player or another mob
-            if (target instanceof Player || target instanceof LivingEntity) {
-                return true; // The mob is considered hostile
-            }
-        }
-
-        return false; // The mob is not hostile
-    }
 
 }
