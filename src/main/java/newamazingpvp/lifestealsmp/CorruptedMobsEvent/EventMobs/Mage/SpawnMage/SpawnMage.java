@@ -15,6 +15,8 @@ import org.bukkit.profile.PlayerProfile;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
+import static newamazingpvp.lifestealsmp.CorruptedMobsEvent.CorruptedMobsMain.isCustomMob;
+import static newamazingpvp.lifestealsmp.CorruptedMobsEvent.CorruptedMobsMain.isCustomMobTag;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.unused.endfight.custommobs.PublicMobMethods.getProfile;
 import static newamazingpvp.lifestealsmp.unused.magicstaffs.utils.BeamTexture.beamTextureMaker;
@@ -53,6 +55,7 @@ public class SpawnMage {
         String customTag = "mage_mob";
         MetadataValue customTagValue = new FixedMetadataValue(lifestealSmp, customTag);
         mageZombie.setMetadata(customTag, customTagValue);
+        mageZombie.setMetadata(isCustomMobTag,isCustomMob);
 
         mageMobAttackRate = new BukkitRunnable() {
             @Override
