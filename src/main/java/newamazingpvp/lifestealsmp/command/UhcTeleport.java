@@ -15,7 +15,11 @@ public class UhcTeleport implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-                if(isUhcEvent && !isInCombat(player)) {
+                if(isUhcEvent) {
+                    if(isInCombat(player)){
+                        player.sendMessage("You cannot teleport during combat");
+                        return true;
+                    }
                     if (args.length > 0 && args[0].equalsIgnoreCase("back")) {
                         teleportBack(player);
                     } else {
