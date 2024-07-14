@@ -16,8 +16,8 @@ import static newamazingpvp.lifestealsmp.utility.TimeManager.*;
 import static org.bukkit.Bukkit.getServer;
 
 public class ServerOpening extends BaseEvent {
-    public ServerOpening() {
-        super(SEASON_START_TIME, SEASON_START_TIME.plusMinutes(1));
+    public ServerOpening(ZonedDateTime startTime) {
+        super(startTime, startTime.plusMinutes(10));
     }
 
     @Override

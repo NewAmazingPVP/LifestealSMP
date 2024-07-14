@@ -14,9 +14,8 @@ import static newamazingpvp.lifestealsmp.utility.TimeManager.*;
 
 public class EndOpeningEvent extends BaseEvent {
 
-    private static final ZonedDateTime trackingDay = SEASON_START_TIME.plusWeeks(2);
-    public EndOpeningEvent() {
-        super(trackingDay, trackingDay.plusHours(1));
+    public EndOpeningEvent(ZonedDateTime startTime) {
+        super(startTime, startTime.plusHours(1));
     }
 
     @Override

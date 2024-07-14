@@ -226,7 +226,7 @@ public class Recipes {
         ShapedRecipe heartEqualizerRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "heart_equalizer"), heartEqualizer);
         heartEqualizerRecipe.shape("NNN", "DED", "DID");
         heartEqualizerRecipe.setIngredient('D', Material.DIAMOND_BLOCK);
-        heartEqualizerRecipe.setIngredient('E', Material.ENCHANTED_GOLDEN_APPLE);
+        heartEqualizerRecipe.setIngredient('E', Material.HEART_OF_THE_SEA);
         heartEqualizerRecipe.setIngredient('N', Material.NETHER_STAR);
         heartEqualizerRecipe.setIngredient('I', Material.NETHERITE_INGOT);
         Bukkit.addRecipe(heartEqualizerRecipe);
