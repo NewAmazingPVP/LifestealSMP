@@ -32,32 +32,31 @@ public class Utils {
         }
     }
 
-    /*public static Player returnPlayerDamager(Entity damager){
+    public static Player returnPlayerDamager(Entity damager){
+        Player attacker = null;
         if (damager instanceof Arrow) {
             Arrow arrow = (Arrow) damager;
             if (arrow.getShooter() instanceof Player) {
-                damager = (Player) arrow.getShooter();
+                attacker = (Player) arrow.getShooter();
             }
         } else if (damager instanceof TNTPrimed) {
             TNTPrimed tnt = (TNTPrimed) damager;
             if (tnt.getSource() instanceof Player) {
-                damager = (Player) tnt.getSource();
+                attacker = (Player) tnt.getSource();
             }
         } else if (damager instanceof ThrownPotion) {
             ThrownPotion potion = (ThrownPotion) damager;
             if (potion.getShooter() instanceof Player) {
-                damager = (Player) potion.getShooter();
+                attacker = (Player) potion.getShooter();
             }
         } else if (damager instanceof Trident) {
             Trident trident = (Trident) damager;
             if (trident.getShooter() instanceof Player) {
-                damager = (Player) trident.getShooter();
+                attacker = (Player) trident.getShooter();
             }
-        } else {
-            damager = null;
         }
-        return damager;
-    }*/
+        return attacker;
+    }
 
     public static void setPrefix(Player p, String s) {
         essentials.getUser(p.getUniqueId()).setNickname(ChatColor.translateAlternateColorCodes('&', s) + " " + p.getName());
