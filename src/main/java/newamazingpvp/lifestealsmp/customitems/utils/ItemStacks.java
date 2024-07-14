@@ -240,6 +240,7 @@ public class ItemStacks {
         meta.displayName(gradient("Power Stick"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.DARK_PURPLE + "Used For Crafting");
+        lore.add(ChatColor.DARK_PURPLE + "Lifesteal Stick!");
         meta.setLore(lore);
         powerStick.setItemMeta(meta);
         return powerStick;
@@ -253,6 +254,7 @@ public class ItemStacks {
         meta.displayName(gradient("Heavy Nether Star"));
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.DARK_PURPLE + "Used For Crafting");
+        lore.add(ChatColor.DARK_PURPLE + "Lifesteal Stick!");
         meta.setLore(lore);
         heavyNetherStar.setItemMeta(meta);
         return heavyNetherStar;
