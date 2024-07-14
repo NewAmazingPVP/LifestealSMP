@@ -14,6 +14,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -63,6 +64,7 @@ public class HP_Bar implements Listener {
         double damageAmount = e.getDamage();
         double maxHealth = damagedEntity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
         double currentHealth = maxHealth - e.getFinalDamage();
+        DecimalFormat df = new DecimalFormat("0.0");
 
 
 
@@ -76,13 +78,13 @@ public class HP_Bar implements Listener {
             HPBar.setVisible(true);
             double hpPercent = currentHealth / maxHealth;
             if( hpPercent > 0.75 ){
-                HPBar.setTitle(ChatColor.DARK_RED + "" + ChatColor.BOLD + currentHealth + " / " + maxHealth + " | -" + damageAmount + ChatColor.DARK_RED + "❤");
+                HPBar.setTitle(ChatColor.DARK_RED + "" + ChatColor.BOLD + df.format(currentHealth) + " / " + df.format(maxHealth) + " | -" + df.format(damageAmount) + ChatColor.DARK_RED + "❤");
             }else if( hpPercent <= 0.75 && hpPercent > 0.50){
-                HPBar.setTitle(ChatColor.GOLD + "" + ChatColor.BOLD + currentHealth + " / " + maxHealth + " | -" + damageAmount + ChatColor.GOLD + "❤");
+                HPBar.setTitle(ChatColor.GOLD + "" + ChatColor.BOLD + df.format(currentHealth) + " / " + df.format(maxHealth) + " | -" + df.format(damageAmount) + ChatColor.GOLD + "❤");
             }else if( hpPercent <= 0.50 && hpPercent > 0.25){
-                HPBar.setTitle(ChatColor.YELLOW + "" + ChatColor.BOLD + currentHealth + " / " + maxHealth + " | -" + damageAmount + ChatColor.YELLOW + "❤");
+                HPBar.setTitle(ChatColor.YELLOW + "" + ChatColor.BOLD + df.format(currentHealth) + " / " + df.format(maxHealth) + " | -" + df.format(damageAmount) + ChatColor.YELLOW + "❤");
             }else if( hpPercent <= 0.50 && hpPercent > 0){
-                HPBar.setTitle(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + currentHealth + " / " + maxHealth + " | -" + damageAmount + ChatColor.DARK_GREEN + "❤");
+                HPBar.setTitle(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + df.format(currentHealth) + " / " + df.format(maxHealth) + " | -" + df.format(damageAmount) + ChatColor.DARK_GREEN + "❤");
             }else if(attackedMob.isDead()){
                 HPBar.setVisible(false);
             }
