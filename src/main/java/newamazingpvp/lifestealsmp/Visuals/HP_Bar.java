@@ -70,19 +70,21 @@ public class HP_Bar implements Listener {
         double maxHealth = damagedEntity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
         double currentHealth = Math.max(damagedEntity.getHealth() - e.getFinalDamage(), 0);
         DecimalFormat df = new DecimalFormat("0.0");
+        DecimalFormat df2 = new DecimalFormat("0");
         double hpPercent = currentHealth / maxHealth;
+        String entityName = damagedEntity.getName();
 
         HPBar.setProgress(hpPercent);
         HPBar.setVisible(true);
 
         if (hpPercent > 0.75) {
-            HPBar.setTitle(ChatColor.DARK_RED + "" + ChatColor.BOLD + df.format(currentHealth) + " / " + df.format(maxHealth) + " | -" + df.format(e.getDamage()) + ChatColor.DARK_RED + "❤");
+            HPBar.setTitle(ChatColor.DARK_RED + "" + ChatColor.BOLD + " | -" + entityName + df2.format(currentHealth) + " | -" + df.format(e.getDamage()) + ChatColor.DARK_RED + "❤");
         } else if (hpPercent > 0.50) {
-            HPBar.setTitle(ChatColor.GOLD + "" + ChatColor.BOLD + df.format(currentHealth) + " / " + df.format(maxHealth) + " | -" + df.format(e.getDamage()) + ChatColor.GOLD + "❤");
+            HPBar.setTitle(ChatColor.GOLD + "" + ChatColor.BOLD + df2.format(currentHealth) + " / " + df2.format(maxHealth) + " | -" + df.format(e.getDamage()) + ChatColor.GOLD + "❤");
         } else if (hpPercent > 0.25) {
-            HPBar.setTitle(ChatColor.YELLOW + "" + ChatColor.BOLD + df.format(currentHealth) + " / " + df.format(maxHealth) + " | -" + df.format(e.getDamage()) + ChatColor.YELLOW + "❤");
+            HPBar.setTitle(ChatColor.YELLOW + "" + ChatColor.BOLD + df2.format(currentHealth) + " / " + df2.format(maxHealth) + " | -" + df.format(e.getDamage()) + ChatColor.YELLOW + "❤");
         } else if (hpPercent > 0) {
-            HPBar.setTitle(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + df.format(currentHealth) + " / " + df.format(maxHealth) + " | -" + df.format(e.getDamage()) + ChatColor.DARK_GREEN + "❤");
+            HPBar.setTitle(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + df2.format(currentHealth) + " / " + df2.format(maxHealth) + " | -" + df.format(e.getDamage()) + ChatColor.DARK_GREEN + "❤");
         } else {
             HPBar.setVisible(false);
         }
