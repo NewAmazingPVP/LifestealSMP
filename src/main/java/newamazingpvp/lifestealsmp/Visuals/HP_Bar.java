@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 import java.text.DecimalFormat;
@@ -45,6 +46,7 @@ public class HP_Bar implements Listener {
         bossBar.setVisible(false);
         bossBar.addPlayer(player);
     }
+
 
 
 
