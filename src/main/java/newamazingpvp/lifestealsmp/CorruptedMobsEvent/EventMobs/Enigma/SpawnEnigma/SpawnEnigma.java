@@ -16,6 +16,8 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
 import org.bukkit.profile.PlayerProfile;
 
+import static newamazingpvp.lifestealsmp.CorruptedMobsEvent.CorruptedMobsMain.isCustomMob;
+import static newamazingpvp.lifestealsmp.CorruptedMobsEvent.CorruptedMobsMain.isCustomMobTag;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.unused.endfight.custommobs.PublicMobMethods.getProfile;
 
@@ -50,6 +52,7 @@ public class SpawnEnigma {
         String customTag = "enigma_mob";
         MetadataValue customTagValue = new FixedMetadataValue(lifestealSmp, customTag);
         enigmaZombie.setMetadata(customTag, customTagValue);
+        enigmaZombie.setMetadata(isCustomMobTag,isCustomMob);
 
 
     }

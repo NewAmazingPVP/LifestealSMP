@@ -16,6 +16,8 @@ import org.bukkit.metadata.MetadataValue;
 import org.bukkit.profile.PlayerProfile;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import static newamazingpvp.lifestealsmp.CorruptedMobsEvent.CorruptedMobsMain.isCustomMob;
+import static newamazingpvp.lifestealsmp.CorruptedMobsEvent.CorruptedMobsMain.isCustomMobTag;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.unused.endfight.custommobs.PublicMobMethods.getProfile;
 
@@ -30,6 +32,7 @@ public class SpawnHydra {
 
     String customTag2 = "hydra_mob";
     MetadataValue customTagValue2 = new FixedMetadataValue(lifestealSmp, customTag2);
+
 
 
     public SpawnHydra(Location location) {
@@ -59,6 +62,7 @@ public class SpawnHydra {
 
         enigmaZombie.setMetadata(customTag, customTagValue);
         enigmaZombie.setMetadata(customTag2, customTagValue2);
+        enigmaZombie.setMetadata(isCustomMobTag,isCustomMob);
 
 
         hydraMobAttackRate = new BukkitRunnable() {

@@ -21,17 +21,16 @@ public class nameTagHPMobs implements Listener {
 
         if (!(entity instanceof Player)) {
 
-            double maxHealth = entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+            if (!entity.hasMetadata("isCustomMob")) {
 
-            if (isMobHostile(entity)) {
+                double maxHealth = entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+
                 entity.setCustomName(ChatColor.DARK_RED + "" + ChatColor.BOLD + maxHealth + ChatColor.DARK_RED + "❤");
-            } else {
-                entity.setCustomName(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + maxHealth + ChatColor.DARK_GREEN + "❤");
+
+
+                entity.setCustomNameVisible(true);
+
             }
-
-
-            entity.setCustomNameVisible(true);
-
         }
 
     }
@@ -40,15 +39,16 @@ public class nameTagHPMobs implements Listener {
     public void entityDamaged(EntityDamageByEntityEvent e) {
 
 
+
         LivingEntity damagedEntity = (LivingEntity) e.getEntity();
         double maxHealth = damagedEntity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
         double currentHealth = maxHealth - e.getFinalDamage();
         DecimalFormat df = new DecimalFormat("0.0");
 
-        if (isMobHostile(damagedEntity)) {
-            damagedEntity.setCustomName(ChatColor.DARK_RED + "" + ChatColor.BOLD + df.format(maxHealth) + " / " + df.format(currentHealth) + ChatColor.DARK_RED + "❤");
-        } else {
-            damagedEntity.setCustomName(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + df.format(maxHealth) + " / " + df.format(currentHealth) + ChatColor.DARK_GREEN + "❤");
+        if (!damagedEntity.hasMetadata("isCustomMob")) {
+
+            damagedEntity.setCustomName(ChatColor.DARK_RED + "" + ChatColor.BOLD + df.format(currentHealth) + " / " + df.format(maxHealth) + ChatColor.DARK_RED + "❤");
+
         }
 
     }
@@ -56,19 +56,5 @@ public class nameTagHPMobs implements Listener {
 
 
 
-    public boolean isMobHostile(LivingEntity mob) {
-        // Check if the mob has a target
-        if (mob.getTargetEntity(100) != null) {
-            // Cast the target to an Entity to allow further checks
-            Entity target = mob.getTargetEntity(100);
-
-            // Check if the target is a player or another mob
-            if (target instanceof Player || target instanceof LivingEntity) {
-                return true; // The mob is considered hostile
-            }
-        }
-
-        return false; // The mob is not hostile
-    }
 
 }
