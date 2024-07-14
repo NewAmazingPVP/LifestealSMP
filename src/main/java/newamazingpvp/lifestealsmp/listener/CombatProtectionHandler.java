@@ -109,6 +109,7 @@ public class CombatProtectionHandler implements Listener {
             return;
         }
         if (!event.isCancelled()) {
+            if(damaged.equals(damager)) return;
             tagPlayer(damager, damaged);
             tagPlayer(damaged, damager);
         }
