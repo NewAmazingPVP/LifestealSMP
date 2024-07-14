@@ -19,6 +19,8 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.UUID;
 
+import static newamazingpvp.lifestealsmp.utility.Utils.returnPlayerDamager;
+
 public class HP_Bar implements Listener {
 
     private static final HashMap<UUID, BossBar> linkHPBossBarToPlayer = new HashMap<>();
@@ -51,18 +53,17 @@ public class HP_Bar implements Listener {
         }
 
         LivingEntity damagedEntity = (LivingEntity) e.getEntity();
-        Entity attacker = e.getDamager();
+        Player attacker = returnPlayerDamager(e.getDamager());
 
-        if (!(attacker instanceof Player)) {
+        if (attacker == null) {
             return;
         }
 
-        Player playerAttacker = (Player) attacker;
-        UUID attackerUUID = playerAttacker.getUniqueId();
+        UUID attackerUUID = attacker.getUniqueId();
 
         BossBar HPBar = linkHPBossBarToPlayer.get(attackerUUID);
         if (HPBar == null) {
-            addBossBar(playerAttacker);
+            addBossBar(attacker);
             HPBar = linkHPBossBarToPlayer.get(attackerUUID);
         }
 
