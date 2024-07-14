@@ -22,6 +22,7 @@ public class GUI {
     public static final Map<ItemStack, ShapedRecipe> shapedRecipes = new HashMap<>();
     public static final Map<ItemStack, ShapelessRecipe> shapelessRecipes = new HashMap<>();
     public static final List<ItemStack> customItems = new ArrayList<>();
+    public static final List<ItemStack> basicItems = new ArrayList<>();
 
     public static void openRecipesGUI(Player player) {
         Inventory gui = Bukkit.createInventory(null, 27, ChatColor.GOLD + "Custom Recipes");
