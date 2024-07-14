@@ -18,7 +18,7 @@ public class RunesCommand implements CommandExecutor {
             p.openInventory(inv);
             p.sendMessage(ChatColor.AQUA + "Runes are rare drop from mobs and give permanent effect while in inventory!");
             if(!isTimePassed(CUSTOM_ITEMS_AND_RUNES)){
-                p.sendMessage(ChatColor.YELLOW + "Runes are not enabled yet. They will enable in" + formatDuration(CUSTOM_ITEMS_AND_RUNES));
+                p.sendMessage(ChatColor.YELLOW + "Runes are not enabled yet. They will enable in " + formatDuration(CUSTOM_ITEMS_AND_RUNES));
             }
             return true;
         }

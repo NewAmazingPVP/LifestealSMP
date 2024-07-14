@@ -105,7 +105,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getLogger().info("This plugin was developed by NewAmazingPVP and Comet99. Please provide attribution if you use it and abide by the licenses. You are not allowed to use this if you are not an active contributor");
         new Metrics(this, 22552);
         getServer().getMessenger().registerIncomingPluginChannel(this, "nappixel:lifesteal", this);
-        getServer().getMessenger().registerOutgoingPluginChannel(this, "nappixel:lifesteal");
+        //getServer().getMessenger().registerOutgoingPluginChannel(this, "nappixel:lifesteal");
         saveDefaultConfig();
         config = getConfig();
         lifestealSmp = this;
@@ -367,6 +367,12 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             return;
         }
 
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            cancelCombatData(p);
+            removeEnemies(p);
+            p.kick(Component.text("Proxy is restarting.... Please reconnect").color(NamedTextColor.DARK_RED));
+        }
+        /*
         ByteArrayDataInput dataInput = ByteStreams.newDataInput(bytes);
 
         try {
@@ -382,7 +388,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         } catch (Exception e) {
             Bukkit.getLogger().severe("An error occurred while processing plugin message: " + e.getMessage());
             e.printStackTrace();
-        }
+        }*/
     }
 
 
