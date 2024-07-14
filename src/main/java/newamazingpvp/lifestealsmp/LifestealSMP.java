@@ -191,6 +191,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new InfiniteStorage(), this);
         getServer().getPluginManager().registerEvents(new EventsHandler(), this);
         getServer().getPluginManager().registerEvents(new NerfOpItems(), this);
+        getServer().getPluginManager().registerEvents(new DisableCustomItems(), this);
         startTPSTracking();
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
         getCommand("trade").setExecutor(new Trade());
