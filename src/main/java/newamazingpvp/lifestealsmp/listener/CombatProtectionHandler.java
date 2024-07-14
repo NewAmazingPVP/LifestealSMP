@@ -156,6 +156,7 @@ public class CombatProtectionHandler implements Listener {
             slainer = (Player) killer;
         }
         if (slainer == null) return;
+        if(slainer.equals(p)) return;
         removeEnemies(p);
         if (!heartCooldownPlayers.contains(p.getName()) && getPlaytime(p) > 144000) {
             if (!(p.getMaxHealth() <= 2)) {

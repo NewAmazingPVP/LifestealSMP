@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.customitems.item;
 
 import org.bukkit.*;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -26,25 +27,29 @@ public class HeartItems implements Listener {
 
         if (killer == null) return;
 
-        if (Math.random() <= 0.001 * heartMultipliers) {
+        ItemStack mainHandItem = killer.getInventory().getItemInMainHand();
+
+        int lootingLevel = mainHandItem.getEnchantmentLevel(Enchantment.LOOTING);
+
+        if (Math.random() <= (0.001 * (1 + 0.10 * lootingLevel)) * heartMultipliers) {
             //e.getDrops().add(corruptedMobSoul());
             addItemOrDrop(killer, corruptedMobSoul(), ChatColor.RED + "Mob soul was dropped because your inventory was full");
             //e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), new ItemStack(CorruptedMobSoul()));
             killer.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "RARE DROP!" + ChatColor.DARK_PURPLE + " Corrupted Mob Soul");
             killer.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Used to craft hearts!");
-            killer.sendMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Be careful, this is a extremely rare drop (1 in 1k) so people might try to scam you for it");
+            killer.sendMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Be careful, this is a extremely rare drop so people might try to scam you for it");
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 0.0f), 3);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f), 6);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 3.0f), 9);
             e.getEntity().getWorld().spawnParticle(Particle.EXPLOSION, loc, 100, 0, 0, 0, 0.1);
         }
-        if (Math.random() <= 0.0005 * heartMultipliers) {
+        if (Math.random() <= (0.0005 * (1 + 0.10 * lootingLevel)) * heartMultipliers) {
             //e.getDrops().add(severedMobHeart());
             addItemOrDrop(killer, severedMobHeart(), ChatColor.RED + "Mob soul was dropped because your inventory was full");
             //e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), new ItemStack(severedMobHeart()));
             killer.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "RARE DROP!" + ChatColor.DARK_PURPLE + " Severed Mob Heart");
             killer.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Used to craft hearts!");
-            killer.sendMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Be careful, this is a extremely rare drop (1 in 2k) so people might try to scam you for it");
+            killer.sendMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Be careful, this is a extremely rare drop so people might try to scam you for it");
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 0.0f), 3);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f), 6);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 3.0f), 9);

@@ -36,16 +36,15 @@ public class TimeManager {
         if (!isSmp) return;
         ZonedDateTime currentTime = ZonedDateTime.now(ZoneId.of("America/New_York"));
 
-        if (isTimePassed(CUSTOM_ITEMS_AND_RUNES)) {
-            registerCustomItemsAndRunes();
-        }
-
         if (isTimePassed(SEASON_START_TIME, currentTime, 3, 14, 0, 0) &&
                 !isTimePassed(SEASON_START_TIME, currentTime, 3, 16, 0, 0)) {
+            /*
             for (World w : Bukkit.getWorlds()) {
                 w.setDifficulty(Difficulty.NORMAL);
             }
             getServer().getScheduler().runTaskLater(lifestealSmp, () -> sendDiscordNewsMessage("Difficulty on SMP now set to normal!", "1032411739351941120"), 1200);
+            */
+
         }
 
         if (isTimePassed(SEASON_START_TIME, currentTime, 10, 0, 0, 0)) {

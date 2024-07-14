@@ -198,6 +198,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("trade").setExecutor(new Trade());
         getServer().getPluginManager().registerEvents(new TradeListener(), this);
         registerBasicRecipes();
+        registerCustomItemsAndRunes();
         if (config.get("Discord.Smp") != null) {
             isSmp = config.getBoolean("Discord.Smp");
         }
@@ -226,8 +227,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             //getServer().getPluginManager().registerEvents(new BingoCardListener(), this);
             getServer().getPluginManager().registerEvents(new BingoCardGUIListeners(), this);
             //New Custom Items
-            registerCustomItemsAndRunes();
-            getServer().getPluginManager().registerEvents(new HeartEqualizer(), this);
 
 
             getServer().getPluginManager().registerEvents(new QuarryArmor(), this);
@@ -404,6 +403,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         Bukkit.getPluginManager().registerEvents(new LifestealStick(), lifestealSmp);
         Bukkit.getPluginManager().registerEvents(new SomberCrystal(), lifestealSmp);
         Bukkit.getPluginManager().registerEvents(new MusicBox(), lifestealSmp);
+        Bukkit.getPluginManager().registerEvents(new HeartEqualizer(), lifestealSmp);
     }
 
 }

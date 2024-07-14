@@ -23,6 +23,8 @@ import org.bukkit.inventory.EquipmentSlot;
 
 import java.util.List;
 
+import static newamazingpvp.lifestealsmp.game.CombatLog.tagPlayer;
+
 public class NerfOpItems implements Listener {
 
     @EventHandler
@@ -40,8 +42,15 @@ public class NerfOpItems implements Listener {
                         count++;
                     }
                 }
-
                 if(count <= 1) return;
+                for(Entity e : nearbyEntities){
+                    if(e instanceof Player p){
+                        if(!p.equals(player)){
+                            tagPlayer(p, player);
+                            tagPlayer(player, p);
+                        }
+                    }
+                }
                 event.setDamage(event.getDamage() * 0.15);
                 player.sendMessage(ChatColor.YELLOW + "You were damaged by an overpowered explosive in PVP. These items are allowed on the server but are nerfed for balanced PvP. You should still be able to fight back.");
             }
@@ -78,6 +87,14 @@ public class NerfOpItems implements Listener {
             }
         }
         if(count <= 1) return;
+        for(Entity e : nearbyEntities){
+            if(e instanceof Player p){
+                if(!p.equals(event.getPlayer())){
+                    tagPlayer(p, event.getPlayer());
+                    tagPlayer(event.getPlayer(), p);
+                }
+            }
+        }
         event.setWillExplode(false);
         event.getBed().breakNaturally();
         event.getPlayer().sendMessage("You attacked another player with a bed. The bed damage is nerfed for balanced PvP on this server, so it won't give you a significant advantage.");
@@ -108,7 +125,14 @@ public class NerfOpItems implements Listener {
             }
         }
         if(count <= 1) return;
-
+        for(Entity e : nearbyEntities){
+            if(e instanceof Player p){
+                if(!p.equals(event.getPlayer())){
+                    tagPlayer(p, event.getPlayer());
+                    tagPlayer(event.getPlayer(), p);
+                }
+            }
+        }
         if (willExplode(anchor, event.getMaterial())) {
             event.setCancelled(true);
             player.sendMessage("You attacked another player with a respawn anchor. The anchor damage is nerfed for balanced PvP on this server, so it won't give you a significant advantage.");

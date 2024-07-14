@@ -37,7 +37,7 @@ public class RuneMultiplier extends BaseEvent {
 
     @Override
     public void doWarning() {
-        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Rune multiplier event happening in " + formatDuration(startTime) + " hours! Check announcements /discord");
+        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Rune multiplier event happening in " + formatDuration(startTime) + "! Check announcements /discord");
         sendDiscordNewsMessage(eventRole + " In " + formatDuration(startTime) + ", the rune multiplier event will start with a multiplier of " + (multiplier-1)*100 + "%. The /runes will be dropped more frequently from mobs!", "1032411739351941120");
     }
 

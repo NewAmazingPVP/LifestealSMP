@@ -47,7 +47,7 @@ public class UHCPvPEvent extends BaseEvent {
 
     @Override
     public void doWarning() {
-        Bukkit.getServer().broadcastMessage(ChatColor.RED + "UHC PvP event happening in " + formatDuration(startTime) + " hours! Check announcements /discord");
+        Bukkit.getServer().broadcastMessage(ChatColor.RED + "UHC PvP event happening in " + formatDuration(startTime) + "! Check announcements /discord");
         sendDiscordNewsMessage(eventRole + " In " + formatDuration(startTime) + ", the UHC PvP event will start. Type /teleport to join the PvP world!", "1032411739351941120");
     }
 
