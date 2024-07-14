@@ -18,6 +18,8 @@ import org.bukkit.profile.PlayerProfile;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
+import static newamazingpvp.lifestealsmp.CorruptedMobsEvent.CorruptedMobsMain.isCustomMob;
+import static newamazingpvp.lifestealsmp.CorruptedMobsEvent.CorruptedMobsMain.isCustomMobTag;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Bomber.BomberEvents.thrownTNTEntityListener.spawnBomberThrowable;
 import static newamazingpvp.lifestealsmp.unused.endfight.custommobs.PublicMobMethods.getProfile;
@@ -57,6 +59,7 @@ public class SpawnBomber {
         String customTag = "bomber_mob";
         MetadataValue customTagValue = new FixedMetadataValue(lifestealSmp, customTag);
         mageZombie.setMetadata(customTag, customTagValue);
+        mageZombie.setMetadata(isCustomMobTag,isCustomMob);
 
         bomberMobAttackRate = new BukkitRunnable() {
             @Override

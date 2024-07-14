@@ -21,17 +21,20 @@ public class nameTagHPMobs implements Listener {
 
         if (!(entity instanceof Player)) {
 
-            double maxHealth = entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+            if (!entity.hasMetadata("isCustomMob")) {
 
-            if (isMobHostile(entity)) {
-                entity.setCustomName(ChatColor.DARK_RED + "" + ChatColor.BOLD + maxHealth + ChatColor.DARK_RED + "❤");
-            } else {
-                entity.setCustomName(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + maxHealth + ChatColor.DARK_GREEN + "❤");
+                double maxHealth = entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+
+                if (isMobHostile(entity)) {
+                    entity.setCustomName(ChatColor.DARK_RED + "" + ChatColor.BOLD + maxHealth + ChatColor.DARK_RED + "❤");
+                } else {
+                    entity.setCustomName(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + maxHealth + ChatColor.DARK_GREEN + "❤");
+                }
+
+
+                entity.setCustomNameVisible(true);
+
             }
-
-
-            entity.setCustomNameVisible(true);
-
         }
 
     }
@@ -40,15 +43,19 @@ public class nameTagHPMobs implements Listener {
     public void entityDamaged(EntityDamageByEntityEvent e) {
 
 
+
         LivingEntity damagedEntity = (LivingEntity) e.getEntity();
         double maxHealth = damagedEntity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
         double currentHealth = maxHealth - e.getFinalDamage();
         DecimalFormat df = new DecimalFormat("0.0");
 
-        if (isMobHostile(damagedEntity)) {
-            damagedEntity.setCustomName(ChatColor.DARK_RED + "" + ChatColor.BOLD + df.format(maxHealth) + " / " + df.format(currentHealth) + ChatColor.DARK_RED + "❤");
-        } else {
-            damagedEntity.setCustomName(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + df.format(maxHealth) + " / " + df.format(currentHealth) + ChatColor.DARK_GREEN + "❤");
+        if (!damagedEntity.hasMetadata("isCustomMob")) {
+
+            if (isMobHostile(damagedEntity)) {
+                damagedEntity.setCustomName(ChatColor.DARK_RED + "" + ChatColor.BOLD + df.format(maxHealth) + " / " + df.format(currentHealth) + ChatColor.DARK_RED + "❤");
+            } else {
+                damagedEntity.setCustomName(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + df.format(maxHealth) + " / " + df.format(currentHealth) + ChatColor.DARK_GREEN + "❤");
+            }
         }
 
     }
