@@ -79,7 +79,7 @@ public class RecipesCommand implements CommandExecutor {
             //player.spigot().sendMessage(message);
             player.sendMessage(ChatColor.AQUA + "Custom items are craftable! Click on each for recipe.");
             if(!isTimePassed(CUSTOM_ITEMS_AND_RUNES)){
-                player.sendMessage(ChatColor.YELLOW + "Some custom items are not enabled yet (everything except the first 6 are not enabled). They will enable in" + formatDuration(CUSTOM_ITEMS_AND_RUNES));
+                player.sendMessage(ChatColor.YELLOW + "Some custom items are not enabled yet (everything except the first 6 are not enabled). They will enable in " + formatDuration(CUSTOM_ITEMS_AND_RUNES));
             }
             GUI.openRecipesGUI(player);
 
