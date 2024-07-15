@@ -21,15 +21,15 @@ public class UHCPvPEvent extends BaseEvent {
 
     public UHCPvPEvent(ZonedDateTime startTime) {
         super(startTime, startTime.plusHours(1));
-        pvpWorld = Bukkit.createWorld(new WorldCreator("uhcpvp_world").type(WorldType.FLAT));
     }
 
     @Override
     public void onEventStart() {
+        pvpWorld = Bukkit.createWorld(new WorldCreator("uhcpvp_world").type(WorldType.FLAT));
         Bukkit.getServer().broadcastMessage(ChatColor.RED + "UHC PvP event starting now! Type /teleport to join the PvP world. Check announcements /discord");
         getServer().getScheduler().runTaskLater(lifestealSmp, () -> sendDiscordNewsMessage(eventRole + " UHC PvP event is now active. Type /teleport to join the PvP world! May the best win!", "1032411739351941120"), 1200);
         isUhcEvent = true;
-        Bukkit.getWorld("uhcpvp_world").getWorldBorder().setSize(500);
+        pvpWorld.getWorldBorder().setSize(500);
     }
 
     @Override

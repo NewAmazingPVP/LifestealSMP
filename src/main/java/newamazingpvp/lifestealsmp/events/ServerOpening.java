@@ -61,7 +61,7 @@ public class ServerOpening extends BaseEvent {
 
     @Override
     public void doWarning() {
-        sendDiscordNewsMessage(mcServer + " The new season will be released in " + formatDuration(SEASON_START_TIME) + "!!!", "1032411739351941120");
+        sendDiscordNewsMessage(mcServer + " The new season will be released in " + formatDuration(startTime) + "!!!", "1032411739351941120");
     }
 
     @Override

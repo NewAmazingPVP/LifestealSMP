@@ -23,6 +23,7 @@ import static newamazingpvp.lifestealsmp.game.CombatLog.*;
 import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
 import static newamazingpvp.lifestealsmp.game.PlayerLifeManager.eliminatePlayer;
 import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
+import static newamazingpvp.lifestealsmp.utility.Utils.returnPlayerDamager;
 import static newamazingpvp.lifestealsmp.variables.Misc.maxHp;
 
 public class CombatProtectionHandler implements Listener {
@@ -32,36 +33,10 @@ public class CombatProtectionHandler implements Listener {
 
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
-        if (event.getEntity() instanceof Player) {
-            Player damaged = (Player) event.getEntity();
-            if (event.getDamager() instanceof Player) {
-                Player damager = (Player) event.getDamager();
-                handlePlayerDamage(event, damager, damaged);
-            } else if (event.getDamager() instanceof Arrow) {
-                Arrow arrow = (Arrow) event.getDamager();
-                if (arrow.getShooter() instanceof Player) {
-                    Player shooter = (Player) arrow.getShooter();
-                    handlePlayerDamage(event, shooter, damaged);
-                }
-            } else if (event.getDamager() instanceof TNTPrimed) {
-                TNTPrimed tnt = (TNTPrimed) event.getDamager();
-                if (tnt.getSource() instanceof Player) {
-                    Player shooter = (Player) tnt.getSource();
-                    handlePlayerDamage(event, shooter, damaged);
-                }
-            } else if (event.getDamager() instanceof ThrownPotion) {
-                ThrownPotion potion = (ThrownPotion) event.getDamager();
-                if (potion.getShooter() instanceof Player) {
-                    Player shooter = (Player) potion.getShooter();
-                    handlePlayerDamage(event, shooter, damaged);
-                }
-                } else if (event.getDamager() instanceof Trident) {
-                Trident trident = (Trident) event.getDamager();
-                if (trident.getShooter() instanceof Player) {
-                    Player shooter = (Player) trident.getShooter();
-                    handlePlayerDamage(event, shooter, damaged);
-                }
-            }
+        if (event.getEntity() instanceof Player damaged) {
+            Player damager = returnPlayerDamager(event.getDamager());
+            if(damager == null) return;
+            handlePlayerDamage(event, damager, damaged);
         } else if (event.getEntity() instanceof Villager && event.getDamager() instanceof Player) {
             handleVillagerDamage(event, (Player) event.getDamager());
         }
