@@ -7,6 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
+import static newamazingpvp.lifestealsmp.utility.Utils.returnPlayerDamager;
 
 public class NewbieProgression implements Listener {
     @EventHandler
@@ -18,30 +19,7 @@ public class NewbieProgression implements Listener {
                     double dmg = event.getFinalDamage();
                     double finalDmg = Math.max(dmg / 4, dmg * (getPlaytime(damagedPlayer) / (3 * 60 * 60 * 20.0)));
 
-                    if (event.getDamager() instanceof Arrow) {
-                        Arrow arrow = (Arrow) event.getDamager();
-                        if (arrow.getShooter() instanceof Player) {
-                            return;
-                        }
-                    }
-                    if (event.getDamager() instanceof TNTPrimed) {
-                        TNTPrimed tnt = (TNTPrimed) event.getDamager();
-                        if (tnt.getSource() instanceof Player) {
-                            return;
-                        }
-                    }
-                    if (event.getDamager() instanceof ThrownPotion) {
-                        ThrownPotion potion = (ThrownPotion) event.getDamager();
-                        if (potion.getShooter() instanceof Player) {
-                            return;
-                        }
-                    }
-                    if (event.getDamager() instanceof Trident) {
-                        Trident trident = (Trident) event.getDamager();
-                        if (trident.getShooter() instanceof Player) {
-                            return;
-                        }
-                    }
+                    if(returnPlayerDamager(event.getDamager()) != null) return;
 
                     event.setDamage(finalDmg);
                 }
@@ -57,30 +35,7 @@ public class NewbieProgression implements Listener {
                 double dmg = event.getFinalDamage();
                 double finalDmg = dmg * 0.7;
 
-                if (event.getDamager() instanceof Arrow) {
-                    Arrow arrow = (Arrow) event.getDamager();
-                    if (arrow.getShooter() instanceof Player) {
-                        return;
-                    }
-                }
-                if (event.getDamager() instanceof TNTPrimed) {
-                    TNTPrimed tnt = (TNTPrimed) event.getDamager();
-                    if (tnt.getSource() instanceof Player) {
-                        return;
-                    }
-                }
-                if (event.getDamager() instanceof ThrownPotion) {
-                    ThrownPotion potion = (ThrownPotion) event.getDamager();
-                    if (potion.getShooter() instanceof Player) {
-                        return;
-                    }
-                }
-                if (event.getDamager() instanceof Trident) {
-                    Trident trident = (Trident) event.getDamager();
-                    if (trident.getShooter() instanceof Player) {
-                        return;
-                    }
-                }
+                if(returnPlayerDamager(event.getDamager()) != null) return;
 
                 event.setDamage(finalDmg);
             }

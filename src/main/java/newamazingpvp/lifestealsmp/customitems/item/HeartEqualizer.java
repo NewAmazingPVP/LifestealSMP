@@ -7,44 +7,16 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.createHeartEqualizer;
+import static newamazingpvp.lifestealsmp.utility.Utils.returnPlayerDamager;
 
 public class HeartEqualizer implements Listener {
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent event) {
         if (event.getEntity() instanceof Player) {
-            Player damager = null;
-            boolean isEnemyPlayer = event.getDamager() instanceof Player;
-            if (!isEnemyPlayer) {
-                if (event.getDamager() instanceof Arrow) {
-                    Arrow arrow = (Arrow) event.getDamager();
-                    if (arrow.getShooter() instanceof Player) {
-                        isEnemyPlayer = true;
-                        damager = (Player) arrow.getShooter();
-                    }
-                } else if (event.getDamager() instanceof TNTPrimed) {
-                    TNTPrimed tnt = (TNTPrimed) event.getDamager();
-                    if (tnt.getSource() instanceof Player) {
-                        isEnemyPlayer = true;
-                        damager = (Player) tnt.getSource();
-                    }
-                } else if (event.getDamager() instanceof ThrownPotion) {
-                    ThrownPotion potion = (ThrownPotion) event.getDamager();
-                    if (potion.getShooter() instanceof Player) {
-                        isEnemyPlayer = true;
-                        damager = (Player) potion.getShooter();
-                    }
-                } else if (event.getDamager() instanceof Trident) {
-                    Trident trident = (Trident) event.getDamager();
-                    if (trident.getShooter() instanceof Player) {
-                        isEnemyPlayer = true;
-                        damager = (Player) trident.getShooter();
-                    }
-                }
-            } else {
-                damager = (Player) event.getDamager();
-            }
+            Player damager = returnPlayerDamager(event.getDamager());
+            if(damager == null) return;
             Player damagedPlayer = (Player) event.getEntity();
-            if (isEnemyPlayer && damagedPlayer.getInventory().contains(createHeartEqualizer())) {
+            if (damagedPlayer.getInventory().contains(createHeartEqualizer())) {
                 double dmg = event.getFinalDamage();
                 double finalDmg = dmg * Math.min(1, (damagedPlayer.getMaxHealth() / damager.getMaxHealth()));
 

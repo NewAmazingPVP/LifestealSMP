@@ -7,6 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -19,6 +20,7 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import static newamazingpvp.lifestealsmp.discord.DiscordListener.isVanished;
+import static newamazingpvp.lifestealsmp.utility.Utils.returnPlayerDamager;
 import static newamazingpvp.lifestealsmp.variables.Loc.spawnLoc1;
 import static newamazingpvp.lifestealsmp.variables.Loc.spawnLoc2;
 
@@ -29,30 +31,13 @@ public class SpawnProtection implements Listener {
 
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
-        if (event.getEntity() instanceof Player) {
-            Player damaged = (Player) event.getEntity();
-
-            if (event.getDamager() instanceof Player || event.getDamager() instanceof Arrow) {
-                if (event.getDamager() instanceof Player) {
-                    Player damager = (Player) event.getDamager();
-
-                    if (isWithinSpawnRadius(damaged.getLocation())) {
-                        //if (isInCombat(damager) && isInCombat(damaged)) return;
-                        event.setCancelled(true);
-                        damager.sendMessage(ChatColor.RED + "You cannot damage players within the spawn protection area, go around 50-100 blocks away to be able to!");
-                    }
-                } else if (event.getDamager() instanceof Arrow) {
-                    Arrow arrow = (Arrow) event.getDamager();
-                    if (arrow.getShooter() instanceof Player) {
-                        Player shooter = (Player) arrow.getShooter();
-
-                        if (isWithinSpawnRadius(damaged.getLocation())) {
-                            //if (isInCombat(shooter) && isInCombat(damaged)) return;
-                            event.setCancelled(true);
-                            shooter.sendMessage(ChatColor.RED + "You cannot shoot players within the spawn protection area, go around 50-100 blocks away to be able to!");
-                        }
-                    }
-                }
+        if (event.getEntity() instanceof Player damaged) {
+            Player damager = returnPlayerDamager(event.getDamager());
+            if(damager == null) return;
+            if (isWithinSpawnRadius(damaged.getLocation())) {
+                //if (isInCombat(damager) && isInCombat(damaged)) return;
+                event.setCancelled(true);
+                damager.sendMessage(ChatColor.RED + "You cannot damage players within the spawn protection area, go around 50-100 blocks away to be able to!");
             }
         }
     }
@@ -76,46 +61,17 @@ public class SpawnProtection implements Listener {
         }
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGH)
     public void onPvpNearSpawn(EntityDamageByEntityEvent event) {
         World.Environment spawnEnvironment = event.getEntity().getWorld().getEnvironment();
         if (spawnEnvironment != World.Environment.NORMAL) {
             return;
         }
-        if (event.getEntity() instanceof Player) {
-            if (event.getDamager() instanceof Player) {
-                Player damaged = (Player) event.getEntity();
-                Player damager = (Player) event.getDamager();
-                vicinityPvp(event, damaged, damager);
-            } else if (event.getDamager() instanceof Arrow) {
-                Arrow arrow = (Arrow) event.getDamager();
-                if (arrow.getShooter() instanceof Player) {
-                    Player damaged = (Player) event.getEntity();
-                    Player damager = (Player) arrow.getShooter();
-                    vicinityPvp(event, damaged, damager);
-                }
-            } else if (event.getDamager() instanceof TNTPrimed) {
-                TNTPrimed tnt = (TNTPrimed) event.getDamager();
-                if (tnt.getSource() instanceof Player) {
-                    Player damaged = (Player) event.getEntity();
-                    Player damager = (Player) tnt.getSource();
-                    vicinityPvp(event, damaged, damager);
-                }
-            }  else if (event.getDamager() instanceof ThrownPotion) {
-                ThrownPotion potion = (ThrownPotion) event.getDamager();
-                if (potion.getShooter() instanceof Player) {
-                    Player damaged = (Player) event.getEntity();
-                    Player damager = (Player) potion.getShooter();
-                    vicinityPvp(event, damaged, damager);
-                }
-            } else if (event.getDamager() instanceof Trident) {
-                Trident trident = (Trident) event.getDamager();
-                if (trident.getShooter() instanceof Player) {
-                    Player damaged = (Player) event.getEntity();
-                    Player damager = (Player) trident.getShooter();
-                    vicinityPvp(event, damaged, damager);
-                }
-            }
+        if (event.getEntity() instanceof Player damaged) {
+            Player damager = returnPlayerDamager(event.getDamager());
+            if(damager == null) return;
+            if(event.isCancelled()) return;
+            vicinityPvp(event, damaged, damager);
         }
     }
 

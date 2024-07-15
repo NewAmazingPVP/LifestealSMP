@@ -34,7 +34,9 @@ public class Utils {
 
     public static Player returnPlayerDamager(Entity damager){
         Player attacker = null;
-        if (damager instanceof Arrow) {
+        if (damager instanceof Player) {
+            attacker = (Player) damager;
+        } else if (damager instanceof Arrow) {
             Arrow arrow = (Arrow) damager;
             if (arrow.getShooter() instanceof Player) {
                 attacker = (Player) arrow.getShooter();
