@@ -1,9 +1,7 @@
 package newamazingpvp.lifestealsmp.events;
 
-import newamazingpvp.lifestealsmp.events.Event;
 import newamazingpvp.lifestealsmp.utility.CooldownManager;
 
-import java.time.Duration;
 import java.time.ZonedDateTime;
 
 public abstract class BaseEvent implements Event {

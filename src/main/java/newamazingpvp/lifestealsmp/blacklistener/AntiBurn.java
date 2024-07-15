@@ -1,14 +1,10 @@
 package newamazingpvp.lifestealsmp.blacklistener;
 
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityCombustEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.inventory.ItemStack;
-
-import static org.bukkit.Bukkit.getServer;
 
 public class AntiBurn implements Listener {
     /*@EventHandler

@@ -33,13 +33,11 @@ public class DeathBeaconEvent implements Listener {
             Block block = e.getClickedBlock();
 
 
-
             playerBreakDeathBeacon(player, block);
 
-            if (block.getType()==Material.BEACON) {
+            if (block.getType() == Material.BEACON) {
                 e.setCancelled(true);
             }
-
 
 
         }
@@ -49,7 +47,7 @@ public class DeathBeaconEvent implements Listener {
     private void playerBreakDeathBeacon(Player player, Block block) {
 
 
-        if (block.getType()==Material.BEACON) {
+        if (block.getType() == Material.BEACON) {
 
 
             cancelTimer();
@@ -78,7 +76,6 @@ public class DeathBeaconEvent implements Listener {
         if (!isRunning) {
 
             isRunning = true;
-
 
 
             int randomSideIndex = rand.nextInt(arenaSides.size());

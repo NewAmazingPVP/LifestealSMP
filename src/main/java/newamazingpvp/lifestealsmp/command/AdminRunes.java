@@ -15,8 +15,7 @@ import static newamazingpvp.lifestealsmp.runes.RuneHandler.runes;
 public class AdminRunes implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
-            Player p = (Player) sender;
+        if (sender instanceof Player p) {
             Inventory inv = Bukkit.createInventory(null, 54, ChatColor.GOLD + "Admin");
             for (Rune r : runes) {
                 inv.addItem(createRuneItem(r));

@@ -1,22 +1,15 @@
 package newamazingpvp.lifestealsmp.listener;
 
 import org.bukkit.ChatColor;
-import org.bukkit.block.ShulkerBox;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.HumanEntity;
-import org.bukkit.entity.Shulker;
-import org.bukkit.entity.ShulkerBullet;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.*;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.Arrays;
-
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static org.bukkit.Bukkit.getServer;
 
 public class InfiniteStorage implements Listener {
     @EventHandler

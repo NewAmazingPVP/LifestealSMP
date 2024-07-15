@@ -56,8 +56,6 @@ public class CometTrident implements Listener {
                 player.sendMessage("Direction player is looking is" + direction);*/
 
 
-
-
             }
         }
     }

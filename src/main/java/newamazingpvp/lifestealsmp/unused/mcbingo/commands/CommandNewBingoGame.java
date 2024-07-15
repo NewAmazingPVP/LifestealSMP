@@ -13,13 +13,11 @@ public class CommandNewBingoGame implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player player)) {
             sender.sendMessage(ChatColor.RED + "This command can only be executed by players.");
             return true;
         }
 
-
-        Player player = (Player) sender;
 
         player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Generating New Bingo Game!");
 

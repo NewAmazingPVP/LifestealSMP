@@ -20,12 +20,11 @@ public class LSwithdraw implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player player)) {
             sender.sendMessage(ChatColor.RED + "This command can only be executed by players.");
             return true;
         }
 
-        Player player = (Player) sender;
         if (player.getLocation().distance(Bukkit.getWorld("world").getSpawnLocation()) < 500) {
             player.sendMessage(ChatColor.RED + "You are not allowed to withdraw hearts in vicinity of spawn");
             return true;

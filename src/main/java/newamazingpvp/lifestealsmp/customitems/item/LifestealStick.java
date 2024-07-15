@@ -26,14 +26,12 @@ public class LifestealStick implements Listener {
     public void onPlayerHit(EntityDamageByEntityEvent event) {
         Entity damagedEntity = event.getEntity();
 
-        if (event.getDamager() instanceof Player) {
-            Player damager = (Player) event.getDamager();
+        if (event.getDamager() instanceof Player damager) {
             ItemStack itemInMainHand = damager.getInventory().getItemInMainHand();
             ItemMeta meta = itemInMainHand.getItemMeta();
 
             if (isLifeStealStick(meta)) {
-                if (damagedEntity instanceof Player) {
-                    Player damagedPlayer = (Player) damagedEntity;
+                if (damagedEntity instanceof Player damagedPlayer) {
                     handleLifeSteal(damager, damagedPlayer);
                 }
             }

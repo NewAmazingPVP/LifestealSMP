@@ -15,8 +15,7 @@ import static newamazingpvp.lifestealsmp.utility.TimeManager.*;
 public class RecipesCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
+        if (sender instanceof Player player) {
 
             TextComponent message = new TextComponent(ChatColor.GOLD + "**Recipes**");
             message.addExtra("\n");
@@ -78,7 +77,7 @@ public class RecipesCommand implements CommandExecutor {
 
             //player.spigot().sendMessage(message);
             player.sendMessage(ChatColor.AQUA + "Custom items are craftable! Click on each for recipe.");
-            if(!isTimePassed(CUSTOM_ITEMS_AND_RUNES)){
+            if (!isTimePassed(CUSTOM_ITEMS_AND_RUNES)) {
                 player.sendMessage(ChatColor.YELLOW + "Some custom items are not enabled yet (everything except the first 6 are not enabled). They will enable in " + formatDuration(CUSTOM_ITEMS_AND_RUNES));
             }
             GUI.openRecipesGUI(player);

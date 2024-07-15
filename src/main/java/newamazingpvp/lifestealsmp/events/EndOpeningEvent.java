@@ -4,8 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
 import java.awt.*;
-import java.time.Duration;
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsEmbedTitle;
@@ -32,7 +30,7 @@ public class EndOpeningEvent extends BaseEvent {
 
     @Override
     public void doWarning() {
-        if(!isTimePassed(startTime.minusHours(25))) {
+        if (!isTimePassed(startTime.minusHours(25))) {
             sendDiscordNewsMessage(eventRole + " End will be opening in " + formatDuration(startTime) + " exactly! Be prepared by **finding a stronghold/portal** to enter for the fight, whoever has the dragon egg in their inventory will get a perk! Furthermore dragon will drop 1 and only dragon rune and custom lifesteal stick when killed!", "1032411739351941120");
         } else {
             sendDiscordNewsMessage(mcServer + " End will be opening in " + formatDuration(startTime) + " exactly! Be prepared by **finding a stronghold/portal** to enter for the fight, whoever has the dragon egg in their inventory will get a perk! Furthermore dragon will drop 1 and only dragon rune and custom lifesteal stick when killed!", "1032411739351941120");

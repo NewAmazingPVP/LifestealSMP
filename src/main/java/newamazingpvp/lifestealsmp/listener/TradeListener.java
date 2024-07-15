@@ -66,7 +66,7 @@ public class TradeListener implements Listener {
                     }
                 }
             } else {
-                if(clickedInventory != player.getInventory()) {
+                if (clickedInventory != player.getInventory()) {
                     TradeManager.handleTradeCancellation(player);
                     TradeManager.handleTradeCancellation(getOtherPlayer(player));
                     inventory.setItem(45, new ItemStack(Material.RED_STAINED_GLASS_PANE));

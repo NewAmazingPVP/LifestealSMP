@@ -81,10 +81,10 @@ public abstract class AbstractRune implements Rune {
 
     public static Component runeGradient(String itemName) {
         var mm = MiniMessage.miniMessage();
-        return mm.deserialize("<bold><gradient:#4100FF:#D200FF>" + itemName +  "</gradient></bold>");
+        return mm.deserialize("<bold><gradient:#4100FF:#D200FF>" + itemName + "</gradient></bold>");
     }
 
-    public static Component deserialize(String s){
+    public static Component deserialize(String s) {
         LegacyComponentSerializer serializer = LegacyComponentSerializer.builder()
                 .character('&')
                 .hexColors()

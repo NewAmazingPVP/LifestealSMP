@@ -16,7 +16,7 @@ public class Status extends ListenerAdapter {
     @Override
     public void onReady(ReadyEvent event) {
         super.onReady(event);
-        if(!isSmp) return;
+        if (!isSmp) return;
         new BukkitRunnable() {
             @Override
             public void run() {

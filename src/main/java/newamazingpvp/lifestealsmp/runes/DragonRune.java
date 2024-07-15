@@ -1,6 +1,5 @@
 package newamazingpvp.lifestealsmp.runes;
 
-import newamazingpvp.lifestealsmp.customitems.item.LifestealStick;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -18,22 +17,21 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.awt.*;
-import java.net.http.WebSocket;
 import java.util.ArrayList;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.lifestealStick;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordEmbedTitle;
-import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsEmbedTitle;
 import static newamazingpvp.lifestealsmp.utility.TimeManager.END_OPEN_TIME;
 import static newamazingpvp.lifestealsmp.utility.TimeManager.isTimePassed;
 
 public class DragonRune implements Listener {
     public boolean isFlagged = false;
+
     @EventHandler
-    public void onDragonDeath(EntityDeathEvent event){
-        if(event.getEntity().getType() == EntityType.ENDER_DRAGON){
-            if(!isTimePassed(END_OPEN_TIME.plusHours(1)) && !isFlagged) {
+    public void onDragonDeath(EntityDeathEvent event) {
+        if (event.getEntity().getType() == EntityType.ENDER_DRAGON) {
+            if (!isTimePassed(END_OPEN_TIME.plusHours(1)) && !isFlagged) {
                 Bukkit.broadcastMessage(ChatColor.GOLD + "Lifesteal Stick has been dropped for defeating the Ender Dragon!");
                 Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', "&x&F&F&6&8&6&8&lT&x&F&F&6&9&6&7&lh&x&F&F&6&9&6&7&le &x&F&E&6&A&6&5&lo&x&F&E&6&B&6&5&ln&x&F&E&6&C&6&4&le &x&F&D&6&D&6&2&la&x&F&D&6&D&6&2&ln&x&F&D&6&E&6&1&ld &x&F&C&6&F&6&0&lo&x&F&C&7&0&5&F&ln&x&F&C&7&0&5&E&ll&x&F&C&7&1&5&E&ly &x&F&B&7&2&5&C&lD&x&F&B&7&3&5&B&lr&x&F&B&7&4&5&B&la&x&F&B&7&4&5&A&lg&x&F&A&7&5&5&9&lo&x&F&A&7&5&5&9&ln &x&F&A&7&7&5&7&lR&x&F&9&7&7&5&7&lu&x&F&9&7&8&5&6&ln&x&F&9&7&8&5&5&le &x&F&9&7&A&5&4&lh&x&F&8&7&A&5&3&la&x&F&8&7&B&5&2&ls &x&F&8&7&C&5&1&lb&x&F&7&7&D&5&0&le&x&F&7&7&D&5&0&le&x&F&7&7&E&4&F&ln &x&F&7&7&F&4&E&ld&x&F&6&8&0&4&D&lr&x&F&6&8&0&4&C&lo&x&F&6&8&1&4&B&lp&x&F&6&8&1&4&B&lp&x&F&5&8&2&4&A&le&x&F&5&8&3&4&9&ld &x&F&5&8&4&4&8&lf&x&F&4&8&4&4&7&lo&x&F&4&8&5&4&7&lr &x&F&4&8&6&4&5&ld&x&F&4&8&7&4&4&le&x&F&3&8&7&4&4&lf&x&F&3&8&8&4&3&le&x&F&3&8&9&4&2&la&x&F&3&8&9&4&2&lt&x&F&2&8&A&4&1&li&x&F&2&8&B&4&0&ln&x&F&2&8&B&4&0&lg &x&F&2&8&C&3&E&lt&x&F&1&8&D&3&D&lh&x&F&1&8&E&3&D&le &x&F&1&8&F&3&B&lE&x&F&0&8&F&3&B&ln&x&F&0&9&0&3&A&ld&x&F&0&9&1&3&9&le&x&F&0&9&1&3&9&lr &x&E&F&9&2&3&7&lD&x&E&F&9&3&3&6&lr&x&E&F&9&4&3&6&la&x&E&F&9&4&3&5&lg&x&E&E&9&5&3&4&lo&x&E&E&9&5&3&4&ln&x&E&E&9&6&3&3&l!"));
                 event.getDrops().add(lifestealStick());
@@ -46,25 +44,25 @@ public class DragonRune implements Listener {
     }
 
     @EventHandler
-    public void onEntityDamage(EntityDamageEvent event){
-        if(!(event.getEntity() instanceof Player)) return;
-        Player p = (Player) event.getEntity();
-        if(event.getDamageSource().getDamageType() == DamageType.FALL){
-            if(p.getInventory().contains(dragonRune())){
-                event.setCancelled(true);
-            }
-        }
-    }
-    @EventHandler
-    public void onElytraDamage(PlayerItemDamageEvent event){
-        if(event.getItem().getType() == Material.ELYTRA){
-            if(event.getPlayer().getInventory().contains(dragonRune())){
+    public void onEntityDamage(EntityDamageEvent event) {
+        if (!(event.getEntity() instanceof Player p)) return;
+        if (event.getDamageSource().getDamageType() == DamageType.FALL) {
+            if (p.getInventory().contains(dragonRune())) {
                 event.setCancelled(true);
             }
         }
     }
 
-    public static ItemStack dragonRune(){
+    @EventHandler
+    public void onElytraDamage(PlayerItemDamageEvent event) {
+        if (event.getItem().getType() == Material.ELYTRA) {
+            if (event.getPlayer().getInventory().contains(dragonRune())) {
+                event.setCancelled(true);
+            }
+        }
+    }
+
+    public static ItemStack dragonRune() {
         ItemStack rune = new ItemStack(Material.AMETHYST_SHARD);
         ItemMeta meta = rune.getItemMeta();
         meta.addEnchant(Enchantment.UNBREAKING, 1, false);

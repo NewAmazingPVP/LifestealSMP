@@ -1,8 +1,8 @@
 package newamazingpvp.lifestealsmp.events;
 
+import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.event.Listener;
 import org.bukkit.scheduler.BukkitRunnable;
-import newamazingpvp.lifestealsmp.utility.CooldownManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,14 +17,14 @@ public class EventsHandler implements Listener {
     public EventsHandler() {
         // events.add(new TrackingDay(SEASON_START_TIME.plusDays(2), 1));
         // events.add(new UHCPvPEvent(SEASON_START_TIME.plusDays(19).plusHours(5).plusMinutes(1)));
-        // TODO: ADD ALL EVENTS decide all days timeline
+        // TODO: ADD ALL EVENTS decide all days timelinef
         events.add(new ServerOpening(SEASON_START_TIME));
         events.add(new CustomItemsAndRunes(CUSTOM_ITEMS_AND_RUNES));
         events.add(new FinalFight(SEASON_START_TIME.plusDays(28)));
         new BukkitRunnable() {
             @Override
             public void run() {
-                if(!isSmp) return;
+                if (!isSmp) return;
                 for (Event e : events) {
                     CooldownManager eventCooldown = e.getCooldownManager();
 

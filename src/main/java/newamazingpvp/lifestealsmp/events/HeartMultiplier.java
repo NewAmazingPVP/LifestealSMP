@@ -3,15 +3,14 @@ package newamazingpvp.lifestealsmp.events;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
-import java.time.Duration;
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsMessage;
-import static newamazingpvp.lifestealsmp.utility.TimeManager.*;
-import static org.bukkit.Bukkit.getServer;
 import static newamazingpvp.lifestealsmp.customitems.item.HeartItems.heartMultipliers;
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsMessage;
+import static newamazingpvp.lifestealsmp.utility.TimeManager.eventRole;
+import static newamazingpvp.lifestealsmp.utility.TimeManager.formatDuration;
+import static org.bukkit.Bukkit.getServer;
 
 public class HeartMultiplier extends BaseEvent {
     private final double multiplier;
@@ -24,7 +23,7 @@ public class HeartMultiplier extends BaseEvent {
     @Override
     public void onEventStart() {
         Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Heart multiplier event starting now, Check announcements /discord");
-        getServer().getScheduler().runTaskLater(lifestealSmp, () -> sendDiscordNewsMessage(eventRole + " Heart multiplier event is now active, with a multiplier of " + (multiplier-1)*100 + "%. The mob soul (aka used to craft hearts /recipes) will be dropped more frequently from mobs!", "1032411739351941120"), 1200);
+        getServer().getScheduler().runTaskLater(lifestealSmp, () -> sendDiscordNewsMessage(eventRole + " Heart multiplier event is now active, with a multiplier of " + (multiplier - 1) * 100 + "%. The mob soul (aka used to craft hearts /recipes) will be dropped more frequently from mobs!", "1032411739351941120"), 1200);
         heartMultipliers = multiplier;
     }
 
@@ -38,7 +37,7 @@ public class HeartMultiplier extends BaseEvent {
     @Override
     public void doWarning() {
         Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Heart multiplier event happening in " + formatDuration(startTime) + "! Check announcements /discord");
-        sendDiscordNewsMessage(eventRole + " In " + formatDuration(startTime) + ", the heart multiplier event will start with a multiplier of " + (multiplier-1)*100 + "%. The mob soul (aka used to craft hearts /recipes) will be dropped more frequently from mobs!", "1032411739351941120");
+        sendDiscordNewsMessage(eventRole + " In " + formatDuration(startTime) + ", the heart multiplier event will start with a multiplier of " + (multiplier - 1) * 100 + "%. The mob soul (aka used to craft hearts /recipes) will be dropped more frequently from mobs!", "1032411739351941120");
     }
 
     @Override

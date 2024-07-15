@@ -17,7 +17,7 @@ public class PlayerList extends ListenerAdapter {
         if (event.getAuthor().isBot() || event.isWebhookMessage()) {
             return;
         }
-        if(!isSmp) return;
+        if (!isSmp) return;
 
         String messageContent = event.getMessage().getContentRaw();
         if (messageContent.equalsIgnoreCase("playerlist")) {

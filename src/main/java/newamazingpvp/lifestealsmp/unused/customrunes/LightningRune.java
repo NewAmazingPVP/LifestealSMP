@@ -16,9 +16,7 @@ public class LightningRune implements Listener {
 
     @EventHandler
     public void playerAttack(EntityDamageByEntityEvent e) {
-        if (!(e.getDamager() instanceof Player) || !(e.getEntity() instanceof Player)) return;
-        Player attacker = (Player) e.getDamager();
-        Player victim = (Player) e.getEntity();
+        if (!(e.getDamager() instanceof Player attacker) || !(e.getEntity() instanceof Player victim)) return;
 
         if (isRuneInInventory(attacker, "lightning rune")) {
             if (Math.random() <= 0.5) {

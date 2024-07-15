@@ -45,12 +45,10 @@ public class SomberCrystal implements Listener {
 
     @EventHandler
     public void playerHitPlayer(EntityDamageByEntityEvent e) {
-        if (!(e.getDamager() instanceof Player) || !(e.getEntity() instanceof Player)) return;
+        if (!(e.getDamager() instanceof Player player) || !(e.getEntity() instanceof Player damagedPlayer)) return;
 
         general_ID_manager_for_logging();
 
-        Player player = (Player) e.getDamager();
-        Player damagedPlayer = (Player) e.getEntity();
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
         ItemMeta meta = itemInHand.getItemMeta();
 

@@ -2,9 +2,7 @@ package newamazingpvp.lifestealsmp.events;
 
 import org.bukkit.*;
 
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.time.Duration;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsMessage;
@@ -47,7 +45,7 @@ public class CustomItemsAndRunes extends BaseEvent {
     }
 
     @Override
-    public void runContinuously(){
+    public void runContinuously() {
 
     }
 }

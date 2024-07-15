@@ -16,9 +16,8 @@ public class BossQuickStart implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if(!bossRunning && !preBoss) {
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
+        if (!bossRunning && !preBoss) {
+            if (sender instanceof Player player) {
                 player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Quick Started the boss");
                 Bukkit.broadcastMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Fight Starting!");
 
@@ -27,7 +26,7 @@ public class BossQuickStart implements CommandExecutor {
                 preBossCancelTimer();
 
             }
-            }else{
+        } else {
             sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[Error] The pre boss phase has already started or the boss is already running!");
         }
 

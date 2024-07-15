@@ -19,6 +19,7 @@ import static newamazingpvp.lifestealsmp.variables.Misc.maxHp;
 public class HeartItems implements Listener {
 
     public static double heartMultipliers = 1;
+
     @EventHandler
     public void onPlayerKill(EntityDeathEvent e) {
 

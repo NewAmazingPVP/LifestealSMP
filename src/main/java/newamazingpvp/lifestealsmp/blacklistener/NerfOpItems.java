@@ -5,19 +5,16 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.block.Bed;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.type.RespawnAnchor;
 import org.bukkit.entity.EnderCrystal;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.player.PlayerBedEnterEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 
@@ -29,23 +26,22 @@ public class NerfOpItems implements Listener {
 
     @EventHandler
     public void damageEvent(EntityDamageByEntityEvent event) {
-        if (event.getEntity() instanceof Player) {
-            Player player = (Player) event.getEntity();
+        if (event.getEntity() instanceof Player player) {
 
             if (event.getDamager() instanceof EnderCrystal ||
                     event.getDamager() instanceof Minecart) {
                 List<Entity> nearbyEntities = (List<Entity>) event.getDamager().getWorld().getNearbyEntities(event.getDamager().getLocation(), 14, 14, 14);
 
                 int count = 0;
-                for(Entity e : nearbyEntities){
-                    if(e instanceof Player){
+                for (Entity e : nearbyEntities) {
+                    if (e instanceof Player) {
                         count++;
                     }
                 }
-                if(count <= 1) return;
-                for(Entity e : nearbyEntities){
-                    if(e instanceof Player p){
-                        if(!p.equals(player)){
+                if (count <= 1) return;
+                for (Entity e : nearbyEntities) {
+                    if (e instanceof Player p) {
+                        if (!p.equals(player)) {
                             tagPlayer(p, player);
                             tagPlayer(player, p);
                         }
@@ -53,9 +49,7 @@ public class NerfOpItems implements Listener {
                 }
                 event.setDamage(event.getDamage() * 0.15);
                 player.sendMessage(ChatColor.YELLOW + "You were damaged by an overpowered explosive in PVP. These items are allowed on the server but are nerfed for balanced PvP. You should still be able to fight back.");
-            }
-            else if (event.getDamager() instanceof Player) {
-                Player damager = (Player) event.getDamager();
+            } else if (event.getDamager() instanceof Player damager) {
                 if (damager.getInventory().getItemInMainHand().getType() == Material.MACE) {
                     //double finalDmg = e.getFinalDamage()*0.25;
                     //p.damage(e.getFinalDamage()*0.25);
@@ -75,21 +69,21 @@ public class NerfOpItems implements Listener {
 
     @EventHandler
     public void onBedEnterFail(final PlayerBedFailEnterEvent event) {
-        if(event.getBed().getLocation().getWorld().getEnvironment() == World.Environment.NORMAL) return;
+        if (event.getBed().getLocation().getWorld().getEnvironment() == World.Environment.NORMAL) return;
         Location bedLocation = event.getBed().getLocation();
 
         List<Entity> nearbyEntities = (List<Entity>) bedLocation.getWorld().getNearbyEntities(bedLocation, 14, 14, 14);
 
         int count = 0;
-        for(Entity e : nearbyEntities){
-            if(e instanceof Player){
+        for (Entity e : nearbyEntities) {
+            if (e instanceof Player) {
                 count++;
             }
         }
-        if(count <= 1) return;
-        for(Entity e : nearbyEntities){
-            if(e instanceof Player p){
-                if(!p.equals(event.getPlayer())){
+        if (count <= 1) return;
+        for (Entity e : nearbyEntities) {
+            if (e instanceof Player p) {
+                if (!p.equals(event.getPlayer())) {
                     tagPlayer(p, event.getPlayer());
                     tagPlayer(event.getPlayer(), p);
                 }
@@ -103,8 +97,8 @@ public class NerfOpItems implements Listener {
 
     @EventHandler
     public void onAnchorInteract(final PlayerInteractEvent event) {
-        if(event.getClickedBlock() == null) return;
-        if(event.getClickedBlock().getLocation().getWorld().getEnvironment() == World.Environment.NETHER) return;
+        if (event.getClickedBlock() == null) return;
+        if (event.getClickedBlock().getLocation().getWorld().getEnvironment() == World.Environment.NETHER) return;
         final Player player = event.getPlayer();
 
         final Block block = event.getClickedBlock();
@@ -119,15 +113,15 @@ public class NerfOpItems implements Listener {
         List<Entity> nearbyEntities = (List<Entity>) event.getClickedBlock().getLocation().getWorld().getNearbyEntities(event.getClickedBlock().getLocation(), 14, 14, 14);
 
         int count = 0;
-        for(Entity e : nearbyEntities){
-            if(e instanceof Player){
+        for (Entity e : nearbyEntities) {
+            if (e instanceof Player) {
                 count++;
             }
         }
-        if(count <= 1) return;
-        for(Entity e : nearbyEntities){
-            if(e instanceof Player p){
-                if(!p.equals(event.getPlayer())){
+        if (count <= 1) return;
+        for (Entity e : nearbyEntities) {
+            if (e instanceof Player p) {
+                if (!p.equals(event.getPlayer())) {
                     tagPlayer(p, event.getPlayer());
                     tagPlayer(event.getPlayer(), p);
                 }

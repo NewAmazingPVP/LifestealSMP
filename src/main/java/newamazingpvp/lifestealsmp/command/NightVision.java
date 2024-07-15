@@ -12,12 +12,10 @@ public class NightVision implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player player)) {
             sender.sendMessage(ChatColor.RED + "Only players can use this command!");
             return true;
         }
-
-        Player player = (Player) sender;
 
         if (hasNightVision(player)) {
             removeNightVision(player);

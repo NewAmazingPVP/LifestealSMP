@@ -6,13 +6,12 @@ import org.bukkit.Location;
 import org.bukkit.World;
 
 import java.awt.*;
-import java.time.Duration;
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsEmbedTitle;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsMessage;
-import static newamazingpvp.lifestealsmp.utility.TimeManager.*;
+import static newamazingpvp.lifestealsmp.utility.TimeManager.formatDuration;
+import static newamazingpvp.lifestealsmp.utility.TimeManager.mcServer;
 import static org.bukkit.Bukkit.getServer;
 
 public class ServerOpening extends BaseEvent {
