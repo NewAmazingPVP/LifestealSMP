@@ -1,7 +1,9 @@
 package newamazingpvp.lifestealsmp.listener;
 
 import org.bukkit.ChatColor;
-import org.bukkit.entity.*;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
+import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -35,7 +37,7 @@ public class CombatProtectionHandler implements Listener {
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
         if (event.getEntity() instanceof Player damaged) {
             Player damager = returnPlayerDamager(event.getDamager());
-            if(damager == null) return;
+            if (damager == null) return;
             handlePlayerDamage(event, damager, damaged);
         } else if (event.getEntity() instanceof Villager && event.getDamager() instanceof Player) {
             handleVillagerDamage(event, (Player) event.getDamager());
@@ -84,7 +86,7 @@ public class CombatProtectionHandler implements Listener {
             return;
         }
         if (!event.isCancelled()) {
-            if(damaged.equals(damager)) return;
+            if (damaged.equals(damager)) return;
             tagPlayer(damager, damaged);
             tagPlayer(damaged, damager);
         }
@@ -131,7 +133,7 @@ public class CombatProtectionHandler implements Listener {
             slainer = (Player) killer;
         }
         if (slainer == null) return;
-        if(slainer.equals(p)) return;
+        if (slainer.equals(p)) return;
         removeEnemies(p);
         if (!heartCooldownPlayers.contains(p.getName()) && getPlaytime(p) > 144000) {
             if (!(p.getMaxHealth() <= 2)) {

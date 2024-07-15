@@ -10,8 +10,7 @@ import org.bukkit.inventory.ItemStack;
 public class DragonEggPerk implements Listener {
     @EventHandler
     public void onDamaged(EntityDamageEvent e) {
-        if (e.getEntity() instanceof Player) {
-            Player p = (Player) e.getEntity();
+        if (e.getEntity() instanceof Player p) {
             for (ItemStack item : p.getInventory().getContents()) {
                 if (item != null && item.getType() == Material.DRAGON_EGG) {
                     e.setDamage(e.getFinalDamage() * 0.85);

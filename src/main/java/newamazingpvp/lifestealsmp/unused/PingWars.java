@@ -18,10 +18,9 @@ public class PingWars implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
+        if (sender instanceof Player player) {
 
             //Variables and Lists
-            Player player = (Player) sender;
             int highestPing = 0;
             String playerWithHighestPing = "";
             List<String> pings = new ArrayList<>();

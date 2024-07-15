@@ -8,7 +8,6 @@ import org.bukkit.inventory.ShapedRecipe;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.unused.mcbingo.CustomBingoItems.BingoCard;
-import static newamazingpvp.lifestealsmp.unused.mcbingo.CustomBingoItems.BingoPickaxe;
 
 public class BingoRecipes {
 

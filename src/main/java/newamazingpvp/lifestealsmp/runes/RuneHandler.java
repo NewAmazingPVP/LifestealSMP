@@ -58,7 +58,7 @@ public class RuneHandler implements Listener {
         runes.add(new JumpBoostRune.II());
         runes.add(new LuckRune());
         //runes.add(new RaidOmenRune());
-       // runes.add(new RaidOmenRune.II());
+        // runes.add(new RaidOmenRune.II());
         //runes.add(new RaidOmenRune.III());
         //runes.add(new RaidOmenRune.IV());
         //runes.add(new RaidOmenRune.V());
@@ -80,7 +80,7 @@ public class RuneHandler implements Listener {
         for (Rune r : runes) {
             inv.addItem(createRuneItem(r));
         }
-        if(isTimePassed(CUSTOM_ITEMS_AND_RUNES)) {
+        if (isTimePassed(CUSTOM_ITEMS_AND_RUNES)) {
             new BukkitRunnable() {
                 @Override
                 public void run() {
@@ -138,7 +138,7 @@ public class RuneHandler implements Listener {
 
     @EventHandler
     public void onMobDeath(EntityDeathEvent event) {
-        if(!isTimePassed(CUSTOM_ITEMS_AND_RUNES)) return;
+        if (!isTimePassed(CUSTOM_ITEMS_AND_RUNES)) return;
         Entity entity = event.getEntity();
         if (event.getEntity().getKiller() == null) return;
         Player player = event.getEntity().getKiller();

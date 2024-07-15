@@ -1,19 +1,10 @@
 package newamazingpvp.lifestealsmp.utility;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Difficulty;
-import org.bukkit.World;
-
-import java.awt.*;
 import java.time.Duration;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-import static newamazingpvp.lifestealsmp.LifestealSMP.*;
-import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsEmbedTitle;
-import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsMessage;
-import static org.bukkit.Bukkit.getServer;
+import static newamazingpvp.lifestealsmp.LifestealSMP.isSmp;
 
 
 public class TimeManager {
@@ -61,7 +52,8 @@ public class TimeManager {
     }
 
     public static void timeBasedEvents() {
-        if (!isSmp) return;
+        if (!isSmp) {
+        }
     }
 
     public static long getWeeksPassed(ZonedDateTime startTime, ZonedDateTime currentTime) {
@@ -88,7 +80,7 @@ public class TimeManager {
         return ZonedDateTime.now(ZoneId.of("America/New_York")).compareTo(time) >= 0;
     }
 
-    public static String formatDuration(ZonedDateTime time){
+    public static String formatDuration(ZonedDateTime time) {
         return formatDuration(Duration.between(time, ZonedDateTime.now(ZoneId.of("America/New_York"))));
     }
 

@@ -1,27 +1,9 @@
 package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
-import com.google.common.io.ByteArrayDataInput;
-import com.google.common.io.ByteStreams;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Enigma.EnigmaEvents.EnigmaAttack;
-import newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Enigma.EnigmaEvents.EnigmaDamagedAndKilled;
-import newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Enigma.EnigmaEvents.EnigmaGUI;
-import newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Hydra.HydraEvents.HydraAttack;
-import newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Hydra.HydraEvents.HydraDamagedOrKilled;
-import newamazingpvp.lifestealsmp.CorruptedMobsEvent.EventMobs.Mage.MageEvents.MageHitAndKilled;
-import newamazingpvp.lifestealsmp.CorruptedMobsEvent.Utilitys.CorruptedMobsAntiVinillaItemUse;
-import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands.StartRaffleEvent;
-import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEventCommands.StopRaffleEvent;
-import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEvents.ClearOldBingoTags;
-import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEvents.RaffleAddPlayersToBossBar;
-import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEvents.RaffleMiningEvent;
-import newamazingpvp.lifestealsmp.RaffleEvent.RaffleEvents.RaffleSubmittingTickets;
-import newamazingpvp.lifestealsmp.Visuals.DamageIndicator;
-import newamazingpvp.lifestealsmp.Visuals.HP_Bar;
-import newamazingpvp.lifestealsmp.Visuals.nameTagHPMobs;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
 import newamazingpvp.lifestealsmp.allyteams.TeamCommand;
@@ -31,40 +13,55 @@ import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.command.unused.JailPlayer;
 import newamazingpvp.lifestealsmp.customitems.armor.QuarryArmor;
 import newamazingpvp.lifestealsmp.customitems.item.*;
-import newamazingpvp.lifestealsmp.events.EventsHandler;
-import newamazingpvp.lifestealsmp.unused.endfight.GeneralBossLieteners.MiningListeners;
-import newamazingpvp.lifestealsmp.unused.endfight.GeneralBossLieteners.LaunchPads;
-import newamazingpvp.lifestealsmp.unused.endfight.commands.BossQuickStart;
-import newamazingpvp.lifestealsmp.unused.endfight.commands.StartEndBoss;
-import newamazingpvp.lifestealsmp.unused.endfight.commands.StopEndBoss;
-import newamazingpvp.lifestealsmp.runes.DragonRune;
-import newamazingpvp.lifestealsmp.unused.magicstaffs.abilities.Default;
-import newamazingpvp.lifestealsmp.unused.magicstaffs.utils.GUI;
 import newamazingpvp.lifestealsmp.customitems.utils.AntiAnvil;
 import newamazingpvp.lifestealsmp.customitems.utils.Drops;
 import newamazingpvp.lifestealsmp.discord.DiscordListener;
+import newamazingpvp.lifestealsmp.events.EventsHandler;
+import newamazingpvp.lifestealsmp.events.corruptedmobs.commands.SpawnCmd;
+import newamazingpvp.lifestealsmp.events.corruptedmobs.mobs.engima.events.EnigmaAttack;
+import newamazingpvp.lifestealsmp.events.corruptedmobs.mobs.engima.events.EnigmaDamagedAndKilled;
+import newamazingpvp.lifestealsmp.events.corruptedmobs.mobs.engima.events.EnigmaGUI;
+import newamazingpvp.lifestealsmp.events.corruptedmobs.mobs.hydra.events.HydraAttack;
+import newamazingpvp.lifestealsmp.events.corruptedmobs.mobs.hydra.events.HydraDamagedOrKilled;
+import newamazingpvp.lifestealsmp.events.corruptedmobs.mobs.mage.events.MageHitAndKilled;
+import newamazingpvp.lifestealsmp.events.corruptedmobs.utilities.AntiItemUse;
+import newamazingpvp.lifestealsmp.events.raffle.commands.StartRaffleEvent;
+import newamazingpvp.lifestealsmp.events.raffle.commands.StopRaffleEvent;
+import newamazingpvp.lifestealsmp.events.raffle.events.ClearOldBingoTags;
+import newamazingpvp.lifestealsmp.events.raffle.events.Mining;
+import newamazingpvp.lifestealsmp.events.raffle.events.PlayerBossBar;
+import newamazingpvp.lifestealsmp.events.raffle.events.SubmitTicket;
+import newamazingpvp.lifestealsmp.game.BroadcastMessage;
+import newamazingpvp.lifestealsmp.game.Compass;
+import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
+import newamazingpvp.lifestealsmp.game.PlayerPing;
+import newamazingpvp.lifestealsmp.listener.*;
+import newamazingpvp.lifestealsmp.runes.DragonRune;
+import newamazingpvp.lifestealsmp.runes.RuneHandler;
+import newamazingpvp.lifestealsmp.unused.PingWars;
+import newamazingpvp.lifestealsmp.unused.endfight.bosscommands.BeaconTestCMD;
+import newamazingpvp.lifestealsmp.unused.endfight.bosscommands.NPCTestCommand;
 import newamazingpvp.lifestealsmp.unused.endfight.bossevents.DeathBeaconEvent;
-import newamazingpvp.lifestealsmp.unused.endfight.BossTestCommands.BeaconTestCMD;
-import newamazingpvp.lifestealsmp.unused.endfight.BossTestCommands.NPCTestCommand;
-import newamazingpvp.lifestealsmp.CorruptedMobsEvent.CorruptedMobsCommands.SpawnCmd;
+import newamazingpvp.lifestealsmp.unused.endfight.bosslisteners.LaunchPads;
+import newamazingpvp.lifestealsmp.unused.endfight.bosslisteners.MiningListeners;
+import newamazingpvp.lifestealsmp.unused.endfight.commands.BossQuickStart;
+import newamazingpvp.lifestealsmp.unused.endfight.commands.StartEndBoss;
+import newamazingpvp.lifestealsmp.unused.endfight.commands.StopEndBoss;
 import newamazingpvp.lifestealsmp.unused.endfight.custommobs.mobs.deadminer.DeadMinerListener;
 import newamazingpvp.lifestealsmp.unused.endfight.custommobs.mobs.lightningzombie.LightningZombieListener;
 import newamazingpvp.lifestealsmp.unused.endfight.custommobs.mobs.minishadow.listeners.MiniShadowAttackPlayer;
 import newamazingpvp.lifestealsmp.unused.endfight.custommobs.mobs.minishadow.listeners.MiniShadowAttackedByPlayer;
 import newamazingpvp.lifestealsmp.unused.endfight.custommobs.mobs.shadow.listeners.ShadowAttackPlayer;
 import newamazingpvp.lifestealsmp.unused.endfight.custommobs.mobs.shadow.listeners.ShadowAttackedByPlayer;
-import newamazingpvp.lifestealsmp.game.BroadcastMessage;
-import newamazingpvp.lifestealsmp.game.Compass;
-import newamazingpvp.lifestealsmp.game.EndFightRestrictions;
-import newamazingpvp.lifestealsmp.game.PlayerPing;
-import newamazingpvp.lifestealsmp.listener.*;
-import newamazingpvp.lifestealsmp.runes.RuneHandler;
+import newamazingpvp.lifestealsmp.unused.magicstaffs.abilities.Default;
+import newamazingpvp.lifestealsmp.unused.magicstaffs.utils.GUI;
+import newamazingpvp.lifestealsmp.unused.mcbingo.gui.BingoCardGUIListeners;
+import newamazingpvp.lifestealsmp.unused.visualeffects.DroppedItemParticles;
 import newamazingpvp.lifestealsmp.utility.Metrics;
 import newamazingpvp.lifestealsmp.utility.TimeManager;
 import newamazingpvp.lifestealsmp.utility.Utils;
-import newamazingpvp.lifestealsmp.unused.visualeffects.DroppedItemParticles;
-import newamazingpvp.lifestealsmp.unused.PingWars;
-import newamazingpvp.lifestealsmp.unused.mcbingo.gui.BingoCardGUIListeners;
+import newamazingpvp.lifestealsmp.visuals.HpBar;
+import newamazingpvp.lifestealsmp.visuals.HpNameTag;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -85,7 +82,7 @@ import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
 import static newamazingpvp.lifestealsmp.game.CombatLog.cancelCombatData;
 import static newamazingpvp.lifestealsmp.game.CombatLog.removeEnemies;
 import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
-import static newamazingpvp.lifestealsmp.utility.TimeManager.*;
+import static newamazingpvp.lifestealsmp.utility.TimeManager.doEvents;
 import static newamazingpvp.lifestealsmp.utility.Utils.startTPSTracking;
 
 public final class LifestealSMP extends JavaPlugin implements Listener, PluginMessageListener {
@@ -202,7 +199,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         if (config.get("Discord.Smp") != null) {
             isSmp = config.getBoolean("Discord.Smp");
         }
-        if(isSmp){
+        if (isSmp) {
             getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
         }
         doEvents();
@@ -273,19 +270,19 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getCommand("bossquickstart").setExecutor(new BossQuickStart());
 
             //getServer().getPluginManager().registerEvents(new DamageIndicator(), this);
-            getServer().getPluginManager().registerEvents(new HP_Bar(), this);
-            getServer().getPluginManager().registerEvents(new nameTagHPMobs(), this);
+            getServer().getPluginManager().registerEvents(new HpBar(), this);
+            getServer().getPluginManager().registerEvents(new HpNameTag(), this);
 
             //===================== Raffle Event Listeners =======================
-            getServer().getPluginManager().registerEvents(new RaffleMiningEvent(), this);
+            getServer().getPluginManager().registerEvents(new Mining(), this);
             getServer().getPluginManager().registerEvents(new ClearOldBingoTags(), this);
-            getServer().getPluginManager().registerEvents(new RaffleSubmittingTickets(), this);
-            getServer().getPluginManager().registerEvents(new RaffleAddPlayersToBossBar(), this);
+            getServer().getPluginManager().registerEvents(new SubmitTicket(), this);
+            getServer().getPluginManager().registerEvents(new PlayerBossBar(), this);
             getServer().getPluginManager().registerEvents(new EnigmaGUI(), this);
             getServer().getPluginManager().registerEvents(new EnigmaAttack(), this);
             getServer().getPluginManager().registerEvents(new EnigmaDamagedAndKilled(), this);
             getServer().getPluginManager().registerEvents(new MageHitAndKilled(), this);
-            getServer().getPluginManager().registerEvents(new CorruptedMobsAntiVinillaItemUse(), this);
+            getServer().getPluginManager().registerEvents(new AntiItemUse(), this);
             getServer().getPluginManager().registerEvents(new HydraAttack(), this);
             getServer().getPluginManager().registerEvents(new HydraDamagedOrKilled(), this);
             //getServer().getPluginManager().registerEvents(new BlockPlaceTracker(), this);
@@ -327,7 +324,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
                     config.setColored(true);
                     config.setSplitCodeBlockForLinks(false);
                     config.setAllowLinkEmbeds(true);
-                    if(isSmp) {
+                    if (isSmp) {
                         config.addFilter(logItem -> {
                             String message = logItem.getMessage();
                             return message.contains("not pass event");

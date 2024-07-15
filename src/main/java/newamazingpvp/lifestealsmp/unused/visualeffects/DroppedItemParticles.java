@@ -20,8 +20,7 @@ public class DroppedItemParticles implements Listener {
     public void entityMove(EntityMoveEvent event) {
 
         Entity e = event.getEntity();
-        if (e instanceof Item) {
-            Item item = (Item) e;
+        if (e instanceof Item item) {
             ItemStack itemStack = item.getItemStack();
             Material itemType = itemStack.getType();
             Location entityLocation = e.getLocation();

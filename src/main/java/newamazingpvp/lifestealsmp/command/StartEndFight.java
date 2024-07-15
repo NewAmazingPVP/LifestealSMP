@@ -26,6 +26,7 @@ public class StartEndFight implements CommandExecutor {
         worldBorder.setSize(310);
         new BukkitRunnable() {
             int minutesPassed = 0;
+
             @Override
             public void run() {
                 if (minutesPassed >= 30) {

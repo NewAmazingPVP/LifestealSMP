@@ -5,7 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.entity.*;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -33,7 +33,7 @@ public class SpawnProtection implements Listener {
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
         if (event.getEntity() instanceof Player damaged) {
             Player damager = returnPlayerDamager(event.getDamager());
-            if(damager == null) return;
+            if (damager == null) return;
             if (isWithinSpawnRadius(damaged.getLocation())) {
                 //if (isInCombat(damager) && isInCombat(damaged)) return;
                 event.setCancelled(true);
@@ -69,8 +69,8 @@ public class SpawnProtection implements Listener {
         }
         if (event.getEntity() instanceof Player damaged) {
             Player damager = returnPlayerDamager(event.getDamager());
-            if(damager == null) return;
-            if(event.isCancelled()) return;
+            if (damager == null) return;
+            if (event.isCancelled()) return;
             vicinityPvp(event, damaged, damager);
         }
     }
@@ -81,7 +81,7 @@ public class SpawnProtection implements Listener {
             damaged.sendMessage(ChatColor.RED + "PVP near the vicinity of spawn is discouraged, thus therefore both of you will take " + ChatColor.DARK_RED + ChatColor.BOLD + "SAME DAMAGE" + ChatColor.RED + " regardless of your gear");
             damager.sendMessage(ChatColor.RED + "PVP near the vicinity of spawn is discouraged, thus therefore both of you will take " + ChatColor.DARK_RED + ChatColor.BOLD + "SAME DAMAGE" + ChatColor.RED + " regardless of your gear");
             event.setDamage(0.0);
-            damaged.setHealth(damaged.getHealth()-1.0);
+            damaged.setHealth(damaged.getHealth() - 1.0);
         }
     }
 

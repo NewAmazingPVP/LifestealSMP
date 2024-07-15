@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.block.Bed;
 import org.bukkit.entity.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -32,27 +31,23 @@ public class Utils {
         }
     }
 
-    public static Player returnPlayerDamager(Entity damager){
+    public static Player returnPlayerDamager(Entity damager) {
         Player attacker = null;
         if (damager instanceof Player) {
             attacker = (Player) damager;
-        } else if (damager instanceof Arrow) {
-            Arrow arrow = (Arrow) damager;
+        } else if (damager instanceof Arrow arrow) {
             if (arrow.getShooter() instanceof Player) {
                 attacker = (Player) arrow.getShooter();
             }
-        } else if (damager instanceof TNTPrimed) {
-            TNTPrimed tnt = (TNTPrimed) damager;
+        } else if (damager instanceof TNTPrimed tnt) {
             if (tnt.getSource() instanceof Player) {
                 attacker = (Player) tnt.getSource();
             }
-        } else if (damager instanceof ThrownPotion) {
-            ThrownPotion potion = (ThrownPotion) damager;
+        } else if (damager instanceof ThrownPotion potion) {
             if (potion.getShooter() instanceof Player) {
                 attacker = (Player) potion.getShooter();
             }
-        } else if (damager instanceof Trident) {
-            Trident trident = (Trident) damager;
+        } else if (damager instanceof Trident trident) {
             if (trident.getShooter() instanceof Player) {
                 attacker = (Player) trident.getShooter();
             }
@@ -117,7 +112,7 @@ public class Utils {
     }
 
     public static void adjustPerformance() {
-        if(!isSmp) return;
+        if (!isSmp) return;
         double averageTPS = getAverageTPS();
         if (tpsCooldown.isOnCooldown()) return;
 

@@ -3,15 +3,14 @@ package newamazingpvp.lifestealsmp.events;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 
-import java.time.Duration;
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsMessage;
-import static newamazingpvp.lifestealsmp.utility.TimeManager.*;
+import static newamazingpvp.lifestealsmp.utility.TimeManager.eventRole;
+import static newamazingpvp.lifestealsmp.utility.TimeManager.formatDuration;
 import static org.bukkit.Bukkit.getServer;
 
 public class UHCPvPEvent extends BaseEvent {

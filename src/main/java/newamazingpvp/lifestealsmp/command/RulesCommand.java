@@ -10,8 +10,7 @@ import org.bukkit.entity.Player;
 public class RulesCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
+        if (sender instanceof Player player) {
 
             player.sendMessage(ChatColor.GOLD + "Rules for this SMP Season:");
             player.sendMessage(ChatColor.WHITE + "- End Crystals/Respawn Anchors/Beds/Minecarts are allowed but are nerfed in PVP for balance");

@@ -13,8 +13,7 @@ public class DiscordLink implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
+        if (sender instanceof Player player) {
 
             TextComponent linkText = new TextComponent(ChatColor.GOLD + "Here is our discord:" + ChatColor.AQUA + " https://discord.gg/PN8egFY3ap");
             linkText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, discordURL));

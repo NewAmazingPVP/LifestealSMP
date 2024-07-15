@@ -8,7 +8,7 @@ import org.bukkit.potion.PotionEffectType;
 
 public class RegenerationRune extends AbstractRune {
 
-    private static final Component name =  runeGradient("Regeneration Rune");
+    private static final Component name = runeGradient("Regeneration Rune");
     private static final EntityType mob = EntityType.GHAST;
     private static final PotionEffect effect = new PotionEffect(PotionEffectType.REGENERATION, 200, 0);
     private static final PotionEffect effectII = new PotionEffect(PotionEffectType.REGENERATION, 200, 1);

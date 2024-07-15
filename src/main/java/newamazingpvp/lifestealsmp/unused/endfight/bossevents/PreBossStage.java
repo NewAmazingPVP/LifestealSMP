@@ -13,9 +13,9 @@ public class PreBossStage {
 
     public static BukkitRunnable preBossTimerRunnable;
 
-    public static void startPreBoss(Player player){
+    public static void startPreBoss(Player player) {
 
-        if(!preBoss && !bossRunning) {
+        if (!preBoss && !bossRunning) {
 
 
             preBoss = true;
@@ -46,16 +46,12 @@ public class PreBossStage {
             preBossTimerRunnable.runTaskTimer(lifestealSmp, 0L, 20L); // Start immediately and repeat every second
 
 
-
-
-        }else{
+        } else {
             player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[Error] The pre boss phase has already started or the boss is already running!");
         }
 
 
     }
-
-
 
 
     public static void preBossCancelTimer() {

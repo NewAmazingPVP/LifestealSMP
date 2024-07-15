@@ -13,8 +13,7 @@ public class BeaconInvis implements Listener {
     public void onPlayerBeaconEffect(BeaconEffectEvent event) {
         Block block = event.getBlock();
 
-        if (block.getState() instanceof Beacon) {
-            Beacon beacon = (Beacon) block.getState();
+        if (block.getState() instanceof Beacon beacon) {
 
             if (beacon.getTier() == 4) {
                 event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 17 * 20, 0, true, false));

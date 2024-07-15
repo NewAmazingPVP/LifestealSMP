@@ -21,7 +21,7 @@ public class ItemStacks {
         //red gradient (now its blue)
         //#FF0000
         //#EFADFD
-        return mm.deserialize("<bold><gradient:#0045FF:#ADE6FD>" + itemName +  "</gradient></bold>");
+        return mm.deserialize("<bold><gradient:#0045FF:#ADE6FD>" + itemName + "</gradient></bold>");
     }
 
     public static ItemStack createReviveBeacon() {

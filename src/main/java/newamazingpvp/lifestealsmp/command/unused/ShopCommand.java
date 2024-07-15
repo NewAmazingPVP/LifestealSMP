@@ -13,8 +13,7 @@ public class ShopCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
+        if (sender instanceof Player player) {
             /*if(player.getDisplayName().equals(player.getName())) {
                 player.setDisplayName(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW + player.getDisplayName());
                 player.sendMessage(player.getDisplayName());

@@ -47,8 +47,7 @@ public class TntBow implements Listener {
 
     @EventHandler
     public void onProjectileLaunch(ProjectileLaunchEvent event) {
-        if (event.getEntityType() == EntityType.ARROW && event.getEntity().getShooter() instanceof Player) {
-            Player shooter = (Player) event.getEntity().getShooter();
+        if (event.getEntityType() == EntityType.ARROW && event.getEntity().getShooter() instanceof Player shooter) {
             ItemStack mainHandItem = shooter.getInventory().getItemInMainHand();
             ItemStack offHandItem = shooter.getInventory().getItemInOffHand();
 

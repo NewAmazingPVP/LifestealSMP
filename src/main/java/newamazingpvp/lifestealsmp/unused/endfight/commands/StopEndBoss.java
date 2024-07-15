@@ -16,8 +16,7 @@ public class StopEndBoss implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if(sender instanceof Player){
-            Player player = (Player) sender;
+        if (sender instanceof Player player) {
             player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Stopped the boss fight!");
 
             bossRunning = false;

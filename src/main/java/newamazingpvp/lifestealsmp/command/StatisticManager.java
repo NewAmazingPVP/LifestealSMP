@@ -70,15 +70,14 @@ public class StatisticManager implements CommandExecutor, TabCompleter {
         try {
             sender.sendMessage("Successfully updated " + targetPlayer.getName() + "'s " + statistic.name() + " to " + targetPlayer.getStatistic(statistic));
             return true;
-        } catch (Exception e){
+        } catch (Exception e) {
             sender.sendMessage("Successfully updated " + targetPlayer.getName() + "'s " + statistic.name());
             return true;
         }
     }
 
     private void performStatisticOperation(Player player, Statistic statistic, String operation, int value, Object extra) {
-        if (extra instanceof Material) {
-            Material material = (Material) extra;
+        if (extra instanceof Material material) {
             switch (operation) {
                 case "increment":
                     player.incrementStatistic(statistic, material, value);
@@ -90,8 +89,7 @@ public class StatisticManager implements CommandExecutor, TabCompleter {
                     player.setStatistic(statistic, material, value);
                     break;
             }
-        } else if (extra instanceof EntityType) {
-            EntityType entityType = (EntityType) extra;
+        } else if (extra instanceof EntityType entityType) {
             switch (operation) {
                 case "increment":
                     player.incrementStatistic(statistic, entityType, value);

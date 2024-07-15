@@ -9,8 +9,7 @@ import org.bukkit.entity.Player;
 public class HelpCommand implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
-            Player p = (Player) sender;
+        if (sender instanceof Player p) {
             p.sendMessage(ChatColor.GOLD + "/rules " + ChatColor.WHITE + "for the rules of the SMP" +
                     "\n" + ChatColor.GOLD + "/discord " + ChatColor.WHITE + "for the discord link" +
                     "\n" + ChatColor.GOLD + "/recipes " + ChatColor.WHITE + "for the recipes of custom items on this SMP" +

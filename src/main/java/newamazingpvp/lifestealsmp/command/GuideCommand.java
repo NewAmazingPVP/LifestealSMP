@@ -11,8 +11,7 @@ import org.bukkit.inventory.meta.BookMeta;
 public class GuideCommand implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
-            Player p = (Player) sender;
+        if (sender instanceof Player p) {
             p.getInventory().addItem(createTutorialBook());
             p.sendMessage("You were given the server tutorial book!");
         }

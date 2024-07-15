@@ -20,8 +20,7 @@ public class VoidWalkerHelmEffects implements Listener {
         Entity damager = e.getDamager();
         Entity damageTaker = e.getEntity();
 
-        if (e.getEntity() instanceof Player) {
-            Player player = (Player) e.getEntity();
+        if (e.getEntity() instanceof Player player) {
             ItemStack helmet = player.getInventory().getHelmet();
             if (helmet != null) {
                 ItemMeta meta = helmet.getItemMeta();

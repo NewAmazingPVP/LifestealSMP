@@ -1,16 +1,15 @@
 package newamazingpvp.lifestealsmp.events;
 
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Difficulty;
+import org.bukkit.World;
 
-import java.time.Duration;
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsMessage;
-import static newamazingpvp.lifestealsmp.utility.TimeManager.*;
 import static newamazingpvp.lifestealsmp.utility.TimeManager.formatDuration;
-import static org.bukkit.Bukkit.getServer;
+import static newamazingpvp.lifestealsmp.utility.TimeManager.mcServer;
 
 public class NormalDifficulty extends BaseEvent {
     public NormalDifficulty(ZonedDateTime time) {
@@ -43,7 +42,7 @@ public class NormalDifficulty extends BaseEvent {
     }
 
     @Override
-    public void runContinuously(){
+    public void runContinuously() {
 
     }
 }

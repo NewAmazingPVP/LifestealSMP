@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.EntityType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+
 public class HealthRune extends AbstractRune {
 
     private static final Component name = runeGradient("Health Rune");

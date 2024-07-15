@@ -55,14 +55,14 @@ public class Compass implements CommandExecutor, Listener {
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("track")) {
-            if (!(sender instanceof Player)) {
+            if (!(sender instanceof Player g)) {
                 sender.sendMessage("This command can only be used by a player!");
                 return true;
             }
 
             Player player = (Player) sender;
 
-            if(noTrackingDay){
+            if (noTrackingDay) {
                 sender.sendMessage("Today is the no tracking day event, check /discord announcements!");
             }
 
@@ -89,7 +89,6 @@ public class Compass implements CommandExecutor, Listener {
                     return true;
                 }
             }*/
-            Player g = (Player) sender;
             if ((isElytra(g))) {
                 sender.sendMessage(ChatColor.RED + "You cannot track while having elytra!!!");
                 return true;

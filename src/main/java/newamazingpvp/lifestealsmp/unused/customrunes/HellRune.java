@@ -15,8 +15,7 @@ public class HellRune implements Listener {
     @EventHandler
     public void playerAttack(EntityDamageByEntityEvent e) {
 
-        if (!(e.getDamager() instanceof Player)) return;
-        Player attacker = (Player) e.getDamager();
+        if (!(e.getDamager() instanceof Player attacker)) return;
         World world = attacker.getWorld();
         PotionEffect effect = new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 100, 0); //change if needed
 
