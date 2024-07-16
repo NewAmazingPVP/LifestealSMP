@@ -58,7 +58,7 @@ import newamazingpvp.lifestealsmp.unused.magicstaffs.utils.GUI;
 import newamazingpvp.lifestealsmp.unused.mcbingo.gui.BingoCardGUIListeners;
 import newamazingpvp.lifestealsmp.unused.visualeffects.DroppedItemParticles;
 import newamazingpvp.lifestealsmp.utility.Metrics;
-import newamazingpvp.lifestealsmp.utility.TimeManager;
+import newamazingpvp.lifestealsmp.events.TimeManager;
 import newamazingpvp.lifestealsmp.utility.Utils;
 import newamazingpvp.lifestealsmp.visuals.HpBar;
 import newamazingpvp.lifestealsmp.visuals.HpNameTag;
@@ -82,7 +82,7 @@ import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
 import static newamazingpvp.lifestealsmp.game.CombatLog.cancelCombatData;
 import static newamazingpvp.lifestealsmp.game.CombatLog.removeEnemies;
 import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
-import static newamazingpvp.lifestealsmp.utility.TimeManager.doEvents;
+import static newamazingpvp.lifestealsmp.events.TimeManager.doEvents;
 import static newamazingpvp.lifestealsmp.utility.Utils.startTPSTracking;
 
 public final class LifestealSMP extends JavaPlugin implements Listener, PluginMessageListener {

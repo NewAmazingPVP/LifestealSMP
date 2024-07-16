@@ -25,8 +25,8 @@ import java.util.Random;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.runes.AbstractRune.deserialize;
-import static newamazingpvp.lifestealsmp.utility.TimeManager.CUSTOM_ITEMS_AND_RUNES;
-import static newamazingpvp.lifestealsmp.utility.TimeManager.isTimePassed;
+import static newamazingpvp.lifestealsmp.events.TimeManager.CUSTOM_ITEMS_AND_RUNES;
+import static newamazingpvp.lifestealsmp.events.TimeManager.isTimePassed;
 import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 
 public class RuneHandler implements Listener {

@@ -13,7 +13,7 @@ import java.time.Duration;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-import static newamazingpvp.lifestealsmp.utility.TimeManager.*;
+import static newamazingpvp.lifestealsmp.events.TimeManager.*;
 
 public class AntiEnd implements Listener {
 

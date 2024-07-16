@@ -8,8 +8,8 @@ import org.bukkit.World;
 import java.time.ZonedDateTime;
 
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsMessage;
-import static newamazingpvp.lifestealsmp.utility.TimeManager.formatDuration;
-import static newamazingpvp.lifestealsmp.utility.TimeManager.mcServer;
+import static newamazingpvp.lifestealsmp.events.TimeManager.formatDuration;
+import static newamazingpvp.lifestealsmp.events.TimeManager.mcServer;
 
 public class NormalDifficulty extends BaseEvent {
     public NormalDifficulty(ZonedDateTime time) {

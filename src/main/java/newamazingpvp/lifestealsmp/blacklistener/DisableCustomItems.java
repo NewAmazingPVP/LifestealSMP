@@ -8,8 +8,8 @@ import org.bukkit.event.inventory.CraftItemEvent;
 
 import static newamazingpvp.lifestealsmp.customitems.utils.GUI.basicItems;
 import static newamazingpvp.lifestealsmp.customitems.utils.GUI.customItems;
-import static newamazingpvp.lifestealsmp.utility.TimeManager.CUSTOM_ITEMS_AND_RUNES;
-import static newamazingpvp.lifestealsmp.utility.TimeManager.formatDuration;
+import static newamazingpvp.lifestealsmp.events.TimeManager.CUSTOM_ITEMS_AND_RUNES;
+import static newamazingpvp.lifestealsmp.events.TimeManager.formatDuration;
 
 public class DisableCustomItems implements Listener {
     @EventHandler

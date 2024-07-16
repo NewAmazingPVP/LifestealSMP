@@ -8,8 +8,8 @@ import java.time.ZonedDateTime;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.customitems.item.HeartItems.heartMultipliers;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsMessage;
-import static newamazingpvp.lifestealsmp.utility.TimeManager.eventRole;
-import static newamazingpvp.lifestealsmp.utility.TimeManager.formatDuration;
+import static newamazingpvp.lifestealsmp.events.TimeManager.eventRole;
+import static newamazingpvp.lifestealsmp.events.TimeManager.formatDuration;
 import static org.bukkit.Bukkit.getServer;
 
 public class HeartMultiplier extends BaseEvent {

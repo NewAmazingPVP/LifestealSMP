@@ -10,8 +10,8 @@ import java.time.Duration;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-import static newamazingpvp.lifestealsmp.utility.TimeManager.SEASON_START_TIME;
-import static newamazingpvp.lifestealsmp.utility.TimeManager.formatDuration;
+import static newamazingpvp.lifestealsmp.events.TimeManager.SEASON_START_TIME;
+import static newamazingpvp.lifestealsmp.events.TimeManager.formatDuration;
 
 public class ServerOpening implements Listener {
     @EventHandler

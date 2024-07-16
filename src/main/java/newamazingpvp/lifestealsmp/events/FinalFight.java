@@ -8,7 +8,7 @@ import java.time.ZonedDateTime;
 
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsEmbedTitle;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsMessage;
-import static newamazingpvp.lifestealsmp.utility.TimeManager.*;
+import static newamazingpvp.lifestealsmp.events.TimeManager.*;
 import static org.bukkit.Bukkit.getServer;
 
 public class FinalFight extends BaseEvent {
