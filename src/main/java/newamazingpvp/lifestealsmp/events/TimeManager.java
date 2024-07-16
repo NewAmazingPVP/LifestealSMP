@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.utility;
+package newamazingpvp.lifestealsmp.events;
 
 import java.time.Duration;
 import java.time.ZoneId;
@@ -13,11 +13,11 @@ public class TimeManager {
             2024, 7, 20, 12, 0, 0, 0, ZoneId.of("America/New_York")
     );
 
-    public static final ZonedDateTime END_OPEN_TIME = SEASON_START_TIME.plusDays(14).plusHours(2);
-    public static final ZonedDateTime FINAL_FIGHT = SEASON_START_TIME.plusDays(21).plusHours(2);
+    public static final ZonedDateTime END_OPEN_TIME = SEASON_START_TIME.plusDays(14);
+    public static final ZonedDateTime FINAL_FIGHT = SEASON_START_TIME.plusDays(28);
 
     //this is because season starts 12pm est auto restart at 3am Saturday morning
-    public static final ZonedDateTime CUSTOM_ITEMS_AND_RUNES = SEASON_START_TIME.plusDays(6).plusHours(14);
+    public static final ZonedDateTime CUSTOM_ITEMS_AND_RUNES = SEASON_START_TIME.plusDays(7);
 
     public static String eventRole = "<@&1259526654204575896>";
     public static String mcServer = "<@&1047168915500966048>";

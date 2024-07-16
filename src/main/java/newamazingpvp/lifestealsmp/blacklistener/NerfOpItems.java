@@ -122,6 +122,7 @@ public class NerfOpItems implements Listener {
         for (Entity e : nearbyEntities) {
             if (e instanceof Player p) {
                 if (!p.equals(event.getPlayer())) {
+                    //does it tg properly?????? in range?????
                     tagPlayer(p, event.getPlayer());
                     tagPlayer(event.getPlayer(), p);
                 }

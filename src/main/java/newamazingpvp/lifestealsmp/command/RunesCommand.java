@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import static newamazingpvp.lifestealsmp.runes.RuneHandler.inv;
-import static newamazingpvp.lifestealsmp.utility.TimeManager.*;
+import static newamazingpvp.lifestealsmp.events.TimeManager.*;
 
 public class RunesCommand implements CommandExecutor {
     @Override

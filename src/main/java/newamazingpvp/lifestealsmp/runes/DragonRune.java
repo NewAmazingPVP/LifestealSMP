@@ -22,8 +22,8 @@ import java.util.List;
 
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.lifestealStick;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordEmbedTitle;
-import static newamazingpvp.lifestealsmp.utility.TimeManager.END_OPEN_TIME;
-import static newamazingpvp.lifestealsmp.utility.TimeManager.isTimePassed;
+import static newamazingpvp.lifestealsmp.events.TimeManager.END_OPEN_TIME;
+import static newamazingpvp.lifestealsmp.events.TimeManager.isTimePassed;
 
 public class DragonRune implements Listener {
     public boolean isFlagged = false;

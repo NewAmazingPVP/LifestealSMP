@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-import static newamazingpvp.lifestealsmp.utility.TimeManager.SEASON_START_TIME;
+import static newamazingpvp.lifestealsmp.events.TimeManager.SEASON_START_TIME;
 
 public class ServerRuntime implements CommandExecutor {
 
