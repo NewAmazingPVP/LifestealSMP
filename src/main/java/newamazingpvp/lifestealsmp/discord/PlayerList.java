@@ -10,6 +10,7 @@ import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.isSmp;
 import static newamazingpvp.lifestealsmp.discord.DiscordListener.isVanished;
+import static newamazingpvp.lifestealsmp.events.TimeManager.*;
 
 public class PlayerList extends ListenerAdapter {
     @Override
@@ -21,6 +22,10 @@ public class PlayerList extends ListenerAdapter {
 
         String messageContent = event.getMessage().getContentRaw();
         if (messageContent.equalsIgnoreCase("playerlist")) {
+            if(!isTimePassed(SEASON_START_TIME)){
+                event.getChannel().sendMessage("Next season opening in " + formatDuration(SEASON_START_TIME)).queue();
+                return;
+            }
             List<String> playerNames = new ArrayList<>();
             int size = 0;
 
