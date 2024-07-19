@@ -26,8 +26,8 @@ public class FinalFight extends BaseEvent {
 
     @Override
     public void onEventEnd() {
-        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "This season has concluded. Thank you for participating! Next season will start in 1 week");
-        sendDiscordNewsMessage("The next season will start in a week!", "1032411739351941120");
+        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "This season has concluded with the winner GGs. Thank you for participating! Next season will start in 1 week");
+        sendDiscordNewsMessage( mcServer + " The next season will start in a week! GGs for the player winner of the season!", "1032411739351941120");
     }
 
     @Override
@@ -37,6 +37,7 @@ public class FinalFight extends BaseEvent {
         } else {
             sendDiscordNewsMessage(mcServer + " Final fight in exactly " + formatDuration(startTime) + "! Be prepared, for this fight you will be teleported automatically in-game and the last one standing will be the winner of this season!", "1032411739351941120");
         }
+        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + " Final fight in exactly " + formatDuration(startTime) +  "! Check announcements /discord");
     }
 
     @Override
@@ -46,6 +47,6 @@ public class FinalFight extends BaseEvent {
 
     @Override
     public void runContinuously() {
-        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Final fight event is happening! May the best win this season! Note: Do not use portals during fight, it will instant eliminate you");
+        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Final fight event is happening! May the best win this season! Note: Do not use portals during fight, it will instantly eliminate you");
     }
 }
