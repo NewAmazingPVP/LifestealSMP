@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -106,6 +107,20 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
     public void onPlayerKick(PlayerKickEvent e) {
         if(isTimePassed(startTime) && !isTimePassed(endTime) && !isInCombat(e.getPlayer())){
             teleportBack(e.getPlayer());
+        }
+    }
+
+    //so i was bored and i did this
+    @EventHandler
+    public void onPlayerPlaceBed(BlockPlaceEvent e){
+        if(!e.getPlayer().getWorld().getName().equals("uhcpvp_world")) return;
+        if(e.getBlock().getType().toString().toLowerCase().contains("bed") ||
+        e.getBlockPlaced().getType().toString().toLowerCase().contains("bed") ||
+        e.getBlockReplacedState().getBlock().getType().toString().toLowerCase().contains("bed") ||
+        e.getItemInHand().getType().toString().toLowerCase().contains("bed") ||
+        e.getPlayer().getInventory().getItemInMainHand().getType().toString().toLowerCase().contains("bed") ||
+        e.getPlayer().getInventory().getItemInOffHand().getType().toString().toLowerCase().contains("bed")){
+            e.setCancelled(true);
         }
     }
 }
