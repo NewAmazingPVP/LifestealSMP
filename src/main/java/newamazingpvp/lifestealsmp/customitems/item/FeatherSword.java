@@ -24,7 +24,7 @@ import static org.bukkit.Bukkit.getServer;
 
 public class FeatherSword implements Listener {
     private final Map<Player, CooldownManager> teleportCooldowns = new HashMap<>();
-    private final int teleportCooldownDuration = 5; // Cooldown duration in seconds
+    private final int teleportCooldownDuration = 5;
 
     @EventHandler
     public void onPlayerItemHeld(PlayerItemHeldEvent event) {
@@ -34,7 +34,8 @@ public class FeatherSword implements Listener {
         ItemStack offHandItem = player.getInventory().getItemInOffHand();
 
         if (isPermanentSpeedSword(mainHandItem) || isPermanentSpeedSword(offHandItem)) {
-            player.setWalkSpeed(0.3f);
+            //player.setWalkSpeed(0.3f);
+            player.setWalkSpeed(0.28f);
             //giveSpeed(player);
         } else {
             player.setWalkSpeed(0.2f);
@@ -66,10 +67,10 @@ public class FeatherSword implements Listener {
                     player.getLocation().getWorld().spawnParticle(Particle.CLOUD, player.getLocation(), 10);
                     player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 5.0f, 2.0f);
                     Vector velocity = player.getLocation().getDirection().multiply(3);
-                    double maxHeight = 1.0;
+                    /*double maxHeight = 1.0;
                     if (velocity.getY() > maxHeight) {
                         velocity.setY(maxHeight);
-                    }
+                    }*/
                     player.setVelocity(velocity);
                     cooldownManager.setCooldown(teleportCooldownDuration);
                     getServer().getScheduler().runTaskLater(lifestealSmp, () -> event.getPlayer().setCooldown(event.getItem().getType(), teleportCooldownDuration * 20), 1);
