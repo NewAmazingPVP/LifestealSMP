@@ -46,7 +46,7 @@ public class LifestealStick implements Listener {
         CooldownManager cooldown = stickCooldowns.getOrDefault(damager, new CooldownManager());
 
         if (!cooldown.isOnCooldown()) {
-            double newHealth = Math.min(damager.getHealth() + 1, damager.getAttribute(org.bukkit.attribute.Attribute.GENERIC_MAX_HEALTH).getValue());
+            double newHealth = Math.min(damager.getHealth() + 2, damager.getAttribute(org.bukkit.attribute.Attribute.GENERIC_MAX_HEALTH).getValue());
             damager.setHealth(newHealth);
             damager.playSound(damager.getLocation(), Sound.ENTITY_ELDER_GUARDIAN_AMBIENT, 2.0f, 2.0f);
             cooldown.setCooldown(lifeStealStickCooldown);
