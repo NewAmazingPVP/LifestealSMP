@@ -66,7 +66,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -408,5 +410,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         Bukkit.getPluginManager().registerEvents(new MusicBox(), lifestealSmp);
         Bukkit.getPluginManager().registerEvents(new HeartEqualizer(), lifestealSmp);
     }
+
 
 }
