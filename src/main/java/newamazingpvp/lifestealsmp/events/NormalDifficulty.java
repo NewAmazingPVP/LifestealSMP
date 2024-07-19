@@ -22,6 +22,7 @@ public class NormalDifficulty extends BaseEvent {
             w.setDifficulty(Difficulty.NORMAL);
         }
         sendDiscordNewsMessage(mcServer + "Server is now set to normal difficulty.", "1032411739351941120");
+        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Server is now normal difficulty. Check /discord announcements");
     }
 
     @Override
@@ -31,7 +32,7 @@ public class NormalDifficulty extends BaseEvent {
 
     @Override
     public void doWarning() {
-        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Server will be made normal difficulty in " + formatDuration(startTime) + ". Check announcements");
+        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Server will be made normal difficulty in " + formatDuration(startTime) + ". Check /discord announcements");
         //sendDiscordNewsEmbedTitle("Custom items and runes!", Color.GREEN, "1032411739351941120");
         sendDiscordNewsMessage(" In " + formatDuration(startTime) + ", server will be made normal difficulty.", "1032411739351941120");
     }

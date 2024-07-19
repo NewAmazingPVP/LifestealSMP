@@ -24,7 +24,7 @@ public class TrackingDay extends BaseEvent {
     @Override
     public void onEventStart() {
         Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Exact block /track day happening, Check announcements /discord");
-        getServer().getScheduler().runTaskLater(lifestealSmp, () -> sendDiscordNewsMessage(eventRole + "/track will now show exact blocks away, for a day.", "1032411739351941120"), 1200);
+        sendDiscordNewsMessage(eventRole + "/track will now show exact blocks away, for a day, therefore be careful of surroundings....", "1032411739351941120");
         trackingDist = blocks;
     }
 
@@ -50,6 +50,8 @@ public class TrackingDay extends BaseEvent {
     @Override
     public void runContinuously() {
         trackingDist = blocks;
+        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Exact block /track day happening, Check announcements /discord");
+        getCooldownManager().setCooldown(1000);
     }
 
 }

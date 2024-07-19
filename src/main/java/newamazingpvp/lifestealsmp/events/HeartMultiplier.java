@@ -23,13 +23,13 @@ public class HeartMultiplier extends BaseEvent {
     @Override
     public void onEventStart() {
         Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Heart multiplier event starting now, Check announcements /discord");
-        getServer().getScheduler().runTaskLater(lifestealSmp, () -> sendDiscordNewsMessage(eventRole + " Heart multiplier event is now active, with a multiplier of " + (multiplier - 1) * 100 + "%. The mob soul (aka used to craft hearts /recipes) will be dropped more frequently from mobs!", "1032411739351941120"), 1200);
+        sendDiscordNewsMessage(eventRole + " Heart multiplier event is now active, with a multiplier of " + (multiplier - 1) * 100 + "%. The mob soul (aka used to craft hearts /recipes) will be dropped more frequently from mobs!", "1032411739351941120");
         heartMultipliers = multiplier;
     }
 
     @Override
     public void onEventEnd() {
-        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Heart multiplier event is now over, Check announcements");
+        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Heart multiplier event is now over, Check /discord announcements");
         sendDiscordNewsMessage("Heart multiplier event is now over", "1032411739351941120");
         heartMultipliers = 1;
     }
@@ -48,5 +48,7 @@ public class HeartMultiplier extends BaseEvent {
     @Override
     public void runContinuously() {
         heartMultipliers = multiplier;
+        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Heart multiplier event is happening, Check announcements /discord");
+        getCooldownManager().setCooldown(1000);
     }
 }

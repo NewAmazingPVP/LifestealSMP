@@ -33,6 +33,7 @@ public class Compass implements CommandExecutor, Listener {
     public static int trackingDist = 250;
     private boolean logOffTracking;
     public static boolean noTrackingDay = false;
+    public static int delayDuration = 45;
 
     @EventHandler
     public void onPlayerPortalEvent(PlayerPortalEvent event) {
@@ -152,8 +153,8 @@ public class Compass implements CommandExecutor, Listener {
             }*/
 
             trackingPlayers.put(player.getUniqueId(), target.getUniqueId());
-            player.sendMessage(ChatColor.GREEN + "Tracking vicinity to " + target.getName() + " every 45 seconds");
-            //player.sendMessage(ChatColor.GREEN + "Tracking quadrant of " + target.getName() + " every 45 seconds");
+            player.sendMessage(ChatColor.GREEN + "Tracking vicinity to " + target.getName() + " every " + delayDuration + " seconds");
+            //player.sendMessage(ChatColor.GREEN + "Tracking quadrant of " + target.getName() + " every " + delayDuration + " seconds");
             //player.sendMessage(ChatColor.GREEN + "Compass is now pointing towards " + target.getName());
             //target.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[WARNING] You are being tracked!");
             return true;
@@ -242,7 +243,7 @@ public class Compass implements CommandExecutor, Listener {
                     //}
                     String msg;
                     int distance = 0;
-                    if (target != null && !playerDiedRecently(target) && !isElytra(player) && !isPlayerElytraCooldown(player) && !(isPlayerInvisible(player) || (isPlayerInvisible(target)))) {
+                    if (target != null && !playerDiedRecently(target) && !isElytra(player) && !isPlayerElytraCooldown(player) && !noTrackingDay && !(isPlayerInvisible(player) || (isPlayerInvisible(target)))) {
                         if (player.getWorld().getEnvironment() == World.Environment.NORMAL && target.getWorld().getEnvironment() == World.Environment.NORMAL) {
                             //setNormalCompass(compass);
                             //player.setCompassTarget(target.getLocation());
@@ -290,7 +291,7 @@ public class Compass implements CommandExecutor, Listener {
                 }
 
             }
-        }.runTaskTimer(lifestealSmp, 0L, 20L * 45L);
+        }.runTaskTimer(lifestealSmp, 0L, 20L * delayDuration);
     }
 
 

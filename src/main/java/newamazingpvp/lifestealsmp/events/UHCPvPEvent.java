@@ -2,6 +2,10 @@ package newamazingpvp.lifestealsmp.events;
 
 import org.bukkit.*;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerLoginEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.time.ZonedDateTime;
 import java.util.HashMap;
@@ -9,11 +13,11 @@ import java.util.Map;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsMessage;
-import static newamazingpvp.lifestealsmp.events.TimeManager.eventRole;
-import static newamazingpvp.lifestealsmp.events.TimeManager.formatDuration;
+import static newamazingpvp.lifestealsmp.events.TimeManager.*;
+import static newamazingpvp.lifestealsmp.variables.Loc.endSpawn;
 import static org.bukkit.Bukkit.getServer;
 
-public class UHCPvPEvent extends BaseEvent {
+public class UHCPvPEvent extends BaseEvent implements Listener {
     public static final Map<Player, Location> playerOriginalWorlds = new HashMap<>();
     private static World pvpWorld = null;
     public static boolean isUhcEvent = false;
@@ -80,4 +84,19 @@ public class UHCPvPEvent extends BaseEvent {
             player.sendMessage(ChatColor.RED + "You are not in the PvP world!");
         }
     }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerLoginEvent event){
+        if(isTimePassed(startTime) && !isTimePassed(endTime)){
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> teleportBack(event.getPlayer()), 20);
+        }
+    }
+
+    @EventHandler
+    public void onPlayerLeave(PlayerQuitEvent event){
+        if(isTimePassed(startTime) && !isTimePassed(endTime)){
+            teleportBack(event.getPlayer());
+        }
+    }
+
 }

@@ -35,6 +35,7 @@ public class EndOpeningEvent extends BaseEvent {
         } else {
             sendDiscordNewsMessage(mcServer + " End will be opening in " + formatDuration(startTime) + " exactly! Be prepared by **finding a stronghold/portal** to enter for the fight, whoever has the dragon egg in their inventory will get a perk! Furthermore dragon will drop 1 and only dragon rune and custom lifesteal stick when killed!", "1032411739351941120");
         }
+        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "End is opening in " + formatDuration(startTime) + "! Check /discord announcements");
     }
 
     @Override
