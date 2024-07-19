@@ -1,6 +1,8 @@
 package newamazingpvp.lifestealsmp.events;
 
+import newamazingpvp.lifestealsmp.runes.DragonRune;
 import newamazingpvp.lifestealsmp.utility.CooldownManager;
+import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -22,7 +24,9 @@ public class EventsHandler implements Listener {
         events.add(new NoTrackingDay(SEASON_START_TIME.plusDays(4)));
         events.add(new HeartMultiplier(SEASON_START_TIME.plusDays(5), 1.5));
         events.add(new CustomItemsAndRunes(CUSTOM_ITEMS_AND_RUNES));
-        events.add(new UHCPvPEvent(CUSTOM_ITEMS_AND_RUNES));
+        UHCPvPEvent pvp = new UHCPvPEvent(CUSTOM_ITEMS_AND_RUNES);
+        Bukkit.getPluginManager().registerEvents(pvp, lifestealSmp);
+        events.add(pvp);
         events.add(new NoTrackingDay(CUSTOM_ITEMS_AND_RUNES.plusDays(1)));
         events.add(new TrackingDay(CUSTOM_ITEMS_AND_RUNES.plusDays(3), 1));
         events.add(new RuneMultiplier(CUSTOM_ITEMS_AND_RUNES.plusDays(5), 1));
@@ -31,7 +35,9 @@ public class EventsHandler implements Listener {
         events.add(new NoTrackingDay(END_OPEN_TIME.plusDays(3)));
         events.add(new DropMultiplier(END_OPEN_TIME.plusDays(4), 1.5));
         //add comet's events once done (like +2 events) custom mobs and raffle
-        events.add(new UHCPvPEvent(END_OPEN_TIME.plusWeeks(1)));
+        UHCPvPEvent pvp1 = new UHCPvPEvent(END_OPEN_TIME.plusWeeks(1));
+        Bukkit.getPluginManager().registerEvents(pvp1, lifestealSmp);
+        events.add(pvp1);
         events.add(new InsaneTrackingDay(END_OPEN_TIME.plusWeeks(1).plusDays(3), 1));
         events.add(new DropMultiplier(END_OPEN_TIME.plusWeeks(1).plusDays(5), 2));
         events.add(new NoTrackingDay(END_OPEN_TIME.plusWeeks(1).plusDays(6)));

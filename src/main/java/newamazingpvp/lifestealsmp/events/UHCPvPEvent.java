@@ -3,7 +3,9 @@ package newamazingpvp.lifestealsmp.events;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
@@ -14,6 +16,7 @@ import java.util.Map;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsMessage;
 import static newamazingpvp.lifestealsmp.events.TimeManager.*;
+import static newamazingpvp.lifestealsmp.game.CombatLog.*;
 import static newamazingpvp.lifestealsmp.variables.Loc.endSpawn;
 import static org.bukkit.Bukkit.getServer;
 
@@ -92,11 +95,17 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
         }
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOW)
     public void onPlayerLeave(PlayerQuitEvent event){
-        if(isTimePassed(startTime) && !isTimePassed(endTime)){
+        if(isTimePassed(startTime) && !isTimePassed(endTime) && !isInCombat(event.getPlayer())){
             teleportBack(event.getPlayer());
         }
     }
 
+    @EventHandler(priority = EventPriority.LOW)
+    public void onPlayerKick(PlayerKickEvent e) {
+        if(isTimePassed(startTime) && !isTimePassed(endTime) && !isInCombat(e.getPlayer())){
+            teleportBack(e.getPlayer());
+        }
+    }
 }
