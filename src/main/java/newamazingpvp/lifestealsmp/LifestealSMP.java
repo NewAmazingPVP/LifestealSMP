@@ -76,6 +76,11 @@ import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.util.Arrays;
+
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlacklist;
 import static newamazingpvp.lifestealsmp.customitems.utils.DevRecipes.registerCustomRecipesDev;
 import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerBasicRecipes;
@@ -367,7 +372,44 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         if (!channel.equals("nappixel:lifesteal")) {
             return;
         }
+        Bukkit.broadcastMessage(Arrays.toString(message));
+        System.out.println(Arrays.toString(message));
         ByteArrayDataInput in = ByteStreams.newDataInput(message);
+        Bukkit.broadcastMessage(String.valueOf(in));
+        System.out.println(in);
+        String subchannel = in.readUTF();
+        Bukkit.broadcastMessage(subchannel);
+        System.out.println(subchannel);
+        if (subchannel.equals("forceRestart")) {
+            short len = in.readShort();
+            byte[] msgbytes = new byte[len];
+            in.readFully(msgbytes);
+
+            DataInputStream msgIn = new DataInputStream(new ByteArrayInputStream(msgbytes));
+            try {
+                String secretMessage = msgIn.readUTF();
+                Bukkit.broadcastMessage(secretMessage);
+                System.out.println(secretMessage);
+                if (secretMessage.equals("forceRestartLOL")) {
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        cancelCombatData(p);
+                        removeEnemies(p);
+                        p.kick(Component.text("Proxy is restarting.... Please reconnect").color(NamedTextColor.DARK_RED));
+                    }
+                }
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            try {
+                short meaningofLife = msgIn.readShort();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+
+        /*ByteArrayDataInput in = ByteStreams.newDataInput(message);
         String subchannel = in.readUTF();
         if (subchannel.equals("forceRestart")) {
             for (Player p : Bukkit.getOnlinePlayers()) {
@@ -375,7 +417,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
                 removeEnemies(p);
                 p.kick(Component.text("Proxy is restarting.... Please reconnect").color(NamedTextColor.DARK_RED));
             }
-        }
+        }*/
         /*
         ByteArrayDataInput dataInput = ByteStreams.newDataInput(bytes);
 
