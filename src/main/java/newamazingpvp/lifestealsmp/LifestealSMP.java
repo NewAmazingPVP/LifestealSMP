@@ -1,6 +1,8 @@
 package newamazingpvp.lifestealsmp;
 
 import com.earth2me.essentials.Essentials;
+import com.google.common.io.ByteArrayDataInput;
+import com.google.common.io.ByteStreams;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -104,7 +106,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getLogger().info("This plugin was developed by NewAmazingPVP and Comet99. Please provide attribution if you use it and abide by the licenses. You are not allowed to use this if you are not an active contributor");
         new Metrics(this, 22552);
         getServer().getMessenger().registerIncomingPluginChannel(this, "nappixel:lifesteal", this);
-        //getServer().getMessenger().registerOutgoingPluginChannel(this, "nappixel:lifesteal");
+        getServer().getMessenger().registerOutgoingPluginChannel(this, "nappixel:lifesteal");
         saveDefaultConfig();
         config = getConfig();
         lifestealSmp = this;
@@ -361,15 +363,18 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
     }
 
     @Override
-    public void onPluginMessageReceived(@NotNull String s, @NotNull Player player, @NotNull byte[] bytes) {
-        if (!s.equals("nappixel:lifesteal")) {
+    public void onPluginMessageReceived(String channel, Player player, byte[] message) {
+        if (!channel.equals("nappixel:lifesteal")) {
             return;
         }
-
-        for (Player p : Bukkit.getOnlinePlayers()) {
-            cancelCombatData(p);
-            removeEnemies(p);
-            p.kick(Component.text("Proxy is restarting.... Please reconnect").color(NamedTextColor.DARK_RED));
+        ByteArrayDataInput in = ByteStreams.newDataInput(message);
+        String subchannel = in.readUTF();
+        if (subchannel.equals("forceRestart")) {
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                cancelCombatData(p);
+                removeEnemies(p);
+                p.kick(Component.text("Proxy is restarting.... Please reconnect").color(NamedTextColor.DARK_RED));
+            }
         }
         /*
         ByteArrayDataInput dataInput = ByteStreams.newDataInput(bytes);

@@ -31,7 +31,7 @@ import static newamazingpvp.lifestealsmp.variables.Misc.maxHp;
 public class CombatProtectionHandler implements Listener {
     public static List<String> heartCooldownPlayers = new ArrayList<>();
     public static List<String> invincibilityPlayers = new ArrayList<>();
-    public List<String> newbieViolate = new ArrayList<>();
+    public static List<String> newbieViolate = new ArrayList<>();
 
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {

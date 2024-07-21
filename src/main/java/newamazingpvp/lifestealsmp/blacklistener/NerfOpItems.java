@@ -54,7 +54,8 @@ public class NerfOpItems implements Listener {
                     //double finalDmg = e.getFinalDamage()*0.25;
                     //p.damage(e.getFinalDamage()*0.25);
                     event.setDamage(event.getDamage() * 0.15);
-                    //p.setHealth(p.getHealth()-finalDmg);
+                    // DONT USE THIS WONT WORK WELL WITH TOTEMS
+                    //p.setHealth(Math.max(0, p.getHealth()-finalDmg);
                     player.sendMessage(ChatColor.YELLOW + "You were damaged by a mace. These items are allowed on the server but are nerfed for balanced PvP. You should still be able to fight back.");
                     damager.sendMessage(ChatColor.AQUA + "You attacked another player with a mace. The mace is nerfed for balanced PvP on this server, so it won't give you a significant advantage.");
                 }
