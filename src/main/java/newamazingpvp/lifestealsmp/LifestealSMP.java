@@ -372,14 +372,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         if (!channel.equals("nappixel:lifesteal")) {
             return;
         }
-        Bukkit.broadcastMessage(Arrays.toString(message));
-        System.out.println(Arrays.toString(message));
         ByteArrayDataInput in = ByteStreams.newDataInput(message);
-        Bukkit.broadcastMessage(String.valueOf(in));
-        System.out.println(in);
         String subchannel = in.readUTF();
-        Bukkit.broadcastMessage(subchannel);
-        System.out.println(subchannel);
         if (subchannel.equals("forceRestart")) {
             short len = in.readShort();
             byte[] msgbytes = new byte[len];
@@ -388,8 +382,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             DataInputStream msgIn = new DataInputStream(new ByteArrayInputStream(msgbytes));
             try {
                 String secretMessage = msgIn.readUTF();
-                Bukkit.broadcastMessage(secretMessage);
-                System.out.println(secretMessage);
                 if (secretMessage.equals("forceRestartLOL")) {
                     for (Player p : Bukkit.getOnlinePlayers()) {
                         cancelCombatData(p);
