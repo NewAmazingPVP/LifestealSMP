@@ -18,8 +18,13 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.discord.DiscordListener.isVanished;
+import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
+import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.invincibilityPlayers;
+import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.newbieViolate;
 import static newamazingpvp.lifestealsmp.utility.Utils.returnPlayerDamager;
 import static newamazingpvp.lifestealsmp.variables.Loc.spawnLoc1;
 import static newamazingpvp.lifestealsmp.variables.Loc.spawnLoc2;
@@ -61,7 +66,7 @@ public class SpawnProtection implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    /*@EventHandler(priority = EventPriority.HIGH)
     public void onPvpNearSpawn(EntityDamageByEntityEvent event) {
         World.Environment spawnEnvironment = event.getEntity().getWorld().getEnvironment();
         if (spawnEnvironment != World.Environment.NORMAL) {
@@ -71,6 +76,22 @@ public class SpawnProtection implements Listener {
             Player damager = returnPlayerDamager(event.getDamager());
             if (damager == null) return;
             if (event.isCancelled()) return;
+            if (getPlaytime(damager) < 144000 && !newbieViolate.contains(damager.getName())) {
+                newbieViolate.add(damager.getName());
+                event.setCancelled(true);
+                damager.sendMessage(ChatColor.RED + "You tried attacking someone and have temporarily lost newbie protection");
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        newbieViolate.remove(damager.getName());
+                    }
+                }.runTaskLater(lifestealSmp, 20 * 60 * 5);
+            }
+            if (invincibilityPlayers.contains(damager.getName())) {
+                event.setCancelled(true);
+                damager.sendMessage(ChatColor.RED + "You tried attacking someone and have lost death protection");
+                invincibilityPlayers.remove(damager.getName());
+            }
             vicinityPvp(event, damaged, damager);
         }
     }
@@ -81,9 +102,9 @@ public class SpawnProtection implements Listener {
             damaged.sendMessage(ChatColor.RED + "PVP near the vicinity of spawn is discouraged, thus therefore both of you will take " + ChatColor.DARK_RED + ChatColor.BOLD + "SAME DAMAGE" + ChatColor.RED + " regardless of your gear");
             damager.sendMessage(ChatColor.RED + "PVP near the vicinity of spawn is discouraged, thus therefore both of you will take " + ChatColor.DARK_RED + ChatColor.BOLD + "SAME DAMAGE" + ChatColor.RED + " regardless of your gear");
             event.setDamage(0.0);
-            damaged.setHealth(damaged.getHealth() - 1.0);
+            damaged.setHealth(Math.max(0, damaged.getHealth() - 1.0));
         }
-    }
+    }*/
 
     @EventHandler
     public void spawnBlockPlace(PlayerInteractEvent event) {
