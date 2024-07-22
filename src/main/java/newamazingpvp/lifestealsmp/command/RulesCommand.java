@@ -22,7 +22,8 @@ public class RulesCommand implements CommandExecutor {
             player.sendMessage(ChatColor.WHITE + "- No alts");
             player.sendMessage(ChatColor.WHITE + "- Respect players");
             player.sendMessage(ChatColor.WHITE + "- No exploiting bugs/glitches");
-            player.sendMessage(ChatColor.WHITE + "- Anything that gives an advantage is not allowed (with the exception of some mods in ⁠❓info-faq)");
+            player.sendMessage(ChatColor.WHITE + "- Anything that gives an advantage is not allowed (with the exception of some mods in ⁠❓info-faq) such as minimap");
+            player.sendMessage(ChatColor.WHITE + "- However do not use replay mod or minimap mods to find underground bases");
             player.sendMessage(ChatColor.WHITE + "- No lag farms/builds");
             player.sendMessage(ChatColor.WHITE + "- No toxicity");
             //player.sendMessage(ChatColor.WHITE + "- Do not trick or manipulate new players to hit you for hearts");
