@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.command;
 
+import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -8,10 +9,27 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 
+import java.util.HashMap;
+import java.util.UUID;
+
 public class GuideCommand implements CommandExecutor {
 
+    private final HashMap<UUID, CooldownManager> playerCooldowns = new HashMap<>();
+
+    @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player p) {
+            UUID playerId = p.getUniqueId();
+            CooldownManager cooldown = playerCooldowns.getOrDefault(playerId, new CooldownManager());
+
+            if (cooldown.isOnCooldown()) {
+                p.sendMessage("You must wait " + cooldown.getRemainingSeconds() + " seconds before using this command again.");
+                return true;
+            }
+
+            cooldown.setCooldown(10);
+            playerCooldowns.put(playerId, cooldown);
+
             p.getInventory().addItem(createTutorialBook());
             p.sendMessage("You were given the server tutorial book!");
         }
@@ -38,4 +56,3 @@ public class GuideCommand implements CommandExecutor {
         return book;
     }
 }
-
