@@ -69,12 +69,13 @@ public class PlayerLagMsg implements Listener {
             }, 20);
         }
         if (event.getMessage().toLowerCase().contains("stuck") ||
-                event.getMessage().toLowerCase().contains("trap")) {
+                event.getMessage().toLowerCase().contains("trap") ||
+                event.getMessage().toLowerCase().contains("hole")) {
             Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
                 @Override
                 public void run() {
                     for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-                        p.sendMessage(ChatColor.RED + "If you are stuck " + ChatColor.YELLOW + event.getPlayer().getName() + ChatColor.DARK_RED + " at vicinity of spawn, then do /spawn to get out");
+                        p.sendMessage(ChatColor.RED + "If you are stuck " + ChatColor.YELLOW + event.getPlayer().getName() + ChatColor.DARK_RED + " at vicinity of spawn, then do " + ChatColor.AQUA + "/spawn" + ChatColor.DARK_RED + " to get out");
                     }
                 }
             }, 20);

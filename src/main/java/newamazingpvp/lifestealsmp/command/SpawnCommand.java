@@ -18,7 +18,7 @@ public class SpawnCommand implements CommandExecutor {
                 player.teleport(Bukkit.getWorld("world").getSpawnLocation());
                 return true;
             } else {
-                sender.sendMessage("Only players can use this command.");
+                sender.sendMessage("Only players near spawn can use this command.");
                 return false;
             }
         }
