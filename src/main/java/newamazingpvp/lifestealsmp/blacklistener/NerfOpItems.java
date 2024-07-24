@@ -21,6 +21,9 @@ import org.bukkit.inventory.EquipmentSlot;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.game.CombatLog.tagPlayer;
+import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
+import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.invincibilityPlayers;
+import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.newbieViolate;
 
 public class NerfOpItems implements Listener {
 
@@ -30,6 +33,16 @@ public class NerfOpItems implements Listener {
 
             if (event.getDamager() instanceof EnderCrystal ||
                     event.getDamager() instanceof Minecart) {
+                if(getPlaytime(player) < 144000 && !newbieViolate.contains(player.getName())){
+                    event.setCancelled(true);
+                    player.sendMessage(ChatColor.RED + "You were protected from explosive damage due to your newbie protection");
+                    return;
+                }
+                if(invincibilityPlayers.contains(player.getName())){
+                    event.setCancelled(true);
+                    player.sendMessage(ChatColor.RED + "You were protected from explosive damage due to your death protection");
+                    return;
+                }
                 List<Entity> nearbyEntities = (List<Entity>) event.getDamager().getWorld().getNearbyEntities(event.getDamager().getLocation(), 14, 14, 14);
 
                 int count = 0;
@@ -41,9 +54,10 @@ public class NerfOpItems implements Listener {
                 if (count <= 1) return;
                 for (Entity e : nearbyEntities) {
                     if (e instanceof Player p) {
+                        p.sendMessage(ChatColor.YELLOW + "Explosives other than TNT do not tag you for PVP");
                         if (!p.equals(player)) {
-                            tagPlayer(p, player);
-                            tagPlayer(player, p);
+                            //tagPlayer(p, player);
+                            //tagPlayer(player, p);
                         }
                     }
                 }
@@ -84,9 +98,10 @@ public class NerfOpItems implements Listener {
         if (count <= 1) return;
         for (Entity e : nearbyEntities) {
             if (e instanceof Player p) {
+                p.sendMessage(ChatColor.YELLOW + "Explosives other than TNT do not tag you for PVP");
                 if (!p.equals(event.getPlayer())) {
-                    tagPlayer(p, event.getPlayer());
-                    tagPlayer(event.getPlayer(), p);
+                    //tagPlayer(p, event.getPlayer());
+                    //tagPlayer(event.getPlayer(), p);
                 }
             }
         }
@@ -122,10 +137,11 @@ public class NerfOpItems implements Listener {
         if (count <= 1) return;
         for (Entity e : nearbyEntities) {
             if (e instanceof Player p) {
+                p.sendMessage(ChatColor.YELLOW + "Explosives other than TNT do not tag you for PVP");
                 if (!p.equals(event.getPlayer())) {
                     //does it tg properly?????? in range?????
-                    tagPlayer(p, event.getPlayer());
-                    tagPlayer(event.getPlayer(), p);
+                    //tagPlayer(p, event.getPlayer());
+                    //tagPlayer(event.getPlayer(), p);
                 }
             }
         }
@@ -140,9 +156,6 @@ public class NerfOpItems implements Listener {
 
 
     private boolean willExplode(final RespawnAnchor anchor, final Material heldMaterial) {
-        // if the held block is glowstone and anchor has max charge
-        // OR
-        // if the held block is not glowstone and anchor has any charge at all
         return (heldMaterial == Material.GLOWSTONE && anchor.getCharges() >= anchor.getMaximumCharges())
                 || (heldMaterial != Material.GLOWSTONE && anchor.getCharges() > 0);
     }
