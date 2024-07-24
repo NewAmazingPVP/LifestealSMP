@@ -15,7 +15,7 @@ import static org.bukkit.Bukkit.getServer;
 public class NoTrackingDay extends BaseEvent {
 
     public NoTrackingDay(ZonedDateTime startTime) {
-        super(startTime, startTime.plusHours(1));
+        super(startTime, startTime.plusDays(1));
     }
 
     @Override
