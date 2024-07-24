@@ -78,7 +78,7 @@ public class CombatProtectionHandler implements Listener {
             return;
         }
         if (getPlaytime(damaged) < 144000) {
-            damaged.sendMessage(ChatColor.RED + "Since you don't have 3 hours of playtime, even if you die you won't lose any hearts");
+            damaged.sendMessage(ChatColor.RED + "Since you don't have 2 hours of playtime, even if you die you won't lose any hearts");
             damager.sendMessage(ChatColor.RED + "The person you are trying to attack does not have 2 hours of playtime. Therefore they will not drop hearts when killed");
         }
         if (onSameTeam(damaged, damager)) {

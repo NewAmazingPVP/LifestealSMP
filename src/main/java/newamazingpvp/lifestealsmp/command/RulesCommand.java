@@ -29,7 +29,7 @@ public class RulesCommand implements CommandExecutor {
             //player.sendMessage(ChatColor.WHITE + "- Do not trick or manipulate new players to hit you for hearts");
             player.sendMessage(ChatColor.WHITE + "- Netherite armor and tools are allowed.");
             player.sendMessage(ChatColor.WHITE + "- Do not lava cast or grief in the vicinity of spawn.");
-            player.sendMessage(ChatColor.WHITE + "- Using newbie or death protection to grief bases is not allowed.");
+            player.sendMessage(ChatColor.WHITE + "- Using newbie or death protection to grief/steal/abuse etc is not allowed.");
             player.sendMessage(ChatColor.WHITE + "- No offensive/abusive behavior/builds in-game");
             player.sendMessage(ChatColor.WHITE + "- No offensive language/skins/names");
             player.sendMessage(ChatColor.WHITE + "- No advertising");
