@@ -20,6 +20,7 @@ import java.util.List;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.extraHeart;
 import static newamazingpvp.lifestealsmp.game.CombatLog.*;
+import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
 import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.heartCooldownPlayers;
 import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.invincibilityPlayers;
 import static newamazingpvp.lifestealsmp.variables.Misc.maxHp;
@@ -37,7 +38,7 @@ public class CombatLogListener implements Listener {
             Player p = e.getPlayer();
 
             if (getCombatTimer(p) < 85) {
-                if (!heartCooldownPlayers.contains(e.getPlayer().getName())) {
+                if (!heartCooldownPlayers.contains(e.getPlayer().getName()) && getPlaytime(p) > 144000) {
                     p.setMaxHealth(p.getMaxHealth() - 2);
                     Player winner = getEnemies(p).get(getEnemies(p).size() - 1);
                     if (!(winner.getMaxHealth() > maxHp)) {

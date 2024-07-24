@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.listener;
 
 import com.destroystokyo.paper.event.entity.PreCreatureSpawnEvent;
+import newamazingpvp.lifestealsmp.variables.Loc;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -39,10 +40,20 @@ public class SpawnProtection implements Listener {
         if (event.getEntity() instanceof Player damaged) {
             Player damager = returnPlayerDamager(event.getDamager());
             if (damager == null) return;
-            if (isWithinSpawnRadius(damaged.getLocation())) {
-                //if (isInCombat(damager) && isInCombat(damaged)) return;
-                event.setCancelled(true);
-                damager.sendMessage(ChatColor.RED + "You cannot damage players within the spawn protection area, go around 50-100 blocks away to be able to!");
+            Location original = damaged.getLocation();
+            Location expanded = new Location(original.getWorld(), original.getX()/4, original.getY(), original.getZ()/4);
+            if(original.getWorld().getName().equals("world")) {
+                if (isWithinSpawnRadius(expanded)) {
+                    //if (isInCombat(damager) && isInCombat(damaged)) return;
+                    event.setCancelled(true);
+                    damager.sendMessage(ChatColor.RED + "You cannot damage players within the vicinity spawn protection area, go away from spawn to be able to!");
+                }
+            } else {
+                if (isWithinSpawnRadius(original)) {
+                    //if (isInCombat(damager) && isInCombat(damaged)) return;
+                    event.setCancelled(true);
+                    damager.sendMessage(ChatColor.RED + "You cannot damage players within the vicinity spawn protection area of PVP world, go around 50-100 blocks away to be able to!");
+                }
             }
         }
     }
