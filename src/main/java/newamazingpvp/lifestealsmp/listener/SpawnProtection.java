@@ -35,7 +35,7 @@ public class SpawnProtection implements Listener {
 
     private static final int spawnRadius = 60;
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOW)
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
         if (event.getEntity() instanceof Player damaged) {
             Player damager = returnPlayerDamager(event.getDamager());
