@@ -237,3 +237,8 @@ commands:
   spawn:
     description: Teleport to spawn to get unstuck
     usage: /spawn
+  getitemorblockdata:
+    description: Gets the data of the item you are golding or the block you are looking at
+    usage: /getitemorblockdata [type]
+    permission: lifestealSMP.admin
+    default: op
