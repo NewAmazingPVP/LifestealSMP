@@ -37,6 +37,7 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
         getServer().getScheduler().runTaskLater(lifestealSmp, () -> sendDiscordNewsMessage(eventRole + " UHC PvP event is now active. Type /teleport to join the PvP world! May the best win!", "1032411739351941120"), 1200);
         isUhcEvent = true;
         pvpWorld.getWorldBorder().setSize(500);
+        pvpWorld.setGameRule(GameRule.DO_MOB_SPAWNING, false);
     }
 
     @Override
@@ -69,6 +70,7 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
         isUhcEvent = true;
         if(Bukkit.getWorld("uhcpvp_world") == null){
             pvpWorld = Bukkit.createWorld(new WorldCreator("uhcpvp_world").type(WorldType.FLAT));
+            pvpWorld.setGameRule(GameRule.DO_MOB_SPAWNING, false);
         }
     }
 
@@ -76,6 +78,7 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
         if (!playerOriginalWorlds.containsKey(player)) {
             if(Bukkit.getWorld("uhcpvp_world") == null){
                 pvpWorld = Bukkit.createWorld(new WorldCreator("uhcpvp_world").type(WorldType.FLAT));
+                pvpWorld.setGameRule(GameRule.DO_MOB_SPAWNING, false);
             }
             playerOriginalWorlds.put(player, player.getLocation());
             player.teleport(pvpWorld.getSpawnLocation());
@@ -86,7 +89,7 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
     }
 
     public static void teleportBack(Player player) {
-        if (playerOriginalWorlds.containsKey(player) && player.getWorld().equals("uhcpvp_world")) {
+        if (playerOriginalWorlds.containsKey(player) && player.getWorld().getName().equals("uhcpvp_world")) {
             player.teleport(playerOriginalWorlds.get(player));
             playerOriginalWorlds.remove(player);
             player.sendMessage(ChatColor.GREEN + "You have been teleported back to your original world!");
