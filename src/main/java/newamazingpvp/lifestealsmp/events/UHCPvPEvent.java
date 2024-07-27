@@ -27,7 +27,7 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
     public static boolean isUhcEvent = false;
 
     public UHCPvPEvent(ZonedDateTime startTime) {
-        super(startTime, startTime.plusHours(1));
+        super(startTime, startTime.plusHours(3));
     }
 
     @Override
@@ -67,10 +67,16 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
     public void runContinuously() {
         Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "UHC PvP event is going on! Do '/teleport' to be in the event and '/teleport back' to return!");
         isUhcEvent = true;
+        if(Bukkit.getWorld("uhcpvp_world") == null){
+            pvpWorld = Bukkit.createWorld(new WorldCreator("uhcpvp_world").type(WorldType.FLAT));
+        }
     }
 
     public static void teleportToPvPWorld(Player player) {
         if (!playerOriginalWorlds.containsKey(player)) {
+            if(Bukkit.getWorld("uhcpvp_world") == null){
+                pvpWorld = Bukkit.createWorld(new WorldCreator("uhcpvp_world").type(WorldType.FLAT));
+            }
             playerOriginalWorlds.put(player, player.getLocation());
             player.teleport(pvpWorld.getSpawnLocation());
             player.sendMessage(ChatColor.GREEN + "You have been teleported to the PvP world!");
@@ -80,7 +86,7 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
     }
 
     public static void teleportBack(Player player) {
-        if (playerOriginalWorlds.containsKey(player)) {
+        if (playerOriginalWorlds.containsKey(player) && player.getWorld().equals("uhcpvp_world")) {
             player.teleport(playerOriginalWorlds.get(player));
             playerOriginalWorlds.remove(player);
             player.sendMessage(ChatColor.GREEN + "You have been teleported back to your original world!");

@@ -232,8 +232,6 @@ commands:
   teleport:
     description: Teleport to a world
     usage: /worldteleport [world]
-    permission: lifestealSMP.admin
-    default: op
   spawn:
     description: Teleport to spawn to get unstuck
     usage: /spawn
