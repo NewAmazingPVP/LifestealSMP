@@ -8,13 +8,12 @@ import org.bukkit.event.inventory.CraftItemEvent;
 
 import static newamazingpvp.lifestealsmp.customitems.utils.GUI.basicItems;
 import static newamazingpvp.lifestealsmp.customitems.utils.GUI.customItems;
-import static newamazingpvp.lifestealsmp.events.TimeManager.CUSTOM_ITEMS_AND_RUNES;
-import static newamazingpvp.lifestealsmp.events.TimeManager.formatDuration;
+import static newamazingpvp.lifestealsmp.events.TimeManager.*;
 
 public class DisableCustomItems implements Listener {
     @EventHandler
     public void onCraftItem(CraftItemEvent event) {
-        if (event.getCurrentItem() != null && customItems.contains(event.getCurrentItem()) && !basicItems.contains(event.getCurrentItem())) {
+        if (event.getCurrentItem() != null && customItems.contains(event.getCurrentItem()) && !basicItems.contains(event.getCurrentItem()) && !isTimePassed(CUSTOM_ITEMS_AND_RUNES)) {
             event.getWhoClicked().sendMessage(ChatColor.RED + "This custom item is not enabled yet. It will enable in " + formatDuration(CUSTOM_ITEMS_AND_RUNES));
             Player player = (Player) event.getView().getPlayer();
             player.sendTitle(ChatColor.RED + "WARNING!", ChatColor.YELLOW + "This custom item is not enabled yet. It will enable in " + formatDuration(CUSTOM_ITEMS_AND_RUNES));

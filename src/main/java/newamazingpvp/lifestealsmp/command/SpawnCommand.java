@@ -14,11 +14,12 @@ public class SpawnCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player player) {
+            if(player.getWorld().getName().equalsIgnoreCase("uhcpvp_world")) return false;
             if (isWithinSpawnRadius(player.getLocation())) {
                 player.teleport(Bukkit.getWorld("world").getSpawnLocation());
                 return true;
             } else {
-                sender.sendMessage("Only players near spawn can use this command.");
+                sender.sendMessage("Only players near overworld spawn can use this command.");
                 return false;
             }
         }
