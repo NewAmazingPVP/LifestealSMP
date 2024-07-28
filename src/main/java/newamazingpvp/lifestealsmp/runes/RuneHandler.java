@@ -80,10 +80,12 @@ public class RuneHandler implements Listener {
         for (Rune r : runes) {
             inv.addItem(createRuneItem(r));
         }
-        if (isTimePassed(CUSTOM_ITEMS_AND_RUNES)) {
             new BukkitRunnable() {
                 @Override
                 public void run() {
+                    if (!isTimePassed(CUSTOM_ITEMS_AND_RUNES)) {
+                        return;
+                    }
                     for (Player p : Bukkit.getOnlinePlayers()) {
                         for (ItemStack t : p.getInventory().getContents()) {
                             if (t != null) {
@@ -134,7 +136,6 @@ public class RuneHandler implements Listener {
                 }
             }.runTaskTimer(lifestealSmp, 0L, 199L);
         }
-    }
 
     @EventHandler
     public void onMobDeath(EntityDeathEvent event) {
