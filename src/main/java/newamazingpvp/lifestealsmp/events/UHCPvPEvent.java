@@ -89,7 +89,7 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
     }
 
     public static void teleportBack(Player player) {
-        if (playerOriginalWorlds.containsKey(player) && player.getWorld().getName().equals("uhcpvp_world")) {
+        if (playerOriginalWorlds.containsKey(player)) {
             player.teleport(playerOriginalWorlds.get(player));
             playerOriginalWorlds.remove(player);
             player.sendMessage(ChatColor.GREEN + "You have been teleported back to your original world!");
