@@ -6,6 +6,7 @@ import com.google.common.io.ByteStreams;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import newamazingpvp.lifestealsmp.MinigamesMainPachage.AllMiniGameListeners.ActionBarDamage;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
 import newamazingpvp.lifestealsmp.allyteams.TeamCommand;
@@ -68,18 +69,14 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
-import java.util.Arrays;
 
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlacklist;
 import static newamazingpvp.lifestealsmp.customitems.utils.DevRecipes.registerCustomRecipesDev;
@@ -300,6 +297,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getCommand("raffleeventstart").setExecutor(new StartRaffleEvent());
             getCommand("raffleeventstop").setExecutor(new StopRaffleEvent());
             getCommand("spawncustommob").setExecutor(new SpawnCmd());
+
+            //===================== MiniGame Listeners ==============================================
+            getServer().getPluginManager().registerEvents(new ActionBarDamage(), this);
 
 
             //getCommand("trade").setExecutor(new Trade());
