@@ -1,16 +1,10 @@
 package newamazingpvp.lifestealsmp.blacklistener;
 
 import io.papermc.paper.event.player.PlayerBedFailEnterEvent;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.type.RespawnAnchor;
-import org.bukkit.entity.EnderCrystal;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Minecart;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -18,6 +12,9 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionType;
 
 import java.util.List;
 
@@ -73,6 +70,22 @@ public class NerfOpItems implements Listener {
                     //p.setHealth(Math.max(0, p.getHealth()-finalDmg);
                     player.sendMessage(ChatColor.YELLOW + "You were damaged by a mace. These items are allowed on the server but are nerfed for balanced PvP. You should still be able to fight back.");
                     damager.sendMessage(ChatColor.AQUA + "You attacked another player with a mace. The mace is nerfed for balanced PvP on this server, so it won't give you a significant advantage.");
+                }
+            } else if (event.getDamager() instanceof Arrow arrow){
+                if(arrow.getBasePotionType() == PotionType.HARMING){
+                    event.setCancelled(true);
+                    player.damage(1.0, event.getDamager());
+                }
+                if(arrow.getBasePotionType() == PotionType.STRONG_HARMING){
+                    event.setCancelled(true);
+                    player.damage(2.0, event.getDamager());
+                }
+            } else if (event.getDamager() instanceof ThrownPotion t){
+                if(t.getPotionMeta().getBasePotionType() == PotionType.HARMING){
+                    event.setDamage(2);
+                }
+                if(t.getPotionMeta().getBasePotionType() == PotionType.STRONG_HARMING){
+                    event.setDamage(4);
                 }
             }
         }

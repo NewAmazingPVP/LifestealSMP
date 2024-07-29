@@ -83,9 +83,10 @@ public class EventsHandler implements Listener {
                         e.onEventStart();
                     } else if (isEventInProgress(e)) {
                         e.runContinuously();
+                        //if you move this cooldown above you can customize the continous times for each but will break end time logic (cuz 1k cooldown greater than time)
                         eventCooldown.setCooldown(70);
                     } else if (isTimePassed(e.getEndTime()) &&
-                            !isTimePassed(e.getEndTime().plusMinutes(1))) {
+                            !isTimePassed(e.getEndTime().plusMinutes(4))) {
                         if (!(e.getType() == EventType.ONETIME)) {
                             e.onEventEnd();
                             eventCooldown.setCooldown(70);
