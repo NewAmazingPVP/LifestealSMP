@@ -75,17 +75,18 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
     }
 
     public static void teleportToPvPWorld(Player player) {
-        if (!playerOriginalWorlds.containsKey(player)) {
-            if(Bukkit.getWorld("uhcpvp_world") == null){
-                pvpWorld = Bukkit.createWorld(new WorldCreator("uhcpvp_world").type(WorldType.FLAT));
-                pvpWorld.setGameRule(GameRule.DO_MOB_SPAWNING, false);
-            }
-            playerOriginalWorlds.put(player, player.getLocation());
-            player.teleport(pvpWorld.getSpawnLocation());
-            player.sendMessage(ChatColor.GREEN + "You have been teleported to the PvP world!");
-        } else {
-            player.sendMessage(ChatColor.RED + "You are already in the PvP world!");
+        if(player.getWorld().getName().equals("uhcpvp_world")){
+            player.sendMessage("You are already in PVP world!");
+            return;
         }
+        if(Bukkit.getWorld("uhcpvp_world") == null){
+            pvpWorld = Bukkit.createWorld(new WorldCreator("uhcpvp_world").type(WorldType.FLAT));
+            pvpWorld.setGameRule(GameRule.DO_MOB_SPAWNING, false);
+        }
+        playerOriginalWorlds.put(player, player.getLocation());
+        player.teleport(pvpWorld.getSpawnLocation());
+        player.sendMessage(ChatColor.GREEN + "You have been teleported to the PvP world!");
+        Bukkit.broadcastMessage(ChatColor.AQUA + player.getName() + " teleported to uhc pvp world! If you want to fight them there do /teleport!");
     }
 
     public static void teleportBack(Player player) {
@@ -94,11 +95,11 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
             playerOriginalWorlds.remove(player);
             player.sendMessage(ChatColor.GREEN + "You have been teleported back to your original world!");
         } else {
-            player.sendMessage(ChatColor.RED + "You are not in the PvP world!");
+            player.sendMessage(ChatColor.RED + "You have not used /teleport to pvp world!");
         }
     }
 
-    @EventHandler
+    /*@EventHandler
     public void onPlayerJoin(PlayerLoginEvent event){
         if(isTimePassed(startTime) && !isTimePassed(endTime)){
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> teleportBack(event.getPlayer()), 20);
@@ -117,7 +118,7 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
         if(isTimePassed(startTime) && !isTimePassed(endTime) && !isInCombat(e.getPlayer())){
             teleportBack(e.getPlayer());
         }
-    }
+    }*/
 
     //so i was bored and i did this
     @EventHandler
