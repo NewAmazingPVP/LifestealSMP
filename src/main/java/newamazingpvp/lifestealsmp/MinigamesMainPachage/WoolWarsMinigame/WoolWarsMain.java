@@ -28,6 +28,7 @@ public class WoolWarsMain {
     private static void setPlayerOnBlueTeam(Player player){
 
         setPrefix(player, blueTeamPrefix);
+        player.getInventory().setHelmet(blueTeamHelmet());
         player.getInventory().setChestplate(blueTeamChestplate());
         player.getInventory().setLeggings(blueTeamLeggings());
         player.getInventory().setBoots(blueTeamBoots());
@@ -38,6 +39,7 @@ public class WoolWarsMain {
     private static void setPlayerOnRedTeam(Player player){
 
         setPrefix(player, redTeamPrefix);
+        player.getInventory().setHelmet(redTeamHelmet());
         player.getInventory().setChestplate(redTeamChestplate());
         player.getInventory().setLeggings(redTeamLeggings());
         player.getInventory().setBoots(redTeamBoots());

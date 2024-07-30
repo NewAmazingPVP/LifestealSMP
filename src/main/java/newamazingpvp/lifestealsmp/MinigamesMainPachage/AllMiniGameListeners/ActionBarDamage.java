@@ -59,7 +59,7 @@ public class ActionBarDamage implements Listener {
             actionbarVisual += "❤";
         }
 
-        attacker.sendActionBar(actionbarVisual); 
+        attacker.sendActionBar(actionbarVisual);
 
 
 
