@@ -17,6 +17,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BlockStateMeta;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
@@ -80,35 +81,34 @@ public class RuneHandler implements Listener {
         for (Rune r : runes) {
             inv.addItem(createRuneItem(r));
         }
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    if (!isTimePassed(CUSTOM_ITEMS_AND_RUNES)) {
-                        return;
-                    }
-                    for (Player p : Bukkit.getOnlinePlayers()) {
-                        for (ItemStack t : p.getInventory().getContents()) {
-                            if (t != null) {
-                                if (t.getType() == Material.DRAGON_EGG) {
-                                    ItemMeta meta = t.getItemMeta();
-                                    List<String> lore = new ArrayList<>(List.of(ChatColor.DARK_PURPLE + "Have in inventory for " + ChatColor.GOLD + "15%" + ChatColor.DARK_PURPLE + " less damage!"));
-                                    meta.setLore(lore);
-                                    t.setItemMeta(meta);
-                                    continue;
-                                } else if (ChatColor.stripColor(t.getDisplayName()).toLowerCase().contains("rune pouch")) {
-                                    BlockStateMeta bsm = (BlockStateMeta) t.getItemMeta();
-                                    ShulkerBox shulkerBox = (ShulkerBox) bsm.getBlockState();
-                                    for (ItemStack f : shulkerBox.getInventory().getContents()) {
-                                        for (Rune r : runes) {
-                                            if (f.getLore().contains(r.getLore())) {
-                                                p.addPotionEffect(r.getEffect());
-                                            }
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (!isTimePassed(CUSTOM_ITEMS_AND_RUNES)) {
+                    return;
+                }
+                for (Player p : Bukkit.getOnlinePlayers()) {
+                    for (ItemStack t : p.getInventory().getContents()) {
+                        if (t != null) {
+                            if (t.getType() == Material.DRAGON_EGG) {
+                                ItemMeta meta = t.getItemMeta();
+                                List<String> lore = new ArrayList<>(List.of(ChatColor.DARK_PURPLE + "Have in inventory for " + ChatColor.GOLD + "15%" + ChatColor.DARK_PURPLE + " less damage!"));
+                                meta.setLore(lore);
+                                t.setItemMeta(meta);
+                            } else if (ChatColor.stripColor(t.getDisplayName()).toLowerCase().contains("rune pouch")) {
+                                BlockStateMeta bsm = (BlockStateMeta) t.getItemMeta();
+                                ShulkerBox shulkerBox = (ShulkerBox) bsm.getBlockState();
+                                for (ItemStack f : shulkerBox.getInventory().getContents()) {
+                                    for (Rune r : runes) {
+                                        if (f != null && f.getLore() != null && f.getLore().contains(r.getLore())) {
+                                            p.addPotionEffect(r.getEffect());
                                         }
                                     }
-                                } else if (t.hasItemMeta()) {
-                                    if (t.hasLore()) {
-                                        ItemMeta meta = t.getItemMeta();
-                                        List<String> lore = meta.getLore();
+                                }
+                            } else if (t.hasItemMeta()) {
+                                if (t.hasLore()) {
+                                    ItemMeta meta = t.getItemMeta();
+                                    List<String> lore = meta.getLore();
                                     /*if (lore.get(0).contains("Use To Craft Extra Hearts!")) {
                                         lore.clear();
                                         meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Severed Mob Heart");
@@ -121,21 +121,20 @@ public class RuneHandler implements Listener {
                                         lore.add(ChatColor.DARK_PURPLE + "U$e To Cr" + ChatColor.MAGIC + "a" + ChatColor.DARK_PURPLE + "ft Extra Hearts!" + ChatColor.MAGIC + "L");
                                         meta.setLore(lore);
                                         t.setItemMeta(meta);*/
-                                        //} else {
-                                        for (Rune r : runes) {
-                                            if (t.getLore().contains(r.getLore())) {
-                                                p.addPotionEffect(r.getEffect());
-                                            }
+                                    //} else {
+                                    for (Rune r : runes) {
+                                        if (lore != null && lore.contains(r.getLore())) {
+                                            p.addPotionEffect(r.getEffect());
                                         }
-                                        //}
                                     }
                                 }
                             }
                         }
                     }
                 }
-            }.runTaskTimer(lifestealSmp, 0L, 199L);
-        }
+            }
+        }.runTaskTimer(lifestealSmp, 0L, 199L);
+    }
 
     @EventHandler
     public void onMobDeath(EntityDeathEvent event) {
@@ -164,7 +163,6 @@ public class RuneHandler implements Listener {
         }
     }
 
-
     public static ItemStack createRuneItem(Rune rune) {
         ItemStack runeItem = new ItemStack(Material.PAPER);
         ItemMeta meta = runeItem.getItemMeta();
@@ -181,5 +179,4 @@ public class RuneHandler implements Listener {
         runeItem.setItemMeta(meta);
         return runeItem;
     }
-
 }
