@@ -17,7 +17,6 @@ public class EventsHandler implements Listener {
     public static final List<Event> events = new ArrayList<>();
 
     public EventsHandler() {
-        // TODO: ADD ALL EVENTS decide all days timeline
         events.add(new ServerOpening(SEASON_START_TIME));
         events.add(new TrackingDay(SEASON_START_TIME.plusDays(2), 1));
         events.add(new NormalDifficulty(SEASON_START_TIME.plusDays(4)));
@@ -29,7 +28,7 @@ public class EventsHandler implements Listener {
         events.add(pvp);
         events.add(new NoTrackingDay(CUSTOM_ITEMS_AND_RUNES.plusDays(1)));
         events.add(new TrackingDay(CUSTOM_ITEMS_AND_RUNES.plusDays(3), 1));
-        events.add(new RuneMultiplier(CUSTOM_ITEMS_AND_RUNES.plusDays(5), 1));
+        events.add(new RuneMultiplier(CUSTOM_ITEMS_AND_RUNES.plusDays(5), 1.5));
         events.add(new EndOpeningEvent(END_OPEN_TIME));
         events.add(new TrackingDay(END_OPEN_TIME.plusDays(1), 1));
         events.add(new NoTrackingDay(END_OPEN_TIME.plusDays(3)));
