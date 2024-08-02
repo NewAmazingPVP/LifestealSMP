@@ -15,7 +15,7 @@ public class ServerRuntime implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender instanceof Player) {
+        if (sender instanceof Player) {
             LocalDateTime currentTime = LocalDateTime.now();
             Duration duration = Duration.between(SEASON_START_TIME, currentTime);
             long days = duration.toDays();

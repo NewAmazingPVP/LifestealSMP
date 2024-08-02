@@ -22,7 +22,7 @@ public class PlayerList extends ListenerAdapter {
 
         String messageContent = event.getMessage().getContentRaw();
         if (messageContent.equalsIgnoreCase("playerlist")) {
-            if(!isTimePassed(SEASON_START_TIME)){
+            if (!isTimePassed(SEASON_START_TIME)) {
                 event.getChannel().sendMessage("Next season opening in " + formatDuration(SEASON_START_TIME)).queue();
                 return;
             }

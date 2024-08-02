@@ -73,7 +73,7 @@ public class TeamCommand implements CommandExecutor, TabCompleter {
                 }
             }
             return true;
-        } catch (Exception e){
+        } catch (Exception e) {
             sender.sendMessage("Error executing the command, try again?");
             return false;
         }

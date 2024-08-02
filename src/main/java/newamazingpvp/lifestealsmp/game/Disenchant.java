@@ -1,6 +1,5 @@
 package newamazingpvp.lifestealsmp.game;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -9,7 +8,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
@@ -29,8 +27,7 @@ public class Disenchant implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (event.getWhoClicked() instanceof Player) {
-            Player player = (Player) event.getWhoClicked();
+        if (event.getWhoClicked() instanceof Player player) {
             if (pendingTransfers.containsKey(player.getUniqueId())) {
                 pendingTransfers.remove(player.getUniqueId());
                 player.sendMessage(ChatColor.RED + "Enchantment transfer cancelled due to item movement.");
@@ -44,8 +41,8 @@ public class Disenchant implements Listener {
             Player player = event.getPlayer();
             ItemStack itemInHand = player.getInventory().getItemInMainHand();
 
-            if(itemInHand == null) return;
-            if(event.getAction() != Action.LEFT_CLICK_BLOCK) return;
+            if (itemInHand == null) return;
+            if (event.getAction() != Action.LEFT_CLICK_BLOCK) return;
 
             if (itemInHand.getItemMeta().hasEnchants()) {
                 pendingTransfers.put(player.getUniqueId(), itemInHand);

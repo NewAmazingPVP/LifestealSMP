@@ -16,6 +16,7 @@ import java.util.List;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
 import static newamazingpvp.lifestealsmp.runes.DragonRune.dragonRune;
 import static newamazingpvp.lifestealsmp.unused.customrunes.RunesDrops.*;
+import static newamazingpvp.lifestealsmp.unused.events.corruptedmobs.utilities.ItemStacks.*;
 
 public class GiveCustomItem implements CommandExecutor, TabCompleter {
 

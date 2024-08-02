@@ -5,13 +5,11 @@ import org.bukkit.ChatColor;
 
 import java.time.ZonedDateTime;
 
-import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsMessage;
 import static newamazingpvp.lifestealsmp.events.TimeManager.eventRole;
 import static newamazingpvp.lifestealsmp.events.TimeManager.formatDuration;
 import static newamazingpvp.lifestealsmp.game.Compass.delayDuration;
 import static newamazingpvp.lifestealsmp.game.Compass.trackingDist;
-import static org.bukkit.Bukkit.getServer;
 
 public class InsaneTrackingDay extends BaseEvent {
 

@@ -17,7 +17,6 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BlockStateMeta;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.potion.PotionEffect;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
@@ -25,9 +24,9 @@ import java.util.List;
 import java.util.Random;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.runes.AbstractRune.deserialize;
 import static newamazingpvp.lifestealsmp.events.TimeManager.CUSTOM_ITEMS_AND_RUNES;
 import static newamazingpvp.lifestealsmp.events.TimeManager.isTimePassed;
+import static newamazingpvp.lifestealsmp.runes.AbstractRune.deserialize;
 import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 
 public class RuneHandler implements Listener {

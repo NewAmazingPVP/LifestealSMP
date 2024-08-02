@@ -3,12 +3,8 @@ package newamazingpvp.lifestealsmp.events;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.player.PlayerKickEvent;
-import org.bukkit.event.player.PlayerLoginEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.time.ZonedDateTime;
 import java.util.HashMap;
@@ -16,9 +12,8 @@ import java.util.Map;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsMessage;
-import static newamazingpvp.lifestealsmp.events.TimeManager.*;
-import static newamazingpvp.lifestealsmp.game.CombatLog.*;
-import static newamazingpvp.lifestealsmp.variables.Loc.endSpawn;
+import static newamazingpvp.lifestealsmp.events.TimeManager.eventRole;
+import static newamazingpvp.lifestealsmp.events.TimeManager.formatDuration;
 import static org.bukkit.Bukkit.getServer;
 
 public class UHCPvPEvent extends BaseEvent implements Listener {
@@ -68,18 +63,18 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
     public void runContinuously() {
         Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "UHC PvP event is going on! Do '/teleport' to be in the event and '/teleport back' to return!");
         isUhcEvent = true;
-        if(Bukkit.getWorld("uhcpvp_world") == null){
+        if (Bukkit.getWorld("uhcpvp_world") == null) {
             pvpWorld = Bukkit.createWorld(new WorldCreator("uhcpvp_world").type(WorldType.FLAT));
             pvpWorld.setGameRule(GameRule.DO_MOB_SPAWNING, false);
         }
     }
 
     public static void teleportToPvPWorld(Player player) {
-        if(player.getWorld().getName().equals("uhcpvp_world")){
+        if (player.getWorld().getName().equals("uhcpvp_world")) {
             player.sendMessage("You are already in PVP world!");
             return;
         }
-        if(Bukkit.getWorld("uhcpvp_world") == null){
+        if (Bukkit.getWorld("uhcpvp_world") == null) {
             pvpWorld = Bukkit.createWorld(new WorldCreator("uhcpvp_world").type(WorldType.FLAT));
             pvpWorld.setGameRule(GameRule.DO_MOB_SPAWNING, false);
         }
@@ -122,14 +117,14 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
 
     //so i was bored and i did this
     @EventHandler
-    public void onPlayerPlaceBed(BlockPlaceEvent e){
-        if(!e.getPlayer().getWorld().getName().equals("uhcpvp_world")) return;
-        if(e.getBlock().getType().toString().toLowerCase().contains("bed") ||
-        e.getBlockPlaced().getType().toString().toLowerCase().contains("bed") ||
-        e.getBlockReplacedState().getBlock().getType().toString().toLowerCase().contains("bed") ||
-        e.getItemInHand().getType().toString().toLowerCase().contains("bed") ||
-        e.getPlayer().getInventory().getItemInMainHand().getType().toString().toLowerCase().contains("bed") ||
-        e.getPlayer().getInventory().getItemInOffHand().getType().toString().toLowerCase().contains("bed")){
+    public void onPlayerPlaceBed(BlockPlaceEvent e) {
+        if (!e.getPlayer().getWorld().getName().equals("uhcpvp_world")) return;
+        if (e.getBlock().getType().toString().toLowerCase().contains("bed") ||
+                e.getBlockPlaced().getType().toString().toLowerCase().contains("bed") ||
+                e.getBlockReplacedState().getBlock().getType().toString().toLowerCase().contains("bed") ||
+                e.getItemInHand().getType().toString().toLowerCase().contains("bed") ||
+                e.getPlayer().getInventory().getItemInMainHand().getType().toString().toLowerCase().contains("bed") ||
+                e.getPlayer().getInventory().getItemInOffHand().getType().toString().toLowerCase().contains("bed")) {
             e.setCancelled(true);
         }
     }

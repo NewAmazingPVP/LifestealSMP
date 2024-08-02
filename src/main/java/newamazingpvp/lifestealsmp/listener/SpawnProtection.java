@@ -1,10 +1,9 @@
 package newamazingpvp.lifestealsmp.listener;
 
 import com.destroystokyo.paper.event.entity.PreCreatureSpawnEvent;
-import newamazingpvp.lifestealsmp.variables.Loc;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -19,13 +18,8 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.scheduler.BukkitRunnable;
 
-import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.discord.DiscordListener.isVanished;
-import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
-import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.invincibilityPlayers;
-import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.newbieViolate;
 import static newamazingpvp.lifestealsmp.utility.Utils.returnPlayerDamager;
 import static newamazingpvp.lifestealsmp.variables.Loc.spawnLoc1;
 import static newamazingpvp.lifestealsmp.variables.Loc.spawnLoc2;
@@ -41,8 +35,8 @@ public class SpawnProtection implements Listener {
             Player damager = returnPlayerDamager(event.getDamager());
             if (damager == null) return;
             Location original = damaged.getLocation();
-            Location expanded = new Location(original.getWorld(), original.getX()/4, original.getY(), original.getZ()/4);
-            if(original.getWorld().getName().equals("world")) {
+            Location expanded = new Location(original.getWorld(), original.getX() / 4, original.getY(), original.getZ() / 4);
+            if (original.getWorld().getName().equals("world")) {
                 if (isWithinSpawnRadius(expanded)) {
                     //if (isInCombat(damager) && isInCombat(damaged)) return;
                     event.setCancelled(true);
@@ -121,6 +115,7 @@ public class SpawnProtection implements Listener {
     public void spawnBlockPlace(PlayerInteractEvent event) {
         if (isWithinSpawnRadius(event.getPlayer().getLocation())) {
             if (isVanished(event.getPlayer())) return;
+            if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.WRITTEN_BOOK) return;
             /*if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.LAVA_BUCKET
                     || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.FIRE_CHARGE
                     || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.FLINT_AND_STEEL
