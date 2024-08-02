@@ -25,7 +25,7 @@ public class LSwithdraw implements CommandExecutor {
             return true;
         }
 
-        if (player.getLocation().distance(Bukkit.getWorld("world").getSpawnLocation()) < 500) {
+        if (player.getWorld().getName().equals("world") && player.getLocation().distance(Bukkit.getWorld("world").getSpawnLocation()) < 500) {
             player.sendMessage(ChatColor.RED + "You are not allowed to withdraw hearts in vicinity of spawn");
             return true;
         }
@@ -48,7 +48,7 @@ public class LSwithdraw implements CommandExecutor {
             setCooldown(player);
             player.setMaxHealth(player.getMaxHealth() - 2);
             player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "-1 Heart!");
-            player.sendMessage(ChatColor.GRAY + "(Boosting using this command will result in you being banned)");
+            //player.sendMessage(ChatColor.GRAY + "(Boosting using this command will result in you being banned)");
 
             if (player.getInventory().firstEmpty() != -1) {
                 player.getInventory().addItem(extraHeart());

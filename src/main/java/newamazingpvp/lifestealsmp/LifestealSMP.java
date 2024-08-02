@@ -6,7 +6,6 @@ import com.google.common.io.ByteStreams;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import newamazingpvp.lifestealsmp.MinigamesMainPachage.AllMiniGameListeners.ActionBarDamage;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
 import newamazingpvp.lifestealsmp.allyteams.TeamCommand;
@@ -296,8 +295,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getCommand("raffleeventstop").setExecutor(new StopRaffleEvent());
             getCommand("spawncustommob").setExecutor(new SpawnCmd());
 
-            //===================== MiniGame Listeners ==============================================
-            getServer().getPluginManager().registerEvents(new ActionBarDamage(), this);
 
 
             //getCommand("trade").setExecutor(new Trade());
