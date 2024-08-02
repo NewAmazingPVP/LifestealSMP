@@ -1,6 +1,5 @@
 package newamazingpvp.lifestealsmp.unused.customitems;
 
-import newamazingpvp.lifestealsmp.unused.customitems.Itemstacks;
 import org.bukkit.Location;
 import org.bukkit.entity.EnderDragon;
 import org.bukkit.event.EventHandler;

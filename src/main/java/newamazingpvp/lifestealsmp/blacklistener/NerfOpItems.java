@@ -1,7 +1,10 @@
 package newamazingpvp.lifestealsmp.blacklistener;
 
 import io.papermc.paper.event.player.PlayerBedFailEnterEvent;
-import org.bukkit.*;
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.type.RespawnAnchor;
 import org.bukkit.entity.*;
@@ -12,13 +15,10 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 
 import java.util.List;
 
-import static newamazingpvp.lifestealsmp.game.CombatLog.tagPlayer;
 import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
 import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.invincibilityPlayers;
 import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.newbieViolate;
@@ -31,12 +31,12 @@ public class NerfOpItems implements Listener {
 
             if (event.getDamager() instanceof EnderCrystal ||
                     event.getDamager() instanceof Minecart) {
-                if(getPlaytime(player) < 144000 && !newbieViolate.contains(player.getName())){
+                if (getPlaytime(player) < 144000 && !newbieViolate.contains(player.getName())) {
                     event.setCancelled(true);
                     player.sendMessage(ChatColor.RED + "You were protected from explosive damage due to your newbie protection");
                     return;
                 }
-                if(invincibilityPlayers.contains(player.getName())){
+                if (invincibilityPlayers.contains(player.getName())) {
                     event.setCancelled(true);
                     player.sendMessage(ChatColor.RED + "You were protected from explosive damage due to your death protection");
                     return;
@@ -71,20 +71,20 @@ public class NerfOpItems implements Listener {
                     player.sendMessage(ChatColor.YELLOW + "You were damaged by a mace. These items are allowed on the server but are nerfed for balanced PvP. You should still be able to fight back.");
                     damager.sendMessage(ChatColor.AQUA + "You attacked another player with a mace. The mace is nerfed for balanced PvP on this server, so it won't give you a significant advantage.");
                 }
-            } else if (event.getDamager() instanceof Arrow arrow){
-                if(arrow.getBasePotionType() == PotionType.HARMING){
+            } else if (event.getDamager() instanceof Arrow arrow) {
+                if (arrow.getBasePotionType() == PotionType.HARMING) {
                     event.setCancelled(true);
                     player.damage(1.0, event.getDamager());
                 }
-                if(arrow.getBasePotionType() == PotionType.STRONG_HARMING){
+                if (arrow.getBasePotionType() == PotionType.STRONG_HARMING) {
                     event.setCancelled(true);
                     player.damage(2.0, event.getDamager());
                 }
-            } else if (event.getDamager() instanceof ThrownPotion t){
-                if(t.getPotionMeta().getBasePotionType() == PotionType.HARMING){
+            } else if (event.getDamager() instanceof ThrownPotion t) {
+                if (t.getPotionMeta().getBasePotionType() == PotionType.HARMING) {
                     event.setDamage(2);
                 }
-                if(t.getPotionMeta().getBasePotionType() == PotionType.STRONG_HARMING){
+                if (t.getPotionMeta().getBasePotionType() == PotionType.STRONG_HARMING) {
                     event.setDamage(4);
                 }
             }

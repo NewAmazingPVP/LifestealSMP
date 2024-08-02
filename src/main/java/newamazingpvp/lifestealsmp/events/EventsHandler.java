@@ -1,6 +1,5 @@
 package newamazingpvp.lifestealsmp.events;
 
-import newamazingpvp.lifestealsmp.runes.DragonRune;
 import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
@@ -52,7 +51,7 @@ public class EventsHandler implements Listener {
                         continue;
                     }
 
-                    if(!isTimePassed(SEASON_START_TIME) && !(e instanceof ServerOpening)){
+                    if (!isTimePassed(SEASON_START_TIME) && !(e instanceof ServerOpening)) {
                         return;
                     }
 
@@ -88,7 +87,7 @@ public class EventsHandler implements Listener {
                             !isTimePassed(e.getEndTime().plusMinutes(4))) {
                         if (!(e.getType() == EventType.ONETIME)) {
                             e.onEventEnd();
-                            eventCooldown.setCooldown(70);
+                            eventCooldown.setCooldown(300);
                         }
                     }
                 }

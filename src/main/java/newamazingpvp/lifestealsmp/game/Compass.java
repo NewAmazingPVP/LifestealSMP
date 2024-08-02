@@ -61,8 +61,6 @@ public class Compass implements CommandExecutor, Listener {
                 return true;
             }
 
-            Player player = (Player) sender;
-
             if (noTrackingDay) {
                 sender.sendMessage("Today is the no tracking day event, check /discord announcements!");
             }
@@ -152,8 +150,8 @@ public class Compass implements CommandExecutor, Listener {
                 return true;
             }*/
 
-            trackingPlayers.put(player.getUniqueId(), target.getUniqueId());
-            player.sendMessage(ChatColor.GREEN + "Tracking vicinity to " + target.getName() + " every " + delayDuration + " seconds");
+            trackingPlayers.put(g.getUniqueId(), target.getUniqueId());
+            g.sendMessage(ChatColor.GREEN + "Tracking vicinity to " + target.getName() + " every " + delayDuration + " seconds");
             //player.sendMessage(ChatColor.GREEN + "Tracking quadrant of " + target.getName() + " every " + delayDuration + " seconds");
             //player.sendMessage(ChatColor.GREEN + "Compass is now pointing towards " + target.getName());
             //target.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[WARNING] You are being tracked!");

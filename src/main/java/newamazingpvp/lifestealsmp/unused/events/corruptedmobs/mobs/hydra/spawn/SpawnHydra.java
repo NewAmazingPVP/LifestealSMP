@@ -18,9 +18,9 @@ import org.bukkit.profile.PlayerProfile;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.unused.endfight.custommobs.PublicMobMethods.getProfile;
 import static newamazingpvp.lifestealsmp.unused.events.corruptedmobs.CorruptedMobsMain.isCustomMob;
 import static newamazingpvp.lifestealsmp.unused.events.corruptedmobs.CorruptedMobsMain.isCustomMobTag;
-import static newamazingpvp.lifestealsmp.unused.endfight.custommobs.PublicMobMethods.getProfile;
 
 public class SpawnHydra {
 

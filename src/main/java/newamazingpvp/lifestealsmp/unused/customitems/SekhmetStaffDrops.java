@@ -1,6 +1,5 @@
 package newamazingpvp.lifestealsmp.unused.customitems;
 
-import newamazingpvp.lifestealsmp.unused.customitems.Itemstacks;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
