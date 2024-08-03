@@ -55,7 +55,7 @@ public class OpPickaxe implements Listener {
         if (item.getType() == Material.NETHERITE_PICKAXE) {
             if (hasLore(item)) {
                 if (playerCooldowns.get(player.getUniqueId()).isOnCooldown()) {
-                    player.sendMessage(ChatColor.RED + "You must wait " + playerCooldowns.get(player.getUniqueId()).getRemainingSeconds() + " seconds for the cooldown to finish before using the op pickaxe ability again.");
+                    //player.sendMessage(ChatColor.RED + "You must wait " + playerCooldowns.get(player.getUniqueId()).getRemainingSeconds() + " seconds for the cooldown to finish before using the op pickaxe ability again.");
                     return;
                 }
                 Block block = event.getBlock();
@@ -65,8 +65,8 @@ public class OpPickaxe implements Listener {
                 item.setDurability((short) (item.getDurability() + 1));
                 event.setCancelled(true);
                 CooldownManager cooldown = playerCooldowns.get(player.getUniqueId());
-                cooldown.setCooldown(3.0);
-                getServer().getScheduler().runTaskLater(lifestealSmp, () -> event.getPlayer().setCooldown(item.getType(), 60), 1);
+                cooldown.setCooldown(2.0);
+                getServer().getScheduler().runTaskLater(lifestealSmp, () -> event.getPlayer().setCooldown(item.getType(), 40), 1);
                 playerCooldowns.put(player.getUniqueId(), cooldown);
             }
         }
