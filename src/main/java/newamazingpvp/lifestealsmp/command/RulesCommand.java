@@ -33,6 +33,8 @@ public class RulesCommand implements CommandExecutor {
             player.sendMessage(ChatColor.WHITE + "- No offensive/abusive behavior/builds in-game");
             player.sendMessage(ChatColor.WHITE + "- No offensive language/skins/names");
             player.sendMessage(ChatColor.WHITE + "- No advertising");
+            player.sendMessage(ChatColor.WHITE + "- No rollbacks for bugs or lag, except if caused by admins or a major server-wide issue.");
+            player.sendMessage(ChatColor.WHITE + "- No rollbacks for any reasons unless there's proof of hacking (e.g., video footage of PvP hacking).");
             player.sendMessage(ChatColor.WHITE + "- Do not start arguments or instigate old dramas");
             player.sendMessage(ChatColor.WHITE + "- Do not bring any drama from other servers into this server");
             player.sendMessage(ChatColor.WHITE + "- No bedrock invis skin bug abusing");
