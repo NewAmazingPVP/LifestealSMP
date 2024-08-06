@@ -23,6 +23,7 @@ import newamazingpvp.lifestealsmp.listener.*;
 import newamazingpvp.lifestealsmp.runes.DragonRune;
 import newamazingpvp.lifestealsmp.runes.RuneHandler;
 import newamazingpvp.lifestealsmp.unused.commands.JailPlayer;
+import newamazingpvp.lifestealsmp.unused.commands.ReadBlockAndItemInfo;
 import newamazingpvp.lifestealsmp.unused.customitems.QuarryArmor;
 import newamazingpvp.lifestealsmp.unused.endfight.bosscommands.BeaconTestCMD;
 import newamazingpvp.lifestealsmp.unused.endfight.bosscommands.NPCTestCommand;
@@ -152,7 +153,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("worldteleport").setExecutor(new WorldTeleport());
         getCommand("teleport").setExecutor(new UhcTeleport());
         getCommand("spawn").setExecutor(new SpawnCommand());
-        getCommand("getitemorblockdata").setExecutor(new readBlockAndItemInfo());
+        getCommand("getitemorblockdata").setExecutor(new ReadBlockAndItemInfo());
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new AntiBurn(), this);
         getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);

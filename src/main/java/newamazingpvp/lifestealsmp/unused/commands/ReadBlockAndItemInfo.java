@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.command;
+package newamazingpvp.lifestealsmp.unused.commands;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class readBlockAndItemInfo implements CommandExecutor, TabCompleter {
+public class ReadBlockAndItemInfo implements CommandExecutor, TabCompleter {
 
     private final ArrayList<String> subcommands = new ArrayList<>(List.of("block", "item"));
 
