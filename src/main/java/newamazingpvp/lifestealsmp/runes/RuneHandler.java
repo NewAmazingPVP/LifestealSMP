@@ -163,6 +163,7 @@ public class RuneHandler implements Listener {
     }
 
     public static ItemStack createRuneItem(Rune rune) {
+        int dropChance = (int) (1.0/rune.getDropRate());
         ItemStack runeItem = new ItemStack(Material.PAPER);
         ItemMeta meta = runeItem.getItemMeta();
         meta.displayName(rune.getName());
@@ -170,7 +171,7 @@ public class RuneHandler implements Listener {
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.DARK_PURPLE + "[Item just needs to be in your inventory]");
-        lore.add(ChatColor.YELLOW + "[Rare chance to drop from " + rune.getMob().toString().replace("_", " ") + "]");
+        lore.add(ChatColor.YELLOW + "[1 in a " + dropChance + " chance to drop from " + rune.getMob().toString().replace("_", " ") + "]");
         lore.add(" ");
         lore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + rune.getMob().toString().replace("_", " ") + " RUNE ABILITY:");
         lore.add(rune.getLore());

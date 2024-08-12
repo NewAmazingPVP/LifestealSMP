@@ -13,9 +13,9 @@ import static newamazingpvp.lifestealsmp.game.Compass.trackingDist;
 
 public class InsaneTrackingDay extends BaseEvent {
 
-    private final int timeDelay;
+    private final double timeDelay;
 
-    public InsaneTrackingDay(ZonedDateTime startTime, int timeDelay) {
+    public InsaneTrackingDay(ZonedDateTime startTime, double timeDelay) {
         super(startTime, startTime.plusDays(1));
         this.timeDelay = timeDelay;
     }
@@ -52,7 +52,7 @@ public class InsaneTrackingDay extends BaseEvent {
     public void runContinuously() {
         trackingDist = 1;
         delayDuration = timeDelay;
-        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Insane /track day happening, Check announcements /discord. Protect yourself from hunters");
+        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Insane /track day happening, Check announcements /discord. Protect yourself from hunters and use invisible potions to make yourself untrackable");
         getCooldownManager().setCooldown(1000);
     }
 }

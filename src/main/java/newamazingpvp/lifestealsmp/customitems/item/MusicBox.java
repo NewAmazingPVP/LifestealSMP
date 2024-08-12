@@ -6,6 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -46,10 +47,10 @@ public class MusicBox implements Listener {
         Player player = e.getPlayer();
         ItemStack item = player.getInventory().getItemInMainHand();
         ItemStack offHanditem = player.getInventory().getItemInOffHand();
-        if (item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Music Box")) {
+        if (item.hasItemMeta() && item.getItemMeta().hasDisplayName() && ChatColor.stripColor(item.getItemMeta().getDisplayName()).equals("Music Box")) {
             e.setCancelled(true);
         }
-        if (offHanditem.hasItemMeta() && offHanditem.getItemMeta().hasDisplayName() && offHanditem.getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Music Box")) {
+        if (offHanditem.hasItemMeta() && offHanditem.getItemMeta().hasDisplayName() && ChatColor.stripColor(offHanditem.getItemMeta().getDisplayName()).equals("Music Box")) {
             e.setCancelled(true);
         }
     }

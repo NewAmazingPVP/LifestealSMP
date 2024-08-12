@@ -36,7 +36,7 @@ public class EventsHandler implements Listener {
         UHCPvPEvent pvp1 = new UHCPvPEvent(END_OPEN_TIME.plusWeeks(1));
         Bukkit.getPluginManager().registerEvents(pvp1, lifestealSmp);
         events.add(pvp1);
-        events.add(new InsaneTrackingDay(END_OPEN_TIME.plusWeeks(1).plusDays(3), 1));
+        events.add(new InsaneTrackingDay(END_OPEN_TIME.plusWeeks(1).plusDays(3), 1.0/20));
         events.add(new DropMultiplier(END_OPEN_TIME.plusWeeks(1).plusDays(5), 2));
         events.add(new NoTrackingDay(END_OPEN_TIME.plusWeeks(1).plusDays(6)));
         events.add(new FinalFight(FINAL_FIGHT));
