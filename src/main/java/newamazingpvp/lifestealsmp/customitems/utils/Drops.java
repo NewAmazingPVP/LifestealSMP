@@ -22,9 +22,9 @@ public class Drops implements Listener {
 
         if (killer == null) return;
 
-        if (Math.random() <= 0.00005) {
+        if (Math.random() <= 0.0001) {
             e.getDrops().add(powerStick());
-            killer.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "EXTREMLY RARE DROP!" + ChatColor.DARK_PURPLE + " Power Stick");
+            killer.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "EXTREMELY RARE DROP!" + ChatColor.DARK_PURPLE + " Power Stick");
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 0.0f), 3);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f), 6);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 3.0f), 9);
