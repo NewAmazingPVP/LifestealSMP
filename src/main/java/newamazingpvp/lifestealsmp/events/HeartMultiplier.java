@@ -21,7 +21,7 @@ public class HeartMultiplier extends BaseEvent {
     @Override
     public void onEventStart() {
         Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Heart multiplier event starting now, Check announcements /discord");
-        sendDiscordNewsMessage(eventRole + " Heart multiplier event is now active, with a multiplier of " + (multiplier - 1) * 100 + "%. The mob soul (aka used to craft hearts /recipes) will be dropped more frequently from mobs!", "1032411739351941120");
+        sendDiscordNewsMessage(eventRole + " Heart multiplier event is now active, with a multiplier boost of " + (multiplier - 1) * 100 + "%. The mob soul (aka used to craft hearts /recipes) will be dropped more frequently from mobs!", "1032411739351941120");
         heartMultipliers = multiplier;
     }
 
