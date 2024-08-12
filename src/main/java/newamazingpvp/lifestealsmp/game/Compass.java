@@ -33,7 +33,7 @@ public class Compass implements CommandExecutor, Listener {
     public static int trackingDist = 250;
     private boolean logOffTracking;
     public static boolean noTrackingDay = false;
-    public static int delayDuration = 45;
+    public static double delayDuration = 45;
 
     @EventHandler
     public void onPlayerPortalEvent(PlayerPortalEvent event) {
@@ -152,6 +152,11 @@ public class Compass implements CommandExecutor, Listener {
 
             trackingPlayers.put(g.getUniqueId(), target.getUniqueId());
             g.sendMessage(ChatColor.GREEN + "Tracking vicinity to " + target.getName() + " every " + delayDuration + " seconds");
+            double expectedValue = 1.0 / 20;
+            double epsilon = 1e-10;
+            if (Math.abs(delayDuration - expectedValue) < epsilon) {
+                Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_RED + "Some player has started tracking /track. Be careful today is insane tracking day event so therefore players will find you very quickly. Keep an eye out by /track ing everyone to see their distance");
+            }
             //player.sendMessage(ChatColor.GREEN + "Tracking quadrant of " + target.getName() + " every " + delayDuration + " seconds");
             //player.sendMessage(ChatColor.GREEN + "Compass is now pointing towards " + target.getName());
             //target.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[WARNING] You are being tracked!");
@@ -289,7 +294,7 @@ public class Compass implements CommandExecutor, Listener {
                 }
 
             }
-        }.runTaskTimer(lifestealSmp, 0L, 20L * delayDuration);
+        }.runTaskTimer(lifestealSmp, 0L, (long)(20.0 * delayDuration));
     }
 
 
