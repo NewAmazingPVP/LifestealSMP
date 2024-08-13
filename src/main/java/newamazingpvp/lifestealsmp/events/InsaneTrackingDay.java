@@ -40,7 +40,7 @@ public class InsaneTrackingDay extends BaseEvent {
     public void doWarning() {
         Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Insane /track day happening in " + formatDuration(startTime) + "! Check announcements /discord");
         //sendDiscordNewsEmbedTitle("Custom items and runes!", Color.GREEN, "1032411739351941120");
-        sendDiscordNewsMessage(eventRole + " In " + formatDuration(startTime) + ", /track will be made to show exact blocks away with no delay cooldown, for a day.", "1032411739351941120");
+        sendDiscordNewsMessage(eventRole + " In " + formatDuration(startTime) + ", /track will be made to show exact blocks away with no delay cooldown (aka insane op tracking), for a day.", "1032411739351941120");
     }
 
     @Override

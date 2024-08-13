@@ -229,9 +229,9 @@ commands:
     usage: /worldteleport [world]
     permission: lifestealSMP.admin
     default: op
-  teleport:
-    description: Teleport to a world
-    usage: /worldteleport [world]
+  tpuhc:
+    description: Teleport to uhc world (during event)
+    usage: /tpuhc
   spawn:
     description: Teleport to spawn to get unstuck
     usage: /spawn

@@ -28,8 +28,8 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
     @Override
     public void onEventStart() {
         pvpWorld = Bukkit.createWorld(new WorldCreator("uhcpvp_world").type(WorldType.FLAT));
-        Bukkit.getServer().broadcastMessage(ChatColor.RED + "UHC PvP event starting now! Type /teleport to join the PvP world. Check announcements /discord");
-        getServer().getScheduler().runTaskLater(lifestealSmp, () -> sendDiscordNewsMessage(eventRole + " UHC PvP event is now active. Type /teleport to join the PvP world! May the best win!", "1032411739351941120"), 1200);
+        Bukkit.getServer().broadcastMessage(ChatColor.RED + "UHC PvP event starting now! Type /tpuhc to join the PvP world. Check announcements /discord");
+        getServer().getScheduler().runTaskLater(lifestealSmp, () -> sendDiscordNewsMessage(eventRole + " UHC PvP event is now active. Type /tpuhc to join the PvP world! May the best win!", "1032411739351941120"), 1200);
         isUhcEvent = true;
         pvpWorld.getWorldBorder().setSize(500);
         pvpWorld.setGameRule(GameRule.DO_MOB_SPAWNING, false);
@@ -51,7 +51,7 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
     @Override
     public void doWarning() {
         Bukkit.getServer().broadcastMessage(ChatColor.RED + "UHC PvP event happening in " + formatDuration(startTime) + "! Check announcements /discord");
-        sendDiscordNewsMessage(eventRole + " In " + formatDuration(startTime) + ", the UHC PvP event will start. Type /teleport to join the PvP world!", "1032411739351941120");
+        sendDiscordNewsMessage(eventRole + " In " + formatDuration(startTime) + ", the UHC PvP event will start. Type /tpuhc to join the PvP world!", "1032411739351941120");
     }
 
     @Override
@@ -61,7 +61,7 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
 
     @Override
     public void runContinuously() {
-        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "UHC PvP event is going on! Do '/teleport' to be in the event and '/teleport back' to return!");
+        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "UHC PvP event is going on! Do '/tpuhc' to be in the event and '/tpuhc back' to return!");
         isUhcEvent = true;
         if (Bukkit.getWorld("uhcpvp_world") == null) {
             pvpWorld = Bukkit.createWorld(new WorldCreator("uhcpvp_world").type(WorldType.FLAT));
@@ -81,7 +81,7 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
         playerOriginalWorlds.put(player, player.getLocation());
         player.teleport(pvpWorld.getSpawnLocation());
         player.sendMessage(ChatColor.GREEN + "You have been teleported to the PvP world!");
-        Bukkit.broadcastMessage(ChatColor.AQUA + player.getName() + " teleported to uhc pvp world! If you want to fight them there do /teleport!");
+        Bukkit.broadcastMessage(ChatColor.AQUA + player.getName() + " teleported to uhc pvp world! If you want to fight them there do /tpuhc!");
     }
 
     public static void teleportBack(Player player) {
@@ -90,7 +90,7 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
             playerOriginalWorlds.remove(player);
             player.sendMessage(ChatColor.GREEN + "You have been teleported back to your original world!");
         } else {
-            player.sendMessage(ChatColor.RED + "You have not used /teleport to pvp world!");
+            player.sendMessage(ChatColor.RED + "You have not used /tpuhc to pvp world!");
         }
     }
 

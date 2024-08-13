@@ -151,7 +151,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("adminrune").setExecutor(new AdminRunes());
         getCommand("stat").setExecutor(new StatisticManager());
         getCommand("worldteleport").setExecutor(new WorldTeleport());
-        getCommand("teleport").setExecutor(new UhcTeleport());
+        getCommand("tpuhc").setExecutor(new UhcTeleport());
         getCommand("spawn").setExecutor(new SpawnCommand());
         getCommand("getitemorblockdata").setExecutor(new ReadBlockAndItemInfo());
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
