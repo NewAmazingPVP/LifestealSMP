@@ -12,6 +12,7 @@ import static newamazingpvp.lifestealsmp.game.Compass.delayDuration;
 import static newamazingpvp.lifestealsmp.game.Compass.trackingDist;
 
 public class InsaneTrackingDay extends BaseEvent {
+    //TODO: Broken atm, bc bukkit runnable cannot change its duration after intialized
 
     private final double timeDelay;
 

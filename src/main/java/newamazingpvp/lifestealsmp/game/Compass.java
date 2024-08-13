@@ -33,7 +33,7 @@ public class Compass implements CommandExecutor, Listener {
     public static int trackingDist = 250;
     private boolean logOffTracking;
     public static boolean noTrackingDay = false;
-    public static double delayDuration = 45;
+    public static double delayDuration = 0.05;
 
     @EventHandler
     public void onPlayerPortalEvent(PlayerPortalEvent event) {

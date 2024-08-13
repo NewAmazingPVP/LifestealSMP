@@ -17,6 +17,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BlockStateMeta;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
@@ -100,7 +101,11 @@ public class RuneHandler implements Listener {
                                 for (ItemStack f : shulkerBox.getInventory().getContents()) {
                                     for (Rune r : runes) {
                                         if (f != null && f.getLore() != null && f.getLore().contains(r.getLore())) {
-                                            p.addPotionEffect(r.getEffect());
+                                            if (r.getEffect().getType() == PotionEffectType.HEALTH_BOOST && p.getMaxHealth() > 36) {
+                                                p.sendMessage("Cannot use your health boost rune due to max heart cap of 20");
+                                            } else {
+                                                p.addPotionEffect(r.getEffect());
+                                            }
                                         }
                                     }
                                 }
@@ -123,7 +128,11 @@ public class RuneHandler implements Listener {
                                     //} else {
                                     for (Rune r : runes) {
                                         if (lore != null && lore.contains(r.getLore())) {
-                                            p.addPotionEffect(r.getEffect());
+                                            if (r.getEffect().getType() == PotionEffectType.HEALTH_BOOST && p.getMaxHealth() > 36) {
+                                                p.sendMessage("Cannot use your health boost rune due to max heart cap of 20");
+                                            } else {
+                                                p.addPotionEffect(r.getEffect());
+                                            }
                                         }
                                     }
                                 }
@@ -163,7 +172,7 @@ public class RuneHandler implements Listener {
     }
 
     public static ItemStack createRuneItem(Rune rune) {
-        int dropChance = (int) (1.0/rune.getDropRate());
+        int dropChance = (int) (1.0 / rune.getDropRate());
         ItemStack runeItem = new ItemStack(Material.PAPER);
         ItemMeta meta = runeItem.getItemMeta();
         meta.displayName(rune.getName());
