@@ -3,6 +3,7 @@ package newamazingpvp.lifestealsmp.game;
 import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
+import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -10,6 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.event.player.PlayerPortalEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
@@ -17,6 +19,7 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.CompassMeta;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -30,10 +33,12 @@ public class Compass implements CommandExecutor, Listener {
     private static final HashMap<UUID, UUID> trackingPlayers = new HashMap<>();
     private static final HashMap<UUID, Location> lastPortalLocations = new HashMap<>();
     private static final HashMap<UUID, Long> elytraTrackCooldown = new HashMap<>();
+    private static final HashMap<UUID, CooldownManager> invisTrackCooldown = new HashMap<>();
     public static int trackingDist = 250;
     private boolean logOffTracking;
     public static boolean noTrackingDay = false;
-    public static double delayDuration = 0.05;
+    public static double delayDuration = 45;
+    public static BukkitTask compassTask;
 
     @EventHandler
     public void onPlayerPortalEvent(PlayerPortalEvent event) {
@@ -53,6 +58,14 @@ public class Compass implements CommandExecutor, Listener {
 
     }*/
 
+    @EventHandler
+    public void onPlayerEffect(EntityPotionEffectEvent event){
+        if(event.getEntity() instanceof Player p){
+            if(event.getNewEffect().getType() == PotionEffectType.INVISIBILITY){
+                invisTrackCooldown.put(p.getUniqueId(), new CooldownManager(90));
+            }
+        }
+    }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("track")) {
@@ -95,6 +108,11 @@ public class Compass implements CommandExecutor, Listener {
 
             if (isPlayerElytraCooldown(g)) {
                 sender.sendMessage(ChatColor.RED + "You have used elytra in last 30 minutes so you cannot track!");
+                return true;
+            }
+
+            if (isPlayerInvisCooldown(g)) {
+                sender.sendMessage(ChatColor.RED + "You have used invisibility effect in past 90 seconds so you cannot track!");
                 return true;
             }
 
@@ -155,7 +173,7 @@ public class Compass implements CommandExecutor, Listener {
             double expectedValue = 1.0 / 20;
             double epsilon = 1e-10;
             if (Math.abs(delayDuration - expectedValue) < epsilon) {
-                Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_RED + "Some player has started tracking /track. Be careful today is insane tracking day event so therefore players will find you very quickly. Keep an eye out by /track ing everyone to see their distance");
+                Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_RED + "Some player has started tracking /track. Be careful today is insane tracking day event so therefore players will find you very quickly. Keep an eye out by /track-ing everyone to see their distance");
             }
             //player.sendMessage(ChatColor.GREEN + "Tracking quadrant of " + target.getName() + " every " + delayDuration + " seconds");
             //player.sendMessage(ChatColor.GREEN + "Compass is now pointing towards " + target.getName());
@@ -217,6 +235,12 @@ public class Compass implements CommandExecutor, Listener {
         return value != null && value > System.currentTimeMillis();
     }
 
+    private static boolean isPlayerInvisCooldown(Player p) {
+        CooldownManager inst = invisTrackCooldown.get(p.getUniqueId());
+        return inst.isOnCooldown();
+    }
+
+
     private boolean isElytratest(ItemStack t) {
         return t.getType().toString().toLowerCase().contains("elytra");
     }
@@ -226,8 +250,13 @@ public class Compass implements CommandExecutor, Listener {
         return p.getInventory().getChestplate().getType().toString().toLowerCase().contains("elytra");
     }
 
+    public static void resetCompass(){
+        compassTask.cancel();
+        compassTask = null;
+    }
+
     public static void compassUpdate() {
-        new BukkitRunnable() {
+        compassTask = new BukkitRunnable() {
             public void run() {
                 for (UUID playerUUID : trackingPlayers.keySet()) {
                     Player player = Bukkit.getPlayer(playerUUID);
