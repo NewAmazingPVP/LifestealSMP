@@ -8,11 +8,9 @@ import java.time.ZonedDateTime;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsMessage;
 import static newamazingpvp.lifestealsmp.events.TimeManager.eventRole;
 import static newamazingpvp.lifestealsmp.events.TimeManager.formatDuration;
-import static newamazingpvp.lifestealsmp.game.Compass.delayDuration;
-import static newamazingpvp.lifestealsmp.game.Compass.trackingDist;
+import static newamazingpvp.lifestealsmp.game.Compass.*;
 
 public class InsaneTrackingDay extends BaseEvent {
-    //TODO: Broken atm, bc bukkit runnable cannot change its duration after intialized
 
     private final double timeDelay;
 
@@ -27,6 +25,8 @@ public class InsaneTrackingDay extends BaseEvent {
         sendDiscordNewsMessage(eventRole + "/track will now show exact blocks away and update with no delay, for a day. **It is not advisable to stay at your bases today for that reason....**", "1032411739351941120");
         trackingDist = 1;
         delayDuration = timeDelay;
+        resetCompass();
+        compassUpdate();
     }
 
     @Override
@@ -35,6 +35,8 @@ public class InsaneTrackingDay extends BaseEvent {
         sendDiscordNewsMessage("Insane /track day is now over", "1032411739351941120");
         trackingDist = 250;
         delayDuration = 45;
+        resetCompass();
+        compassUpdate();
     }
 
     @Override
@@ -53,6 +55,8 @@ public class InsaneTrackingDay extends BaseEvent {
     public void runContinuously() {
         trackingDist = 1;
         delayDuration = timeDelay;
+        resetCompass();
+        compassUpdate();
         Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Insane /track day happening, Check announcements /discord. Protect yourself from hunters and use invisible potions to make yourself untrackable");
         getCooldownManager().setCooldown(1000);
     }
