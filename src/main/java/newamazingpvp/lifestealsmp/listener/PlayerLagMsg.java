@@ -80,5 +80,19 @@ public class PlayerLagMsg implements Listener {
                 }
             }, 20);
         }
+        if (event.getMessage().toLowerCase().contains("item") ||
+                event.getMessage().toLowerCase().contains("custom") ||
+                event.getMessage().toLowerCase().contains("heart") ||
+                event.getMessage().toLowerCase().contains("recipe") ||
+                event.getMessage().toLowerCase().contains("craft")) {
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
+                @Override
+                public void run() {
+                    for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+                        p.sendMessage(ChatColor.AQUA + "Do /recipes " + ChatColor.YELLOW + event.getPlayer().getName() + ChatColor.GREEN + " to see how to craft hearts and other custom items!");
+                    }
+                }
+            }, 20);
+        }
     }
 }
