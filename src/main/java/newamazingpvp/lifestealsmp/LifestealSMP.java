@@ -320,6 +320,10 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getScheduler().runTaskTimer(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** help"), 0, 30 * 60 * 20);
         getServer().getScheduler().runTaskTimer(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** nonvanillamechanics"), 0, 27 * 60 * 20);
         getServer().getScheduler().runTaskTimer(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** discord"), 0, 22 * 60 * 20);
+        getServer().getScheduler().runTaskTimer(this, () ->
+                        getServer().dispatchCommand(getServer().getConsoleSender(),
+                                "broadcast &b[Tip] &fStruggling with low hearts or gear? You don't have to rely solely on PvP for hearts! &bYou can craft hearts &fand keep progressing from rare mob drops (do /recipes), even if you're not ready to fight. &bCheck out /recipes &ffor the Heart Equalizer – a custom item that balances PvP damage based on heart ratios, so you're never at a disadvantage. &fAnother strategy? Build a mob farm! Collect mob drops and craft your way to more hearts with custom items!"),
+                0, 22 * 60 * 20);
         getServer().getScheduler().runTaskTimer(this, BroadcastMessage::broadcastReportBugs, 0, 3600 * 20);
         getServer().getScheduler().runTaskTimer(this, PlayerPing::monitorPlayerPings, 0L, 20L);
         scheduleRestart();
