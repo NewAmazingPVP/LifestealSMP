@@ -154,9 +154,10 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("tpuhc").setExecutor(new UhcTeleport());
         getCommand("spawn").setExecutor(new SpawnCommand());
         getCommand("getitemorblockdata").setExecutor(new ReadBlockAndItemInfo());
+        getCommand("nonvanillamechanics").setExecutor(new NonVanillaMechanics());
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new AntiBurn(), this);
-        getServer().getPluginManager().registerEvents(new PlayerLagMsg(), this);
+        getServer().getPluginManager().registerEvents(new PlayerMsg(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
         getServer().getPluginManager().registerEvents(new EndCrystalWarning(), this);
         getServer().getPluginManager().registerEvents(new DisableMace(), this);
@@ -316,6 +317,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         }
         getServer().getScheduler().runTaskTimer(this, BroadcastMessage::broadcastServerMessage, 0, 7200 * 20);
         getServer().getScheduler().runTaskTimer(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** help"), 0, 30 * 60 * 20);
+        getServer().getScheduler().runTaskTimer(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** nonvanillamechanics"), 0, 27 * 60 * 20);
+        getServer().getScheduler().runTaskTimer(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** discord"), 0, 22 * 60 * 20);
         getServer().getScheduler().runTaskTimer(this, BroadcastMessage::broadcastReportBugs, 0, 3600 * 20);
         getServer().getScheduler().runTaskTimer(this, PlayerPing::monitorPlayerPings, 0L, 20L);
         scheduleRestart();

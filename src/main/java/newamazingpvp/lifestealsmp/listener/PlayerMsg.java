@@ -14,7 +14,7 @@ import java.util.OptionalDouble;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static org.bukkit.Bukkit.getServer;
 
-public class PlayerLagMsg implements Listener {
+public class PlayerMsg implements Listener {
     @EventHandler
     public void playerChat(AsyncPlayerChatEvent event) {
         if ((event.getMessage().toLowerCase().contains("lag") || event.getMessage().toLowerCase().contains("tps")) &&
@@ -90,6 +90,51 @@ public class PlayerLagMsg implements Listener {
                 public void run() {
                     for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                         p.sendMessage(ChatColor.AQUA + "Do /recipes " + ChatColor.YELLOW + event.getPlayer().getName() + ChatColor.GREEN + " to see how to craft hearts and other custom items!");
+                    }
+                }
+            }, 20);
+        }
+        if (event.getMessage().toLowerCase().contains("lose") ||
+                event.getMessage().toLowerCase().contains("lost") ||
+                event.getMessage().toLowerCase().contains("heart") ||
+                event.getMessage().toLowerCase().contains("lifesteal")){
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
+                @Override
+                public void run() {
+                    for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+                        p.sendMessage(ChatColor.AQUA + "In this lifesteal server, hearts are only lost when killed by a player and not by environmental causes. However you could also get killed by player during your newbie or death protection and still not lose heart if you had the protection");
+                    }
+                }
+            }, 20);
+        }
+        if (event.getMessage().toLowerCase().contains("runes") ||
+                event.getMessage().toLowerCase().contains("rune")) {
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
+                @Override
+                public void run() {
+                    for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+                        p.sendMessage(ChatColor.AQUA + "Do /runes to learn about runes!");
+                    }
+                }
+            }, 20);
+        }
+        if (event.getMessage().toLowerCase().contains("cap") ||
+                event.getMessage().toLowerCase().contains("limit")) {
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
+                @Override
+                public void run() {
+                    for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+                        p.sendMessage(ChatColor.AQUA + "You can go above heart cap by using health and absorption runes. Do /runes to learn about runes!");
+                    }
+                }
+            }, 20);
+        }
+        if (event.getMessage().toLowerCase().contains("prot")) {
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
+                @Override
+                public void run() {
+                    for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+                        p.sendMessage(ChatColor.AQUA + "The server has newbie prot for 2 hours of playtime for each player and death prot for 15 minutes after your death. During the prot, you are immune to damage from other players unless you hit them back, but even if killed during the prot, you will not lose any hearts.");
                     }
                 }
             }, 20);

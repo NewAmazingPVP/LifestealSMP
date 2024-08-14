@@ -240,3 +240,6 @@ commands:
     usage: /getitemorblockdata [type]
     permission: lifestealSMP.admin
     default: op
+  nonvanillamechanics:
+    description: See all the non-vanilla mechanics in the server
+    usage: /nonvanillamechanics

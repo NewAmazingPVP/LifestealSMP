@@ -13,8 +13,8 @@ public class RulesCommand implements CommandExecutor {
         if (sender instanceof Player player) {
 
             player.sendMessage(ChatColor.GOLD + "Rules for this SMP Season:");
-            player.sendMessage(ChatColor.WHITE + "- End Crystals/Respawn Anchors/Beds/Minecarts are allowed but are nerfed in PVP for balance");
-            player.sendMessage(ChatColor.WHITE + "- The mace is allowed but are nerfed in PVP for balance");
+            player.sendMessage(ChatColor.WHITE + "- End Crystals/Respawn Anchors/Beds/Minecarts/Instant Harming Pots and Arrows are allowed but are nerfed in PVP for balance");
+            player.sendMessage(ChatColor.WHITE + "- The mace is allowed but is nerfed in PVP for balance");
             player.sendMessage(ChatColor.WHITE + "- Hacking or cheating not allowed");
             player.sendMessage(ChatColor.WHITE + "- Xraying not allowed");
             player.sendMessage(ChatColor.WHITE + "- No spawn and bed killing/camping");

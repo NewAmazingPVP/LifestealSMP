@@ -54,6 +54,7 @@ public class NerfOpItems implements Listener {
                     if (e instanceof Player p) {
                         p.sendMessage(ChatColor.YELLOW + "Explosives other than TNT do not tag you for PVP");
                         if (!p.equals(player)) {
+                            //check if same team or not
                             //tagPlayer(p, player);
                             //tagPlayer(player, p);
                         }

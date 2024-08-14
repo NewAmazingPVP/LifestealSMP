@@ -101,11 +101,11 @@ public class RuneHandler implements Listener {
                                 for (ItemStack f : shulkerBox.getInventory().getContents()) {
                                     for (Rune r : runes) {
                                         if (f != null && f.getLore() != null && f.getLore().contains(r.getLore())) {
-                                            if (r.getEffect().getType() == PotionEffectType.HEALTH_BOOST && p.getMaxHealth() > 36) {
-                                                p.sendMessage("Cannot use your health boost rune due to max heart cap of 20");
-                                            } else {
+                                            //if (r.getEffect().getType() == PotionEffectType.HEALTH_BOOST && p.getMaxHealth() > 36) {
+                                            //    p.sendMessage("Cannot use your health boost rune due to max heart cap of 20");
+                                            //} else {
                                                 p.addPotionEffect(r.getEffect());
-                                            }
+                                            //}
                                         }
                                     }
                                 }
@@ -128,11 +128,11 @@ public class RuneHandler implements Listener {
                                     //} else {
                                     for (Rune r : runes) {
                                         if (lore != null && lore.contains(r.getLore())) {
-                                            if (r.getEffect().getType() == PotionEffectType.HEALTH_BOOST && p.getMaxHealth() > 36) {
-                                                p.sendMessage("Cannot use your health boost rune due to max heart cap of 20");
-                                            } else {
+                                            //if (r.getEffect().getType() == PotionEffectType.HEALTH_BOOST && p.getMaxHealth() > 36) {
+                                            //    p.sendMessage("Cannot use your health boost rune due to max heart cap of 20");
+                                            //} else {
                                                 p.addPotionEffect(r.getEffect());
-                                            }
+                                            //}
                                         }
                                     }
                                 }
