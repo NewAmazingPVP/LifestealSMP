@@ -237,8 +237,12 @@ public class Compass implements CommandExecutor, Listener {
 
     private static boolean isPlayerInvisCooldown(Player p) {
         CooldownManager inst = invisTrackCooldown.get(p.getUniqueId());
+        if (inst == null) {
+            return false;
+        }
         return inst.isOnCooldown();
     }
+
 
 
     private boolean isElytratest(ItemStack t) {
