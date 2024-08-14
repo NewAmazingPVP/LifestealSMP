@@ -33,7 +33,9 @@ public class JoinLeave implements Listener {
 
         player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f);
 
+        getServer().dispatchCommand(getServer().getConsoleSender(), "sudo " + player.getName() + " nonvanillamechanics");
         getServer().dispatchCommand(getServer().getConsoleSender(), "sudo " + player.getName() + " help");
+        getServer().dispatchCommand(getServer().getConsoleSender(), "sudo " + player.getName() + " discord");
         getServer().getScheduler().runTaskLater(lifestealSmp, () -> player.sendMessage(ChatColor.RED + "Report any rule breakers on /discord and beware of people tricking you into taking your hearts away. Make your base safe locations such as underground to prevent it from being griefed."), 200);
         if ((player.getName().equals("NewAmazingPVP") || admins.contains(player.getName())) && silentMode) {
             event.setJoinMessage("");

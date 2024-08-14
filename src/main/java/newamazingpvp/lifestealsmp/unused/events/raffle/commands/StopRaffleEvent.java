@@ -23,7 +23,7 @@ public class StopRaffleEvent implements CommandExecutor {
             Bukkit.broadcastMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Event was stopped!");
             endRaffleEvent();
         } else {
-            player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Event is already toggled off you fucking idiot!");
+            player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Event is already toggled off");
         }
 
 
