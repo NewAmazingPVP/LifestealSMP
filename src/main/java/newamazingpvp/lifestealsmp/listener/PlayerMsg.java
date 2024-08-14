@@ -1,6 +1,8 @@
 package newamazingpvp.lifestealsmp.listener;
 
 import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -135,6 +137,24 @@ public class PlayerMsg implements Listener {
                 public void run() {
                     for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                         p.sendMessage(ChatColor.AQUA + "The server has newbie prot for 2 hours of playtime for each player and death prot for 15 minutes after your death. During the prot, you are immune to damage from other players unless you hit them back, but even if killed during the prot, you will not lose any hearts.");
+                    }
+                }
+            }, 20);
+        }
+        if (event.getMessage().toLowerCase().contains("discord")) {
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
+                @Override
+                public void run() {
+                    getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** discord");
+                }
+            }, 20);
+        }
+        if (event.getMessage().toLowerCase().contains("track")) {
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
+                @Override
+                public void run() {
+                    for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+                        p.sendMessage(ChatColor.AQUA + "The server has tracking feature and you can track the vicinity of other players from you." + ChatColor.GREEN + " Do /track [playerName]");
                     }
                 }
             }, 20);
