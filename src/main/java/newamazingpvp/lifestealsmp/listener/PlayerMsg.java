@@ -1,8 +1,6 @@
 package newamazingpvp.lifestealsmp.listener;
 
 import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -17,147 +15,82 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static org.bukkit.Bukkit.getServer;
 
 public class PlayerMsg implements Listener {
+
     @EventHandler
     public void playerChat(AsyncPlayerChatEvent event) {
-        if ((event.getMessage().toLowerCase().contains("lag") || event.getMessage().toLowerCase().contains("tps")) &&
-                !(
-                        event.getMessage().toLowerCase().contains("not lagging") ||
-                                event.getMessage().toLowerCase().contains("not laggy") ||
-                                event.getMessage().toLowerCase().contains("didnt lag") ||
-                                event.getMessage().toLowerCase().contains("llage") ||
-                                event.getMessage().toLowerCase().contains("https")
-                )) {
-            OptionalDouble tpsTest = Arrays.stream(getServer().getTPS()).findFirst();
-            double tps = tpsTest.orElse(20.0);
-            if (tps > 20.0) {
-                tps = 20.0;
-            }
-            DecimalFormat decimalFormat = new DecimalFormat("#.##");
-            double finalTps = Double.parseDouble(decimalFormat.format(tps));
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
-                @Override
-                public void run() {
-                    if (finalTps > 18.00) {
-                        for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-                            p.sendMessage("The server currently has " + ChatColor.AQUA + finalTps + ChatColor.WHITE + " tps and is not lagging.");
-                        }
-                    } else {
-                        for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-                            p.sendMessage("The server currently has " + ChatColor.RED + finalTps + "tps and could be lagging");
-                        }
-                    }
-                }
-            }, 20);
-        }
-        if ((event.getMessage().toLowerCase().contains("tp") || (event.getMessage().toLowerCase().contains("teleport") && !event.getMessage().toLowerCase().contains("tps"))) && !event.getMessage().toLowerCase().contains("outpost")) {
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
-                @Override
-                public void run() {
-                    for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-                        p.sendMessage(ChatColor.RED + "This server does not have tp and you should not ask admins to teleport you (do /rules) " + ChatColor.YELLOW + event.getPlayer().getName());
+        String message = event.getMessage().toLowerCase();
+        Player player = event.getPlayer();
 
-                    }
-                }
-            }, 20);
+        if (containsAny(message, "lag", "tps") && !containsAny(message, "not lagging", "not laggy", "didnt lag", "llage", "https")) {
+            handleTpsChat();
         }
-        if (event.getMessage().toLowerCase().contains("hit me")) {
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
-                @Override
-                public void run() {
-                    for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-                        p.sendMessage(ChatColor.RED + "Be careful as " + ChatColor.YELLOW + event.getPlayer().getName() + ChatColor.DARK_RED + " might be trying to get rid of newbie protection of newbies by asking to hit them");
-                    }
-                }
-            }, 20);
+
+        if (containsAny(message, "tp", "teleport") && !containsAny(message, "tps", "outpost")) {
+            broadcastMessage(ChatColor.RED + "This server does not have tp and you should not ask admins to teleport you (do /rules) " + ChatColor.YELLOW + player.getName());
         }
-        if (event.getMessage().toLowerCase().contains("stuck") ||
-                event.getMessage().toLowerCase().contains("trap") ||
-                event.getMessage().toLowerCase().contains("hole")) {
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
-                @Override
-                public void run() {
-                    for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-                        p.sendMessage(ChatColor.RED + "If you are stuck " + ChatColor.YELLOW + event.getPlayer().getName() + ChatColor.DARK_RED + " at vicinity of spawn, then do " + ChatColor.AQUA + "/spawn" + ChatColor.DARK_RED + " to get out");
-                    }
-                }
-            }, 20);
+
+        if (message.contains("hit me")) {
+            broadcastMessage(ChatColor.RED + "Be careful as " + ChatColor.YELLOW + player.getName() + ChatColor.DARK_RED + " might be trying to get rid of newbie protection by asking to hit them.");
         }
-        if (event.getMessage().toLowerCase().contains("item") ||
-                event.getMessage().toLowerCase().contains("custom") ||
-                event.getMessage().toLowerCase().contains("heart") ||
-                event.getMessage().toLowerCase().contains("recipe") ||
-                event.getMessage().toLowerCase().contains("craft")) {
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
-                @Override
-                public void run() {
-                    for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-                        p.sendMessage(ChatColor.AQUA + "Do /recipes " + ChatColor.YELLOW + event.getPlayer().getName() + ChatColor.GREEN + " to see how to craft hearts and other custom items!");
-                    }
-                }
-            }, 20);
+
+        if (containsAny(message, "stuck", "trap", "hole")) {
+            broadcastMessage(ChatColor.RED + "If you are stuck " + ChatColor.YELLOW + player.getName() + ChatColor.DARK_RED + " near spawn, do " + ChatColor.AQUA + "/spawn" + ChatColor.DARK_RED + " to get out.");
         }
-        if (event.getMessage().toLowerCase().contains("lose") ||
-                event.getMessage().toLowerCase().contains("lost") ||
-                event.getMessage().toLowerCase().contains("heart") ||
-                event.getMessage().toLowerCase().contains("lifesteal")){
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
-                @Override
-                public void run() {
-                    for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-                        p.sendMessage(ChatColor.AQUA + "In this lifesteal server, hearts are only lost when killed by a player and not by environmental causes. However you could also get killed by player during your newbie or death protection and still not lose heart if you had the protection");
-                    }
-                }
-            }, 20);
+
+        if (containsAny(message, "item", "custom", "heart", "recipe", "craft")) {
+            broadcastMessage(ChatColor.AQUA + "Do /recipes " + ChatColor.YELLOW + player.getName() + ChatColor.GREEN + " to see how to craft hearts and other custom items!");
         }
-        if (event.getMessage().toLowerCase().contains("runes") ||
-                event.getMessage().toLowerCase().contains("rune")) {
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
-                @Override
-                public void run() {
-                    for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-                        p.sendMessage(ChatColor.AQUA + "Do /runes to learn about runes!");
-                    }
-                }
-            }, 20);
+
+        if (containsAny(message, "lose", "lost", "heart", "lifesteal")) {
+            broadcastMessage(ChatColor.AQUA + "In this lifesteal server, hearts are only lost when killed by a player, not by environmental causes. You won't lose hearts during newbie or death protection even if killed by another player.");
         }
-        if (event.getMessage().toLowerCase().contains("cap") ||
-                event.getMessage().toLowerCase().contains("limit")) {
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
-                @Override
-                public void run() {
-                    for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-                        p.sendMessage(ChatColor.AQUA + "You can go above heart cap by using health and absorption runes. Do /runes to learn about runes!");
-                    }
-                }
-            }, 20);
+
+        if (containsAny(message, "runes", "rune")) {
+            broadcastMessage(ChatColor.AQUA + "Do /runes to learn about runes!");
         }
-        if (event.getMessage().toLowerCase().contains("prot")) {
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
-                @Override
-                public void run() {
-                    for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-                        p.sendMessage(ChatColor.AQUA + "The server has newbie prot for 2 hours of playtime for each player and death prot for 15 minutes after your death. During the prot, you are immune to damage from other players unless you hit them back, but even if killed during the prot, you will not lose any hearts.");
-                    }
-                }
-            }, 20);
+
+        if (containsAny(message, "cap", "limit")) {
+            broadcastMessage(ChatColor.AQUA + "You can go above heart cap using health and absorption runes. Do /runes to learn about runes!");
         }
-        if (event.getMessage().toLowerCase().contains("discord")) {
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
-                @Override
-                public void run() {
-                    getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** discord");
-                }
-            }, 20);
+
+        if (message.contains("prot")) {
+            broadcastMessage(ChatColor.AQUA + "The server provides newbie protection for 2 hours and death protection for 15 minutes after a death. During this time, you cannot lose hearts from PvP damage.");
         }
-        if (event.getMessage().toLowerCase().contains("track")) {
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, new Runnable() {
-                @Override
-                public void run() {
-                    for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-                        p.sendMessage(ChatColor.AQUA + "The server has tracking feature and you can track the vicinity of other players from you." + ChatColor.GREEN + " Do /track [playerName]");
-                    }
-                }
-            }, 20);
+
+        if (message.contains("discord")) {
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** discord"), 20);
         }
+
+        if (message.contains("track")) {
+            broadcastMessage(ChatColor.AQUA + "The server has a tracking feature. You can track nearby players using " + ChatColor.GREEN + "/track [playerName]");
+        }
+    }
+
+    private boolean containsAny(String message, String... keywords) {
+        return Arrays.stream(keywords).anyMatch(message::contains);
+    }
+
+    private void handleTpsChat() {
+        OptionalDouble tpsTest = Arrays.stream(getServer().getTPS()).findFirst();
+        double tps = tpsTest.orElse(20.0);
+        tps = Math.min(tps, 20.0);
+
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        String finalTps = decimalFormat.format(tps);
+
+        String tpsMessage = Double.parseDouble(finalTps) > 18.0
+                ? ChatColor.AQUA + finalTps + ChatColor.WHITE + " tps and is not lagging."
+                : ChatColor.RED + finalTps + ChatColor.WHITE + " tps and could be lagging.";
+
+        broadcastMessage("The server currently has " + tpsMessage);
+    }
+
+
+    private void broadcastMessage(String message) {
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> {
+            for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+                player.sendMessage(message);
+            }
+        }, 20);
     }
 }
