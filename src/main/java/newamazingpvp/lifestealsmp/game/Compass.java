@@ -61,7 +61,7 @@ public class Compass implements CommandExecutor, Listener {
     @EventHandler
     public void onPlayerEffect(EntityPotionEffectEvent event){
         if(event.getEntity() instanceof Player p){
-            if(event.getNewEffect().getType() == PotionEffectType.INVISIBILITY){
+            if(event.getNewEffect() != null && event.getNewEffect().getType() != null && event.getNewEffect().getType() == PotionEffectType.INVISIBILITY){
                 invisTrackCooldown.put(p.getUniqueId(), new CooldownManager(90));
             }
         }

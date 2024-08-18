@@ -169,7 +169,7 @@ public class Recipes {
         ShapedRecipe instaboomTNTRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "instaboom_tnt"), instaboomTNT);
         instaboomTNTRecipe.shape("TTT", "TDT", "TTT");
         instaboomTNTRecipe.setIngredient('T', Material.TNT);
-        instaboomTNTRecipe.setIngredient('E', Material.END_CRYSTAL);
+        //instaboomTNTRecipe.setIngredient('E', Material.END_CRYSTAL);
         instaboomTNTRecipe.setIngredient('D', Material.DIAMOND);
         customItems.add(instaboomTNT);
         shapedRecipes.put(instaboomTNT, instaboomTNTRecipe);
