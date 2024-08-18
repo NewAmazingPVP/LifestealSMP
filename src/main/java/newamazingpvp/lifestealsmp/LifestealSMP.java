@@ -90,6 +90,7 @@ import static newamazingpvp.lifestealsmp.utility.Utils.startTPSTracking;
 public final class LifestealSMP extends JavaPlugin implements Listener, PluginMessageListener {
     public static LifestealSMP lifestealSmp;
     public static boolean silentMode = true;
+    public static boolean unbanChunkBan = false;
     private FileConfiguration config;
     public static Essentials essentials;
     public static boolean isSmp = true;

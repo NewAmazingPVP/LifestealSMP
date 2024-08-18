@@ -18,6 +18,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.unbanChunkBan;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordMessage;
 
 public class AntiChunkBan implements Listener {
@@ -42,8 +43,10 @@ public class AntiChunkBan implements Listener {
         PlayerInventory inventory = player.getInventory();
         for (ItemStack item : inventory.getContents()) {
             if (item != null && hasExcessiveMetadata(item, MAX_INVENTORY_ITEM_METADATA)) {
-                //inventory.remove(item);
-                logger.log(Level.WARNING, "Removed item with excessive metadata from player inventory: " + item.getType().name());
+                if(unbanChunkBan) {
+                    inventory.remove(item);
+                    sendDiscordMessage(player.getName() + " chunk ban item removed", "1136353329488875531");
+                }
                 sendDiscordMessage(player.getName() + " might possibly have a chunk ban item", "1136353329488875531");
             }
         }
@@ -65,8 +68,10 @@ public class AntiChunkBan implements Listener {
         Inventory inventory = container.getInventory();
         for (ItemStack item : inventory.getContents()) {
             if (item != null && hasExcessiveMetadata(item, MAX_BLOCK_METADATA / inventory.getSize())) {
-                //inventory.remove(item);
-                logger.log(Level.WARNING, "Removed item with excessive metadata from container at " + container.getLocation());
+                if(unbanChunkBan) {
+                    inventory.remove(item);
+                    sendDiscordMessage(player.getName() + " is now freed from chunk ban. Removed item with excessive metadata from container at " + container.getLocation(), "1136353329488875531");
+                }
                 sendDiscordMessage(player.getName() + " might possibly be surrounded by chunk ban container", "1136353329488875531");
             }
         }
@@ -77,8 +82,10 @@ public class AntiChunkBan implements Listener {
             if (entity instanceof Item) {
                 Item groundItem = (Item) entity;
                 if (hasExcessiveMetadata(groundItem.getItemStack(), MAX_GROUND_ITEM_METADATA)) {
-                    //groundItem.remove();
-                    logger.log(Level.WARNING, "Removed ground item with excessive metadata at location: " + groundItem.getLocation());
+                    if(unbanChunkBan) {
+                        groundItem.remove();
+                        sendDiscordMessage(player.getName() + " is now free from chunk ban items on ground. Removed ground item with excessive metadata at location: " + groundItem.getLocation(), "1136353329488875531");
+                    }
                     sendDiscordMessage(player.getName() + " might possibly be surrounded by chunk ban items on ground", "1136353329488875531");
                 }
             }
