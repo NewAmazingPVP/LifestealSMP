@@ -49,9 +49,9 @@ public class PlayerMsg implements Listener {
             broadcastMessage(ChatColor.AQUA + "Do /runes to learn about runes!");
         }
 
-        if (containsAny(message, "cap", "limit")) {
+        /*if (containsAny(message, "cap", "limit")) {
             broadcastMessage(ChatColor.AQUA + "You can go above heart cap using health and absorption runes. Do /runes to learn about runes!");
-        }
+        }*/
 
         if (message.contains("prot")) {
             broadcastMessage(ChatColor.AQUA + "The server provides newbie protection for 2 hours and death protection for 15 minutes after a death. During this time, you cannot lose hearts from PvP damage.");

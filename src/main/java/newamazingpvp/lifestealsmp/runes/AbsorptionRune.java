@@ -7,7 +7,7 @@ import org.bukkit.potion.PotionEffectType;
 
 public class AbsorptionRune extends AbstractRune {
 
-    private static final PotionEffect effect = new PotionEffect(PotionEffectType.ABSORPTION, 200, 0);
+    private static final PotionEffect effect = new PotionEffect(PotionEffectType.ABSORPTION, 60, 0);
     public static final PotionEffect effectII = new PotionEffect(PotionEffectType.ABSORPTION, 200, 1);
     public static final PotionEffect effectIII = new PotionEffect(PotionEffectType.ABSORPTION, 200, 2);
     public static final PotionEffect effectIV = new PotionEffect(PotionEffectType.ABSORPTION, 200, 3);

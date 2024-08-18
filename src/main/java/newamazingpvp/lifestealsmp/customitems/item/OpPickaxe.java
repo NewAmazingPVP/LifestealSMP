@@ -65,8 +65,8 @@ public class OpPickaxe implements Listener {
                 item.setDurability((short) (item.getDurability() + 1));
                 event.setCancelled(true);
                 CooldownManager cooldown = playerCooldowns.get(player.getUniqueId());
-                cooldown.setCooldown(2.0);
-                getServer().getScheduler().runTaskLater(lifestealSmp, () -> event.getPlayer().setCooldown(item.getType(), 40), 1);
+                cooldown.setCooldown(1.0);
+                getServer().getScheduler().runTaskLater(lifestealSmp, () -> event.getPlayer().setCooldown(item.getType(), 20), 1);
                 playerCooldowns.put(player.getUniqueId(), cooldown);
             }
         }
