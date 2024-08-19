@@ -1,16 +1,17 @@
 package newamazingpvp.lifestealsmp.command;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.World;
-import org.bukkit.WorldBorder;
+import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.events.TimeManager.CUSTOM_ITEMS_AND_RUNES;
+import static newamazingpvp.lifestealsmp.events.TimeManager.formatDuration;
 import static newamazingpvp.lifestealsmp.variables.Loc.endFightSpawn;
 import static newamazingpvp.lifestealsmp.variables.Misc.endFightParticipants;
 import static newamazingpvp.lifestealsmp.variables.Misc.isEndFightEnabled;
@@ -36,6 +37,14 @@ public class StartEndFight implements CommandExecutor {
                     worldBorder.setDamageBuffer(0);
                     worldBorder.setDamageAmount(4);
                     worldBorder.setWarningDistance(10);
+                    for(Player p: Bukkit.getOnlinePlayers()){
+                        if(p.getGameMode() == GameMode.SURVIVAL){
+                            p.addPotionEffect(new PotionEffect(PotionEffectType.INSTANT_DAMAGE, Integer.MAX_VALUE, 1, true, false));
+                            p.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, Integer.MAX_VALUE, 1, true, false));
+                            p.sendTitle(ChatColor.RED + "WARNING!", ChatColor.YELLOW + "Fight to the death, or get eliminated by instant harming!");
+                        }
+                    }
+                    Bukkit.broadcastMessage(ChatColor.DARK_RED + "Fight to the death, or get eliminated by instant harming!");
                     return;
                 }
 
