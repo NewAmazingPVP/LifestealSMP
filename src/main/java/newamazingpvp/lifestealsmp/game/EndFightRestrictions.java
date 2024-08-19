@@ -125,6 +125,7 @@ public class EndFightRestrictions implements Listener {
                 survivor.setInvulnerable(false);
                 for (Player player : Bukkit.getOnlinePlayers()) {
                     player.sendTitle(ChatColor.GOLD + survivor.getName() + ChatColor.DARK_PURPLE + " has won the end fight!", ChatColor.AQUA + "GGs " + survivor.getName());
+                    player.clearActivePotionEffects();
                 }
                 sendDiscordEmbedPlayer(survivor.getName() + " has won the end fight!", Color.BLUE, "", survivor.getName());
                 sendDiscordNewsEmbedPlayer(survivor.getName() + " has won the end fight!", Color.BLUE, "1032411739351941120", survivor.getName());
