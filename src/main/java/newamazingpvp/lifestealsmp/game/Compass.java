@@ -77,7 +77,8 @@ public class Compass implements CommandExecutor, Listener {
             }
 
             if (noTrackingDay) {
-                sender.sendMessage("Today is the no tracking day event, check /discord announcements!");
+                sender.sendMessage(ChatColor.GOLD + "Today is the no tracking day event, check /discord announcements!");
+                return true;
             }
 
             if (args.length == 0) {

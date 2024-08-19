@@ -21,7 +21,7 @@ public class BadOmenRune extends AbstractRune {
     public BadOmenRune() {
         super(name,
                 mob,
-                1.0 / 120,
+                1.0 / 200,
                 lore,
                 effect);
     }
@@ -30,7 +30,7 @@ public class BadOmenRune extends AbstractRune {
         public II() {
             super(name.append(deserialize(" II")),
                     mob,
-                    1.0 / 240,
+                    1.0 / 400,
                     ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectII.getType().getKey().getKey()) + " " + formatAmplifier(effectII.getAmplifier()),
                     effectII);
         }
@@ -40,7 +40,7 @@ public class BadOmenRune extends AbstractRune {
         public III() {
             super(name.append(deserialize(" III")),
                     mob,
-                    1.0 / 360,
+                    1.0 / 600,
                     ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectIII.getType().getKey().getKey()) + " " + formatAmplifier(effectIII.getAmplifier()),
                     effectIII);
         }
@@ -50,7 +50,7 @@ public class BadOmenRune extends AbstractRune {
         public IV() {
             super(name.append(deserialize(" IV")),
                     mob,
-                    1.0 / 480,
+                    1.0 / 800,
                     ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectIV.getType().getKey().getKey()) + " " + formatAmplifier(effectIV.getAmplifier()),
                     effectIV);
         }
@@ -60,7 +60,7 @@ public class BadOmenRune extends AbstractRune {
         public V() {
             super(name.append(deserialize(" V")),
                     mob,
-                    1.0 / 600,
+                    1.0 / 1000,
                     ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectV.getType().getKey().getKey()) + " " + formatAmplifier(effectV.getAmplifier()),
                     effectV);
         }
