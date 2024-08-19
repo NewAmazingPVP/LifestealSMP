@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPotionEffectEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPortalEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
@@ -47,16 +48,17 @@ public class Compass implements CommandExecutor, Listener {
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
-        trackingPlayers.remove(event.getPlayer().getUniqueId());
+        //log off tracking
+        //trackingPlayers.remove(event.getPlayer().getUniqueId());
     }
 
-    /*@EventHandler
+    @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         if (trackingPlayers.containsValue(e.getPlayer().getUniqueId())) {
-            e.getPlayer().sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[WARNING] You are being tracked by unspecified amount of players!");
+            e.getPlayer().sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[WARNING] You are being tracked by unspecified amount of players!" + ChatColor.AQUA + " However logging off won't help, they will still be able to track when you are off");
         }
 
-    }*/
+    }
 
     @EventHandler
     public void onPlayerEffect(EntityPotionEffectEvent event){
@@ -177,7 +179,7 @@ public class Compass implements CommandExecutor, Listener {
             }
             //player.sendMessage(ChatColor.GREEN + "Tracking quadrant of " + target.getName() + " every " + delayDuration + " seconds");
             //player.sendMessage(ChatColor.GREEN + "Compass is now pointing towards " + target.getName());
-            //target.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[WARNING] You are being tracked!");
+            target.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[WARNING] You are being tracked!" + ChatColor.AQUA + " However logging off won't help, they will still be able to track when you are off");
             return true;
         }
 
