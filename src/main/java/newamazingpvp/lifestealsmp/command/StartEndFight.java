@@ -21,7 +21,7 @@ public class StartEndFight implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         isEndFightEnabled = true;
-        World world = getServer().getWorld("world_the_end");
+        World world = Bukkit.createWorld(new WorldCreator("end_fight_world").type(WorldType.NORMAL).environment(World.Environment.THE_END));
         WorldBorder worldBorder = world.getWorldBorder();
         worldBorder.setCenter(0, 0);
         worldBorder.setSize(310);
@@ -82,7 +82,7 @@ public class StartEndFight implements CommandExecutor {
         for (Player p : lifestealSmp.getServer().getOnlinePlayers()) {
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> p.sendTitle(ChatColor.RED + "" + ChatColor.BOLD + "GO!", ChatColor.GOLD + "Good Luck!"), 1200);
         }
-        //Bukkit.getWorld("world_the_end").getWorldBorder().setSize(300);
+        //Bukkit.getWorld("end_fight_world").getWorldBorder().setSize(300);
         return true;
     }
 }

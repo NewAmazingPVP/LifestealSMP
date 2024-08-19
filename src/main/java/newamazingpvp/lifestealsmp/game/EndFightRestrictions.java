@@ -12,6 +12,7 @@ import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerPortalEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import java.awt.Color;
@@ -64,12 +65,17 @@ public class EndFightRestrictions implements Listener {
                 e.disallow(PlayerLoginEvent.Result.KICK_OTHER, "Sorry you cannot join during end fight!");
                 lifestealSmp.getServer().broadcastMessage(e.getPlayer().getName() + " tried during end fight but isn't whitelisted");
             }*/
-
-            if (!(endFightParticipants.contains(e.getPlayer().getName()))) {
-                Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> e.getPlayer().teleport(endSpawn), 20);
-                Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> e.getPlayer().sendMessage(ChatColor.AQUA + "You joined during the server final end fight and were teleported right to it!"), 20);
-                //teleport player to end spawn for fight
-            }
+            //!(endFightParticipants.contains(e.getPlayer().getName()))
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    if (!e.getPlayer().getWorld().getName().equals("end_fight_world")) {
+                        e.getPlayer().teleport(endSpawn);
+                        e.getPlayer().sendMessage(ChatColor.AQUA + "You joined during the server final end fight and were teleported right to it!");
+                        //teleport player to end spawn for fight
+                    }
+                }
+            }.runTaskLater(lifestealSmp, 20L);
         }
     }
 
