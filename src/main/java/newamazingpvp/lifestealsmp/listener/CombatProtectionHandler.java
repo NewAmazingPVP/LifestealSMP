@@ -26,6 +26,7 @@ import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
 import static newamazingpvp.lifestealsmp.game.PlayerLifeManager.eliminatePlayer;
 import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 import static newamazingpvp.lifestealsmp.utility.Utils.returnPlayerDamager;
+import static newamazingpvp.lifestealsmp.variables.Misc.isEndFightEnabled;
 import static newamazingpvp.lifestealsmp.variables.Misc.maxHp;
 
 public class CombatProtectionHandler implements Listener {
@@ -52,38 +53,40 @@ public class CombatProtectionHandler implements Listener {
             damager.sendMessage(ChatColor.RED + "You cannot damage players during the grace period!");
             return;
         }
-        if (invincibilityPlayers.contains(damaged.getName())) {
-            event.setCancelled(true);
-            damager.sendMessage(ChatColor.RED + "This player was recently killed by a player and won't give heart if you kill them again.");
-            damager.sendMessage(ChatColor.RED + "You cannot damage players during their death protection unless they attack you back!");
-            damaged.sendMessage(ChatColor.RED + "Someone tried attacking you but was prevented because you died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
-            return;
-        }
-        if (invincibilityPlayers.contains(damager.getName())) {
-            invincibilityPlayers.remove(damager.getName());
-            damager.sendMessage(ChatColor.RED + "You have lost your death protection invincibility because you attacked another player.");
-        }
-        //nerfed from 216000 (3 hours) to 144000 (2 hours)
-        if (getPlaytime(damaged) < 144000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())) {
-            event.setCancelled(true);
-            long remainingSeconds = getPlaytime(damaged) / 20;
-            long finalTime = 144000 - remainingSeconds;
+        if(!isEndFightEnabled) {
+            if (invincibilityPlayers.contains(damaged.getName())) {
+                event.setCancelled(true);
+                damager.sendMessage(ChatColor.RED + "This player was recently killed by a player and won't give heart if you kill them again.");
+                damager.sendMessage(ChatColor.RED + "You cannot damage players during their death protection unless they attack you back!");
+                damaged.sendMessage(ChatColor.RED + "Someone tried attacking you but was prevented because you died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
+                return;
+            }
+            if (invincibilityPlayers.contains(damager.getName())) {
+                invincibilityPlayers.remove(damager.getName());
+                damager.sendMessage(ChatColor.RED + "You have lost your death protection invincibility because you attacked another player.");
+            }
+            //nerfed from 216000 (3 hours) to 144000 (2 hours)
+            if (getPlaytime(damaged) < 144000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())) {
+                event.setCancelled(true);
+                long remainingSeconds = getPlaytime(damaged) / 20;
+                long finalTime = 144000 - remainingSeconds;
 
-            int remainingMinutes = (int) ((finalTime % 3600) / 60);
-            int remainingSecondsLeft = (int) (finalTime % 60);
+                int remainingMinutes = (int) ((finalTime % 3600) / 60);
+                int remainingSecondsLeft = (int) (finalTime % 60);
 
-            damaged.sendMessage(ChatColor.RED + "Someone tried hitting you during your newbie protection! If you hit them back you will lose your protection temporarily and will be attacked!");
-            damager.sendMessage(ChatColor.RED + "You cannot damage during their newbie protection for " + ChatColor.YELLOW + remainingMinutes + " minutes, " +
-                    remainingSecondsLeft + " seconds. Either way they won't give hearts until they have 2 hour playtime, so why bother?");
-            return;
-        }
-        if (getPlaytime(damaged) < 144000) {
-            damaged.sendMessage(ChatColor.RED + "Since you don't have 2 hours of playtime, even if you die you won't lose any hearts");
-            damager.sendMessage(ChatColor.RED + "The person you are trying to attack does not have 2 hours of playtime. Therefore they will not drop hearts when killed");
-        }
-        if (onSameTeam(damaged, damager)) {
-            event.setCancelled(true);
-            return;
+                damaged.sendMessage(ChatColor.RED + "Someone tried hitting you during your newbie protection! If you hit them back you will lose your protection temporarily and will be attacked!");
+                damager.sendMessage(ChatColor.RED + "You cannot damage during their newbie protection for " + ChatColor.YELLOW + remainingMinutes + " minutes, " +
+                        remainingSecondsLeft + " seconds. Either way they won't give hearts until they have 2 hour playtime, so why bother?");
+                return;
+            }
+            if (getPlaytime(damaged) < 144000) {
+                damaged.sendMessage(ChatColor.RED + "Since you don't have 2 hours of playtime, even if you die you won't lose any hearts");
+                damager.sendMessage(ChatColor.RED + "The person you are trying to attack does not have 2 hours of playtime. Therefore they will not drop hearts when killed");
+            }
+            if (onSameTeam(damaged, damager)) {
+                event.setCancelled(true);
+                return;
+            }
         }
         if (!event.isCancelled()) {
             if (damaged.equals(damager)) return;
