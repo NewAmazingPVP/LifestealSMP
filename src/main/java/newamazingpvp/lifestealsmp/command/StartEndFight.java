@@ -19,7 +19,7 @@ public class StartEndFight implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         isEndFightEnabled = true;
-        
+
         World world = Bukkit.createWorld(new WorldCreator("end_fight_world")
                 .type(WorldType.NORMAL)
                 .environment(World.Environment.THE_END));
