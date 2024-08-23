@@ -31,6 +31,8 @@ public final class CreateCustomToast {
         }, 10);
     }
 
+    //line 8 in json map changed item to id for test
+
     private void createAdvancement() {
         Bukkit.getUnsafe().loadAdvancement(key, "{\n" +
                 "    \"criteria\": {\n" +
@@ -40,7 +42,7 @@ public final class CreateCustomToast {
                 "    },\n" +
                 "    \"display\": {\n" +
                 "        \"icon\": {\n" +
-                "            \"item\": \"minecraft:" + icon + "\"\n" +
+                "            \"id\": \"minecraft:" + icon + "\"\n" +
                 "        },\n" +
                 "        \"title\": {\n" +
                 "            \"text\": \"" + message.replace("|", "\n") + "\"\n" +
