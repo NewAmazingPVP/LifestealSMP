@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.command;
+package newamazingpvp.lifestealsmp.visuals.CustomToasts;
 
 import newamazingpvp.lifestealsmp.visuals.CustomToasts.CreateCustomToast;
 import org.bukkit.ChatColor;
