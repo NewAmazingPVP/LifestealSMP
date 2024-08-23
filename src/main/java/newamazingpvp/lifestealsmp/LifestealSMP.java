@@ -59,7 +59,7 @@ import newamazingpvp.lifestealsmp.unused.mcbingo.gui.BingoCardGUIListeners;
 import newamazingpvp.lifestealsmp.unused.visualeffects.DroppedItemParticles;
 import newamazingpvp.lifestealsmp.utility.Metrics;
 import newamazingpvp.lifestealsmp.utility.Utils;
-import newamazingpvp.lifestealsmp.visuals.CustomToasts.LoginToast;
+import newamazingpvp.lifestealsmp.visuals.CustomToasts.ShowCustomToastCMD;
 import newamazingpvp.lifestealsmp.visuals.HpBar;
 import newamazingpvp.lifestealsmp.visuals.HpNameTag;
 import org.bukkit.Bukkit;
@@ -247,7 +247,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getCommand("createtestnpc").setExecutor(new NPCTestCommand());
 
 
-            getServer().getPluginManager().registerEvents(new LoginToast(), this);
             getCommand("showcustomtoast").setExecutor(new ShowCustomToastCMD());
 
 
