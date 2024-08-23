@@ -73,7 +73,7 @@ public final class CreateCustomToast {
     }*/
 
     public static void displayTo(Player player, String icon, String message, Style style) {
-        new CreateCustomToast(icon, message, style).start(player);
+        new CreateCustomToast(icon, message, style).start();
     }
 
     private void grantAdvancement() {
