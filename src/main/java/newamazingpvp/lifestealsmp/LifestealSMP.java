@@ -59,6 +59,7 @@ import newamazingpvp.lifestealsmp.unused.mcbingo.gui.BingoCardGUIListeners;
 import newamazingpvp.lifestealsmp.unused.visualeffects.DroppedItemParticles;
 import newamazingpvp.lifestealsmp.utility.Metrics;
 import newamazingpvp.lifestealsmp.utility.Utils;
+import newamazingpvp.lifestealsmp.visuals.CustomToasts.PlayerJoinToast;
 import newamazingpvp.lifestealsmp.visuals.CustomToasts.ShowCustomToastCMD;
 import newamazingpvp.lifestealsmp.visuals.CustomToasts.ToastWarnCMD;
 import newamazingpvp.lifestealsmp.visuals.HpBar;
@@ -250,6 +251,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
             getCommand("showcustomtoast").setExecutor(new ShowCustomToastCMD());
             getCommand("showtoastwarn").setExecutor(new ToastWarnCMD());
+            getServer().getPluginManager().registerEvents(new PlayerJoinToast(), this);
 
 
             //Comet Trident
