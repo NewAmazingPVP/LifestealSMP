@@ -243,3 +243,8 @@ commands:
   nonvanillamechanics:
     description: See all the non-vanilla mechanics in the server
     usage: /nonvanillamechanics
+  showcustomtoast:
+    description: Displays a custom toast to all players
+    usage: /showcustomtoast [type] [icon] <message>
+    permission: lifestealSMP.admin
+    default: op
