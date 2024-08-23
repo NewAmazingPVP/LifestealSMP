@@ -22,12 +22,12 @@ public final class CreateCustomToast {
         this.style = style;
     }
 
-    private void start(Player player) {
+    private void start() {
         createAdvancement();
-        grantAdvancement(player);
+        grantAdvancement();
 
         Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> {
-            revokeAdvancement(player);
+            revokeAdvancement();
         }, 10);
     }
 
@@ -64,16 +64,33 @@ public final class CreateCustomToast {
                 "}");
     }
 
-    private void grantAdvancement(Player player) {
+    /*private void grantAdvancement(Player player) {
         player.getAdvancementProgress(Bukkit.getAdvancement(key)).awardCriteria("trigger");
     }
 
     private void revokeAdvancement(Player player) {
         player.getAdvancementProgress(Bukkit.getAdvancement(key)).revokeCriteria("trigger");
-    }
+    }*/
 
     public static void displayTo(Player player, String icon, String message, Style style) {
         new CreateCustomToast(icon, message, style).start(player);
+    }
+
+    private void grantAdvancement() {
+
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            onlinePlayer.getAdvancementProgress(Bukkit.getAdvancement(key)).awardCriteria("trigger");
+        }
+
+
+    }
+
+    private void revokeAdvancement() {
+
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            onlinePlayer.getAdvancementProgress(Bukkit.getAdvancement(key)).revokeCriteria("trigger");
+        }
+
     }
 
     public static enum Style {
