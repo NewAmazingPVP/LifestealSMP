@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 import static newamazingpvp.lifestealsmp.visuals.CustomToasts.ToastWarn.displayToastWarn;
 
 public class ToastWarnCMD implements CommandExecutor {
-    
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 

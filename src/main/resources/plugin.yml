@@ -248,3 +248,8 @@ commands:
     usage: /showcustomtoast [type] [icon] <message>
     permission: lifestealSMP.admin
     default: op
+  showtoastwarn:
+    description: Displays a custom toast to all players
+    usage: /showtoastwarn <message>
+    permission: lifestealSMP.admin
+    default: op
