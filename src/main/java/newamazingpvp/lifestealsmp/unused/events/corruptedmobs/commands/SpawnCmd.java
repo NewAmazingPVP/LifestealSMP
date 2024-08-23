@@ -13,6 +13,7 @@ import java.util.List;
 
 public class SpawnCmd implements CommandExecutor, TabCompleter {
 
+
     private final ArrayList<String> subcommands = new ArrayList<>(List.of("mage", "hydra", "enigma", "detonator"));
 
     @Override
