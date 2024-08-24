@@ -56,38 +56,72 @@ public class DittoSkull implements Listener {
                 player.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "[Canceled!]"); 
             } else if (chatString.length() > 70) {
                 player.getInventory().addItem(dittoSkullURL(chatString));
-                playersInDittoChat.remove(player); 
+                playersInDittoChat.remove(player);
             }else{
-                player.getInventory().addItem(dittoSkullPlayer(chatString));
+                player.getInventory().addItem(dittoSkullName(chatString));
                 playersInDittoChat.remove(player);
             }
 
         }
     }
 
-    public static ItemStack dittoSkullURL(String URL) {
 
-        PlayerProfile profile = getProfile(URL);
+
+
+
+    public static ItemStack dittoSkullURL(String url) {
+
+        PlayerProfile profile = getProfile(url);
         ItemStack info = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) info.getItemMeta();
-        meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Used Ditto Skull");
+        meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Ditto Skull");
+
+        List<String> lore = new ArrayList<>();
+
+        lore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "[Right Click]");
+        lore.add(ChatColor.DARK_PURPLE + "Type a player's name or a");
+        lore.add(ChatColor.DARK_PURPLE + "Minecraft skin URL from a");
+        lore.add(ChatColor.DARK_PURPLE + "website such as Minecraft heads");
+        lore.add(ChatColor.DARK_PURPLE + "and this skull will take its texture!");
+        lore.add(ChatColor.DARK_PURPLE + "You can use it for decoration or whatever u want.");
+        lore.add(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Ask if you don't know how it works!]");
+
+
+
+        meta.setLore(lore);
+
         meta.setOwnerProfile(profile);
         info.setItemMeta(meta);
 
         return info;
     }
 
-    public static ItemStack dittoSkullPlayer(String player) {
+    public static ItemStack dittoSkullName(String player) {
 
         ItemStack info = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) info.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Ditto Skull");
+
+        List<String> lore = new ArrayList<>();
+
+        lore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "[Right Click]");
+        lore.add(ChatColor.DARK_PURPLE + "Type a player's name or a");
+        lore.add(ChatColor.DARK_PURPLE + "Minecraft skin URL from a");
+        lore.add(ChatColor.DARK_PURPLE + "website such as Minecraft heads");
+        lore.add(ChatColor.DARK_PURPLE + "and this skull will take its texture!");
+        lore.add(ChatColor.DARK_PURPLE + "You can use it for decoration or whatever u want.");
+        lore.add(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Ask if you don't know how it works!]");
+
+
+
+        meta.setLore(lore);
         meta.setOwner(player);
-        meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Used Ditto Skull");
+
+        //meta.setOwnerProfile(profile);
         info.setItemMeta(meta);
 
         return info;
     }
-
 
 
 

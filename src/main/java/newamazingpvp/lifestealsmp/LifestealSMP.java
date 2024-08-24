@@ -61,6 +61,7 @@ import newamazingpvp.lifestealsmp.utility.Metrics;
 import newamazingpvp.lifestealsmp.utility.Utils;
 import newamazingpvp.lifestealsmp.visuals.CustomToasts.PlayerJoinToast;
 import newamazingpvp.lifestealsmp.visuals.CustomToasts.ShowCustomToastCMD;
+import newamazingpvp.lifestealsmp.visuals.CustomToasts.ToastTPS;
 import newamazingpvp.lifestealsmp.visuals.CustomToasts.ToastWarnCMD;
 import newamazingpvp.lifestealsmp.visuals.HpBar;
 import newamazingpvp.lifestealsmp.visuals.HpNameTag;
@@ -203,6 +204,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new Disenchant(), this);
         getServer().getPluginManager().registerEvents(new AntiChunkBan(), this);
         getServer().getPluginManager().registerEvents(new DittoSkull(), this);
+        getServer().getPluginManager().registerEvents(new ToastTPS(), this);
         startTPSTracking();
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
         getCommand("trade").setExecutor(new Trade());
