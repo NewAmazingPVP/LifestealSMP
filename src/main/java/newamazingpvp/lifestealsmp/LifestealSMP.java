@@ -159,6 +159,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("spawn").setExecutor(new SpawnCommand());
         getCommand("getitemorblockdata").setExecutor(new ReadBlockAndItemInfo());
         getCommand("nonvanillamechanics").setExecutor(new NonVanillaMechanics());
+        getCommand("showcustomtoast").setExecutor(new ShowCustomToastCMD());
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new AntiBurn(), this);
         getServer().getPluginManager().registerEvents(new PlayerMsg(), this);
@@ -249,7 +250,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getCommand("createtestnpc").setExecutor(new NPCTestCommand());
 
 
-            getCommand("showcustomtoast").setExecutor(new ShowCustomToastCMD());
+
             getCommand("showtoastwarn").setExecutor(new ToastWarnCMD());
             getServer().getPluginManager().registerEvents(new PlayerJoinToast(), this);
 
