@@ -29,7 +29,7 @@ public class PlayerMsg implements Listener {
             broadcastMessage(ChatColor.RED + "This server does not have tp and you should not ask admins to teleport you (do /rules) " + ChatColor.YELLOW + player.getName());
         }
 
-        if (message.contains("hit me")) {
+        if (containsAny(message, "hit me", "damage me", "kill me")) {
             broadcastMessage(ChatColor.RED + "Be careful as " + ChatColor.YELLOW + player.getName() + ChatColor.DARK_RED + " might be trying to get rid of newbie protection by asking to hit them.");
         }
 

@@ -32,6 +32,10 @@ public class TeamsManager {
                 p.sendMessage(ChatColor.RED + "This team does not exist!");
                 return;
             }
+            if (!teamInvites.get(p.getName()).getName().equals(teamName)) {
+                p.sendMessage(ChatColor.RED + "You this is not the same team as you have been invited to!");
+                return;
+            }
             team.addEntry(p.getName());
 
             sendTeamMessage(p, "I have joined the team!");

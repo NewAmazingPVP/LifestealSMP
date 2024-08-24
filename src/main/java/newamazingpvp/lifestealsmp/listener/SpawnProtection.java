@@ -35,7 +35,8 @@ public class SpawnProtection implements Listener {
             Player damager = returnPlayerDamager(event.getDamager());
             if (damager == null) return;
             Location original = damaged.getLocation();
-            Location expanded = new Location(original.getWorld(), original.getX() / 4, original.getY(), original.getZ() / 4);
+            Location expanded = new Location(original.getWorld(), original.getX() / 2, original.getY(), original.getZ() / 2);
+            Location fake = new Location(original.getWorld(), original.getX() * 4, original.getY(), original.getZ() * 4);
             if (original.getWorld().getName().equals("world")) {
                 if (isWithinSpawnRadius(expanded)) {
                     //if (isInCombat(damager) && isInCombat(damaged)) return;
@@ -43,10 +44,10 @@ public class SpawnProtection implements Listener {
                     damager.sendMessage(ChatColor.RED + "You cannot damage players within the vicinity spawn protection area, go away from spawn to be able to!");
                 }
             } else {
-                if (isWithinSpawnRadius(original)) {
+                if (isWithinSpawnRadius(fake)) {
                     //if (isInCombat(damager) && isInCombat(damaged)) return;
                     event.setCancelled(true);
-                    damager.sendMessage(ChatColor.RED + "You cannot damage players within the vicinity spawn protection area of PVP world, go around 50-100 blocks away to be able to!");
+                    damager.sendMessage(ChatColor.RED + "You cannot damage players within the vicinity spawn protection area of PVP world (0,0), go +-100 x or z coords blocks away to be able to!");
                 }
             }
         }
@@ -58,7 +59,7 @@ public class SpawnProtection implements Listener {
         if (isWithinSpawnRadius(event.getBlock().getLocation())) {
             if (isVanished(event.getPlayer())) return;
             event.setCancelled(true);
-            event.getPlayer().sendMessage(ChatColor.RED + "You cannot break blocks within the spawn area, go around 50-100 blocks away to be able to");
+            event.getPlayer().sendMessage(ChatColor.RED + "You cannot break blocks within the spawn area (0,0), go +-100 x or z coords blocks away to be able to");
         }
     }
 
@@ -67,7 +68,7 @@ public class SpawnProtection implements Listener {
         if (isWithinSpawnRadius(event.getBlock().getLocation())) {
             if (isVanished(event.getPlayer())) return;
             event.setCancelled(true);
-            event.getPlayer().sendMessage(ChatColor.RED + "You cannot place blocks within the spawn area, go around 50-100 blocks away to be able to");
+            event.getPlayer().sendMessage(ChatColor.RED + "You cannot place blocks within the spawn area (0,0), go +-100 x or z coords blocks away to be able to");
         }
     }
 
@@ -122,7 +123,7 @@ public class SpawnProtection implements Listener {
                     || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.WATER_BUCKET
                     || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.BOW) {*/
             event.setCancelled(true);
-            event.getPlayer().sendMessage(ChatColor.RED + "You cannot interact within the spawn area, go around 50-100 blocks away to be able to");
+            event.getPlayer().sendMessage(ChatColor.RED + "You cannot interact within the spawn area (0,0), go +-100 x or z coords blocks away to be able to");
             //}
         }
     }
