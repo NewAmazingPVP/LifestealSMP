@@ -195,7 +195,7 @@ public class Compass implements CommandExecutor, Listener {
             if(trackingDist == 1 || delayDuration <= 1){
                 target.sendMessage( ChatColor.GREEN + " Logging off today will help since today is a tracking event, so log off tracking is disabled for balance");
             } else {
-                target.sendMessage( ChatColor.AQUA + " However logging off won't help, they will still be able to track when you are off");
+                target.sendMessage( ChatColor.AQUA + " However logging off won't help, they will still be able to track when you are off. Plus tracking is nerfed to just 1k vicinity making it impossible to pinpoint location.");
             }
             return true;
         }
