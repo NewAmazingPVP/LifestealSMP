@@ -28,7 +28,7 @@ public final class CreateCustomToast {
 
         Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> {
             revokeAdvancement();
-        }, 10);
+        }, 25);
     }
 
     //line 8 in json map changed item to id for test
@@ -72,7 +72,7 @@ public final class CreateCustomToast {
         player.getAdvancementProgress(Bukkit.getAdvancement(key)).revokeCriteria("trigger");
     }*/
 
-    public static void displayTo(Player player, String icon, String message, Style style) {
+    public static void displayTo(String icon, String message, Style style) {
         new CreateCustomToast(icon, message, style).start();
     }
 

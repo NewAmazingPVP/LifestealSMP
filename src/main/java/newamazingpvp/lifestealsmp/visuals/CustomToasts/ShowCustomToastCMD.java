@@ -58,7 +58,7 @@ public class ShowCustomToastCMD implements CommandExecutor, TabCompleter {
 
         message = ChatColor.translateAlternateColorCodes('&', message.trim());
 
-        CreateCustomToast.displayTo((Player) sender, materialName, message, style);
+        CreateCustomToast.displayTo(materialName, message, style);
 
         return true;
     }
