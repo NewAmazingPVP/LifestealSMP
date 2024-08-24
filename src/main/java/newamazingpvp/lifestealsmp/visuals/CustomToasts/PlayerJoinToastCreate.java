@@ -1,26 +1,27 @@
 package newamazingpvp.lifestealsmp.visuals.CustomToasts;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
-public class ToastWarn {
+public final class PlayerJoinToastCreate {
 
-    private final NamespacedKey key = new NamespacedKey(lifestealSmp, UUID.randomUUID().toString());
-    private final String icon = "STONE_BLOCK";
-    private final String message = ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "test123...";
-    private final String style = "TASK";
+    private final NamespacedKey key;
+    private final ItemStack icon;
+    private final String message;
+    private final CreateCustomToast.Style style;
 
-
-    public static void displayToastWarn(String string){
-        new ToastWarn().start();
+    private PlayerJoinToastCreate(ItemStack icon, String message, CreateCustomToast.Style style) {
+        this.key = new NamespacedKey(lifestealSmp, UUID.randomUUID().toString());
+        this.icon = icon;
+        this.message = message;
+        this.style = style;
     }
-
 
     private void start() {
         createAdvancement();
@@ -28,9 +29,10 @@ public class ToastWarn {
 
         Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> {
             revokeAdvancement();
-        }, 10);
+        }, 25);
     }
 
+    //line 8 in json map changed item to id for test
 
     private void createAdvancement() {
         Bukkit.getUnsafe().loadAdvancement(key, "{\n" +
@@ -63,6 +65,18 @@ public class ToastWarn {
                 "}");
     }
 
+    /*private void grantAdvancement(Player player) {
+        player.getAdvancementProgress(Bukkit.getAdvancement(key)).awardCriteria("trigger");
+    }
+
+    private void revokeAdvancement(Player player) {
+        player.getAdvancementProgress(Bukkit.getAdvancement(key)).revokeCriteria("trigger");
+    }*/
+
+    public static void displayTo(ItemStack icon, String message, CreateCustomToast.Style style) {
+        new PlayerJoinToastCreate(icon, message, style).start();
+    }
+
     private void grantAdvancement() {
 
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
@@ -80,7 +94,11 @@ public class ToastWarn {
 
     }
 
-
+    public static enum Style {
+        GOAL,
+        TASK,
+        CHALLENGE
+    }
 
 
 }
