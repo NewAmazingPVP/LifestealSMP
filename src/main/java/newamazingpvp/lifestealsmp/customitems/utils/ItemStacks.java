@@ -397,8 +397,10 @@ public class ItemStacks {
         lore.add(ChatColor.DARK_PURPLE + "Minecraft skin URL from a");
         lore.add(ChatColor.DARK_PURPLE + "website such as Minecraft heads");
         lore.add(ChatColor.DARK_PURPLE + "and this skull will take its texture!");
-        lore.add(ChatColor.DARK_PURPLE + "You can use it sc decoration or whatever u want!");
+        lore.add(ChatColor.DARK_PURPLE + "You can use it for decoration or whatever u want.");
         lore.add(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Ask if you don't know how it works!]");
+
+
 
         meta.setLore(lore);
 
