@@ -46,7 +46,7 @@ public final class PlayerJoinToastCreate {
                 "    \"display\": {\n" +
                 "        \"icon\": {\n" +
                 "            \"id\": \"minecraft:" + icon + "\"\n" +
-                "            \"nbt\": \"{SkullOwner:PlayerName} \n" +
+                "            \"nbt\": \"{SkullOwner:PlayerName}\"\n" +
                 "        },\n" +
                 "        \"title\": {\n" +
                 "            \"text\": \"" + message.replace("|", "\n") + "\"\n" +
@@ -54,7 +54,7 @@ public final class PlayerJoinToastCreate {
                 "        \"description\": {\n" +
                 "            \"text\": \"\"\n" +
                 "        },\n" +
-                "        \"background\": \"minecraft:textures/blocks/cake_top.png\",\n" +
+                "        \"background\": \"minecraft:textures/gui/advancements/backgrounds/adventure.png\",\n" +
                 "        \"frame\": \"" + style.toString().toLowerCase() + "\",\n" +
                 "        \"announce_to_chat\": false,\n" +
                 "        \"show_toast\": true,\n" +
