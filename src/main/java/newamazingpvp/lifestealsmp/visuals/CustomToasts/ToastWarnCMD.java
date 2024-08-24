@@ -12,7 +12,6 @@ import org.bukkit.entity.Player;
 import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.visuals.CustomToasts.ToastWarn.displayToastWarn;
 
 public class ToastWarnCMD implements CommandExecutor {
 

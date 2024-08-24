@@ -7,7 +7,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.profile.PlayerProfile;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static newamazingpvp.lifestealsmp.unused.endfight.custommobs.PublicMobMethods.getProfile;
 import static newamazingpvp.lifestealsmp.visuals.CustomToasts.CreateCustomToast.Style.TASK;
 
 public class PlayerJoinToast implements Listener {
@@ -22,12 +29,12 @@ public class PlayerJoinToast implements Listener {
         String name = player.getName();
 
         if(name == "Comet99" || name == "Newamazingpvp"){
-            displayMessage = ChatColor.DARK_RED + "" + ChatColor.BOLD + name + "Has Joined " + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "[+]";
+            displayMessage = ChatColor.DARK_RED + "" + ChatColor.BOLD + name + " Has Joined " + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "[+]";
         }else{
-            displayMessage = ChatColor.BLUE + "" + ChatColor.BOLD + name + "Has Joined " + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "[+]";
+            displayMessage = ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + name + " Has Joined " + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "[+]";
         }
 
-        final String materialName = "dirt";
+        final String materialName = "emerald";
 
         try {
             Material.valueOf(materialName.toUpperCase());
@@ -38,11 +45,26 @@ public class PlayerJoinToast implements Listener {
         }
 
 
-        
 
-        CreateCustomToast.displayTo(materialName, displayMessage, TASK);
+
+        PlayerJoinToastCreate.displayTo(playerJoinHeadTexture(), displayMessage, TASK);
 
     }
+
+    public static ItemStack playerJoinHeadTexture() {
+
+        PlayerProfile profile = getProfile("https://textures.minecraft.net/texture/6db32b15d7f32704ed626fa52d06fb2b4071d336fdbfe61e6e41c669d6e37f47");
+        ItemStack info = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta meta = (SkullMeta) info.getItemMeta();
+        meta.setOwnerProfile(profile);
+        info.setItemMeta(meta);
+
+        return info;
+
+
+    }
+
+
 
 
 
