@@ -15,16 +15,18 @@ public final class PlayerJoinToastCreate {
     private final String icon;
     private final String message;
     private final CreateCustomToast.Style style;
+    //private final String player;
 
     private PlayerJoinToastCreate(String icon, String message, CreateCustomToast.Style style) {
         this.key = new NamespacedKey(lifestealSmp, UUID.randomUUID().toString());
         this.icon = icon;
         this.message = message;
         this.style = style;
+        //this.player = player;
     }
 
-    private void start() {
-        createAdvancement();
+    private void start(String player) {
+        createAdvancement(player);
         grantAdvancement();
 
         Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> {
@@ -34,7 +36,7 @@ public final class PlayerJoinToastCreate {
 
     //line 8 in json map changed item to id for test
 
-    private void createAdvancement() {
+    private void createAdvancement(String playerName) {
         Bukkit.getUnsafe().loadAdvancement(key, "{\n" +
                 "    \"criteria\": {\n" +
                 "        \"trigger\": {\n" +
@@ -44,6 +46,7 @@ public final class PlayerJoinToastCreate {
                 "    \"display\": {\n" +
                 "        \"icon\": {\n" +
                 "            \"id\": \"minecraft:" + icon + "\"\n" +
+                "            \"nbt\": \"{SkullOwner:PlayerName} \n" +
                 "        },\n" +
                 "        \"title\": {\n" +
                 "            \"text\": \"" + message.replace("|", "\n") + "\"\n" +
@@ -66,8 +69,8 @@ public final class PlayerJoinToastCreate {
     }
 
 
-    public static void displayTo(String icon, String message, CreateCustomToast.Style style) {
-        new PlayerJoinToastCreate(icon, message, style).start();
+    public static void displayTo(String icon, String message, CreateCustomToast.Style style, String player) {
+        new PlayerJoinToastCreate(icon, message, style).start(player);
     }
 
     private void grantAdvancement() {
