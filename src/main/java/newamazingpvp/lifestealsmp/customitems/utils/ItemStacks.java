@@ -9,9 +9,13 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
+import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.profile.PlayerProfile;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static newamazingpvp.lifestealsmp.unused.endfight.custommobs.PublicMobMethods.getProfile;
 
 public class ItemStacks {
 
@@ -377,5 +381,30 @@ public class ItemStacks {
         meta.setLore(lore);
         ITEM.setItemMeta(meta);
         return ITEM;
+    }
+
+    public static ItemStack dittoSkull() {
+
+        PlayerProfile profile = getProfile("https://textures.minecraft.net/texture/3caf617f26c177ae56eb5dcef19b1ea307df3d5567750c52dcd14f60742df641");
+        ItemStack info = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta meta = (SkullMeta) info.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Ditto Skull");
+
+        List<String> lore = new ArrayList<>();
+
+        lore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "[Right Click]");
+        lore.add(ChatColor.DARK_PURPLE + "Type a player's name or a");
+        lore.add(ChatColor.DARK_PURPLE + "Minecraft skin URL from a");
+        lore.add(ChatColor.DARK_PURPLE + "website such as Minecraft heads");
+        lore.add(ChatColor.DARK_PURPLE + "and this skull will take its texture!");
+        lore.add(ChatColor.DARK_PURPLE + "You can use it sc decoration or whatever u want!");
+        lore.add(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Ask if you don't know how it works!]");
+
+        meta.setLore(lore);
+
+        meta.setOwnerProfile(profile);
+        info.setItemMeta(meta);
+
+        return info;
     }
 }
