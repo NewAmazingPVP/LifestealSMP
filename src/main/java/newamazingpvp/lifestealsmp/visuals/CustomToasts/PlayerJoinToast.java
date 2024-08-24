@@ -28,11 +28,8 @@ public class PlayerJoinToast implements Listener {
 
         String name = player.getName();
 
-        if(name == "Comet99" || name == "Newamazingpvp"){
-            displayMessage = ChatColor.DARK_RED + "" + ChatColor.BOLD + name + " Has Joined " + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "[+]";
-        }else{
-            displayMessage = ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + name + " Has Joined " + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "[+]";
-        }
+
+        displayMessage = ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + name + " Has Joined " + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "[+]";
 
         final String materialName = "emerald";
 
@@ -47,7 +44,7 @@ public class PlayerJoinToast implements Listener {
 
 
 
-        PlayerJoinToastCreate.displayTo(playerJoinHeadTexture(), displayMessage, TASK);
+        PlayerJoinToastCreate.displayTo(materialName, displayMessage, TASK);
 
     }
 
