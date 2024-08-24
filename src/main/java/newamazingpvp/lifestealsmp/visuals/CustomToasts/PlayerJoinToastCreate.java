@@ -38,7 +38,7 @@ public final class PlayerJoinToastCreate {
 
     private void createAdvancement(String playerName) {
         Bukkit.getUnsafe().loadAdvancement(key, "{\n" +
-                "    \"criteria\": {\n" +
+               /* "    \"criteria\": {\n" +
                 "        \"trigger\": {\n" +
                 "            \"trigger\": \"minecraft:impossible\"\n" +
                 "        }\n" +
@@ -47,6 +47,34 @@ public final class PlayerJoinToastCreate {
                 "        \"icon\": {\n" +
                 "            \"id\": \"minecraft:" + icon + "\"\n" +
                 "            \"nbt\": \"[profile=PlayerNameHere]\"\n" +
+                "        },\n" +
+                "        \"title\": {\n" +
+                "            \"text\": \"" + message.replace("|", "\n") + "\"\n" +
+                "        },\n" +
+                "        \"description\": {\n" +
+                "            \"text\": \"\"\n" +
+                "        },\n" +
+                "        \"background\": \"minecraft:textures/gui/advancements/backgrounds/adventure.png\",\n" +
+                "        \"frame\": \"" + style.toString().toLowerCase() + "\",\n" +
+                "        \"announce_to_chat\": false,\n" +
+                "        \"show_toast\": true,\n" +
+                "        \"hidden\": true\n" +
+                "    },\n" +
+                "    \"requirements\": [\n" +
+                "        [\n" +
+                "            \"trigger\"\n" +
+                "        ]\n" +
+                "    ]\n" +
+                "}");*/
+
+                "    \"criteria\": {\n" +
+                "        \"trigger\": {\n" +
+                "            \"trigger\": \"minecraft:impossible\"\n" +
+                "        }\n" +
+                "    },\n" +
+                "    \"display\": {\n" +
+                "        \"icon\": {\n" +
+                "            \"id\": \"minecraft:" + icon + "\"\n" +
                 "        },\n" +
                 "        \"title\": {\n" +
                 "            \"text\": \"" + message.replace("|", "\n") + "\"\n" +
