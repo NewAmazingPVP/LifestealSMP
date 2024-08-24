@@ -12,11 +12,11 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 public final class PlayerJoinToastCreate {
 
     private final NamespacedKey key;
-    private final ItemStack icon;
+    private final String icon;
     private final String message;
     private final CreateCustomToast.Style style;
 
-    private PlayerJoinToastCreate(ItemStack icon, String message, CreateCustomToast.Style style) {
+    private PlayerJoinToastCreate(String icon, String message, CreateCustomToast.Style style) {
         this.key = new NamespacedKey(lifestealSmp, UUID.randomUUID().toString());
         this.icon = icon;
         this.message = message;
@@ -51,7 +51,7 @@ public final class PlayerJoinToastCreate {
                 "        \"description\": {\n" +
                 "            \"text\": \"\"\n" +
                 "        },\n" +
-                "        \"background\": \"minecraft:textures/gui/advancements/backgrounds/adventure.png\",\n" +
+                "        \"background\": \"minecraft:textures/blocks/cake_top.png\",\n" +
                 "        \"frame\": \"" + style.toString().toLowerCase() + "\",\n" +
                 "        \"announce_to_chat\": false,\n" +
                 "        \"show_toast\": true,\n" +
@@ -65,15 +65,8 @@ public final class PlayerJoinToastCreate {
                 "}");
     }
 
-    /*private void grantAdvancement(Player player) {
-        player.getAdvancementProgress(Bukkit.getAdvancement(key)).awardCriteria("trigger");
-    }
 
-    private void revokeAdvancement(Player player) {
-        player.getAdvancementProgress(Bukkit.getAdvancement(key)).revokeCriteria("trigger");
-    }*/
-
-    public static void displayTo(ItemStack icon, String message, CreateCustomToast.Style style) {
+    public static void displayTo(String icon, String message, CreateCustomToast.Style style) {
         new PlayerJoinToastCreate(icon, message, style).start();
     }
 
