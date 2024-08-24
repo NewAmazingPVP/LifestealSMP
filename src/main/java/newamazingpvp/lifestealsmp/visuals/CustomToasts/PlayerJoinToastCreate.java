@@ -46,7 +46,7 @@ public final class PlayerJoinToastCreate {
                 "    \"display\": {\n" +
                 "        \"icon\": {\n" +
                 "            \"id\": \"minecraft:" + icon + "\"\n" +
-                "            \"nbt\": \"{SkullOwner:PlayerName}\"\n" +
+                "            \"nbt\": \"[profile=PlayerNameHere]\"\n" +
                 "        },\n" +
                 "        \"title\": {\n" +
                 "            \"text\": \"" + message.replace("|", "\n") + "\"\n" +
