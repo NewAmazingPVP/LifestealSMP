@@ -31,7 +31,7 @@ public class PlayerJoinToast implements Listener {
 
         displayMessage = ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + name + " Has Joined " + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "[+]";
 
-        final String materialName = "emerald";
+        final String materialName = "player_head";
 
         try {
             Material.valueOf(materialName.toUpperCase());
@@ -44,20 +44,7 @@ public class PlayerJoinToast implements Listener {
 
 
 
-        PlayerJoinToastCreate.displayTo(materialName, displayMessage, TASK);
-
-    }
-
-    public static ItemStack playerJoinHeadTexture() {
-
-        PlayerProfile profile = getProfile("https://textures.minecraft.net/texture/6db32b15d7f32704ed626fa52d06fb2b4071d336fdbfe61e6e41c669d6e37f47");
-        ItemStack info = new ItemStack(Material.PLAYER_HEAD);
-        SkullMeta meta = (SkullMeta) info.getItemMeta();
-        meta.setOwnerProfile(profile);
-        info.setItemMeta(meta);
-
-        return info;
-
+        PlayerJoinToastCreate.displayTo(materialName, displayMessage, TASK, name);
 
     }
 
