@@ -251,8 +251,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
 
 
-            getCommand("showtoastwarn").setExecutor(new ToastWarnCMD());
-            getServer().getPluginManager().registerEvents(new PlayerJoinToast(), this);
+            //getCommand("showtoastwarn").setExecutor(new ToastWarnCMD());
+            //getServer().getPluginManager().registerEvents(new PlayerJoinToast(), this);
 
 
             //Comet Trident
