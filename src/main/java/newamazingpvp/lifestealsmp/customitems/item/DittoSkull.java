@@ -81,7 +81,7 @@ public class DittoSkull implements Listener {
 
         for (int i = 0; i < player.getInventory().getSize(); i++) {
             ItemStack item = player.getInventory().getItem(i);
-            //if (item != null && item.getType() == Material.PLAYER_HEAD && item.getDisplayName() == ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Ditto Skull") {
+            if (item != null && item.getType() == Material.PLAYER_HEAD) {
                 inv.addItem(dittoSkull());
                 if (item.getAmount() > 1) {
                     item.setAmount(item.getAmount() - 1);
@@ -90,7 +90,7 @@ public class DittoSkull implements Listener {
                 }
                 break;
             }
-        //}
+        }
     }
 
 
