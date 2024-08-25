@@ -408,9 +408,7 @@ public class ItemStacks {
 
 
         meta.setLore(lore);
-
-        NamespacedKey key = new NamespacedKey((String) null, UUID.randomUUID().toString());
-        meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, UUID.randomUUID().toString());
+        
 
         meta.setOwnerProfile(profile);
         info.setItemMeta(meta);
