@@ -72,10 +72,41 @@ public class DittoSkull implements Listener {
     //RecoverDittoSkullAfterItemPickup
 
     @EventHandler
-    public void playerPickupItem(PlayerMoveEvent e){
+    public void playerPickupItem(PlayerMoveEvent e) {
 
         Player player = e.getPlayer();
         Inventory inv = player.getInventory();
+
+
+        for (int i = 0; i < player.getInventory().getSize(); i++) {
+            ItemStack item = player.getInventory().getItem(i);
+            if (item != null && item.getType() == Material.PLAYER_HEAD && !item.hasLore() && item.getDisplayName() == ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Ditto Skull") {
+                player.getInventory().setItem(i, convertToUsableDitto(item)); 
+                break;
+            }
+        }
+    }
+
+    private static ItemStack convertToUsableDitto (ItemStack item){
+
+        SkullMeta meta = (SkullMeta) item.getItemMeta();
+
+        List<String> lore = new ArrayList<>();
+
+        lore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "[Right Click]");
+        lore.add(ChatColor.DARK_PURPLE + "Type a player's name or a");
+        lore.add(ChatColor.DARK_PURPLE + "Minecraft skin URL from a");
+        lore.add(ChatColor.DARK_PURPLE + "website such as Minecraft heads");
+        lore.add(ChatColor.DARK_PURPLE + "and this skull will take its texture!");
+        lore.add(ChatColor.DARK_PURPLE + "You can use it for decoration or whatever u want.");
+        lore.add(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Ask if you don't know how it works!]");
+
+
+
+        meta.setLore(lore);
+        item.setItemMeta(meta);
+
+        return item;
 
     }
 
