@@ -65,11 +65,11 @@
             <id>scarsz</id>
             <url>https://nexus.scarsz.me/content/repositories/releases/</url>
         </repository>
-        <repository>
+        <!-- <repository>
             <id>dv8tion</id>
             <name>m2-dv8tion</name>
             <url>https://m2.dv8tion.net/releases</url>
-        </repository>
+        </repository> -->
         <repository>
             <id>purpur</id>
             <name>Purpur Maven Repo</name>
