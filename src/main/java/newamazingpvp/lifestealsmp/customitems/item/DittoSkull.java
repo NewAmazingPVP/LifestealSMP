@@ -7,6 +7,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerPickupItemEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -67,8 +69,38 @@ public class DittoSkull implements Listener {
 
 
 
+    //RecoverDittoSkullAfterItemPickup
+
+    @EventHandler
+    public void playerPickupItem(PlayerPickupItemEvent e){
+
+        //Player player = e.getPlayer();
+        //Inventory inv = player.getInventory();
+        ItemStack item = e.getItem().getItemStack();
+        ItemMeta meta = item.getItemMeta();
+
+        if(!item.hasLore() && meta.getDisplayName() == ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Ditto Skull"){
+            List<String> lore = new ArrayList<>();
+
+            lore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "[Right Click]");
+            lore.add(ChatColor.DARK_PURPLE + "Type a player's name or a");
+            lore.add(ChatColor.DARK_PURPLE + "Minecraft skin URL from a");
+            lore.add(ChatColor.DARK_PURPLE + "website such as Minecraft heads");
+            lore.add(ChatColor.DARK_PURPLE + "and this skull will take its texture!");
+            lore.add(ChatColor.DARK_PURPLE + "You can use it for decoration or whatever u want.");
+            lore.add(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Ask if you don't know how it works!]");
+
+            
+
+            meta.setLore(lore);
+        }
+
+    }
 
 
+
+
+    //ItemStacks
     public static ItemStack dittoSkullURL(String url) {
 
         PlayerProfile profile = getProfile(url);
