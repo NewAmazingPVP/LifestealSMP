@@ -408,7 +408,7 @@ public class ItemStacks {
 
 
         meta.setLore(lore);
-        
+
 
         meta.setOwnerProfile(profile);
         info.setItemMeta(meta);
