@@ -56,7 +56,9 @@ public class ChatFilter implements Listener {
 
     public static String censorBlacklistedWords(String message) {
         // Block URLs
-        //message = message.replaceAll("(?i)\\b((?:https?|ftp|file)://[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])\\b", "*URL_BLOCKED*");
+        if(!message.toLowerCase().contains("textures.minecraft.net")) {
+            message = message.replaceAll("(?i)\\b((?:https?|ftp|file)://[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])\\b", "*URL_BLOCKED*");
+        }
 
         StringBuilder messageWithoutSpecialChars = new StringBuilder();
         StringBuilder specialChars = new StringBuilder();
