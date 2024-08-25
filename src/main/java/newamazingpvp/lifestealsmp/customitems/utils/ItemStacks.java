@@ -412,8 +412,8 @@ public class ItemStacks {
 
         meta.setLore(lore);
 
-        //PersistentDataContainer data = meta.getPersistentDataContainer();
-        //data.set(new NamespacedKey(lifestealSmp,"message"), PersistentDataType.STRING, );
+        PersistentDataContainer data = meta.getPersistentDataContainer();
+        data.set(new NamespacedKey(lifestealSmp,"message"), PersistentDataType.STRING, UUID.randomUUID().toString()); 
 
 
         meta.setOwnerProfile(profile);
