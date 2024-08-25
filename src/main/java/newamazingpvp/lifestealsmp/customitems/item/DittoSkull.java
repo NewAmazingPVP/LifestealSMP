@@ -73,7 +73,7 @@ public class DittoSkull implements Listener {
     //RecoverDittoSkullAfterItemPickup
 
     @EventHandler
-    public void playerPickupItem(PlayerMoveEvent e) {
+    public void playerMove(PlayerMoveEvent e) {
 
         Player player = e.getPlayer();
         Inventory inv = player.getInventory();
@@ -81,16 +81,18 @@ public class DittoSkull implements Listener {
 
         for (int i = 0; i < player.getInventory().getSize(); i++) {
             ItemStack item = player.getInventory().getItem(i);
-            if (item != null && item.getType() == Material.PLAYER_HEAD && item.getDisplayName() == ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Ditto Skull") {
-                //player.getInventory().setItem(i, convertToUsableDitto());
+            //if (item != null && item.getType() == Material.PLAYER_HEAD && item.getDisplayName() == ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Ditto Skull") {
                 inv.addItem(dittoSkull());
                 if (item.getAmount() > 1) {
                     item.setAmount(item.getAmount() - 1);
+                } else {
+                    player.getInventory().setItemInMainHand(null);
                 }
+                break;
             }
-        }
+        //}
     }
-    
+
 
 
 
