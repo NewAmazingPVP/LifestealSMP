@@ -5,7 +5,8 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.bukkit.Bukkit;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.*;
-import static newamazingpvp.lifestealsmp.discord.LogAppender.consoleChannel;
+//import static newamazingpvp.lifestealsmp.discord.LogAppender.consoleChannel;
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.consoleChannel;
 import static org.bukkit.Bukkit.getServer;
 
 public class ConsoleCommand extends ListenerAdapter {
