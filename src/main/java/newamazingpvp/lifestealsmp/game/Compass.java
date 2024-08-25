@@ -50,6 +50,7 @@ public class Compass implements CommandExecutor, Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         //log off tracking
+        lastPortalLocations.put(event.getPlayer().getUniqueId(), event.getPlayer().getLocation());
         if(trackingDist == 1 || delayDuration <= 1) {
             trackingPlayers.remove(event.getPlayer().getUniqueId());
         }
@@ -58,6 +59,7 @@ public class Compass implements CommandExecutor, Listener {
     @EventHandler
     public void onPlayerKick(PlayerKickEvent event) {
         //log off tracking
+        lastPortalLocations.put(event.getPlayer().getUniqueId(), event.getPlayer().getLocation());
         if(trackingDist == 1 || delayDuration <= 1) {
             trackingPlayers.remove(event.getPlayer().getUniqueId());
         }
@@ -195,7 +197,7 @@ public class Compass implements CommandExecutor, Listener {
             if(trackingDist == 1 || delayDuration <= 1){
                 target.sendMessage( ChatColor.GREEN + " Logging off today will help since today is a tracking event, so log off tracking is disabled for balance");
             } else {
-                target.sendMessage( ChatColor.AQUA + " However logging off won't help, they will still be able to track when you are off. Plus tracking is nerfed to just 1k vicinity making it impossible to pinpoint location.");
+                target.sendMessage( ChatColor.AQUA + " However logging off won't help, they will still be able to track when you are off (log off tracking is also a new feature this season). Plus tracking is nerfed to just 1k vicinity making it impossible to pinpoint location.");
             }
             return true;
         }
@@ -290,6 +292,7 @@ public class Compass implements CommandExecutor, Listener {
 
                     UUID targetUUID = trackingPlayers.get(playerUUID);
                     Player target = Bukkit.getPlayer(targetUUID);
+                    OfflinePlayer offlineTarget = Bukkit.getOfflinePlayer(targetUUID);
 
                     //ItemStack compass = getCompassFromInventory(player);
 
@@ -339,7 +342,24 @@ public class Compass implements CommandExecutor, Listener {
                         player.spigot().sendMessage(ChatMessageType.ACTION_BAR, textComponent);
                         //boolean e = isMovingCloser(player, target);
                         //player.sendMessage("ur "+ e);
-                    } else {
+                        //below is offline tracking
+                    } else if (target == null && !isElytra(player) && !isPlayerElytraCooldown(player) && !noTrackingDay && !(isPlayerInvisible(player))){
+                        Location targetLocation;
+                        Location portalLocation = lastPortalLocations.get(offlineTarget.getUniqueId());
+                        targetLocation = (portalLocation != null && player.getWorld() == portalLocation.getWorld()) ? portalLocation : null;
+                        if (targetLocation != null) {
+                            msg = ChatColor.GREEN + "Tracking " + ChatColor.BOLD + offlineTarget.getName();
+                            distance = (int) player.getLocation().distance(targetLocation);
+                        } else {
+                            msg = ChatColor.GREEN + "Tracking " + ChatColor.BOLD + offlineTarget.getName();
+                        }
+                        if (distance != 0) {
+                            msg += ChatColor.BOLD + " in vicinity of " + ((distance / trackingDist) + 1) * trackingDist + " blocks";
+                        }
+                        TextComponent textComponent = new TextComponent(msg);
+                        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, textComponent);
+                    }
+                    else {
                         //setNormalCompass(compass);
                         //player.setCompassTarget(generateRandomLocation(player));
                     }
