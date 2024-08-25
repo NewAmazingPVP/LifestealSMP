@@ -5,15 +5,18 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.profile.PlayerProfile;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.unused.endfight.custommobs.PublicMobMethods.getProfile;
 
@@ -385,6 +388,8 @@ public class ItemStacks {
 
     public static ItemStack dittoSkull() {
 
+
+
         PlayerProfile profile = getProfile("https://textures.minecraft.net/texture/3caf617f26c177ae56eb5dcef19b1ea307df3d5567750c52dcd14f60742df641");
         ItemStack info = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) info.getItemMeta();
@@ -403,6 +408,9 @@ public class ItemStacks {
 
 
         meta.setLore(lore);
+
+        NamespacedKey key = new NamespacedKey((String) null, UUID.randomUUID().toString());
+        meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, UUID.randomUUID().toString());
 
         meta.setOwnerProfile(profile);
         info.setItemMeta(meta);
