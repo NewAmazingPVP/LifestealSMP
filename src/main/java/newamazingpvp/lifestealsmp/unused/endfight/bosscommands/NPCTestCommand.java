@@ -1,8 +1,8 @@
 package newamazingpvp.lifestealsmp.unused.endfight.bosscommands;
 
-import net.citizensnpcs.api.CitizensAPI;
-import net.citizensnpcs.api.npc.NPC;
-import net.citizensnpcs.api.npc.NPCRegistry;
+//import net.citizensnpcs.api.CitizensAPI;
+//import net.citizensnpcs.api.npc.NPC;
+//import net.citizensnpcs.api.npc.NPCRegistry;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -19,10 +19,10 @@ public class NPCTestCommand implements CommandExecutor {
         if (sender instanceof Player player) {
             Location loc = player.getLocation();
 
-            NPCRegistry registry = CitizensAPI.getNPCRegistry();
-            NPC npc = registry.createNPC(EntityType.PLAYER, "fullwall");
+            //NPCRegistry registry = CitizensAPI.getNPCRegistry();
+            //NPC npc = registry.createNPC(EntityType.PLAYER, "fullwall");
             // Set the spawn location for the NPC
-            npc.spawn(loc);
+            //npc.spawn(loc);
 
 
         }

@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.discord;
+/*package newamazingpvp.lifestealsmp.discord;
 
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import org.apache.logging.log4j.core.LogEvent;
@@ -75,3 +75,4 @@ public class LogAppender extends AbstractAppender {
 
     }
 }
+*/

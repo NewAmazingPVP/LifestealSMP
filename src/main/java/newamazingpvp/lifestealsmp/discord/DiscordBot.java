@@ -22,6 +22,7 @@ public class DiscordBot {
     public static TextChannel channel;
     public static WebhookClient client;
     public static String channelId;
+    public static String consoleChannel = lifestealSmp.getConfig().getString("Discord.ConsoleChannel");
 
     public static void intializeBot() {
         String token = lifestealSmp.getConfig().getString("Discord.BotToken");

@@ -83,7 +83,7 @@ import static newamazingpvp.lifestealsmp.customitems.utils.DevRecipes.registerCu
 import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerBasicRecipes;
 import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.*;
-import static newamazingpvp.lifestealsmp.discord.LogAppender.consoleChannel;
+//import static newamazingpvp.lifestealsmp.discord.LogAppender.consoleChannel;
 import static newamazingpvp.lifestealsmp.events.TimeManager.doEvents;
 import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
 import static newamazingpvp.lifestealsmp.game.CombatLog.cancelCombatData;
