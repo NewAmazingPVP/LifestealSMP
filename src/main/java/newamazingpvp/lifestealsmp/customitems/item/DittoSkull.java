@@ -2,22 +2,22 @@ package newamazingpvp.lifestealsmp.customitems.item;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.profile.PlayerProfile;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import static newamazingpvp.lifestealsmp.unused.endfight.custommobs.PublicMobMethods.getProfile;
 
@@ -72,28 +72,10 @@ public class DittoSkull implements Listener {
     //RecoverDittoSkullAfterItemPickup
 
     @EventHandler
-    public void playerPickupItem(PlayerPickupItemEvent e){
+    public void playerPickupItem(PlayerMoveEvent e){
 
-        //Player player = e.getPlayer();
-        //Inventory inv = player.getInventory();
-        ItemStack item = e.getItem().getItemStack();
-        ItemMeta meta = item.getItemMeta();
-
-        if(!item.hasLore() && meta.getDisplayName() == ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Ditto Skull"){
-            List<String> lore = new ArrayList<>();
-
-            lore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "[Right Click]");
-            lore.add(ChatColor.DARK_PURPLE + "Type a player's name or a");
-            lore.add(ChatColor.DARK_PURPLE + "Minecraft skin URL from a");
-            lore.add(ChatColor.DARK_PURPLE + "website such as Minecraft heads");
-            lore.add(ChatColor.DARK_PURPLE + "and this skull will take its texture!");
-            lore.add(ChatColor.DARK_PURPLE + "You can use it for decoration or whatever u want.");
-            lore.add(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Ask if you don't know how it works!]");
-
-            
-
-            meta.setLore(lore);
-        }
+        Player player = e.getPlayer();
+        Inventory inv = player.getInventory();
 
     }
 
@@ -122,6 +104,9 @@ public class DittoSkull implements Listener {
 
         meta.setLore(lore);
 
+        NamespacedKey key = new NamespacedKey((String) null, UUID.randomUUID().toString());
+        meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, UUID.randomUUID().toString());
+
         meta.setOwnerProfile(profile);
         info.setItemMeta(meta);
 
@@ -147,6 +132,10 @@ public class DittoSkull implements Listener {
 
 
         meta.setLore(lore);
+
+        NamespacedKey key = new NamespacedKey((String) null, UUID.randomUUID().toString());
+        meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, UUID.randomUUID().toString());
+
         meta.setOwner(player);
 
         //meta.setOwnerProfile(profile);
