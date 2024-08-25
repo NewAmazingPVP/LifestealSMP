@@ -81,15 +81,19 @@ public class DittoSkull implements Listener {
         for (int i = 0; i < player.getInventory().getSize(); i++) {
             ItemStack item = player.getInventory().getItem(i);
             if (item != null && item.getType() == Material.PLAYER_HEAD && !item.hasLore() && item.getDisplayName() == ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Ditto Skull") {
-                player.getInventory().setItem(i, convertToUsableDitto(item)); 
+                player.getInventory().setItem(i, convertToUsableDitto());
                 break;
             }
         }
     }
 
-    private static ItemStack convertToUsableDitto (ItemStack item){
+    private static ItemStack convertToUsableDitto (){
 
+
+        PlayerProfile profile = getProfile("https://textures.minecraft.net/texture/3caf617f26c177ae56eb5dcef19b1ea307df3d5567750c52dcd14f60742df641");
+        ItemStack item = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) item.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Ditto Skull");
 
         List<String> lore = new ArrayList<>();
 
@@ -104,6 +108,10 @@ public class DittoSkull implements Listener {
 
 
         meta.setLore(lore);
+
+
+
+        meta.setOwnerProfile(profile);
         item.setItemMeta(meta);
 
         return item;

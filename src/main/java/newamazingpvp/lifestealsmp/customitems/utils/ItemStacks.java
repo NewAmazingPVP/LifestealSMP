@@ -2,6 +2,7 @@ package newamazingpvp.lifestealsmp.customitems.utils;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import newamazingpvp.lifestealsmp.LifestealSMP;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -11,6 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.profile.PlayerProfile;
 
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.unused.endfight.custommobs.PublicMobMethods.getProfile;
 
 public class ItemStacks {
@@ -408,6 +411,9 @@ public class ItemStacks {
 
 
         meta.setLore(lore);
+
+        //PersistentDataContainer data = meta.getPersistentDataContainer();
+        //data.set(new NamespacedKey(lifestealSmp,"message"), PersistentDataType.STRING, );
 
 
         meta.setOwnerProfile(profile);
