@@ -19,6 +19,7 @@ import org.bukkit.profile.PlayerProfile;
 
 import java.util.*;
 
+import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.dittoSkull;
 import static newamazingpvp.lifestealsmp.unused.endfight.custommobs.PublicMobMethods.getProfile;
 
 public class DittoSkull implements Listener {
@@ -82,44 +83,14 @@ public class DittoSkull implements Listener {
             ItemStack item = player.getInventory().getItem(i);
             if (item != null && item.getType() == Material.PLAYER_HEAD && item.getDisplayName() == ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Ditto Skull") {
                 //player.getInventory().setItem(i, convertToUsableDitto());
-                inv.addItem(convertToUsableDitto());
+                inv.addItem(dittoSkull());
                 if (item.getAmount() > 1) {
                     item.setAmount(item.getAmount() - 1);
                 }
             }
         }
     }
-
-    private static ItemStack convertToUsableDitto (){
-
-
-        PlayerProfile profile = getProfile("https://textures.minecraft.net/texture/3caf617f26c177ae56eb5dcef19b1ea307df3d5567750c52dcd14f60742df641");
-        ItemStack item = new ItemStack(Material.PLAYER_HEAD);
-        SkullMeta meta = (SkullMeta) item.getItemMeta();
-        meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Ditto Skull");
-
-        List<String> lore = new ArrayList<>();
-
-        lore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "[Right Click]");
-        lore.add(ChatColor.DARK_PURPLE + "Type a player's name or a");
-        lore.add(ChatColor.DARK_PURPLE + "Minecraft skin URL from a");
-        lore.add(ChatColor.DARK_PURPLE + "website such as Minecraft heads");
-        lore.add(ChatColor.DARK_PURPLE + "and this skull will take its texture!");
-        lore.add(ChatColor.DARK_PURPLE + "You can use it for decoration or whatever u want.");
-        lore.add(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Ask if you don't know how it works!]");
-
-
-
-        meta.setLore(lore);
-
-
-
-        meta.setOwnerProfile(profile);
-        item.setItemMeta(meta);
-
-        return item;
-
-    }
+    
 
 
 
