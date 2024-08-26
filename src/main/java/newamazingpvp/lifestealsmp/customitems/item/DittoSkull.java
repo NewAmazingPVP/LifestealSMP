@@ -78,9 +78,18 @@ public class DittoSkull implements Listener {
         Player player = e.getPlayer();
         Inventory inv = player.getInventory();
 
+        ItemStack[] items = inv.getContents();
+
+        for(int i = 0; i< items.length; i++){
+            ItemStack item = items[i];
+            ItemMeta meta = item.getItemMeta();
+            if (item != null && item.getType() == Material.PLAYER_HEAD && meta.getDisplayName().toString().contains("Ditto Skull")) {
+                player.getInventory().addItem(dittoSkull());
+            }
+        }
 
 
-        for (int i = 0; i < player.getInventory().getSize(); i++) {
+        /*for (int i = 0; i < player.getInventory().getSize(); i++) {
             ItemStack item = player.getInventory().getItem(i);
             ItemMeta meta = item.getItemMeta();
             if (item != null && item.getType() == Material.PLAYER_HEAD && meta.getDisplayName().toString().contains("Ditto Skull")) {
@@ -90,9 +99,9 @@ public class DittoSkull implements Listener {
                     item.setAmount(item.getAmount() - 1);
                 } else {
                     player.getInventory().setItemInMainHand(null);
-                }*/
+
             }
-        }
+        }*/
     }
 
 
