@@ -6,6 +6,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -73,7 +74,24 @@ public class DittoSkull implements Listener {
     //RecoverDittoSkullAfterItemPickup
 
     @EventHandler
-    public void playerMove(PlayerMoveEvent e) {
+    public void playerMove(InventoryInteractEvent e) {
+
+        Player player = (Player) e.getWhoClicked();
+        Inventory inv = player.getInventory();
+
+        ItemStack[] items = inv.getContents();
+
+        for(int i = 0; i< items.length; i++){
+            ItemStack item = items[i];
+            ItemMeta meta = item.getItemMeta();
+            if (item != null && item.getType() == Material.PLAYER_HEAD && meta.getDisplayName().toString().contains("Ditto Skull")) {
+                player.getInventory().addItem(dittoSkull());
+            }
+        }
+    }
+
+    @EventHandler
+    public void playerMove(PlayerPickupItemEvent e) {
 
         Player player = e.getPlayer();
         Inventory inv = player.getInventory();
@@ -87,21 +105,6 @@ public class DittoSkull implements Listener {
                 player.getInventory().addItem(dittoSkull());
             }
         }
-
-
-        /*for (int i = 0; i < player.getInventory().getSize(); i++) {
-            ItemStack item = player.getInventory().getItem(i);
-            ItemMeta meta = item.getItemMeta();
-            if (item != null && item.getType() == Material.PLAYER_HEAD && meta.getDisplayName().toString().contains("Ditto Skull")) {
-                player.getInventory().addItem(dittoSkull());
-
-                /*if (item.getAmount() > 1) {
-                    item.setAmount(item.getAmount() - 1);
-                } else {
-                    player.getInventory().setItemInMainHand(null);
-
-            }
-        }*/
     }
 
 
