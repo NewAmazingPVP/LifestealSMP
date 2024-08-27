@@ -2,21 +2,25 @@ package newamazingpvp.lifestealsmp.customitems.item;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerPickupItemEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.profile.PlayerProfile;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
+import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.dittoSkull;
 import static newamazingpvp.lifestealsmp.unused.endfight.custommobs.PublicMobMethods.getProfile;
 
 public class DittoSkull implements Listener {
@@ -67,8 +71,47 @@ public class DittoSkull implements Listener {
 
 
 
+    //RecoverDittoSkullAfterItemPickup
+
+    @EventHandler
+    public void playerMove(InventoryInteractEvent e) {
+
+        Player player = (Player) e.getWhoClicked();
+        Inventory inv = player.getInventory();
+
+        ItemStack[] items = inv.getContents();
+
+        for(int i = 0; i< items.length; i++){
+            ItemStack item = items[i];
+            ItemMeta meta = item.getItemMeta();
+            if (item != null && item.getType() == Material.PLAYER_HEAD && meta.getDisplayName().toString().contains("Ditto Skull")) {
+                player.getInventory().addItem(dittoSkull());
+            }
+        }
+    }
+
+    @EventHandler
+    public void playerMove(PlayerPickupItemEvent e) {
+
+        Player player = e.getPlayer();
+        Inventory inv = player.getInventory();
+
+        ItemStack[] items = inv.getContents();
+
+        for(int i = 0; i< items.length; i++){
+            ItemStack item = items[i];
+            ItemMeta meta = item.getItemMeta();
+            if (item != null && item.getType() == Material.PLAYER_HEAD && meta.getDisplayName().toString().contains("Ditto Skull")) {
+                player.getInventory().addItem(dittoSkull());
+            }
+        }
+    }
 
 
+
+
+
+    //ItemStacks
     public static ItemStack dittoSkullURL(String url) {
 
         PlayerProfile profile = getProfile(url);
@@ -89,6 +132,7 @@ public class DittoSkull implements Listener {
 
 
         meta.setLore(lore);
+
 
         meta.setOwnerProfile(profile);
         info.setItemMeta(meta);
@@ -115,6 +159,8 @@ public class DittoSkull implements Listener {
 
 
         meta.setLore(lore);
+
+
         meta.setOwner(player);
 
         //meta.setOwnerProfile(profile);
