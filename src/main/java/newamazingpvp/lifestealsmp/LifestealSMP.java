@@ -466,6 +466,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         Bukkit.getPluginManager().registerEvents(new SomberCrystal(), lifestealSmp);
         Bukkit.getPluginManager().registerEvents(new MusicBox(), lifestealSmp);
         Bukkit.getPluginManager().registerEvents(new HeartEqualizer(), lifestealSmp);
+
     }
 
 

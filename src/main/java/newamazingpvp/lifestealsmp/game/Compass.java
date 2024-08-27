@@ -50,28 +50,28 @@ public class Compass implements CommandExecutor, Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         //log off tracking
-        lastPortalLocations.put(event.getPlayer().getUniqueId(), event.getPlayer().getLocation());
+        //lastPortalLocations.put(event.getPlayer().getUniqueId(), event.getPlayer().getLocation());
         if(trackingDist == 1 || delayDuration <= 1) {
-            trackingPlayers.remove(event.getPlayer().getUniqueId());
+            //trackingPlayers.remove(event.getPlayer().getUniqueId());
         }
     }
 
     @EventHandler
     public void onPlayerKick(PlayerKickEvent event) {
         //log off tracking
-        lastPortalLocations.put(event.getPlayer().getUniqueId(), event.getPlayer().getLocation());
+        //lastPortalLocations.put(event.getPlayer().getUniqueId(), event.getPlayer().getLocation());
         if(trackingDist == 1 || delayDuration <= 1) {
-            trackingPlayers.remove(event.getPlayer().getUniqueId());
+            //trackingPlayers.remove(event.getPlayer().getUniqueId());
         }
     }
 
-    @EventHandler
+    /*@EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         if (trackingPlayers.containsValue(e.getPlayer().getUniqueId())) {
             e.getPlayer().sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[WARNING] You are being tracked by unspecified amount of players!" + ChatColor.AQUA + " However logging off won't help, they will still be able to track when you are off");
         }
 
-    }
+    }*/
 
     @EventHandler
     public void onPlayerEffect(EntityPotionEffectEvent event){
@@ -193,12 +193,12 @@ public class Compass implements CommandExecutor, Listener {
             }
             //player.sendMessage(ChatColor.GREEN + "Tracking quadrant of " + target.getName() + " every " + delayDuration + " seconds");
             //player.sendMessage(ChatColor.GREEN + "Compass is now pointing towards " + target.getName());
-            target.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[WARNING] You are being tracked!");
-            if(trackingDist == 1 || delayDuration <= 1){
+            //target.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[WARNING] You are being tracked!");
+            /*if(trackingDist == 1 || delayDuration <= 1){
                 target.sendMessage( ChatColor.GREEN + " Logging off today will help since today is a tracking event, so log off tracking is disabled for balance");
             } else {
                 target.sendMessage( ChatColor.AQUA + " However logging off won't help, they will still be able to track when you are off (log off tracking is also a new feature this season). Plus tracking is nerfed to just 1k vicinity making it impossible to pinpoint location.");
-            }
+            }*/
             return true;
         }
 
@@ -344,7 +344,7 @@ public class Compass implements CommandExecutor, Listener {
                         //player.sendMessage("ur "+ e);
                         //below is offline tracking
                     } else if (target == null && !isElytra(player) && !isPlayerElytraCooldown(player) && !noTrackingDay && !(isPlayerInvisible(player))){
-                        Location targetLocation;
+                        /*Location targetLocation;
                         Location portalLocation = lastPortalLocations.get(offlineTarget.getUniqueId());
                         targetLocation = (portalLocation != null && player.getWorld() == portalLocation.getWorld()) ? portalLocation : null;
                         if (targetLocation != null) {
@@ -357,7 +357,7 @@ public class Compass implements CommandExecutor, Listener {
                             msg += ChatColor.BOLD + " in vicinity of " + ((distance / trackingDist) + 1) * trackingDist + " blocks";
                         }
                         TextComponent textComponent = new TextComponent(msg);
-                        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, textComponent);
+                        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, textComponent);*/
                     }
                     else {
                         //setNormalCompass(compass);
