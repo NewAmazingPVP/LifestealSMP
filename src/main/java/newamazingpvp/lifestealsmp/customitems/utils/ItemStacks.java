@@ -389,31 +389,21 @@ public class ItemStacks {
         return ITEM;
     }
 
-    public static ItemStack dittoSkull() {
+    public static ItemStack headTextureableURL() {
 
 
 
         PlayerProfile profile = getProfile("https://textures.minecraft.net/texture/3caf617f26c177ae56eb5dcef19b1ea307df3d5567750c52dcd14f60742df641");
         ItemStack info = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) info.getItemMeta();
-        meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Ditto Skull");
+        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Ditto Skull");
 
         List<String> lore = new ArrayList<>();
 
-        lore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "[Right Click]");
-        lore.add(ChatColor.DARK_PURPLE + "Type a player's name or a");
-        lore.add(ChatColor.DARK_PURPLE + "Minecraft skin URL from a");
-        lore.add(ChatColor.DARK_PURPLE + "website such as Minecraft heads");
-        lore.add(ChatColor.DARK_PURPLE + "and this skull will take its texture!");
-        lore.add(ChatColor.DARK_PURPLE + "You can use it for decoration or whatever u want.");
-        lore.add(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Ask if you don't know how it works!]");
-
-
+        lore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "[Hold Item]");
+        lore.add(ChatColor.DARK_PURPLE + "Use /stetheadtexture");
 
         meta.setLore(lore);
-
-        //PersistentDataContainer data = meta.getPersistentDataContainer();
-        //data.set(new NamespacedKey(lifestealSmp,"message"), PersistentDataType.STRING, UUID.randomUUID().toString());
 
 
         meta.setOwnerProfile(profile);
@@ -421,6 +411,7 @@ public class ItemStacks {
 
         return info;
     }
+
 
 
 
