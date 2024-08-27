@@ -253,3 +253,6 @@ commands:
     usage: /showtoastwarn <message>
     permission: lifestealSMP.admin
     default: op
+  setheadtexture:
+    description: Lets tou set a head to any player texture
+    usage: /setheadtexture [type] <texture>
