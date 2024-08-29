@@ -25,15 +25,18 @@ public class AnvilMenuListener implements Listener {
         if (view.getType() == InventoryType.ANVIL || inv == InventoryType.ANVIL || clickInv == InventoryType.ANVIL) {
             ItemStack clickedItem = event.getCurrentItem();
             if (clickedItem != null && clickedItem.hasItemMeta() && clickedItem.getItemMeta().hasDisplayName()) {
-                String itemName = clickedItem.getItemMeta().getDisplayName();
+                String itemName = ChatColor.stripColor(clickedItem.getItemMeta().getDisplayName());
                 if (itemName.toLowerCase().contains("extra heart")) {
                     event.setCancelled(true);
+                    player.sendMessage(ChatColor.RED + "This item can't be put in an anvil!");
                 }
                 if (itemName.toLowerCase().contains("severed mob heart")) {
                     event.setCancelled(true);
+                    player.sendMessage(ChatColor.RED + "This item can't be put in an anvil!");
                 }
                 if (itemName.contains("rupted Mob Soul")) {
                     event.setCancelled(true);
+                    player.sendMessage(ChatColor.RED + "This item can't be put in an anvil!");
                 }
                 if (itemName.equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Montu's Staff")) {
                     event.setCancelled(true);
