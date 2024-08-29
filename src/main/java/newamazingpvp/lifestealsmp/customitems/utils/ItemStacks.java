@@ -419,13 +419,15 @@ public class ItemStacks {
         PlayerProfile profile = getProfile("http://textures.minecraft.net/texture/2a52d579afe2fdf7b8ecfa746cd016150d96beb75009bb2733ade15d487c42a1");
         ItemStack info = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) info.getItemMeta();
-        meta.setDisplayName(ChatColor.BLACK + "" + ChatColor.BOLD + "Hand Held TON 618");
+        meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Hand Held TON 618");
 
         List<String> lore = new ArrayList<>();
 
-        lore.add(ChatColor.WHITE + "" + ChatColor.BOLD + "Nappixel Over Hypixel because the plugins");
+        lore.add(ChatColor.WHITE + "" + ChatColor.BOLD + "Nappixel is better than Hypixel because the plugins");
         lore.add(ChatColor.WHITE + "" + ChatColor.BOLD + "on Nappixel randomly crash...");
         lore.add(ChatColor.WHITE + "" + ChatColor.BOLD + "it's like a game of will the server crash =D");
+        lore.add(ChatColor.WHITE + "" + ChatColor.BOLD + "On Hypixel you just know the game will work");
+        lore.add(ChatColor.WHITE + "" + ChatColor.BOLD + "and that's boring...");
         lore.add(ChatColor.GRAY + "" + ChatColor.BOLD + "Comet99 - 2024");
 
         meta.setLore(lore);
