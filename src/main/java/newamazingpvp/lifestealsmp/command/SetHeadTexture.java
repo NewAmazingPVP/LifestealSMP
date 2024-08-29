@@ -39,7 +39,7 @@ public class SetHeadTexture implements CommandExecutor, TabCompleter {
 
         if(args.length < 2){
 
-            sender.sendMessage(ChatColor.RED + "plz put a name or URL."); 
+            sender.sendMessage(ChatColor.RED + "plz put a name or URL.");
 
             return false;
         }
