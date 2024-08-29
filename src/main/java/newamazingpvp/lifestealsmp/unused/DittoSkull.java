@@ -20,7 +20,6 @@ import org.bukkit.profile.PlayerProfile;
 
 import java.util.*;
 
-import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.dittoSkull;
 import static newamazingpvp.lifestealsmp.unused.endfight.custommobs.PublicMobMethods.getProfile;
 
 public class DittoSkull implements Listener {
@@ -85,7 +84,7 @@ public class DittoSkull implements Listener {
             ItemStack item = items[i];
             ItemMeta meta = item.getItemMeta();
             if (item != null && item.getType() == Material.PLAYER_HEAD && meta.getDisplayName().toString().contains("Ditto Skull")) {
-                player.getInventory().addItem(dittoSkull());
+                //player.getInventory().addItem(dittoSkull());
             }
         }
     }
@@ -102,7 +101,7 @@ public class DittoSkull implements Listener {
             ItemStack item = items[i];
             ItemMeta meta = item.getItemMeta();
             if (item != null && item.getType() == Material.PLAYER_HEAD && meta.getDisplayName().toString().contains("Ditto Skull")) {
-                player.getInventory().addItem(dittoSkull());
+                //player.getInventory().addItem(dittoSkull());
             }
         }
     }
