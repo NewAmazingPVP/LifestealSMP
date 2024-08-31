@@ -22,6 +22,7 @@ import java.util.List;
 import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
 import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.invincibilityPlayers;
 import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.newbieViolate;
+import static newamazingpvp.lifestealsmp.listener.SpawnProtection.isWithinSpawnRadius;
 
 public class NerfOpItems implements Listener {
 
@@ -75,17 +76,31 @@ public class NerfOpItems implements Listener {
             } else if (event.getDamager() instanceof Arrow arrow) {
                 if (arrow.getBasePotionType() == PotionType.HARMING) {
                     event.setCancelled(true);
+                    if(isWithinSpawnRadius(player.getLocation())){
+                        return;
+                    }
                     player.damage(1.0, event.getDamager());
+                    arrow.remove();
                 }
                 if (arrow.getBasePotionType() == PotionType.STRONG_HARMING) {
                     event.setCancelled(true);
+                    if(isWithinSpawnRadius(player.getLocation())){
+                        return;
+                    }
                     player.damage(2.0, event.getDamager());
+                    arrow.remove();
                 }
             } else if (event.getDamager() instanceof ThrownPotion t) {
                 if (t.getPotionMeta().getBasePotionType() == PotionType.HARMING) {
+                    if(isWithinSpawnRadius(player.getLocation())){
+                        return;
+                    }
                     event.setDamage(2);
                 }
                 if (t.getPotionMeta().getBasePotionType() == PotionType.STRONG_HARMING) {
+                    if(isWithinSpawnRadius(player.getLocation())){
+                        return;
+                    }
                     event.setDamage(4);
                 }
             }
