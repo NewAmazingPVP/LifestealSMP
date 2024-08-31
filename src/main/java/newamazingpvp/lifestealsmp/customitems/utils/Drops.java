@@ -11,6 +11,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.powerStick;
+import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 
 public class Drops implements Listener {
 
@@ -23,7 +24,7 @@ public class Drops implements Listener {
         if (killer == null) return;
 
         if (Math.random() <= 0.0001) {
-            e.getDrops().add(powerStick());
+            addItemOrDrop(killer, powerStick(), ChatColor.RED + "Power Stick was dropped because your inventory was full");
             killer.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "EXTREMELY RARE DROP!" + ChatColor.DARK_PURPLE + " Power Stick");
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 0.0f), 3);
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f), 6);
