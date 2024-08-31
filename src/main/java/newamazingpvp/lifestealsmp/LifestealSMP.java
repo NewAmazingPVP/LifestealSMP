@@ -162,6 +162,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("nonvanillamechanics").setExecutor(new NonVanillaMechanics());
         getCommand("showcustomtoast").setExecutor(new ShowCustomToastCMD());
         getCommand("setheadtexture").setExecutor(new SetHeadTexture());
+        getCommand("spawncustommob").setExecutor(new SpawnCmd());
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new AntiBurn(), this);
         getServer().getPluginManager().registerEvents(new PlayerMsg(), this);
@@ -206,6 +207,12 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new AntiChunkBan(), this);
         //getServer().getPluginManager().registerEvents(new DittoSkull(), this);
         getServer().getPluginManager().registerEvents(new ToastTPS(), this);
+        getServer().getPluginManager().registerEvents(new HydraDamagedOrKilled(), this);
+        getServer().getPluginManager().registerEvents(new HydraAttack(), this);
+        getServer().getPluginManager().registerEvents(new MageHitAndKilled(), this);
+        getServer().getPluginManager().registerEvents(new EnigmaGUI(), this);
+        getServer().getPluginManager().registerEvents(new EnigmaAttack(), this);
+        getServer().getPluginManager().registerEvents(new EnigmaDamagedAndKilled(), this);
         startTPSTracking();
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
         getCommand("trade").setExecutor(new Trade());
@@ -299,17 +306,15 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new ClearOldBingoTags(), this);
             getServer().getPluginManager().registerEvents(new SubmitTicket(), this);
             getServer().getPluginManager().registerEvents(new PlayerBossBar(), this);
-            getServer().getPluginManager().registerEvents(new EnigmaGUI(), this);
-            getServer().getPluginManager().registerEvents(new EnigmaAttack(), this);
-            getServer().getPluginManager().registerEvents(new EnigmaDamagedAndKilled(), this);
-            getServer().getPluginManager().registerEvents(new MageHitAndKilled(), this);
+
+
             getServer().getPluginManager().registerEvents(new AntiItemUse(), this);
-            getServer().getPluginManager().registerEvents(new HydraAttack(), this);
-            getServer().getPluginManager().registerEvents(new HydraDamagedOrKilled(), this);
+
+
             //getServer().getPluginManager().registerEvents(new BlockPlaceTracker(), this);
             getCommand("raffleeventstart").setExecutor(new StartRaffleEvent());
             getCommand("raffleeventstop").setExecutor(new StopRaffleEvent());
-            getCommand("spawncustommob").setExecutor(new SpawnCmd());
+
 
 
             //getCommand("trade").setExecutor(new Trade());
