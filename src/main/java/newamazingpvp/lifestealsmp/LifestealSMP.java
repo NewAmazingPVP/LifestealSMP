@@ -214,6 +214,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new EnigmaGUI(), this);
         getServer().getPluginManager().registerEvents(new EnigmaAttack(), this);
         getServer().getPluginManager().registerEvents(new EnigmaDamagedAndKilled(), this);
+        getServer().getPluginManager().registerEvents(new ScrambleWordGame(), this);
         startTPSTracking();
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
         getCommand("trade").setExecutor(new Trade());
