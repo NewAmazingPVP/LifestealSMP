@@ -163,6 +163,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("showcustomtoast").setExecutor(new ShowCustomToastCMD());
         getCommand("setheadtexture").setExecutor(new SetHeadTexture());
         getCommand("spawncustommob").setExecutor(new SpawnCmd());
+        getCommand("scramblewordgame").setExecutor(new ScrambleWordGame());
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new AntiBurn(), this);
         getServer().getPluginManager().registerEvents(new PlayerMsg(), this);
