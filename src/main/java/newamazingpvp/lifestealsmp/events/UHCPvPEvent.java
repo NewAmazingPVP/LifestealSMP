@@ -31,10 +31,10 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
         Bukkit.getServer().broadcastMessage(ChatColor.RED + "UHC PvP event starting now! Type /tpuhc to join the PvP world. Check announcements /discord");
         getServer().getScheduler().runTaskLater(lifestealSmp, () -> sendDiscordNewsMessage(eventRole + " UHC PvP event is now active. Type /tpuhc to join the PvP world! May the best win!", "1032411739351941120"), 1200);
         isUhcEvent = true;
-        pvpWorld.getWorldBorder().setSize(500);
-        pvpWorld.getWorldBorder().setDamageBuffer(0);
-        pvpWorld.getWorldBorder().setDamageAmount(4);
-        pvpWorld.getWorldBorder().setWarningDistance(50);
+        pvpWorld.getWorldBorder().setSize(250);
+        //pvpWorld.getWorldBorder().setDamageBuffer(0);
+        //pvpWorld.getWorldBorder().setDamageAmount(4);
+        //pvpWorld.getWorldBorder().setWarningDistance(50);
         pvpWorld.setGameRule(GameRule.DO_MOB_SPAWNING, false);
     }
 
