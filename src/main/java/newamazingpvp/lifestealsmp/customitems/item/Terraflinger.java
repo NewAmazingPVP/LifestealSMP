@@ -15,6 +15,10 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
 import org.bukkit.util.Vector;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
 import static newamazingpvp.lifestealsmp.LifestealSMP.SMPworld;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
@@ -42,38 +46,50 @@ public class Terraflinger implements Listener {
                 Block block = loc.getBlock();
                 Material mat = block.getType();
 
-                FallingBlock fb = attacker.getWorld().spawnFallingBlock(attackerLocation, Material.BLACK_CONCRETE, (byte) 0);
-
-                if(mat == Material.AIR){
-                    fb.setBlockData(Material.STONE.createBlockData());
-                }else{
-                    fb.setBlockData(mat.createBlockData());
-                }
-
-
-
-
-
-                String customTag = "tarraFallingBlock";
-                MetadataValue customTagValue = new FixedMetadataValue(lifestealSmp, customTag);
-                fb.setMetadata(customTag, customTagValue);
-
-
                 for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
                     onlinePlayer.playSound(attackerLocation, Sound.ENTITY_ZOMBIE_BREAK_WOODEN_DOOR, 1.0f, 0.0f);
                 }
 
+                for(int i =0; i<3; i++){
 
-                if(pitch < 0 ) {
-                    pitch = Math.abs(pitch) + 90;
+                    if(i==1){
+                        attackerLocation.setY(attackerLocation.getY()+1);
+                    }
+
+                    FallingBlock fb = attacker.getWorld().spawnFallingBlock(attackerLocation, Material.BLACK_CONCRETE, (byte) 0);
+
+                    if(i==0) {
+                        String customTag = "tarraFallingBlock";
+                        MetadataValue customTagValue = new FixedMetadataValue(lifestealSmp, customTag);
+                        fb.setMetadata(customTag, customTagValue);
+                    }
+
+                    if(mat == Material.AIR){
+                        fb.setBlockData(Material.STONE.createBlockData());
+                    }else{
+                        fb.setBlockData(mat.createBlockData());
+                    }
+
+
+
+
+
+
+
+
+
+                    if(pitch < 0 ) {
+                        pitch = Math.abs(pitch) + 100;
+                    }
+
+                    distance = pitch/100;
+
+
+
+                    Vector velocity = attacker.getLocation().getDirection().multiply(distance);
+                    fb.setVelocity(velocity);
                 }
 
-                distance = pitch/100;
-
-
-
-                Vector velocity = attacker.getLocation().getDirection().multiply(distance);
-                fb.setVelocity(velocity);
 
 
 
