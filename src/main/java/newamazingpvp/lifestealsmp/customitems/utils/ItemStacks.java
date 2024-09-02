@@ -440,6 +440,26 @@ public class ItemStacks {
     }
 
 
+    public static ItemStack terraflinger() {
+        ItemStack ITEM = new ItemStack(Material.TRIDENT);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.displayName(gradient("Terraflinger"));
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Special Ability:");
+        lore.add(ChatColor.DARK_PURPLE + "Right click to throw the land");
+        lore.add(ChatColor.DARK_PURPLE + "in front of you dealing" + ChatColor.RED + " 5❤" + ChatColor.DARK_PURPLE + " !");
+        lore.add(" ");
+        lore.add(ChatColor.DARK_RED + "[WARNING] This Item Can Also Damage You!");
+        lore.add(" ");
+        lore.add(ChatColor.YELLOW + "[3s cooldown]");
+
+
+        meta.setLore(lore);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
+
 
 
 }
