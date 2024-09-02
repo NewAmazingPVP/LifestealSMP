@@ -18,9 +18,9 @@ public class CustomItemsAndRunes extends BaseEvent {
             w.setDifficulty(Difficulty.HARD);
             w.getWorldBorder().setCenter(new Location(w, 0, 0, 0));
             w.getWorldBorder().setSize(25000);
-            w.getWorldBorder().setDamageBuffer(0);
-            w.getWorldBorder().setDamageAmount(4);
-            w.getWorldBorder().setWarningDistance(50);
+            //w.getWorldBorder().setDamageBuffer(0);
+            //w.getWorldBorder().setDamageAmount(4);
+            //w.getWorldBorder().setWarningDistance(50);
         }
         sendDiscordNewsMessage(mcServer + " Custom items and runes are now available! Map size expanded to 25k by 25k and difficulty set to hard. " +
                 "Runes give permanent effects while in inventory and custom items has special abilities. " +

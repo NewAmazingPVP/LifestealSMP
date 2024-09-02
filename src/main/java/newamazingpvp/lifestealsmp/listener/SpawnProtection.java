@@ -36,7 +36,7 @@ public class SpawnProtection implements Listener {
             if (damager == null) return;
             Location original = damaged.getLocation();
             Location expanded = new Location(original.getWorld(), original.getX() / 2, original.getY(), original.getZ() / 2);
-            Location fake = new Location(original.getWorld(), original.getX() * 4, original.getY(), original.getZ() * 4);
+            Location fake = new Location(original.getWorld(), original.getX() * 10, original.getY(), original.getZ() * 10);
             if (original.getWorld().getName().equals("world")) {
                 if (isWithinSpawnRadius(expanded)) {
                     //if (isInCombat(damager) && isInCombat(damaged)) return;

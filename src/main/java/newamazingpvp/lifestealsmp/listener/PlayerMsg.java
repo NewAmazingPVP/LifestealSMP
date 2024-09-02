@@ -26,27 +26,27 @@ public class PlayerMsg implements Listener {
         }
 
         if (containsAny(message, "tp", "teleport") && !containsAny(message, "tps", "outpost")) {
-            broadcastMessage(ChatColor.RED + "This server does not have tp and you should not ask admins to teleport you (do /rules) " + ChatColor.YELLOW + player.getName());
+            broadcastMessage(ChatColor.RED + "This server does not have tp and you should not ask admins to teleport you (do /rules) " + ChatColor.YELLOW + player.getName(), player);
         }
 
         if (containsAny(message, "hit me", "damage me", "kill me")) {
-            broadcastMessage(ChatColor.RED + "Be careful as " + ChatColor.YELLOW + player.getName() + ChatColor.DARK_RED + " might be trying to get rid of newbie protection by asking to hit them.");
+            broadcastMessage(ChatColor.RED + "Be careful as " + ChatColor.YELLOW + player.getName() + ChatColor.DARK_RED + " might be trying to get rid of newbie protection by asking to hit them.", player);
         }
 
         if (containsAny(message, "stuck", "trap", "hole")) {
-            broadcastMessage(ChatColor.RED + "If you are stuck " + ChatColor.YELLOW + player.getName() + ChatColor.DARK_RED + " near spawn, do " + ChatColor.AQUA + "/spawn" + ChatColor.DARK_RED + " to get out.");
+            broadcastMessage(ChatColor.RED + "If you are stuck " + ChatColor.YELLOW + player.getName() + ChatColor.DARK_RED + " near spawn, do " + ChatColor.AQUA + "/spawn" + ChatColor.DARK_RED + " to get out.", player);
         }
 
         if (containsAny(message, "item", "custom", "heart", "recipe", "craft")) {
-            broadcastMessage(ChatColor.AQUA + "Do /recipes " + ChatColor.YELLOW + player.getName() + ChatColor.GREEN + " to see how to craft hearts and other custom items!");
+            broadcastMessage(ChatColor.AQUA + "Do /recipes " + ChatColor.YELLOW + player.getName() + ChatColor.GREEN + " to see how to craft hearts and other custom items!", player);
         }
 
         if (containsAny(message, "lose", "lost", "heart", "lifesteal")) {
-            broadcastMessage(ChatColor.AQUA + "In this lifesteal server, hearts are only lost when killed by a player, not by environmental causes. You won't lose hearts during newbie or death protection even if killed by another player.");
+            broadcastMessage(ChatColor.AQUA + "In this lifesteal server, hearts are only lost when killed by a player, not by environmental causes. You won't lose hearts during newbie or death protection even if killed by another player.", player);
         }
 
         if (containsAny(message, "runes", "rune")) {
-            broadcastMessage(ChatColor.AQUA + "Do /runes to learn about runes!");
+            broadcastMessage(ChatColor.AQUA + "Do /runes to learn about runes!", player);
         }
 
         /*if (containsAny(message, "cap", "limit")) {
@@ -54,7 +54,7 @@ public class PlayerMsg implements Listener {
         }*/
 
         if (message.contains("prot")) {
-            broadcastMessage(ChatColor.AQUA + "The server provides newbie protection for 2 hours and death protection for 15 minutes after a death. During this time, you cannot lose hearts from PvP damage.");
+            broadcastMessage(ChatColor.AQUA + "The server provides newbie protection for 2 hours and death protection for 15 minutes after a death. During this time, you cannot lose hearts from PvP damage.", player);
         }
 
         if (message.contains("discord")) {
@@ -62,7 +62,7 @@ public class PlayerMsg implements Listener {
         }
 
         if (message.contains("track")) {
-            broadcastMessage(ChatColor.AQUA + "The server has a tracking feature. You can track nearby players using " + ChatColor.GREEN + "/track [playerName]");
+            broadcastMessage(ChatColor.AQUA + "The server has a tracking feature. You can track nearby players using " + ChatColor.GREEN + "/track [playerName]", player);
         }
     }
 
@@ -86,10 +86,18 @@ public class PlayerMsg implements Listener {
     }
 
 
+    private void broadcastMessage(String message, Player player) {
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> {
+            //for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+                player.sendMessage(message);
+            //}
+        }, 20);
+    }
+
     private void broadcastMessage(String message) {
         Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> {
             for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-                player.sendMessage(message);
+            player.sendMessage(message);
             }
         }, 20);
     }
