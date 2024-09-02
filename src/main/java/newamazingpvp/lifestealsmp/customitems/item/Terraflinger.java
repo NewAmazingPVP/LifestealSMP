@@ -48,7 +48,6 @@ public class Terraflinger implements Listener {
 
 
                 // Set the block state to diamond block
-                fb.setBlockData(org.bukkit.block.data.type.BlockData.create(Material.DIAMOND_BLOCK));
 
 
                 for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
