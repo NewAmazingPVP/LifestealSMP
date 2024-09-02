@@ -256,3 +256,8 @@ commands:
   setheadtexture:
     description: Lets tou set a head to any player texture
     usage: /setheadtexture [type] <texture>
+  scramblewordgame:
+    description: Does the thing
+    usage: /scramblewordgame <message>
+    permission: lifestealSMP.admin
+    default: op
