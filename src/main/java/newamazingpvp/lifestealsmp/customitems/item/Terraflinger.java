@@ -6,6 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -36,14 +37,18 @@ public class Terraflinger implements Listener {
                 Location attackerLocation = attacker.getLocation();
                 Location landingLocation = null;
 
-                ArmorStand armorStand = (ArmorStand) attacker.getWorld().spawnEntity(attackerLocation, EntityType.ARMOR_STAND);
-                armorStand.setVisible(true);
+                FallingBlock fb = (FallingBlock) attacker.getWorld().spawnEntity(attackerLocation, EntityType.FALLING_BLOCK);
+                /*armorStand.setVisible(true);
                 armorStand.setSmall(false);
                 armorStand.setInvulnerable(true);
                 armorStand.setGravity(true);
                 String customTag = "tarrathrowerArmorstand";
                 MetadataValue customTagValue = new FixedMetadataValue(lifestealSmp, customTag);
-                armorStand.setMetadata(customTag, customTagValue);
+                armorStand.setMetadata(customTag, customTagValue);*/
+
+
+                // Set the block state to diamond block
+                fb.setBlockData(org.bukkit.block.data.type.BlockData.create(Material.DIAMOND_BLOCK));
 
 
                 for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
@@ -53,7 +58,7 @@ public class Terraflinger implements Listener {
 
 
                 Vector velocity = attacker.getLocation().getDirection().multiply(3);
-                armorStand.setVelocity(velocity);
+                fb.setVelocity(velocity);
 
 
 
