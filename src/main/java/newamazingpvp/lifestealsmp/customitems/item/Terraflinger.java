@@ -37,7 +37,8 @@ public class Terraflinger implements Listener {
                 Location attackerLocation = attacker.getLocation();
                 Location landingLocation = null;
 
-                FallingBlock fb = (FallingBlock) attacker.getWorld().spawnEntity(attackerLocation, EntityType.FALLING_BLOCK);
+                //FallingBlock fb = (FallingBlock) attacker.getWorld().spawnEntity(attackerLocation, EntityType.FALLING_BLOCK, Material.DIAMOND_BLOCK);
+                FallingBlock fb = attacker.getWorld().spawnFallingBlock(attackerLocation, Material.MAGMA_BLOCK, (byte) 0);
                 /*armorStand.setVisible(true);
                 armorStand.setSmall(false);
                 armorStand.setInvulnerable(true);
