@@ -30,9 +30,9 @@ public class ServerOpening extends BaseEvent {
             w.setDifficulty(Difficulty.EASY);
             w.getWorldBorder().setCenter(new Location(w, 0, 0, 0));
             w.getWorldBorder().setSize(10000);
-            w.getWorldBorder().setDamageBuffer(0);
-            w.getWorldBorder().setDamageAmount(4);
-            w.getWorldBorder().setWarningDistance(50);
+            //w.getWorldBorder().setDamageBuffer(0);
+            //w.getWorldBorder().setDamageAmount(4);
+            //w.getWorldBorder().setWarningDistance(50);
         }
         sendDiscordNewsEmbedTitle("New season has started!!", Color.GREEN, "1032411739351941120");
         sendDiscordNewsMessage(mcServer + " The server has opened!\n" +
