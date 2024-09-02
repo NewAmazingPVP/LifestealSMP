@@ -72,7 +72,7 @@ public class ScrambleWordGame implements Listener, CommandExecutor {
                 isScrambleGameRunning = false;
                 String name = player.getName();
                 Bukkit.broadcastMessage(ChatColor.GOLD + "" + ChatColor.BOLD + name + " Has guessed it correct!");
-                Bukkit.broadcastMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "The word was " + "[" + word + "]"); 
+                Bukkit.broadcastMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "The word was " + "[" + word + "]");
             }
         }
     }
