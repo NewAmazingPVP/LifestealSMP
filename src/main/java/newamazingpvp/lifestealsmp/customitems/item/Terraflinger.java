@@ -57,6 +57,8 @@ public class Terraflinger implements Listener {
                     }
 
                     FallingBlock fb = attacker.getWorld().spawnFallingBlock(attackerLocation, Material.BLACK_CONCRETE, (byte) 0);
+                    fb.setDropItem(false);
+                    fb.setCancelDrop(true); 
 
                     if(i==0) {
                         String customTag = "tarraFallingBlock";
