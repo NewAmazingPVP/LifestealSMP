@@ -36,7 +36,7 @@ public class StartEndFight implements CommandExecutor {
                 if (minutesPassed >= 30) {
                     this.cancel();
                     worldBorder.setSize(1);
-                    Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_PURPLE + "Border is now 1 block wide");
+                    Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_PURPLE + "Border is now 1 block wide. Going outside border may instant kill you");
                     worldBorder.setDamageBuffer(0);
                     worldBorder.setDamageAmount(4);
                     worldBorder.setWarningDistance(10);
@@ -54,9 +54,9 @@ public class StartEndFight implements CommandExecutor {
                 double newSize = worldBorder.getSize() - 10;
                 Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_PURPLE + "Border is now " + newSize + " blocks!");
                 worldBorder.setSize(newSize);
-                worldBorder.setDamageBuffer(0);
-                worldBorder.setDamageAmount(1);
-                worldBorder.setWarningDistance(10);
+                //worldBorder.setDamageBuffer(0);
+                //worldBorder.setDamageAmount(1);
+                //worldBorder.setWarningDistance(10);
                 minutesPassed++;
             }
         }.runTaskTimer(lifestealSmp, 1200, 20 * 60);

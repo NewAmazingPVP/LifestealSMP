@@ -22,6 +22,7 @@ public class HelpCommand implements CommandExecutor {
                     "\n" + ChatColor.GOLD + "/stats " + ChatColor.WHITE + "to see player stats on the server" +
                     "\n" + ChatColor.GOLD + "/voicechat " + ChatColor.WHITE + "for the voicechat in-game with mod" +
                     "\n" + ChatColor.GOLD + "/ally help " + ChatColor.WHITE + "for allying with other teams" +
+                    "\n" + ChatColor.GOLD + "/skin help " + ChatColor.WHITE + "for changing your skins on the server" +
                     "\n" + ChatColor.GOLD + "/guide " + ChatColor.WHITE + "for guide book on how to play the server");
         }
         return true;
