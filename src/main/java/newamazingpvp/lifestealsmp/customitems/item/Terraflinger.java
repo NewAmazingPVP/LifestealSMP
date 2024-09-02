@@ -4,10 +4,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.FallingBlock;
-import org.bukkit.entity.Player;
+import org.bukkit.block.Block;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -36,19 +34,29 @@ public class Terraflinger implements Listener {
 
                 Location attackerLocation = attacker.getLocation();
                 Location landingLocation = null;
+                float pitch = attacker.getLocation().getPitch();
+                float distance = 0;
 
-                //FallingBlock fb = (FallingBlock) attacker.getWorld().spawnEntity(attackerLocation, EntityType.FALLING_BLOCK, Material.DIAMOND_BLOCK);
-                FallingBlock fb = attacker.getWorld().spawnFallingBlock(attackerLocation, Material.MAGMA_BLOCK, (byte) 0);
-                /*armorStand.setVisible(true);
-                armorStand.setSmall(false);
-                armorStand.setInvulnerable(true);
-                armorStand.setGravity(true);
-                String customTag = "tarrathrowerArmorstand";
+                Location loc = attacker.getLocation();
+                loc.setY(attacker.getY() - 1);
+                Block block = loc.getBlock();
+                Material mat = block.getType();
+
+                FallingBlock fb = attacker.getWorld().spawnFallingBlock(attackerLocation, Material.BLACK_CONCRETE, (byte) 0);
+
+                if(mat == Material.AIR){
+                    fb.setBlockData(Material.STONE.createBlockData());
+                }else{
+                    fb.setBlockData(mat.createBlockData());
+                }
+
+
+
+
+
+                String customTag = "tarraFallingBlock";
                 MetadataValue customTagValue = new FixedMetadataValue(lifestealSmp, customTag);
-                armorStand.setMetadata(customTag, customTagValue);*/
-
-
-                // Set the block state to diamond block
+                fb.setMetadata(customTag, customTagValue);
 
 
                 for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
@@ -56,8 +64,15 @@ public class Terraflinger implements Listener {
                 }
 
 
+                if(pitch < 0 ) {
+                    pitch = Math.abs(pitch) + 90;
+                }
 
-                Vector velocity = attacker.getLocation().getDirection().multiply(3);
+                distance = pitch/100;
+
+
+
+                Vector velocity = attacker.getLocation().getDirection().multiply(distance);
                 fb.setVelocity(velocity);
 
 
