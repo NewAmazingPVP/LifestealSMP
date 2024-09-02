@@ -441,7 +441,7 @@ public class ItemStacks {
 
 
     public static ItemStack terraflinger() {
-        ItemStack ITEM = new ItemStack(Material.TRIDENT);
+        ItemStack ITEM = new ItemStack(Material.NETHERITE_SHOVEL);
         ItemMeta meta = ITEM.getItemMeta();
         meta.displayName(gradient("Terraflinger"));
         List<String> lore = new ArrayList<>();
