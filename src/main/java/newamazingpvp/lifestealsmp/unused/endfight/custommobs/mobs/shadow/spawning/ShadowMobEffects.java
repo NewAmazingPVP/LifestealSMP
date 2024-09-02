@@ -21,12 +21,11 @@ public class ShadowMobEffects {
         for (int i = 0; i < 4; i++) {
             World world = Bukkit.getWorlds().get(0); // Get the first loaded world
             ArmorStand armorStand = (ArmorStand) entity.getWorld().spawnEntity(location, EntityType.ARMOR_STAND);
-            armorStand.setVisible(false);
-            armorStand.setSmall(true);
+            armorStand.setVisible(true);
+            armorStand.setSmall(false);
             armorStand.setInvulnerable(true);
-            armorStand.setGravity(false);
-            armorStand.getEquipment().setHelmet(shadowOuterHead());
-            String customTag = "shadowOuterHead";
+            armorStand.setGravity(true);
+            String customTag = "tarrathrowerArmorstand";
             MetadataValue customTagValue = new FixedMetadataValue(lifestealSmp, customTag);
             armorStand.setMetadata(customTag, customTagValue);
 
