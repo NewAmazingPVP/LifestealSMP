@@ -56,7 +56,7 @@ public class Terraflinger implements Listener {
                         attackerLocation.setY(attackerLocation.getY()+1);
                     }
 
-                    FallingBlock fb = attacker.getWorld().spawnFallingBlock(attackerLocation, Material.END_GATEWAY, (byte) 0);
+                    FallingBlock fb = attacker.getWorld().spawnFallingBlock(attackerLocation, Material.BLACK_CONCRETE, (byte) 0);
                     fb.setDropItem(false);
                     fb.setCancelDrop(true);
 
@@ -67,7 +67,7 @@ public class Terraflinger implements Listener {
                     }
 
                     if(mat == Material.AIR){
-                        fb.setBlockData(Material.END_GATEWAY.createBlockData());
+                        fb.setBlockData(Material.MAGMA_BLOCK.createBlockData());
                     }else{
                         fb.setBlockData(mat.createBlockData());
                     }
