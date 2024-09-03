@@ -52,44 +52,25 @@ public class Terraflinger implements Listener {
 
                 for(int i =0; i<3; i++){
 
-                    if(i==1){
-                        attackerLocation.setY(attackerLocation.getY()+1);
-                    }
+                    attackerLocation.setY(attacker.getY());
+                    attackerLocation.setX(attacker.getX());
+                    attackerLocation.setZ(attacker.getZ());
 
-                    FallingBlock fb = attacker.getWorld().spawnFallingBlock(attackerLocation, Material.BLACK_CONCRETE, (byte) 0);
-                    fb.setDropItem(false);
-                    fb.setCancelDrop(true);
-
-                    if(i==0) {
-                        String customTag = "tarraFallingBlock";
-                        MetadataValue customTagValue = new FixedMetadataValue(lifestealSmp, customTag);
-                        fb.setMetadata(customTag, customTagValue);
-                    }
-
-                    if(mat == Material.AIR){
-                        fb.setBlockData(Material.MAGMA_BLOCK.createBlockData());
-                    }else{
-                        fb.setBlockData(mat.createBlockData());
+                    if(i==0){
+                        attackerLocation.setY(attackerLocation.getY()-1);
+                        makeTaraflingerBlock(attackerLocation,pitch,distance, i, attacker, mat);
+                    }else if(i==1) {
+                        attackerLocation.setY(attackerLocation.getY() - 1);
+                        attackerLocation.setY(attackerLocation.getY() + 1);
+                        makeTaraflingerBlock(attackerLocation, pitch, distance, i, attacker, mat);
+                    }else if(i==2) {
+                        attackerLocation.setY(attackerLocation.getY() - 1);
+                        attackerLocation.setY(attackerLocation.getY() + 2);
+                        makeTaraflingerBlock(attackerLocation, pitch, distance, i, attacker, mat);
                     }
 
 
 
-
-
-
-
-
-
-                    if(pitch < 0 ) {
-                        pitch = Math.abs(pitch) + 100;
-                    }
-
-                    distance = pitch/100;
-
-
-
-                    Vector velocity = attacker.getLocation().getDirection().multiply(distance);
-                    fb.setVelocity(velocity);
                 }
 
 
@@ -97,6 +78,41 @@ public class Terraflinger implements Listener {
 
             }
         }
+    }
+
+
+
+    private static void makeTaraflingerBlock(Location attackerLocation, double pitch, double distance, int i, Player attacker, Material mat){
+
+
+        FallingBlock fb = attacker.getWorld().spawnFallingBlock(attackerLocation, Material.BLACK_CONCRETE, (byte) 0);
+        fb.setDropItem(false);
+        fb.setCancelDrop(true);
+
+        if(i==0) {
+            String customTag = "tarraFallingBlock";
+            MetadataValue customTagValue = new FixedMetadataValue(lifestealSmp, customTag);
+            fb.setMetadata(customTag, customTagValue);
+        }
+
+        if(mat == Material.AIR){
+            fb.setBlockData(Material.MAGMA_BLOCK.createBlockData());
+        }else{
+            fb.setBlockData(mat.createBlockData());
+        }
+
+
+        if(pitch < 0 ) {
+            pitch = Math.abs(pitch) + 100;
+        }
+
+        distance = pitch/100;
+
+
+
+        Vector velocity = attacker.getLocation().getDirection().multiply(distance);
+        fb.setVelocity(velocity);
+
     }
 
 
