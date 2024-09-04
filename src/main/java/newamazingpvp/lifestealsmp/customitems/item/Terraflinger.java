@@ -61,67 +61,67 @@ public class Terraflinger implements Listener {
                     //attacker.sendMessage("MODIFYED LOC" + attackerLocation + " " + i);
 
                     if(i==0){
-                        Material mat = block.getType();
                         attackerLocation.setY(attackerLocation.getY()-1);
+                        Material mat = block.getType();
                         makeTaraflingerBlock(attackerLocation,pitch,distance, i, attacker, mat);
                     }else if(i==1) {
-                        Material mat = block.getType();
                         attackerLocation.setY(attackerLocation.getY() - 1);
                         attackerLocation.setX(attackerLocation.getX() + 1);
+                        Material mat = block.getType();
                         makeTaraflingerBlock(attackerLocation, pitch, distance, i, attacker, mat);
                     }else if(i==2) {
-                        Material mat = block.getType();
                         attackerLocation.setY(attackerLocation.getY() - 1);
                         attackerLocation.setX(attackerLocation.getX() + 2);
+                        Material mat = block.getType();
                         makeTaraflingerBlock(attackerLocation, pitch, distance, i, attacker, mat);
                     }else if(i==3) {
-                        Material mat = block.getType();
                         attackerLocation.setY(attackerLocation.getY() - 1);
                         attackerLocation.setX(attackerLocation.getX() - 1);
+                        Material mat = block.getType();
                         makeTaraflingerBlock(attackerLocation, pitch, distance, i, attacker, mat);
                     }else if(i==4) {
-                        Material mat = block.getType();
                         attackerLocation.setY(attackerLocation.getY() - 1);
                         attackerLocation.setX(attackerLocation.getX() - 2);
+                        Material mat = block.getType();
                         makeTaraflingerBlock(attackerLocation, pitch, distance, i, attacker, mat);
                     }else if(i==5) {
-                        Material mat = block.getType();
                         attackerLocation.setY(attackerLocation.getY() - 1);
                         attackerLocation.setX(attackerLocation.getX() - 3);
+                        Material mat = block.getType();
                         makeTaraflingerBlock(attackerLocation, pitch, distance, i, attacker, mat);
                     }else if(i==6) {
-                        Material mat = block.getType();
                         attackerLocation.setY(attackerLocation.getY() - 1);
                         attackerLocation.setZ(attackerLocation.getZ() + 1);
+                        Material mat = block.getType();
                         makeTaraflingerBlock(attackerLocation, pitch, distance, i, attacker, mat);
                     }else if(i==7) {
-                        Material mat = block.getType();
                         attackerLocation.setY(attackerLocation.getY() - 1);
                         attackerLocation.setX(attackerLocation.getX() + 1);
                         attackerLocation.setZ(attackerLocation.getZ() + 1);
+                        Material mat = block.getType();
                         makeTaraflingerBlock(attackerLocation, pitch, distance, i, attacker, mat);
                     }else if(i==8) {
-                        Material mat = block.getType();
                         attackerLocation.setY(attackerLocation.getY() - 1);
                         attackerLocation.setX(attackerLocation.getX() - 1);
                         attackerLocation.setZ(attackerLocation.getZ() + 1);
+                        Material mat = block.getType();
                         makeTaraflingerBlock(attackerLocation, pitch, distance, i, attacker, mat);
                     }else if(i==9) {
-                        Material mat = block.getType();
                         attackerLocation.setY(attackerLocation.getY() - 1);
                         attackerLocation.setX(attackerLocation.getX() - 2);
                         attackerLocation.setZ(attackerLocation.getZ() + 1);
+                        Material mat = block.getType();
                         makeTaraflingerBlock(attackerLocation, pitch, distance, i, attacker, mat);
                     }else if(i==10) {
-                        Material mat = block.getType();
                         attackerLocation.setY(attackerLocation.getY() - 1);
                         attackerLocation.setZ(attackerLocation.getZ() + 2);
+                        Material mat = block.getType();
                         makeTaraflingerBlock(attackerLocation, pitch, distance, i, attacker, mat);
                     }else if(i==11) {
-                        Material mat = block.getType();
                         attackerLocation.setY(attackerLocation.getY() - 1);
                         attackerLocation.setX(attackerLocation.getX() - 1);
                         attackerLocation.setZ(attackerLocation.getZ() + 2);
+                        Material mat = block.getType();
                         makeTaraflingerBlock(attackerLocation, pitch, distance, i, attacker, mat);
                     }
 
