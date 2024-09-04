@@ -131,7 +131,7 @@ public class Terraflinger implements Listener {
                         attackerLocation.setY(attackerLocation.getY() - 1);
                         attackerLocation.setX(attackerLocation.getX() - 1);
                         attackerLocation.setZ(attackerLocation.getZ() + 2);
-                        Block block = loc.getBlock(); 
+                        Block block = loc.getBlock();
                         Material mat = block.getType();
                         makeTaraflingerBlock(attackerLocation, pitch, distance, i, attacker, mat);
                     }
@@ -163,11 +163,10 @@ public class Terraflinger implements Listener {
             fb.setMetadata(customTag, customTagValue);
         }
 
-        if(mat == Material.AIR){
-            fb.setBlockData(Material.MAGMA_BLOCK.createBlockData());
-        }else{
-            fb.setBlockData(mat.createBlockData());
-        }
+        //if(mat == Material.AIR){
+        //    fb.setBlockData(Material.MAGMA_BLOCK.createBlockData());
+        fb.setBlockData(mat.createBlockData());
+
 
 
         if(pitch < 0 ) {
