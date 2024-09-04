@@ -53,7 +53,7 @@ public class Terraflinger implements Listener {
                 //attacker.sendMessage("start LOC" + attackerLocation);
                 attacker.sendMessage("Pitch MODIFYED" + attackerLocation);
 
-                for(int i =0; i<6; i++){
+                for(int i =0; i<12; i++){
 
                     attackerLocation.setY(attacker.getY());
                     attackerLocation.setX(attacker.getX());
@@ -84,30 +84,30 @@ public class Terraflinger implements Listener {
                         attackerLocation.setY(attackerLocation.getY() - 1);
                         attackerLocation.setX(attackerLocation.getX() - 3);
                         makeTaraflingerBlock(attackerLocation, pitch, distance, i, attacker, mat);
-                    }else if(i==5) {
+                    }else if(i==6) {
                         attackerLocation.setY(attackerLocation.getY() - 1);
                         attackerLocation.setZ(attackerLocation.getZ() + 1);
                         makeTaraflingerBlock(attackerLocation, pitch, distance, i, attacker, mat);
-                    }else if(i==5) {
+                    }else if(i==7) {
                         attackerLocation.setY(attackerLocation.getY() - 1);
                         attackerLocation.setX(attackerLocation.getX() + 1);
                         attackerLocation.setZ(attackerLocation.getZ() + 1);
                         makeTaraflingerBlock(attackerLocation, pitch, distance, i, attacker, mat);
-                    }else if(i==5) {
+                    }else if(i==8) {
                         attackerLocation.setY(attackerLocation.getY() - 1);
                         attackerLocation.setX(attackerLocation.getX() - 1);
                         attackerLocation.setZ(attackerLocation.getZ() + 1);
                         makeTaraflingerBlock(attackerLocation, pitch, distance, i, attacker, mat);
-                    }else if(i==5) {
+                    }else if(i==9) {
                         attackerLocation.setY(attackerLocation.getY() - 1);
                         attackerLocation.setX(attackerLocation.getX() - 2);
                         attackerLocation.setZ(attackerLocation.getZ() + 1);
                         makeTaraflingerBlock(attackerLocation, pitch, distance, i, attacker, mat);
-                    }else if(i==5) {
+                    }else if(i==10) {
                         attackerLocation.setY(attackerLocation.getY() - 1);
                         attackerLocation.setZ(attackerLocation.getZ() + 2);
                         makeTaraflingerBlock(attackerLocation, pitch, distance, i, attacker, mat);
-                    }else if(i==5) {
+                    }else if(i==11) {
                         attackerLocation.setY(attackerLocation.getY() - 1);
                         attackerLocation.setX(attackerLocation.getX() - 1);
                         attackerLocation.setZ(attackerLocation.getZ() + 2);
