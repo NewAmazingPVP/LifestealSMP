@@ -50,11 +50,16 @@ public class Terraflinger implements Listener {
                     onlinePlayer.playSound(attackerLocation, Sound.ENTITY_ZOMBIE_BREAK_WOODEN_DOOR, 1.0f, 0.0f);
                 }
 
+                attacker.sendMessage("start LOC" + attackerLocation);
+                attacker.sendMessage("Pitch MODIFYED" + attackerLocation);
+
                 for(int i =0; i<3; i++){
 
                     attackerLocation.setY(attacker.getY());
                     attackerLocation.setX(attacker.getX());
                     attackerLocation.setZ(attacker.getZ());
+
+                    attacker.sendMessage("MODIFYED LOC" + attackerLocation + " " + i);
 
                     if(i==0){
                         attackerLocation.setY(attackerLocation.getY()-1);
