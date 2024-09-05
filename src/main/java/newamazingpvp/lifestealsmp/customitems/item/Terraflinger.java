@@ -42,14 +42,14 @@ public class Terraflinger implements Listener {
                 float distance = 0;
 
                 Location loc = attacker.getLocation();
-                //loc.setY(attacker.getY() - 1);
+                loc.setY(attacker.getY() - 1);
 
                 for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
                     onlinePlayer.playSound(attackerLocation, Sound.ENTITY_ZOMBIE_BREAK_WOODEN_DOOR, 1.0f, 0.0f);
                 }
 
                 //attacker.sendMessage("start LOC" + attackerLocation);
-                attacker.sendMessage("Pitch MODIFYED" + attackerLocation);
+                //attacker.sendMessage("Pitch MODIFYED" + attackerLocation);
 
                 for(int i =0; i<12; i++){
 
