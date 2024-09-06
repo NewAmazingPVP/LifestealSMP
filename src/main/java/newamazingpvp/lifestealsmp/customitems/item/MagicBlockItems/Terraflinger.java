@@ -24,7 +24,7 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class Terraflinger implements Listener {
 
-    @EventHandler
+    @EventHandler 
     public void playerInteract(PlayerInteractEvent event){
 
         Player attacker = event.getPlayer();
