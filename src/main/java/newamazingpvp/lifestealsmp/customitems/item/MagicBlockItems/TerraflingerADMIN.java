@@ -1,11 +1,12 @@
-package newamazingpvp.lifestealsmp.customitems.item;
+package newamazingpvp.lifestealsmp.customitems.item.MagicBlockItems;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
-import org.bukkit.entity.*;
+import org.bukkit.entity.FallingBlock;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -15,14 +16,9 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
 import org.bukkit.util.Vector;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
-import static newamazingpvp.lifestealsmp.LifestealSMP.SMPworld;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
-public class Terraflinger implements Listener {
+public class TerraflingerADMIN implements Listener {
 
     @EventHandler
     public void playerInteract(PlayerInteractEvent event){
@@ -34,7 +30,7 @@ public class Terraflinger implements Listener {
 
             if (meta.getLore() == null) return;
 
-            if (meta.getLore().toString().contains("Right click to throw the land")) {
+            if (meta.getLore().toString().contains("Same thing but no cooldown and soft body physics and collisions")) {
 
                 Location attackerLocation = attacker.getLocation();
                 Location landingLocation = null;
@@ -363,6 +359,9 @@ public class Terraflinger implements Listener {
         Block block = loc.getBlock();
         Material mat = block.getType();
 
+
+
+
         attackerLocation.setY(attackerLocation.getY() + 3);
 
 
@@ -403,3 +402,4 @@ public class Terraflinger implements Listener {
 
 
 }
+
