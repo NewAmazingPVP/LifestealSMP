@@ -13,6 +13,8 @@ import newamazingpvp.lifestealsmp.allyteams.TeamListener;
 import newamazingpvp.lifestealsmp.blacklistener.*;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.customitems.item.*;
+import newamazingpvp.lifestealsmp.customitems.item.MagicBlockItems.TerraflingerADMIN;
+import newamazingpvp.lifestealsmp.customitems.item.MagicBlockItems.Terraflinger;
 import newamazingpvp.lifestealsmp.customitems.utils.AntiAnvil;
 import newamazingpvp.lifestealsmp.customitems.utils.Drops;
 import newamazingpvp.lifestealsmp.discord.DiscordListener;
@@ -308,7 +310,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getServer().getPluginManager().registerEvents(new PlayerBossBar(), this);
 
 
-            getServer().getPluginManager().registerEvents(new Terraflinger(), this);//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+            getServer().getPluginManager().registerEvents(new Terraflinger(), this);
+            getServer().getPluginManager().registerEvents(new TerraflingerADMIN(), this);//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
             getServer().getPluginManager().registerEvents(new AntiItemUse(), this);
 

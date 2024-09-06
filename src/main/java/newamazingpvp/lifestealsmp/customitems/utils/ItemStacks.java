@@ -459,6 +459,20 @@ public class ItemStacks {
         return ITEM;
     }
 
+    public static ItemStack terraflingerADMIN() {
+        ItemStack ITEM = new ItemStack(Material.NETHERITE_SHOVEL);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.displayName(gradient("Terraflinger [ADMIN]"));
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Special Ability:");
+        lore.add(ChatColor.DARK_PURPLE + "Same thing but no cooldown and soft body physics and collisions");
+
+
+        meta.setLore(lore);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
 
 
 
