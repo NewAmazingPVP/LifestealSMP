@@ -30,13 +30,13 @@ public class Terraflinger implements Listener {
     private final int tarraflingerCooldownTime = 2;
 
     @EventHandler
-    public void entityChangeBlock(EntityChangeBlockEvent e){
+    public void entityChangeBlock(EntityChangeBlockEvent e){ 
 
         if ((e.getEntityType() == EntityType.FALLING_BLOCK)) {
 
             Location loc = e.getBlock().getLocation();
 
-            Bukkit.broadcastMessage(loc + ""); 
+            Bukkit.broadcastMessage(loc + "");
         }
 
     }
