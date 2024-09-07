@@ -20,6 +20,7 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class TerraflingerADMIN implements Listener {
 
+
     @EventHandler
     public void playerInteract(PlayerInteractEvent event){
 

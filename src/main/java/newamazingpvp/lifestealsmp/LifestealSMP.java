@@ -6,6 +6,7 @@ import com.google.common.io.ByteStreams;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import newamazingpvp.lifestealsmp.TEST_THINGS.lex_test;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
 import newamazingpvp.lifestealsmp.allyteams.TeamCommand;
@@ -312,6 +313,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
             getServer().getPluginManager().registerEvents(new Terraflinger(), this);
             getServer().getPluginManager().registerEvents(new TerraflingerADMIN(), this);//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+            getServer().getPluginManager().registerEvents(new lex_test(), this);//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 
             getServer().getPluginManager().registerEvents(new AntiItemUse(), this);
 
