@@ -27,14 +27,18 @@ import static org.bukkit.Bukkit.getServer;
 public class Terraflinger implements Listener {
 
     private final Map<Player, CooldownManager> tarraflingerCooldowns = new HashMap<>();
-    private final int tarraflingerCooldownTime = 2;
+    private final int tarraflingerCooldownTime = 1;
 
     @EventHandler
-    public void entityChangeBlock(EntityChangeBlockEvent e){ 
+    public void entityChangeBlock(EntityChangeBlockEvent e){
 
         if ((e.getEntityType() == EntityType.FALLING_BLOCK)) {
 
             Location loc = e.getBlock().getLocation();
+
+            Block block = loc.getBlock();
+
+            block.setType(Material.AIR);
 
             Bukkit.broadcastMessage(loc + "");
         }
@@ -398,7 +402,7 @@ public class Terraflinger implements Listener {
 
         FallingBlock fb = attacker.getWorld().spawnFallingBlock(attackerLocation, Material.BLACK_CONCRETE, (byte) 0);
         fb.setDropItem(false);
-        fb.setCancelDrop(true);
+        //fb.setCancelDrop(true);
 
         if(i==27) {
             String customTag = "tarraFallingBlock";
