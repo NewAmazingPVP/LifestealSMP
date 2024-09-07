@@ -10,6 +10,7 @@ import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -27,6 +28,18 @@ public class Terraflinger implements Listener {
 
     private final Map<Player, CooldownManager> tarraflingerCooldowns = new HashMap<>();
     private final int tarraflingerCooldownTime = 2;
+
+    @EventHandler
+    public void entityChangeBlock(EntityChangeBlockEvent e){
+
+        if ((e.getEntityType() == EntityType.FALLING_BLOCK)) {
+
+            Location loc = e.getBlock().getLocation();
+
+            Bukkit.broadcastMessage(loc + ""); 
+        }
+
+    }
 
     @EventHandler
     public void playerInteract(PlayerInteractEvent event){

@@ -13,6 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
+import static newamazingpvp.lifestealsmp.TEST_THINGS.lex_test.fireGemTest;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
 import static newamazingpvp.lifestealsmp.runes.DragonRune.dragonRune;
 import static newamazingpvp.lifestealsmp.unused.customrunes.RunesDrops.*;
