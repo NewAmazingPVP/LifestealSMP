@@ -473,6 +473,36 @@ public class ItemStacks {
         return ITEM;
     }
 
+    public static ItemStack windStick() {
+        ItemStack ITEM = new ItemStack(Material.NETHERITE_SHOVEL);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.displayName(gradient("Wind Stick"));
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Special Ability:");
+        lore.add(ChatColor.DARK_PURPLE + "Damages " + ChatColor.RED + " 5❤");
+        lore.add(ChatColor.DARK_PURPLE + "and scrambles your opponent!");
+
+
+        meta.setLore(lore);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
+    public static ItemStack shockwave() {
+        ItemStack ITEM = new ItemStack(Material.NETHERITE_SHOVEL);
+        ItemMeta meta = ITEM.getItemMeta();
+        meta.displayName(gradient("Wind Stick"));
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Special Ability:");
+        lore.add(ChatColor.DARK_PURPLE + "Damages " + ChatColor.RED + " 5❤");
+        lore.add(ChatColor.DARK_PURPLE + "and scrambles your opponent!");
+
+
+        meta.setLore(lore);
+        ITEM.setItemMeta(meta);
+        return ITEM;
+    }
+
 
 
 
