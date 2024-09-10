@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Random;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.command.LSwithdraw.setCooldown;
 import static newamazingpvp.lifestealsmp.events.TimeManager.CUSTOM_ITEMS_AND_RUNES;
 import static newamazingpvp.lifestealsmp.events.TimeManager.isTimePassed;
 import static newamazingpvp.lifestealsmp.runes.AbstractRune.deserialize;
@@ -47,7 +48,7 @@ public class RuneHandler implements Listener {
         runes.add(new FireResistanceRune());
         runes.add(new HasteRune());
         runes.add(new HasteRune.II());
-        //runes.add(new HealthBoostRune());
+        runes.add(new HealthBoostRune());
         runes.add(new HealthRune());
         runes.add(new HeroOfTheVillageRune());
         runes.add(new HeroOfTheVillageRune.II());
@@ -104,6 +105,9 @@ public class RuneHandler implements Listener {
                                             if (r.getEffect().getType() == PotionEffectType.HEALTH_BOOST && p.getMaxHealth() > 36) {
                                                 p.sendMessage("Cannot use your health boost rune due to max heart cap of 20");
                                             } else {
+                                                if(r.getEffect().getType() == PotionEffectType.HEALTH_BOOST) {
+                                                    setCooldown(p);
+                                                }
                                                 p.addPotionEffect(r.getEffect());
                                             }
                                         }
@@ -131,6 +135,9 @@ public class RuneHandler implements Listener {
                                             if (r.getEffect().getType() == PotionEffectType.HEALTH_BOOST && p.getMaxHealth() > 36) {
                                                 p.sendMessage("Cannot use your health boost rune due to max heart cap of 20");
                                             } else {
+                                                if(r.getEffect().getType() == PotionEffectType.HEALTH_BOOST) {
+                                                    setCooldown(p);
+                                                }
                                                 p.addPotionEffect(r.getEffect());
                                             }
                                         }
