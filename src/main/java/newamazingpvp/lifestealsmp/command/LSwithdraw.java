@@ -15,7 +15,7 @@ import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.extraHeart
 
 public class LSwithdraw implements CommandExecutor {
 
-    private final HashMap<String, Long> cooldowns = new HashMap<>();
+    private static final HashMap<String, Long> cooldowns = new HashMap<>();
     private static final long COOLDOWN_TIME = 6 * 60 * 60 * 1000; // 6 hours in milliseconds
 
     @Override
@@ -74,7 +74,7 @@ public class LSwithdraw implements CommandExecutor {
         return COOLDOWN_TIME - (System.currentTimeMillis() - cooldowns.get(player.getName()));
     }
 
-    private void setCooldown(Player player) {
+    public static void setCooldown(Player player) {
         cooldowns.put(player.getName(), System.currentTimeMillis());
     }
 
