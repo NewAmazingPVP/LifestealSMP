@@ -25,7 +25,7 @@ public class FinalFight extends BaseEvent {
         sendDiscordNewsMessage(mcServer + " Final fight has begun! May the best win goodluck!", "1032411739351941120");
         getServer().dispatchCommand(getServer().getConsoleSender(), "startendfight");
         trackingDist = 1;
-        delayDuration = 1.0/20;
+        delayDuration = 1.0 / 20;
     }
 
     @Override
@@ -54,6 +54,6 @@ public class FinalFight extends BaseEvent {
         Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Final fight event is happening! May the best win this season! Note: Do not use portals during fight, it will instantly eliminate you");
         Bukkit.getServer().broadcastMessage(ChatColor.LIGHT_PURPLE + "Insane /track activated, hunt down your foes quickly with exact /track");
         trackingDist = 1;
-        delayDuration = 1.0/20;
+        delayDuration = 1.0 / 20;
     }
 }

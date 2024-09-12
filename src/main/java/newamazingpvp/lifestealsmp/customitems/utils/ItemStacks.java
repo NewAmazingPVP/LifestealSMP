@@ -2,25 +2,19 @@ package newamazingpvp.lifestealsmp.customitems.utils;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import newamazingpvp.lifestealsmp.LifestealSMP;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
-import org.bukkit.persistence.PersistentDataContainer;
-import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.profile.PlayerProfile;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.unused.endfight.custommobs.PublicMobMethods.getProfile;
 
 public class ItemStacks {
@@ -392,7 +386,6 @@ public class ItemStacks {
     public static ItemStack headTextureableURL() {
 
 
-
         PlayerProfile profile = getProfile("https://textures.minecraft.net/texture/3caf617f26c177ae56eb5dcef19b1ea307df3d5567750c52dcd14f60742df641");
         ItemStack info = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) info.getItemMeta();
@@ -413,7 +406,6 @@ public class ItemStacks {
     }
 
     public static ItemStack handHeldTON618() {
-
 
 
         PlayerProfile profile = getProfile("http://textures.minecraft.net/texture/2a52d579afe2fdf7b8ecfa746cd016150d96beb75009bb2733ade15d487c42a1");
@@ -502,8 +494,6 @@ public class ItemStacks {
         ITEM.setItemMeta(meta);
         return ITEM;
     }
-
-
 
 
 }

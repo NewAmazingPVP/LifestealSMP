@@ -1,43 +1,37 @@
-package newamazingpvp.lifestealsmp.visuals.CustomToasts;
+package newamazingpvp.lifestealsmp.unused.visuals.toasts;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
 
 import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
-public class ToastWarnCMD implements CommandExecutor {
+public final class CreateCustomToast {
 
-    private final NamespacedKey key = new NamespacedKey(lifestealSmp, UUID.randomUUID().toString());
-    private final String icon = "STONE_BLOCK";
-    private final String message = ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "test123...";
-    private final String style = "TASK";
+    private final NamespacedKey key;
+    private final String icon;
+    private final String message;
+    private final Style style;
 
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(ChatColor.RED + "Only players can use this command!");
-
-        }
-
-
-
-
-        return true;
-
-
+    private CreateCustomToast(String icon, String message, Style style) {
+        this.key = new NamespacedKey(lifestealSmp, UUID.randomUUID().toString());
+        this.icon = icon;
+        this.message = message;
+        this.style = style;
     }
 
+    private void start() {
+        createAdvancement();
+        grantAdvancement();
 
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> {
+            revokeAdvancement();
+        }, 25);
+    }
 
+    //line 8 in json map changed item to id for test
 
     private void createAdvancement() {
         Bukkit.getUnsafe().loadAdvancement(key, "{\n" +
@@ -70,6 +64,18 @@ public class ToastWarnCMD implements CommandExecutor {
                 "}");
     }
 
+    /*private void grantAdvancement(Player player) {
+        player.getAdvancementProgress(Bukkit.getAdvancement(key)).awardCriteria("trigger");
+    }
+
+    private void revokeAdvancement(Player player) {
+        player.getAdvancementProgress(Bukkit.getAdvancement(key)).revokeCriteria("trigger");
+    }*/
+
+    public static void displayTo(String icon, String message, Style style) {
+        new CreateCustomToast(icon, message, style).start();
+    }
+
     private void grantAdvancement() {
 
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
@@ -87,14 +93,13 @@ public class ToastWarnCMD implements CommandExecutor {
 
     }
 
-    private void start() {
-        createAdvancement();
-        grantAdvancement();
-
-        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> {
-            revokeAdvancement();
-        }, 10);
+    public enum Style {
+        GOAL,
+        TASK,
+        CHALLENGE
     }
 
+
 }
+
 

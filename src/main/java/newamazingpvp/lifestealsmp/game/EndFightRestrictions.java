@@ -21,7 +21,6 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordEmbedPlayer;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsEmbedPlayer;
 import static newamazingpvp.lifestealsmp.variables.Loc.*;
-import static newamazingpvp.lifestealsmp.variables.Misc.endFightParticipants;
 import static newamazingpvp.lifestealsmp.variables.Misc.isEndFightEnabled;
 import static org.bukkit.Bukkit.getServer;
 

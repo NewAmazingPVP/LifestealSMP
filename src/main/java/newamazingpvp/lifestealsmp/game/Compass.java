@@ -12,7 +12,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPotionEffectEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerPortalEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -51,7 +50,7 @@ public class Compass implements CommandExecutor, Listener {
     public void onPlayerQuit(PlayerQuitEvent event) {
         //log off tracking
         //lastPortalLocations.put(event.getPlayer().getUniqueId(), event.getPlayer().getLocation());
-        if(trackingDist == 1 || delayDuration <= 1) {
+        if (trackingDist == 1 || delayDuration <= 1) {
             //trackingPlayers.remove(event.getPlayer().getUniqueId());
         }
     }
@@ -60,7 +59,7 @@ public class Compass implements CommandExecutor, Listener {
     public void onPlayerKick(PlayerKickEvent event) {
         //log off tracking
         //lastPortalLocations.put(event.getPlayer().getUniqueId(), event.getPlayer().getLocation());
-        if(trackingDist == 1 || delayDuration <= 1) {
+        if (trackingDist == 1 || delayDuration <= 1) {
             //trackingPlayers.remove(event.getPlayer().getUniqueId());
         }
     }
@@ -74,9 +73,9 @@ public class Compass implements CommandExecutor, Listener {
     }*/
 
     @EventHandler
-    public void onPlayerEffect(EntityPotionEffectEvent event){
-        if(event.getEntity() instanceof Player p){
-            if(event.getNewEffect() != null && event.getNewEffect().getType() != null && event.getNewEffect().getType() == PotionEffectType.INVISIBILITY){
+    public void onPlayerEffect(EntityPotionEffectEvent event) {
+        if (event.getEntity() instanceof Player p) {
+            if (event.getNewEffect() != null && event.getNewEffect().getType() != null && event.getNewEffect().getType() == PotionEffectType.INVISIBILITY) {
                 invisTrackCooldown.put(p.getUniqueId(), new CooldownManager(90));
             }
         }
@@ -265,7 +264,6 @@ public class Compass implements CommandExecutor, Listener {
     }
 
 
-
     private boolean isElytratest(ItemStack t) {
         return t.getType().toString().toLowerCase().contains("elytra");
     }
@@ -275,7 +273,7 @@ public class Compass implements CommandExecutor, Listener {
         return p.getInventory().getChestplate().getType().toString().toLowerCase().contains("elytra");
     }
 
-    public static void resetCompass(){
+    public static void resetCompass() {
         compassTask.cancel();
         compassTask = null;
     }
@@ -343,7 +341,7 @@ public class Compass implements CommandExecutor, Listener {
                         //boolean e = isMovingCloser(player, target);
                         //player.sendMessage("ur "+ e);
                         //below is offline tracking
-                    } else if (target == null && !isElytra(player) && !isPlayerElytraCooldown(player) && !noTrackingDay && !(isPlayerInvisible(player))){
+                    } else if (target == null && !isElytra(player) && !isPlayerElytraCooldown(player) && !noTrackingDay && !(isPlayerInvisible(player))) {
                         /*Location targetLocation;
                         Location portalLocation = lastPortalLocations.get(offlineTarget.getUniqueId());
                         targetLocation = (portalLocation != null && player.getWorld() == portalLocation.getWorld()) ? portalLocation : null;
@@ -358,15 +356,14 @@ public class Compass implements CommandExecutor, Listener {
                         }
                         TextComponent textComponent = new TextComponent(msg);
                         player.spigot().sendMessage(ChatMessageType.ACTION_BAR, textComponent);*/
-                    }
-                    else {
+                    } else {
                         //setNormalCompass(compass);
                         //player.setCompassTarget(generateRandomLocation(player));
                     }
                 }
 
             }
-        }.runTaskTimer(lifestealSmp, 0L, (long)(20.0 * delayDuration));
+        }.runTaskTimer(lifestealSmp, 0L, (long) (20.0 * delayDuration));
     }
 
 

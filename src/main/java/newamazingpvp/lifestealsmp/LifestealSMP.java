@@ -14,8 +14,6 @@ import newamazingpvp.lifestealsmp.allyteams.TeamListener;
 import newamazingpvp.lifestealsmp.blacklistener.*;
 import newamazingpvp.lifestealsmp.command.*;
 import newamazingpvp.lifestealsmp.customitems.item.*;
-import newamazingpvp.lifestealsmp.customitems.item.MagicBlockItems.TerraflingerADMIN;
-import newamazingpvp.lifestealsmp.customitems.item.MagicBlockItems.Terraflinger;
 import newamazingpvp.lifestealsmp.customitems.utils.AntiAnvil;
 import newamazingpvp.lifestealsmp.customitems.utils.Drops;
 import newamazingpvp.lifestealsmp.discord.DiscordListener;
@@ -56,16 +54,18 @@ import newamazingpvp.lifestealsmp.unused.events.raffle.events.ClearOldBingoTags;
 import newamazingpvp.lifestealsmp.unused.events.raffle.events.Mining;
 import newamazingpvp.lifestealsmp.unused.events.raffle.events.PlayerBossBar;
 import newamazingpvp.lifestealsmp.unused.events.raffle.events.SubmitTicket;
+import newamazingpvp.lifestealsmp.unused.magicblockitems.Terraflinger;
+import newamazingpvp.lifestealsmp.unused.magicblockitems.TerraflingerADMIN;
 import newamazingpvp.lifestealsmp.unused.magicstaffs.abilities.Default;
 import newamazingpvp.lifestealsmp.unused.magicstaffs.utils.GUI;
 import newamazingpvp.lifestealsmp.unused.mcbingo.gui.BingoCardGUIListeners;
 import newamazingpvp.lifestealsmp.unused.visualeffects.DroppedItemParticles;
+import newamazingpvp.lifestealsmp.unused.visuals.HpBar;
+import newamazingpvp.lifestealsmp.unused.visuals.HpNameTag;
+import newamazingpvp.lifestealsmp.unused.visuals.toasts.ShowCustomToastCMD;
+import newamazingpvp.lifestealsmp.unused.visuals.toasts.ToastTPS;
 import newamazingpvp.lifestealsmp.utility.Metrics;
 import newamazingpvp.lifestealsmp.utility.Utils;
-import newamazingpvp.lifestealsmp.visuals.CustomToasts.ShowCustomToastCMD;
-import newamazingpvp.lifestealsmp.visuals.CustomToasts.ToastTPS;
-import newamazingpvp.lifestealsmp.visuals.HpBar;
-import newamazingpvp.lifestealsmp.visuals.HpNameTag;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -84,7 +84,6 @@ import static newamazingpvp.lifestealsmp.customitems.utils.DevRecipes.registerCu
 import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerBasicRecipes;
 import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.*;
-//import static newamazingpvp.lifestealsmp.discord.LogAppender.consoleChannel;
 import static newamazingpvp.lifestealsmp.events.TimeManager.doEvents;
 import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
 import static newamazingpvp.lifestealsmp.game.CombatLog.cancelCombatData;
@@ -264,7 +263,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getCommand("createtestnpc").setExecutor(new NPCTestCommand());
 
 
-
             //getCommand("showtoastwarn").setExecutor(new ToastWarnCMD());
             //getServer().getPluginManager().registerEvents(new PlayerJoinToast(), this);
 
@@ -323,7 +321,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             //getServer().getPluginManager().registerEvents(new BlockPlaceTracker(), this);
             getCommand("raffleeventstart").setExecutor(new StartRaffleEvent());
             getCommand("raffleeventstop").setExecutor(new StopRaffleEvent());
-
 
 
             //getCommand("trade").setExecutor(new Trade());

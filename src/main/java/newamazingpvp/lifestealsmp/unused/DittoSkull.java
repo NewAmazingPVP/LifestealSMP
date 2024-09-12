@@ -2,23 +2,21 @@ package newamazingpvp.lifestealsmp.unused;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
-import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.profile.PlayerProfile;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static newamazingpvp.lifestealsmp.unused.endfight.custommobs.PublicMobMethods.getProfile;
 
@@ -28,7 +26,7 @@ public class DittoSkull implements Listener {
     List<Player> playersInDittoChat = new ArrayList<>();
 
     @EventHandler
-    public void playerRightClick(PlayerInteractEvent e){
+    public void playerRightClick(PlayerInteractEvent e) {
 
         Player player = e.getPlayer();
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
@@ -36,7 +34,7 @@ public class DittoSkull implements Listener {
         if (e.getAction().name().contains("RIGHT_CLICK") && e.getItem() != null && itemInHand != null && itemInHand.hasItemMeta() && meta.getLore().toString().contains("and this skull will take its texture!")) {
 
 
-            if(!playersInDittoChat.contains(player)) {
+            if (!playersInDittoChat.contains(player)) {
                 playersInDittoChat.add(player);
             }
 
@@ -46,28 +44,27 @@ public class DittoSkull implements Listener {
     }
 
     @EventHandler
-    public void playerChat(PlayerChatEvent e){
+    public void playerChat(PlayerChatEvent e) {
         Player player = e.getPlayer();
-        
+
         String chatString = e.getMessage();
-        
-        if(playersInDittoChat.contains(player)) {
+
+        if (playersInDittoChat.contains(player)) {
             e.setCancelled(true);
-            
-            if(chatString.equals("cancel")){
+
+            if (chatString.equals("cancel")) {
                 playersInDittoChat.remove(player);
-                player.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "[Canceled!]"); 
+                player.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "[Canceled!]");
             } else if (chatString.length() > 70) {
                 player.getInventory().addItem(dittoSkullURL(chatString));
                 playersInDittoChat.remove(player);
-            }else{
+            } else {
                 player.getInventory().addItem(dittoSkullName(chatString));
                 playersInDittoChat.remove(player);
             }
 
         }
     }
-
 
 
     //RecoverDittoSkullAfterItemPickup
@@ -80,10 +77,10 @@ public class DittoSkull implements Listener {
 
         ItemStack[] items = inv.getContents();
 
-        for(int i = 0; i< items.length; i++){
+        for (int i = 0; i < items.length; i++) {
             ItemStack item = items[i];
             ItemMeta meta = item.getItemMeta();
-            if (item != null && item.getType() == Material.PLAYER_HEAD && meta.getDisplayName().toString().contains("Ditto Skull")) {
+            if (item != null && item.getType() == Material.PLAYER_HEAD && meta.getDisplayName().contains("Ditto Skull")) {
                 //player.getInventory().addItem(dittoSkull());
             }
         }
@@ -97,17 +94,14 @@ public class DittoSkull implements Listener {
 
         ItemStack[] items = inv.getContents();
 
-        for(int i = 0; i< items.length; i++){
+        for (int i = 0; i < items.length; i++) {
             ItemStack item = items[i];
             ItemMeta meta = item.getItemMeta();
-            if (item != null && item.getType() == Material.PLAYER_HEAD && meta.getDisplayName().toString().contains("Ditto Skull")) {
+            if (item != null && item.getType() == Material.PLAYER_HEAD && meta.getDisplayName().contains("Ditto Skull")) {
                 //player.getInventory().addItem(dittoSkull());
             }
         }
     }
-
-
-
 
 
     //ItemStacks
@@ -127,7 +121,6 @@ public class DittoSkull implements Listener {
         lore.add(ChatColor.DARK_PURPLE + "and this skull will take its texture!");
         lore.add(ChatColor.DARK_PURPLE + "You can use it for decoration or whatever u want.");
         lore.add(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Ask if you don't know how it works!]");
-
 
 
         meta.setLore(lore);
@@ -156,7 +149,6 @@ public class DittoSkull implements Listener {
         lore.add(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[Ask if you don't know how it works!]");
 
 
-
         meta.setLore(lore);
 
 
@@ -167,7 +159,6 @@ public class DittoSkull implements Listener {
 
         return info;
     }
-
 
 
 }

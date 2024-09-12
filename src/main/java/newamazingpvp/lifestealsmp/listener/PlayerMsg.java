@@ -89,7 +89,7 @@ public class PlayerMsg implements Listener {
     private void broadcastMessage(String message, Player player) {
         Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> {
             //for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-                player.sendMessage(message);
+            player.sendMessage(message);
             //}
         }, 20);
     }
@@ -97,7 +97,7 @@ public class PlayerMsg implements Listener {
     private void broadcastMessage(String message) {
         Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> {
             for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-            player.sendMessage(message);
+                player.sendMessage(message);
             }
         }, 20);
     }

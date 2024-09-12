@@ -105,7 +105,7 @@ public class RuneHandler implements Listener {
                                             if (r.getEffect().getType() == PotionEffectType.HEALTH_BOOST && p.getMaxHealth() > 36) {
                                                 p.sendMessage("Cannot use your health boost rune due to max heart cap of 20");
                                             } else {
-                                                if(r.getEffect().getType() == PotionEffectType.HEALTH_BOOST) {
+                                                if (r.getEffect().getType() == PotionEffectType.HEALTH_BOOST) {
                                                     setCooldown(p);
                                                 }
                                                 p.addPotionEffect(r.getEffect());
@@ -135,7 +135,7 @@ public class RuneHandler implements Listener {
                                             if (r.getEffect().getType() == PotionEffectType.HEALTH_BOOST && p.getMaxHealth() > 36) {
                                                 p.sendMessage("Cannot use your health boost rune due to max heart cap of 20");
                                             } else {
-                                                if(r.getEffect().getType() == PotionEffectType.HEALTH_BOOST) {
+                                                if (r.getEffect().getType() == PotionEffectType.HEALTH_BOOST) {
                                                     setCooldown(p);
                                                 }
                                                 p.addPotionEffect(r.getEffect());
