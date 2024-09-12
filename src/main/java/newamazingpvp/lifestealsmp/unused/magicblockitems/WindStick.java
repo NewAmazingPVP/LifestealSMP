@@ -1,10 +1,8 @@
-package newamazingpvp.lifestealsmp.customitems.item.MagicBlockItems;
+package newamazingpvp.lifestealsmp.unused.magicblockitems;
 
 import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -24,6 +22,7 @@ public class WindStick implements Listener {
 
     private final Map<Player, CooldownManager> WindStickCooldowns = new HashMap<>();
     private final int WindStickCooldown = 3;
+
     @EventHandler
     public void playerInteract(PlayerInteractEvent event) {
 
@@ -50,8 +49,7 @@ public class WindStick implements Listener {
     }
 
 
-
-    private static void windScramblePlayer(Player attacker, Player victom){
+    private static void windScramblePlayer(Player attacker, Player victom) {
 
         Location playerLoc = victom.getLocation();
 
@@ -59,10 +57,9 @@ public class WindStick implements Listener {
         Vector upwardVector = new Vector(0, 10, 0);
         victom.setVelocity(upwardVector.multiply(maxHeight / 2));
 
-        victom.damage(5,attacker);
+        victom.damage(5, attacker);
 
     }
-
 
 
 }

@@ -24,7 +24,7 @@ public class ScrambleWordGame implements Listener, CommandExecutor {
 
         Player player = (Player) sender;
 
-        if(args.length > 1){
+        if (args.length > 1) {
 
             player.sendMessage(ChatColor.RED + "plz add a message to do the game with...");
 
@@ -46,11 +46,10 @@ public class ScrambleWordGame implements Listener, CommandExecutor {
         }
 
 
-
         Bukkit.broadcastMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "==========" + ChatColor.DARK_PURPLE + ChatColor.BOLD + " [Word Scramble] " + ChatColor.AQUA + ChatColor.BOLD + "==========");
         Bukkit.broadcastMessage(" ");
-        Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "Unscramble " +ChatColor.AQUA + "" + ChatColor.BOLD + shuffledString);
-        Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "and say it in chat and win absolutely nothing!" );
+        Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "Unscramble " + ChatColor.AQUA + ChatColor.BOLD + shuffledString);
+        Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "and say it in chat and win absolutely nothing!");
         Bukkit.broadcastMessage(" ");
         Bukkit.broadcastMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "===============================");
 
@@ -62,13 +61,13 @@ public class ScrambleWordGame implements Listener, CommandExecutor {
 
 
     @EventHandler
-    public void playerChatEvent(PlayerChatEvent e){
+    public void playerChatEvent(PlayerChatEvent e) {
 
-        if(isScrambleGameRunning){
+        if (isScrambleGameRunning) {
             Player player = e.getPlayer();
             String chatMessage = e.getMessage();
 
-            if(chatMessage.equals(word)){
+            if (chatMessage.equals(word)) {
                 isScrambleGameRunning = false;
                 String name = player.getName();
                 Bukkit.broadcastMessage(ChatColor.GOLD + "" + ChatColor.BOLD + name + " Has guessed it correct!");
@@ -76,8 +75,6 @@ public class ScrambleWordGame implements Listener, CommandExecutor {
             }
         }
     }
-
-
 
 
 }

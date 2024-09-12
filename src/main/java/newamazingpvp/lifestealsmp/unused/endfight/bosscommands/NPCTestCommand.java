@@ -3,11 +3,11 @@ package newamazingpvp.lifestealsmp.unused.endfight.bosscommands;
 //import net.citizensnpcs.api.CitizensAPI;
 //import net.citizensnpcs.api.npc.NPC;
 //import net.citizensnpcs.api.npc.NPCRegistry;
+
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
 public class NPCTestCommand implements CommandExecutor {

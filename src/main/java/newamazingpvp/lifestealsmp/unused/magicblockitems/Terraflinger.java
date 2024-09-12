@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.customitems.item.MagicBlockItems;
+package newamazingpvp.lifestealsmp.unused.magicblockitems;
 
 import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.Bukkit;
@@ -6,11 +6,11 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
-import org.bukkit.entity.*;
+import org.bukkit.entity.FallingBlock;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -18,9 +18,9 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
 import org.bukkit.util.Vector;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
-import static newamazingpvp.lifestealsmp.LifestealSMP.SMPworld;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static org.bukkit.Bukkit.getServer;
 
@@ -31,7 +31,7 @@ public class Terraflinger implements Listener {
 
 
     @EventHandler
-    public void playerInteract(PlayerInteractEvent event){
+    public void playerInteract(PlayerInteractEvent event) {
 
         Player attacker = event.getPlayer();
 
@@ -373,13 +373,10 @@ public class Terraflinger implements Listener {
     }
 
 
-
-    private static void makeTaraflingerBlock(Location attackerLocation, double pitch, double distance, int i, Player attacker,Location loc){
+    private static void makeTaraflingerBlock(Location attackerLocation, double pitch, double distance, int i, Player attacker, Location loc) {
 
         Block block = loc.getBlock();
         Material mat = block.getType();
-
-
 
 
         attackerLocation.setY(attackerLocation.getY() + 3);
@@ -389,7 +386,7 @@ public class Terraflinger implements Listener {
         fb.setDropItem(false);
         fb.setCancelDrop(true);
 
-        if(i==27) {
+        if (i == 27) {
             String customTag = "tarraFallingBlock";
             MetadataValue customTagValue = new FixedMetadataValue(lifestealSmp, customTag);
             fb.setMetadata(customTag, customTagValue);
@@ -400,25 +397,17 @@ public class Terraflinger implements Listener {
         fb.setBlockData(mat.createBlockData());
 
 
-
-        if(pitch < 0 ) {
+        if (pitch < 0) {
             pitch = Math.abs(pitch) + 100;
         }
 
-        distance = pitch/100;
-
+        distance = pitch / 100;
 
 
         Vector velocity = attacker.getLocation().getDirection().multiply(distance);
         fb.setVelocity(velocity);
 
     }
-
-
-
-
-
-
 
 
 }

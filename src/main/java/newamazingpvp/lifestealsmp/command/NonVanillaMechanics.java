@@ -1,6 +1,5 @@
 package newamazingpvp.lifestealsmp.command;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -11,8 +10,7 @@ public class NonVanillaMechanics implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender instanceof Player) {
-            Player player = (Player) sender;
+        if (sender instanceof Player player) {
 
             player.sendMessage(ChatColor.DARK_AQUA + "======== " + ChatColor.AQUA + "Non-Vanilla Mechanics" + ChatColor.DARK_AQUA + " ========");
             player.sendMessage(ChatColor.GOLD + "1. " + ChatColor.YELLOW + "Infinite Storage System: " + ChatColor.WHITE + "You can place shulker boxes inside shulker boxes.");

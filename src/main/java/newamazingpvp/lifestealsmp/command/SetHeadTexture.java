@@ -10,7 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
-import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.profile.PlayerProfile;
 
 import java.util.ArrayList;
@@ -37,14 +36,14 @@ public class SetHeadTexture implements CommandExecutor, TabCompleter {
             return false;
         }
 
-        if(args.length < 2){
+        if (args.length < 2) {
 
             sender.sendMessage(ChatColor.RED + "plz put a name or URL.");
 
             return false;
         }
 
-        if(itemInMainHand.getType() != Material.PLAYER_HEAD){
+        if (itemInMainHand.getType() != Material.PLAYER_HEAD) {
 
             sender.sendMessage(ChatColor.RED + "You must be holding a head.");
 
@@ -59,7 +58,7 @@ public class SetHeadTexture implements CommandExecutor, TabCompleter {
         switch (args[0].toLowerCase()) {
             case "url":
 
-                for(int i = 0; i<numOfItemsInHand; i++) {
+                for (int i = 0; i < numOfItemsInHand; i++) {
                     if (itemInMainHand.getAmount() > 1) {
                         itemInMainHand.setAmount(itemInMainHand.getAmount() - 1);
                     } else {
@@ -67,10 +66,9 @@ public class SetHeadTexture implements CommandExecutor, TabCompleter {
                     }
                 }
 
-                for(int e = 0; e < numOfItemsInHand; e++){
+                for (int e = 0; e < numOfItemsInHand; e++) {
                     player.getInventory().setItemInMainHand(headTextureable(texture));
                 }
-
 
 
                 break;
@@ -101,10 +99,7 @@ public class SetHeadTexture implements CommandExecutor, TabCompleter {
     }
 
 
-
-
     public static ItemStack headTextureable(String url) {
-
 
 
         PlayerProfile profile = getProfile(url);
@@ -125,8 +120,6 @@ public class SetHeadTexture implements CommandExecutor, TabCompleter {
 
         return info;
     }
-
-
 
 
 }
