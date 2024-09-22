@@ -17,6 +17,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BlockStateMeta;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -108,7 +109,8 @@ public class RuneHandler implements Listener {
                                                 if (r.getEffect().getType() == PotionEffectType.HEALTH_BOOST) {
                                                     setCooldown(p);
                                                 }
-                                                p.addPotionEffect(r.getEffect());
+                                                PotionEffect effect = new PotionEffect(r.getEffect().getType(), (int) (Math.random()*r.getEffect().getDuration())+1, r.getEffect().getAmplifier(), true, false);
+                                                p.addPotionEffect(effect);
                                             }
                                         }
                                     }
@@ -138,7 +140,8 @@ public class RuneHandler implements Listener {
                                                 if (r.getEffect().getType() == PotionEffectType.HEALTH_BOOST) {
                                                     setCooldown(p);
                                                 }
-                                                p.addPotionEffect(r.getEffect());
+                                                PotionEffect effect = new PotionEffect(r.getEffect().getType(), (int) (Math.random()*r.getEffect().getDuration())+1, r.getEffect().getAmplifier(), true, false);
+                                                p.addPotionEffect(effect);
                                             }
                                         }
                                     }
