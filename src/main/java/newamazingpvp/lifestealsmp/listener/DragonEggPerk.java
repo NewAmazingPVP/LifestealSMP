@@ -13,7 +13,8 @@ public class DragonEggPerk implements Listener {
         if (e.getEntity() instanceof Player p) {
             for (ItemStack item : p.getInventory().getContents()) {
                 if (item != null && item.getType() == Material.DRAGON_EGG) {
-                    e.setDamage(e.getFinalDamage() * 0.85);
+                    //e.setDamage(e.getFinalDamage() * 0.85);
+                    e.setDamage(e.getDamage() * 0.90);
                 }
             }
         }
