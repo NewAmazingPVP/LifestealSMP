@@ -2,8 +2,11 @@ package newamazingpvp.lifestealsmp.variables;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 
 public class Loc {
+
+    public static World SMPworld = Bukkit.getWorld("world");
     public static Location endFightSpawn = new Location(Bukkit.getWorld("end_fight_world"), 25.0, 80.0, 25.0);
     public static Location endSpawn = new Location(Bukkit.getWorld("end_fight_world"), 0, 60.0, 0);
     public static Location endPortalCenter = new Location(Bukkit.getWorld("end_fight_world"), 0, 70.0, 0);

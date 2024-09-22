@@ -97,8 +97,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
     private FileConfiguration config;
     public static Essentials essentials;
     public static boolean isSmp = true;
-
-    public static World SMPworld = Bukkit.getWorld("world");
     public static final String PLUGIN_WATERMARK = "© 2024 [NewAmazingPVP & Comet99] - [LifestealSMP]";
 
 
@@ -157,12 +155,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("worldteleport").setExecutor(new WorldTeleport());
         getCommand("tpuhc").setExecutor(new UhcTeleport());
         getCommand("spawn").setExecutor(new SpawnCommand());
-        getCommand("getitemorblockdata").setExecutor(new ReadBlockAndItemInfo());
         getCommand("nonvanillamechanics").setExecutor(new NonVanillaMechanics());
         getCommand("showcustomtoast").setExecutor(new ShowCustomToastCMD());
-        getCommand("setheadtexture").setExecutor(new SetHeadTexture());
-        getCommand("spawncustommob").setExecutor(new SpawnCmd());
-        getCommand("scramblewordgame").setExecutor(new ScrambleWordGame());
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new AntiBurn(), this);
         getServer().getPluginManager().registerEvents(new PlayerMsg(), this);
@@ -176,19 +170,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new AntiUseListener(), this);
         getServer().getPluginManager().registerEvents(new JoinLeave(), this);
         getServer().getPluginManager().registerEvents(new ChatFilter(), this);
-        //getServer().getPluginManager().registerEvents(new HomingBow(), this);
-        //getServer().getPluginManager().registerEvents(new TntBow(), this);
-        //getServer().getPluginManager().registerEvents(new FeatherSword(), this);
-        //getServer().getPluginManager().registerEvents(new OpPickaxe(), this);
-        //getServer().getPluginManager().registerEvents(new TreeChopAxe(), this);
-        //getServer().getPluginManager().registerEvents(new TeleportBow(), this);
-        //getServer().getPluginManager().registerEvents(new DragonEggPerk(), this);
-        //getServer().getPluginManager().registerEvents(new LightFeather(), this);
-        //getServer().getPluginManager().registerEvents(new InstaboomTNT(), this);
-        //getServer().getPluginManager().registerEvents(new Drops(), this);
-        //getServer().getPluginManager().registerEvents(new LifestealStick(), this);
-        //getServer().getPluginManager().registerEvents(new SomberCrystal(), this);
-        //getServer().getPluginManager().registerEvents(new MusicBox(), this);
         getServer().getPluginManager().registerEvents(new CombatProtectionHandler(), this);
         getServer().getPluginManager().registerEvents(new ReviveBeacon(), this);
         getServer().getPluginManager().registerEvents(new CombatLogListener(), this);
@@ -205,15 +186,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new DisableCustomItems(), this);
         getServer().getPluginManager().registerEvents(new Disenchant(), this);
         getServer().getPluginManager().registerEvents(new AntiChunkBan(), this);
-        //getServer().getPluginManager().registerEvents(new DittoSkull(), this);
         getServer().getPluginManager().registerEvents(new ToastTPS(), this);
-        getServer().getPluginManager().registerEvents(new HydraDamagedOrKilled(), this);
-        getServer().getPluginManager().registerEvents(new HydraAttack(), this);
-        getServer().getPluginManager().registerEvents(new MageHitAndKilled(), this);
-        getServer().getPluginManager().registerEvents(new EnigmaGUI(), this);
-        getServer().getPluginManager().registerEvents(new EnigmaAttack(), this);
-        getServer().getPluginManager().registerEvents(new EnigmaDamagedAndKilled(), this);
-        getServer().getPluginManager().registerEvents(new ScrambleWordGame(), this);
         startTPSTracking();
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
         getCommand("trade").setExecutor(new Trade());
@@ -321,7 +294,18 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getCommand("raffleeventstart").setExecutor(new StartRaffleEvent());
             getCommand("raffleeventstop").setExecutor(new StopRaffleEvent());
 
-
+            getServer().getPluginManager().registerEvents(new HydraDamagedOrKilled(), this);
+            getServer().getPluginManager().registerEvents(new HydraAttack(), this);
+            getServer().getPluginManager().registerEvents(new MageHitAndKilled(), this);
+            getServer().getPluginManager().registerEvents(new EnigmaGUI(), this);
+            getServer().getPluginManager().registerEvents(new EnigmaAttack(), this);
+            getServer().getPluginManager().registerEvents(new EnigmaDamagedAndKilled(), this);
+            getServer().getPluginManager().registerEvents(new ScrambleWordGame(), this);
+            getCommand("setheadtexture").setExecutor(new SetHeadTexture());
+            getCommand("spawncustommob").setExecutor(new SpawnCmd());
+            getCommand("scramblewordgame").setExecutor(new ScrambleWordGame());
+            getCommand("getitemorblockdata").setExecutor(new ReadBlockAndItemInfo());
+            //getServer().getPluginManager().registerEvents(new DittoSkull(), this);
             //getCommand("trade").setExecutor(new Trade());
             //getServer().getPluginManager().registerEvents(new TradeListener(), this);
 
@@ -375,12 +359,11 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
                 }).attachLog4jLogging().schedule();
                 handler.schedule();
             }
-        }.runTaskLater(this, 120L);
+        }.runTaskLaterAsynchronously(this, 0L);
         essentials = (Essentials) getServer().getPluginManager().getPlugin("Essentials");
 
         if (essentials == null) {
             getLogger().severe("EssentialsX is not installed on this server.");
-            //getServer().getPluginManager().disablePlugin(this);
         }
 
 
@@ -421,40 +404,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            try {
-                short meaningofLife = msgIn.readShort();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
         }
-
-
-        /*ByteArrayDataInput in = ByteStreams.newDataInput(message);
-        String subchannel = in.readUTF();
-        if (subchannel.equals("forceRestart")) {
-            for (Player p : Bukkit.getOnlinePlayers()) {
-                cancelCombatData(p);
-                removeEnemies(p);
-                p.kick(Component.text("Proxy is restarting.... Please reconnect").color(NamedTextColor.DARK_RED));
-            }
-        }*/
-        /*
-        ByteArrayDataInput dataInput = ByteStreams.newDataInput(bytes);
-
-        try {
-            String receivedMessage = dataInput.readUTF();
-            System.out.println(receivedMessage);
-            if ("forceRestart".equals(receivedMessage)) {
-                for (Player p : Bukkit.getOnlinePlayers()) {
-                    cancelCombatData(p);
-                    removeEnemies(p);
-                    p.kick(Component.text("Proxy is restarting.... Please reconnect").color(NamedTextColor.DARK_RED));
-                }
-            }
-        } catch (Exception e) {
-            Bukkit.getLogger().severe("An error occurred while processing plugin message: " + e.getMessage());
-            e.printStackTrace();
-        }*/
     }
 
 
