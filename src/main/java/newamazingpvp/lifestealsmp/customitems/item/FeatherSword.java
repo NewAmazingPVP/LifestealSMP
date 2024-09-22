@@ -58,6 +58,9 @@ public class FeatherSword implements Listener {
                 event.hasItem() && event.getItem().getType() == Material.NETHERITE_SWORD) {
             ItemMeta meta = event.getItem().getItemMeta();
             if (meta.getLore() == null) return;
+            if(player.hasPotionEffect(PotionEffectType.SLOW_FALLING)) {
+                player.sendMessage(ChatColor.RED + "You cannot use feather sword with slow falling");
+            }
             if (meta.getLore().toString().toLowerCase().contains("permanent speed")
                     && !player.getInventory().getItemInOffHand().toString().toLowerCase().contains("shield")) {
 

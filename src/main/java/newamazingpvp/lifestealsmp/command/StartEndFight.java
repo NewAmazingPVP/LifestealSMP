@@ -93,7 +93,7 @@ public class StartEndFight implements CommandExecutor {
                             p.sendTitle(ChatColor.RED + "" + ChatColor.BOLD + "GO!", ChatColor.GOLD + "Good Luck!"), 1200);
                 }
             }
-        }.runTaskLater(lifestealSmp, 100L);
+        }.runTaskLater(lifestealSmp, 500L);
 
         return true;
     }
