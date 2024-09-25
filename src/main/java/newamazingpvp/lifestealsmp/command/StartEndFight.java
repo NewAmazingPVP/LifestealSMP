@@ -20,80 +20,92 @@ public class StartEndFight implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         isEndFightEnabled = true;
 
-        World world = Bukkit.createWorld(new WorldCreator("end_fight_world")
-                .type(WorldType.NORMAL)
-                .environment(World.Environment.THE_END));
+        World world = Bukkit.getWorld("end_fight_world");
+        if (world == null) {
+            world = Bukkit.createWorld(new WorldCreator("end_fight_world")
+                    .type(WorldType.NORMAL)
+                    .environment(World.Environment.THE_END));
+        }
 
         WorldBorder worldBorder = world.getWorldBorder();
         worldBorder.setCenter(0, 0);
         worldBorder.setSize(310);
 
-        new BukkitRunnable() {
-            int minutesPassed = 0;
+        if (isEndFightEnabled) {
+            new BukkitRunnable() {
+                int minutesPassed = 0;
 
-            @Override
-            public void run() {
-                if (minutesPassed >= 30) {
-                    this.cancel();
-                    worldBorder.setSize(1);
-                    Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_PURPLE + "Border is now 1 block wide. Going outside border may instant kill you");
-                    worldBorder.setDamageBuffer(0);
-                    worldBorder.setDamageAmount(4);
-                    worldBorder.setWarningDistance(10);
-                    for (Player p : Bukkit.getOnlinePlayers()) {
-                        if (p.getGameMode() == GameMode.SURVIVAL) {
-                            p.addPotionEffect(new PotionEffect(PotionEffectType.INSTANT_DAMAGE, Integer.MAX_VALUE, 1, true, false));
-                            p.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, Integer.MAX_VALUE, 1, true, false));
-                            p.sendTitle(ChatColor.RED + "WARNING!", ChatColor.YELLOW + "Fight to the death, or get eliminated by instant harming!");
-                        }
+                @Override
+                public void run() {
+                    if (!isEndFightEnabled) {
+                        this.cancel();
+                        return;
                     }
-                    Bukkit.broadcastMessage(ChatColor.DARK_RED + "Fight to the death, or get eliminated by instant harming!");
-                    return;
+
+                    if (minutesPassed >= 30) {
+                        this.cancel();
+                        worldBorder.setSize(1);
+                        Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_PURPLE + "Border is now 1 block wide. Going outside border may instant kill you");
+                        worldBorder.setDamageBuffer(0);
+                        worldBorder.setDamageAmount(4);
+                        worldBorder.setWarningDistance(10);
+                        for (Player p : Bukkit.getOnlinePlayers()) {
+                            if (p.getGameMode() == GameMode.SURVIVAL) {
+                                p.addPotionEffect(new PotionEffect(PotionEffectType.INSTANT_DAMAGE, Integer.MAX_VALUE, 1, true, false));
+                                p.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, Integer.MAX_VALUE, 1, true, false));
+                                p.sendTitle(ChatColor.RED + "WARNING!", ChatColor.YELLOW + "Fight to the death, or get eliminated by instant harming!");
+                            }
+                        }
+                        Bukkit.broadcastMessage(ChatColor.DARK_RED + "Fight to the death, or get eliminated by instant harming!");
+                        return;
+                    }
+
+                    double newSize = worldBorder.getSize() - 10;
+                    Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_PURPLE + "Border is now " + newSize + " blocks!");
+                    worldBorder.setSize(newSize);
+                    minutesPassed++;
                 }
+            }.runTaskTimer(lifestealSmp, 1200, 20 * 60);
 
-                double newSize = worldBorder.getSize() - 10;
-                Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_PURPLE + "Border is now " + newSize + " blocks!");
-                worldBorder.setSize(newSize);
-                //worldBorder.setDamageBuffer(0);
-                //worldBorder.setDamageAmount(1);
-                //worldBorder.setWarningDistance(10);
-                minutesPassed++;
-            }
-        }.runTaskTimer(lifestealSmp, 1200, 20 * 60);
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    if (!isEndFightEnabled) {
+                        this.cancel();
+                        return;
+                    }
 
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                for (Player p : lifestealSmp.getServer().getOnlinePlayers()) {
-                    p.teleport(endFightSpawn);
-                    p.setInvulnerable(true);
+                    for (Player p : lifestealSmp.getServer().getOnlinePlayers()) {
+                        p.teleport(endFightSpawn);
+                        p.setInvulnerable(true);
 
-                    getServer().getScheduler().runTaskLater(lifestealSmp, () -> p.setInvulnerable(false), 20 * 60);
+                        getServer().getScheduler().runTaskLater(lifestealSmp, () -> p.setInvulnerable(false), 20 * 60);
 
-                    p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "GET READY!" + ChatColor.YELLOW + " The end fight will be starting in 60 seconds!");
-                    endFightParticipants.add(p.getName());
-                }
+                        p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "GET READY!" + ChatColor.YELLOW + " The end fight will be starting in 60 seconds!");
+                        endFightParticipants.add(p.getName());
+                    }
 
-                Bukkit.getScheduler().runTaskLater(lifestealSmp, () ->
-                        lifestealSmp.getServer().broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + "GET READY!" + ChatColor.YELLOW + " The end fight will be starting in 30 seconds!"), 600);
-
-                int delay = 1000;
-                for (int i = 10; i > 0; i--) {
-                    final int count = i;
                     Bukkit.getScheduler().runTaskLater(lifestealSmp, () ->
-                            lifestealSmp.getServer().broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + "GET READY!" + ChatColor.YELLOW + " The end fight will be starting in " + count + " seconds!"), delay);
-                    delay += 20;
-                }
+                            lifestealSmp.getServer().broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + "GET READY!" + ChatColor.YELLOW + " The end fight will be starting in 30 seconds!"), 600);
 
-                Bukkit.getScheduler().runTaskLater(lifestealSmp, () ->
-                        lifestealSmp.getServer().broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + "GO!"), 1200);
+                    int delay = 1000;
+                    for (int i = 10; i > 0; i--) {
+                        final int count = i;
+                        Bukkit.getScheduler().runTaskLater(lifestealSmp, () ->
+                                lifestealSmp.getServer().broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + "GET READY!" + ChatColor.YELLOW + " The end fight will be starting in " + count + " seconds!"), delay);
+                        delay += 20;
+                    }
 
-                for (Player p : lifestealSmp.getServer().getOnlinePlayers()) {
                     Bukkit.getScheduler().runTaskLater(lifestealSmp, () ->
-                            p.sendTitle(ChatColor.RED + "" + ChatColor.BOLD + "GO!", ChatColor.GOLD + "Good Luck!"), 1200);
+                            lifestealSmp.getServer().broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + "GO!"), 1200);
+
+                    for (Player p : lifestealSmp.getServer().getOnlinePlayers()) {
+                        Bukkit.getScheduler().runTaskLater(lifestealSmp, () ->
+                                p.sendTitle(ChatColor.RED + "" + ChatColor.BOLD + "GO!", ChatColor.GOLD + "Good Luck!"), 1200);
+                    }
                 }
-            }
-        }.runTaskLater(lifestealSmp, 500L);
+            }.runTaskLater(lifestealSmp, 500L);
+        }
 
         return true;
     }

@@ -27,6 +27,7 @@ import java.util.Random;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.command.LSwithdraw.setCooldown;
+import static newamazingpvp.lifestealsmp.command.LSwithdraw.setShortCooldown;
 import static newamazingpvp.lifestealsmp.events.TimeManager.CUSTOM_ITEMS_AND_RUNES;
 import static newamazingpvp.lifestealsmp.events.TimeManager.isTimePassed;
 import static newamazingpvp.lifestealsmp.runes.AbstractRune.deserialize;
@@ -107,7 +108,7 @@ public class RuneHandler implements Listener {
                                                 p.sendMessage("Cannot use your health boost rune due to max heart cap of 20");
                                             } else {
                                                 if (r.getEffect().getType() == PotionEffectType.HEALTH_BOOST) {
-                                                    setCooldown(p);
+                                                    setShortCooldown(p);
                                                 }
                                                 PotionEffect effect = new PotionEffect(r.getEffect().getType(), (int) (Math.random()*r.getEffect().getDuration())+1, r.getEffect().getAmplifier(), true, false);
                                                 p.addPotionEffect(effect);
@@ -138,7 +139,7 @@ public class RuneHandler implements Listener {
                                                 p.sendMessage("Cannot use your health boost rune due to max heart cap of 20");
                                             } else {
                                                 if (r.getEffect().getType() == PotionEffectType.HEALTH_BOOST) {
-                                                    setCooldown(p);
+                                                    setShortCooldown(p);
                                                 }
                                                 PotionEffect effect = new PotionEffect(r.getEffect().getType(), (int) (Math.random()*r.getEffect().getDuration())+1, r.getEffect().getAmplifier(), true, false);
                                                 p.addPotionEffect(effect);
