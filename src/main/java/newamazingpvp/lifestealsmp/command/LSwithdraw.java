@@ -80,7 +80,7 @@ public class LSwithdraw implements CommandExecutor {
     }
 
     public static void setShortCooldown(Player player) {
-        cooldowns.put(player.getName(), System.currentTimeMillis() + SHORT_COOLDOWN_TIME - COOLDOWN_TIME);
+        cooldowns.put(player.getName(), Math.max(System.currentTimeMillis() + SHORT_COOLDOWN_TIME - COOLDOWN_TIME, cooldowns.get(player.getName())));
     }
 
     private String formatTime(long milliseconds) {

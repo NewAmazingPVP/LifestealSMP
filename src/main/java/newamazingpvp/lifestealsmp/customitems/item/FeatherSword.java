@@ -60,6 +60,7 @@ public class FeatherSword implements Listener {
             if (meta.getLore() == null) return;
             if(player.hasPotionEffect(PotionEffectType.SLOW_FALLING)) {
                 player.sendMessage(ChatColor.RED + "You cannot use feather sword with slow falling");
+                return;
             }
             if (meta.getLore().toString().toLowerCase().contains("permanent speed")
                     && !player.getInventory().getItemInOffHand().toString().toLowerCase().contains("shield")) {
