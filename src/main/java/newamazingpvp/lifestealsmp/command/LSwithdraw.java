@@ -16,7 +16,8 @@ import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.extraHeart
 public class LSwithdraw implements CommandExecutor {
 
     private static final HashMap<String, Long> cooldowns = new HashMap<>();
-    private static final long COOLDOWN_TIME = 6 * 60 * 60 * 1000; // 6 hours in milliseconds
+    private static final long COOLDOWN_TIME = 6 * 60 * 60 * 1000;
+    private static final long SHORT_COOLDOWN_TIME = 60000;
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -38,7 +39,7 @@ public class LSwithdraw implements CommandExecutor {
 
         if (hasCooldown(player)) {
             long timeRemaining = getCooldownTime(player);
-            player.sendMessage(ChatColor.RED + "You must wait " + formatTime(timeRemaining) + " before using this command again.");
+            player.sendMessage(ChatColor.RED + "You must wait " + formatTime(timeRemaining) + " before using this command again because of withdraw or health boost rune cooldown.");
             return true;
         }
 
@@ -76,6 +77,10 @@ public class LSwithdraw implements CommandExecutor {
 
     public static void setCooldown(Player player) {
         cooldowns.put(player.getName(), System.currentTimeMillis());
+    }
+
+    public static void setShortCooldown(Player player) {
+        cooldowns.put(player.getName(), System.currentTimeMillis() + SHORT_COOLDOWN_TIME - COOLDOWN_TIME);
     }
 
     private String formatTime(long milliseconds) {

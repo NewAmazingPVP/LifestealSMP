@@ -2,7 +2,7 @@ package newamazingpvp.lifestealsmp.unused.endfight;
 
 import org.bukkit.Location;
 
-import static newamazingpvp.lifestealsmp.LifestealSMP.SMPworld;
+import static newamazingpvp.lifestealsmp.variables.Loc.SMPworld;
 
 public class EndBossFightVariables {
 
