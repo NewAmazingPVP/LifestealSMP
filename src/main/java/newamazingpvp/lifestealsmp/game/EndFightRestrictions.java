@@ -69,7 +69,7 @@ public class EndFightRestrictions implements Listener {
                 @Override
                 public void run() {
                     if (!e.getPlayer().getWorld().getName().equals("end_fight_world")) {
-                        e.getPlayer().teleport(endSpawn);
+                        e.getPlayer().teleport(endPortalCenter);
                         e.getPlayer().sendMessage(ChatColor.AQUA + "You joined during the server final end fight and were teleported right to it!");
                         //teleport player to end spawn for fight
                     }
@@ -106,6 +106,11 @@ public class EndFightRestrictions implements Listener {
     @EventHandler
     public void onPlayerRespawn(PlayerRespawnEvent e) {
         if (isEndFightEnabled) {
+            if(e.getRespawnReason() == PlayerRespawnEvent.RespawnReason.END_PORTAL){
+                e.setRespawnLocation(endPortalCenter);
+                //Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> e.getPlayer().teleport(endPortalCenter), 20);
+                return;
+            }
             Player p = e.getPlayer();
             p.setGameMode(GameMode.SPECTATOR);
             p.teleport(endFightSpawn);

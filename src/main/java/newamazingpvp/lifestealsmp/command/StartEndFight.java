@@ -43,7 +43,7 @@ public class StartEndFight implements CommandExecutor {
                     }
 
                     if (minutesPassed >= 30) {
-                        this.cancel();
+                        //this.cancel();
                         worldBorder.setSize(1);
                         Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_PURPLE + "Border is now 1 block wide. Going outside border may instant kill you");
                         worldBorder.setDamageBuffer(0);
@@ -51,9 +51,9 @@ public class StartEndFight implements CommandExecutor {
                         worldBorder.setWarningDistance(10);
                         for (Player p : Bukkit.getOnlinePlayers()) {
                             if (p.getGameMode() == GameMode.SURVIVAL) {
-                                p.addPotionEffect(new PotionEffect(PotionEffectType.INSTANT_DAMAGE, Integer.MAX_VALUE, 1, true, false));
+                                p.addPotionEffect(new PotionEffect(PotionEffectType.POISON, Integer.MAX_VALUE, 2, true, false));
                                 p.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, Integer.MAX_VALUE, 1, true, false));
-                                p.sendTitle(ChatColor.RED + "WARNING!", ChatColor.YELLOW + "Fight to the death, or get eliminated by instant harming!");
+                                p.sendTitle(ChatColor.RED + "WARNING!", ChatColor.YELLOW + "Fight to the death, or get eliminated by poison!");
                             }
                         }
                         Bukkit.broadcastMessage(ChatColor.DARK_RED + "Fight to the death, or get eliminated by instant harming!");
