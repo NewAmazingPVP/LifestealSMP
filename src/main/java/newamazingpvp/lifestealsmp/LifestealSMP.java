@@ -335,11 +335,11 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getScheduler().runTaskTimer(this, PlayerPing::monitorPlayerPings, 0L, 20L);
         scheduleRestart();
         compassUpdate();
+        getServer().dispatchCommand(getServer().getConsoleSender(), "chunky continue");
         //checkTps();
         new BukkitRunnable() {
             @Override
             public void run() {
-                getServer().dispatchCommand(getServer().getConsoleSender(), "chunky continue");
                 ChannelLoggingHandler handler = new ChannelLoggingHandler(() -> jda.getTextChannelById(consoleChannel), config -> {
                     config.setColored(true);
                     config.setSplitCodeBlockForLinks(false);
