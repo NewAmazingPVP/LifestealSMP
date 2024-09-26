@@ -66,7 +66,6 @@ import newamazingpvp.lifestealsmp.unused.visuals.toasts.ToastTPS;
 import newamazingpvp.lifestealsmp.utility.Metrics;
 import newamazingpvp.lifestealsmp.utility.Utils;
 import org.bukkit.Bukkit;
-import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
