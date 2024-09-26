@@ -23,7 +23,9 @@ public class ServerOpening implements Listener {
         if (now.isBefore(SEASON_START_TIME)) {
             Duration duration = Duration.between(now, SEASON_START_TIME);
             String timeRemaining = formatDuration(duration);
-            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, ChatColor.GREEN + "New Lifesteal season is starting in " + timeRemaining + ChatColor.AQUA + " Join discord https://discord.gg/PN8egFY3ap for more info!");
+            //Lifesteal
+            //event.disallow(PlayerLoginEvent.Result.KICK_OTHER, ChatColor.GREEN + "New Lifesteal season is starting in " + timeRemaining + ChatColor.AQUA + " Join discord https://discord.gg/PN8egFY3ap for more info!");
+            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, ChatColor.GREEN + "New season is starting in " + timeRemaining + ChatColor.AQUA + " Join discord https://discord.gg/PN8egFY3ap for more info!");
         }
     }
 }
