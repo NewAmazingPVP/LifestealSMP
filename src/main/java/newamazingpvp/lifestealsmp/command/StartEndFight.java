@@ -41,14 +41,31 @@ public class StartEndFight implements CommandExecutor {
                         this.cancel();
                         return;
                     }
+                    //if minutes passed is between 30 and 33 then do below but dont this.cancel and if greater than 33 then just apply poison if in survival
 
-                    if (minutesPassed >= 30) {
+                    if (minutesPassed >= 30 && minutesPassed < 33) {
                         //this.cancel();
                         worldBorder.setSize(1);
                         Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_PURPLE + "Border is now 1 block wide. Going outside border may instant kill you");
                         worldBorder.setDamageBuffer(0);
                         worldBorder.setDamageAmount(4);
                         worldBorder.setWarningDistance(10);
+                        for (Player p : Bukkit.getOnlinePlayers()) {
+                            if (p.getGameMode() == GameMode.SURVIVAL) {
+                                p.addPotionEffect(new PotionEffect(PotionEffectType.POISON, Integer.MAX_VALUE, 2, true, false));
+                                p.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, Integer.MAX_VALUE, 1, true, false));
+                                p.sendTitle(ChatColor.RED + "WARNING!", ChatColor.YELLOW + "Fight to the death, or get eliminated by poison!");
+                            }
+                        }
+                        Bukkit.broadcastMessage(ChatColor.DARK_RED + "Fight to the death, or get eliminated by instant harming!");
+                        return;
+                    } else if (minutesPassed >= 33) {
+                        //this.cancel();
+                        //worldBorder.setSize(1);
+                        //Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_PURPLE + "Border is now 1 block wide. Going outside border may instant kill you");
+                        //worldBorder.setDamageBuffer(0);
+                        //worldBorder.setDamageAmount(4);
+                        //.setWarningDistance(10);
                         for (Player p : Bukkit.getOnlinePlayers()) {
                             if (p.getGameMode() == GameMode.SURVIVAL) {
                                 p.addPotionEffect(new PotionEffect(PotionEffectType.POISON, Integer.MAX_VALUE, 2, true, false));

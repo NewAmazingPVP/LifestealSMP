@@ -51,7 +51,7 @@ public class FinalFight extends BaseEvent {
 
     @Override
     public void runContinuously() {
-        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Final fight event is happening! May the best win this season! Note: Do not use portals during fight, it will instantly eliminate you");
+        Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Final fight event is happening! May the best win this season! Note: Do not use portals during fight");
         Bukkit.getServer().broadcastMessage(ChatColor.LIGHT_PURPLE + "Insane /track activated, hunt down your foes quickly with exact /track");
         trackingDist = 1;
         delayDuration = 1.0 / 20;
