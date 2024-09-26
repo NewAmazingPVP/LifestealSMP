@@ -20,7 +20,8 @@ import java.awt.Color;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordEmbedPlayer;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsEmbedPlayer;
-import static newamazingpvp.lifestealsmp.variables.Loc.*;
+import static newamazingpvp.lifestealsmp.variables.Loc.endFightSpawn;
+import static newamazingpvp.lifestealsmp.variables.Loc.endPortalCenter;
 import static newamazingpvp.lifestealsmp.variables.Misc.isEndFightEnabled;
 import static org.bukkit.Bukkit.getServer;
 
@@ -106,7 +107,7 @@ public class EndFightRestrictions implements Listener {
     @EventHandler
     public void onPlayerRespawn(PlayerRespawnEvent e) {
         if (isEndFightEnabled) {
-            if(e.getRespawnReason() == PlayerRespawnEvent.RespawnReason.END_PORTAL){
+            if (e.getRespawnReason() == PlayerRespawnEvent.RespawnReason.END_PORTAL) {
                 e.setRespawnLocation(endPortalCenter);
                 //Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> e.getPlayer().teleport(endPortalCenter), 20);
                 return;
