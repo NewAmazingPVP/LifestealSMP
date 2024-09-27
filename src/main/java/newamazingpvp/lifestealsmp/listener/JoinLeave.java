@@ -21,11 +21,11 @@ public class JoinLeave implements Listener {
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         player.sendTitle(ChatColor.DARK_GREEN + "Welcome!", "", 0, 70, 20);
-        player.sendMessage("Welcome! \n/help\n/guide\n/rules\n/prefix\n/color\n/recipes\n/trade ");
+        player.sendMessage("Welcome! \n/help\n/guide\n/rules\n/prefix ");
         player.sendMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "=============== [Welcome] ===============");
         player.sendMessage(ChatColor.AQUA + "Use" + ChatColor.RED + " /guide" + ChatColor.AQUA + " For info book.");
         //player.sendMessage(ChatColor.AQUA + "Use" + ChatColor.RED + " /IPHelp" + ChatColor.AQUA + " For info on how to get more then one account on the same IP.");
-        player.sendMessage(ChatColor.AQUA + "Use" + ChatColor.RED + " /recipes" + ChatColor.AQUA + " For recipe info.");
+        //player.sendMessage(ChatColor.AQUA + "Use" + ChatColor.RED + " /recipes" + ChatColor.AQUA + " For recipe info.");
         player.sendMessage(ChatColor.AQUA + "Use" + ChatColor.RED + " /discord" + ChatColor.AQUA + " For the discord link.");
         player.sendMessage(ChatColor.GRAY + "(also how you send appeals and reports)");
         //player.sendMessage(ChatColor.AQUA + "Use" + ChatColor.RED + " /easyprefix" + ChatColor.AQUA + " To change your name prefix");
@@ -33,10 +33,10 @@ public class JoinLeave implements Listener {
 
         player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f);
 
-        getServer().dispatchCommand(getServer().getConsoleSender(), "sudo " + player.getName() + " nonvanillamechanics");
+        //getServer().dispatchCommand(getServer().getConsoleSender(), "sudo " + player.getName() + " nonvanillamechanics");
         getServer().dispatchCommand(getServer().getConsoleSender(), "sudo " + player.getName() + " help");
         getServer().dispatchCommand(getServer().getConsoleSender(), "sudo " + player.getName() + " discord");
-        getServer().getScheduler().runTaskLater(lifestealSmp, () -> player.sendMessage(ChatColor.RED + "Report any rule breakers on /discord and beware of people tricking you into taking your hearts away. Make your base safe locations such as underground to prevent it from being griefed."), 200);
+        //getServer().getScheduler().runTaskLater(lifestealSmp, () -> player.sendMessage(ChatColor.RED + "Report any rule breakers on /discord and beware of people tricking you into taking your hearts away. Make your base safe locations such as underground to prevent it from being griefed."), 200);
         if ((player.getName().equals("NewAmazingPVP") || admins.contains(player.getName())) && silentMode) {
             event.setJoinMessage("");
             getServer().dispatchCommand(getServer().getConsoleSender(), "vanish " + player.getName());

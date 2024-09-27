@@ -13,12 +13,13 @@ public class RulesCommand implements CommandExecutor {
         if (sender instanceof Player player) {
 
             player.sendMessage(ChatColor.GOLD + "Rules for this SMP Season:");
-            player.sendMessage(ChatColor.WHITE + "- End Crystals/Respawn Anchors/Beds/Minecarts/Instant Harming Pots and Arrows are allowed but are nerfed in PVP for balance");
-            player.sendMessage(ChatColor.WHITE + "- The mace is allowed but is nerfed in PVP for balance");
+            //player.sendMessage(ChatColor.WHITE + "- End Crystals/Respawn Anchors/Beds/Minecarts/Instant Harming Pots and Arrows are allowed but are nerfed in PVP for balance");
+            //player.sendMessage(ChatColor.WHITE + "- The mace is allowed but is nerfed in PVP for balance");
+            player.sendMessage(ChatColor.WHITE + "- All items in vanilla are allowed");
             player.sendMessage(ChatColor.WHITE + "- Hacking or cheating not allowed");
             player.sendMessage(ChatColor.WHITE + "- Xraying not allowed");
             player.sendMessage(ChatColor.WHITE + "- No spawn and bed killing/camping");
-            player.sendMessage(ChatColor.WHITE + "- No heart farming");
+            //player.sendMessage(ChatColor.WHITE + "- No heart farming");
             player.sendMessage(ChatColor.WHITE + "- No alts");
             player.sendMessage(ChatColor.WHITE + "- Respect players");
             player.sendMessage(ChatColor.WHITE + "- No exploiting bugs/glitches");
@@ -27,10 +28,10 @@ public class RulesCommand implements CommandExecutor {
             player.sendMessage(ChatColor.WHITE + "- No lag farms/builds");
             player.sendMessage(ChatColor.WHITE + "- No toxicity");
             //player.sendMessage(ChatColor.WHITE + "- Do not trick or manipulate new players to hit you for hearts");
-            player.sendMessage(ChatColor.WHITE + "- Netherite armor and tools are allowed.");
+            //player.sendMessage(ChatColor.WHITE + "- Netherite armor and tools are allowed.");
             player.sendMessage(ChatColor.WHITE + "- Do not lava cast, trap, or grief in the vicinity of spawn.");
-            player.sendMessage(ChatColor.WHITE + "- Do not use the lava bucket or any bypass to kill newbies or respawns as long as they have their newbie or death protection.");
-            player.sendMessage(ChatColor.WHITE + "- Using newbie or death protection to grief/steal/abuse etc is not allowed.");
+            //player.sendMessage(ChatColor.WHITE + "- Do not use the lava bucket or any bypass to kill newbies or respawns as long as they have their newbie or death protection.");
+            //player.sendMessage(ChatColor.WHITE + "- Using newbie or death protection to grief/steal/abuse etc is not allowed.");
             player.sendMessage(ChatColor.WHITE + "- No offensive/abusive behavior/builds in-game");
             player.sendMessage(ChatColor.WHITE + "- No offensive language/skins/names");
             player.sendMessage(ChatColor.WHITE + "- No advertising");

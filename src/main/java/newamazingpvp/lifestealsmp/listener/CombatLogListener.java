@@ -38,7 +38,7 @@ public class CombatLogListener implements Listener {
             Player p = e.getPlayer();
 
             if (getCombatTimer(p) < 85) {
-                if (!heartCooldownPlayers.contains(e.getPlayer().getName()) && getPlaytime(p) > 144000) {
+                /*if (!heartCooldownPlayers.contains(e.getPlayer().getName()) && getPlaytime(p) > 144000) {
                     p.setMaxHealth(p.getMaxHealth() - 2);
                     Player winner = getEnemies(p).get(getEnemies(p).size() - 1);
                     if (!(winner.getMaxHealth() > maxHp)) {
@@ -53,7 +53,7 @@ public class CombatLogListener implements Listener {
                             winner.sendMessage(ChatColor.LIGHT_PURPLE + "Heart was dropped because your inventory was full");
                         }
                     }
-                }
+                }*/
             }
             p.setHealth(0.0);
 
@@ -67,8 +67,10 @@ public class CombatLogListener implements Listener {
             }
 
             String deathMessage = p.getName() + " was killed instantly due to logging out during combat!";
+            // fix the code below it gives errors
             PlayerDeathEvent deathEvent = new PlayerDeathEvent(p, (DamageSource) getEnemies(p).get(0), List.of(inventoryContents), 0, 0, 0, 0, deathMessage);
             Bukkit.getPluginManager().callEvent(deathEvent);
+            /*
             heartCooldownPlayers.add(p.getName());
             invincibilityPlayers.add(p.getName());
             new BukkitRunnable() {
@@ -83,7 +85,7 @@ public class CombatLogListener implements Listener {
                     invincibilityPlayers.remove(p.getName());
                 }
             }.runTaskLater(lifestealSmp, 20 * 60 * 15);
-
+            */
             cancelCombatData(e.getPlayer());
             removeEnemies(e.getPlayer());
         }
