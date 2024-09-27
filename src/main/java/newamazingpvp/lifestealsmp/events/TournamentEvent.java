@@ -15,16 +15,17 @@ import java.util.UUID;
 import static newamazingpvp.lifestealsmp.events.TimeManager.formatDuration;
 
 public class TournamentEvent extends BaseEvent implements Listener {
-    private final List<UUID> participants = new ArrayList<>();
+    private static final List<UUID> participants = new ArrayList<>();
     private World tournamentWorld;
     private UUID currentMatchPlayer1;
     private UUID currentMatchPlayer2;
+    public static boolean isTournamentEvent = false;
 
     public TournamentEvent(ZonedDateTime startTime) {
         super(startTime, startTime.plusDays(1));
     }
 
-    public void registerPlayer(Player player) {
+    public static void registerPlayer(Player player) {
         if (!participants.contains(player.getUniqueId())) {
             participants.add(player.getUniqueId());
             player.sendMessage(ChatColor.GREEN + "You have been registered for the tournament!");
@@ -38,6 +39,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
         Bukkit.getServer().broadcastMessage(ChatColor.GOLD + "The tournament event is starting now! Check announcements /discord");
         createTournamentWorld();
         startTournament();
+        isTournamentEvent = true;
     }
 
     private void createTournamentWorld() {
@@ -93,6 +95,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
         if (playerId.equals(currentMatchPlayer1) || playerId.equals(currentMatchPlayer2)) {
             UUID winner = playerId.equals(currentMatchPlayer1) ? currentMatchPlayer2 : currentMatchPlayer1;
             participants.add(winner);
+            Bukkit.broadcastMessage(ChatColor.GOLD + Bukkit.getPlayer(winner).getName() + " has won the match! claiming victory over " + player.getName() + "!");
             scheduleNextMatch();
         }
     }
@@ -103,6 +106,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
         if (tournamentWorld != null) {
             Bukkit.unloadWorld(tournamentWorld, false);
         }
+        isTournamentEvent = false;
     }
 
     @Override
@@ -117,5 +121,6 @@ public class TournamentEvent extends BaseEvent implements Listener {
 
     @Override
     public void runContinuously() {
+        isTournamentEvent = true;
     }
 }

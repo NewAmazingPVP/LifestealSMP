@@ -23,11 +23,13 @@ public class EventsHandler implements Listener {
         events.add(new NoTrackingDay(SEASON_START_TIME.plusDays(4)));
         events.add(new HeartMultiplier(SEASON_START_TIME.plusDays(5), 1.5));
         events.add(new CustomItemsAndRunes(CUSTOM_ITEMS_AND_RUNES));
-        UHCPvPEvent pvp = new UHCPvPEvent(CUSTOM_ITEMS_AND_RUNES);
+        //UHCPvPEvent pvp = new UHCPvPEvent(CUSTOM_ITEMS_AND_RUNES);
         ZonedDateTime firstWeek = SEASON_START_TIME.plusWeeks(1);
-        events.add(new TournamentEvent(firstWeek));
-        Bukkit.getPluginManager().registerEvents(pvp, lifestealSmp);
-        events.add(pvp);
+        //Bukkit.getPluginManager().registerEvents(pvp, lifestealSmp);
+        //events.add(pvp);
+        TournamentEvent tournament = new TournamentEvent(firstWeek);
+        Bukkit.getPluginManager().registerEvents(tournament, lifestealSmp);
+        events.add(tournament);
         events.add(new NoTrackingDay(CUSTOM_ITEMS_AND_RUNES.plusDays(1)));
         events.add(new TrackingDay(CUSTOM_ITEMS_AND_RUNES.plusDays(3), 1));
         events.add(new RuneMultiplier(CUSTOM_ITEMS_AND_RUNES.plusDays(5), 1.5));
