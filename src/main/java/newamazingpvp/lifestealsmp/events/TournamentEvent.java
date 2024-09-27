@@ -75,6 +75,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
             UUID champion = participants.get(0);
             Player player = Bukkit.getPlayer(champion);
             if (player != null) {
+                //new branch testing
                 Bukkit.getServer().broadcastMessage(ChatColor.GOLD + player.getName() + " is the tournament champion!");
                 sendDiscordEmbedTitle("Tournament Champion", Color.magenta, player.getName() + " is the tournament champion!");
             }
