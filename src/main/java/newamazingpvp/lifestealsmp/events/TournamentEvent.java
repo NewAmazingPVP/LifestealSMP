@@ -5,13 +5,18 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerKickEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.awt.Color;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordEmbedTitle;
 import static newamazingpvp.lifestealsmp.events.TimeManager.formatDuration;
 
 public class TournamentEvent extends BaseEvent implements Listener {
@@ -36,10 +41,15 @@ public class TournamentEvent extends BaseEvent implements Listener {
 
     @Override
     public void onEventStart() {
-        Bukkit.getServer().broadcastMessage(ChatColor.GOLD + "The tournament event is starting now! Check announcements /discord");
+        Bukkit.getServer().broadcastMessage(ChatColor.GOLD + "The tournament event is starting soon! Check announcements /discord and /register for event");
         createTournamentWorld();
-        startTournament();
-        isTournamentEvent = true;
+        //after creating the world, wait until its not null then do the things
+        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> {
+            tournamentWorld.setGameRule(GameRule.DO_MOB_SPAWNING, false);
+            tournamentWorld.setGameRule(GameRule.KEEP_INVENTORY, true);
+            startTournament();
+            isTournamentEvent = true;
+        }, 200L);
     }
 
     private void createTournamentWorld() {
@@ -57,16 +67,30 @@ public class TournamentEvent extends BaseEvent implements Listener {
 
     private void scheduleNextMatch() {
         if (participants.size() > 1) {
-            currentMatchPlayer1 = participants.remove(0);
-            currentMatchPlayer2 = participants.remove(0);
+            currentMatchPlayer1 = getValidPlayer();
+            currentMatchPlayer2 = getValidPlayer();
+
             startMatch(currentMatchPlayer1, currentMatchPlayer2);
         } else if (participants.size() == 1) {
             UUID champion = participants.get(0);
             Player player = Bukkit.getPlayer(champion);
             if (player != null) {
                 Bukkit.getServer().broadcastMessage(ChatColor.GOLD + player.getName() + " is the tournament champion!");
+                sendDiscordEmbedTitle("Tournament Champion", Color.magenta, player.getName() + " is the tournament champion!");
             }
         }
+    }
+
+    //return a valid player who is online and can be used for the match
+    public UUID getValidPlayer() {
+        for(UUID player : participants) {
+            Player p = Bukkit.getPlayer(player);
+            if(p != null) {
+                participants.remove(player);
+                return player;
+            }
+        }
+        return null;
     }
 
     private void startMatch(UUID player1, UUID player2) {
@@ -84,6 +108,27 @@ public class TournamentEvent extends BaseEvent implements Listener {
             if (p1 != null) participants.add(player1);
             if (p2 != null) participants.add(player2);
             scheduleNextMatch();
+        }
+    }
+
+    //gamerule keep inventory true
+    //gamerule do mob spawning false
+    // and then basically kill anyone instantly who lives the event world
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent event) {
+        Player player = event.getPlayer();
+        if (player.getWorld().equals(tournamentWorld)) {
+            player.setHealth(0);
+            player.setKiller(player.getUniqueId() == currentMatchPlayer1 ? Bukkit.getPlayer(currentMatchPlayer2) : Bukkit.getPlayer(currentMatchPlayer1));
+        }
+    }
+
+    @EventHandler
+    public void onPlayerKick(PlayerKickEvent event) {
+        Player player = event.getPlayer();
+        if (player.getWorld().equals(tournamentWorld)) {
+            player.setHealth(0);
+            player.setKiller(player.getUniqueId() == currentMatchPlayer1 ? Bukkit.getPlayer(currentMatchPlayer2) : Bukkit.getPlayer(currentMatchPlayer1));
         }
     }
 
@@ -111,7 +156,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
 
     @Override
     public void doWarning() {
-        Bukkit.getServer().broadcastMessage(ChatColor.GOLD + "The tournament event is happening in " + formatDuration(startTime) + "! Register now!");
+        Bukkit.getServer().broadcastMessage(ChatColor.GOLD + "The tournament event is happening in " + formatDuration(startTime) + "! /Register as early as 9 hours before event!");
     }
 
     @Override

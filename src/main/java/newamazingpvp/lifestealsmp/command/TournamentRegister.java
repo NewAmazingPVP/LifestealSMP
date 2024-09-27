@@ -18,7 +18,7 @@ public class TournamentRegister implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (isTournamentEvent) {
+        if (!isTournamentEvent) {
             if (sender instanceof Player player) {
                 registerPlayer(player);
                 return true;
