@@ -13,6 +13,8 @@ libraries:
   #- org.apache.logging.log4j:log4j-core:2.20.0
 
 commands:
+  register:
+    description: Register for the tournament event
   rules:
     description: Display the rules for this SMP season
     usage: /<command>
