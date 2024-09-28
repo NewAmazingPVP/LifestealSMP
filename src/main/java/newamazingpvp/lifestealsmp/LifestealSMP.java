@@ -187,15 +187,15 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new AntiChunkBan(), this);
         startTPSTracking();
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
-        //getCommand("trade").setExecutor(new Trade());
-        //getServer().getPluginManager().registerEvents(new TradeListener(), this);
+        getCommand("trade").setExecutor(new Trade());
+        getServer().getPluginManager().registerEvents(new TradeListener(), this);
         //registerBasicRecipes();
         //registerCustomItemsAndRunes();
         if (config.get("Discord.Smp") != null) {
             isSmp = config.getBoolean("Discord.Smp");
         }
         if (isSmp) {
-            //getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
+            getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
         }
         doEvents();
         Bukkit.getScheduler().runTaskTimer(this, TimeManager::timeBasedEvents, 20, 20);
