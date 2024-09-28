@@ -15,6 +15,7 @@ public class RulesCommand implements CommandExecutor {
             player.sendMessage(ChatColor.GOLD + "Rules for this SMP Season:");
             player.sendMessage(ChatColor.WHITE + "- End Crystals/Respawn Anchors/Beds/Minecarts/Instant Harming Pots and Arrows are allowed but are nerfed in PVP for balance");
             player.sendMessage(ChatColor.WHITE + "- The mace is allowed but is nerfed in PVP for balance");
+            player.sendMessage(ChatColor.WHITE + "- Stealing/looting allowed just no griefing (i.e. don't break builds, but if theres stuff inside chest you can take it");
             //player.sendMessage(ChatColor.WHITE + "- All items in vanilla are allowed");
             player.sendMessage(ChatColor.WHITE + "- Hacking or cheating not allowed");
             player.sendMessage(ChatColor.WHITE + "- Xraying not allowed");
