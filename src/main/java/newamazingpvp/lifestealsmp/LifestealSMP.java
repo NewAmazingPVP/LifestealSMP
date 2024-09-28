@@ -160,8 +160,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         //getServer().getPluginManager().registerEvents(new AntiBurn(), this);
         getServer().getPluginManager().registerEvents(new PlayerMsg(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
-        //getServer().getPluginManager().registerEvents(new EndCrystalWarning(), this);
-        //getServer().getPluginManager().registerEvents(new DisableMace(), this);
+        getServer().getPluginManager().registerEvents(new EndCrystalWarning(), this);
+        getServer().getPluginManager().registerEvents(new DisableMace(), this);
         //getServer().getPluginManager().registerEvents(new Compass(), this);
         //getServer().getPluginManager().registerEvents(new HeartItems(), this);
         //getServer().getPluginManager().registerEvents(new AnvilMenuListener(), this);
@@ -181,7 +181,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new PlayerBan(), this);
         //getServer().getPluginManager().registerEvents(new InfiniteStorage(), this);
         getServer().getPluginManager().registerEvents(new EventsHandler(), this);
-        //getServer().getPluginManager().registerEvents(new NerfOpItems(), this);
+        getServer().getPluginManager().registerEvents(new NerfOpItems(), this);
         //getServer().getPluginManager().registerEvents(new DisableCustomItems(), this);
         //getServer().getPluginManager().registerEvents(new Disenchant(), this);
         getServer().getPluginManager().registerEvents(new AntiChunkBan(), this);
