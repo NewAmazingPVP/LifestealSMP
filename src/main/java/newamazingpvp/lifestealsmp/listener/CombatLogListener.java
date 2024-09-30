@@ -6,8 +6,10 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.damage.DamageSource;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -18,11 +20,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.allyteams.TeamsManager.onSameTeam;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.extraHeart;
 import static newamazingpvp.lifestealsmp.game.CombatLog.*;
 import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
 import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.heartCooldownPlayers;
 import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.invincibilityPlayers;
+import static newamazingpvp.lifestealsmp.utility.Utils.returnPlayerDamager;
 import static newamazingpvp.lifestealsmp.variables.Misc.maxHp;
 
 public class CombatLogListener implements Listener {
@@ -30,6 +34,23 @@ public class CombatLogListener implements Listener {
     public void onPlayerKick(PlayerKickEvent e) {
         cancelCombatData(e.getPlayer());
         removeEnemies(e.getPlayer());
+    }
+
+    @EventHandler
+    public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
+        if (event.getEntity() instanceof Player damaged) {
+            Player damager = returnPlayerDamager(event.getDamager());
+            if (damager == null) return;
+            if (onSameTeam(damaged, damager)) {
+                event.setCancelled(true);
+                return;
+            }
+            if (!event.isCancelled()) {
+                if (damaged.equals(damager)) return;
+                tagPlayer(damager, damaged);
+                tagPlayer(damaged, damager);
+            }
+        }
     }
 
     @EventHandler
