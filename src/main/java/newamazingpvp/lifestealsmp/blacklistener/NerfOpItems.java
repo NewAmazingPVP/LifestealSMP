@@ -32,7 +32,6 @@ public class NerfOpItems implements Listener {
 
             if (event.getDamager() instanceof EnderCrystal ||
                     event.getDamager() instanceof Minecart) {
-                /*
                 if (getPlaytime(player) < 144000 && !newbieViolate.contains(player.getName())) {
                     event.setCancelled(true);
                     player.sendMessage(ChatColor.RED + "You were protected from explosive damage due to your newbie protection");
@@ -42,7 +41,7 @@ public class NerfOpItems implements Listener {
                     event.setCancelled(true);
                     player.sendMessage(ChatColor.RED + "You were protected from explosive damage due to your death protection");
                     return;
-                }*/
+                }
                 List<Entity> nearbyEntities = (List<Entity>) event.getDamager().getWorld().getNearbyEntities(event.getDamager().getLocation(), 14, 14, 14);
 
                 int count = 0;
@@ -68,8 +67,7 @@ public class NerfOpItems implements Listener {
                 if (damager.getInventory().getItemInMainHand().getType() == Material.MACE) {
                     //double finalDmg = e.getFinalDamage()*0.25;
                     //p.damage(e.getFinalDamage()*0.25);
-                    //0.15
-                    event.setDamage(event.getDamage() * 0.20);
+                    event.setDamage(event.getDamage() * 0.15);
                     // DONT USE THIS WONT WORK WELL WITH TOTEMS
                     //p.setHealth(Math.max(0, p.getHealth()-finalDmg);
                     player.sendMessage(ChatColor.YELLOW + "You were damaged by a mace. These items are allowed on the server but are nerfed for balanced PvP. You should still be able to fight back.");
