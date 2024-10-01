@@ -264,3 +264,6 @@ commands:
     usage: /scramblewordgame <message>
     permission: lifestealSMP.admin
     default: op
+  tournament:
+    description: Command to manage the tournament event
+    usage: /tournament <start|register|end>
