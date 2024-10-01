@@ -39,8 +39,8 @@ public class ServerOpening extends BaseEvent {
                 "\n" +
                 "**Rules and Info**\n" +
                 "- The end will open in 2 weeks\n" +
-                //"- 10k by 10k map size (will be expanded to 25k by 25k next weekend)\n" +
-                //"- Custom items /recipes and runes /runes will be enabled next weekend\n" +
+                "- 10k by 10k map size (will be expanded to 25k by 25k next weekend)\n" +
+                "- Custom items /recipes and runes /runes will be enabled next weekend\n" +
                 "- Current difficulty easy, will be set to normal on Wednesday and hard next weekend\n" +
                 "- Combat logging (90 seconds)\n" +
                 "- [/prefix for custom prefix with rgb colors](https://www.birdflop.com/resources/rgb/) \n" +
@@ -48,12 +48,12 @@ public class ServerOpening extends BaseEvent {
                 "\n" +
                 "Java IP is **NapPixel.tk** and port is **25565** if needed.\n" +
                 "For bedrock its **NapPixel.tk** and port is **19132** if needed.\n" +
-                "**1.21** is the recommended version, but it is compatible with **1.7-1.21**\n", "1032411739351941120");
-                /*"\n" +
+                "**1.21** is the recommended version, but it is compatible with **1.7-1.21**\n" +
+                "\n" +
                 "**NOTE**\n" +
                 "Each person will have their own individual newbie and tracking protection for 2 hours of playtime. \n" +
                 "\n" +
-                "Anyways goodluck! And fyi if you don't want to be tracked you and use an invis potion!", "1032411739351941120");*/
+                "Anyways goodluck! And fyi if you don't want to be tracked you and use an invis potion!", "1032411739351941120");
     }
 
     @Override
