@@ -267,3 +267,5 @@ commands:
   tournament:
     description: Command to manage the tournament event
     usage: /tournament <start|register|end>
+    permission: lifestealSMP.admin
+    default: op
