@@ -40,19 +40,17 @@ public class GuideCommand implements CommandExecutor {
         ItemStack book = new ItemStack(Material.WRITTEN_BOOK);
         BookMeta meta = (BookMeta) book.getItemMeta();
 
-        meta.setTitle("SMP Guide");
+        meta.setTitle("Lifesteal SMP Guide");
         meta.setAuthor("NapPixel Admins");
 
-        meta.addPage("Welcome to SMP!\n\nThis guide will help you understand the mechanics of lifesteal in our server");
-        meta.addPage("Note: The server is vanilla this season and not lifesteal!");
-        //meta.addPage("In this Lifesteal SMP players get more hearts by killing or crafting and lose hearts by getting killed");
-        //.addPage("We also have twists such as tracking and custom items to spice it up! /recipes");
+        meta.addPage("Welcome to Lifesteal SMP!\n\nThis guide will help you understand the mechanics of lifesteal in our server");
+        meta.addPage("In this Lifesteal SMP players get more hearts by killing or crafting and lose hearts by getting killed");
+        meta.addPage("We also have twists such as tracking and custom items to spice it up! /recipes");
         meta.addPage("Why not learn everything about this by joining /discord ??");
         meta.addPage("Forms teams make alliances fight and eliminate opponents!");
         meta.addPage("Its only fun if you get involved with the discord community!");
         meta.addPage("We ensure fair and fun gameplay for players on any platform and have balances to make sure nobody abuses");
         meta.addPage("Learn more about this by /help and by joining /discord");
-        meta.addPage("Note: The server is vanilla this season and not lifesteal!");
 
         book.setItemMeta(meta);
         return book;
