@@ -66,9 +66,13 @@ import newamazingpvp.lifestealsmp.unused.visuals.toasts.ToastTPS;
 import newamazingpvp.lifestealsmp.utility.Metrics;
 import newamazingpvp.lifestealsmp.utility.Utils;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -79,6 +83,7 @@ import java.io.IOException;
 
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlacklist;
 import static newamazingpvp.lifestealsmp.customitems.utils.DevRecipes.registerCustomRecipesDev;
+import static newamazingpvp.lifestealsmp.customitems.utils.GUI.*;
 import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerBasicRecipes;
 import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.*;
@@ -198,6 +203,12 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         if (isSmp) {
             getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
         }
+        ItemStack shulker = new ItemStack(Material.SHULKER_BOX);
+        ShapedRecipe shulkerRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "shulker_recipe"), shulker);
+        shulkerRecipe.shape("DDD", "DCD", "DDD");
+        shulkerRecipe.setIngredient('C', Material.CHEST);
+        shulkerRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(shulkerRecipe);
         doEvents();
         Bukkit.getScheduler().runTaskTimer(this, TimeManager::timeBasedEvents, 20, 20);
 
