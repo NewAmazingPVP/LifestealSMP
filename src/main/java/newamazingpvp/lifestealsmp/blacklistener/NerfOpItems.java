@@ -32,7 +32,6 @@ public class NerfOpItems implements Listener {
 
             if (event.getDamager() instanceof EnderCrystal ||
                     event.getDamager() instanceof Minecart) {
-                /*
                 if (getPlaytime(player) < 144000 && !newbieViolate.contains(player.getName())) {
                     event.setCancelled(true);
                     player.sendMessage(ChatColor.RED + "You were protected from explosive damage due to your newbie protection");
@@ -42,7 +41,7 @@ public class NerfOpItems implements Listener {
                     event.setCancelled(true);
                     player.sendMessage(ChatColor.RED + "You were protected from explosive damage due to your death protection");
                     return;
-                }*/
+                }
                 List<Entity> nearbyEntities = (List<Entity>) event.getDamager().getWorld().getNearbyEntities(event.getDamager().getLocation(), 14, 14, 14);
 
                 int count = 0;

@@ -38,8 +38,7 @@ public class SpawnProtection implements Listener {
             Location expanded = new Location(original.getWorld(), original.getX() / 2, original.getY(), original.getZ() / 2);
             Location fake = new Location(original.getWorld(), original.getX() * 10, original.getY(), original.getZ() * 10);
             if (original.getWorld().getName().equals("world")) {
-                //expanded
-                if (isWithinSpawnRadius(original)) {
+                if (isWithinSpawnRadius(expanded)) {
                     //if (isInCombat(damager) && isInCombat(damaged)) return;
                     event.setCancelled(true);
                     damager.sendMessage(ChatColor.RED + "You cannot damage players within the vicinity spawn protection area, go away from spawn to be able to!");

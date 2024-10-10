@@ -66,13 +66,9 @@ import newamazingpvp.lifestealsmp.unused.visuals.toasts.ToastTPS;
 import newamazingpvp.lifestealsmp.utility.Metrics;
 import newamazingpvp.lifestealsmp.utility.Utils;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -83,7 +79,6 @@ import java.io.IOException;
 
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlacklist;
 import static newamazingpvp.lifestealsmp.customitems.utils.DevRecipes.registerCustomRecipesDev;
-import static newamazingpvp.lifestealsmp.customitems.utils.GUI.*;
 import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerBasicRecipes;
 import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerCustomRecipes;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.*;
@@ -126,22 +121,22 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
         getCommand("rules").setExecutor(new RulesCommand());
         getCommand("setview").setExecutor(new CustomDistance());
-        //getCommand("recipes").setExecutor(new RecipesCommand());
-        //getCommand("track").setExecutor(new Compass());
+        getCommand("recipes").setExecutor(new RecipesCommand());
+        getCommand("track").setExecutor(new Compass());
         getCommand("restart_with_warning").setExecutor(new RestartWithWarming());
-        //getCommand("remHP").setExecutor(new RemoveHP());
-        //getCommand("addHP").setExecutor(new AddHP());
-        //getCommand("LSwithdraw").setExecutor(new LSwithdraw());
+        getCommand("remHP").setExecutor(new RemoveHP());
+        getCommand("addHP").setExecutor(new AddHP());
+        getCommand("LSwithdraw").setExecutor(new LSwithdraw());
         getCommand("startEndFight").setExecutor(new StartEndFight());
         getCommand("stopEndFight").setExecutor(new StopEndFight());
-        //getCommand("reviveplayer").setExecutor(new RevivePlayer());
+        getCommand("reviveplayer").setExecutor(new RevivePlayer());
         getCommand("vision").setExecutor(new NightVision());
         getCommand("senddiscordmessage").setExecutor(new SendDiscordMessage());
         getCommand("discord").setExecutor(new DiscordLink());
         getCommand("help").setExecutor(new HelpCommand());
         getCommand("guide").setExecutor(new GuideCommand());
-        //getCommand("givecustomitem").setExecutor(new GiveCustomItem());
-        //getCommand("givecustomitem").setTabCompleter(new GiveCustomItem());
+        getCommand("givecustomitem").setExecutor(new GiveCustomItem());
+        getCommand("givecustomitem").setTabCompleter(new GiveCustomItem());
         getCommand("serverruntime").setExecutor(new ServerRuntime());
         getCommand("team").setExecutor(new TeamCommand());
         getCommand("team").setTabCompleter(new TeamCommand());
@@ -153,30 +148,30 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("jailplayer").setExecutor(new JailPlayer());
         getCommand("betterban").setExecutor(new BetterBan());
         getCommand("unbanall").setExecutor(new UnbanAll());
-        //getCommand("rune").setExecutor(new RunesCommand());
-        //getCommand("adminrune").setExecutor(new AdminRunes());
+        getCommand("rune").setExecutor(new RunesCommand());
+        getCommand("adminrune").setExecutor(new AdminRunes());
         getCommand("stat").setExecutor(new StatisticManager());
         getCommand("worldteleport").setExecutor(new WorldTeleport());
         getCommand("tpuhc").setExecutor(new UhcTeleport());
         getCommand("spawn").setExecutor(new SpawnCommand());
-        //getCommand("nonvanillamechanics").setExecutor(new NonVanillaMechanics());
+        getCommand("nonvanillamechanics").setExecutor(new NonVanillaMechanics());
         getCommand("showcustomtoast").setExecutor(new ShowCustomToastCMD());
         getCommand("tournament").setExecutor(new TournamentCommand());
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
-        //getServer().getPluginManager().registerEvents(new AntiBurn(), this);
+        getServer().getPluginManager().registerEvents(new AntiBurn(), this);
         getServer().getPluginManager().registerEvents(new PlayerMsg(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
         getServer().getPluginManager().registerEvents(new EndCrystalWarning(), this);
         getServer().getPluginManager().registerEvents(new DisableMace(), this);
-        //getServer().getPluginManager().registerEvents(new Compass(), this);
-        //getServer().getPluginManager().registerEvents(new HeartItems(), this);
-        //getServer().getPluginManager().registerEvents(new AnvilMenuListener(), this);
+        getServer().getPluginManager().registerEvents(new Compass(), this);
+        getServer().getPluginManager().registerEvents(new HeartItems(), this);
+        getServer().getPluginManager().registerEvents(new AnvilMenuListener(), this);
         getServer().getPluginManager().registerEvents(new EndFightRestrictions(), this);
-        //getServer().getPluginManager().registerEvents(new AntiUseListener(), this);
+        getServer().getPluginManager().registerEvents(new AntiUseListener(), this);
         getServer().getPluginManager().registerEvents(new JoinLeave(), this);
         getServer().getPluginManager().registerEvents(new ChatFilter(), this);
-        //getServer().getPluginManager().registerEvents(new CombatProtectionHandler(), this);
-        //getServer().getPluginManager().registerEvents(new ReviveBeacon(), this);
+        getServer().getPluginManager().registerEvents(new CombatProtectionHandler(), this);
+        getServer().getPluginManager().registerEvents(new ReviveBeacon(), this);
         getServer().getPluginManager().registerEvents(new CombatLogListener(), this);
         getServer().getPluginManager().registerEvents(new TeamListener(), this);
         getServer().getPluginManager().registerEvents(new DiscordListener(), this);
@@ -185,45 +180,161 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new AntiEnd(), this);
         getServer().getPluginManager().registerEvents(new ServerOpening(), this);
         getServer().getPluginManager().registerEvents(new PlayerBan(), this);
-        //getServer().getPluginManager().registerEvents(new InfiniteStorage(), this);
+        getServer().getPluginManager().registerEvents(new InfiniteStorage(), this);
         getServer().getPluginManager().registerEvents(new EventsHandler(), this);
         getServer().getPluginManager().registerEvents(new NerfOpItems(), this);
-        //getServer().getPluginManager().registerEvents(new DisableCustomItems(), this);
-        //getServer().getPluginManager().registerEvents(new Disenchant(), this);
+        getServer().getPluginManager().registerEvents(new DisableCustomItems(), this);
+        getServer().getPluginManager().registerEvents(new Disenchant(), this);
         getServer().getPluginManager().registerEvents(new AntiChunkBan(), this);
         startTPSTracking();
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
         getCommand("trade").setExecutor(new Trade());
         getServer().getPluginManager().registerEvents(new TradeListener(), this);
-        //registerBasicRecipes();
-        //registerCustomItemsAndRunes();
+        registerBasicRecipes();
+        registerCustomItemsAndRunes();
         if (config.get("Discord.Smp") != null) {
             isSmp = config.getBoolean("Discord.Smp");
         }
         if (isSmp) {
             getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
         }
-        ItemStack shulker = new ItemStack(Material.SHULKER_BOX);
-        ShapedRecipe shulkerRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "shulker_recipe"), shulker);
-        shulkerRecipe.shape("DDD", "DCD", "DDD");
-        shulkerRecipe.setIngredient('C', Material.CHEST);
-        shulkerRecipe.setIngredient('D', Material.DIAMOND);
-        Bukkit.addRecipe(shulkerRecipe);
         doEvents();
         Bukkit.getScheduler().runTaskTimer(this, TimeManager::timeBasedEvents, 20, 20);
 
+        //TODO: Use this for beta things
+        if (!isSmp) {
+            //getCommand("gibIce").setExecutor(new REMOVE_THIS_COMMAND_GIVE_ICE());
+            //getCommand("lockPlayer").setExecutor(new LockPlayer());
+            //getCommand("givebingocardtemp").setExecutor(new GiveBingoCardTEMP());
+            //getCommand("generatenewbingogame").setExecutor(new CommandNewBingoGame());
+            //lil
+
+            //getCommand("quickMaths").setExecutor(new QuickMaths());
+            //getServer().getPluginManager().registerEvents(new IceCube(), this);
+            //getServer().getPluginManager().registerEvents(new RunesDrops(), this);
+            //getServer().getPluginManager().registerEvents(new AquaRune(), this);
+            //getServer().getPluginManager().registerEvents(new LightningRune(), this);
+            //getServer().getPluginManager().registerEvents(new HellRune(), this);
+            //getServer().getPluginManager().registerEvents(new BloodRune(), this);
+            //getServer().getPluginManager().registerEvents(new AirRune(), this);
+            //getServer().getPluginManager().registerEvents(new BingoCardListener(), this);
+            getServer().getPluginManager().registerEvents(new BingoCardGUIListeners(), this);
+            //New Custom Items
+
+
+            getServer().getPluginManager().registerEvents(new QuarryArmor(), this);
+
+            getServer().getPluginManager().registerEvents(new AntiAnvil(), this);
+            //getServer().getPluginManager().registerEvents(new MagicStaffAir(), this);
+
+            //magic staffs
+            getServer().getPluginManager().registerEvents(new GUI(), this);
+            getServer().getPluginManager().registerEvents(new Default(), this);
+            getCommand("openmagicstaffmenu").setExecutor(new MagicStaffMenu());
+            getCommand("createtestnpc").setExecutor(new NPCTestCommand());
+
+
+            //getCommand("showtoastwarn").setExecutor(new ToastWarnCMD());
+            //getServer().getPluginManager().registerEvents(new PlayerJoinToast(), this);
+
+
+            //Comet Trident
+            getServer().getPluginManager().registerEvents(new CometTrident(), this);
+
+
+            //test
+            getServer().getPluginManager().registerEvents(new DroppedItemParticles(), this);
+
+
+            //Mob test
+            getServer().getPluginManager().registerEvents(new LightningZombieListener(), this);
+
+            getServer().getPluginManager().registerEvents(new DeadMinerListener(), this);
+
+            getServer().getPluginManager().registerEvents(new ShadowAttackPlayer(), this);
+            getServer().getPluginManager().registerEvents(new ShadowAttackedByPlayer(), this);
+
+            getServer().getPluginManager().registerEvents(new MiniShadowAttackPlayer(), this);
+            getServer().getPluginManager().registerEvents(new MiniShadowAttackedByPlayer(), this);
+            getServer().getPluginManager().registerEvents(new DeathBeaconEvent(), this);
+            getServer().getPluginManager().registerEvents(new MiningListeners(), this);
+            getServer().getPluginManager().registerEvents(new LaunchPads(), this);
+            //getServer().getPluginManager().registerEvents(new BlockPushTest(), this);
+
+            registerCustomRecipesDev();
+
+            getCommand("deathbeacontest").setExecutor(new BeaconTestCMD());
+
+            getCommand("bossstart").setExecutor(new StartEndBoss());
+            getCommand("bossstop").setExecutor(new StopEndBoss());
+            getCommand("bossquickstart").setExecutor(new BossQuickStart());
+
+            //getServer().getPluginManager().registerEvents(new DamageIndicator(), this);
+            getServer().getPluginManager().registerEvents(new HpBar(), this);
+            getServer().getPluginManager().registerEvents(new HpNameTag(), this);
+
+            //===================== Raffle Event Listeners =======================
+            getServer().getPluginManager().registerEvents(new Mining(), this);
+            getServer().getPluginManager().registerEvents(new ClearOldBingoTags(), this);
+            getServer().getPluginManager().registerEvents(new SubmitTicket(), this);
+            getServer().getPluginManager().registerEvents(new PlayerBossBar(), this);
+
+
+            getServer().getPluginManager().registerEvents(new Terraflinger(), this);
+            getServer().getPluginManager().registerEvents(new TerraflingerADMIN(), this);//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+            //getServer().getPluginManager().registerEvents(new lex_test(), this);//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+            getServer().getPluginManager().registerEvents(new AntiItemUse(), this);
+
+
+            //getServer().getPluginManager().registerEvents(new BlockPlaceTracker(), this);
+            getCommand("raffleeventstart").setExecutor(new StartRaffleEvent());
+            getCommand("raffleeventstop").setExecutor(new StopRaffleEvent());
+
+            getServer().getPluginManager().registerEvents(new HydraDamagedOrKilled(), this);
+            getServer().getPluginManager().registerEvents(new HydraAttack(), this);
+            getServer().getPluginManager().registerEvents(new MageHitAndKilled(), this);
+            getServer().getPluginManager().registerEvents(new EnigmaGUI(), this);
+            getServer().getPluginManager().registerEvents(new EnigmaAttack(), this);
+            getServer().getPluginManager().registerEvents(new EnigmaDamagedAndKilled(), this);
+            getServer().getPluginManager().registerEvents(new ScrambleWordGame(), this);
+            getCommand("setheadtexture").setExecutor(new SetHeadTexture());
+            getCommand("spawncustommob").setExecutor(new SpawnCmd());
+            getCommand("scramblewordgame").setExecutor(new ScrambleWordGame());
+            getCommand("getitemorblockdata").setExecutor(new ReadBlockAndItemInfo());
+            //getServer().getPluginManager().registerEvents(new DittoSkull(), this);
+            //getCommand("trade").setExecutor(new Trade());
+            //getServer().getPluginManager().registerEvents(new TradeListener(), this);
+
+            //THESE ARE THE BINGO EVENTS TO DETECT IF A PLAYER DID A PART OF IT
+
+            //registerBingoRecipes();
+            //getServer().getPluginManager().registerEvents(new BingoInvintoryProt(), this);
+            //registerCustomRecipesRunes();
+
+            //getServer().getPluginManager().registerEvents(new OtherCustomDrops(), this);
+            //getServer().getPluginManager().registerEvents(new VoidWalkerHelm(), this);
+            //getServer().getPluginManager().registerEvents(new VoidWalkerHelmEffects(), this);
+            //getServer().getPluginManager().registerEvents(new SekhmetStaffDrops(), this);
+            //getServer().getPluginManager().registerEvents(new MontuStaffLeft(), this);
+            //getServer().getPluginManager().registerEvents(new MontuStaffRight(), this);
+            //getServer().getPluginManager().registerEvents(new MontuStaffShiftLeft(), this);
+            //getServer().getPluginManager().registerEvents(new MontuStaffShiftRight(), this);
+        }
         getServer().getScheduler().runTaskTimer(this, BroadcastMessage::broadcastServerMessage, 0, 7200 * 20);
         getServer().getScheduler().runTaskTimer(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** help"), 0, 30 * 60 * 20);
-        //getServer().getScheduler().runTaskTimer(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** nonvanillamechanics"), 0, 27 * 60 * 20);
+        getServer().getScheduler().runTaskTimer(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** nonvanillamechanics"), 0, 27 * 60 * 20);
         getServer().getScheduler().runTaskTimer(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** discord"), 0, 22 * 60 * 20);
-        /*getServer().getScheduler().runTaskTimer(this, () ->
+        getServer().getScheduler().runTaskTimer(this, () ->
                         getServer().dispatchCommand(getServer().getConsoleSender(),
                                 "broadcast &b[Tip] &fStruggling with low hearts or gear? You don't have to rely solely on PvP for hearts! &bYou can craft hearts &fand keep progressing from rare mob drops (do /recipes), even if you're not ready to fight. &bCheck out /recipes &ffor the Heart Equalizer – a custom item that balances PvP damage based on heart ratios, so you're never at a disadvantage. &fAnother strategy? Build a mob farm! Collect mob drops and craft your way to more hearts with custom items!"),
-                0, 22 * 60 * 20);*/
+                0, 22 * 60 * 20);
         getServer().getScheduler().runTaskTimer(this, BroadcastMessage::broadcastReportBugs, 0, 3600 * 20);
         getServer().getScheduler().runTaskTimer(this, PlayerPing::monitorPlayerPings, 0L, 20L);
         scheduleRestart();
-        //compassUpdate();
+        compassUpdate();
         getServer().dispatchCommand(getServer().getConsoleSender(), "chunky continue");
         //checkTps();
         new BukkitRunnable() {
