@@ -3,6 +3,7 @@ version: '${project.version}'
 main: newamazingpvp.lifestealsmp.LifestealSMP
 api-version: '1.20'
 authors: [ NewAmazingPVP, Comet99 ]
+folia-supported: true
 softdepend:
   - Essentials
   - Chunky
@@ -23,40 +24,11 @@ commands:
     usage: /setview <view_distance> <simulation_distance>
     permission: lifestealSMP.admin
     default: op
-  recipes:
-    description: View all the custom recipes of this lifesteal server
-    usage: /recipes
-    aliases: [ recipe ]
-  track:
-    description: Track a player's location
-    usage: /track <player>
-    aliases: [ compass ]
-  givesekhmetset:
-    description: Admins Only
-    usage: /givesekhmetset
-    permission: lifestealSMP.admin
-    aliases:
-    default: op
   restart_with_warning:
     description: Admins Only RS server with a warning
     permission: lifestealSMP.admin
     usage: /restart_with_warning
     default: op
-  remHP:
-    description: Removes HP Admins Only
-    usage: /remHP
-    permission: lifestealSMP.admin
-    default: op
-  addHP:
-    description: Adds HP Admins Only
-    usage: /AddHP
-    permission: lifestealSMP.admin
-    default: op
-  LSwithdraw:
-    description: Removes 1 heart
-    usage: /LSwithdraw
-    aliases:
-      - withdraw
   startEndFight:
     description: Start End Fight with all presets
     usage: /startEndFight
@@ -70,11 +42,6 @@ commands:
   jailplayer:
     description: Use this to make a player a prisoner (troll command)
     usage: /jailplayer <name>
-    permission: lifestealSMP.admin
-    default: op
-  reviveplayer:
-    description: Revive an eliminated player!
-    usage: /reviveplayer <name>
     permission: lifestealSMP.admin
     default: op
   prefix:
@@ -99,11 +66,6 @@ commands:
   guide:
     description: Guide tutorial book for SMP
     usage: /guide
-  givecustomitem:
-    description: Give custom item (admin only)!
-    usage: /givecustomitem <player> <item>
-    permission: lifestealSMP.admin
-    default: op
   serverruntime:
     description: Check the server age/runtime!
     usage: /serverruntime
@@ -119,54 +81,14 @@ commands:
     usage: /ally
     aliases:
       - al
-  gibIce:
-    description: gives ice cube REMOVE THIS
-    usage: /gibIce
-    permission: lifestealSMP.admin
-    default: op
-  lockPlayer:
-    description: Locks player and does not let them do anything (for moderation)
-    usage: /lock <player>
-    permission: lifestealSMP.admin
-    default: op
   pingWars:
     description: PING WARS
     usage: /pingwars
     permission: lifestealSMP.admin
     default: op
-  quickMaths:
-    description: QUICK!!!!!!!!!!!!!
-    usage: /quickmaths
-    permission: lifestealSMP.admin
-    default: op
-  givebingocardtemp:
-    description: gives bingo card TEMP
-    usage: /givebingocardtemp
-    permission: lifestealSMP.admin
-    default: op
-  generatenewbingogame:
-    description: restarts bingo and makes new game WARNING ONLY USE WHEN NEEDED!
-    usage: /generatenewbingogame
-    permission: lifestealSMP.admin
-    default: op
-  sombercrystaltest:
-    description: test for somber crystal
-    usage: /sombercrystaltest
-    permission: lifestealSMP.admin
-    default: op
   trade:
     description: Trade with players
     usage: /trade <player>
-  openmagicstaffmenu:
-    description: Opens the menu for magic staffs for testing
-    usage: /openmagicstaffmenu
-    permission: lifestealSMP.admin
-    default: op
-  spawncustommob:
-    description: Lets you spawn the custom mobs
-    usage: /spawncustommob <mob>
-    permission: lifestealSMP.admin
-    default: op
   betterban:
     description: Lets you ban someone with custom ban message
     usage: /betterban <player>
@@ -177,54 +99,9 @@ commands:
     usage: /unbanall
     permission: lifestealSMP.admin
     default: op
-  deathbeacontest:
-    description: Tests the death beacon
-    usage: /beathbeacontest
-    permission: lifestealSMP.admin
-    default: op
-  rune:
-    description: View all the custom runes!
-    usage: /runes
-    aliases:
-      - runes
-  createtestnpc:
-    description: Test NPC
-    usage: /createtestnpc
-    permission: lifestealSMP.admin
-    default: op
-  adminrune:
-    description: Runes for admins
-    usage: /adminrune
-    permission: lifestealSMP.admin
-    default: op
   stat:
     description: Stat for nerds
     usage: /stat
-    permission: lifestealSMP.admin
-    default: op
-  bossstart:
-    description: Starts the end boss
-    usage: /bossstart
-    permission: lifestealSMP.admin
-    default: op
-  bossstop:
-    description: Stops the end boss
-    usage: /bossstop
-    permission: lifestealSMP.admin
-    default: op
-  bossquickstart:
-    description: Starts the boss with no 1min pre stage
-    usage: /bossquickstart
-    permission: lifestealSMP.admin
-    default: op
-  raffleeventstart:
-    description: Starts the raffle event
-    usage: /raffleeventstart
-    permission: lifestealSMP.admin
-    default: op
-  raffleeventstop:
-    description: Stops the raffle event before it ends if needed
-    usage: /raffleeventstop
     permission: lifestealSMP.admin
     default: op
   worldteleport:
@@ -238,11 +115,6 @@ commands:
   spawn:
     description: Teleport to spawn to get unstuck
     usage: /spawn
-  getitemorblockdata:
-    description: Gets the data of the item you are golding or the block you are looking at
-    usage: /getitemorblockdata [type]
-    permission: lifestealSMP.admin
-    default: op
   nonvanillamechanics:
     description: See all the non-vanilla mechanics in the server
     usage: /nonvanillamechanics
@@ -256,16 +128,9 @@ commands:
     usage: /showtoastwarn <message>
     permission: lifestealSMP.admin
     default: op
-  setheadtexture:
-    description: Lets tou set a head to any player texture
-    usage: /setheadtexture [type] <texture>
-  scramblewordgame:
-    description: Does the thing
-    usage: /scramblewordgame <message>
-    permission: lifestealSMP.admin
-    default: op
   tournament:
     description: Command to manage the tournament event
     usage: /tournament <start|register|end>
     permission: lifestealSMP.admin
     default: op
+

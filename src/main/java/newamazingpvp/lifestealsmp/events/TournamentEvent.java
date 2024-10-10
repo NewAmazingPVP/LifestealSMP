@@ -161,7 +161,6 @@ public class TournamentEvent extends BaseEvent implements Listener {
     @Override
     public void doWarning() {
         Bukkit.getServer().broadcastMessage(ChatColor.GOLD + "The 1v1 tournament event is happening in " + formatDuration(startTime) + "! /Register to participate on the day of the event! \n**Make sure to /register before the event starts or else you won't be able to play!**");
-        //add discord notif
         sendDiscordMessage(eventRole + " The 1v1 tournament event is happening in " + formatDuration(startTime) + "! /Register to participate on the day of the event! \n**Make sure to /register before the event starts or else you won't be able to play!**", "");
     }
 
