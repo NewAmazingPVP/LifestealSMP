@@ -24,7 +24,7 @@ public class TournamentCommand implements CommandExecutor {
             if (tournamentEvent == null) {
                 tournamentEvent = new TournamentEvent(ZonedDateTime.now());
                 tournamentEvent.onEventStart();
-                sender.sendMessage(ChatColor.GREEN + "Tournament event started!");
+                sender.sendMessage(ChatColor.GREEN + "Tournament event started!!");
             } else {
                 sender.sendMessage(ChatColor.RED + "Tournament event is already running!");
             }
