@@ -16,8 +16,8 @@ import java.util.List;
 import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordEmbedTitle;
-import static newamazingpvp.lifestealsmp.events.TimeManager.formatDuration;
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.*;
+import static newamazingpvp.lifestealsmp.events.TimeManager.*;
 
 public class TournamentEvent extends BaseEvent implements Listener {
     private static final List<UUID> participants = new ArrayList<>();
@@ -43,6 +43,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
     public void onEventStart() {
         Bukkit.getServer().broadcastMessage(ChatColor.GOLD + "The tournament event is starting soon! Check announcements /discord and /register for event");
         createTournamentWorld();
+        sendDiscordMessage( mcServer + "The tournament event is starting soon! Please /register for event. \n**If not enough players are registered, the event will be cancelled!**", "");
         //after creating the world, wait until its not null then do the things
         Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> {
             tournamentWorld.setGameRule(GameRule.DO_MOB_SPAWNING, false);
@@ -77,7 +78,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
             if (player != null) {
                 //new branch testing
                 Bukkit.getServer().broadcastMessage(ChatColor.GOLD + player.getName() + " is the tournament champion!");
-                sendDiscordEmbedTitle("Tournament Champion", Color.magenta, player.getName() + " is the tournament champion!");
+                sendDiscordEmbedPlayer("Tournament Champion", Color.magenta, "", player.getName());
             }
         }
     }
@@ -153,11 +154,15 @@ public class TournamentEvent extends BaseEvent implements Listener {
             Bukkit.unloadWorld(tournamentWorld, false);
         }
         isTournamentEvent = false;
+        sendDiscordMessage("The tournament event is now over! Congratulations to the winners!", "");
     }
+
 
     @Override
     public void doWarning() {
         Bukkit.getServer().broadcastMessage(ChatColor.GOLD + "The 1v1 tournament event is happening in " + formatDuration(startTime) + "! /Register to participate on the day of the event! \n**Make sure to /register before the event starts or else you won't be able to play!**");
+        //add discord notif
+        sendDiscordMessage(eventRole + " The 1v1 tournament event is happening in " + formatDuration(startTime) + "! /Register to participate on the day of the event! \n**Make sure to /register before the event starts or else you won't be able to play!**", "");
     }
 
     @Override
