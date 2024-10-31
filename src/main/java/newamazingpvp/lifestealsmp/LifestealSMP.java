@@ -3,6 +3,7 @@ package newamazingpvp.lifestealsmp;
 import com.earth2me.essentials.Essentials;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
+import io.papermc.paper.threadedregions.scheduler.GlobalRegionScheduler;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
