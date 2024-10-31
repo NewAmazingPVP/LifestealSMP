@@ -296,7 +296,7 @@ public class Compass implements CommandExecutor, Listener {
 
                     //if (compass == null) {
                     //    continue;
-                    //}
+                    //}'
                     String msg;
                     int distance = 0;
                     if (target != null && !playerDiedRecently(target) && !isElytra(player) && !isPlayerElytraCooldown(player) && !noTrackingDay && !(isPlayerInvisible(player) || (isPlayerInvisible(target)))) {
@@ -447,7 +447,7 @@ public class Compass implements CommandExecutor, Listener {
         CompassMeta compassMeta = (CompassMeta) compass.getItemMeta();
         assert compassMeta != null;
         compassMeta.setLodestone(location);
-        compassMeta.setLodestoneTracked(true);
+        compassMeta.setLodestoneTracked(false);
         compass.setItemMeta(compassMeta);
     }
 
