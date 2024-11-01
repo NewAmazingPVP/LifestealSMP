@@ -12,13 +12,12 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.awt.Color;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.*;
 import static newamazingpvp.lifestealsmp.events.TimeManager.*;
+import static org.bukkit.Bukkit.getServer;
 
 public class TournamentEvent extends BaseEvent implements Listener {
     private static final List<UUID> participants = new ArrayList<>();
@@ -26,6 +25,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
     private UUID currentMatchPlayer1;
     private UUID currentMatchPlayer2;
     public static boolean isTournamentEvent = false;
+    private Map<UUID, Location> playersLastLocation = new HashMap<>(); //players in the tournament
 
     public TournamentEvent(ZonedDateTime startTime) {
         super(startTime, startTime.plusDays(1));
@@ -42,8 +42,8 @@ public class TournamentEvent extends BaseEvent implements Listener {
 
     @Override
     public void onEventStart() {
-        Bukkit.getServer().broadcastMessage(ChatColor.GOLD + "The tournament event is starting soon! Check announcements /discord and /register for event");
-        Bukkit.getServer().broadcastMessage(ChatColor.GOLD + "You will not lose stuff in this tournament event");
+        getServer().broadcastMessage(ChatColor.GOLD + "The tournament event is starting soon! Check announcements /discord and /register for event");
+        getServer().broadcastMessage(ChatColor.GOLD + "You will not lose stuff in this tournament event");
         createTournamentWorld();
         sendDiscordMessage( mcServer + "The tournament event is starting soon! Please /register for event. \n**If not enough players are registered, the event will be cancelled!**", "");
         sendDiscordMessage( "You will not lose stuff in this tournament event...", "");
@@ -72,7 +72,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
 
     private void startTournament() {
         if (participants.size() < 2) {
-            Bukkit.getServer().broadcastMessage(ChatColor.RED + "Not enough participants for the tournament!");
+            getServer().broadcastMessage(ChatColor.RED + "Not enough participants for the tournament!");
             return;
         }
 
@@ -90,7 +90,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
             Player player = Bukkit.getPlayer(champion);
             if (player != null) {
                 //new branch testing
-                Bukkit.getServer().broadcastMessage(ChatColor.GOLD + player.getName() + " is the tournament champion!");
+                getServer().broadcastMessage(ChatColor.GOLD + player.getName() + " is the tournament champion!");
                 sendDiscordEmbedPlayer("Tournament Champion", Color.magenta, "", player.getName());
                 onEventEnd();
             }
@@ -114,11 +114,21 @@ public class TournamentEvent extends BaseEvent implements Listener {
         Player p2 = Bukkit.getPlayer(player2);
 
         if (p1 != null && p2 != null) {
+            playersLastLocation.put(player1, p1.getLocation());
+            playersLastLocation.put(player2, p2.getLocation());
             Location loc1 = new Location(tournamentWorld, 0, 100, 0);
             Location loc2 = new Location(tournamentWorld, 10, 100, 10);
+            p1.setInvulnerable(true);
+            p2.setInvulnerable(true);
             p1.teleport(loc1);
             p2.teleport(loc2);
-            Bukkit.getServer().broadcastMessage(ChatColor.GOLD + p1.getName() + " vs " + p2.getName() + " - Fight!");
+
+            getServer().getScheduler().runTaskLater(lifestealSmp, () -> {
+                p1.setInvulnerable(false);
+                p2.setInvulnerable(false);
+            }, 20 * 5);
+
+            getServer().broadcastMessage(ChatColor.GOLD + p1.getName() + " vs " + p2.getName() + " - Fight!");
         } else {
             if (p1 != null) participants.add(player1);
             if (p2 != null) participants.add(player2);
@@ -132,6 +142,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
+        if(!isTournamentEvent) return;
         if (player.getWorld().equals(tournamentWorld)) {
             player.setHealth(0);
             player.setKiller(player.getUniqueId() == currentMatchPlayer1 ? Bukkit.getPlayer(currentMatchPlayer2) : Bukkit.getPlayer(currentMatchPlayer1));
@@ -141,6 +152,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
     @EventHandler
     public void onPlayerKick(PlayerKickEvent event) {
         Player player = event.getPlayer();
+        if(!isTournamentEvent) return;
         if (player.getWorld().equals(tournamentWorld)) {
             player.setHealth(0);
             player.setKiller(player.getUniqueId() == currentMatchPlayer1 ? Bukkit.getPlayer(currentMatchPlayer2) : Bukkit.getPlayer(currentMatchPlayer1));
@@ -151,7 +163,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
     public void onPlayerDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
         UUID playerId = player.getUniqueId();
-
+        if(!isTournamentEvent) return;
         if (playerId.equals(currentMatchPlayer1) || playerId.equals(currentMatchPlayer2)) {
             UUID winner = playerId.equals(currentMatchPlayer1) ? currentMatchPlayer2 : currentMatchPlayer1;
             participants.add(winner);
@@ -162,7 +174,13 @@ public class TournamentEvent extends BaseEvent implements Listener {
 
     @Override
     public void onEventEnd() {
-        Bukkit.getServer().broadcastMessage(ChatColor.GOLD + "The tournament event is now over! Check announcements /discord");
+        getServer().broadcastMessage(ChatColor.GOLD + "The tournament event is now over! Check announcements /discord");
+        for (UUID player : playersLastLocation.keySet()) {
+            Player p = Bukkit.getPlayer(player);
+            if (p.getWorld().equals(tournamentWorld)) {
+                p.teleport(playersLastLocation.get(player));
+            }
+        }
         if (tournamentWorld != null) {
             Bukkit.unloadWorld(tournamentWorld, false);
         }
@@ -173,7 +191,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
 
     @Override
     public void doWarning() {
-        Bukkit.getServer().broadcastMessage(ChatColor.GOLD + "The 1v1 tournament event is happening in " + formatDuration(startTime) + "! /Register to participate on the day of the event! \n**Make sure to /register before the event starts or else you won't be able to play!**");
+        getServer().broadcastMessage(ChatColor.GOLD + "The 1v1 tournament event is happening in " + formatDuration(startTime) + "! /Register to participate on the day of the event! \n**Make sure to /register before the event starts or else you won't be able to play!**");
         //add discord notif
         sendDiscordMessage(eventRole + " The 1v1 tournament event is happening in " + formatDuration(startTime) + "! /Register on the day of the event to participate! \n**Make sure to /register before the event starts or else you won't be able to play!**", "");
         sendDiscordMessage("You will not lose stuff in this tournament event...", "");
