@@ -10,7 +10,6 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.variables.Loc.endFightSpawn;
 import static newamazingpvp.lifestealsmp.variables.Misc.endFightParticipants;
 import static newamazingpvp.lifestealsmp.variables.Misc.isEndFightEnabled;
 import static org.bukkit.Bukkit.getServer;
@@ -27,10 +26,6 @@ public class StartEndFight implements CommandExecutor {
                     .environment(World.Environment.THE_END));
         }
 
-        WorldBorder worldBorder = world.getWorldBorder();
-        worldBorder.setCenter(0, 0);
-        worldBorder.setSize(310);
-
         World finalWorld = world;
         new BukkitRunnable() {
             @Override
@@ -43,11 +38,16 @@ public class StartEndFight implements CommandExecutor {
                     return;
                 }
 
+                WorldBorder worldBorder = finalWorld.getWorldBorder();
+                worldBorder.setCenter(0, 0);
+                worldBorder.setSize(310);
+                finalWorld.setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true);
+
                 for (Player p : lifestealSmp.getServer().getOnlinePlayers()) {
-                    p.teleport(endFightSpawn);
+                    p.teleport(new Location(Bukkit. getWorld("end_fight_world"), 25.0, 80.0, 25.0));
                     p.setInvulnerable(true);
 
-                    getServer().getScheduler().runTaskLater(lifestealSmp, () -> p.setInvulnerable(false), 20 * 60);
+                    getServer().getScheduler().runTaskLater(lifestealSmp, () -> p.setInvulnerable(false), 1200);
 
                     p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "GET READY!" + ChatColor.YELLOW + " The end fight will be starting in 60 seconds!");
                     endFightParticipants.add(p.getName());
