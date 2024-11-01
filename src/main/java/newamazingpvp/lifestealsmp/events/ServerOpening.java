@@ -63,7 +63,7 @@ public class ServerOpening extends BaseEvent {
 
     @Override
     public void doWarning() {
-        sendDiscordNewsMessage(mcServer + " The new season will be released in " + formatDuration(startTime) + " exactly!!!", "1032411739351941120");
+        sendDiscordNewsMessage(mcServer + " The new **Lifesteal** season will be released in " + formatDuration(startTime) + " exactly!!!", "1032411739351941120");
         Bukkit.getWorld("world").setSpawnLocation(0, 320, 0);
     }
 
