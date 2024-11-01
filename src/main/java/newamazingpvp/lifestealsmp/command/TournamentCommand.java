@@ -10,6 +10,8 @@ import org.bukkit.entity.Player;
 
 import java.time.ZonedDateTime;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+
 public class TournamentCommand implements CommandExecutor {
     private TournamentEvent tournamentEvent;
 
@@ -23,8 +25,11 @@ public class TournamentCommand implements CommandExecutor {
         if (args[0].equalsIgnoreCase("start")) {
             if (tournamentEvent == null) {
                 tournamentEvent = new TournamentEvent(ZonedDateTime.now());
-                tournamentEvent.onEventStart();
-                sender.sendMessage(ChatColor.GREEN + "Tournament event started!!");
+                Bukkit.getPluginManager().registerEvents(tournamentEvent, lifestealSmp);
+                Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> {
+                    tournamentEvent.onEventStart();
+                    sender.sendMessage(ChatColor.GREEN + "Tournament event started!!");
+                }, 100L);
             } else {
                 sender.sendMessage(ChatColor.RED + "Tournament event is already running!");
             }

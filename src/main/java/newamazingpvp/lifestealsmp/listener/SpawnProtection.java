@@ -23,6 +23,7 @@ import static newamazingpvp.lifestealsmp.discord.DiscordListener.isVanished;
 import static newamazingpvp.lifestealsmp.utility.Utils.returnPlayerDamager;
 import static newamazingpvp.lifestealsmp.variables.Loc.spawnLoc1;
 import static newamazingpvp.lifestealsmp.variables.Loc.spawnLoc2;
+import static newamazingpvp.lifestealsmp.variables.Misc.isEndFightEnabled;
 
 
 public class SpawnProtection implements Listener {
@@ -44,7 +45,7 @@ public class SpawnProtection implements Listener {
                     damager.sendMessage(ChatColor.RED + "You cannot damage players within the vicinity spawn protection area, go away from spawn to be able to!");
                 }
             } else {
-                if (isWithinSpawnRadius(fake)) {
+                if (isWithinSpawnRadius(fake) && !isEndFightEnabled && !damaged.getWorld().getName().equals("end_fight_world") && !damaged.getWorld().getName().equals("tournament_world")) {
                     //if (isInCombat(damager) && isInCombat(damaged)) return;
                     event.setCancelled(true);
                     damager.sendMessage(ChatColor.RED + "You cannot damage players within the vicinity spawn protection area of PVP world (0,0), go +-100 x or z coords blocks away to be able to!");
@@ -130,7 +131,7 @@ public class SpawnProtection implements Listener {
 
     @EventHandler
     public void entityDamage(EntityDamageEvent e) {
-        if (e.getEntity() instanceof Player && isWithinSpawnRadius(e.getEntity().getLocation())) {
+        if (e.getEntity() instanceof Player && isWithinSpawnRadius(e.getEntity().getLocation()) && !isEndFightEnabled && !e.getEntity().getWorld().getName().equals("end_fight_world") && !e.getEntity().getWorld().getName().equals("tournament_world")) {
             e.setCancelled(true);
         }
     }
