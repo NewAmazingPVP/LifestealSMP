@@ -8,6 +8,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.awt.Color;
 import java.time.ZonedDateTime;
@@ -47,12 +48,22 @@ public class TournamentEvent extends BaseEvent implements Listener {
         sendDiscordMessage( mcServer + "The tournament event is starting soon! Please /register for event. \n**If not enough players are registered, the event will be cancelled!**", "");
         sendDiscordMessage( "You will not lose stuff in this tournament event...", "");
         //after creating the world, wait until its not null then do the things
-        Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> {
-            tournamentWorld.setGameRule(GameRule.DO_MOB_SPAWNING, false);
-            tournamentWorld.setGameRule(GameRule.KEEP_INVENTORY, true);
-            startTournament();
-            isTournamentEvent = true;
-        }, 200L);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (tournamentWorld == null || Bukkit.getWorld("tournament_world") == null) {
+                    return;
+                }
+                tournamentWorld.setGameRule(GameRule.DO_MOB_SPAWNING, false);
+                tournamentWorld.setGameRule(GameRule.KEEP_INVENTORY, true);
+                WorldBorder worldBorder = tournamentWorld.getWorldBorder();
+                worldBorder.setCenter(0, 0);
+                worldBorder.setSize(100);
+                startTournament();
+                isTournamentEvent = true;
+                this.cancel();
+        }
+        }.runTaskTimer(lifestealSmp, 0, 20);
     }
 
     private void createTournamentWorld() {
@@ -81,6 +92,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
                 //new branch testing
                 Bukkit.getServer().broadcastMessage(ChatColor.GOLD + player.getName() + " is the tournament champion!");
                 sendDiscordEmbedPlayer("Tournament Champion", Color.magenta, "", player.getName());
+                onEventEnd();
             }
         }
     }
@@ -106,7 +118,6 @@ public class TournamentEvent extends BaseEvent implements Listener {
             Location loc2 = new Location(tournamentWorld, 10, 100, 10);
             p1.teleport(loc1);
             p2.teleport(loc2);
-
             Bukkit.getServer().broadcastMessage(ChatColor.GOLD + p1.getName() + " vs " + p2.getName() + " - Fight!");
         } else {
             if (p1 != null) participants.add(player1);

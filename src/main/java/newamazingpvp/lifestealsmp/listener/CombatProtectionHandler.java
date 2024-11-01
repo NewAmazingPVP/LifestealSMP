@@ -53,7 +53,7 @@ public class CombatProtectionHandler implements Listener {
             damager.sendMessage(ChatColor.RED + "You cannot damage players during the grace period!");
             return;
         }
-        if (!isEndFightEnabled) {
+        if (!isEndFightEnabled && !damaged.getWorld().getName().equals("end_fight_world") && !damaged.getWorld().getName().equals("tournament_world")) {
             if (invincibilityPlayers.contains(damaged.getName())) {
                 event.setCancelled(true);
                 damager.sendMessage(ChatColor.RED + "This player was recently killed by a player and won't give heart if you kill them again.");
