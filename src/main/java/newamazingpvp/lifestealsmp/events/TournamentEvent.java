@@ -42,8 +42,10 @@ public class TournamentEvent extends BaseEvent implements Listener {
     @Override
     public void onEventStart() {
         Bukkit.getServer().broadcastMessage(ChatColor.GOLD + "The tournament event is starting soon! Check announcements /discord and /register for event");
+        Bukkit.getServer().broadcastMessage(ChatColor.GOLD + "You will not lose stuff in this tournament event");
         createTournamentWorld();
         sendDiscordMessage( mcServer + "The tournament event is starting soon! Please /register for event. \n**If not enough players are registered, the event will be cancelled!**", "");
+        sendDiscordMessage( "You will not lose stuff in this tournament event...", "");
         //after creating the world, wait until its not null then do the things
         Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> {
             tournamentWorld.setGameRule(GameRule.DO_MOB_SPAWNING, false);
@@ -162,7 +164,8 @@ public class TournamentEvent extends BaseEvent implements Listener {
     public void doWarning() {
         Bukkit.getServer().broadcastMessage(ChatColor.GOLD + "The 1v1 tournament event is happening in " + formatDuration(startTime) + "! /Register to participate on the day of the event! \n**Make sure to /register before the event starts or else you won't be able to play!**");
         //add discord notif
-        sendDiscordMessage(eventRole + " The 1v1 tournament event is happening in " + formatDuration(startTime) + "! /Register to participate on the day of the event! \n**Make sure to /register before the event starts or else you won't be able to play!**", "");
+        sendDiscordMessage(eventRole + " The 1v1 tournament event is happening in " + formatDuration(startTime) + "! /Register on the day of the event to participate! \n**Make sure to /register before the event starts or else you won't be able to play!**", "");
+        sendDiscordMessage("You will not lose stuff in this tournament event...", "");
     }
 
     @Override
