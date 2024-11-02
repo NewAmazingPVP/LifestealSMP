@@ -67,7 +67,7 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
         Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "UHC PvP event is going on! Do '/tpuhc' to be in the event and '/tpuhc back' to return!");
         isUhcEvent = true;
         if (Bukkit.getWorld("uhcpvp_world") == null) {
-            pvpWorld = Bukkit.createWorld(new WorldCreator("uhcpvp_world").type(WorldType.FLAT));
+            pvpWorld = Bukkit.createWorld(new WorldCreator("uhcpvp_world").type(WorldType.LARGE_BIOMES));
             pvpWorld.setGameRule(GameRule.DO_MOB_SPAWNING, false);
         }
     }
