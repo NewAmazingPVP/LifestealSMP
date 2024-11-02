@@ -10,6 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.time.ZonedDateTime;
 
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordMessage;
 import static newamazingpvp.lifestealsmp.events.TimeManager.SEASON_START_TIME;
 import static newamazingpvp.lifestealsmp.events.TimeManager.isTimePassed;
 import static newamazingpvp.lifestealsmp.events.TournamentEvent.isTournamentEvent;
@@ -26,6 +27,7 @@ public class TournamentRegister implements CommandExecutor {
                 if (sender instanceof Player player) {
                     registerPlayer(player);
                     player.sendMessage("Registered for 1v1 tournament event!");
+                    sendDiscordMessage(player.getName() + " has registered for the 1v1 tournament event!", "");
                     return true;
                 }
             } else {

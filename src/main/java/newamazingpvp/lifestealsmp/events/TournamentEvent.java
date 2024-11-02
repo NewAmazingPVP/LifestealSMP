@@ -8,6 +8,8 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.awt.Color;
@@ -67,7 +69,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
     }
 
     private void createTournamentWorld() {
-        tournamentWorld = Bukkit.createWorld(new WorldCreator("tournament_world"));
+        tournamentWorld = Bukkit.createWorld(new WorldCreator("tournament_world").type(WorldType.AMPLIFIED).environment(World.Environment.NORMAL));
     }
 
     private void startTournament() {
@@ -92,6 +94,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
                 //new branch testing
                 getServer().broadcastMessage(ChatColor.GOLD + player.getName() + " is the tournament champion!");
                 sendDiscordEmbedPlayer("Tournament Champion", Color.magenta, "", player.getName());
+                player.removePotionEffect(PotionEffectType.GLOWING);
                 onEventEnd();
             }
         }
@@ -122,7 +125,8 @@ public class TournamentEvent extends BaseEvent implements Listener {
             p2.setInvulnerable(true);
             p1.teleport(loc1);
             p2.teleport(loc2);
-
+            p1.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, Integer.MAX_VALUE, 1));
+            p2.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, Integer.MAX_VALUE, 1));
             getServer().getScheduler().runTaskLater(lifestealSmp, () -> {
                 p1.setInvulnerable(false);
                 p2.setInvulnerable(false);

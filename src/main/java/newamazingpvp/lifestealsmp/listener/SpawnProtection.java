@@ -54,10 +54,20 @@ public class SpawnProtection implements Listener {
         }
     }
 
+    public static boolean isWithinSpawnRadiusWorld(Location location) {
+        if (!location.getWorld().getName().equals("world")) {
+            return false;
+        }
+        //if (inLocation(location, spawnLoc1, spawnLoc2)) return true;
+        //return inLocation(location, signLoc1, signLoc2);
+        return inLocation(location, spawnLoc1, spawnLoc2);
+    }
+
+
 
     @EventHandler
     public void spawnBlockBreak(BlockBreakEvent event) {
-        if (isWithinSpawnRadius(event.getBlock().getLocation())) {
+        if (isWithinSpawnRadiusWorld(event.getBlock().getLocation())) {
             if (isVanished(event.getPlayer())) return;
             event.setCancelled(true);
             event.getPlayer().sendMessage(ChatColor.RED + "You cannot break blocks within the spawn area (0,0), go +-100 x or z coords blocks away to be able to");
@@ -66,7 +76,7 @@ public class SpawnProtection implements Listener {
 
     @EventHandler
     public void spawnBlockPlace(BlockPlaceEvent event) {
-        if (isWithinSpawnRadius(event.getBlock().getLocation())) {
+        if (isWithinSpawnRadiusWorld(event.getBlock().getLocation())) {
             if (isVanished(event.getPlayer())) return;
             event.setCancelled(true);
             event.getPlayer().sendMessage(ChatColor.RED + "You cannot place blocks within the spawn area (0,0), go +-100 x or z coords blocks away to be able to");
@@ -115,7 +125,7 @@ public class SpawnProtection implements Listener {
 
     @EventHandler
     public void spawnBlockPlace(PlayerInteractEvent event) {
-        if (isWithinSpawnRadius(event.getPlayer().getLocation())) {
+        if (isWithinSpawnRadiusWorld(event.getPlayer().getLocation())) {
             if (isVanished(event.getPlayer())) return;
             if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.WRITTEN_BOOK) return;
             /*if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.LAVA_BUCKET
@@ -131,7 +141,7 @@ public class SpawnProtection implements Listener {
 
     @EventHandler
     public void entityDamage(EntityDamageEvent e) {
-        if (e.getEntity() instanceof Player && isWithinSpawnRadius(e.getEntity().getLocation()) && !isEndFightEnabled && !e.getEntity().getWorld().getName().equals("end_fight_world") && !e.getEntity().getWorld().getName().equals("tournament_world")) {
+        if (e.getEntity() instanceof Player && isWithinSpawnRadiusWorld(e.getEntity().getLocation()) && !isEndFightEnabled && !e.getEntity().getWorld().getName().equals("end_fight_world") && !e.getEntity().getWorld().getName().equals("tournament_world")) {
             e.setCancelled(true);
         }
     }
@@ -145,14 +155,14 @@ public class SpawnProtection implements Listener {
 
     @EventHandler
     public void spawnTNT(TNTPrimeEvent e) {
-        if (isWithinSpawnRadius(e.getBlock().getLocation())) {
+        if (isWithinSpawnRadiusWorld(e.getBlock().getLocation())) {
             e.setCancelled(true);
         }
     }
 
     @EventHandler
     public void mobSpawnEvent(PreCreatureSpawnEvent e) {
-        if (isWithinSpawnRadius(e.getSpawnLocation())) {
+        if (isWithinSpawnRadiusWorld(e.getSpawnLocation())) {
             e.setCancelled(true);
         }
     }
@@ -178,14 +188,14 @@ public class SpawnProtection implements Listener {
 
     @EventHandler
     public void preventFireSpread(BlockSpreadEvent event) {
-        if (isWithinSpawnRadius(event.getBlock().getLocation())) {
+        if (isWithinSpawnRadiusWorld(event.getBlock().getLocation())) {
             event.setCancelled(true);
         }
     }
 
     @EventHandler
     public void onEntityExplode(EntityExplodeEvent event) {
-        if (isWithinSpawnRadius(event.getLocation())) {
+        if (isWithinSpawnRadiusWorld(event.getLocation())) {
             event.setCancelled(true);
             event.blockList().clear();
         }
@@ -193,7 +203,7 @@ public class SpawnProtection implements Listener {
 
     @EventHandler
     public void preventEndermanGriefing(EntityChangeBlockEvent event) {
-        if (isWithinSpawnRadius(event.getBlock().getLocation())) {
+        if (isWithinSpawnRadiusWorld(event.getBlock().getLocation())) {
             event.setCancelled(true);
         }
     }
