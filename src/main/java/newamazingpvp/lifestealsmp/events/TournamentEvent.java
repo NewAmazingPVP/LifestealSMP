@@ -47,7 +47,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
         getServer().broadcastMessage(ChatColor.GOLD + "The tournament event is starting soon! Check announcements /discord and /register for event");
         getServer().broadcastMessage(ChatColor.GOLD + "You will not lose stuff in this tournament event");
         createTournamentWorld();
-        sendDiscordMessage( mcServer + "The tournament event is starting soon! Please /register for event. \n**If not enough players are registered, the event will be cancelled!**", "");
+        sendDiscordMessage( mcServer + " The tournament event is starting soon! Please /register for event. \n**If not enough players are registered, the event will be cancelled!**", "");
         sendDiscordMessage( "You will not lose stuff in this tournament event...", "");
         //after creating the world, wait until its not null then do the things
         new BukkitRunnable() {
