@@ -21,7 +21,7 @@ public class NormalDifficulty extends BaseEvent {
         for (World w : Bukkit.getWorlds()) {
             w.setDifficulty(Difficulty.NORMAL);
         }
-        sendDiscordNewsMessage(mcServer + "Server is now set to normal difficulty.", "1032411739351941120");
+        sendDiscordNewsMessage(mcServer + " Server is now set to normal difficulty.", "1032411739351941120");
         Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Server is now normal difficulty. Check /discord announcements");
     }
 

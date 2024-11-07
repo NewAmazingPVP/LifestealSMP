@@ -22,7 +22,7 @@ public class InsaneTrackingDay extends BaseEvent {
     @Override
     public void onEventStart() {
         Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Insane /track day happening, Check announcements /discord");
-        sendDiscordNewsMessage(eventRole + "/track will now show exact blocks away and update with no delay, for a day. **It is not advisable to stay at your bases today for that reason....**", "1032411739351941120");
+        sendDiscordNewsMessage(eventRole + " /track will now show exact blocks away and update with no delay, for a day. **It is not advisable to stay at your bases today for that reason....**", "1032411739351941120");
         trackingDist = 1;
         delayDuration = timeDelay;
         resetCompass();

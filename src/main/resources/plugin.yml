@@ -169,9 +169,9 @@ commands:
     permission: lifestealSMP.admin
     default: op
   betterban:
-    description: Lets you ban someone with custom ban message
+    description: Lets you ban someone even when offline (don't input ban reason, automatically does it, just do /betterban <player>)
     usage: /betterban <player>
-    permission: lifestealSMP.admin
+    permission: lifestealSMP.mod
     default: op
   unbanall:
     description: Lets you unban everybody (don't use this unless you know what you are doing)
