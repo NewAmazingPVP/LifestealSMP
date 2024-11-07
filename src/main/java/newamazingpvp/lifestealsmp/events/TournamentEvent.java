@@ -197,8 +197,8 @@ public class TournamentEvent extends BaseEvent implements Listener {
     public void doWarning() {
         getServer().broadcastMessage(ChatColor.GOLD + "The 1v1 tournament event is happening in " + formatDuration(startTime) + "! /Register to participate on the day of the event! \n**Make sure to /register before the event starts or else you won't be able to play!**");
         //add discord notif
-        sendDiscordMessage(eventRole + " The 1v1 tournament event is happening in " + formatDuration(startTime) + "! /Register on the day of the event to participate! \n**Make sure to /register before the event starts or else you won't be able to play!**", "");
-        sendDiscordMessage("You will not lose stuff in this tournament event...", "");
+        sendDiscordMessage(eventRole + " The 1v1 tournament event is happening in " + formatDuration(startTime) + "! /Register on the day of the event to participate! \n**Make sure to /register before the event starts or else you won't be able to play!**", "1032411739351941120");
+        sendDiscordMessage("You will not lose stuff in this tournament event...", "1032411739351941120");
     }
 
     @Override

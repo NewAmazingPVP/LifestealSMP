@@ -27,7 +27,7 @@ public class EventsHandler implements Listener {
         ZonedDateTime firstWeek = SEASON_START_TIME.plusWeeks(1);
         //Bukkit.getPluginManager().registerEvents(pvp, lifestealSmp);
         //events.add(pvp);
-        TournamentEvent tournament = new TournamentEvent(firstWeek);
+        TournamentEvent tournament = new TournamentEvent(SEASON_START_TIME.plusWeeks(1));
         Bukkit.getPluginManager().registerEvents(tournament, lifestealSmp);
         events.add(tournament);
         events.add(new NoTrackingDay(CUSTOM_ITEMS_AND_RUNES.plusDays(1)));
