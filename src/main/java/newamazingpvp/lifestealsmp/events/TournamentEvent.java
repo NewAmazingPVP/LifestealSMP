@@ -47,8 +47,8 @@ public class TournamentEvent extends BaseEvent implements Listener {
         getServer().broadcastMessage(ChatColor.GOLD + "The tournament event is starting soon! Check announcements /discord and /register for event");
         getServer().broadcastMessage(ChatColor.GOLD + "You will not lose stuff in this tournament event");
         createTournamentWorld();
-        sendDiscordMessage( mcServer + " The tournament event is starting soon! Please /register for event. \n**If not enough players are registered, the event will be cancelled!**", "");
-        sendDiscordMessage( "You will not lose stuff in this tournament event...", "");
+        sendDiscordNewsMessage( mcServer + " The tournament event is starting soon! Please /register for event. \n**If not enough players are registered, the event will be cancelled!**", "1032411739351941120");
+        sendDiscordNewsMessage( "You will not lose stuff in this tournament event...", "1032411739351941120");
         //after creating the world, wait until its not null then do the things
         new BukkitRunnable() {
             @Override
@@ -189,7 +189,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
             Bukkit.unloadWorld(tournamentWorld, false);
         }
         isTournamentEvent = false;
-        sendDiscordMessage("The tournament event is now over! Congratulations to the winners!", "");
+        sendDiscordNewsMessage("The tournament event is now over! Congratulations to the winners!", "1032411739351941120");
     }
 
 
@@ -197,8 +197,8 @@ public class TournamentEvent extends BaseEvent implements Listener {
     public void doWarning() {
         getServer().broadcastMessage(ChatColor.GOLD + "The 1v1 tournament event is happening in " + formatDuration(startTime) + "! /Register to participate on the day of the event! \n**Make sure to /register before the event starts or else you won't be able to play!**");
         //add discord notif
-        sendDiscordMessage(eventRole + " The 1v1 tournament event is happening in " + formatDuration(startTime) + "! /Register on the day of the event to participate! \n**Make sure to /register before the event starts or else you won't be able to play!**", "1032411739351941120");
-        sendDiscordMessage("You will not lose stuff in this tournament event...", "1032411739351941120");
+        sendDiscordNewsMessage(eventRole + " The 1v1 tournament event is happening in " + formatDuration(startTime) + "! /Register on the day of the event to participate! \n**Make sure to /register before the event starts or else you won't be able to play!**", "1032411739351941120");
+        sendDiscordNewsMessage("You will not lose stuff in this tournament event...", "1032411739351941120");
     }
 
     @Override

@@ -67,7 +67,11 @@ public class DiscordBot {
     public static void sendDiscordNewsMessage(String msg, String channelID) {
         if (jda == null) return;
         if (channelID.isEmpty()) {
-            channel.sendMessage(msg);
+            //channel.sendMessage(msg);
+            NewsChannel tempChannel = jda.getNewsChannelById("1032411739351941120");
+            if (tempChannel != null) {
+                tempChannel.sendMessage(msg).queue();
+            }
         } else {
             NewsChannel tempChannel = jda.getNewsChannelById(channelID);
             if (tempChannel != null) {
@@ -98,7 +102,11 @@ public class DiscordBot {
         eb.setTitle(msg);
         eb.setColor(c);
         if (channelID.isEmpty()) {
-            channel.sendMessageEmbeds(eb.build()).queue();
+            //channel.sendMessageEmbeds(eb.build()).queue();
+            NewsChannel tempChannel = jda.getNewsChannelById("1032411739351941120");
+            if (tempChannel != null) {
+                tempChannel.sendMessageEmbeds(eb.build()).queue();
+            }
         } else {
             NewsChannel tempChannel = jda.getNewsChannelById(channelID);
             if (tempChannel != null) {
@@ -146,7 +154,11 @@ public class DiscordBot {
         eb.setAuthor(msg, "https://www.nappixel.tk/", p);
         eb.setColor(c);
         if (channelID.isEmpty()) {
-            channel.sendMessageEmbeds(eb.build()).queue();
+            //channel.sendMessageEmbeds(eb.build()).queue();
+            NewsChannel tempChannel = jda.getNewsChannelById("1032411739351941120");
+            if (tempChannel != null) {
+                tempChannel.sendMessageEmbeds(eb.build()).queue();
+            }
         } else {
             NewsChannel tempChannel = jda.getNewsChannelById(channelID);
             if (tempChannel != null) {
