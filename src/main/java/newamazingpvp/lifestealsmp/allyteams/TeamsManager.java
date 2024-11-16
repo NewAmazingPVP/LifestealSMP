@@ -120,6 +120,7 @@ public class TeamsManager {
             p.sendMessage(ChatColor.RED + "Team with this name already exists!");
         } else {
             teamInvites.put(p.getName(), team);
+            team.setAllowFriendlyFire(false);
             joinTeam(p, team.getName());
             p.sendMessage(ChatColor.DARK_PURPLE + "You have created the team named " + team.getName() + "! Invite others to your team doing /team invite [username]");
         }
