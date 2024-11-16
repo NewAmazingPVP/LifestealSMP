@@ -158,6 +158,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("nonvanillamechanics").setExecutor(new NonVanillaMechanics());
         getCommand("showcustomtoast").setExecutor(new ShowCustomToastCMD());
         getCommand("tournament").setExecutor(new TournamentCommand());
+        getCommand("register").setExecutor(new TournamentRegister());
         getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new AntiBurn(), this);
         getServer().getPluginManager().registerEvents(new PlayerMsg(), this);
