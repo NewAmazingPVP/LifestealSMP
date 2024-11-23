@@ -73,7 +73,7 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
     }
 
     public static void teleportToPvPWorld(Player player) {
-        if (player.getWorld().getName().equals("uhcpvp_world")) {
+        if (player.getWorld().getName().equalsIgnoreCase("uhcpvp_world")) {
             player.sendMessage("You are already in PVP world!");
             return;
         }
@@ -83,7 +83,7 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
         }
         playerOriginalWorlds.put(player, player.getLocation());
         player.teleport(pvpWorld.getSpawnLocation());
-        player.sendMessage(ChatColor.GREEN + "You have been teleported to the PvP world!");
+        player.sendMessage(ChatColor.GREEN + "You have been teleported to the PvP world! You can go back by doing /tpuhc back");
         Bukkit.broadcastMessage(ChatColor.AQUA + player.getName() + " teleported to uhc pvp world! If you want to fight them there do /tpuhc!");
     }
 
@@ -92,6 +92,9 @@ public class UHCPvPEvent extends BaseEvent implements Listener {
             player.teleport(playerOriginalWorlds.get(player));
             playerOriginalWorlds.remove(player);
             player.sendMessage(ChatColor.GREEN + "You have been teleported back to your original world!");
+        } else if (player.getWorld().getName().equalsIgnoreCase("uhcpvp_world")) {
+            player.teleport(Bukkit.getWorld("world").getSpawnLocation());
+            player.sendMessage(ChatColor.GREEN + "You have been teleported back to the overworld spawn since unfortunately your original world location was lost.");
         } else {
             player.sendMessage(ChatColor.RED + "You have not used /tpuhc to pvp world!");
         }
