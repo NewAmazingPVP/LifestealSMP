@@ -181,16 +181,23 @@ public class TournamentEvent extends BaseEvent implements Listener {
         getServer().broadcastMessage(ChatColor.GOLD + "The tournament event is now over! Check announcements /discord");
         for (UUID player : playersLastLocation.keySet()) {
             Player p = Bukkit.getPlayer(player);
-            if (p.getWorld().equals(tournamentWorld)) {
+            if (p != null && p.getWorld().equals(tournamentWorld)) {
                 p.teleport(playersLastLocation.get(player));
             }
         }
         if (tournamentWorld != null) {
             Bukkit.unloadWorld(tournamentWorld, false);
         }
+        
+        participants.clear();
+        playersLastLocation.clear();
+        currentMatchPlayer1 = null;
+        currentMatchPlayer2 = null;
         isTournamentEvent = false;
+
         sendDiscordNewsMessage("The tournament event is now over! Congratulations to the winners!", "1032411739351941120");
     }
+
 
 
     @Override
