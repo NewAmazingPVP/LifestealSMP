@@ -188,7 +188,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
         if (tournamentWorld != null) {
             Bukkit.unloadWorld(tournamentWorld, false);
         }
-        
+
         participants.clear();
         playersLastLocation.clear();
         currentMatchPlayer1 = null;
