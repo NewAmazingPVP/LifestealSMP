@@ -20,7 +20,7 @@ public class TrialOmenRune extends AbstractRune {
         super(name,
                 mob,
                 1.0 / 150,
-                ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier()), effect);
+                ChatColor.LIGHT_PURPLE + "Grants permanent random duration " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier()), effect);
     }
 
     static class II extends AbstractRune {
@@ -28,7 +28,7 @@ public class TrialOmenRune extends AbstractRune {
             super(name.append(deserialize(" II")),
                     mob,
                     1.0 / 300,
-                    ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectII.getType().getKey().getKey()) + " " + formatAmplifier(effectII.getAmplifier()), effectII);
+                    ChatColor.LIGHT_PURPLE + "Grants permanent random duration " + formatEffectKey(effectII.getType().getKey().getKey()) + " " + formatAmplifier(effectII.getAmplifier()), effectII);
         }
     }
 
@@ -37,7 +37,7 @@ public class TrialOmenRune extends AbstractRune {
             super(name.append(deserialize(" III")),
                     mob,
                     1.0 / 450,
-                    ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectIII.getType().getKey().getKey()) + " " + formatAmplifier(effectIII.getAmplifier()), effectIII);
+                    ChatColor.LIGHT_PURPLE + "Grants permanent random duration " + formatEffectKey(effectIII.getType().getKey().getKey()) + " " + formatAmplifier(effectIII.getAmplifier()), effectIII);
         }
     }
 
@@ -46,7 +46,7 @@ public class TrialOmenRune extends AbstractRune {
             super(name.append(deserialize(" IV")),
                     mob,
                     1.0 / 600,
-                    ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectIV.getType().getKey().getKey()) + " " + formatAmplifier(effectIV.getAmplifier()), effectIV);
+                    ChatColor.LIGHT_PURPLE + "Grants permanent random duration " + formatEffectKey(effectIV.getType().getKey().getKey()) + " " + formatAmplifier(effectIV.getAmplifier()), effectIV);
         }
     }
 
@@ -55,7 +55,7 @@ public class TrialOmenRune extends AbstractRune {
             super(name.append(deserialize(" V")),
                     mob,
                     1.0 / 750,
-                    ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectV.getType().getKey().getKey()) + " " + formatAmplifier(effectV.getAmplifier()), effectV);
+                    ChatColor.LIGHT_PURPLE + "Grants permanent random duration " + formatEffectKey(effectV.getType().getKey().getKey()) + " " + formatAmplifier(effectV.getAmplifier()), effectV);
         }
     }
 }

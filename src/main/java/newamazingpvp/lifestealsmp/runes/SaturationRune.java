@@ -11,7 +11,7 @@ public class SaturationRune extends AbstractRune {
     private static final Component name = runeGradient("Saturation Rune");
     private static final EntityType mob = EntityType.HOGLIN;
     private static final PotionEffect effect = new PotionEffect(PotionEffectType.SATURATION, 4, 0);
-    private static final String lore = ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier());
+    private static final String lore = ChatColor.LIGHT_PURPLE + "Grants permanent random duration " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier());
 
     public SaturationRune() {
         super(name, mob, 1.0 / 300, lore, effect);

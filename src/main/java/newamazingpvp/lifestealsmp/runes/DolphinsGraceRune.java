@@ -11,7 +11,7 @@ public class DolphinsGraceRune extends AbstractRune {
     private static final Component name = runeGradient("Dolphins Grace Rune");
     private static final EntityType mob = EntityType.GUARDIAN;
     private static final PotionEffect effect = new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 60, 0);
-    private static final String lore = ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier());
+    private static final String lore = ChatColor.LIGHT_PURPLE + "Grants permanent random duration " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier());
 
     public DolphinsGraceRune() {
         super(name, mob, 1.0 / 100, lore, effect);
