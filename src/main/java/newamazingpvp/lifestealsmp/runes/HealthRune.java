@@ -13,7 +13,7 @@ public class HealthRune extends AbstractRune {
     private static final PotionEffect effect = new PotionEffect(PotionEffectType.INSTANT_HEALTH, 1, 0);
     private static final PotionEffect effectII = new PotionEffect(PotionEffectType.INSTANT_HEALTH, 1, 1);
 
-    private static final String lore = ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier());
+    private static final String lore = ChatColor.LIGHT_PURPLE + "Grants permanent random duration " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier());
 
     public HealthRune() {
         super(name,
@@ -28,7 +28,7 @@ public class HealthRune extends AbstractRune {
             super(name.append(deserialize(" II")),
                     mob,
                     1.0 / 500,
-                    ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectII.getType().getKey().getKey()) + " " + formatAmplifier(effectII.getAmplifier()),
+                    ChatColor.LIGHT_PURPLE + "Grants permanent random duration " + formatEffectKey(effectII.getType().getKey().getKey()) + " " + formatAmplifier(effectII.getAmplifier()),
                     effectII);
         }
     }

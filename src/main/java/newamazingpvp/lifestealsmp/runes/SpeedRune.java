@@ -13,7 +13,7 @@ public class SpeedRune extends AbstractRune {
     private static final PotionEffect effect = new PotionEffect(PotionEffectType.SPEED, 200, 0);
     private static final PotionEffect effectII = new PotionEffect(PotionEffectType.SPEED, 200, 1);
 
-    private static final String lore = ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier());
+    private static final String lore = ChatColor.LIGHT_PURPLE + "Grants permanent random duration " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier());
 
     public SpeedRune() {
         super(name,
@@ -28,7 +28,7 @@ public class SpeedRune extends AbstractRune {
             super(name.append(deserialize(" II")),
                     mob,
                     1.0 / 1000,
-                    ChatColor.LIGHT_PURPLE + "Grants permanent " + formatEffectKey(effectII.getType().getKey().getKey()) + " " + formatAmplifier(effectII.getAmplifier()),
+                    ChatColor.LIGHT_PURPLE + "Grants permanent random duration " + formatEffectKey(effectII.getType().getKey().getKey()) + " " + formatAmplifier(effectII.getAmplifier()),
                     effectII);
         }
     }
