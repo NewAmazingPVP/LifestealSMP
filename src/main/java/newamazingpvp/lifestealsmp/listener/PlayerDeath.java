@@ -32,11 +32,16 @@ public class PlayerDeath implements Listener {
         }*/
         Player Gamer = e.getEntity();
         int[] pos = {Gamer.getLocation().getBlockX(), Gamer.getLocation().getBlockY(), Gamer.getLocation().getBlockZ()};
-        Gamer.sendMessage(ChatColor.BOLD + "" + ChatColor.GOLD +
-                "You Died At:" +
-                "  X:" + pos[0] +
-                "  Y:" + pos[1] +
-                "  Z:" + pos[2] + " in " + Gamer.getLocation().getWorld().toString());
+        String worldName = Gamer.getLocation().getWorld().getName();
+
+        worldName = switch (worldName) {
+            case "world" -> "Overworld";
+            case "world_nether" -> "Nether";
+            case "world_the_end" -> "End";
+            default -> worldName;
+        };
+
+        Gamer.sendMessage(ChatColor.BOLD + "" + ChatColor.GOLD + "You Died At:" + " X:" + pos[0] + " Y:" + pos[1] + " Z:" + pos[2] + " in " + worldName);
         /*ByteArrayDataOutput out = ByteStreams.newDataOutput();
         out.writeUTF("Server");
 

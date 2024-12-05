@@ -27,6 +27,7 @@ import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.discord.DiscordListener.isVanished;
+import static org.bukkit.Bukkit.getScheduler;
 import static org.bukkit.Bukkit.getServer;
 
 public class Compass implements CommandExecutor, Listener {
@@ -40,6 +41,7 @@ public class Compass implements CommandExecutor, Listener {
     public static boolean noTrackingDay = false;
     public static double delayDuration = 45;
     public static BukkitTask compassTask;
+    private static final CooldownManager insaneTrackingMessage = new CooldownManager(30);
 
     @EventHandler
     public void onPlayerPortalEvent(PlayerPortalEvent event) {
@@ -188,8 +190,21 @@ public class Compass implements CommandExecutor, Listener {
             double expectedValue = 1.0 / 20;
             double epsilon = 1e-10;
             if (Math.abs(delayDuration - expectedValue) < epsilon) {
-                Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_RED + "Some player has started tracking /track. Be careful today is insane tracking day event so therefore players will find you very quickly. Keep an eye out by /track-ing everyone to see their distance");
+                if (!insaneTrackingMessage.isOnCooldown()) {
+                    Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_RED +
+                            "Some player has started tracking /track. Be careful today is insane tracking day event so therefore players will find you very quickly. Keep an eye out by /track-ing everyone to see their distance");
+                    insaneTrackingMessage.setCooldown(30);
+                } else {
+                    Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> {
+                        if (!insaneTrackingMessage.isOnCooldown()) {
+                            Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_RED +
+                                    "Some player has started tracking /track. Be careful today is insane tracking day event so therefore players will find you very quickly. Keep an eye out by /track-ing everyone to see their distance");
+                            insaneTrackingMessage.setCooldown(30);
+                        }
+                    }, (insaneTrackingMessage.getRemainingSeconds() + 2) * 20L);
+                }
             }
+
             //player.sendMessage(ChatColor.GREEN + "Tracking quadrant of " + target.getName() + " every " + delayDuration + " seconds");
             //player.sendMessage(ChatColor.GREEN + "Compass is now pointing towards " + target.getName());
             //target.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[WARNING] You are being tracked!");
