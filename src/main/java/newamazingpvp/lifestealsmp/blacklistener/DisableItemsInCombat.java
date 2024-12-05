@@ -5,10 +5,12 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.entity.EntityToggleGlideEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerRiptideEvent;
+import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.inventory.ItemStack;
 
 import static newamazingpvp.lifestealsmp.game.CombatLog.isInCombat;
@@ -27,11 +29,12 @@ public class DisableItemsInCombat implements Listener {
                 }
                 ItemStack chestplate = player.getInventory().getChestplate();
                 if (chestplate != null && chestplate.getType() == Material.ELYTRA) {
-                     if (player.isFlying() || player.isGliding()) {
-                        event.setCancelled(true);
+                     if (player.isGliding()) {
+                         player.setGliding(false);
                     }
                 }
             }
         }
+
     }
 }
