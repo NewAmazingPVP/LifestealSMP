@@ -67,9 +67,12 @@ import newamazingpvp.lifestealsmp.unused.visuals.toasts.ToastTPS;
 import newamazingpvp.lifestealsmp.utility.Metrics;
 import newamazingpvp.lifestealsmp.utility.Utils;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -77,6 +80,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlacklist;
 import static newamazingpvp.lifestealsmp.customitems.utils.DevRecipes.registerCustomRecipesDev;
@@ -88,6 +93,7 @@ import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
 import static newamazingpvp.lifestealsmp.game.CombatLog.cancelCombatData;
 import static newamazingpvp.lifestealsmp.game.CombatLog.removeEnemies;
 import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
+import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 import static newamazingpvp.lifestealsmp.utility.Utils.startTPSTracking;
 
 public final class LifestealSMP extends JavaPlugin implements Listener, PluginMessageListener {
@@ -408,6 +414,23 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
                         }
                         essentials.getUser(p.getUniqueId()).setAfkMessage(essentials.getUser(p.getUniqueId()).getNickname().split(" ")[0]);
                     }
+                    if (p.getName().startsWith(".")) {
+                        List<ItemStack> toRemove = new ArrayList<>();
+                        for (ItemStack t : p.getInventory().getContents()) {
+                            if (t != null && t.getType().toString().toLowerCase().contains("_planks") && !t.getType().toString().toLowerCase().contains("dark_oak")) {
+                                addItemOrDrop(p, new ItemStack(Material.DARK_OAK_PLANKS, t.getAmount()), "Planks dropped!");
+                                toRemove.add(t);
+                            }
+                            if (t != null && t.getType().toString().toLowerCase().contains("_log") && !t.getType().toString().toLowerCase().contains("dark_oak")) {
+                                addItemOrDrop(p, new ItemStack(Material.DARK_OAK_LOG, t.getAmount()), "Logs dropped!");
+                                toRemove.add(t);
+                            }
+                        }
+                        for (ItemStack t : toRemove) {
+                            p.getInventory().remove(t);
+                        }
+                    }
+
                 }
 
             }
