@@ -1,17 +1,20 @@
 package newamazingpvp.lifestealsmp.listener;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.*;
 import static newamazingpvp.lifestealsmp.discord.DiscordListener.isVanished;
 import static newamazingpvp.lifestealsmp.utility.Admin.admins;
+import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 import static newamazingpvp.lifestealsmp.utility.Utils.setPrefix;
 import static org.bukkit.Bukkit.getServer;
 
@@ -68,6 +71,8 @@ public class JoinLeave implements Listener {
             getServer().getScheduler().runTaskLater(lifestealSmp, () -> setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW), 120);
             getServer().getScheduler().runTaskLater(lifestealSmp, prefix::cancel, 200);
             getServer().dispatchCommand(player, "guide");
+            addItemOrDrop(player, new ItemStack(Material.DARK_OAK_LOG, 16), "");
+            addItemOrDrop(player, new ItemStack(Material.COOKED_BEEF, 8), "");
             //player.teleport(lobby);
         } else {
             if (player.getName().startsWith(".")) {
