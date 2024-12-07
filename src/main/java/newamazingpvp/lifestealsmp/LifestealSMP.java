@@ -352,7 +352,35 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
                     if (isSmp) {
                         config.addFilter(logItem -> {
                             String message = logItem.getMessage();
-                            return message.contains("not pass event");
+                            return message.toLowerCase().contains("not pass event");
+                        });
+                        config.addFilter(logItem -> {
+                            String message = logItem.getMessage();
+                            return message.toLowerCase().contains("exception");
+                        });
+                        config.addFilter(logItem -> {
+                            String message = logItem.getMessage();
+                            return message.toLowerCase().contains("java.lang.IllegalStateException");
+                        });
+                        config.addFilter(logItem -> {
+                            String message = logItem.getMessage();
+                            return message.toLowerCase().contains("failed to");
+                        });
+                        config.addFilter(logItem -> {
+                            String message = logItem.getMessage();
+                            return message.toLowerCase().contains("packetevents");
+                        });
+                        config.addFilter(logItem -> {
+                            String message = logItem.getMessage();
+                            return message.toLowerCase().contains("badpackets");
+                        });
+                        config.addFilter(logItem -> {
+                            String message = logItem.getMessage();
+                            return message.toLowerCase().contains("java.lang.thread.run");
+                        });
+                        config.addFilter(logItem -> {
+                            String message = logItem.getMessage();
+                            return message.contains(".java:");
                         });
                     }
                     config.mapLoggerName("net.dv8tion.jda", "JDA");
