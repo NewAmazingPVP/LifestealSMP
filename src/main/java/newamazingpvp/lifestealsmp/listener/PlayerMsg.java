@@ -2,16 +2,19 @@ package newamazingpvp.lifestealsmp.listener;
 
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.inventory.ItemStack;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.OptionalDouble;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 import static org.bukkit.Bukkit.getServer;
 
 public class PlayerMsg implements Listener {
@@ -47,6 +50,13 @@ public class PlayerMsg implements Listener {
 
         if (containsAny(message, "runes", "rune")) {
             broadcastMessage(ChatColor.AQUA + "Do /runes to learn about runes!", player);
+        }
+
+        if (containsAny(message, "crafting table")) {
+            if (player.getName().startsWith(".")) {
+                player.sendMessage("There is a current bedrock bug that prevents crafting crafting tables. You have been provided crafting table for that reason");
+                addItemOrDrop(player, ItemStack.of(Material.CRAFTING_TABLE), "You can't hold more items. Dropping crafting table on the ground.");
+            }
         }
 
         /*if (containsAny(message, "cap", "limit")) {

@@ -398,6 +398,20 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getLogger().severe("EssentialsX is not installed on this server.");
         }
 
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                for (Player p : Bukkit.getOnlinePlayers()) {
+                    if (essentials.getUser(p.getUniqueId()).getNickname() != null) {
+                        if (!essentials.getUser(p.getUniqueId()).isAfk()) {
+                            essentials.getUser(p.getUniqueId()).setAfk(true);
+                        }
+                        essentials.getUser(p.getUniqueId()).setAfkMessage(essentials.getUser(p.getUniqueId()).getNickname().split(" ")[0]);
+                    }
+                }
+
+            }
+        }.runTaskTimer(this, 200L, 100L);
 
     }
 
