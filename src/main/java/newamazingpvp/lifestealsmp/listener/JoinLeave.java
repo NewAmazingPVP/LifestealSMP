@@ -1,8 +1,6 @@
 package newamazingpvp.lifestealsmp.listener;
 
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -71,9 +69,11 @@ public class JoinLeave implements Listener {
             getServer().getScheduler().runTaskLater(lifestealSmp, () -> setPrefix(player, ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "Player" + ChatColor.DARK_GRAY + "]" + ChatColor.YELLOW), 120);
             getServer().getScheduler().runTaskLater(lifestealSmp, prefix::cancel, 200);
             getServer().dispatchCommand(player, "guide");
+            //below is new season stuff
             addItemOrDrop(player, new ItemStack(Material.DARK_OAK_LOG, 16), "");
             addItemOrDrop(player, new ItemStack(Material.COOKED_BEEF, 8), "");
             //player.teleport(lobby);
+            player.teleport(new Location(Bukkit.getWorld("world"), 6, 75, -26));
         } else {
             if (player.getName().startsWith(".")) {
                 player.setInvulnerable(true);
