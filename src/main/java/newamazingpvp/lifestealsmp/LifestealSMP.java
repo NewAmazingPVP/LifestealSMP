@@ -399,43 +399,10 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             }
         }.runTaskLaterAsynchronously(this, 0L);
         essentials = (Essentials) getServer().getPluginManager().getPlugin("Essentials");
-
+        randomRunnable();
         if (essentials == null) {
             getLogger().severe("EssentialsX is not installed on this server.");
         }
-
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                for (Player p : Bukkit.getOnlinePlayers()) {
-                    if (essentials.getUser(p.getUniqueId()).getNickname() != null) {
-                        if (!essentials.getUser(p.getUniqueId()).isAfk()) {
-                            essentials.getUser(p.getUniqueId()).setAfk(true);
-                        }
-                        essentials.getUser(p.getUniqueId()).setAfkMessage(essentials.getUser(p.getUniqueId()).getNickname().split(" ")[0]);
-                    }
-                    if (p.getName().startsWith(".")) {
-                        List<ItemStack> toRemove = new ArrayList<>();
-                        for (ItemStack t : p.getInventory().getContents()) {
-                            if (t != null && t.getType().toString().toLowerCase().contains("_planks") && !t.getType().toString().toLowerCase().contains("dark_oak")) {
-                                addItemOrDrop(p, new ItemStack(Material.DARK_OAK_PLANKS, t.getAmount()), "Planks dropped!");
-                                toRemove.add(t);
-                            }
-                            if (t != null && t.getType().toString().toLowerCase().contains("_log") && !t.getType().toString().toLowerCase().contains("dark_oak")) {
-                                addItemOrDrop(p, new ItemStack(Material.DARK_OAK_LOG, t.getAmount()), "Logs dropped!");
-                                toRemove.add(t);
-                            }
-                        }
-                        for (ItemStack t : toRemove) {
-                            p.getInventory().remove(t);
-                        }
-                    }
-
-                }
-
-            }
-        }.runTaskTimer(this, 200L, 100L);
-
     }
 
     @Override
@@ -498,5 +465,39 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
     }
 
+    public void randomRunnable(){
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                for (Player p : Bukkit.getOnlinePlayers()) {
+                    if (essentials.getUser(p.getUniqueId()).getNickname() != null) {
+                        if (!essentials.getUser(p.getUniqueId()).isAfk()) {
+                            essentials.getUser(p.getUniqueId()).setAfk(true);
+                        }
+                        essentials.getUser(p.getUniqueId()).setAfkMessage(essentials.getUser(p.getUniqueId()).getNickname().split(" ")[0]);
+                    }
+                    //geyser 1.21.4 update bug fixed with dark oaks
+                    /*if (p.getName().startsWith(".")) {
+                        List<ItemStack> toRemove = new ArrayList<>();
+                        for (ItemStack t : p.getInventory().getContents()) {
+                            if (t != null && t.getType().toString().toLowerCase().contains("_planks") && !t.getType().toString().toLowerCase().contains("dark_oak")) {
+                                addItemOrDrop(p, new ItemStack(Material.DARK_OAK_PLANKS, t.getAmount()), "Planks dropped!");
+                                toRemove.add(t);
+                            }
+                            if (t != null && t.getType().toString().toLowerCase().contains("_log") && !t.getType().toString().toLowerCase().contains("dark_oak")) {
+                                addItemOrDrop(p, new ItemStack(Material.DARK_OAK_LOG, t.getAmount()), "Logs dropped!");
+                                toRemove.add(t);
+                            }
+                        }
+                        for (ItemStack t : toRemove) {
+                            p.getInventory().remove(t);
+                        }
+                    }*/
+
+                }
+
+            }
+        }.runTaskTimer(this, 200L, 100L);
+    }
 
 }

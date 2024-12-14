@@ -20,7 +20,7 @@ public class SpawnSnow {
         int xMin = -100, xMax = 100;
         int zMin = -100, zMax = 100;
 
-        new BukkitRunnable() {
+        /*new BukkitRunnable() {
             @Override
             public void run() {
                 for (Player player : Bukkit.getOnlinePlayers()) {
@@ -32,7 +32,7 @@ public class SpawnSnow {
                     }
                 }
             }
-        }.runTaskTimer(plugin, 0L, 10L);
+        }.runTaskTimer(plugin, 0L, 10L);*/
     }
 
     private boolean isInRegion(Location loc, int xMin, int xMax, int zMin, int zMax) {
