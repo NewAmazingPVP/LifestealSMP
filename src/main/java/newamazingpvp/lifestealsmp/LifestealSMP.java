@@ -142,7 +142,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("discord").setExecutor(new DiscordLink());
         getCommand("help").setExecutor(new HelpCommand());
         getCommand("guide").setExecutor(new GuideCommand());
-        getCommand("givecustomitem").setExecutor(new GiveCustomItem());
+        //getCommand("givecustomitem").setExecutor(new GiveCustomItem());
         getCommand("givecustomitem").setTabCompleter(new GiveCustomItem());
         getCommand("serverruntime").setExecutor(new ServerRuntime());
         getCommand("team").setExecutor(new TeamCommand());
