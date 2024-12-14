@@ -7,6 +7,7 @@ import io.papermc.paper.threadedregions.scheduler.GlobalRegionScheduler;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import newamazingpvp.lifestealsmp.NewUpdateTest.testCMD123;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
 import newamazingpvp.lifestealsmp.allyteams.TeamCommand;
@@ -142,8 +143,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("discord").setExecutor(new DiscordLink());
         getCommand("help").setExecutor(new HelpCommand());
         getCommand("guide").setExecutor(new GuideCommand());
-        getCommand("givecustomitem").setExecutor(new GiveCustomItem());
-        getCommand("givecustomitem").setTabCompleter(new GiveCustomItem());
+        getCommand("givecustomitem").setExecutor(new testCMD123());
+        //getCommand("givecustomitem").setTabCompleter(new GiveCustomItem());
         getCommand("serverruntime").setExecutor(new ServerRuntime());
         getCommand("team").setExecutor(new TeamCommand());
         getCommand("team").setTabCompleter(new TeamCommand());
