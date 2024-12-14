@@ -71,7 +71,7 @@ public class JoinLeave implements Listener {
             getServer().dispatchCommand(player, "guide");
             //below is new season stuff
             addItemOrDrop(player, new ItemStack(Material.DARK_OAK_LOG, 16), "");
-            addItemOrDrop(player, new ItemStack(Material.COOKED_BEEF, 8), "");
+            addItemOrDrop(player, new ItemStack(Material.COOKED_BEEF, 16), "");
             //player.teleport(lobby);
             player.teleport(new Location(Bukkit.getWorld("world"), 6, 75, -26));
         } else {
