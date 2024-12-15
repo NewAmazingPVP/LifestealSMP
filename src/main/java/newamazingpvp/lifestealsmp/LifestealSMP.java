@@ -6,6 +6,7 @@ import com.google.common.io.ByteStreams;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import newamazingpvp.lifestealsmp.NewOrbUpdateTest.ItemFunctions.Spacesuit;
 import newamazingpvp.lifestealsmp.NewOrbUpdateTest.OrbUpdateCommands.GiveCustomOrbItem;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
@@ -211,6 +212,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             //orb update
             getCommand("givecustomorbitem").setExecutor(new GiveCustomOrbItem());
             getCommand("givecustomorbitem").setTabCompleter(new GiveCustomOrbItem());
+
+            getServer().getPluginManager().registerEvents(new Spacesuit(), this);
 
 
             //===============

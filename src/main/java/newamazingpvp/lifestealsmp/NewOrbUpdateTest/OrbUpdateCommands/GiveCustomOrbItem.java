@@ -14,6 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
+import static newamazingpvp.lifestealsmp.NewOrbUpdateTest.OrbUpdateItems.OrbUpdateItems.gameBreaker;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
 import static newamazingpvp.lifestealsmp.runes.DragonRune.dragonRune;
 import static newamazingpvp.lifestealsmp.unused.customrunes.RunesDrops.*;
@@ -21,8 +22,8 @@ import static newamazingpvp.lifestealsmp.unused.events.corruptedmobs.utilities.I
 
 public class GiveCustomOrbItem implements CommandExecutor, TabCompleter {
 
-    private final ArrayList<String> subcommands = new ArrayList<>(List.of());
-    private final ArrayList<ItemStack> subItems = new ArrayList<>(List.of());
+    private final ArrayList<String> subcommands = new ArrayList<>(List.of("gamebreaker"));
+    private final ArrayList<ItemStack> subItems = new ArrayList<>(List.of(gameBreaker()));
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
