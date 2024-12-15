@@ -270,3 +270,8 @@ commands:
     usage: /tournament <start|register|end>
     permission: lifestealSMP.admin
     default: op
+  givecustomorbitem:
+    description: opens item admin menu for orb items
+    usage: /givecustomorbitem [item]
+    permission: lifestealSMP.admin
+    default: op
