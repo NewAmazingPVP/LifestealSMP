@@ -19,6 +19,7 @@ public class Spacesuit implements Listener {
         Player player = (Player) e.getWhoClicked();
         ItemStack chestplate = player.getInventory().getChestplate();
 
+        player.sendMessage("test");
 
         if(chestplate!= null && chestplate.getItemMeta().getLore().toString().toLowerCase().contains("Helps you breathe next to void mobs!")){
 
