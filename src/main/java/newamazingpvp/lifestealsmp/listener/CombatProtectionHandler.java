@@ -54,17 +54,17 @@ public class CombatProtectionHandler implements Listener {
             return;
         }
         if (!isEndFightEnabled && !damaged.getWorld().getName().equals("end_fight_world") && !damaged.getWorld().getName().equals("tournament_world")) {
-            if (invincibilityPlayers.contains(damaged.getName())) {
+            /*if (invincibilityPlayers.contains(damaged.getName())) {
                 event.setCancelled(true);
                 damager.sendMessage(ChatColor.RED + "This player was recently killed by a player and won't give heart if you kill them again.");
                 damager.sendMessage(ChatColor.RED + "You cannot damage players during their death protection unless they attack you back!");
                 damaged.sendMessage(ChatColor.RED + "Someone tried attacking you but was prevented because you died recently! If you attack them back they can attack you and are then allowed to kill you again SO BE CAREFUL");
                 return;
-            }
-            if (invincibilityPlayers.contains(damager.getName())) {
+            }*/
+            /*if (invincibilityPlayers.contains(damager.getName())) {
                 invincibilityPlayers.remove(damager.getName());
                 damager.sendMessage(ChatColor.RED + "You have lost your death protection invincibility because you attacked another player.");
-            }
+            }*/
             //nerfed from 216000 (3 hours) to 144000 (2 hours)
             if (getPlaytime(damaged) < 144000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())) {
                 event.setCancelled(true);
@@ -109,11 +109,11 @@ public class CombatProtectionHandler implements Listener {
                 }
             }.runTaskLater(lifestealSmp, 20 * 60 * 5);
         }
-        if (invincibilityPlayers.contains(damager.getName())) {
+        /*if (invincibilityPlayers.contains(damager.getName())) {
             event.setCancelled(true);
             invincibilityPlayers.remove(damager.getName());
             lifestealSmp.getServer().broadcastMessage(damager.getName() + ChatColor.YELLOW + " has lost their death protection for hearts & invincibility for potentially breaking the no griefing rule during death protection");
-        }
+        }*/
     }
 
     @EventHandler

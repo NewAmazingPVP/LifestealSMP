@@ -37,11 +37,11 @@ public class NerfOpItems implements Listener {
                     player.sendMessage(ChatColor.RED + "You were protected from explosive damage due to your newbie protection");
                     return;
                 }
-                if (invincibilityPlayers.contains(player.getName())) {
+                /*if (invincibilityPlayers.contains(player.getName())) {
                     event.setCancelled(true);
                     player.sendMessage(ChatColor.RED + "You were protected from explosive damage due to your death protection");
                     return;
-                }
+                }*/
                 List<Entity> nearbyEntities = (List<Entity>) event.getDamager().getWorld().getNearbyEntities(event.getDamager().getLocation(), 14, 14, 14);
 
                 int count = 0;
