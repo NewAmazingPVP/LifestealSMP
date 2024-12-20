@@ -31,9 +31,9 @@ public class RulesCommand implements CommandExecutor {
             player.sendMessage(ChatColor.WHITE + "- Do not lava cast, trap, or grief in the vicinity of spawn.");
             // TODO: make it so lava bucket auto enforced AND REMOVE DEATH PROT PROTECTIONM ONLY HEART PROT
             // so then we can remove this rule
-            player.sendMessage(ChatColor.WHITE + "- Do not use the lava bucket or any bypass to kill newbies or respawns as long as they have their newbie or death protection.");
-            // so then only newbie prot abuse banned
-            player.sendMessage(ChatColor.WHITE + "- Using newbie or death protection to grief/steal/abuse etc is not allowed.");
+            // player.sendMessage(ChatColor.WHITE + "- Do not use the lava bucket or any bypass to kill newbies or respawns as long as they have their newbie or death protection.");
+            // so then only newbie prot abuse banned (remove respawns)
+            player.sendMessage(ChatColor.WHITE + "- Using newbie to grief/steal/abuse etc is not allowed.");
             player.sendMessage(ChatColor.WHITE + "- No offensive/abusive behavior/builds in-game");
             player.sendMessage(ChatColor.WHITE + "- No offensive language/skins/names");
             player.sendMessage(ChatColor.WHITE + "- No advertising");
