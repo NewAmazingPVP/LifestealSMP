@@ -6,8 +6,8 @@ import com.google.common.io.ByteStreams;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import newamazingpvp.lifestealsmp.NewOrbUpdateTest.ItemFunctions.Spacesuit;
-import newamazingpvp.lifestealsmp.NewOrbUpdateTest.OrbUpdateCommands.GiveCustomOrbItem;
+import newamazingpvp.lifestealsmp.orbupdate.itemfunction.Spacesuit;
+import newamazingpvp.lifestealsmp.orbupdate.commands.GiveCustomOrbItem;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
 import newamazingpvp.lifestealsmp.allyteams.TeamCommand;
@@ -469,7 +469,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
     }
 
-    public void randomRunnable(){
+    public void randomRunnable() {
         new BukkitRunnable() {
             @Override
             public void run() {

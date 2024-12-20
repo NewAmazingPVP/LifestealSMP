@@ -29,7 +29,7 @@ public class RulesCommand implements CommandExecutor {
             //player.sendMessage(ChatColor.WHITE + "- Do not trick or manipulate new players to hit you for hearts");
             player.sendMessage(ChatColor.WHITE + "- Netherite armor and tools are allowed.");
             player.sendMessage(ChatColor.WHITE + "- Do not lava cast, trap, or grief in the vicinity of spawn.");
-            // make it so lava bucket auto enforced AND REMOVE DEATH PROT PROTECTIONM ONLY HEART PROT
+            // make it so lava bucket auto enforced AND REMOVE DEATH PROTECTION ONLY HEART PROT
             // so then we can remove this rule
             // player.sendMessage(ChatColor.WHITE + "- Do not use the lava bucket or any bypass to kill newbies or respawns as long as they have their newbie or death protection.");
             // so then only newbie prot abuse banned (remove respawns)

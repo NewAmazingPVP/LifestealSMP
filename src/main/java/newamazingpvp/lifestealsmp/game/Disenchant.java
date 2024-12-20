@@ -38,7 +38,7 @@ public class Disenchant implements Listener {
     @EventHandler
     public void onAnvilInteract(PlayerInteractEvent event) {
         if (event.getClickedBlock() != null && (event.getClickedBlock().getType() == Material.ANVIL || event.getClickedBlock().getType() == Material.DAMAGED_ANVIL
-        || event.getClickedBlock().getType() == Material.CHIPPED_ANVIL || event.getClickedBlock().getType() == Material.LEGACY_ANVIL)) {
+                || event.getClickedBlock().getType() == Material.CHIPPED_ANVIL || event.getClickedBlock().getType() == Material.LEGACY_ANVIL)) {
             Player player = event.getPlayer();
             ItemStack itemInHand = player.getInventory().getItemInMainHand();
 

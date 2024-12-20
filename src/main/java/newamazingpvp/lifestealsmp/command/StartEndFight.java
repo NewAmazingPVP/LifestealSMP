@@ -44,7 +44,7 @@ public class StartEndFight implements CommandExecutor {
                 finalWorld.setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true);
 
                 for (Player p : lifestealSmp.getServer().getOnlinePlayers()) {
-                    p.teleport(new Location(Bukkit. getWorld("end_fight_world"), 25.0, 80.0, 25.0));
+                    p.teleport(new Location(Bukkit.getWorld("end_fight_world"), 25.0, 80.0, 25.0));
                     p.setInvulnerable(true);
 
                     getServer().getScheduler().runTaskLater(lifestealSmp, () -> p.setInvulnerable(false), 1200);

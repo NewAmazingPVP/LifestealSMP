@@ -36,7 +36,7 @@ public class EndFightRestrictions implements Listener {
     public void worldSwitch(PlayerChangedWorldEvent e) {
         if (isEndFightEnabled) {
             e.getPlayer().sendMessage(ChatColor.RED + "You cannot use portal during end fight!");
-            e.getPlayer().teleport(new Location(Bukkit. getWorld("end_fight_world"), 0, 70.0, 0));
+            e.getPlayer().teleport(new Location(Bukkit.getWorld("end_fight_world"), 0, 70.0, 0));
         }
     }
 
@@ -68,7 +68,7 @@ public class EndFightRestrictions implements Listener {
                 @Override
                 public void run() {
                     if (!e.getPlayer().getWorld().getName().equals("end_fight_world")) {
-                        e.getPlayer().teleport(new Location(Bukkit. getWorld("end_fight_world"), 0, 70.0, 0));
+                        e.getPlayer().teleport(new Location(Bukkit.getWorld("end_fight_world"), 0, 70.0, 0));
                         e.getPlayer().sendMessage(ChatColor.AQUA + "You joined during the server final end fight and were teleported right to it!");
                         //teleport player to end spawn for fight
                     }
@@ -106,13 +106,13 @@ public class EndFightRestrictions implements Listener {
     public void onPlayerRespawn(PlayerRespawnEvent e) {
         if (isEndFightEnabled) {
             if (e.getRespawnReason() == PlayerRespawnEvent.RespawnReason.END_PORTAL) {
-                e.setRespawnLocation(new Location(Bukkit. getWorld("end_fight_world"), 0, 70.0, 0));
+                e.setRespawnLocation(new Location(Bukkit.getWorld("end_fight_world"), 0, 70.0, 0));
                 //Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> e.getPlayer().teleport(endPortalCenter), 20);
                 return;
             }
             Player p = e.getPlayer();
             p.setGameMode(GameMode.SPECTATOR);
-            p.teleport(new Location(Bukkit. getWorld("end_fight_world"), 25.0, 80.0, 25.0));
+            p.teleport(new Location(Bukkit.getWorld("end_fight_world"), 25.0, 80.0, 25.0));
             int survivors = 0;
             Player survivor = null;
             for (Player player : Bukkit.getOnlinePlayers()) {

@@ -7,17 +7,18 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.awt.Color;
 import java.time.ZonedDateTime;
+import java.util.List;
 import java.util.*;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.discord.DiscordBot.*;
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordEmbedPlayer;
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsMessage;
 import static newamazingpvp.lifestealsmp.events.TimeManager.*;
 import static org.bukkit.Bukkit.getServer;
 
@@ -27,7 +28,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
     private UUID currentMatchPlayer1;
     private UUID currentMatchPlayer2;
     public static boolean isTournamentEvent = false;
-    private Map<UUID, Location> playersLastLocation = new HashMap<>(); //players in the tournament
+    private final Map<UUID, Location> playersLastLocation = new HashMap<>(); //players in the tournament
 
     public TournamentEvent(ZonedDateTime startTime) {
         super(startTime, startTime.plusDays(1));
@@ -47,8 +48,8 @@ public class TournamentEvent extends BaseEvent implements Listener {
         getServer().broadcastMessage(ChatColor.GOLD + "The tournament event is starting soon! Check announcements /discord and /register for event");
         getServer().broadcastMessage(ChatColor.GOLD + "You will not lose stuff in this tournament event");
         createTournamentWorld();
-        sendDiscordNewsMessage( mcServer + " The tournament event is starting soon! Please /register for event. \n**If not enough players are registered, the event will be cancelled!**", "1032411739351941120");
-        sendDiscordNewsMessage( "You will not lose stuff in this tournament event...", "1032411739351941120");
+        sendDiscordNewsMessage(mcServer + " The tournament event is starting soon! Please /register for event. \n**If not enough players are registered, the event will be cancelled!**", "1032411739351941120");
+        sendDiscordNewsMessage("You will not lose stuff in this tournament event...", "1032411739351941120");
         //after creating the world, wait until its not null then do the things
         new BukkitRunnable() {
             @Override
@@ -64,7 +65,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
                 startTournament();
                 isTournamentEvent = true;
                 this.cancel();
-        }
+            }
         }.runTaskTimer(lifestealSmp, 0, 20);
     }
 
@@ -102,9 +103,9 @@ public class TournamentEvent extends BaseEvent implements Listener {
 
     //return a valid player who is online and can be used for the match
     public UUID getValidPlayer() {
-        for(UUID player : participants) {
+        for (UUID player : participants) {
             Player p = Bukkit.getPlayer(player);
-            if(p != null) {
+            if (p != null) {
                 participants.remove(player);
                 return player;
             }
@@ -146,7 +147,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        if(!isTournamentEvent) return;
+        if (!isTournamentEvent) return;
         if (player.getWorld().equals(tournamentWorld)) {
             player.setHealth(0);
             player.setKiller(player.getUniqueId() == currentMatchPlayer1 ? Bukkit.getPlayer(currentMatchPlayer2) : Bukkit.getPlayer(currentMatchPlayer1));
@@ -156,7 +157,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
     @EventHandler
     public void onPlayerKick(PlayerKickEvent event) {
         Player player = event.getPlayer();
-        if(!isTournamentEvent) return;
+        if (!isTournamentEvent) return;
         if (player.getWorld().equals(tournamentWorld)) {
             player.setHealth(0);
             player.setKiller(player.getUniqueId() == currentMatchPlayer1 ? Bukkit.getPlayer(currentMatchPlayer2) : Bukkit.getPlayer(currentMatchPlayer1));
@@ -167,7 +168,7 @@ public class TournamentEvent extends BaseEvent implements Listener {
     public void onPlayerDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
         UUID playerId = player.getUniqueId();
-        if(!isTournamentEvent) return;
+        if (!isTournamentEvent) return;
         if (playerId.equals(currentMatchPlayer1) || playerId.equals(currentMatchPlayer2)) {
             UUID winner = playerId.equals(currentMatchPlayer1) ? currentMatchPlayer2 : currentMatchPlayer1;
             participants.add(winner);
@@ -197,7 +198,6 @@ public class TournamentEvent extends BaseEvent implements Listener {
 
         sendDiscordNewsMessage("The tournament event is now over! Congratulations to the winners!", "1032411739351941120");
     }
-
 
 
     @Override

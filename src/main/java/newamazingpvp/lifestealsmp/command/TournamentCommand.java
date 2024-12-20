@@ -34,8 +34,7 @@ public class TournamentCommand implements CommandExecutor {
                 sender.sendMessage(ChatColor.RED + "Tournament event is already running!");
             }
         } else if (args[0].equalsIgnoreCase("register")) {
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
+            if (sender instanceof Player player) {
                 TournamentEvent.registerPlayer(player);
             } else {
                 sender.sendMessage(ChatColor.RED + "Only players can register for the tournament!");
