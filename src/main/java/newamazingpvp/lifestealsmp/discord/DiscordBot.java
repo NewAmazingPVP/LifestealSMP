@@ -9,6 +9,8 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.channel.concrete.NewsChannel;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.requests.GatewayIntent;
+import newamazingpvp.lifestealsmp.utility.CooldownManager;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -16,12 +18,14 @@ import java.awt.*;
 import java.util.EnumSet;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.events.TimeManager.eventRole;
 
 public class DiscordBot {
     public static JDA jda;
     public static TextChannel channel;
     public static WebhookClient client;
     public static String channelId;
+    private static CooldownManager eventRoleCooldown = new CooldownManager();
     public static String consoleChannel = lifestealSmp.getConfig().getString("Discord.ConsoleChannel");
 
     public static void intializeBot() {
@@ -66,6 +70,13 @@ public class DiscordBot {
 
     public static void sendDiscordNewsMessage(String msg, String channelID) {
         if (jda == null) return;
+        if (msg.contains(eventRole)){
+            if (!eventRoleCooldown.isOnCooldown()){
+                eventRoleCooldown.setCooldown(30);
+                Bukkit.getScheduler().runTaskLaterAsynchronously(lifestealSmp, () -> sendDiscordNewsMessage(eventRole + " ⬆️", ""), 30 * 20);
+            }
+        }
+        msg = msg.replace(eventRole + " ", "");
         if (channelID.isEmpty()) {
             //channel.sendMessage(msg);
             NewsChannel tempChannel = jda.getNewsChannelById("1032411739351941120");
