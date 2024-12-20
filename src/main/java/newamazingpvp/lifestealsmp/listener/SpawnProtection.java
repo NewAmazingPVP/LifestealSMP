@@ -127,6 +127,9 @@ public class SpawnProtection implements Listener {
         if (isWithinSpawnRadiusWorld(event.getPlayer().getLocation())) {
             if (isVanished(event.getPlayer())) return;
             if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.WRITTEN_BOOK) return;
+            if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.COOKED_MUTTON) return;
+            if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.COOKED_BEEF) return;
+            if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.COOKED_CHICKEN) return;
             /*if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.LAVA_BUCKET
                     || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.FIRE_CHARGE
                     || event.getPlayer().getInventory().getItemInMainHand().getType() == Material.FLINT_AND_STEEL
