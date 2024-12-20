@@ -1,7 +1,7 @@
 package newamazingpvp.lifestealsmp.blacklistener;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -10,8 +10,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByBlockEvent;
 import org.bukkit.event.player.PlayerBucketEmptyEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.Location;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -34,7 +32,8 @@ public class AntiLavaDamage implements Listener {
 
     @EventHandler
     public void onEntityDamageByBlock(EntityDamageByBlockEvent event) {
-        if (event.getEntity() instanceof Player player){
+        if (event.getEntity() instanceof Player player) {
+            // get invinciblities for death prot
             if (getPlaytime(player) < 144000 && !newbieViolate.contains(player.getName())) {
                 Block block = event.getDamager();
                 if (block != null && block.getType() == Material.LAVA) {

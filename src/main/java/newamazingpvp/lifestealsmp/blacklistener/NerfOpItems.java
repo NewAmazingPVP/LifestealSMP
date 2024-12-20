@@ -20,7 +20,6 @@ import org.bukkit.potion.PotionType;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
-import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.invincibilityPlayers;
 import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.newbieViolate;
 import static newamazingpvp.lifestealsmp.listener.SpawnProtection.isWithinSpawnRadius;
 

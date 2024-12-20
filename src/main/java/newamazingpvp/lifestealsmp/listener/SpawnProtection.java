@@ -64,7 +64,6 @@ public class SpawnProtection implements Listener {
     }
 
 
-
     @EventHandler
     public void spawnBlockBreak(BlockBreakEvent event) {
         if (isWithinSpawnRadiusWorld(event.getBlock().getLocation())) {

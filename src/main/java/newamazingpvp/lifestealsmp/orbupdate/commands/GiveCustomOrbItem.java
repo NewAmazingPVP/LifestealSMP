@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.NewOrbUpdateTest.OrbUpdateCommands;
+package newamazingpvp.lifestealsmp.orbupdate.commands;
 
 
 import org.bukkit.Bukkit;
@@ -14,17 +14,13 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-import static newamazingpvp.lifestealsmp.NewOrbUpdateTest.OrbUpdateItems.OrbUpdateArmor.spacesuitITEM;
-import static newamazingpvp.lifestealsmp.NewOrbUpdateTest.OrbUpdateItems.OrbUpdateItems.gameBreaker;
-import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.*;
-import static newamazingpvp.lifestealsmp.runes.DragonRune.dragonRune;
-import static newamazingpvp.lifestealsmp.unused.customrunes.RunesDrops.*;
-import static newamazingpvp.lifestealsmp.unused.events.corruptedmobs.utilities.ItemStacks.*;
+import static newamazingpvp.lifestealsmp.orbupdate.items.OrbUpdateArmor.spacesuitITEM;
+import static newamazingpvp.lifestealsmp.orbupdate.items.OrbUpdateItems.gameBreaker;
 
 public class GiveCustomOrbItem implements CommandExecutor, TabCompleter {
 
-    private final ArrayList<String> subcommands = new ArrayList<>(List.of("gamebreaker","spacesuit"));
-    private final ArrayList<ItemStack> subItems = new ArrayList<>(List.of(gameBreaker(),spacesuitITEM()));
+    private final ArrayList<String> subcommands = new ArrayList<>(List.of("gamebreaker", "spacesuit"));
+    private final ArrayList<ItemStack> subItems = new ArrayList<>(List.of(gameBreaker(), spacesuitITEM()));
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
