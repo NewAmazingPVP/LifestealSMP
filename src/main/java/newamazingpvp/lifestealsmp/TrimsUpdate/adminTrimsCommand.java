@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.orbupdate.commands;
+package newamazingpvp.lifestealsmp.TrimsUpdate;
 
 
 import org.bukkit.Bukkit;
@@ -14,19 +14,20 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
+import static newamazingpvp.lifestealsmp.TrimsUpdate.TrimsItemstacks.sentryTrimArmor;
 import static newamazingpvp.lifestealsmp.orbupdate.items.OrbUpdateArmor.spacesuitITEM;
 import static newamazingpvp.lifestealsmp.orbupdate.items.OrbUpdateItems.gameBreaker;
 
-public class GiveCustomOrbItem implements CommandExecutor, TabCompleter {
+public class adminTrimsCommand implements CommandExecutor, TabCompleter {
 
-    private final ArrayList<String> subcommands = new ArrayList<>(List.of("gamebreaker", "spacesuit"));
-    private final ArrayList<ItemStack> subItems = new ArrayList<>(List.of(gameBreaker(), spacesuitITEM()));
+    private final ArrayList<String> subcommands = new ArrayList<>(List.of("sentryarmortrim"));
+    private final ArrayList<ItemStack> subItems = new ArrayList<>(List.of(sentryTrimArmor()));
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0) {
             if (sender instanceof Player p) {
-                Inventory inv = Bukkit.createInventory(null, 54, ChatColor.GOLD + "CustomOrbItems");
+                Inventory inv = Bukkit.createInventory(null, 54, ChatColor.GOLD + "Trims");
                 for (ItemStack r : subItems) {
                     inv.addItem(r);
                 }
