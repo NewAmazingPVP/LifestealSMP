@@ -6,8 +6,7 @@ import com.google.common.io.ByteStreams;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import newamazingpvp.lifestealsmp.orbupdate.itemfunction.Spacesuit;
-import newamazingpvp.lifestealsmp.orbupdate.commands.GiveCustomOrbItem;
+import newamazingpvp.lifestealsmp.TrimsUpdate.adminTrimsCommand;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
 import newamazingpvp.lifestealsmp.allyteams.TeamCommand;
@@ -211,11 +210,16 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         //TODO: Use this for beta things
         if (!isSmp) {
 
-            //orb update
-            getCommand("givecustomorbitem").setExecutor(new GiveCustomOrbItem());
-            getCommand("givecustomorbitem").setTabCompleter(new GiveCustomOrbItem());
+            //trim update
+            getCommand("admintrims").setExecutor(new adminTrimsCommand());
+            getCommand("admintrims").setTabCompleter(new adminTrimsCommand());
 
-            getServer().getPluginManager().registerEvents(new Spacesuit(), this);
+
+
+            //orb update
+
+
+            //getServer().getPluginManager().registerEvents(new Spacesuit(), this);
 
 
             //===============
