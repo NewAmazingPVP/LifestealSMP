@@ -14,14 +14,21 @@ public class GetArmorTrimSet {
 
         PlayerInventory inv = player.getInventory();
 
+        player.sendMessage("test2");
+
         if(inv.getHelmet() == null || inv.getChestplate() == null || inv.getLeggings() == null || inv.getBoots() == null){
+            player.sendMessage("test3FALSE");
             return false;
         }
+
+        player.sendMessage("test3TRUE");
 
         ArmorMeta helmet = (ArmorMeta) inv.getHelmet().getItemMeta();
         ArmorMeta chestplate = (ArmorMeta) inv.getChestplate().getItemMeta();
         ArmorMeta leggings = (ArmorMeta) inv.getLeggings().getItemMeta();
         ArmorMeta boots = (ArmorMeta) inv.getBoots().getItemMeta();
+
+        player.sendMessage("test4");
 
         return Objects.requireNonNull(helmet.getTrim()).getPattern().equals(trimPattern) && Objects.requireNonNull(chestplate.getTrim()).getPattern().equals(trimPattern) && Objects.requireNonNull(leggings.getTrim()).getPattern().equals(trimPattern) && Objects.requireNonNull(boots.getTrim()).getPattern().equals(trimPattern);
     }

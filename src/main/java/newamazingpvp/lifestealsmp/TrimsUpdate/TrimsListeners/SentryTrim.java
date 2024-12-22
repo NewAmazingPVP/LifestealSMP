@@ -19,6 +19,8 @@ public class SentryTrim implements Listener {
         Player attacker = (Player) e.getDamager();
         Player damagedPlayer = (Player) e.getEntity();
 
+        attacker.sendMessage("test1");
+
         if(getArmorTrimSet(attacker,TrimPattern.SENTRY)){
             attacker.sendMessage("Hello World");
         }
