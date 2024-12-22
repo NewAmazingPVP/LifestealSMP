@@ -29,7 +29,7 @@ public class UpdateDefaultSmithingTemplate implements Listener {
             ItemStack item = player.getInventory().getItem(i);
             if(item != null){
 
-                if(item.getType().equals(Material.SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE) && !item.getItemMeta().getLore().toString().toLowerCase().contains("Special Ability:")){
+                if(item.getType().equals(Material.SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE) && !item.getItemMeta().getLore().toString().toLowerCase().contains("special ability:")){
 
                     player.sendMessage("test sucsess");
 
