@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.TrimsUpdate.TrimsListeners;
 
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,7 +18,7 @@ public class SentryTrim implements Listener {
     public void sentryListener(EntityDamageByEntityEvent e){
 
         Player attacker = (Player) e.getDamager();
-        Player damagedPlayer = (Player) e.getEntity();
+        Entity damagedEntity = e.getEntity();
 
         attacker.sendMessage("test1");
 
