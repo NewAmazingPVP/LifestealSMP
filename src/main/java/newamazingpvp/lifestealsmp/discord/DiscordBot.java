@@ -76,7 +76,9 @@ public class DiscordBot {
                 Bukkit.getScheduler().runTaskLaterAsynchronously(lifestealSmp, () -> sendDiscordNewsMessage(eventRole + " ⬆️", ""), 30 * 20);
             }
         }
-        msg = msg.replace(eventRole + " ", "");
+        if (!msg.contains(eventRole + " ⬆️")) {
+            msg = msg.replace(eventRole + " ", "");
+        }
         if (channelID.isEmpty()) {
             //channel.sendMessage(msg);
             NewsChannel tempChannel = jda.getNewsChannelById("1032411739351941120");
