@@ -6,7 +6,7 @@ import com.google.common.io.ByteStreams;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import newamazingpvp.lifestealsmp.TrimsUpdate.TrimsListeners.TrimListeners;
+import newamazingpvp.lifestealsmp.TrimsUpdate.TrimsListeners.Utils.TrimListeners;
 import newamazingpvp.lifestealsmp.TrimsUpdate.adminTrimsCommand;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
