@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.TrimsUpdate.TrimsListeners;
+package newamazingpvp.lifestealsmp.TrimsUpdate.TrimsListeners.Utils;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
