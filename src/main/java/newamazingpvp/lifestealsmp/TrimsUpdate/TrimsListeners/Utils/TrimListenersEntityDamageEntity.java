@@ -7,9 +7,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.meta.trim.TrimPattern;
 
-import static newamazingpvp.lifestealsmp.TrimsUpdate.TrimsListeners.Utils.GetArmorTrimSet.getArmorTrimSet;
+import static newamazingpvp.lifestealsmp.TrimsUpdate.TrimsListeners.Utils.GetArmorTrimSet.GetArmorTrimSet.getArmorTrimSet;
 
-public class TrimListeners implements Listener {
+public class TrimListenersEntityDamageEntity implements Listener {
 
 
     @EventHandler

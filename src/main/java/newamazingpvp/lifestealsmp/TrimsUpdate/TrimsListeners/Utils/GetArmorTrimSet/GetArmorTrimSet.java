@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.TrimsUpdate.TrimsListeners.Utils;
+package newamazingpvp.lifestealsmp.TrimsUpdate.TrimsListeners.Utils.GetArmorTrimSet;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;

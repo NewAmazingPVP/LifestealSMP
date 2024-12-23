@@ -6,7 +6,7 @@ import com.google.common.io.ByteStreams;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import newamazingpvp.lifestealsmp.TrimsUpdate.TrimsListeners.Utils.TrimListeners;
+import newamazingpvp.lifestealsmp.TrimsUpdate.TrimsListeners.Utils.TrimListenersEntityDamageEntity;
 import newamazingpvp.lifestealsmp.TrimsUpdate.adminTrimsCommand;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
@@ -215,7 +215,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getCommand("admintrims").setExecutor(new adminTrimsCommand());
             getCommand("admintrims").setTabCompleter(new adminTrimsCommand());
 
-            getServer().getPluginManager().registerEvents(new TrimListeners(), this);
+            getServer().getPluginManager().registerEvents(new TrimListenersEntityDamageEntity(), this);
 
 
             //orb update
