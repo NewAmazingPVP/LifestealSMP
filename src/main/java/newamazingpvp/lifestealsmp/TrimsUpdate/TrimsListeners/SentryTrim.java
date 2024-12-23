@@ -15,19 +15,17 @@ public class SentryTrim implements Listener {
 
 
     @EventHandler
-    public void sentryListener(EntityDamageByEntityEvent e){
+    public void onEntityDamage(EntityDamageByEntityEvent event) {
+        Entity damager = event.getDamager();
 
-        Player attacker = (Player) e.getDamager();
-        Entity damagedEntity = e.getEntity();
+        if (damager instanceof Player attacker) {
+            attacker.sendMessage("test1");
 
-        attacker.sendMessage("test1");
-
-        if(getArmorTrimSet(attacker,TrimPattern.SENTRY)){
-            attacker.sendMessage("Hello World");
+            if (getArmorTrimSet(attacker, TrimPattern.SENTRY)) {
+                attacker.sendMessage("Hello World");
+            }
         }
-
-
-
     }
+
 
 }
