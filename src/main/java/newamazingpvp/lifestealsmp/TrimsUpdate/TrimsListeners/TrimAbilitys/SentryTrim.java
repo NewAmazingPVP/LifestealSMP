@@ -8,7 +8,7 @@ public class SentryTrim {
 
     public void triggerSentryTrim(Player attacker, Entity damagedEntity){
 
-        
+
 
     }
 
