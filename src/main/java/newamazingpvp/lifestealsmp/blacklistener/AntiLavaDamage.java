@@ -14,8 +14,10 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
@@ -23,7 +25,7 @@ import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.newbie
 
 public class AntiLavaDamage implements Listener {
 
-    private final Set<Location> playerPlacedLava = new HashSet<>();
+    private final HashMap<Location, UUID> playerPlacedLava = new HashMap<>();
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
@@ -34,7 +36,7 @@ public class AntiLavaDamage implements Listener {
                 Block clickedBlock = event.getClickedBlock();
                 if (clickedBlock != null) {
                     Block placedBlock = clickedBlock.getRelative(event.getBlockFace());
-                    playerPlacedLava.add(placedBlock.getLocation());
+                    playerPlacedLava.put(placedBlock.getLocation(), player.getUniqueId());
                 }
             }
         }
@@ -54,9 +56,11 @@ public class AntiLavaDamage implements Listener {
         if (playtime < 144000 && !newbieViolate.contains(player.getName())) {
             Location damageLocation = player.getLocation();
             double radius = 7.0;
-            for (Location placedLavaLoc : playerPlacedLava) {
-                if (placedLavaLoc.getWorld().equals(damageLocation.getWorld())
-                        && placedLavaLoc.distance(damageLocation) <= radius) {
+            for (Location placedLavaLoc : playerPlacedLava.keySet()) {
+                if (playerPlacedLava.get(placedLavaLoc).equals(player.getUniqueId())) {
+                    continue;
+                }
+                if (placedLavaLoc.getWorld().equals(damageLocation.getWorld()) && placedLavaLoc.distance(damageLocation) <= radius) {
                     event.setCancelled(true);
                     player.sendMessage(ChatColor.RED + "You were protected from player placed lava due to newbie protection.");
                     new BukkitRunnable() {
