@@ -1,16 +1,19 @@
 package newamazingpvp.lifestealsmp.events;
 
+import newamazingpvp.lifestealsmp.utility.SeasonUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
 import java.awt.*;
 import java.time.ZonedDateTime;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsEmbedTitle;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsMessage;
 import static newamazingpvp.lifestealsmp.events.TimeManager.*;
 import static newamazingpvp.lifestealsmp.game.Compass.delayDuration;
 import static newamazingpvp.lifestealsmp.game.Compass.trackingDist;
+import static newamazingpvp.lifestealsmp.utility.SeasonUtils.startNewSeason;
 import static org.bukkit.Bukkit.getServer;
 
 public class FinalFight extends BaseEvent {
@@ -32,6 +35,7 @@ public class FinalFight extends BaseEvent {
     public void onEventEnd() {
         Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "This season has concluded with the winner GGs. Thank you for participating! Next season will start in 1 week");
         sendDiscordNewsMessage(mcServer + " The next season will start in a week! GGs for the player winner of the season!", "1032411739351941120");
+        getServer().getScheduler().runTaskLater(lifestealSmp, SeasonUtils::startNewSeason, 20 * 60 * 120);
     }
 
     @Override
