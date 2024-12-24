@@ -5,13 +5,12 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.isSmp;
+import static newamazingpvp.lifestealsmp.utility.SeasonUtils.getSeasonStartTime;
 
 
 public class TimeManager {
     //TODO: ALWAYS KEEP THIS A SATURDAY IF POSSIBLE (START SEASONS ON SATURDAY)
-    public static final ZonedDateTime SEASON_START_TIME = ZonedDateTime.of(
-            2024, 12, 7, 12, 0, 0, 0, ZoneId.of("America/New_York")
-    );
+    public static final ZonedDateTime SEASON_START_TIME = getSeasonStartTime();
 
     public static final ZonedDateTime END_OPEN_TIME = SEASON_START_TIME.plusDays(14);
     public static final ZonedDateTime FINAL_FIGHT = SEASON_START_TIME.plusDays(28);

@@ -41,7 +41,31 @@ public class ChatFilter implements Listener {
 
 
     @EventHandler(priority = EventPriority.LOWEST)
-    public void onPlayerChat(AsyncPlayerChatEvent event) {
+    public void onPlayerChatLowest(AsyncPlayerChatEvent event) {
+        checkMessage(event);
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onPlayerChatHighest(AsyncPlayerChatEvent event) {
+        checkMessage(event);
+    }
+
+    @EventHandler
+    public void onPlayerChatNormal(AsyncPlayerChatEvent event) {
+        checkMessage(event);
+    }
+
+    @EventHandler(priority = EventPriority.LOW)
+    public void onPlayerChatLow(AsyncPlayerChatEvent event) {
+        checkMessage(event);
+    }
+
+    @EventHandler(priority = EventPriority.HIGH)
+    public void onPlayerChatHigh(AsyncPlayerChatEvent event) {
+        checkMessage(event);
+    }
+
+    private void checkMessage(AsyncPlayerChatEvent event) {
         String originalMessage = event.getMessage();
         Player player = event.getPlayer();
 
@@ -52,6 +76,11 @@ public class ChatFilter implements Listener {
             player.sendMessage(ChatColor.RED + "Some words or links in your message were inappropriate and have been censored.");
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
         }
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onPlayerChatMonitor(AsyncPlayerChatEvent event) {
+        checkMessage(event);
     }
 
     public static String censorBlacklistedWords(String message) {
