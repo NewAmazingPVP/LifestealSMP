@@ -1,10 +1,20 @@
 package newamazingpvp.lifestealsmp.listener;
 
+import com.destroystokyo.paper.profile.PlayerProfile;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
+
+import java.net.URL;
+import java.util.UUID;
+
+import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 
 public class PlayerDeath implements Listener {
     @EventHandler
@@ -30,9 +40,9 @@ public class PlayerDeath implements Listener {
                 }
             }
         }*/
-        Player Gamer = e.getEntity();
-        int[] pos = {Gamer.getLocation().getBlockX(), Gamer.getLocation().getBlockY(), Gamer.getLocation().getBlockZ()};
-        String worldName = Gamer.getLocation().getWorld().getName();
+        Player p = e.getEntity();
+        int[] pos = {p.getLocation().getBlockX(), p.getLocation().getBlockY(), p.getLocation().getBlockZ()};
+        String worldName = p.getLocation().getWorld().getName();
 
         worldName = switch (worldName) {
             case "world" -> "Overworld";
@@ -41,7 +51,16 @@ public class PlayerDeath implements Listener {
             default -> worldName;
         };
 
-        Gamer.sendMessage(ChatColor.BOLD + "" + ChatColor.GOLD + "You Died At:" + " X:" + pos[0] + " Y:" + pos[1] + " Z:" + pos[2] + " in " + worldName);
+        p.sendMessage(ChatColor.BOLD + "" + ChatColor.GOLD + "You Died At:" + " X:" + pos[0] + " Y:" + pos[1] + " Z:" + pos[2] + " in " + worldName);
+
+        if (player.getKiller() != null) {
+            Player killer = player.getKiller();
+            ItemStack skull = createHead(killer.getUniqueId());
+            SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
+            skullMeta.setDisplayName(ChatColor.RED + killer.getName() + "'s Head");
+            skull.setItemMeta(skullMeta);
+            addItemOrDrop(player, skull, ChatColor.AQUA + "Player head was dropped because your inventory was full.");
+        }
         /*ByteArrayDataOutput out = ByteStreams.newDataOutput();
         out.writeUTF("Server");
 
@@ -57,5 +76,14 @@ public class PlayerDeath implements Listener {
         if (pl != null) {
             pl.sendPluginMessage(lifestealSmp, "BungeeCord", out.toByteArray());
         }*/
+    }
+
+
+    public static ItemStack createHead(UUID uuid) {
+        PlayerProfile profile = Bukkit.createProfile(uuid);
+        ItemStack head = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta skullMeta = (SkullMeta) head.getItemMeta();
+        skullMeta.setPlayerProfile(profile);
+        return head;
     }
 }
