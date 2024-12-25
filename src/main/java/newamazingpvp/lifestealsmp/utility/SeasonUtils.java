@@ -20,6 +20,15 @@ import static org.bukkit.Bukkit.getServer;
 
 public class SeasonUtils {
     public static void startNewSeason() {
+        getServer().dispatchCommand(getServer().getConsoleSender(), "chunky world world");
+        getServer().dispatchCommand(getServer().getConsoleSender(), "chunky radius 12500");
+        getServer().dispatchCommand(getServer().getConsoleSender(), "chunky start");
+        getServer().dispatchCommand(getServer().getConsoleSender(), "chunky world world_nether");
+        getServer().dispatchCommand(getServer().getConsoleSender(), "chunky radius 12500");
+        getServer().dispatchCommand(getServer().getConsoleSender(), "chunky start");
+        getServer().dispatchCommand(getServer().getConsoleSender(), "chunky world world_the_end");
+        getServer().dispatchCommand(getServer().getConsoleSender(), "chunky radius 12500");
+        getServer().dispatchCommand(getServer().getConsoleSender(), "chunky start");
         setSeasonStartTime(getSeasonStartTime().plusDays(35));
         updateServerJar(new ArrayList<>(List.of("/home/ubuntu/Smp/server.jar", "/home/ubuntu/Dev/server.jar")));
         updateVelocityProxy("/home/ubuntu/Velocity/velocity.jar");
