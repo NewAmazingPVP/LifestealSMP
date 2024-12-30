@@ -10,7 +10,7 @@ public class ResistanceRune extends AbstractRune {
 
     private static final Component name = runeGradient("Resistance Rune");
     private static final EntityType mob = EntityType.WITHER_SKELETON;
-    private static final PotionEffect effect = new PotionEffect(PotionEffectType.RESISTANCE, 60, 0);
+    private static final PotionEffect effect = new PotionEffect(PotionEffectType.RESISTANCE, 80, 0);
     //dont added lvl 2 too op
     private static final String lore = ChatColor.LIGHT_PURPLE + "Grants permanent random duration " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier());
 
