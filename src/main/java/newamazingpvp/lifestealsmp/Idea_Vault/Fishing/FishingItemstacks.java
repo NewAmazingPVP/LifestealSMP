@@ -17,7 +17,7 @@ public class FishingItemstacks {
 
     //COMMON FISH LOOT ====================================================================================================
     public static ItemStack fishBone(){
-        ItemStack item = new ItemStack(Material.BONE);
+        ItemStack item = new ItemStack(Material.BONE); //TODO: Needs texture!
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(ChatColor.valueOf("#dbdbdb") + "§lFish Bone");
         List<String> lore = new ArrayList<>();
