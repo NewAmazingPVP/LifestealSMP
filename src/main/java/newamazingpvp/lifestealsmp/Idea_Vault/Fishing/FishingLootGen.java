@@ -24,7 +24,7 @@ public class FishingLootGen {
     public static final ArrayList<ItemStack> godlyFishLoot = new ArrayList<>(List.of(new ItemStack(Material.NETHER_STAR)));
 
 
-    public static ItemStack generateFishingDrop(Biome biome, Player player) {
+    public static ItemStack generateFishingDrop(Player player) {
 
         //60% common | 30% rare | 9% legendary | 1% godly TODO: adjust to make more balanced also odds are a little off in code
         Random rand = new Random();
