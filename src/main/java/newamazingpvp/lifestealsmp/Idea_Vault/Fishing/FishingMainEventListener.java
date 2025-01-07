@@ -18,14 +18,14 @@ public class FishingMainEventListener implements Listener {
     public void playerFishItem(PlayerFishEvent e){
 
         Player player = e.getPlayer();
-        Biome b = player.getLocation().getBlock().getBiome();
+        //Biome b = player.getLocation().getBlock().getBiome();
 
         Bukkit.getServer().broadcastMessage("test");
 
         if(e.getState().equals(PlayerFishEvent.State.CAUGHT_ENTITY)){
             if(e.getCaught() instanceof Item){
                 Item stack = (Item) e.getCaught();
-                stack.setItemStack(generateFishingDrop(b,player));
+                stack.setItemStack(generateFishingDrop(player));
 
             }
         }
