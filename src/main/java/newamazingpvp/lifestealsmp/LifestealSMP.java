@@ -213,7 +213,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         if (!isSmp) {
 
             //fishing update
-            getServer().getPluginManager().registerEvents(new FishingMainEventListener(), this); 
+            getServer().getPluginManager().registerEvents(new FishingMainEventListener(), this);
 
 
 
