@@ -6,6 +6,7 @@ import com.google.common.io.ByteStreams;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import newamazingpvp.lifestealsmp.Idea_Vault.Fishing.FishingMainEventListener;
 import newamazingpvp.lifestealsmp.TrimsUpdate.TrimsListeners.Utils.TrimListenersEntityDamageEntity;
 import newamazingpvp.lifestealsmp.TrimsUpdate.adminTrimsCommand;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
@@ -210,6 +211,13 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
 
         //TODO: Use this for beta things
         if (!isSmp) {
+
+            //fishing update
+            getServer().getPluginManager().registerEvents(new FishingMainEventListener(), this);
+
+
+
+
 
             //trim update
             getCommand("admintrims").setExecutor(new adminTrimsCommand());
