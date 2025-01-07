@@ -21,6 +21,7 @@ public class FishingMainEventListener implements Listener {
 
         if(e.getCaught() instanceof Item){
             Item stack = (Item) e.getCaught();
+            player.sendMessage("test");
             stack.setItemStack(generateFishingDrop(b,player));
 
         }
