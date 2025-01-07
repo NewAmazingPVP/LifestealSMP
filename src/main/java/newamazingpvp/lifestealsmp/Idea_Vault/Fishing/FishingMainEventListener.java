@@ -22,12 +22,14 @@ public class FishingMainEventListener implements Listener {
 
         Bukkit.getServer().broadcastMessage("test");
 
-        if(e.getCaught() instanceof Item){
-            Item stack = (Item) e.getCaught();
-            stack.setItemStack(generateFishingDrop(b,player));
+        if(e.getState().equals(PlayerFishEvent.State.CAUGHT_ENTITY)){
+            if(e.getCaught() instanceof Item){
+                Item stack = (Item) e.getCaught();
+                stack.setItemStack(generateFishingDrop(b,player));
 
-
+            }
         }
+
 
 
 
