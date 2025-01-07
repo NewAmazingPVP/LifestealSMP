@@ -135,6 +135,7 @@ public class EndFightRestrictions implements Listener {
                 for (Player player : Bukkit.getOnlinePlayers()) {
                     player.sendTitle(ChatColor.GOLD + survivor.getName() + ChatColor.DARK_PURPLE + " has won the end fight!", ChatColor.AQUA + "GGs " + survivor.getName());
                     player.clearActivePotionEffects();
+                    player.setGameMode(GameMode.CREATIVE);
                 }
                 sendDiscordEmbedPlayer(survivor.getName() + " has won the end fight!", Color.BLUE, "", survivor.getName());
                 sendDiscordNewsEmbedPlayer(survivor.getName() + " has won the end fight!", Color.BLUE, "1032411739351941120", survivor.getName());
