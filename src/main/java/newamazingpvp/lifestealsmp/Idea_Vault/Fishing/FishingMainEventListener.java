@@ -20,9 +20,10 @@ public class FishingMainEventListener implements Listener {
         Biome b = player.getLocation().getBlock().getBiome();
 
         if(e.getCaught() instanceof Item){
-            Item stack = (Item) e.getCaught();
+            //Item stack = (Item) e.getCaught();
+            //stack.setItemStack(generateFishingDrop(b,player));
             player.sendMessage("test");
-            stack.setItemStack(generateFishingDrop(b,player));
+
 
         }
 
