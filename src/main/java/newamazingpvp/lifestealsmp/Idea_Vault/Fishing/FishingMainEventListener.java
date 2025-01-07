@@ -6,9 +6,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerFishEvent;
-import org.bukkit.inventory.ItemStack;
 
-import static newamazingpvp.lifestealsmp.Idea_Vault.Fishing.FishingItemstacks.generateNewFishItem;
+import static newamazingpvp.lifestealsmp.Idea_Vault.Fishing.FishingLootGen.generateFishingDrop;
+
 
 public class FishingMainEventListener implements Listener {
 
@@ -21,8 +21,7 @@ public class FishingMainEventListener implements Listener {
 
         if(e.getCaught() instanceof Item){
             Item stack = (Item) e.getCaught();
-            stack.setItemStack(generateNewFishItem(b));
-            player.sendMessage("test");
+            stack.setItemStack(generateFishingDrop(b,player));
 
         }
 
