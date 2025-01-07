@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.Idea_Vault.Fishing;
 
+import org.bukkit.Bukkit;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -19,13 +20,11 @@ public class FishingMainEventListener implements Listener {
         Player player = e.getPlayer();
         Biome b = player.getLocation().getBlock().getBiome();
 
-        player.sendMessage("test1");
+        Bukkit.getServer().broadcastMessage("test");
 
         if(e.getCaught() instanceof Item){
-            player.sendMessage("test2");
             Item stack = (Item) e.getCaught();
             stack.setItemStack(generateFishingDrop(b,player));
-            player.sendMessage("test3");
 
 
         }
