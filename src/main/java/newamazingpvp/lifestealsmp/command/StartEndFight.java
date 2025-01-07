@@ -85,11 +85,11 @@ public class StartEndFight implements CommandExecutor {
 
                             if (minutesPassed >= 30 && minutesPassed < 33) {
                                 //this.cancel();
-                                worldBorder.setSize(1);
-                                Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_PURPLE + "Border is now 1 block wide. Going outside border may instant kill you");
-                                worldBorder.setDamageBuffer(0);
-                                worldBorder.setDamageAmount(4);
-                                worldBorder.setWarningDistance(10);
+                                //worldBorder.setSize(1);
+                                //Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_PURPLE + "Border is now 1 block wide. Going outside border may instant kill you");
+                                //worldBorder.setDamageBuffer(0);
+                                //worldBorder.setDamageAmount(1);
+                                //worldBorder.setWarningDistance(10);
                                 for (Player p : Bukkit.getOnlinePlayers()) {
                                     if (p.getGameMode() == GameMode.SURVIVAL) {
                                         p.addPotionEffect(new PotionEffect(PotionEffectType.POISON, Integer.MAX_VALUE, 2, true, false));
