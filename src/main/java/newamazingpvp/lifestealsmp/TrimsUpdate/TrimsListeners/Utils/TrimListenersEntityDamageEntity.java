@@ -16,26 +16,8 @@ import static newamazingpvp.lifestealsmp.TrimsUpdate.TrimsListeners.Utils.GetArm
 public class TrimListenersEntityDamageEntity implements Listener {
 
 
-    @EventHandler
-    public void playerFishItem(PlayerFishEvent e){
-
-        Player player = e.getPlayer();
-        //Biome b = player.getLocation().getBlock().getBiome();
-
-        Bukkit.getServer().broadcastMessage("test");
-
-        if(e.getState().equals(PlayerFishEvent.State.CAUGHT_ENTITY)){
-            if(e.getCaught() instanceof Item){
-                Item stack = (Item) e.getCaught();
-                stack.setItemStack(generateFishingDrop(player));
-
-            }
-        }
 
 
-
-
-    }
 
     @EventHandler
     public void onEntityDamage(EntityDamageByEntityEvent event) {
