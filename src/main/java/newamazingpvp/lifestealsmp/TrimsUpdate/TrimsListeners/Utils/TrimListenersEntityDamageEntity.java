@@ -1,16 +1,41 @@
 package newamazingpvp.lifestealsmp.TrimsUpdate.TrimsListeners.Utils;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.inventory.meta.trim.TrimPattern;
 
+import static newamazingpvp.lifestealsmp.Idea_Vault.Fishing.FishingLootGen.generateFishingDrop;
 import static newamazingpvp.lifestealsmp.TrimsUpdate.TrimsListeners.Utils.GetArmorTrimSet.GetArmorTrimSet.getArmorTrimSet;
 
 public class TrimListenersEntityDamageEntity implements Listener {
 
+
+    @EventHandler
+    public void playerFishItem(PlayerFishEvent e){
+
+        Player player = e.getPlayer();
+        //Biome b = player.getLocation().getBlock().getBiome();
+
+        Bukkit.getServer().broadcastMessage("test");
+
+        if(e.getState().equals(PlayerFishEvent.State.CAUGHT_ENTITY)){
+            if(e.getCaught() instanceof Item){
+                Item stack = (Item) e.getCaught();
+                stack.setItemStack(generateFishingDrop(player));
+
+            }
+        }
+
+
+
+
+    }
 
     @EventHandler
     public void onEntityDamage(EntityDamageByEntityEvent event) {
