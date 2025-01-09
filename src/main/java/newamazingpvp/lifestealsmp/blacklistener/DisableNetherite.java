@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
 
 public class DisableNetherite implements Listener {
@@ -16,7 +17,7 @@ public class DisableNetherite implements Listener {
         ItemStack newArmorPiece = event.getNewItem();
         ItemStack oldArmorPiece = event.getOldItem();
 
-        if (isElytra(oldArmorPiece) || isElytra(newArmorPiece)) {
+        if (isNetherite(oldArmorPiece) || isNetherite(newArmorPiece)) {
             if (player.getInventory().getHelmet() != null && player.getInventory().getHelmet().getType() == Material.NETHERITE_HELMET) {
                 player.getInventory().setHelmet(null);
             }
@@ -32,7 +33,20 @@ public class DisableNetherite implements Listener {
             if (player.getInventory().getBoots() != null && player.getInventory().getBoots().getType() == Material.NETHERITE_BOOTS) {
                 player.getInventory().setBoots(null);
             }
-            player.sendMessage(ChatColor.RED + "Why did you try breaking a rule and wasting resources!? Do /rules");
+            player.sendMessage(ChatColor.RED + "Netherite armor is not allowed! Why did you try breaking a rule and wasting resources!? Do /rules");
+        }
+    }
+
+    @EventHandler
+    public void onEquip(InventoryClickEvent event) {
+        if (event.getSlotType() == InventoryType.SlotType.ARMOR) {
+            ItemStack item = event.getCursor();
+            if (item != null && item.getType().name().toLowerCase().contains("netherite")) {
+                event.setCancelled(true);
+                Player player = (Player)event.getWhoClicked();
+                player.sendMessage(ChatColor.RED + "Netherite armor is not allowed! Why did you try breaking a rule and wasting resources!? Do /rules");
+            }
+
         }
     }
 
@@ -47,7 +61,7 @@ public class DisableNetherite implements Listener {
         }
     }
 
-    private boolean isElytra(ItemStack item) {
+    private boolean isNetherite(ItemStack item) {
         return item.getType().toString().toLowerCase().contains("netherite");
     }
 }
