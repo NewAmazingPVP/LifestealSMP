@@ -123,7 +123,7 @@ public class Compass implements CommandExecutor, Listener {
             }
 
             if (isPlayerElytraCooldown(g)) {
-                sender.sendMessage(ChatColor.RED + "You have used elytra in last 30 minutes so you cannot track!");
+                sender.sendMessage(ChatColor.RED + "You have used elytra in last 10 minutes so you cannot track!");
                 return true;
             }
 
@@ -259,7 +259,7 @@ public class Compass implements CommandExecutor, Listener {
 
         if (isElytratest(newArmorPiece)) {
             elytraTrackCooldown.remove(player.getUniqueId());
-            elytraTrackCooldown.put(player.getUniqueId(), System.currentTimeMillis() + 1800000);
+            elytraTrackCooldown.put(player.getUniqueId(), System.currentTimeMillis() + 600000);
         }
     }
 
