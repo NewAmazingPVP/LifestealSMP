@@ -18,7 +18,10 @@ public class EventsHandler implements Listener {
 
     public EventsHandler() {
         events.add(new ServerOpening(SEASON_START_TIME));
+        events.add(new BorderExpand(SEASON_START_TIME.plusDays(1), 6000));
         events.add(new TrackingDay(SEASON_START_TIME.plusDays(2), 1));
+        events.add(new BorderExpand(SEASON_START_TIME.plusDays(2), 8000));
+        events.add(new BorderExpand(SEASON_START_TIME.plusDays(3), 10000));
         events.add(new NormalDifficulty(SEASON_START_TIME.plusDays(4)));
         events.add(new NoTrackingDay(SEASON_START_TIME.plusDays(4)));
         events.add(new HeartMultiplier(SEASON_START_TIME.plusDays(5), 1.5));
