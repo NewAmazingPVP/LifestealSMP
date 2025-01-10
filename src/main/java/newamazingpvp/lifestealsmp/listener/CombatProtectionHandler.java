@@ -65,11 +65,11 @@ public class CombatProtectionHandler implements Listener {
                 invincibilityPlayers.remove(damager.getName());
                 damager.sendMessage(ChatColor.RED + "You have lost your death protection invincibility because you attacked another player.");
             }*/
-            //nerfed from 216000 (3 hours) to 144000 (2 hours)
-            if (getPlaytime(damaged) < 144000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())) {
+            //nerfed from 216000 (3 hours) to 144000 (2 hours) to 77000 (1.5 hours)
+            if (getPlaytime(damaged) < 77000 && !isInCombat(damaged) && !newbieViolate.contains(damaged.getName())) {
                 event.setCancelled(true);
                 long remainingSeconds = getPlaytime(damaged) / 20;
-                long finalTime = 144000 - remainingSeconds;
+                long finalTime = 77000 - remainingSeconds;
 
                 int remainingMinutes = (int) ((finalTime % 3600) / 60);
                 int remainingSecondsLeft = (int) (finalTime % 60);
@@ -79,7 +79,7 @@ public class CombatProtectionHandler implements Listener {
                         remainingSecondsLeft + " seconds. Either way they won't give hearts until they have 2 hour playtime, so why bother?");
                 return;
             }
-            if (getPlaytime(damaged) < 144000) {
+            if (getPlaytime(damaged) < 77000) {
                 damaged.sendMessage(ChatColor.RED + "Since you don't have 2 hours of playtime, even if you die you won't lose any hearts");
                 damager.sendMessage(ChatColor.RED + "The person you are trying to attack does not have 2 hours of playtime. Therefore they will not drop hearts when killed");
             }
@@ -98,7 +98,7 @@ public class CombatProtectionHandler implements Listener {
     private void handleVillagerDamage(EntityDamageByEntityEvent event, Player damager) {
         if (damager == null) return;
 
-        if (getPlaytime(damager) < 144000 && !newbieViolate.contains(damager.getName())) {
+        if (getPlaytime(damager) < 77000 && !newbieViolate.contains(damager.getName())) {
             newbieViolate.add(damager.getName());
             event.setCancelled(true);
             lifestealSmp.getServer().broadcastMessage(ChatColor.YELLOW + damager.getName() + " has lost their newbie protection for 5 minutes because of potentially breaking the no griefing rule during newbie protection");
@@ -138,7 +138,7 @@ public class CombatProtectionHandler implements Listener {
         if (slainer == null) return;
         if (slainer.equals(p)) return;
         removeEnemies(p);
-        if (!heartCooldownPlayers.contains(p.getName()) && getPlaytime(p) > 144000) {
+        if (!heartCooldownPlayers.contains(p.getName()) && getPlaytime(p) > 77000) {
             if (!(p.getMaxHealth() <= 2)) {
                 p.setMaxHealth(p.getMaxHealth() - 2);
             } else {

@@ -29,7 +29,8 @@ public class ServerOpening extends BaseEvent {
         for (World w : Bukkit.getWorlds()) {
             w.setDifficulty(Difficulty.EASY);
             w.getWorldBorder().setCenter(new Location(w, 0, 0, 0));
-            w.getWorldBorder().setSize(10000);
+            // was 10000
+            w.getWorldBorder().setSize(4000);
             //w.getWorldBorder().setDamageBuffer(0);
             //w.getWorldBorder().setDamageAmount(4);
             //w.getWorldBorder().setWarningDistance(50);
