@@ -53,7 +53,7 @@ public class AntiLavaDamage implements Listener {
         }
 
         long playtime = getPlaytime(player);
-        if (playtime < 144000 && !newbieViolate.contains(player.getName())) {
+        if (playtime < 77000 && !newbieViolate.contains(player.getName())) {
             Location damageLocation = player.getLocation();
             double radius = 7.0;
             for (Location placedLavaLoc : playerPlacedLava.keySet()) {
