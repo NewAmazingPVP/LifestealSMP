@@ -7,6 +7,9 @@ import me.scarsz.jdaappender.ChannelLoggingHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import newamazingpvp.lifestealsmp.Idea_Vault.Fishing.FishingMainEventListener;
+import newamazingpvp.lifestealsmp.Idea_Vault.LockItem.LockItem;
+import newamazingpvp.lifestealsmp.Idea_Vault.LockItem.LockItemListener;
+import newamazingpvp.lifestealsmp.Idea_Vault.LockItem.UnlockItem;
 import newamazingpvp.lifestealsmp.TrimsUpdate.TrimsListeners.Utils.TrimListenersEntityDamageEntity;
 import newamazingpvp.lifestealsmp.TrimsUpdate.adminTrimsCommand;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
@@ -215,7 +218,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             //fishing update
             getServer().getPluginManager().registerEvents(new FishingMainEventListener(), this);
 
-
+            getCommand("lockitem").setExecutor(new LockItem());
+            getCommand("unlockitem").setExecutor(new UnlockItem());
+            getServer().getPluginManager().registerEvents(new LockItemListener(), this);
 
 
 
