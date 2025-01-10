@@ -275,3 +275,9 @@ commands:
     usage: /admintrims [item]
     permission: lifestealSMP.admin
     default: op
+  lockitem:
+    description: locks item you are holding
+    usage: /lockitem
+  unlockitem:
+    description: unlocks item you are holding
+    usage: /unlockitem
