@@ -92,7 +92,7 @@ public class SpawnProtection implements Listener {
             Player damager = returnPlayerDamager(event.getDamager());
             if (damager == null) return;
             if (event.isCancelled()) return;
-            if (getPlaytime(damager) < 77000 && !newbieViolate.contains(damager.getName())) {
+            if (getPlaytime(damager) < 72000 && !newbieViolate.contains(damager.getName())) {
                 newbieViolate.add(damager.getName());
                 event.setCancelled(true);
                 damager.sendMessage(ChatColor.RED + "You tried attacking someone and have temporarily lost newbie protection");

@@ -38,7 +38,7 @@ public class CombatLogListener implements Listener {
             Player p = e.getPlayer();
 
             if (getCombatTimer(p) < 85) {
-                if (!heartCooldownPlayers.contains(e.getPlayer().getName()) && getPlaytime(p) > 77000) {
+                if (!heartCooldownPlayers.contains(e.getPlayer().getName()) && getPlaytime(p) > 72000) {
                     p.setMaxHealth(p.getMaxHealth() - 2);
                     Player winner = getEnemies(p).get(getEnemies(p).size() - 1);
                     if (!(winner.getMaxHealth() > maxHp)) {
