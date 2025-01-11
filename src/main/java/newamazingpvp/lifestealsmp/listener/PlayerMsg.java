@@ -85,7 +85,7 @@ public class PlayerMsg implements Listener {
         }*/
 
         if (message.contains("prot")) {
-            broadcastMessage(ChatColor.AQUA + "The server provides newbie protection for 2 hours and death protection for 15 minutes after a death. During this time, you cannot lose hearts from PvP damage.", player);
+            broadcastMessage(ChatColor.AQUA + "The server provides newbie protection for a hour and death protection for 15 minutes after a death. During this time, you cannot lose hearts from PvP damage.", player);
         }
 
         if (message.contains("discord")) {

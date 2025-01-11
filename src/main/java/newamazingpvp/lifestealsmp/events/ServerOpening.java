@@ -52,7 +52,7 @@ public class ServerOpening extends BaseEvent {
                 "**1.21** is the recommended version, but it is compatible with **1.7-1.21**\n" +
                 "\n" +
                 "**NOTE**\n" +
-                "Each person will have their own individual newbie and tracking protection for 2 hours of playtime. \n" +
+                "Each person will have their own individual newbie and tracking protection for a hour of playtime. \n" +
                 "\n" +
                 "Anyways goodluck! And fyi if you don't want to be tracked you and use an invis potion!", "1032411739351941120");
     }

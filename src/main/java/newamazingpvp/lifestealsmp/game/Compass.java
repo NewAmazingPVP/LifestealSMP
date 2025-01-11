@@ -138,7 +138,8 @@ public class Compass implements CommandExecutor, Listener {
             }
 
             long targetPlaytime = getPlaytime(target);
-            long requiredPlaytimeTicks = 2 * 60 * 60 * 20;
+            //144000
+            long requiredPlaytimeTicks = 77000;
 
             if (targetPlaytime < requiredPlaytimeTicks) {
                 long remainingTicks = requiredPlaytimeTicks - targetPlaytime;
