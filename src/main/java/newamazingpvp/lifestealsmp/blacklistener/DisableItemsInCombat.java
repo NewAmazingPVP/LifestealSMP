@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.blacklistener;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -8,6 +9,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 
 import static newamazingpvp.lifestealsmp.game.CombatLog.isInCombat;
+import static newamazingpvp.lifestealsmp.listener.SpawnProtection.isWithinSpawnRadius;
 
 public class DisableItemsInCombat implements Listener {
     @EventHandler
@@ -27,6 +29,14 @@ public class DisableItemsInCombat implements Listener {
                         player.setGliding(false);
                     }
                 }
+            }
+        }
+        if (isWithinSpawnRadius(player.getLocation())){
+            if (Math.random() < 0.01){
+                player.sendMessage(ChatColor.RED + "If you are stuck, do /spawn to get out");
+            }
+            if (Math.random() < 0.003){
+                player.sendTitle(ChatColor.RED + "If you get stuck, do /spawn to get out", "/spawn");
             }
         }
 
