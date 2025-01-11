@@ -59,8 +59,7 @@ public class Stats extends ListenerAdapter {
         int sprint = fPlayer.getStatistic(Statistic.SPRINT_ONE_CM);
         int strider = fPlayer.getStatistic(Statistic.STRIDER_ONE_CM);
         int under = fPlayer.getStatistic(Statistic.WALK_ON_WATER_ONE_CM);
-        int over = fPlayer.getStatistic(Statistic.FLY_ONE_CM);
-        int final1 = (walk + swim + fly + aviate + boat + climb + crouch + fall + horse + minecart + pig + sprint + strider + under + over) / 100;
+        int final1 = (walk + swim + fly + aviate + boat + climb + crouch + fall + horse + minecart + pig + sprint + strider + under) / 100;
         int dealt = fPlayer.getStatistic(Statistic.DAMAGE_DEALT) / 10;
         int absorbed = fPlayer.getStatistic(Statistic.DAMAGE_TAKEN) / 10;
         int playTime = fPlayer.getStatistic(Statistic.PLAY_ONE_MINUTE);

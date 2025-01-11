@@ -55,11 +55,11 @@ public class PlayerDeath implements Listener {
 
         if (player.getKiller() != null) {
             Player killer = player.getKiller();
-            ItemStack skull = createHead(killer.getUniqueId());
+            ItemStack skull = createHead(player.getUniqueId());
             SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
-            skullMeta.setDisplayName(ChatColor.RED + killer.getName() + "'s Head");
+            skullMeta.setDisplayName(ChatColor.RED + player.getName() + "'s Head");
             skull.setItemMeta(skullMeta);
-            addItemOrDrop(player, skull, ChatColor.AQUA + "Player head was dropped because your inventory was full.");
+            addItemOrDrop(killer, skull, ChatColor.AQUA + "Player head was dropped because your inventory was full.");
         }
         /*ByteArrayDataOutput out = ByteStreams.newDataOutput();
         out.writeUTF("Server");
