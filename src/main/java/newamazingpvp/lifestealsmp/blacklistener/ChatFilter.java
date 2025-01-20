@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.blacklistener;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -7,6 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerChatEvent;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -14,7 +16,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
@@ -28,16 +29,19 @@ public class ChatFilter implements Listener {
                 String[] temp = input.nextLine().split(",");
                 List<String> words = Arrays.asList(temp);
                 words = words.stream()
-                        .map(word -> word.replaceAll("[,\\s]", ""))
-                        .collect(Collectors.toList());
+                        .map(word -> word.replace(" ", ""))
+                        .toList();
 
                 blacklistWords.addAll(words);
             }
             input.close();
+
+            blacklistWords.sort((a, b) -> Integer.compare(b.length(), a.length()));
         } catch (Exception e) {
             System.out.println("Error reading or parsing blacklist.csv");
         }
     }
+
 
 
     @EventHandler(priority = EventPriority.LOWEST)
@@ -66,6 +70,22 @@ public class ChatFilter implements Listener {
     }
 
     private void checkMessage(AsyncPlayerChatEvent event) {
+        Bukkit.getScheduler().runTask(lifestealSmp, () -> {
+            String originalMessage = event.getMessage();
+            Player player = event.getPlayer();
+
+            String censoredMessage = censorBlacklistedWords(originalMessage);
+
+            if (!originalMessage.equals(censoredMessage)) {
+                event.setMessage(censoredMessage);
+                player.sendMessage(ChatColor.RED + "Some words or links in your message were inappropriate and have been censored.");
+                player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
+            }
+        });
+    }
+
+    @EventHandler
+    public void onPlayerChatSync(PlayerChatEvent event) {
         String originalMessage = event.getMessage();
         Player player = event.getPlayer();
 
@@ -84,44 +104,48 @@ public class ChatFilter implements Listener {
     }
 
     public static String censorBlacklistedWords(String message) {
-        // Block URLs
         if (!message.toLowerCase().contains("textures.minecraft.net")) {
             message = message.replaceAll("(?i)\\b((?:https?|ftp|file)://[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])\\b", "*URL_BLOCKED*");
         }
 
-        StringBuilder messageWithoutSpecialChars = new StringBuilder();
-        StringBuilder specialChars = new StringBuilder();
-
-        for (char c : message.toCharArray()) {
-            if (!Character.isLetterOrDigit(c)) {
-                specialChars.append(c);
-            } else {
-                messageWithoutSpecialChars.append(c);
-            }
-        }
-
-        String messageWithoutSpecialCharsStr = messageWithoutSpecialChars.toString();
-
         for (String word : blacklistWords) {
-            String regex = "(?i)(?:" + Pattern.quote(word) + ")(?=[^a-zA-Z0-9]|$)";
-            String replacement = "*".repeat(word.length());
-            messageWithoutSpecialCharsStr = messageWithoutSpecialCharsStr.replaceAll(regex, replacement);
-        }
+            if (message.toLowerCase().contains(word.toLowerCase())) {
+                message = message.replaceAll("(?i)" + Pattern.quote(word), "*".repeat(word.length()));
+            }
 
-        StringBuilder censoredMessage = new StringBuilder();
-        int charIndex = 0;
-        for (char c : message.toCharArray()) {
-            if (!Character.isLetterOrDigit(c)) {
-                censoredMessage.append(specialChars.charAt(0));
-                specialChars.deleteCharAt(0);
-            } else {
-                if (charIndex < messageWithoutSpecialCharsStr.length()) {
-                    censoredMessage.append(messageWithoutSpecialCharsStr.charAt(charIndex));
+            String cleanedMessage = filterBypasses(message);
+            String cleanedWord = filterBypasses(word);
+
+            if (cleanedMessage.contains(cleanedWord)) {
+                StringBuilder sb = new StringBuilder("(?i)");
+                for (int i = 0; i < word.length(); i++) {
+                    sb.append(Pattern.quote(String.valueOf(word.charAt(i))));
+                    if (i < word.length() - 1) {
+                        sb.append("[^a-zA-Z0-9]*");
+                    }
                 }
-                charIndex++;
+                String regex = sb.toString();
+                message = message.replaceAll(regex  , "*".repeat(word.length()));
             }
         }
 
-        return censoredMessage.toString();
+        return message;
     }
+
+    private static String filterBypasses(String input) {
+        input = input.replaceAll("[^a-zA-Z0-9]", "");
+        input = input.toLowerCase();
+
+        StringBuilder sb = new StringBuilder();
+        char last = '\0';
+        for (char c : input.toCharArray()) {
+            if (c != last) {
+                sb.append(c);
+                last = c;
+            }
+        }
+        return sb.toString();
+    }
+
+
 }
