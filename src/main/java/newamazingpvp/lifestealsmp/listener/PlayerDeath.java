@@ -4,6 +4,7 @@ import com.destroystokyo.paper.profile.PlayerProfile;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -80,10 +81,11 @@ public class PlayerDeath implements Listener {
 
 
     public static ItemStack createHead(UUID uuid) {
-        PlayerProfile profile = Bukkit.createProfile(uuid);
         ItemStack head = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta skullMeta = (SkullMeta) head.getItemMeta();
-        skullMeta.setPlayerProfile(profile);
+        OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
+        skullMeta.setOwningPlayer(player);
+        head.setItemMeta(skullMeta);
         return head;
     }
 }
