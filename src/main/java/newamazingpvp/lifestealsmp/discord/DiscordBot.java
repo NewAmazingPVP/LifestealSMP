@@ -43,6 +43,7 @@ public class DiscordBot {
         jda.addEventListener((new Status()));
         jda.addEventListener((new ConsoleCommand()));
         jda.addEventListener((new IPClass()));
+        jda.addEventListener((new Moderation()));
         new BukkitRunnable() {
             @Override
             public void run() {

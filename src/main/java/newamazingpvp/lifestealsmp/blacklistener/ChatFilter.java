@@ -63,6 +63,7 @@ public class ChatFilter implements Listener {
         }
         if (isFlaggedByModeration(originalMessage)) {
             event.setCancelled(true);
+            //dont need scheduler
             Bukkit.getScheduler().runTask(lifestealSmp, () -> {
                 player.sendMessage(ChatColor.RED + "Your message was blocked.");
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
@@ -181,7 +182,7 @@ public class ChatFilter implements Listener {
         return sb.toString();
     }
 
-    private boolean isFlaggedByModeration(String input) {
+    public static boolean isFlaggedByModeration(String input) {
         String apiKey = lifestealSmp.getConfig().getString("openai-api-key");
         try {
             URL url = new URL("https://api.openai.com/v1/moderations");
@@ -201,12 +202,54 @@ public class ChatFilter implements Listener {
                 responseBuilder.append(line);
             }
             String response = responseBuilder.toString();
-            Bukkit.broadcastMessage("isTrue: " + response.contains("true"));
             return response.contains("true");
 
         } catch (Exception e) {
             return false;
         }
     }
+
+    public static boolean isFlaggedByImageModeration(String imageUrl) {
+        String apiKey = lifestealSmp.getConfig().getString("openai-api-key");
+        try {
+            URL url = new URL("https://api.openai.com/v1/moderations");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setRequestProperty("Authorization", "Bearer " + apiKey);
+            conn.setDoOutput(true);
+
+            String body = """
+        {
+          "model": "omni-moderation-latest",
+          "input": [
+            {
+              "type": "image_url",
+              "image_url": {
+                "url": "%s"
+              }
+            }
+          ]
+        }
+        """.formatted(imageUrl.replace("\"", "\\\""));
+
+            try (OutputStream os = conn.getOutputStream()) {
+                os.write(body.getBytes());
+            }
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            StringBuilder responseBuilder = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                responseBuilder.append(line);
+            }
+            String response = responseBuilder.toString();
+
+            return response.contains("true");
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 
 }
