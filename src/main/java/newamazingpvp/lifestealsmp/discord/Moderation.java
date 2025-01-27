@@ -15,6 +15,9 @@ import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordMessage;
 public class Moderation extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
+        if (event.getAuthor().isBot()){
+            return;
+        }
         String messageContent = event.getMessage().getContentRaw();
         String censoredMessage = censorBlacklistedWords(messageContent);
 
