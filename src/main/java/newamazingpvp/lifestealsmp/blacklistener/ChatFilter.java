@@ -23,6 +23,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordMessage;
 
 public class ChatFilter implements Listener {
     public static final ArrayList<String> blacklistWords = new ArrayList<>();
@@ -60,6 +61,7 @@ public class ChatFilter implements Listener {
             event.setMessage(censoredMessage);
             player.sendMessage(ChatColor.RED + "Some words or links in your message were inappropriate and have been censored.");
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
+            sendDiscordMessage(player.getName() + "tried saying something bad. Here is the moderated language **" + originalMessage + "**", "1019965981025652738");
         }
         if (isFlaggedByModeration(originalMessage)) {
             event.setCancelled(true);
@@ -67,6 +69,7 @@ public class ChatFilter implements Listener {
             Bukkit.getScheduler().runTask(lifestealSmp, () -> {
                 player.sendMessage(ChatColor.RED + "Your message was blocked.");
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
+                sendDiscordMessage(player.getName() + "tried saying something bad. Here is the moderated language **" + originalMessage + "**", "1019965981025652738");
             });
         }
     }
@@ -167,6 +170,31 @@ public class ChatFilter implements Listener {
         return message;
     }
 
+    public static String censorBlacklistedWordsNonLinks(String message) {
+        for (String word : blacklistWords) {
+            if (message.toLowerCase().contains(word.toLowerCase())) {
+                message = message.replaceAll("(?i)" + Pattern.quote(word), "*".repeat(word.length()));
+            }
+
+            String cleanedMessage = filterBypasses(message);
+            String cleanedWord = filterBypasses(word);
+
+            if (cleanedMessage.contains(cleanedWord)) {
+                StringBuilder sb = new StringBuilder("(?i)");
+                for (int i = 0; i < word.length(); i++) {
+                    sb.append(Pattern.quote(String.valueOf(word.charAt(i))));
+                    if (i < word.length() - 1) {
+                        sb.append("[^a-zA-Z0-9]*");
+                    }
+                }
+                String regex = sb.toString();
+                message = message.replaceAll(regex  , "*".repeat(word.length()));
+            }
+        }
+
+        return message;
+    }
+
     private static String filterBypasses(String input) {
         input = input.replaceAll("[^a-zA-Z0-9]", "");
         input = input.toLowerCase();
@@ -202,7 +230,8 @@ public class ChatFilter implements Listener {
                 responseBuilder.append(line);
             }
             String response = responseBuilder.toString();
-            return response.contains("true");
+            // allow normal minecraft conversations but reduce severe false flags while maintaining safe community
+            return response.contains("true") && !response.contains("\"harassment\": true,") && !response.contains("\"violence\": true,");
 
         } catch (Exception e) {
             return false;

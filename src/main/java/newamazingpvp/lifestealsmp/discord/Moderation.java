@@ -19,7 +19,7 @@ public class Moderation extends ListenerAdapter {
             return;
         }
         String messageContent = event.getMessage().getContentRaw();
-        String censoredMessage = censorBlacklistedWords(messageContent);
+        String censoredMessage = censorBlacklistedWordsNonLinks(messageContent);
 
         if (!messageContent.equals(censoredMessage)) {
             event.getMessage().delete().queue();
