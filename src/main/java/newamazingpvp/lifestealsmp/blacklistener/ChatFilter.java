@@ -59,13 +59,13 @@ public class ChatFilter implements Listener {
 
         String censoredMessage = censorBlacklistedWords(originalMessage);
         if (shouldBeWarned(originalMessage)) {
-            sendDiscordMessage(player.getName() + "possibly tried saying something bad. Here is the flagged language **" + originalMessage + "**", "1019965981025652738");
+            sendDiscordMessage(player.getName() + " possibly tried saying something bad in minecraft. Here is the flagged language " + originalMessage, "1019965981025652738");
         }
         if (!originalMessage.equals(censoredMessage)) {
             event.setMessage(censoredMessage);
             player.sendMessage(ChatColor.RED + "Some words or links in your message were inappropriate and have been censored.");
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
-            sendDiscordMessage(player.getName() + "tried saying something bad. Here is the moderated language **" + originalMessage + "**", "1019965981025652738");
+            sendDiscordMessage(player.getName() + " said something bad in minecraft. Here is the moderated language **" + originalMessage + "**", "1019965981025652738");
         }
         if (isFlaggedByModeration(originalMessage)) {
             event.setCancelled(true);
@@ -73,7 +73,7 @@ public class ChatFilter implements Listener {
             Bukkit.getScheduler().runTask(lifestealSmp, () -> {
                 player.sendMessage(ChatColor.RED + "Your message was blocked.");
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
-                sendDiscordMessage(player.getName() + "tried saying something bad. Here is the moderated language **" + originalMessage + "**", "1019965981025652738");
+                sendDiscordMessage(player.getName() + " said something bad in minecraft  . Here is the moderated language **" + originalMessage + "**", "1019965981025652738");
             });
         }
     }
@@ -198,6 +198,21 @@ public class ChatFilter implements Listener {
 
         for (String word : blacklistWords) {
             StringBuilder regexBuilder = new StringBuilder();
+            String cleanedMessage = filterBypasses(message);
+            String cleanedWord = filterBypasses(word);
+
+            if (cleanedMessage.contains(cleanedWord)) {
+                flag = true;
+                /*StringBuilder sb = new StringBuilder("(?i)");
+                for (int i = 0; i < word.length(); i++) {
+                    sb.append(Pattern.quote(String.valueOf(word.charAt(i))));
+                    if (i < word.length() - 1) {
+                        sb.append("[^a-zA-Z0-9]*");
+                    }
+                }
+                String regex = sb.toString();
+                message = message.replaceAll(regex  , "*".repeat(word.length()));*/
+            }
 
             //regexBuilder.append("(?i)(?<![a-zA-Z0-9])");
 
@@ -362,6 +377,9 @@ public class ChatFilter implements Listener {
             }
             String response = responseBuilder.toString();
 
+            if (response.contains("true") && StringUtils.countMatches(response, "true") == 2) {
+                return !response.contains("\"harassment\": true,") && !response.contains("\"violence\": true,") && !response.contains("\"self-harm\": true,") && !response.contains("\"illicit/violent\": true,");
+            }
             return response.contains("true");
         } catch (Exception e) {
             return false;
