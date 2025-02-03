@@ -9,6 +9,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerChatEvent;
+import org.codehaus.plexus.util.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
@@ -56,7 +58,9 @@ public class ChatFilter implements Listener {
         Player player = event.getPlayer();
 
         String censoredMessage = censorBlacklistedWords(originalMessage);
-
+        if (shouldBeWarned(originalMessage)) {
+            sendDiscordMessage(player.getName() + "possibly tried saying something bad. Here is the flagged language **" + originalMessage + "**", "1019965981025652738");
+        }
         if (!originalMessage.equals(censoredMessage)) {
             event.setMessage(censoredMessage);
             player.sendMessage(ChatColor.RED + "Some words or links in your message were inappropriate and have been censored.");
@@ -150,33 +154,115 @@ public class ChatFilter implements Listener {
             if (message.toLowerCase().contains(word.toLowerCase())) {
                 message = message.replaceAll("(?i)" + Pattern.quote(word), "*".repeat(word.length()));
             }
+        }
 
-            String cleanedMessage = filterBypasses(message);
-            String cleanedWord = filterBypasses(word);
+        for (String word : blacklistWords) {
+            StringBuilder regexBuilder = new StringBuilder();
 
-            if (cleanedMessage.contains(cleanedWord)) {
-                StringBuilder sb = new StringBuilder("(?i)");
-                for (int i = 0; i < word.length(); i++) {
-                    sb.append(Pattern.quote(String.valueOf(word.charAt(i))));
-                    if (i < word.length() - 1) {
-                        sb.append("[^a-zA-Z0-9]*");
-                    }
+            regexBuilder.append("(?i)(?<![a-zA-Z0-9])");
+
+            for (int i = 0; i < word.length(); i++) {
+                regexBuilder.append(Pattern.quote(String.valueOf(word.charAt(i))) + "+");
+                if (i < word.length() - 1) {
+                    regexBuilder.append("[^a-zA-Z0-9]*");
                 }
-                String regex = sb.toString();
-                message = message.replaceAll(regex  , "*".repeat(word.length()));
             }
+
+            regexBuilder.append("(?![a-zA-Z0-9])");
+
+
+            String regexPattern = "(?i)" + regexBuilder.toString();
+
+            Pattern pattern = Pattern.compile(regexPattern);
+            Matcher matcher = pattern.matcher(message);
+            StringBuffer sb = new StringBuffer();
+            while (matcher.find()) {
+                matcher.appendReplacement(sb, "*".repeat(word.length()));
+            }
+            matcher.appendTail(sb);
+            message = sb.toString();
         }
 
         return message;
     }
+
+    public static boolean shouldBeWarned(String message) {
+        boolean flag = false;
+
+        for (String word : blacklistWords) {
+            if (message.toLowerCase().contains(word.toLowerCase())) {
+                flag = true;
+                break;
+            }
+        }
+
+        for (String word : blacklistWords) {
+            StringBuilder regexBuilder = new StringBuilder();
+
+            //regexBuilder.append("(?i)(?<![a-zA-Z0-9])");
+
+            for (int i = 0; i < word.length(); i++) {
+                regexBuilder.append(Pattern.quote(String.valueOf(word.charAt(i))) + "+");
+                if (i < word.length() - 1) {
+                    regexBuilder.append("[^a-zA-Z0-9]*");
+                }
+            }
+
+            //regexBuilder.append("(?![a-zA-Z0-9])");
+
+
+            String regexPattern = "(?i)" + regexBuilder.toString();
+
+            Pattern pattern = Pattern.compile(regexPattern);
+            Matcher matcher = pattern.matcher(message);
+            StringBuffer sb = new StringBuffer();
+            while (matcher.find()) {
+                flag = true;
+                matcher.appendReplacement(sb, "*".repeat(word.length()));
+            }
+            matcher.appendTail(sb);
+            message = sb.toString();
+        }
+
+        return flag;
+    }
+
 
     public static String censorBlacklistedWordsNonLinks(String message) {
         for (String word : blacklistWords) {
             if (message.toLowerCase().contains(word.toLowerCase())) {
                 message = message.replaceAll("(?i)" + Pattern.quote(word), "*".repeat(word.length()));
             }
+        }
 
-            String cleanedMessage = filterBypasses(message);
+        for (String word : blacklistWords) {
+            StringBuilder regexBuilder = new StringBuilder();
+
+            regexBuilder.append("(?i)(?<![a-zA-Z0-9])");
+
+            for (int i = 0; i < word.length(); i++) {
+                regexBuilder.append(Pattern.quote(String.valueOf(word.charAt(i))) + "+");
+                if (i < word.length() - 1) {
+                    regexBuilder.append("[^a-zA-Z0-9]*");
+                }
+            }
+
+            regexBuilder.append("(?![a-zA-Z0-9])");
+
+
+            String regexPattern = "(?i)" + regexBuilder.toString();
+
+            Pattern pattern = Pattern.compile(regexPattern);
+            Matcher matcher = pattern.matcher(message);
+            StringBuffer sb = new StringBuffer();
+            while (matcher.find()) {
+                matcher.appendReplacement(sb, "*".repeat(word.length()));
+            }
+            matcher.appendTail(sb);
+            message = sb.toString();
+        }
+
+            /*String cleanedMessage = filterBypasses(message);
             String cleanedWord = filterBypasses(word);
 
             if (cleanedMessage.contains(cleanedWord)) {
@@ -189,8 +275,7 @@ public class ChatFilter implements Listener {
                 }
                 String regex = sb.toString();
                 message = message.replaceAll(regex  , "*".repeat(word.length()));
-            }
-        }
+            }*/
 
         return message;
     }
@@ -230,9 +315,12 @@ public class ChatFilter implements Listener {
                 responseBuilder.append(line);
             }
             String response = responseBuilder.toString();
-            // allow normal minecraft conversations but reduce severe false flags while maintaining safe community
-            return response.contains("true") && !response.contains("\"harassment\": true,") && !response.contains("\"violence\": true,");
-
+            //System.out.println(response);
+            // allow normal minecraft conversations/items but reduce severe false flags while maintaining safe community
+            if (response.contains("true") && StringUtils.countMatches(response, "true") == 2) {
+                return !response.contains("\"harassment\": true,") && !response.contains("\"violence\": true,") && !response.contains("\"self-harm\": true,") && !response.contains("\"illicit/violent\": true,");
+            }
+            return response.contains("true");
         } catch (Exception e) {
             return false;
         }
