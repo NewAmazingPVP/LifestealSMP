@@ -59,7 +59,7 @@ public class ChatFilter implements Listener {
 
         String censoredMessage = censorBlacklistedWords(originalMessage);
         if (shouldBeWarned(originalMessage)) {
-            sendDiscordMessage(player.getName() + " possibly tried saying something bad in minecraft. Here is the flagged language " + originalMessage, "1019965981025652738");
+            sendDiscordMessage("||  " + player.getName() + " possibly tried saying something bad in minecraft. Here is the flagged language " + originalMessage + "  ||", "1019965981025652738");
         }
         if (!originalMessage.equals(censoredMessage)) {
             event.setMessage(censoredMessage);
