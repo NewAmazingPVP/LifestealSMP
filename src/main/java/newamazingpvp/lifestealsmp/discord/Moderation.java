@@ -1,18 +1,10 @@
 package newamazingpvp.lifestealsmp.discord;
 
-import com.squareup.gifencoder.GifEncoder;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Sound;
 
-import java.awt.image.BufferedImage;
-
-import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.*;
-import static newamazingpvp.lifestealsmp.discord.DiscordBot.jda;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordMessage;
 
 public class Moderation extends ListenerAdapter {
@@ -24,7 +16,7 @@ public class Moderation extends ListenerAdapter {
         String messageContent = event.getMessage().getContentRaw();
         String censoredMessage = censorBlacklistedWordsNonLinks(messageContent);
         if (shouldBeWarned(messageContent)) {
-            sendDiscordMessage(event.getAuthor().getName() + " possibly tried saying something bad. Here is the flagged language " + messageContent, "1019965981025652738");
+            sendDiscordMessage("||  " + event.getAuthor().getName() + " possibly tried saying something bad. Here is the flagged language " + messageContent + "  || ", "1019965981025652738");
         }
         if (!messageContent.equals(censoredMessage)) {
             event.getMessage().delete().queue();
