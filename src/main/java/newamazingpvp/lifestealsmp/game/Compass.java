@@ -149,7 +149,7 @@ public class Compass implements CommandExecutor, Listener {
                 int remainingMinutes = (int) ((remainingSeconds % 3600) / 60);
                 int remainingSecondsLeft = (int) (remainingSeconds % 60);
 
-                String remainingTimeMessage = ChatColor.RED + "Cannot track player because they have newbie protection for " +
+                String remainingTimeMessage = ChatColor.RED + "Cannot track player because they have track protection for " +
                         ChatColor.YELLOW + remainingHours + " hours, " +
                         remainingMinutes + " minutes, " +
                         remainingSecondsLeft + " seconds.";
@@ -159,7 +159,7 @@ public class Compass implements CommandExecutor, Listener {
             }
 
             long targetDeathTime = getDeathTime(target);
-            long requiredDeathTime = 15 * 60 * 20;
+            long requiredDeathTime = 2 * 60 * 20;
 
             if (targetDeathTime < requiredDeathTime) {
                 long remainingTicks = requiredDeathTime - targetDeathTime;
@@ -168,7 +168,25 @@ public class Compass implements CommandExecutor, Listener {
                 int remainingMinutes = (int) ((remainingSeconds % 3600) / 60);
                 int remainingSecondsLeft = (int) (remainingSeconds % 60);
 
-                String remainingTimeMessage = ChatColor.RED + "Cannot track because they died recently and have death protection for " +
+                String remainingTimeMessage = ChatColor.RED + "Cannot track because they died recently and have track protection for " +
+                        ChatColor.YELLOW + remainingMinutes + " minutes, " +
+                        remainingSecondsLeft + " seconds.";
+
+                sender.sendMessage(remainingTimeMessage);
+                return true;
+            }
+
+            long gDeathTime = getDeathTime(g);
+            long requiredgDeathTime = 2 * 60 * 20;
+
+            if (gDeathTime < requiredgDeathTime) {
+                long remainingTicks = requiredgDeathTime - gDeathTime;
+                long remainingSeconds = remainingTicks / 20;
+
+                int remainingMinutes = (int) ((remainingSeconds % 3600) / 60);
+                int remainingSecondsLeft = (int) (remainingSeconds % 60);
+
+                String remainingTimeMessage = ChatColor.RED + "Cannot track because you died recently and have track protection for " +
                         ChatColor.YELLOW + remainingMinutes + " minutes, " +
                         remainingSecondsLeft + " seconds.";
 

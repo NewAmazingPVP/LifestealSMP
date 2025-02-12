@@ -40,7 +40,7 @@ public class ServerOpening extends BaseEvent {
                 "\n" +
                 "**Rules and Info**\n" +
                 "- The end will open in 2 weeks\n" +
-                "- 10k by 10k map size (will be expanded to 25k by 25k next weekend)\n" +
+                "- 4k by 4k starting map size (will be expanded to 25k by 25k next weekend)\n" +
                 "- Custom items /recipes and runes /runes will be enabled next weekend\n" +
                 "- Current difficulty easy, will be set to normal on Wednesday and hard next weekend\n" +
                 "- Combat logging (90 seconds)\n" +
