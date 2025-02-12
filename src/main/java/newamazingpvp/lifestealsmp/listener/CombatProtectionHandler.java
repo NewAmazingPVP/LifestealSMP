@@ -21,9 +21,12 @@ import java.util.List;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.allyteams.TeamsManager.onSameTeam;
 import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.extraHeart;
+import static newamazingpvp.lifestealsmp.events.TimeManager.SEASON_START_TIME;
+import static newamazingpvp.lifestealsmp.events.TimeManager.isTimePassed;
 import static newamazingpvp.lifestealsmp.game.CombatLog.*;
 import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
 import static newamazingpvp.lifestealsmp.game.PlayerLifeManager.eliminatePlayer;
+import static newamazingpvp.lifestealsmp.listener.CombatLogListener.areSameVersions;
 import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 import static newamazingpvp.lifestealsmp.utility.Utils.returnPlayerDamager;
 import static newamazingpvp.lifestealsmp.variables.Misc.isEndFightEnabled;
@@ -100,7 +103,7 @@ public class CombatProtectionHandler implements Listener {
         if (getPlaytime(damager) < 72000 && !newbieViolate.contains(damager.getName())) {
             newbieViolate.add(damager.getName());
             event.setCancelled(true);
-            lifestealSmp.getServer().broadcastMessage(ChatColor.YELLOW + damager.getName() + " has lost their newbie protection for 5 minutes because of potentially breaking the no griefing rule during newbie protection");
+            //lifestealSmp.getServer().broadcastMessage(ChatColor.YELLOW + damager.getName() + " has lost their newbie protection for 5 minutes because of potentially breaking the no griefing rule during newbie protection");
             new BukkitRunnable() {
                 @Override
                 public void run() {
@@ -116,7 +119,7 @@ public class CombatProtectionHandler implements Listener {
     }
 
     @EventHandler
-    public void onDeath(PlayerDeathEvent event) throws IOException {
+    public void onDeath(PlayerDeathEvent event){
         Player p = event.getEntity();
         if (p == null) return;
 
@@ -138,28 +141,33 @@ public class CombatProtectionHandler implements Listener {
         if (slainer.equals(p)) return;
         removeEnemies(p);
         if (!heartCooldownPlayers.contains(p.getName()) && getPlaytime(p) > 72000) {
-            if (!(p.getMaxHealth() <= 2)) {
-                p.setMaxHealth(p.getMaxHealth() - 2);
+            if (areSameVersions(p, slainer)) {
+                if (!(p.getMaxHealth() <= 2)) {
+                    p.setMaxHealth(p.getMaxHealth() - 2);
+                    heartCooldownPlayers.add(p.getName());
+
+                    //p.sendMessage("You have heart cooldown for 15 minutes. You also have death protection invincibility for up to 15 minutes but you will lose it if you attack another player.");
+                    //p.sendTitle(ChatColor.GOLD + "You have Death Protection", ChatColor.DARK_PURPLE + "If you attack anybody you will lose invincibility (Read chat)", 1, 100, 1);
+                    new BukkitRunnable() {
+                        @Override
+                        public void run() {
+                            heartCooldownPlayers.remove(p.getName());
+                        }
+                    }.runTaskLater(lifestealSmp, 20 * 60 * 15);
+                } else {
+                    eliminatePlayer(p);
+                }
+                if (!(killer.getMaxHealth() > maxHp)) {
+                    killer.setMaxHealth(killer.getMaxHealth() + 2);
+                } else {
+                    addItemOrDrop(slainer, extraHeart(), "Heart was dropped because your inventory was full");
+                }
             } else {
-                eliminatePlayer(p);
-            }
-            if (!(killer.getMaxHealth() > maxHp)) {
-                killer.setMaxHealth(killer.getMaxHealth() + 2);
-            } else {
-                addItemOrDrop(slainer, extraHeart(), "Heart was dropped because your inventory was full");
+                slainer.sendMessage(ChatColor.RED + "You can't get hearts by killing other versions' players (so java/bedrock)");
+                p.sendMessage(ChatColor.RED + "You didn't lose hearts since you were killed by other versions' players (so java/bedrock)");
             }
         }
-        heartCooldownPlayers.add(p.getName());
         invincibilityPlayers.add(p.getName());
-
-        p.sendMessage("You have heart cooldown for 15 minutes. You also have death protection invincibility for up to 15 minutes but you will lose it if you attack another player.");
-        p.sendTitle(ChatColor.GOLD + "You have Death Protection", ChatColor.DARK_PURPLE + "If you attack anybody you will lose invincibility (Read chat)", 1, 100, 1);
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                heartCooldownPlayers.remove(p.getName());
-            }
-        }.runTaskLater(lifestealSmp, 20 * 60 * 15);
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -169,13 +177,6 @@ public class CombatProtectionHandler implements Listener {
     }
 
     public boolean isGracePeriod() {
-        LocalDateTime targetDateTime = LocalDateTime.of(2023, Month.NOVEMBER, 23, 10, 29);
-
-        ZoneId estTimeZone = ZoneId.of("America/New_York");
-        ZonedDateTime estTargetDateTime = ZonedDateTime.of(targetDateTime, estTimeZone);
-
-        ZonedDateTime currentDateTime = ZonedDateTime.now(estTimeZone);
-
-        return currentDateTime.isBefore(estTargetDateTime);
+        return !isTimePassed(SEASON_START_TIME.plusHours(1));
     }
 }
