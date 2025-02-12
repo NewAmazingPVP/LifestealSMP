@@ -210,17 +210,20 @@ public class Recipes {
 
         ItemStack somberCrystal = somberCrystal();
         ShapedRecipe somberCrystalRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "somber_crystal"), somberCrystal);
-        somberCrystalRecipe.shape("NNN", "NED", "DDD");
-        somberCrystalRecipe.setIngredient('D', Material.DIAMOND_BLOCK);
+        somberCrystalRecipe.shape("DPD", "REB", "DTD");
+        somberCrystalRecipe.setIngredient('D', Material.DIAMOND);
         somberCrystalRecipe.setIngredient('E', Material.ECHO_SHARD);
-        somberCrystalRecipe.setIngredient('N', Material.NETHER_STAR);
+        somberCrystalRecipe.setIngredient('P', Material.PRISMARINE_SHARD);
+        somberCrystalRecipe.setIngredient('T', Material.TOTEM_OF_UNDYING);
+        somberCrystalRecipe.setIngredient('B', Material.BLAZE_ROD);
+        somberCrystalRecipe.setIngredient('R', Material.BREEZE_ROD);
         Bukkit.addRecipe(somberCrystalRecipe);
         customItems.add(somberCrystal);
         shapedRecipes.put(somberCrystal, somberCrystalRecipe);
 
         ItemStack heartEqualizer = createHeartEqualizer();
         ShapedRecipe heartEqualizerRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "heart_equalizer"), heartEqualizer);
-        heartEqualizerRecipe.shape("NNN", "DED", "DID");
+        heartEqualizerRecipe.shape("DID", "NEN", "DID");
         heartEqualizerRecipe.setIngredient('D', Material.DIAMOND_BLOCK);
         heartEqualizerRecipe.setIngredient('E', Material.HEART_OF_THE_SEA);
         heartEqualizerRecipe.setIngredient('N', Material.NETHER_STAR);
@@ -229,7 +232,8 @@ public class Recipes {
         customItems.add(heartEqualizer);
         shapedRecipes.put(heartEqualizer, heartEqualizerRecipe);
 
-        ItemStack runePouch = createRunePouch();
+        //removed rune pouch
+        /*ItemStack runePouch = createRunePouch();
         ShapedRecipe runePouchRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "rune_pouch"), runePouch);
         runePouchRecipe.shape("NNN", "DED", "DID");
         runePouchRecipe.setIngredient('D', Material.DIAMOND);
@@ -238,7 +242,7 @@ public class Recipes {
         runePouchRecipe.setIngredient('I', Material.NETHERITE_INGOT);
         Bukkit.addRecipe(runePouchRecipe);
         customItems.add(runePouch);
-        shapedRecipes.put(runePouch, runePouchRecipe);
+        shapedRecipes.put(runePouch, runePouchRecipe);*/
 
         //addRecipes();
     }
