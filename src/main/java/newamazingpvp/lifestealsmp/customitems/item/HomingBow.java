@@ -74,6 +74,7 @@ public class HomingBow implements Listener {
     }
 
     private List<LivingEntity> getPotentialTargets(final AbstractArrow arrow) {
+        //to buff make 100
         int range = 50;
         Collection<Entity> entities = arrow.getWorld().getNearbyEntities(arrow.getLocation(), range, range, range);
         List<LivingEntity> aliveInFront = entities.stream()
@@ -114,6 +115,7 @@ public class HomingBow implements Listener {
         Vector projectedVec = arrowPathUnitVec.multiply(arrowToTarget.dot(arrowPathUnitVec));
         Vector vectorUpwards = arrowToTarget.subtract(projectedVec);
         Double speed = Double.valueOf(arrow.getVelocity().length());
+        // to buff, replace 0.04 with anything higher (more sharper turning) and multiple speed.doubleValue() with anything higher than *1.00
         return arrow.getVelocity().clone().add(vectorUpwards.multiply(0.04)).normalize().multiply(speed.doubleValue());
     }
 }

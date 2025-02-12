@@ -31,14 +31,15 @@ public class DisableItemsInCombat implements Listener {
                 }
             }
         }
-        if (isWithinSpawnRadius(player.getLocation())){
+        //spawn prot removed
+        /*if (isWithinSpawnRadius(player.getLocation())){
             if (Math.random() < 0.01){
                 player.sendMessage(ChatColor.RED + "If you are stuck, do /spawn to get out");
             }
             if (Math.random() < 0.003){
                 player.sendTitle(ChatColor.RED + "If you get stuck, do /spawn to get out", "/spawn");
             }
-        }
+        }*/
 
     }
 }

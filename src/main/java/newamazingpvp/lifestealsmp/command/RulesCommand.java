@@ -17,18 +17,18 @@ public class RulesCommand implements CommandExecutor {
             player.sendMessage(ChatColor.WHITE + "- The mace is allowed but is nerfed in PVP for balance");
             player.sendMessage(ChatColor.WHITE + "- Hacking or cheating not allowed");
             player.sendMessage(ChatColor.WHITE + "- Xraying not allowed");
-            player.sendMessage(ChatColor.WHITE + "- No spawn and bed killing/camping");
+            //player.sendMessage(ChatColor.WHITE + "- No spawn and bed killing/camping");
             player.sendMessage(ChatColor.WHITE + "- No heart farming");
             player.sendMessage(ChatColor.WHITE + "- No alts");
             player.sendMessage(ChatColor.WHITE + "- Respect players");
             player.sendMessage(ChatColor.WHITE + "- No exploiting bugs/glitches");
             player.sendMessage(ChatColor.WHITE + "- Anything that gives an advantage is not allowed (with the exception of some mods in ⁠❓info-faq) such as minimap");
-            player.sendMessage(ChatColor.WHITE + "- However do not use replay mod or minimap mods to find underground bases");
+            player.sendMessage(ChatColor.WHITE + "- Do not use replay mod or minimap mods to find underground bases");
             player.sendMessage(ChatColor.WHITE + "- No lag farms/builds");
             player.sendMessage(ChatColor.WHITE + "- No toxicity");
             //player.sendMessage(ChatColor.WHITE + "- Do not trick or manipulate new players to hit you for hearts");
-            player.sendMessage(ChatColor.WHITE + "- Netherite armor and tools are allowed.");
-            player.sendMessage(ChatColor.WHITE + "- Do not lava cast, trap, or grief in the vicinity of spawn.");
+            player.sendMessage(ChatColor.WHITE + "- Netherite armor not allowed but tools are.");
+            //player.sendMessage(ChatColor.WHITE + "- Do not lava cast, trap, or grief in the vicinity of spawn.");
             // make it so lava bucket auto enforced AND REMOVE DEATH PROTECTION ONLY HEART PROT
             // so then we can remove this rule
             // player.sendMessage(ChatColor.WHITE + "- Do not use the lava bucket or any bypass to kill newbies or respawns as long as they have their newbie or death protection.");
@@ -45,6 +45,7 @@ public class RulesCommand implements CommandExecutor {
             player.sendMessage(ChatColor.WHITE + "- No spamming");
             player.sendMessage(ChatColor.WHITE + "- Do not ask admins to give back your stuff when you die");
             player.sendMessage(ChatColor.WHITE + "- Don't ask admins to tp you somewhere");
+            player.sendMessage(ChatColor.WHITE + "- Wasting admins time is not allowed");
             player.sendMessage(ChatColor.WHITE + "- Any kind of trash talking is not allowed");
             player.sendMessage(ChatColor.WHITE + "- Use common sense");
             player.sendMessage(ChatColor.GOLD + "Your presence in this SMP implies accepting these rules, including all further changes. These changes might be done at any time without notice; it is your responsibility to check for them.");
