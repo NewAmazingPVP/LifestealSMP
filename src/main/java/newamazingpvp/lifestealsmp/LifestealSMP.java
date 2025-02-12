@@ -196,8 +196,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new DisableItemsInCombat(), this);
         getServer().getPluginManager().registerEvents(new AntiLavaDamage(), this);
         getServer().getPluginManager().registerEvents(new RandomSpawn(), this);
-        SpawnSnow spawnSnow = new SpawnSnow(this);
-        spawnSnow.startRegionalSnow();
+        //SpawnSnow spawnSnow = new SpawnSnow(this);
+        //spawnSnow.startRegionalSnow();
         startTPSTracking();
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
         getCommand("trade").setExecutor(new Trade());
@@ -208,7 +208,8 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             isSmp = config.getBoolean("Discord.Smp");
         }
         if (isSmp) {
-            getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
+            //spawn prot removed
+            //getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
         }
         doEvents();
         Bukkit.getScheduler().runTaskTimer(this, TimeManager::timeBasedEvents, 20, 20);

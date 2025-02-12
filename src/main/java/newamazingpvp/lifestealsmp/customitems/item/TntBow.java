@@ -88,13 +88,13 @@ public class TntBow implements Listener {
         if (isWithinSpawnRadius(location)) return;
         TNTPrimed tnt = (TNTPrimed) location.getWorld().spawnEntity(location, EntityType.TNT);
 
-        tnt.setFuseTicks(80);
+        tnt.setFuseTicks(60);
         tnt.setSource(p);
     }
 
     private boolean isBow(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
-        return item.getType() == Material.BOW && meta.getLore() != null && meta.getLore().toString().contains("TNT Shooter!");
+        return item.getType() == Material.BOW && meta != null && meta.hasLore() && meta.getLore() != null && meta.getLore().toString().contains("TNT Shooter!");
     }
 
 }
