@@ -16,10 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.game.PlayerLifeManager.clearEliminatedPlayers;
 import static org.bukkit.Bukkit.getServer;
 
 public class SeasonUtils {
     public static void startNewSeason() {
+        clearEliminatedPlayers();
         getServer().dispatchCommand(getServer().getConsoleSender(), "chunky world world");
         getServer().dispatchCommand(getServer().getConsoleSender(), "chunky radius 12500");
         getServer().dispatchCommand(getServer().getConsoleSender(), "chunky start");

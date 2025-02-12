@@ -18,17 +18,26 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 public class PlayerLifeManager {
     public static DataBaseHelper dataBaseHelper;
 
-    public static void eliminatePlayer(Player p) throws IOException {
+    public static void eliminatePlayer(Player p){
         //dataBaseHelper = new DataBaseHelper(lifestealSmp.getDataFolder().getAbsolutePath() + File.separator + "eliminated.db");
 
         //dataBaseHelper.createTable("player_data", "player_name TEXT");
 
         //dataBaseHelper.insertData("player_data", "player_name", p.getName());
-        PrintWriter output = new PrintWriter(lifestealSmp.getDataFolder().getAbsolutePath() + File.separator + "friends.txt");
-        output.println(p.getName());
-        output.close();
+        try {
+            PrintWriter output = new PrintWriter(lifestealSmp.getDataFolder().getAbsolutePath() + File.separator + "friends.txt");
+            output.println(p.getName());
+            output.close();
 
-        p.banPlayer(ChatColor.RED + "You were eliminated! Ask someone to use a revive beacon to revive you!");
+            p.banPlayer(ChatColor.RED + "You were eliminated! Ask someone to use a revive beacon to revive you!");
+        } catch (IOException ignored) {}
+    }
+
+    public static void clearEliminatedPlayers() {
+        File file = new File(lifestealSmp.getDataFolder().getAbsolutePath() + File.separator + "friends.txt");
+        if (file.exists()) {
+            file.delete();
+        }
     }
 
     public static boolean revivePlayer(OfflinePlayer p, Player sender) throws SQLException, IOException {
