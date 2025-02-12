@@ -69,6 +69,9 @@ public class CombatLogListener implements Listener {
                             winner.sendMessage(ChatColor.DARK_PURPLE + "You were given heart item because you reached max health!");
                             addItemOrDrop(winner, extraHeart(), ChatColor.LIGHT_PURPLE + "Heart was dropped because your inventory was full");
                         }
+                    } else {
+                        getEnemies(p).get(getEnemies(p).size() - 1).sendMessage(ChatColor.RED + "You can't get hearts by killing other versions' players (so java/bedrock)");
+                        p.sendMessage(ChatColor.RED + "You didn't lose hearts since you were killed by other versions' players (so java/bedrock)");
                     }
                 }
             }

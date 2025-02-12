@@ -31,7 +31,7 @@ public class NerfOpItems implements Listener {
 
             if (event.getDamager() instanceof EnderCrystal ||
                     event.getDamager() instanceof Minecart) {
-                if (getPlaytime(player) < 72000 && !newbieViolate.contains(player.getName())) {
+                if (getPlaytime(player) < 12000 && !newbieViolate.contains(player.getName())) {
                     event.setCancelled(true);
                     player.sendMessage(ChatColor.RED + "You were protected from explosive damage due to your newbie protection");
                     return;
