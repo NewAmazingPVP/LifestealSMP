@@ -5,6 +5,7 @@ import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Statistic;
 import org.bukkit.block.ShulkerBox;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
@@ -12,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -20,15 +22,22 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
+import newamazingpvp.lifestealsmp.utility.DataBaseHelper;
 
+import java.sql.Timestamp;
+import java.time.ZonedDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.command.LSwithdraw.setShortCooldown;
 import static newamazingpvp.lifestealsmp.events.TimeManager.CUSTOM_ITEMS_AND_RUNES;
 import static newamazingpvp.lifestealsmp.events.TimeManager.isTimePassed;
+import static newamazingpvp.lifestealsmp.events.TimeManager.formatDuration;
 import static newamazingpvp.lifestealsmp.runes.AbstractRune.deserialize;
 import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 
@@ -36,6 +45,12 @@ public class RuneHandler implements Listener {
     public static final List<Rune> runes = new ArrayList<>();
     public static Inventory inv = Bukkit.createInventory(null, 54, ChatColor.GOLD + "Runes");
     public static double runeMultiplier = 1;
+
+    private static final DataBaseHelper runeDb;
+    static {
+        runeDb = new DataBaseHelper("runeDrops.db");
+        runeDb.createTable("player_runes", "player_name TEXT, rune_id TEXT, rune_count INTEGER, PRIMARY KEY(player_name, rune_id)");
+    }
 
     public RuneHandler() {
         runes.add(new AbsorptionRune());
@@ -165,11 +180,40 @@ public class RuneHandler implements Listener {
         Random random = new Random();
 
         ItemStack mainHandItem = player.getInventory().getItemInMainHand();
-
         int lootingLevel = mainHandItem.getEnchantmentLevel(Enchantment.LOOTING);
 
         for (Rune rune : runes) {
             if (entity.getType() == rune.getMob()) {
+
+                int requiredKills = (int) (1.0 / rune.getDropRate());
+                int mobKills = player.getStatistic(Statistic.KILL_ENTITY, rune.getMob());
+                if (mobKills >= requiredKills) {
+                    List<Map<String, Object>> records = runeDb.getData("player_runes", "player_name = ? AND rune_id = ?", player.getName(), rune.getName());
+                    int currentCount = 0;
+                    if (!records.isEmpty()) {
+                        Object countObj = records.get(0).get("rune_count");
+                        if (countObj instanceof Number) {
+                            currentCount = ((Number) countObj).intValue();
+                        }
+                    }
+                    if (currentCount == 0) {
+                        ItemStack runeItem = createRuneItem(rune);
+                        //entity.getWorld().dropItemNaturally(entity.getLocation(), runeItem);
+                        addItemOrDrop(player, runeItem, ChatColor.RED + "Rune was dropped because inventory was full!");
+                        player.sendMessage(deserialize("RUNE DROP!").color(NamedTextColor.GOLD).decorate(TextDecoration.BOLD).append(deserialize(" ")).append(rune.getName()).append(deserialize(": ").append(deserialize(rune.getLore()))));
+                        player.sendMessage(ChatColor.GOLD + "One and only guaranteed drop!");
+                        player.sendTitle("" + ChatColor.GOLD + "GUARANTEED RUNE DROP!", ChatColor.GOLD + "" + rune.getName() + ": " + rune.getLore());
+                        Map<String, Object> values = new HashMap<>();
+                        values.put("rune_count", currentCount + 1);
+                        if (!records.isEmpty()) {
+                            runeDb.updateData("player_runes", values, "player_name = ? AND rune_id = ?", player.getName(), rune.getName());
+                        } else {
+                            runeDb.insertData("player_runes", new String[]{"player_name", "rune_id", "rune_count"}, player.getName(), rune.getName(), currentCount + 1);
+                        }
+                        continue;
+                    }
+                }
+
                 double adjustedDropRate = rune.getDropRate() * (1 + 0.10 * lootingLevel);
 
                 if (random.nextDouble() < adjustedDropRate * runeMultiplier) {
@@ -178,6 +222,20 @@ public class RuneHandler implements Listener {
                     //player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "RUNE DROP!" + ChatColor.GOLD + " " + rune.getName() + ": " + rune.getLore());
                     player.sendMessage(deserialize("RUNE DROP!").color(NamedTextColor.GOLD).decorate(TextDecoration.BOLD).append(deserialize(" ")).append(rune.getName()).append(deserialize(": ").append(deserialize(rune.getLore()))));
                     addItemOrDrop(player, runeItem, ChatColor.RED + "Rune was dropped because inventory was full!");
+
+                    List<Map<String, Object>> records = runeDb.getData("player_runes", "player_name = ? AND rune_id = ?", player.getName(), rune.getName());
+                    if (records.isEmpty()) {
+                        runeDb.insertData("player_runes", new String[]{"player_name", "rune_id", "rune_count"}, player.getName(), rune.getName(), 1);
+                    } else {
+                        int currentCount = 0;
+                        Object countObj = records.get(0).get("rune_count");
+                        if (countObj instanceof Number) {
+                            currentCount = ((Number) countObj).intValue();
+                        }
+                        Map<String, Object> values = new HashMap<>();
+                        values.put("rune_count", currentCount + 1);
+                        runeDb.updateData("player_runes", values, "player_name = ? AND rune_id = ?", player.getName(), rune.getName());
+                    }
                 }
             }
         }

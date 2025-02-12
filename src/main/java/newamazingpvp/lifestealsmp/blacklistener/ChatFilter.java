@@ -311,6 +311,7 @@ public class ChatFilter implements Listener {
     }
 
     public static boolean isFlaggedByModeration(String input) {
+        input = input.replace("kill", "").replace("die", "").replace("dead", "");
         String apiKey = lifestealSmp.getConfig().getString("openai-api-key");
         try {
             URL url = new URL("https://api.openai.com/v1/moderations");
