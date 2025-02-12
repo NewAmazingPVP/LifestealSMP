@@ -16,7 +16,7 @@ public class Moderation extends ListenerAdapter {
         String messageContent = event.getMessage().getContentRaw();
         String censoredMessage = censorBlacklistedWordsNonLinks(messageContent);
         if (shouldBeWarned(messageContent)) {
-            sendDiscordMessage("||  " + event.getAuthor().getName() + " possibly tried saying something bad. Here is the flagged language " + messageContent + "  || ", "1019965981025652738");
+            sendDiscordMessage(event.getAuthor().getName() + " possibly tried saying something bad. Here is the flagged language " + messageContent, "1339042765425610803");
         }
         if (!messageContent.equals(censoredMessage)) {
             event.getMessage().delete().queue();
