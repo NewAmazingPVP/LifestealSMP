@@ -11,6 +11,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.*;
 import static newamazingpvp.lifestealsmp.discord.DiscordListener.isVanished;
+import static newamazingpvp.lifestealsmp.game.PlayerLifeManager.isEliminated;
 import static newamazingpvp.lifestealsmp.utility.Admin.admins;
 import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 import static newamazingpvp.lifestealsmp.utility.Utils.setPrefix;
@@ -21,6 +22,10 @@ public class JoinLeave implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+        if (isEliminated(player)) {
+            player.kickPlayer(ChatColor.RED + "You were eliminated! Ask someone to use a revive beacon to revive you!");
+            return;
+        }
         player.sendTitle(ChatColor.DARK_GREEN + "Welcome!", "", 0, 70, 20);
         player.sendMessage("Welcome! \n/help\n/guide\n/rules\n/prefix\n/color\n/recipes\n/trade ");
         player.sendMessage(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "=============== [Welcome] ===============");

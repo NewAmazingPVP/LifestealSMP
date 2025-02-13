@@ -23,7 +23,7 @@ import static newamazingpvp.lifestealsmp.events.TimeManager.formatDuration;
 
 public class DisableCustomItems implements Listener {
 
-    private static final DataBaseHelper dbHelper;
+    public static final DataBaseHelper dbHelper;
     static {
         dbHelper = new DataBaseHelper("customItems.db");
         dbHelper.createTable("custom_items", "item_id TEXT PRIMARY KEY, crafted_at TIMESTAMP");
