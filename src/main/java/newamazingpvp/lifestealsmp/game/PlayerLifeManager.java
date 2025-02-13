@@ -6,12 +6,10 @@ import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.List;
+import java.util.Map;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
@@ -19,67 +17,36 @@ public class PlayerLifeManager {
     public static DataBaseHelper dataBaseHelper;
 
     public static void eliminatePlayer(Player p){
-        //dataBaseHelper = new DataBaseHelper(lifestealSmp.getDataFolder().getAbsolutePath() + File.separator + "eliminated.db");
-
-        //dataBaseHelper.createTable("player_data", "player_name TEXT");
-
-        //dataBaseHelper.insertData("player_data", "player_name", p.getName());
-        try {
-            PrintWriter output = new PrintWriter(lifestealSmp.getDataFolder().getAbsolutePath() + File.separator + "friends.txt");
-            output.println(p.getName());
-            output.close();
-
-            p.banPlayer(ChatColor.RED + "You were eliminated! Ask someone to use a revive beacon to revive you!");
-        } catch (IOException ignored) {}
+        dataBaseHelper = new DataBaseHelper("eliminated.db");
+        dataBaseHelper.createTable("player_data", "player_name TEXT PRIMARY KEY");
+        dataBaseHelper.insertData("player_data", new String[]{"player_name"}, p.getName());
+        p.banPlayer(ChatColor.RED + "You were eliminated! Ask someone to use a revive beacon to revive you!");
     }
 
     public static void clearEliminatedPlayers() {
-        File file = new File(lifestealSmp.getDataFolder().getAbsolutePath() + File.separator + "friends.txt");
-        if (file.exists()) {
-            file.delete();
-        }
+        dataBaseHelper = new DataBaseHelper("eliminated.db");
+        dataBaseHelper.deleteData("player_data", "1=1");
     }
 
-    public static boolean revivePlayer(OfflinePlayer p, Player sender) throws SQLException, IOException {
-        /*dataBaseHelper = new DataBaseHelper(lifestealSmp.getDataFolder().getAbsolutePath() + File.separator + "eliminated.db");
-
-        dataBaseHelper.createTable("player_data", "player_name TEXT");
-
-        if (dataBaseHelper.doesPlayerExist(p.getName())) {
+    public static boolean revivePlayer(OfflinePlayer p, Player sender) {
+        dataBaseHelper = new DataBaseHelper("eliminated.db");
+        dataBaseHelper.createTable("player_data", "player_name TEXT PRIMARY KEY");
+        List<Map<String, Object>> results = dataBaseHelper.getData("player_data", "player_name = ?", p.getName());
+        if (!results.isEmpty()) {
             Bukkit.getServer().getBanList(org.bukkit.BanList.Type.NAME).pardon(p.getName());
-            dataBaseHelper.deletePlayer(p.getName());
+            dataBaseHelper.deleteData("player_data", "player_name = ?", p.getName());
             sender.sendMessage(ChatColor.GOLD + "Successfully revived " + p.getName());
             return true;
         } else {
             sender.sendMessage(ChatColor.RED + "This player is not eliminated! Enter the right name again");
             return false;
-        }*/
-        File file = new File(lifestealSmp.getDataFolder().getAbsolutePath() + File.separator + "friends.txt");
-        Scanner input = new Scanner(file);
-        ArrayList<String> names = new ArrayList<>();
-        boolean flag = false;
-        while (input.hasNext()) {
-            String name = input.nextLine();
-            if (!name.equals(p.getName())) {
-                names.add(name);
-            } else {
-                flag = true;
-            }
         }
-        if (!flag) {
-            sender.sendMessage(ChatColor.RED + "This player is not eliminated! Enter the right name again");
-            return false;
-        }
-        file.delete();
-        File outputFIle = new File(lifestealSmp.getDataFolder().getAbsolutePath() + File.separator + "friends.txt");
-        PrintWriter output = new PrintWriter(outputFIle);
-        for (String n : names) {
-            output.println(n);
-        }
-        output.close();
-        input.close();
-        Bukkit.getServer().getBanList(org.bukkit.BanList.Type.NAME).pardon(p.getName());
-        sender.sendMessage(ChatColor.GOLD + "Successfully revived " + p.getName());
-        return true;
+    }
+
+    public static boolean isEliminated(OfflinePlayer p) {
+        dataBaseHelper = new DataBaseHelper("eliminated.db");
+        dataBaseHelper.createTable("player_data", "player_name TEXT PRIMARY KEY");
+        List<Map<String, Object>> results = dataBaseHelper.getData("player_data", "player_name = ?", p.getName());
+        return !results.isEmpty();
     }
 }

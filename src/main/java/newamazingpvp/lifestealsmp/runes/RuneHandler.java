@@ -46,7 +46,7 @@ public class RuneHandler implements Listener {
     public static Inventory inv = Bukkit.createInventory(null, 54, ChatColor.GOLD + "Runes");
     public static double runeMultiplier = 1;
 
-    private static final DataBaseHelper runeDb;
+    public static final DataBaseHelper runeDb;
     static {
         runeDb = new DataBaseHelper("runeDrops.db");
         runeDb.createTable("player_runes", "player_name TEXT, rune_id TEXT, rune_count INTEGER, PRIMARY KEY(player_name, rune_id)");
