@@ -17,15 +17,9 @@ public class RevivePlayer implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 1) {
-            try {
-                OfflinePlayer player = Bukkit.getOfflinePlayer(args[0]);
+            OfflinePlayer player = Bukkit.getOfflinePlayer(args[0]);
 
-                revivePlayer(player, (Player) sender);
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            revivePlayer(player, (Player) sender);
         }
 
         return true;
