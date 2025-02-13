@@ -176,7 +176,7 @@ public class CombatProtectionHandler implements Listener {
         }.runTaskLater(lifestealSmp, 20 * 60 * 15);
     }
 
-    public boolean isGracePeriod() {
+    public static boolean isGracePeriod() {
         return !isTimePassed(SEASON_START_TIME.plusHours(1));
     }
 }

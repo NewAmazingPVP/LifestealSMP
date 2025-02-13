@@ -20,6 +20,7 @@ import org.bukkit.potion.PotionType;
 import java.util.List;
 
 import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
+import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.isGracePeriod;
 import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.newbieViolate;
 import static newamazingpvp.lifestealsmp.listener.SpawnProtection.isWithinSpawnRadius;
 
@@ -28,10 +29,9 @@ public class NerfOpItems implements Listener {
     @EventHandler(priority = EventPriority.LOW)
     public void damageEvent(EntityDamageByEntityEvent event) {
         if (event.getEntity() instanceof Player player) {
-
             if (event.getDamager() instanceof EnderCrystal ||
                     event.getDamager() instanceof Minecart) {
-                if (getPlaytime(player) < 12000 && !newbieViolate.contains(player.getName())) {
+                if (isGracePeriod() || (getPlaytime(player) < 12000 && !newbieViolate.contains(player.getName()))) {
                     event.setCancelled(true);
                     player.sendMessage(ChatColor.RED + "You were protected from explosive damage due to your newbie protection");
                     return;
@@ -75,10 +75,15 @@ public class NerfOpItems implements Listener {
                     damager.sendMessage(ChatColor.AQUA + "You attacked another player with a mace. The mace is nerfed for balanced PvP on this server, so it won't give you a significant advantage.");
                 }
             } else if (event.getDamager() instanceof Arrow arrow) {
+                if (isGracePeriod() || (getPlaytime(player) < 12000 && !newbieViolate.contains(player.getName()))) {
+                    event.setCancelled(true);
+                    player.sendMessage(ChatColor.RED + "You were protected from damage due to your newbie protection");
+                    return;
+                }
                 if (arrow.getBasePotionType() == PotionType.HARMING) {
                     event.setCancelled(true);
                     if (isWithinSpawnRadius(player.getLocation())) {
-                        return;
+                        //return;
                     }
                     player.damage(1.0, event.getDamager());
                     arrow.remove();
@@ -86,21 +91,26 @@ public class NerfOpItems implements Listener {
                 if (arrow.getBasePotionType() == PotionType.STRONG_HARMING) {
                     event.setCancelled(true);
                     if (isWithinSpawnRadius(player.getLocation())) {
-                        return;
+                        //return;
                     }
                     player.damage(2.0, event.getDamager());
                     arrow.remove();
                 }
             } else if (event.getDamager() instanceof ThrownPotion t) {
+                if (isGracePeriod() || (getPlaytime(player) < 12000 && !newbieViolate.contains(player.getName()))) {
+                    event.setCancelled(true);
+                    player.sendMessage(ChatColor.RED + "You were protected from damage due to your newbie protection");
+                    return;
+                }
                 if (t.getPotionMeta().getBasePotionType() == PotionType.HARMING) {
                     if (isWithinSpawnRadius(player.getLocation())) {
-                        return;
+                        //return;
                     }
                     event.setDamage(2);
                 }
                 if (t.getPotionMeta().getBasePotionType() == PotionType.STRONG_HARMING) {
                     if (isWithinSpawnRadius(player.getLocation())) {
-                        return;
+                        //return;
                     }
                     event.setDamage(4);
                 }

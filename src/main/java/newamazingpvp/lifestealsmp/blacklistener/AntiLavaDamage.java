@@ -21,6 +21,7 @@ import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.game.Compass.getPlaytime;
+import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.isGracePeriod;
 import static newamazingpvp.lifestealsmp.listener.CombatProtectionHandler.newbieViolate;
 
 public class AntiLavaDamage implements Listener {
@@ -53,7 +54,7 @@ public class AntiLavaDamage implements Listener {
         }
 
         long playtime = getPlaytime(player);
-        if (playtime < 12000 && !newbieViolate.contains(player.getName())) {
+        if (isGracePeriod() || (playtime < 12000 && !newbieViolate.contains(player.getName()))) {
             Location damageLocation = player.getLocation();
             double radius = 7.0;
             for (Location placedLavaLoc : playerPlacedLava.keySet()) {
