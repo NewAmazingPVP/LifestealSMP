@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.game.CombatLog.isInCombat;
 import static org.bukkit.Bukkit.getServer;
 
 public class FeatherSword implements Listener {
@@ -76,7 +77,7 @@ public class FeatherSword implements Listener {
                         velocity.setY(maxHeight);
                     }*/
                     player.setVelocity(velocity);
-                    cooldownManager.setCooldown(teleportCooldownDuration);
+                    cooldownManager.setCooldown(!isInCombat(player) ? teleportCooldownDuration : teleportCooldownDuration + 10);
                     getServer().getScheduler().runTaskLater(lifestealSmp, () -> event.getPlayer().setCooldown(event.getItem().getType(), teleportCooldownDuration * 20), 1);
                     teleportCooldowns.put(player, cooldownManager);
                 } else {
