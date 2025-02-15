@@ -2,13 +2,16 @@ package newamazingpvp.lifestealsmp.game;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 
 public class RandomSpawn implements Listener {
 
@@ -23,7 +26,7 @@ public class RandomSpawn implements Listener {
                     event.getPlayer().setInvulnerable(true);
                     i[0]++;
                     //task running 20 ticks times 15 so >15 seconds
-                    if (i[0] > 15){
+                    if (i[0] > 45){
                         event.getPlayer().setInvulnerable(false);
                         this.cancel();
                     }
@@ -38,12 +41,13 @@ public class RandomSpawn implements Listener {
             Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> {
                 event.getPlayer().teleport(getRandomSpawnLocation());
                 final int[] i = {0};
+                addItemOrDrop(event.getPlayer(), new ItemStack(Material.DARK_OAK_LOG, 8), "");
                 new BukkitRunnable() {
                     @Override
                     public void run() {
                         event.getPlayer().setInvulnerable(true);
                         i[0]++;
-                        if (i[0] > 15){
+                        if (i[0] > 30){
                             event.getPlayer().setInvulnerable(false);
                             this.cancel();
                         }

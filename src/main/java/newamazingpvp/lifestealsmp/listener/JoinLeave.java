@@ -78,7 +78,7 @@ public class JoinLeave implements Listener {
             addItemOrDrop(player, new ItemStack(Material.DARK_OAK_LOG, 16), "");
             addItemOrDrop(player, new ItemStack(Material.COOKED_BEEF, 16), "");
             addItemOrDrop(player, new ItemStack(Material.DARK_OAK_BOAT, 1), "");
-            addItemOrDrop(player, new ItemStack(Material.ENDER_PEARL, 2), "");
+            addItemOrDrop(player, new ItemStack(Material.ENDER_PEARL, 1), "");
             //player.teleport(lobby);
             //player.teleport(new Location(Bukkit.getWorld("world"), 6, 75, -26));
         } else {
