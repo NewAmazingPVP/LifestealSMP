@@ -36,8 +36,8 @@ public class DisableMace implements Listener {
                 Map<String, Object> record = results.get(0);
                 Timestamp ts = (Timestamp) record.get("crafted_at");
                 ZonedDateTime lastCrafted = ts.toLocalDateTime().atZone(ZoneId.of("America/New_York"));
-                if (!isTimePassed(lastCrafted.plusDays(1))) {
-                    event.getWhoClicked().sendMessage(ChatColor.RED + "You must wait " + formatDuration(lastCrafted.plusDays(1)) + " before crafting mace (limited item) because it was recently crafted by someone.");
+                if (!isTimePassed(lastCrafted.plusDays(3))) {
+                    event.getWhoClicked().sendMessage(ChatColor.RED + "You must wait " + formatDuration(lastCrafted.plusDays(3)) + " before crafting mace (limited item) because it was recently crafted by someone.");
                     event.setCancelled(true);
                     return;
                 } else {
