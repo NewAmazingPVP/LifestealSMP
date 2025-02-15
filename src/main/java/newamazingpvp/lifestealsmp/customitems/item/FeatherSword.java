@@ -77,7 +77,7 @@ public class FeatherSword implements Listener {
                         velocity.setY(maxHeight);
                     }*/
                     player.setVelocity(velocity);
-                    cooldownManager.setCooldown(!isInCombat(player) ? teleportCooldownDuration : teleportCooldownDuration + 10);
+                    cooldownManager.setCooldown(!isInCombat(player) ? teleportCooldownDuration : teleportCooldownDuration * 4);
                     getServer().getScheduler().runTaskLater(lifestealSmp, () -> event.getPlayer().setCooldown(event.getItem().getType(), teleportCooldownDuration * 20), 1);
                     teleportCooldowns.put(player, cooldownManager);
                 } else {

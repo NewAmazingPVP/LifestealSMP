@@ -14,22 +14,22 @@ import java.util.Map;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class PlayerLifeManager {
-    public static DataBaseHelper dataBaseHelper;
-
-    public static void eliminatePlayer(Player p){
+    public static final DataBaseHelper dataBaseHelper;
+    static {
         dataBaseHelper = new DataBaseHelper("eliminated.db");
         dataBaseHelper.createTable("player_data", "player_name TEXT PRIMARY KEY");
+    }
+
+    public static void eliminatePlayer(Player p){
         dataBaseHelper.insertData("player_data", new String[]{"player_name"}, p.getName());
         p.banPlayer(ChatColor.RED + "You were eliminated! Ask someone to use a revive beacon to revive you!");
     }
 
     public static void clearEliminatedPlayers() {
-        dataBaseHelper = new DataBaseHelper("eliminated.db");
         dataBaseHelper.deleteData("player_data", "1=1");
     }
 
     public static boolean revivePlayer(OfflinePlayer p, Player sender) {
-        dataBaseHelper = new DataBaseHelper("eliminated.db");
         dataBaseHelper.createTable("player_data", "player_name TEXT PRIMARY KEY");
         List<Map<String, Object>> results = dataBaseHelper.getData("player_data", "player_name = ?", p.getName());
         if (!results.isEmpty()) {
@@ -44,7 +44,6 @@ public class PlayerLifeManager {
     }
 
     public static boolean isEliminated(OfflinePlayer p) {
-        dataBaseHelper = new DataBaseHelper("eliminated.db");
         dataBaseHelper.createTable("player_data", "player_name TEXT PRIMARY KEY");
         List<Map<String, Object>> results = dataBaseHelper.getData("player_data", "player_name = ?", p.getName());
         return !results.isEmpty();

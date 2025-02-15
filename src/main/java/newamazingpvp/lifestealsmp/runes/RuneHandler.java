@@ -53,7 +53,7 @@ public class RuneHandler implements Listener {
     }
 
     public RuneHandler() {
-        runes.add(new AbsorptionRune());
+        //runes.add(new AbsorptionRune());
         runes.add(new BadOmenRune());
         runes.add(new BadOmenRune.II());
         runes.add(new BadOmenRune.III());
@@ -65,7 +65,7 @@ public class RuneHandler implements Listener {
         runes.add(new HasteRune());
         runes.add(new HasteRune.II());
         runes.add(new HealthBoostRune());
-        runes.add(new HealthRune());
+        //runes.add(new HealthRune());
         runes.add(new HeroOfTheVillageRune());
         runes.add(new HeroOfTheVillageRune.II());
         //runes.add(new HeroOfTheVillageRune.III());
@@ -80,9 +80,9 @@ public class RuneHandler implements Listener {
         //runes.add(new RaidOmenRune.III());
         //runes.add(new RaidOmenRune.IV());
         //runes.add(new RaidOmenRune.V());
-        runes.add(new RegenerationRune());
+        //runes.add(new RegenerationRune());
         //runes.add(new RegenerationRune.II());
-        runes.add(new ResistanceRune());
+        //runes.add(new ResistanceRune());
         runes.add(new SaturationRune());
         runes.add(new SlowFallingRune());
         runes.add(new SpeedRune());
@@ -119,7 +119,7 @@ public class RuneHandler implements Listener {
                                     for (Rune r : runes) {
                                         if (f != null && f.getLore() != null && f.getLore().contains(r.getLore())) {
                                             if (r.getEffect().getType() == PotionEffectType.HEALTH_BOOST && p.getMaxHealth() > 36) {
-                                                p.sendMessage("Cannot use your health boost rune due to max heart cap of 20");
+                                                //p.sendMessage("Cannot use your health boost rune due to max heart cap of 20");
                                             } else {
                                                 if (r.getEffect().getType() == PotionEffectType.HEALTH_BOOST) {
                                                     setShortCooldown(p);
@@ -151,7 +151,7 @@ public class RuneHandler implements Listener {
                                     for (Rune r : runes) {
                                         if (lore != null && lore.contains(r.getLore())) {
                                             if (r.getEffect().getType() == PotionEffectType.HEALTH_BOOST && p.getMaxHealth() > 36) {
-                                                p.sendMessage("Cannot use your health boost rune due to max heart cap of 20");
+                                                //p.sendMessage("Cannot use your health boost rune due to max heart cap of 20");
                                             } else {
                                                 if (r.getEffect().getType() == PotionEffectType.HEALTH_BOOST) {
                                                     setShortCooldown(p);
