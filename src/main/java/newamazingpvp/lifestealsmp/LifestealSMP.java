@@ -197,6 +197,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new DisableItemsInCombat(), this);
         getServer().getPluginManager().registerEvents(new AntiLavaDamage(), this);
         getServer().getPluginManager().registerEvents(new RandomSpawn(), this);
+        getServer().getPluginManager().registerEvents(new AutoBan(), this);
         //SpawnSnow spawnSnow = new SpawnSnow(this);
         //spawnSnow.startRegionalSnow();
         startTPSTracking();
