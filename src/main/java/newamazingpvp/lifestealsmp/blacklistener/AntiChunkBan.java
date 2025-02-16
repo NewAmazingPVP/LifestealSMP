@@ -31,12 +31,15 @@ public class AntiChunkBan implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+        // doing this to reduce spam and save performance, and nobody really gets chunk banned i mean yes but we can type "unbanchunkban" cmd in disc to unban them
+        if (unbanChunkBan) {
 
-        cleanPlayerInventory(player);
+            cleanPlayerInventory(player);
 
-        cleanContainersAroundPlayer(player);
+            cleanContainersAroundPlayer(player);
 
-        cleanGroundItemsAroundPlayer(player);
+            cleanGroundItemsAroundPlayer(player);
+        }
     }
 
     private void cleanPlayerInventory(Player player) {

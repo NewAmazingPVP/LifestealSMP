@@ -3,6 +3,7 @@ package newamazingpvp.lifestealsmp.allyteams;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
@@ -13,7 +14,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.allyteams.AlliesManager.playerAlliesChat;
+import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.*;
+import static newamazingpvp.lifestealsmp.utility.Utils.getPrefix;
+import static newamazingpvp.lifestealsmp.utility.Utils.setPrefix;
 
 public class TeamsManager {
     private static final HashMap<String, Team> teamInvites = new HashMap<>();
@@ -118,16 +123,32 @@ public class TeamsManager {
             p.sendMessage("You are already in a team! /team leave before making a new one!");
             return;
         }
-        Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
-        Team team = (scoreboard.getTeam(teamName) != null) ? null : scoreboard.registerNewTeam(teamName);
-        if (team == null) {
-            p.sendMessage(ChatColor.RED + "Team with this name already exists!");
-        } else {
-            teamInvites.put(p.getName(), team);
-            team.setAllowFriendlyFire(false);
-            joinTeam(p, team.getName());
-            p.sendMessage(ChatColor.DARK_PURPLE + "You have created the team named " + team.getName() + "! Invite others to your team doing /team invite [username]");
+        String censoredMessage = censorBlacklistedWords(teamName);
+
+        if (!teamName.equals(censoredMessage)) {
+            teamName = censoredMessage;
+            p.sendMessage(ChatColor.RED + "Some words/phrases in your team name were inappropriate and have been censored.");
+            p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
         }
+        String finalTeamName = teamName;
+        Bukkit.getScheduler().runTaskAsynchronously(lifestealSmp, () -> {
+            if (isFlaggedByModeration(finalTeamName)) {
+                p.sendMessage(ChatColor.RED + "Your team name was blocked.");
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
+                return;
+            }
+            Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
+            Team team = (scoreboard.getTeam(finalTeamName) != null) ? null : scoreboard.registerNewTeam(finalTeamName);
+            if (team == null) {
+                p.sendMessage(ChatColor.RED + "Team with this name already exists!");
+            } else {
+                teamInvites.put(p.getName(), team);
+                team.setAllowFriendlyFire(false);
+                joinTeam(p, team.getName());
+                p.sendMessage(ChatColor.DARK_PURPLE + "You have created the team named " + team.getName() + "! Invite others to your team doing /team invite [username]");
+            }
+        });
+
     }
 
     public static Team getPlayerTeam(Player p) {

@@ -116,6 +116,8 @@ public class Utils {
         double averageTPS = getAverageTPS();
         if (tpsCooldown.isOnCooldown()) return;
 
+        defaultDistance();
+
         if (averageTPS < 15.0) {
             triggerActions("setview 2 2");
         } else if (averageTPS < 16.0) {
@@ -129,7 +131,7 @@ public class Utils {
                 triggerActions("setview 6 2");
             } else if (averageTPS < 19.5) {
                 triggerActions("setview 7 2", "chunky continue");
-            } else if (averageTPS > 19.5) {
+            } else if (averageTPS >= 19.5) {
                 resetActions();
             }
         }
@@ -146,13 +148,60 @@ public class Utils {
         tpsCooldown.setCooldown(MAX_SIZE);
     }
 
+    private static void defaultDistance() {
+        if (isTriggered) return;
+        int onlinePlayers = Bukkit.getOnlinePlayers().size();
+        World world = Bukkit.getWorld("world");
+        if (onlinePlayers > 45) {
+            if (world.getViewDistance() != 2) {
+                triggerActions("setview 2 2", "chunky continue");
+            }
+        } else if (onlinePlayers > 40) {
+            if (world.getViewDistance() != 3) {
+                triggerActions("setview 3 2", "chunky continue");
+            }
+        } else if (onlinePlayers >= 35) {
+            if (world.getViewDistance() != 4) {
+                triggerActions("setview 4 2", "chunky continue");
+            }
+        } else if (onlinePlayers >= 30) {
+            if (world.getViewDistance() != 5) {
+                triggerActions("setview 5 2", "chunky continue");
+            }
+        } else if (onlinePlayers >= 25) {
+            if (world.getViewDistance() != 6) {
+                triggerActions("setview 6 2", "chunky continue");
+            }
+        } else if (onlinePlayers >= 20) {
+            if (world.getViewDistance() != 7) {
+                triggerActions("setview 7 2", "chunky continue");
+            }
+        }/* else if (onlinePlayers >= 15) {
+            if (world.getViewDistance() != 8) {
+                triggerActions("setview 8 3", "chunky continue");
+            }
+        } else {
+            if (world.getViewDistance() != 10) {
+                triggerActions("setview 10 5", "chunky continue");
+            }
+        }*/
+    }
+
     private static void resetActions() {
         int onlinePlayers = Bukkit.getOnlinePlayers().size();
-        if (onlinePlayers > 24) {
+        if (onlinePlayers > 45) {
+            triggerActions("setview 2 2", "chunky continue");
+        } else if (onlinePlayers > 40) {
+            triggerActions("setview 3 2", "chunky continue");
+        } else if (onlinePlayers >= 35) {
+            triggerActions("setview 4 2", "chunky continue");
+        } else if (onlinePlayers >= 30) {
             triggerActions("setview 5 2", "chunky continue");
-        } else if (onlinePlayers > 19) {
+        } else if (onlinePlayers >= 25) {
+            triggerActions("setview 6 2", "chunky continue");
+        } else if (onlinePlayers >= 20) {
             triggerActions("setview 7 2", "chunky continue");
-        } else if (onlinePlayers > 14) {
+        } else if (onlinePlayers >= 15) {
             triggerActions("setview 8 3", "chunky continue");
         } else {
             triggerActions("setview 10 5", "chunky continue");
