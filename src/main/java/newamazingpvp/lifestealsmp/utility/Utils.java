@@ -65,7 +65,6 @@ public class Utils {
 
     public static boolean isRuneInInventory(Player p, String rune) {
         ItemStack[] items = p.getInventory().getContents();
-
         for (ItemStack item : items) {
             if (item != null) {
                 ItemMeta meta = item.getItemMeta();
@@ -105,15 +104,39 @@ public class Utils {
 
     public static double getAverageTPS() {
         double total = 0.0;
-        for (Double aDouble : tpsList) {
-            total += aDouble;
+        for (Double value : tpsList) {
+            total += value;
         }
         return total / tpsList.size();
+    }
+
+    private static boolean canIncreaseTo(int distance) {
+        int onlinePlayers = Bukkit.getOnlinePlayers().size();
+
+        switch (distance) {
+            case 2:
+                return true;
+            case 3:
+                return onlinePlayers < 45;
+            case 4:
+                return onlinePlayers < 40;
+            case 5:
+                return onlinePlayers < 35;
+            case 6:
+                return onlinePlayers < 30;
+            case 7:
+                return onlinePlayers < 25;
+            case 8:
+                return onlinePlayers < 20;
+            default:
+                return onlinePlayers < 15;
+        }
     }
 
     public static void adjustPerformance() {
         if (!isSmp) return;
         double averageTPS = getAverageTPS();
+
         if (tpsCooldown.isOnCooldown()) return;
 
         defaultDistance();
@@ -121,16 +144,36 @@ public class Utils {
         if (averageTPS < 15.0) {
             triggerActions("setview 2 2");
         } else if (averageTPS < 16.0) {
-            triggerActions("setview 3 2");
+            if (canIncreaseTo(3)) {
+                triggerActions("setview 3 2");
+            } else {
+                triggerActions("setview 2 2");
+            }
         } else if (isTriggered) {
             if (averageTPS < 17.0) {
-                triggerActions("setview 4 2");
+                if (canIncreaseTo(4)) {
+                    triggerActions("setview 4 2");
+                } else {
+                    isTriggered = false;
+                }
             } else if (averageTPS < 18.0) {
-                triggerActions("setview 5 2");
+                if (canIncreaseTo(5)) {
+                    triggerActions("setview 5 2");
+                } else {
+                    isTriggered = false;
+                }
             } else if (averageTPS < 19.0) {
-                triggerActions("setview 6 2");
+                if (canIncreaseTo(6)) {
+                    triggerActions("setview 6 2");
+                } else {
+                    isTriggered = false;
+                }
             } else if (averageTPS < 19.5) {
-                triggerActions("setview 7 2", "chunky continue");
+                if (canIncreaseTo(7)) {
+                    triggerActions("setview 7 2", "chunky continue");
+                } else {
+                    isTriggered = false;
+                }
             } else if (averageTPS >= 19.5) {
                 resetActions();
             }
@@ -150,8 +193,51 @@ public class Utils {
 
     private static void defaultDistance() {
         if (isTriggered) return;
+
         int onlinePlayers = Bukkit.getOnlinePlayers().size();
         World world = Bukkit.getWorld("world");
+
+        if (onlinePlayers >= 45) {
+            if (world.getViewDistance() != 2) {
+                triggerActions("setview 2 2", "chunky continue");
+            }
+        } else if (onlinePlayers >= 40) {
+            if (world.getViewDistance() != 3) {
+                triggerActions("setview 3 2", "chunky continue");
+            }
+        } else if (onlinePlayers >= 35) {
+            if (world.getViewDistance() != 4) {
+                triggerActions("setview 4 2", "chunky continue");
+            }
+        } else if (onlinePlayers >= 30) {
+            if (world.getViewDistance() != 5) {
+                triggerActions("setview 5 2", "chunky continue");
+            }
+        } else if (onlinePlayers >= 25) {
+            if (world.getViewDistance() != 6) {
+                triggerActions("setview 6 2", "chunky continue");
+            }
+        } else if (onlinePlayers >= 20) {
+            if (world.getViewDistance() != 7) {
+                triggerActions("setview 7 2", "chunky continue");
+            }
+        }
+        else if (onlinePlayers >= 15) {
+            if (world.getViewDistance() != 8) {
+                triggerActions("setview 8 3", "chunky continue");
+            }
+        } else {
+            if (world.getViewDistance() != 10) {
+                triggerActions("setview 10 5", "chunky continue");
+            }
+        }
+
+    }
+
+    private static void resetActions() {
+        int onlinePlayers = Bukkit.getOnlinePlayers().size();
+        World world = Bukkit.getWorld("world");
+
         if (onlinePlayers > 45) {
             if (world.getViewDistance() != 2) {
                 triggerActions("setview 2 2", "chunky continue");
@@ -176,31 +262,6 @@ public class Utils {
             if (world.getViewDistance() != 7) {
                 triggerActions("setview 7 2", "chunky continue");
             }
-        }/* else if (onlinePlayers >= 15) {
-            if (world.getViewDistance() != 8) {
-                triggerActions("setview 8 3", "chunky continue");
-            }
-        } else {
-            if (world.getViewDistance() != 10) {
-                triggerActions("setview 10 5", "chunky continue");
-            }
-        }*/
-    }
-
-    private static void resetActions() {
-        int onlinePlayers = Bukkit.getOnlinePlayers().size();
-        if (onlinePlayers > 45) {
-            triggerActions("setview 2 2", "chunky continue");
-        } else if (onlinePlayers > 40) {
-            triggerActions("setview 3 2", "chunky continue");
-        } else if (onlinePlayers >= 35) {
-            triggerActions("setview 4 2", "chunky continue");
-        } else if (onlinePlayers >= 30) {
-            triggerActions("setview 5 2", "chunky continue");
-        } else if (onlinePlayers >= 25) {
-            triggerActions("setview 6 2", "chunky continue");
-        } else if (onlinePlayers >= 20) {
-            triggerActions("setview 7 2", "chunky continue");
         } else if (onlinePlayers >= 15) {
             triggerActions("setview 8 3", "chunky continue");
         } else {
@@ -223,18 +284,25 @@ public class Utils {
                 ItemMeta meta = item.getItemMeta();
                 if (meta != null && meta.hasLore()) {
                     List<String> lore = meta.getLore();
-                    if (lore != null && lore.get(0).contains("Use To Craft Extra Hearts!")) {
-                        lore.clear();
-                        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Severed Mob Heart");
-                        lore.add(ChatColor.DARK_PURPLE + "Use To Craft Extra Hearts!");
-                        meta.setLore(lore);
-                        item.setItemMeta(meta);
-                    } else if (lore != null && lore.get(0).contains("U$e To Cr")) {
-                        lore.clear();
-                        meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.MAGIC + "LL" + ChatColor.GOLD + ChatColor.BOLD + "Corrupted Mob Soul" + ChatColor.GOLD + ChatColor.MAGIC + "LL");
-                        lore.add(ChatColor.DARK_PURPLE + "U$e To Cr" + ChatColor.MAGIC + "a" + ChatColor.DARK_PURPLE + "ft Extra Hearts!" + ChatColor.MAGIC + "L");
-                        meta.setLore(lore);
-                        item.setItemMeta(meta);
+                    if (lore != null && !lore.isEmpty()) {
+                        if (lore.get(0).contains("Use To Craft Extra Hearts!")) {
+                            lore.clear();
+                            meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Severed Mob Heart");
+                            lore.add(ChatColor.DARK_PURPLE + "Use To Craft Extra Hearts!");
+                            meta.setLore(lore);
+                            item.setItemMeta(meta);
+                        } else if (lore.get(0).contains("U$e To Cr")) {
+                            lore.clear();
+                            meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.MAGIC + "LL"
+                                    + ChatColor.GOLD + ChatColor.BOLD + "Corrupted Mob Soul"
+                                    + ChatColor.GOLD + ChatColor.MAGIC + "LL");
+                            lore.add(ChatColor.DARK_PURPLE + "U$e To Cr"
+                                    + ChatColor.MAGIC + "a"
+                                    + ChatColor.DARK_PURPLE + "ft Extra Hearts!"
+                                    + ChatColor.MAGIC + "L");
+                            meta.setLore(lore);
+                            item.setItemMeta(meta);
+                        }
                     }
                 }
             }
