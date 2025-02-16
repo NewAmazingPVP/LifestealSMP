@@ -20,6 +20,28 @@ public class TradeListener implements Listener {
         Player player = (Player) event.getWhoClicked();
 
         if (TradeManager.isTradeInventory(inventory)) {
+
+            if (event.getClick() == ClickType.DOUBLE_CLICK) {
+                int slot = event.getSlot();
+                boolean allowedDoubleClick = false;
+                if (traders.containsKey(player)) {
+                    allowedDoubleClick = lastFourColumns.contains(slot);
+                } else if (traders.containsValue(player)) {
+                    allowedDoubleClick = firstFourColumns.contains(slot);
+                }
+                if (!allowedDoubleClick) {
+                    event.setCancelled(true);
+                    TradeManager.handleTradeCancellation(player);
+                    TradeManager.handleTradeCancellation(getOtherPlayer(player));
+                    inventory.setItem(45, new ItemStack(Material.RED_STAINED_GLASS_PANE));
+                    inventory.setItem(53, new ItemStack(Material.RED_STAINED_GLASS_PANE));
+                    player.sendMessage(ChatColor.LIGHT_PURPLE + "You cannot take items in the opponent's reserved slots.");
+                    getOtherPlayer(player).sendMessage(ChatColor.LIGHT_PURPLE + "Trade was cancelled, maybe send a request again?");
+                    return;
+                }
+            }
+
+
             int slot = event.getSlot();
             Inventory clickedInventory = event.getClickedInventory();
 
@@ -29,7 +51,6 @@ public class TradeListener implements Listener {
             if (event.isShiftClick()) {
                 event.setCancelled(true);
             }
-
 
             if (traders.containsKey(player)) {
                 if (!(lastFourColumns.contains(slot)) && clickedInventory != player.getInventory()) {
