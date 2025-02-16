@@ -44,16 +44,15 @@ public class OneExpRename implements Listener {
                 sendDiscordMessage(player.getName() + " renamed something bad in anvil. Here is the moderated language **" + originalMessage + "**", "1019965981025652738");
                 event.setResult(item);
             }
-            if (isFlaggedByModeration(originalMessage)) {
+            if (shouldBeWarned(originalMessage) && isFlaggedByModeration(originalMessage)) {
                 meta.setDisplayName("Message Blocked");
                 item.setItemMeta(meta);
                 //dont need scheduler
-                Bukkit.getScheduler().runTask(lifestealSmp, () -> {
-                    event.setResult(item);
-                    player.sendMessage(ChatColor.RED + "Your rename was blocked.");
-                    player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
-                    sendDiscordMessage(player.getName() + " renamed something bad in anvil. Here is the moderated language **" + originalMessage + "**", "1019965981025652738");
-                });
+                event.setResult(item);
+                player.sendMessage(ChatColor.RED + "Your rename was blocked.");
+                player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
+                sendDiscordMessage(player.getName() + " renamed something bad in anvil. Here is the moderated language **" + originalMessage + "**", "1019965981025652738");
+
             }
 
         }

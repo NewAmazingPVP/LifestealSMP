@@ -17,6 +17,7 @@ import java.util.UUID;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.allyteams.AlliesManager.playerAlliesChat;
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.*;
+import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordMessage;
 import static newamazingpvp.lifestealsmp.utility.Utils.getPrefix;
 import static newamazingpvp.lifestealsmp.utility.Utils.setPrefix;
 
@@ -129,12 +130,14 @@ public class TeamsManager {
             teamName = censoredMessage;
             p.sendMessage(ChatColor.RED + "Some words/phrases in your team name were inappropriate and have been censored.");
             p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
+            sendDiscordMessage(p.getName() + " tried to create a team with inappropriate words: " + teamName, "1019965981025652738");
         }
         String finalTeamName = teamName;
         Bukkit.getScheduler().runTaskAsynchronously(lifestealSmp, () -> {
             if (isFlaggedByModeration(finalTeamName)) {
                 p.sendMessage(ChatColor.RED + "Your team name was blocked.");
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
+                sendDiscordMessage(p.getName() + " tried to create a team with a blocked name: " + finalTeamName, "1019965981025652738");
                 return;
             }
             Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
