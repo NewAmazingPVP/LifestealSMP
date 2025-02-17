@@ -59,8 +59,8 @@ public class RandomSpawn implements Listener {
 
 
     public Location getRandomSpawnLocation() {
-        double coord = (Bukkit.getWorld("world").getWorldBorder().getSize() - 10) / 2;
-        return new Location(Bukkit.getWorld("world"), Math.random() * coord, 325, Math.random() * coord);
+        double coord = (Bukkit.getWorld("world").getWorldBorder().getSize() - 10);
+        return new Location(Bukkit.getWorld("world"), (Math.random() - 0.5) * coord, 325, (Math.random() - 0.5) * coord);
     }
 
 }
