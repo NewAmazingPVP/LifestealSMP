@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.blacklistener;
 
 import newamazingpvp.lifestealsmp.utility.DataBaseHelper;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -30,11 +31,17 @@ public class DisableMace implements Listener {
     public void onCraftItem(CraftItemEvent event) {
         if (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.MACE) {
             String maceId = "MACE";
-            ZonedDateTime now = ZonedDateTime.now(ZoneId.systemDefault());
+            ZonedDateTime now = ZonedDateTime.now(ZoneId.of("America/New_York"));
             List<Map<String, Object>> results = maceDb.getData("mace_crafting", "mace_id = ?", maceId);
             if (!results.isEmpty()) {
                 Map<String, Object> record = results.get(0);
-                Timestamp ts = (Timestamp) record.get("crafted_at");
+                Object craftedAtObj = record.get("crafted_at");
+                Timestamp ts;
+                if (craftedAtObj instanceof Long) {
+                    ts = new Timestamp((Long) craftedAtObj);
+                } else {
+                    ts = (Timestamp) craftedAtObj;
+                }
                 ZonedDateTime lastCrafted = ts.toLocalDateTime().atZone(ZoneId.of("America/New_York"));
                 if (!isTimePassed(lastCrafted.plusDays(3))) {
                     event.getWhoClicked().sendMessage(ChatColor.RED + "You must wait " + formatDuration(lastCrafted.plusDays(3)) + " before crafting mace (limited item) because it was recently crafted by someone.");

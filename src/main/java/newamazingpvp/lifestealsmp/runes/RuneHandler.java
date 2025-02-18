@@ -64,7 +64,7 @@ public class RuneHandler implements Listener {
         runes.add(new FireResistanceRune());
         runes.add(new HasteRune());
         runes.add(new HasteRune.II());
-        runes.add(new HealthBoostRune());
+        //runes.add(new HealthBoostRune());
         //runes.add(new HealthRune());
         runes.add(new HeroOfTheVillageRune());
         runes.add(new HeroOfTheVillageRune.II());
