@@ -31,12 +31,12 @@ public class TradeListener implements Listener {
                 }
                 if (!allowedDoubleClick) {
                     event.setCancelled(true);
-                    TradeManager.handleTradeCancellation(player);
-                    TradeManager.handleTradeCancellation(getOtherPlayer(player));
-                    inventory.setItem(45, new ItemStack(Material.RED_STAINED_GLASS_PANE));
-                    inventory.setItem(53, new ItemStack(Material.RED_STAINED_GLASS_PANE));
+                    TradeManager.cancelTrade(player);
+                    //TradeManager.handleTradeCancellation(getOtherPlayer(player));
+                    //inventory.setItem(45, new ItemStack(Material.RED_STAINED_GLASS_PANE));
+                    //inventory.setItem(53, new ItemStack(Material.RED_STAINED_GLASS_PANE));
                     player.sendMessage(ChatColor.LIGHT_PURPLE + "You cannot take items in the opponent's reserved slots.");
-                    getOtherPlayer(player).sendMessage(ChatColor.LIGHT_PURPLE + "Trade was cancelled, maybe send a request again?");
+                    //getOtherPlayer(player).sendMessage(ChatColor.LIGHT_PURPLE + "Trade was cancelled, maybe send a request again?");
                     return;
                 }
             }

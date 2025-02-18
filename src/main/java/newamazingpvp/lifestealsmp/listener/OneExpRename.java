@@ -25,7 +25,7 @@ public class OneExpRename implements Listener {
 
 
         if (renameText != null && !renameText.isEmpty()) {
-            anvilView.setRepairCost(1);
+            //anvilView.setRepairCost(1);
             ItemStack item = event.getInventory().getFirstItem();
             ItemMeta meta = item.getItemMeta();
 
