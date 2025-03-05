@@ -34,7 +34,7 @@ public class OneExpRename implements Listener {
 
             String censoredMessage = censorBlacklistedWords(originalMessage);
             if (shouldBeWarned(originalMessage)) {
-                sendDiscordMessage(player.getName() + " possibly tried renaming something bad in anvil. Here is the flagged language " + originalMessage, "1339042765425610803");
+                sendDiscordMessage(player.getName() + " possibly tried renaming something bad in anvil. Here is the flagged language " + originalMessage.replace("@", ""), "1339042765425610803");
             }
             if (!originalMessage.equals(censoredMessage)) {
                 meta.setDisplayName(censoredMessage);

@@ -72,9 +72,11 @@ public class DiscordBot {
     public static void sendDiscordNewsMessage(String msg, String channelID) {
         if (jda == null) return;
         if (msg.contains(eventRole) && !msg.contains(eventRole + " ⬆️")){
-            if (!eventRoleCooldown.isOnCooldown()){
+            if (!eventRoleCooldown.isOnCooldown()) {
                 eventRoleCooldown.setCooldown(30);
-                Bukkit.getScheduler().runTaskLaterAsynchronously(lifestealSmp, () -> sendDiscordNewsMessage(eventRole + " ⬆️", ""), 30 * 20);
+                if (!msg.toLowerCase().contains("10 minute") && !msg.toLowerCase().contains("5 hour")) {
+                    Bukkit.getScheduler().runTaskLaterAsynchronously(lifestealSmp, () -> sendDiscordNewsMessage(eventRole + " ⬆️", ""), 30 * 20);
+                }
             }
         }
         if (!msg.contains(eventRole + " ⬆️")) {
