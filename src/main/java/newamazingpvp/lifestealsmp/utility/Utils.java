@@ -117,9 +117,9 @@ public class Utils {
             case 2:
                 return true;
             case 3:
-                return true;
-            case 4:
                 return onlinePlayers < 45;
+            case 4:
+                return onlinePlayers < 40;
             case 5:
                 return onlinePlayers < 35;
             case 6:
@@ -198,12 +198,12 @@ public class Utils {
         World world = Bukkit.getWorld("world");
 
         if (onlinePlayers >= 45) {
-            if (world.getViewDistance() != 4) {
-                triggerActions("setview 4 2", "chunky continue");
+            if (world.getViewDistance() != 2) {
+                triggerActions("setview 2 2", "chunky continue");
             }
         } else if (onlinePlayers >= 40) {
-            if (world.getViewDistance() != 4) {
-                triggerActions("setview 4 2", "chunky continue");
+            if (world.getViewDistance() != 3) {
+                triggerActions("setview 3 2", "chunky continue");
             }
         } else if (onlinePlayers >= 35) {
             if (world.getViewDistance() != 4) {
@@ -238,13 +238,13 @@ public class Utils {
         int onlinePlayers = Bukkit.getOnlinePlayers().size();
         World world = Bukkit.getWorld("world");
 
-        if (onlinePlayers > 45) {
-            if (world.getViewDistance() != 4) {
-                triggerActions("setview 4 2", "chunky continue");
+        if (onlinePlayers >= 45) {
+            if (world.getViewDistance() != 2) {
+                triggerActions("setview 2 2", "chunky continue");
             }
-        } else if (onlinePlayers > 40) {
-            if (world.getViewDistance() != 4) {
-                triggerActions("setview 4 2", "chunky continue");
+        } else if (onlinePlayers >= 40) {
+            if (world.getViewDistance() != 3) {
+                triggerActions("setview 3 2", "chunky continue");
             }
         } else if (onlinePlayers >= 35) {
             if (world.getViewDistance() != 4) {
