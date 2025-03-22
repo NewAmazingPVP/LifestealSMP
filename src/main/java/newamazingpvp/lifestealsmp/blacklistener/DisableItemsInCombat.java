@@ -20,7 +20,8 @@ public class DisableItemsInCombat implements Listener {
         if (isInCombat(player)) {
             if (event.getFrom().distanceSquared(event.getTo()) > 0) {
                 ItemStack item = player.getInventory().getItemInMainHand();
-                if (item.getType() == Material.TRIDENT) {
+                ItemStack offhandItem = player.getInventory().getItemInMainHand();
+                if (item.getType() == Material.TRIDENT || offhandItem.getType() == Material.TRIDENT) {
                     if (player.isRiptiding()) {
                         event.setCancelled(true);
                     }
