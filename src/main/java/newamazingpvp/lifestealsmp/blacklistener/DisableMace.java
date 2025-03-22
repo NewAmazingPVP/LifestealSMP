@@ -7,7 +7,9 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.CrafterCraftEvent;
 import org.bukkit.event.inventory.CraftItemEvent;
+import org.bukkit.inventory.CraftingInventory;
 
 import java.sql.Timestamp;
 import java.time.ZonedDateTime;
@@ -26,6 +28,14 @@ public class DisableMace implements Listener {
         maceDb = new DataBaseHelper("maceCrafting.db");
         maceDb.createTable("mace_crafting", "mace_id TEXT PRIMARY KEY, crafted_at TIMESTAMP");
     }
+
+    @EventHandler
+    public void onCrafter(CrafterCraftEvent event) {
+        if (event.getResult().getType() == Material.MACE) {
+            event.setCancelled(true);
+        }
+    }
+
 
     @EventHandler
     public void onCraftItem(CraftItemEvent event) {
