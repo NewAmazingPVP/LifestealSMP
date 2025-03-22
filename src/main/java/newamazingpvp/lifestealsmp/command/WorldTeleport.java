@@ -38,7 +38,7 @@ public class WorldTeleport implements CommandExecutor, TabCompleter {
             return true;
         }
 
-        player.teleport(new Location(world, 0, 100, 0));
+        player.teleportAsync(new Location(world, 0, 100, 0));
 
         player.sendMessage("Teleported to world '" + worldName + "'.");
         return true;

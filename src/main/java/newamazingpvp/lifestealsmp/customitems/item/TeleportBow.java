@@ -78,7 +78,7 @@ public class TeleportBow implements Listener {
                     arrowLocation.setPitch(shooter.getLocation().getPitch());
                     arrowLocation.setYaw(shooter.getLocation().getYaw());
 
-                    shooter.teleport(arrowLocation);
+                    shooter.teleportAsync(arrowLocation);
                     playerHeldItems.remove(shooter.getUniqueId());
                     cooldown.setCooldown(teleportCooldownDuration);
                     getServer().getScheduler().runTaskLater(lifestealSmp, () -> shooter.setCooldown(Material.BOW, teleportCooldownDuration * 20), 1);

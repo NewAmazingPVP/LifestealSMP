@@ -50,15 +50,36 @@ public class CustomDistance implements CommandExecutor {
                     return true;
                 }
 
-                world.setViewDistance(renderDistance);
-                world.setSimulationDistance(simulationDistance);
-                sender.sendMessage("Render distance has been set to " + ChatColor.AQUA + renderDistance + ChatColor.WHITE + " and simulation distance to " + ChatColor.AQUA + simulationDistance + ChatColor.WHITE + " for world " + ChatColor.GOLD + world.getName() + ChatColor.WHITE + ".");
+                boolean changed = false;
+                if (world.getViewDistance() != renderDistance) {
+                    world.setViewDistance(renderDistance);
+                    changed = true;
+                }
+                if (world.getSimulationDistance() != simulationDistance) {
+                    world.setSimulationDistance(simulationDistance);
+                    changed = true;
+                }
+                if (changed) {
+                    sender.sendMessage("Render distance has been set to " + ChatColor.AQUA + renderDistance +
+                            ChatColor.WHITE + " and simulation distance to " + ChatColor.AQUA +
+                            simulationDistance + ChatColor.WHITE + " for world " + ChatColor.GOLD +
+                            world.getName() + ChatColor.WHITE + ".");
+                } else {
+                    sender.sendMessage("The render and simulation distances for world " + ChatColor.GOLD +
+                            world.getName() + ChatColor.WHITE + " are already set to those values.");
+                }
             } else {
                 for (World world : Bukkit.getWorlds()) {
-                    world.setViewDistance(renderDistance);
-                    world.setSimulationDistance(simulationDistance);
+                    if (world.getViewDistance() != renderDistance) {
+                        world.setViewDistance(renderDistance);
+                    }
+                    if (world.getSimulationDistance() != simulationDistance) {
+                        world.setSimulationDistance(simulationDistance);
+                    }
                 }
-                sender.sendMessage("Render distance has been set to " + ChatColor.AQUA + renderDistance + ChatColor.WHITE + " and simulation distance to " + ChatColor.AQUA + simulationDistance + ChatColor.WHITE + " for all worlds.");
+                sender.sendMessage("Render distance has been set to " + ChatColor.AQUA + renderDistance +
+                        ChatColor.WHITE + " and simulation distance to " + ChatColor.AQUA +
+                        simulationDistance + ChatColor.WHITE + " for all worlds.");
             }
 
             if (sender instanceof Player player) {
