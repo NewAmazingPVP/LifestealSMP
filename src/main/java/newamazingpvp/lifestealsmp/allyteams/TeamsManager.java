@@ -42,7 +42,7 @@ public class TeamsManager {
                 p.sendMessage(ChatColor.RED + "You this is not the same team as you have been invited to!");
                 return;
             }
-            if (team.getSize() >= 3) {
+            if (team.getSize() >= 5) {
                 p.sendMessage(ChatColor.RED + "This team is full!");
                 return;
             }
