@@ -41,7 +41,7 @@ public class SeasonUtils {
         getServer().dispatchCommand(getServer().getConsoleSender(), "chunky start");
         setSeasonStartTime(getSeasonStartTime().plusDays(35));
         updateServerJar(new ArrayList<>(List.of("/home/ubuntu/Smp/server.jar", "/home/ubuntu/Dev/server.jar")));
-        updateVelocityProxy("/home/ubuntu/Velocity/velocity.jar");
+        //updateVelocityProxy("/home/ubuntu/Velocity/velocity.jar");
         regenerateWorlds();
     }
 
