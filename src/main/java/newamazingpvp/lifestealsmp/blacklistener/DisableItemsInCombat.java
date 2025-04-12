@@ -31,7 +31,7 @@ public class DisableItemsInCombat implements Listener {
                     if (player.isGliding()) {
                         player.setGliding(false);
                         player.getInventory().setChestplate(null);
-                        addItemOrDrop(player, new ItemStack(Material.ELYTRA), ChatColor.RED + "Your elytra was dropped. DO NOT use during combat!");
+                        addItemOrDrop(player, chestplate, ChatColor.RED + "Your elytra was dropped. DO NOT use during combat!");
                     }
                 }
             }
@@ -54,8 +54,9 @@ public class DisableItemsInCombat implements Listener {
             if (isInCombat(player) && player.getInventory().getChestplate() != null && player.getInventory().getChestplate().getType() == Material.ELYTRA) {
                 player.setGliding(false);
                 event.setCancelled(true);
+                ItemStack chestplate = player.getInventory().getChestplate();
                 player.getInventory().setChestplate(null);
-                addItemOrDrop(player, new ItemStack(Material.ELYTRA), ChatColor.RED + "Your elytra was dropped. DO NOT use during combat!");
+                addItemOrDrop(player, chestplate, ChatColor.RED + "Your elytra was dropped. DO NOT use during combat!");
             }
         }
     }
