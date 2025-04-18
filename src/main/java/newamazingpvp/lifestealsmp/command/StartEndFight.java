@@ -83,7 +83,7 @@ public class StartEndFight implements CommandExecutor {
                             }
                             //if minutes passed is between 30 and 33 then do below but dont this.cancel and if greater than 33 then just apply poison if in survival
 
-                            if (minutesPassed >= 30 && minutesPassed < 33) {
+                            if (minutesPassed >= 60 && minutesPassed < 63) {
                                 //this.cancel();
                                 //worldBorder.setSize(1);
                                 //Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_PURPLE + "Border is now 1 block wide. Going outside border may instant kill you");
@@ -92,14 +92,15 @@ public class StartEndFight implements CommandExecutor {
                                 //worldBorder.setWarningDistance(10);
                                 for (Player p : Bukkit.getOnlinePlayers()) {
                                     if (p.getGameMode() == GameMode.SURVIVAL) {
-                                        p.addPotionEffect(new PotionEffect(PotionEffectType.POISON, Integer.MAX_VALUE, 2, true, false));
+                                        // p.addPotionEffect(new PotionEffect(PotionEffectType.POISON, Integer.MAX_VALUE, 2, true, false));
                                         p.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, Integer.MAX_VALUE, 1, true, false));
-                                        p.sendTitle(ChatColor.RED + "WARNING!", ChatColor.YELLOW + "Fight to the death, or get eliminated by poison!");
+                                        p.sendTitle(ChatColor.RED + "WARNING!", ChatColor.YELLOW + "Fight to the death, or get eliminated by wither effect!");
+                                        p.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 100, 0, true, false));
                                     }
                                 }
-                                Bukkit.broadcastMessage(ChatColor.DARK_RED + "Fight to the death, or get eliminated by instant harming!");
+                                Bukkit.broadcastMessage(ChatColor.DARK_RED + "Fight to the death. Wither effect applied!");
                                 return;
-                            } else if (minutesPassed >= 33) {
+                            } else if (minutesPassed >= 63) {
                                 //this.cancel();
                                 //worldBorder.setSize(1);
                                 //Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_PURPLE + "Border is now 1 block wide. Going outside border may instant kill you");
@@ -108,16 +109,17 @@ public class StartEndFight implements CommandExecutor {
                                 //.setWarningDistance(10);
                                 for (Player p : Bukkit.getOnlinePlayers()) {
                                     if (p.getGameMode() == GameMode.SURVIVAL) {
-                                        p.addPotionEffect(new PotionEffect(PotionEffectType.POISON, Integer.MAX_VALUE, 2, true, false));
+                                        // p.addPotionEffect(new PotionEffect(PotionEffectType.POISON, Integer.MAX_VALUE, 2, true, false));
                                         p.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, Integer.MAX_VALUE, 1, true, false));
-                                        p.sendTitle(ChatColor.RED + "WARNING!", ChatColor.YELLOW + "Fight to the death, or get eliminated by poison!");
+                                        p.sendTitle(ChatColor.RED + "WARNING!", ChatColor.YELLOW + "Fight to the death, or get eliminated by wither effect!");
+                                        p.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 100, 1, true, false));
                                     }
                                 }
-                                Bukkit.broadcastMessage(ChatColor.DARK_RED + "Fight to the death, or get eliminated by instant harming!");
+                                Bukkit.broadcastMessage(ChatColor.DARK_RED + "Fight to the death. Even stronger wither effect applied!");
                                 return;
                             }
 
-                            double newSize = worldBorder.getSize() - 10;
+                            double newSize = worldBorder.getSize() - 5;
                             Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.DARK_PURPLE + "Border is now " + newSize + " blocks!");
                             worldBorder.setSize(newSize);
                             minutesPassed++;

@@ -92,7 +92,6 @@ import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
 import static newamazingpvp.lifestealsmp.game.CombatLog.cancelCombatData;
 import static newamazingpvp.lifestealsmp.game.CombatLog.removeEnemies;
 import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
-import static newamazingpvp.lifestealsmp.listener.TotemLimiter.totemLimiter;
 import static newamazingpvp.lifestealsmp.utility.NetherAntixray.addAntiXray;
 import static newamazingpvp.lifestealsmp.utility.Utils.startTPSTracking;
 
@@ -199,10 +198,10 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new RandomSpawn(), this);
         getServer().getPluginManager().registerEvents(new AutoBan(), this);
         //getServer().getPluginManager().registerEvents(new AntiEsp(), this);
+        getServer().getPluginManager().registerEvents(new TotemLimiter(), this);
         //SpawnSnow spawnSnow = new SpawnSnow(this);
         //spawnSnow.startRegionalSnow();
         startTPSTracking();
-        totemLimiter();
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
         getCommand("trade").setExecutor(new Trade());
         getServer().getPluginManager().registerEvents(new TradeListener(), this);

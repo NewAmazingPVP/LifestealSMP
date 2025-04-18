@@ -100,7 +100,7 @@ public class EndFightRestrictions implements Listener {
             sendDiscordEmbedPlayer(p.getName() + " was eliminated from end fight GF!", Color.YELLOW, "", p.getName());
             lifestealSmp.getServer().broadcastMessage(ChatColor.GOLD + p.getName() + " was eliminated GF!");
             getServer().dispatchCommand(p, "server SkyPVP");
-            p.banPlayer(ChatColor.RED + "You were eliminated GF!");
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> p.banPlayer(ChatColor.RED + "You were eliminated GF!"), 100L);
         }
     }
 
