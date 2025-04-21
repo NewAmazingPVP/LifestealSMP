@@ -7,9 +7,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
 import static newamazingpvp.lifestealsmp.game.PlayerLifeManager.revivePlayer;
 
 public class RevivePlayer implements CommandExecutor {

@@ -10,7 +10,6 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 
 import static newamazingpvp.lifestealsmp.game.CombatLog.isInCombat;
-import static newamazingpvp.lifestealsmp.listener.SpawnProtection.isWithinSpawnRadius;
 import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 
 public class DisableItemsInCombat implements Listener {

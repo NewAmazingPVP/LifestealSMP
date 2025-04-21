@@ -1,6 +1,5 @@
 package newamazingpvp.lifestealsmp.listener;
 
-import com.destroystokyo.paper.profile.PlayerProfile;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -12,7 +11,6 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import java.net.URL;
 import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
