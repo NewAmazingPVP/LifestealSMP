@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.TrimsUpdate;
+package newamazingpvp.lifestealsmp.trims;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -10,8 +10,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-import static newamazingpvp.lifestealsmp.customitems.utils.ItemStacks.gradient;
-
 public class TrimsItemstacks {
 
     //utils
@@ -20,7 +18,6 @@ public class TrimsItemstacks {
         var mm = MiniMessage.miniMessage();
         return mm.deserialize("<bold><gradient:#0045FF:#ADE6FD>" + itemName + "</gradient></bold>");
     }
-
 
 
     //itemstacks

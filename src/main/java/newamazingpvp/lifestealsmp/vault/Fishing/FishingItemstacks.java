@@ -1,9 +1,8 @@
-package newamazingpvp.lifestealsmp.Idea_Vault.Fishing;
+package newamazingpvp.lifestealsmp.vault.Fishing;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
-import org.bukkit.block.Biome;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -16,7 +15,7 @@ import java.util.Random;
 public class FishingItemstacks {
 
     //COMMON FISH LOOT ====================================================================================================
-    public static ItemStack fishBone(){
+    public static ItemStack fishBone() {
         ItemStack item = new ItemStack(Material.BONE); //TODO: Needs texture!
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(ChatColor.valueOf("#dbdbdb") + "§lFish Bone");
@@ -28,7 +27,7 @@ public class FishingItemstacks {
         return item;
     }
 
-    public static ItemStack cod(){
+    public static ItemStack cod() {
         ItemStack item = new ItemStack(Material.COD);
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(ChatColor.valueOf("#935300") + "§lCod");
@@ -40,7 +39,7 @@ public class FishingItemstacks {
         return item;
     }
 
-    public static ItemStack salmon(){
+    public static ItemStack salmon() {
         ItemStack item = new ItemStack(Material.SALMON);
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(ChatColor.valueOf("#d84403") + "§lSalmon");
@@ -52,7 +51,7 @@ public class FishingItemstacks {
         return item;
     }
 
-    public static ItemStack tropicalFish(){
+    public static ItemStack tropicalFish() {
         ItemStack item = new ItemStack(Material.TROPICAL_FISH);
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(ChatColor.valueOf("#ffc101") + "§lTropical Fish");
@@ -64,7 +63,7 @@ public class FishingItemstacks {
         return item;
     }
 
-    public static ItemStack pufferfish(){
+    public static ItemStack pufferfish() {
         ItemStack item = new ItemStack(Material.PUFFERFISH);
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(ChatColor.valueOf("#c9ff00") + "§lPufferfish");
@@ -76,7 +75,7 @@ public class FishingItemstacks {
         return item;
     }
 
-    public static ItemStack anchovy(){
+    public static ItemStack anchovy() {
         ItemStack item = new ItemStack(Material.COD); //TODO: Needs texture!
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(ChatColor.valueOf("#d1daad") + "§lPufferfish");
@@ -88,7 +87,7 @@ public class FishingItemstacks {
         return item;
     }
 
-    public static ItemStack haddock(){
+    public static ItemStack haddock() {
         ItemStack item = new ItemStack(Material.COD); //TODO: Needs texture!
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(ChatColor.valueOf("#e6d4f4") + "§lHaddock");
@@ -100,7 +99,7 @@ public class FishingItemstacks {
         return item;
     }
 
-    public static ItemStack clownFish(){
+    public static ItemStack clownFish() {
         ItemStack item = new ItemStack(Material.TROPICAL_FISH);
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(ChatColor.valueOf("#e77700") + "§lClown Fish");
@@ -109,25 +108,25 @@ public class FishingItemstacks {
         int randomJoke = rand.nextInt(10);
         List<String> lore = new ArrayList<>();
 
-        if(randomJoke == 0){
+        if (randomJoke == 0) {
             lore.add("§3What is a pirate’s favorite fish? A swordfish.");
-        }else if(randomJoke == 1){
+        } else if (randomJoke == 1) {
             lore.add("§3What do you call a lazy Crawfish? A slobster.");
-        }else if(randomJoke == 2){
+        } else if (randomJoke == 2) {
             lore.add("§3Where do you find a fish in orbit? Trouter space.");
-        }else if(randomJoke == 3){
+        } else if (randomJoke == 3) {
             lore.add("§3What’s the fastest fish in the lake? A motor-Pike.");
-        }else if(randomJoke == 4){
+        } else if (randomJoke == 4) {
             lore.add("§3Why don’t fish like basketball? Because they’re afraid of the net!");
-        }else if(randomJoke == 5){
+        } else if (randomJoke == 5) {
             lore.add("§3Why are fish so easy to weigh? Because they have their own scales.");
-        }else if(randomJoke == 6){
+        } else if (randomJoke == 6) {
             lore.add("§3Why didn’t the fish pass their exams? They worked below C – level.");
-        }else if(randomJoke == 7){
+        } else if (randomJoke == 7) {
             lore.add("§3What happens when you mix a fish and a banker? You get a loan shark.");
-        }else if(randomJoke == 8){
+        } else if (randomJoke == 8) {
             lore.add("§3What did the shark say after eating a clownfish? That tasted a little bit funny!");
-        }else {
+        } else {
             lore.add("§3How do you kill a fish? You fuck it.");
         }
 
@@ -140,8 +139,8 @@ public class FishingItemstacks {
 
     //LEGENDARY FISH LOOT ====================================================================================================
 
-                //added as joke because people keep asking for them
-    public static ItemStack prisonUniformChstplate(){
+    //added as joke because people keep asking for them
+    public static ItemStack prisonUniformChstplate() {
         ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
         LeatherArmorMeta chestplateMeta = (LeatherArmorMeta) chestplate.getItemMeta();
         chestplateMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Prisoner Uniform Chestplate");
@@ -154,7 +153,7 @@ public class FishingItemstacks {
         return chestplate;
     }
 
-    public static ItemStack prisonUniformLeggings(){
+    public static ItemStack prisonUniformLeggings() {
         ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
         LeatherArmorMeta leggingsMeta = (LeatherArmorMeta) leggings.getItemMeta();
         leggingsMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Prisoner Uniform Leggings");
@@ -167,7 +166,7 @@ public class FishingItemstacks {
         return leggings;
     }
 
-    public static ItemStack prisonUniformBoots(){
+    public static ItemStack prisonUniformBoots() {
         ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
         LeatherArmorMeta bootsMeta = (LeatherArmorMeta) boots.getItemMeta();
         bootsMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Prisoner Uniform");

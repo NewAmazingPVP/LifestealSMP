@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.TrimsUpdate;
+package newamazingpvp.lifestealsmp.trims;
 
 
 import org.bukkit.Bukkit;
@@ -14,9 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-import static newamazingpvp.lifestealsmp.TrimsUpdate.TrimsItemstacks.sentryTrimArmor;
-import static newamazingpvp.lifestealsmp.orbupdate.items.OrbUpdateArmor.spacesuitITEM;
-import static newamazingpvp.lifestealsmp.orbupdate.items.OrbUpdateItems.gameBreaker;
+import static newamazingpvp.lifestealsmp.trims.TrimsItemstacks.sentryTrimArmor;
 
 public class adminTrimsCommand implements CommandExecutor, TabCompleter {
 

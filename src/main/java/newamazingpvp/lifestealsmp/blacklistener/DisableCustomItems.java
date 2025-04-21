@@ -18,11 +18,11 @@ import java.util.Map;
 import static newamazingpvp.lifestealsmp.customitems.utils.GUI.basicItems;
 import static newamazingpvp.lifestealsmp.customitems.utils.GUI.customItems;
 import static newamazingpvp.lifestealsmp.events.TimeManager.*;
-import static newamazingpvp.lifestealsmp.events.TimeManager.formatDuration;
 
 public class DisableCustomItems implements Listener {
 
     public static final DataBaseHelper dbHelper;
+
     static {
         dbHelper = new DataBaseHelper("customItems.db");
         dbHelper.createTable("custom_items", "item_id TEXT PRIMARY KEY, crafted_at TIMESTAMP");
@@ -69,7 +69,6 @@ public class DisableCustomItems implements Listener {
                 if (!isTimePassed(lastCrafted.plusDays(1))) {
                     player.sendMessage(ChatColor.RED + "You must wait " + formatDuration(lastCrafted.plusDays(1)) + " before crafting this limited custom item because it was recently crafted by someone.");
                     event.setCancelled(true);
-                    return;
                 } else {
                     Map<String, Object> updateValues = new HashMap<>();
                     updateValues.put("crafted_at", Timestamp.valueOf(now.toLocalDateTime()));

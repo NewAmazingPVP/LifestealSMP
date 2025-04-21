@@ -13,7 +13,6 @@ import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsMessa
 import static newamazingpvp.lifestealsmp.events.TimeManager.*;
 import static newamazingpvp.lifestealsmp.game.Compass.delayDuration;
 import static newamazingpvp.lifestealsmp.game.Compass.trackingDist;
-import static newamazingpvp.lifestealsmp.utility.SeasonUtils.startNewSeason;
 import static org.bukkit.Bukkit.getServer;
 
 public class FinalFight extends BaseEvent {

@@ -19,7 +19,6 @@ import java.util.Map;
 import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-import static newamazingpvp.lifestealsmp.listener.SpawnProtection.isWithinSpawnRadius;
 import static org.bukkit.Bukkit.getServer;
 
 public class TntBow implements Listener {

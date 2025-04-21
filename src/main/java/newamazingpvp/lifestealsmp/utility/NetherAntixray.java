@@ -1,6 +1,5 @@
 package newamazingpvp.lifestealsmp.utility;
 
-import newamazingpvp.lifestealsmp.LifestealSMP;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 

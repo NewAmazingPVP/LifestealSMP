@@ -2,6 +2,7 @@ package newamazingpvp.lifestealsmp.runes;
 
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
+import newamazingpvp.lifestealsmp.utility.DataBaseHelper;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -13,7 +14,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -22,22 +22,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
-import newamazingpvp.lifestealsmp.utility.DataBaseHelper;
 
-import java.sql.Timestamp;
-import java.time.ZonedDateTime;
-import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.command.LSwithdraw.setShortCooldown;
 import static newamazingpvp.lifestealsmp.events.TimeManager.CUSTOM_ITEMS_AND_RUNES;
 import static newamazingpvp.lifestealsmp.events.TimeManager.isTimePassed;
-import static newamazingpvp.lifestealsmp.events.TimeManager.formatDuration;
 import static newamazingpvp.lifestealsmp.runes.AbstractRune.deserialize;
 import static newamazingpvp.lifestealsmp.utility.Utils.addItemOrDrop;
 
@@ -47,6 +38,7 @@ public class RuneHandler implements Listener {
     public static double runeMultiplier = 1;
 
     public static final DataBaseHelper runeDb;
+
     static {
         runeDb = new DataBaseHelper("runeDrops.db");
         runeDb.createTable("player_runes", "player_name TEXT, rune_id TEXT, rune_count INTEGER, PRIMARY KEY(player_name, rune_id)");
@@ -202,7 +194,7 @@ public class RuneHandler implements Listener {
                         addItemOrDrop(player, runeItem, ChatColor.RED + "Rune was dropped because inventory was full!");
                         player.sendMessage(deserialize("RUNE DROP!").color(NamedTextColor.GOLD).decorate(TextDecoration.BOLD).append(deserialize(" ")).append(rune.getName()).append(deserialize(": ").append(deserialize(rune.getLore()))));
                         player.sendMessage(ChatColor.GOLD + "One and only guaranteed drop!");
-                        player.sendTitle("" + ChatColor.GOLD + "GUARANTEED RUNE DROP!", ChatColor.GOLD + "" + rune.getName() + ": " + rune.getLore());
+                        player.sendTitle(ChatColor.GOLD + "GUARANTEED RUNE DROP!", ChatColor.GOLD + "" + rune.getName() + ": " + rune.getLore());
                         Map<String, Object> values = new HashMap<>();
                         values.put("rune_count", currentCount + 1);
                         if (!records.isEmpty()) {

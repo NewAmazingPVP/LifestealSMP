@@ -4,14 +4,6 @@ import com.earth2me.essentials.Essentials;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
 import me.scarsz.jdaappender.ChannelLoggingHandler;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
-import newamazingpvp.lifestealsmp.Idea_Vault.Fishing.FishingMainEventListener;
-import newamazingpvp.lifestealsmp.Idea_Vault.LockItem.LockItem;
-import newamazingpvp.lifestealsmp.Idea_Vault.LockItem.LockItemListener;
-import newamazingpvp.lifestealsmp.Idea_Vault.LockItem.UnlockItem;
-import newamazingpvp.lifestealsmp.TrimsUpdate.TrimsListeners.Utils.TrimListenersEntityDamageEntity;
-import newamazingpvp.lifestealsmp.TrimsUpdate.adminTrimsCommand;
 import newamazingpvp.lifestealsmp.allyteams.AlliesManager;
 import newamazingpvp.lifestealsmp.allyteams.AllyCommand;
 import newamazingpvp.lifestealsmp.allyteams.TeamCommand;
@@ -28,6 +20,8 @@ import newamazingpvp.lifestealsmp.game.*;
 import newamazingpvp.lifestealsmp.listener.*;
 import newamazingpvp.lifestealsmp.runes.DragonRune;
 import newamazingpvp.lifestealsmp.runes.RuneHandler;
+import newamazingpvp.lifestealsmp.trims.TrimsListeners.Utils.TrimListenersEntityDamageEntity;
+import newamazingpvp.lifestealsmp.trims.adminTrimsCommand;
 import newamazingpvp.lifestealsmp.unused.commands.JailPlayer;
 import newamazingpvp.lifestealsmp.unused.commands.ReadBlockAndItemInfo;
 import newamazingpvp.lifestealsmp.unused.customitems.QuarryArmor;
@@ -70,6 +64,10 @@ import newamazingpvp.lifestealsmp.unused.visuals.HpNameTag;
 import newamazingpvp.lifestealsmp.unused.visuals.toasts.ShowCustomToastCMD;
 import newamazingpvp.lifestealsmp.utility.Metrics;
 import newamazingpvp.lifestealsmp.utility.Utils;
+import newamazingpvp.lifestealsmp.vault.Fishing.FishingMainEventListener;
+import newamazingpvp.lifestealsmp.vault.LockItem.LockItem;
+import newamazingpvp.lifestealsmp.vault.LockItem.LockItemListener;
+import newamazingpvp.lifestealsmp.vault.LockItem.UnlockItem;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -92,6 +90,7 @@ import static newamazingpvp.lifestealsmp.game.AutoRestart.scheduleRestart;
 import static newamazingpvp.lifestealsmp.game.CombatLog.cancelCombatData;
 import static newamazingpvp.lifestealsmp.game.CombatLog.removeEnemies;
 import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
+import static newamazingpvp.lifestealsmp.listener.TotemLimiter.totemLimiter;
 import static newamazingpvp.lifestealsmp.utility.NetherAntixray.addAntiXray;
 import static newamazingpvp.lifestealsmp.utility.Utils.startTPSTracking;
 
@@ -198,10 +197,11 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new RandomSpawn(), this);
         getServer().getPluginManager().registerEvents(new AutoBan(), this);
         //getServer().getPluginManager().registerEvents(new AntiEsp(), this);
-        getServer().getPluginManager().registerEvents(new TotemLimiter(), this);
+        //getServer().getPluginManager().registerEvents(new TotemLimiter(), this);
         //SpawnSnow spawnSnow = new SpawnSnow(this);
         //spawnSnow.startRegionalSnow();
         startTPSTracking();
+        totemLimiter();
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
         getCommand("trade").setExecutor(new Trade());
         getServer().getPluginManager().registerEvents(new TradeListener(), this);
@@ -226,7 +226,6 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             getCommand("lockitem").setExecutor(new LockItem());
             getCommand("unlockitem").setExecutor(new UnlockItem());
             getServer().getPluginManager().registerEvents(new LockItemListener(), this);
-
 
 
             //trim update

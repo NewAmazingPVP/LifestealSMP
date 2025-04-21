@@ -17,7 +17,7 @@ public class RandomSpawn implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        if (!event.getPlayer().hasPlayedBefore()){
+        if (!event.getPlayer().hasPlayedBefore()) {
             event.getPlayer().teleportAsync(getRandomSpawnLocation());
             final int[] i = {0};
             new BukkitRunnable() {
@@ -26,7 +26,7 @@ public class RandomSpawn implements Listener {
                     event.getPlayer().setInvulnerable(true);
                     i[0]++;
                     //task running 20 ticks times 15 so >15 seconds
-                    if (i[0] > 60){
+                    if (i[0] > 60) {
                         event.getPlayer().setInvulnerable(false);
                         this.cancel();
                     }
@@ -47,7 +47,7 @@ public class RandomSpawn implements Listener {
                     public void run() {
                         event.getPlayer().setInvulnerable(true);
                         i[0]++;
-                        if (i[0] > 45){
+                        if (i[0] > 45) {
                             event.getPlayer().setInvulnerable(false);
                             this.cancel();
                         }

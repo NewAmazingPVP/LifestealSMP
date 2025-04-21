@@ -1,22 +1,15 @@
-package newamazingpvp.lifestealsmp.TrimsUpdate.TrimsListeners.Utils;
+package newamazingpvp.lifestealsmp.trims.TrimsListeners.Utils;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.inventory.meta.trim.TrimPattern;
 
-import static newamazingpvp.lifestealsmp.Idea_Vault.Fishing.FishingLootGen.generateFishingDrop;
-import static newamazingpvp.lifestealsmp.TrimsUpdate.TrimsListeners.Utils.GetArmorTrimSet.GetArmorTrimSet.getArmorTrimSet;
+import static newamazingpvp.lifestealsmp.trims.TrimsListeners.Utils.GetArmorTrimSet.GetArmorTrimSet.getArmorTrimSet;
 
 public class TrimListenersEntityDamageEntity implements Listener {
-
-
-
 
 
     @EventHandler

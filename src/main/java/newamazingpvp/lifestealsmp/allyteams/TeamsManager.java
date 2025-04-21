@@ -16,10 +16,9 @@ import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.allyteams.AlliesManager.playerAlliesChat;
-import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.*;
+import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.censorBlacklistedWords;
+import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.isFlaggedByModeration;
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordMessage;
-import static newamazingpvp.lifestealsmp.utility.Utils.getPrefix;
-import static newamazingpvp.lifestealsmp.utility.Utils.setPrefix;
 
 public class TeamsManager {
     private static final HashMap<String, Team> teamInvites = new HashMap<>();
