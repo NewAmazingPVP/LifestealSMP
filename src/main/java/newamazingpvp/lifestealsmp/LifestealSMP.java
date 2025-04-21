@@ -164,12 +164,12 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getCommand("showcustomtoast").setExecutor(new ShowCustomToastCMD());
         getCommand("tournament").setExecutor(new TournamentCommand());
         getCommand("register").setExecutor(new TournamentRegister());
-        getServer().getPluginManager().registerEvents(new OneExpRename(), this);
+        //getServer().getPluginManager().registerEvents(new OneExpRename(), this);
         getServer().getPluginManager().registerEvents(new AntiBurn(), this);
         getServer().getPluginManager().registerEvents(new PlayerMsg(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
         getServer().getPluginManager().registerEvents(new EndCrystalWarning(), this);
-        getServer().getPluginManager().registerEvents(new DisableMace(), this);
+        //getServer().getPluginManager().registerEvents(new DisableMace(), this);
         getServer().getPluginManager().registerEvents(new Compass(), this);
         getServer().getPluginManager().registerEvents(new HeartItems(), this);
         getServer().getPluginManager().registerEvents(new AnvilMenuListener(), this);
@@ -463,7 +463,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
                     for (Player p : Bukkit.getOnlinePlayers()) {
                         cancelCombatData(p);
                         removeEnemies(p);
-                        p.kick(Component.text("Proxy is restarting.... Please reconnect").color(NamedTextColor.DARK_RED));
+                        //p.kick(Component.text("Proxy is restarting.... Please reconnect").color(NamedTextColor.DARK_RED));
                     }
                 }
 

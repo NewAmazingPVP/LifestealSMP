@@ -31,7 +31,7 @@ public class BingoGUIItems {
     public static ItemStack openBingoCard() {
         ItemStack ITEM = new ItemStack(Material.PAINTING);
         ItemMeta meta = ITEM.getItemMeta();
-        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Open Bingo Card");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -42,7 +42,7 @@ public class BingoGUIItems {
     public static ItemStack BingoPickaxeGUI() {
         ItemStack ITEM = new ItemStack(Material.IRON_PICKAXE);
         ItemMeta meta = ITEM.getItemMeta();
-        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.setUnbreakable(true);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
@@ -58,7 +58,7 @@ public class BingoGUIItems {
     public static ItemStack BingoInfo() {
         ItemStack ITEM = new ItemStack(Material.REDSTONE_TORCH);
         ItemMeta meta = ITEM.getItemMeta();
-        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.setUnbreakable(true);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);

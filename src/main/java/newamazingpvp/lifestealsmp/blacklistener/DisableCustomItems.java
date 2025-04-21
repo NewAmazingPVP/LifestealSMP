@@ -5,7 +5,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.CrafterCraftEvent;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.inventory.ItemStack;
 
@@ -29,12 +28,12 @@ public class DisableCustomItems implements Listener {
         dbHelper.createTable("custom_items", "item_id TEXT PRIMARY KEY, crafted_at TIMESTAMP");
     }
 
-    @EventHandler
-    public void onCrafter(CrafterCraftEvent event) {
-        if(customItems.contains(event.getResult()) && !basicItems.contains(event.getResult())){
-            event.setCancelled(true);
-        }
-    }
+//    @EventHandler
+//    public void onCrafter(CrafterCraftEvent event) {
+//        if(customItems.contains(event.getResult()) && !basicItems.contains(event.getResult())){
+//            event.setCancelled(true);
+//        }
+//    }
 
 
     @EventHandler

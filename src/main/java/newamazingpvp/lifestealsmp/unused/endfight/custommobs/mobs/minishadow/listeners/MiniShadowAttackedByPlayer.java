@@ -22,7 +22,7 @@ public class MiniShadowAttackedByPlayer implements Listener {
                 onlinePlayer.playSound(loc, Sound.ENTITY_GUARDIAN_AMBIENT_LAND, 1.0f, 1.0f);
 
             }
-            attacker.getWorld().spawnParticle(Particle.DUST, loc, 0, new Particle.DustOptions(Color.BLACK, 5.0f));
+            attacker.getWorld().spawnParticle(Particle.REDSTONE, loc, 0, new Particle.DustOptions(Color.BLACK, 5.0f));
 
         }
 

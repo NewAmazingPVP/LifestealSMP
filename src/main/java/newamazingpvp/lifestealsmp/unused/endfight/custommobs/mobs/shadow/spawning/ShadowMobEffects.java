@@ -48,7 +48,7 @@ public class ShadowMobEffects {
                     if (((LivingEntity) entity).getHealth() <= 1) {
                         armorStand.remove();
                     } else {
-                        armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
+                        armorStand.getWorld().spawnParticle(Particle.REDSTONE, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
                     }
 
                 }
@@ -65,7 +65,7 @@ public class ShadowMobEffects {
                     if (((LivingEntity) entity).getHealth() <= 1) {
                         armorStand.remove();
                     } else {
-                        armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
+                        armorStand.getWorld().spawnParticle(Particle.REDSTONE, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
                     }
 
                 }
@@ -81,7 +81,7 @@ public class ShadowMobEffects {
                     if (((LivingEntity) entity).getHealth() <= 1) {
                         armorStand.remove();
                     } else {
-                        armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
+                        armorStand.getWorld().spawnParticle(Particle.REDSTONE, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
                     }
 
                 }
@@ -97,7 +97,7 @@ public class ShadowMobEffects {
                     if (((LivingEntity) entity).getHealth() <= 1) {
                         armorStand.remove();
                     } else {
-                        armorStand.getWorld().spawnParticle(Particle.DUST, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
+                        armorStand.getWorld().spawnParticle(Particle.REDSTONE, armorStandLoc, 0, new Particle.DustOptions(Color.PURPLE, 2.0f));
                     }
 
                 }

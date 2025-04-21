@@ -216,7 +216,8 @@ public class Recipes {
         somberCrystalRecipe.setIngredient('P', Material.PRISMARINE_SHARD);
         somberCrystalRecipe.setIngredient('T', Material.TOTEM_OF_UNDYING);
         somberCrystalRecipe.setIngredient('B', Material.BLAZE_ROD);
-        somberCrystalRecipe.setIngredient('R', Material.BREEZE_ROD);
+        somberCrystalRecipe.setIngredient('R', Material.BLAZE_ROD);
+        //somberCrystalRecipe.setIngredient('R', Material.BREEZE_ROD);
         Bukkit.addRecipe(somberCrystalRecipe);
         customItems.add(somberCrystal);
         shapedRecipes.put(somberCrystal, somberCrystalRecipe);

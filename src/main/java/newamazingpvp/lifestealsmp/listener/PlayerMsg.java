@@ -54,31 +54,31 @@ public class PlayerMsg implements Listener {
             broadcastMessage(ChatColor.AQUA + "Do /runes to learn about runes!", player);
         }
 
-        if (containsAny(message, "crafting table")) {
-            if (player.getName().startsWith(".")) {
-                player.sendMessage("There is a current bedrock bug that prevents crafting crafting tables. You have been provided crafting table for that reason");
-                addItemOrDrop(player, ItemStack.of(Material.CRAFTING_TABLE), "You can't hold more items. Dropping crafting table on the ground.");
-                for (Player p : Bukkit.getOnlinePlayers()) {
-                    if (p.getName().startsWith(".")) {
-                        List<ItemStack> toRemove = new ArrayList<>();
-                        for (ItemStack t : p.getInventory().getContents()) {
-                            if (t != null && t.getType().toString().toLowerCase().contains("_planks") && !t.getType().toString().toLowerCase().contains("dark_oak")) {
-                                addItemOrDrop(p, new ItemStack(Material.DARK_OAK_PLANKS, t.getAmount()), "Planks dropped!");
-                                toRemove.add(t);
-                            }
-                            if (t != null && t.getType().toString().toLowerCase().contains("_log") && !t.getType().toString().toLowerCase().contains("dark_oak")) {
-                                addItemOrDrop(p, new ItemStack(Material.DARK_OAK_LOG, t.getAmount()), "Logs dropped!");
-                                toRemove.add(t);
-                            }
-                        }
-                        for (ItemStack t : toRemove) {
-                            p.getInventory().remove(t);
-                        }
-                    }
-
-                }
-            }
-        }
+//        if (containsAny(message, "crafting table")) {
+//            if (player.getName().startsWith(".")) {
+//                player.sendMessage("There is a current bedrock bug that prevents crafting crafting tables. You have been provided crafting table for that reason");
+//                addItemOrDrop(player, ItemStack.of(Material.CRAFTING_TABLE), "You can't hold more items. Dropping crafting table on the ground.");
+//                for (Player p : Bukkit.getOnlinePlayers()) {
+//                    if (p.getName().startsWith(".")) {
+//                        List<ItemStack> toRemove = new ArrayList<>();
+//                        for (ItemStack t : p.getInventory().getContents()) {
+//                            if (t != null && t.getType().toString().toLowerCase().contains("_planks") && !t.getType().toString().toLowerCase().contains("dark_oak")) {
+//                                addItemOrDrop(p, new ItemStack(Material.DARK_OAK_PLANKS, t.getAmount()), "Planks dropped!");
+//                                toRemove.add(t);
+//                            }
+//                            if (t != null && t.getType().toString().toLowerCase().contains("_log") && !t.getType().toString().toLowerCase().contains("dark_oak")) {
+//                                addItemOrDrop(p, new ItemStack(Material.DARK_OAK_LOG, t.getAmount()), "Logs dropped!");
+//                                toRemove.add(t);
+//                            }
+//                        }
+//                        for (ItemStack t : toRemove) {
+//                            p.getInventory().remove(t);
+//                        }
+//                    }
+//
+//                }
+//            }
+//        }
 
         /*if (containsAny(message, "cap", "limit")) {
             broadcastMessage(ChatColor.AQUA + "You can go above heart cap using health and absorption runes. Do /runes to learn about runes!");

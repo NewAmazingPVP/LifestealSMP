@@ -10,8 +10,8 @@ public class HealthRune extends AbstractRune {
 
     private static final Component name = runeGradient("Health Rune");
     private static final EntityType mob = EntityType.WITCH;
-    private static final PotionEffect effect = new PotionEffect(PotionEffectType.INSTANT_HEALTH, 1, 0);
-    private static final PotionEffect effectII = new PotionEffect(PotionEffectType.INSTANT_HEALTH, 1, 1);
+    private static final PotionEffect effect = new PotionEffect(PotionEffectType.HEAL, 1, 0);
+    private static final PotionEffect effectII = new PotionEffect(PotionEffectType.HEAL, 1, 1);
 
     private static final String lore = ChatColor.LIGHT_PURPLE + "Grants permanent random duration " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier());
 

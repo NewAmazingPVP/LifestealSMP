@@ -65,7 +65,7 @@ public class DragonRune implements Listener {
     public static ItemStack dragonRune() {
         ItemStack rune = new ItemStack(Material.AMETHYST_SHARD);
         ItemMeta meta = rune.getItemMeta();
-        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE);
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&x&F&B&0&8&7&4&lD&x&F&8&1&9&8&2&lr&x&F&5&2&9&8&F&la&x&F&3&3&A&9&D&lg&x&F&0&4&A&A&B&lo&x&E&D&5&B&B&9&ln &x&E&7&7&C&D&4&lR&x&E&5&8&C&E&2&lu&x&E&2&9&D&E&F&ln&x&D&F&A&D&F&D&le"));
         List<String> lore = new ArrayList<>();

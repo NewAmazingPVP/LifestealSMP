@@ -10,8 +10,8 @@ public class HasteRune extends AbstractRune {
 
     private static final Component name = runeGradient("Haste Rune");
     private static final EntityType mob = EntityType.SILVERFISH;
-    private static final PotionEffect effect = new PotionEffect(PotionEffectType.HASTE, 200, 0);
-    private static final PotionEffect effectII = new PotionEffect(PotionEffectType.HASTE, 200, 1);
+    private static final PotionEffect effect = new PotionEffect(PotionEffectType.FAST_DIGGING, 200, 0);
+    private static final PotionEffect effectII = new PotionEffect(PotionEffectType.FAST_DIGGING, 200, 1);
 
     private static final String lore = ChatColor.LIGHT_PURPLE + "Grants permanent random duration " + formatEffectKey(effect.getType().getKey().getKey()) + " " + formatAmplifier(effect.getAmplifier());
 

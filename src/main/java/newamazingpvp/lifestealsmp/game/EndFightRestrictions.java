@@ -131,7 +131,7 @@ public class EndFightRestrictions implements Listener {
                 int diameter = 10;
                 for (int i = 0; i < 15; i++) {
                     Location newLocation = survivor.getLocation().add(new Vector(Math.random() - 0.5, 0, Math.random() - 0.5).multiply(diameter));
-                    w.spawnEntity(newLocation, EntityType.FIREWORK_ROCKET);
+                    w.spawnEntity(newLocation, EntityType.FIREWORK);
                 }
                 survivor.setInvulnerable(false);
                 for (Player player : Bukkit.getOnlinePlayers()) {

@@ -39,7 +39,7 @@ public abstract class RuneSample<T extends org.bukkit.event.Event> implements Li
         ItemMeta meta = item.getItemMeta();
         if (meta == null) return item;
 
-        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
         meta.setDisplayName(displayName);
         meta.setLore(lore);

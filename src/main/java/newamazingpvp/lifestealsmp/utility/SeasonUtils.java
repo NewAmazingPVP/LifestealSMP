@@ -17,7 +17,6 @@ import java.util.List;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 import static newamazingpvp.lifestealsmp.blacklistener.DisableCustomItems.dbHelper;
-import static newamazingpvp.lifestealsmp.blacklistener.DisableMace.maceDb;
 import static newamazingpvp.lifestealsmp.game.AutoBan.autoBanDb;
 import static newamazingpvp.lifestealsmp.game.PlayerLifeManager.clearEliminatedPlayers;
 import static newamazingpvp.lifestealsmp.runes.RuneHandler.runeDb;
@@ -28,7 +27,7 @@ public class SeasonUtils {
         clearEliminatedPlayers();
         runeDb.resetDatabase();
         dbHelper.resetDatabase();
-        maceDb.resetDatabase();
+        //maceDb.resetDatabase();
         autoBanDb.resetDatabase();
         getServer().dispatchCommand(getServer().getConsoleSender(), "chunky world world");
         getServer().dispatchCommand(getServer().getConsoleSender(), "chunky radius 12500");

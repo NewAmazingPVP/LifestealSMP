@@ -87,7 +87,8 @@ public class CombatLogListener implements Listener {
             }
 
             String deathMessage = p.getName() + " was killed instantly due to logging out during combat!";
-            PlayerDeathEvent deathEvent = new PlayerDeathEvent(p, (DamageSource) getEnemies(p).get(getEnemies(p).size() - 1), List.of(inventoryContents), 0, 0, 0, 0, deathMessage);
+            //PlayerDeathEvent deathEvent = new PlayerDeathEvent(p, (DamageSource) getEnemies(p).get(getEnemies(p).size() - 1), List.of(inventoryContents), 0, 0, 0, 0, deathMessage);
+            PlayerDeathEvent deathEvent = new PlayerDeathEvent(p, List.of(inventoryContents), 0, 0, 0, 0, deathMessage);
             Bukkit.getPluginManager().callEvent(deathEvent);
             invincibilityPlayers.add(p.getName());
             new BukkitRunnable() {
