@@ -32,7 +32,7 @@ public class LightFeather implements Listener {
                 player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 1.0f, 2.0f);
                 player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 2.0f);
                 player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 80, 2));
-                player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP_BOOST, 80, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 80, 2));
                 if (item.getAmount() > 1) {
                     item.setAmount(item.getAmount() - 1);
                     player.getInventory().setItemInMainHand(item);

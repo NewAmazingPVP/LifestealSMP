@@ -26,11 +26,11 @@ public class QuarryArmor implements Listener {
         boolean quarryIsLeggingsOn = isQuarryArmorPieceOn(leggings, Material.LEATHER_LEGGINGS);
         boolean quarryIsBootsOn = isQuarryArmorPieceOn(boots, Material.LEATHER_BOOTS);
 
-        if (quarryIsHelmetOn && quarryIsChestplateOn && quarryIsLeggingsOn && quarryIsBootsOn) {
-            player.addPotionEffect(new PotionEffect(PotionEffectType.HASTE, 100000, 2));
-        } else {
-            player.removePotionEffect(PotionEffectType.HASTE);
-        }
+//        if (quarryIsHelmetOn && quarryIsChestplateOn && quarryIsLeggingsOn && quarryIsBootsOn) {
+//            player.addPotionEffect(new PotionEffect(PotionEffectType.HASTE, 100000, 2));
+//        } else {
+//            player.removePotionEffect(PotionEffectType.HASTE);
+//        }
     }
 
     private boolean isQuarryArmorPieceOn(ItemStack item, Material requiredMaterial) {

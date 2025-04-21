@@ -32,7 +32,7 @@ public class IceCube implements Listener {
 
         ItemStack IceCube = new ItemStack(Material.ICE);
         ItemMeta SI = IceCube.getItemMeta();
-        SI.addEnchant(Enchantment.UNBREAKING, 1, false);
+        SI.addEnchant(Enchantment.DURABILITY, 1, false);
         SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         SI.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Ice");
         SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);

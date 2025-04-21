@@ -155,7 +155,7 @@ public class SomberCrystal implements Listener {
         //this is to prevent too much performance loss
         /*ItemMeta meta = item.getItemMeta();
         if (meta != null) {
-            meta.addEnchant(Enchantment.UNBREAKING, 1, false);
+            meta.addEnchant(Enchantment.DURABILITY, 1, false);
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE);
             meta.setDisplayName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Disabled For 2min");
             item.setItemMeta(meta);

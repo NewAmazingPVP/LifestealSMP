@@ -64,23 +64,23 @@ public class NerfOpItems implements Listener {
                 event.setDamage(event.getDamage() * 0.30);
                 player.sendMessage(ChatColor.YELLOW + "You were damaged by an overpowered explosive in PVP. These items are allowed on the server but are nerfed for balanced PvP. You should still be able to fight back.");
             } else if (event.getDamager() instanceof Player damager) {
-                if (damager.getInventory().getItemInMainHand().getType() == Material.MACE) {
-                    //double finalDmg = e.getFinalDamage()*0.25;
-                    //p.damage(e.getFinalDamage()*0.25);
-                    //event.setDamage(event.getDamage() * 0.30);
-                    event.setDamage(event.getDamage() * 0.75);
-                    // DONT USE THIS WONT WORK WELL WITH TOTEMS
-                    //p.setHealth(Math.max(0, p.getHealth()-finalDmg);
-                    player.sendMessage(ChatColor.YELLOW + "You were damaged by a mace. These items are allowed on the server but are nerfed for balanced PvP. You should still be able to fight back.");
-                    damager.sendMessage(ChatColor.AQUA + "You attacked another player with a mace. The mace is nerfed for balanced PvP on this server, so it won't give you a significant advantage.");
-                }
+//                if (damager.getInventory().getItemInMainHand().getType() == Material.MACE) {
+//                    //double finalDmg = e.getFinalDamage()*0.25;
+//                    //p.damage(e.getFinalDamage()*0.25);
+//                    //event.setDamage(event.getDamage() * 0.30);
+//                    event.setDamage(event.getDamage() * 0.75);
+//                    // DONT USE THIS WONT WORK WELL WITH TOTEMS
+//                    //p.setHealth(Math.max(0, p.getHealth()-finalDmg);
+//                    player.sendMessage(ChatColor.YELLOW + "You were damaged by a mace. These items are allowed on the server but are nerfed for balanced PvP. You should still be able to fight back.");
+//                    damager.sendMessage(ChatColor.AQUA + "You attacked another player with a mace. The mace is nerfed for balanced PvP on this server, so it won't give you a significant advantage.");
+//                }
             } else if (event.getDamager() instanceof Arrow arrow) {
                 if (isGracePeriod() || (getPlaytime(player) < 12000 && !newbieViolate.contains(player.getName()))) {
                     event.setCancelled(true);
                     player.sendMessage(ChatColor.RED + "You were protected from damage due to your newbie protection");
                     return;
                 }
-                if (arrow.getBasePotionType() == PotionType.HARMING) {
+                if (arrow.getBasePotionType() == PotionType.INSTANT_DAMAGE) {
                     event.setCancelled(true);
                     if (isWithinSpawnRadius(player.getLocation())) {
                         //return;
@@ -102,7 +102,7 @@ public class NerfOpItems implements Listener {
                     player.sendMessage(ChatColor.RED + "You were protected from damage due to your newbie protection");
                     return;
                 }
-                if (t.getPotionMeta().getBasePotionType() == PotionType.HARMING) {
+                if (t.getPotionMeta().getBasePotionType() == PotionType.INSTANT_DAMAGE) {
                     if (isWithinSpawnRadius(player.getLocation())) {
                         //return;
                     }

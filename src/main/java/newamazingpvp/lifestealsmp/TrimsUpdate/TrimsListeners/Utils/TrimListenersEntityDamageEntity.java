@@ -28,9 +28,9 @@ public class TrimListenersEntityDamageEntity implements Listener {
             if (getArmorTrimSet(attacker, TrimPattern.SENTRY)) {
                 attacker.sendMessage("SENTRY Trigger");
             }
-            if (getArmorTrimSet(attacker, TrimPattern.BOLT)) {
-                attacker.sendMessage("BOLT Trigger");
-            }
+//            if (getArmorTrimSet(attacker, TrimPattern.BOLT)) {
+//                attacker.sendMessage("BOLT Trigger");
+//            }
             if (getArmorTrimSet(attacker, TrimPattern.EYE)) {
                 attacker.sendMessage("EYE Trigger");
             }
@@ -43,9 +43,9 @@ public class TrimListenersEntityDamageEntity implements Listener {
             if (getArmorTrimSet(attacker, TrimPattern.COAST)) {
                 attacker.sendMessage("COAST Trigger");
             }
-            if (getArmorTrimSet(attacker, TrimPattern.FLOW)) {
-                attacker.sendMessage("FLOW Trigger");
-            }
+//            if (getArmorTrimSet(attacker, TrimPattern.FLOW)) {
+//                attacker.sendMessage("FLOW Trigger");
+//            }
             if (getArmorTrimSet(attacker, TrimPattern.HOST)) {
                 attacker.sendMessage("HOST Trigger");
             }

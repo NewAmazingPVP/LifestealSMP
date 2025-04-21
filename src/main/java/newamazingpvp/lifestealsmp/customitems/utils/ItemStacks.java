@@ -118,7 +118,7 @@ public class ItemStacks {
     public static ItemStack corruptedMobSoul() {
         ItemStack corruptedMobSoul = new ItemStack(Material.ECHO_SHARD);
         ItemMeta meta = corruptedMobSoul.getItemMeta();
-        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
         meta.displayName(gradient("Corrupted Mob Soul"));
         List<String> lore = new ArrayList<>();
@@ -132,7 +132,7 @@ public class ItemStacks {
     public static ItemStack severedMobHeart() {
         ItemStack severedMobHeart = new ItemStack(Material.BEETROOT);
         ItemMeta meta = severedMobHeart.getItemMeta();
-        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
         meta.displayName(gradient("Severed Mob Heart"));
         List<String> lore = new ArrayList<>();
@@ -146,7 +146,7 @@ public class ItemStacks {
     public static ItemStack extraHeart() {
         ItemStack extraHeart = new ItemStack(Material.RED_DYE);
         ItemMeta meta = extraHeart.getItemMeta();
-        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
         meta.displayName(gradient("Extra Heart"));
         List<String> lore = new ArrayList<>();
@@ -190,7 +190,7 @@ public class ItemStacks {
     public static ItemStack lightFeather() {
         ItemStack lightFeather = new ItemStack(Material.FEATHER);
         ItemMeta meta = lightFeather.getItemMeta();
-        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
         meta.displayName(gradient("Light Feather"));
         List<String> lore = new ArrayList<>();
@@ -205,7 +205,7 @@ public class ItemStacks {
     public static ItemStack InstaBoomTNT() {
         ItemStack instaboomTNT = new ItemStack(Material.TNT);
         ItemMeta meta = instaboomTNT.getItemMeta();
-        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE);
         meta.displayName(gradient("InstaBoom TNT"));
         List<String> lore = new ArrayList<>();
@@ -223,7 +223,7 @@ public class ItemStacks {
     public static ItemStack lifestealStick() {
         ItemStack lifestealStick = new ItemStack(Material.STICK);
         ItemMeta meta = lifestealStick.getItemMeta();
-        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
         meta.displayName(gradient("Lifesteal Stick"));
         List<String> lore = new ArrayList<>();
@@ -239,7 +239,7 @@ public class ItemStacks {
     public static ItemStack powerStick() {
         ItemStack powerStick = new ItemStack(Material.STICK);
         ItemMeta meta = powerStick.getItemMeta();
-        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE);
         meta.displayName(gradient("Power Stick"));
         List<String> lore = new ArrayList<>();
@@ -253,7 +253,7 @@ public class ItemStacks {
     public static ItemStack heavyNetherStar() {
         ItemStack heavyNetherStar = new ItemStack(Material.NETHER_STAR);
         ItemMeta meta = heavyNetherStar.getItemMeta();
-        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE);
         meta.displayName(gradient("Heavy Nether Star"));
         List<String> lore = new ArrayList<>();
@@ -268,7 +268,7 @@ public class ItemStacks {
         ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
         LeatherArmorMeta meta = (LeatherArmorMeta) chestplate.getItemMeta();
         meta.setColor(Color.BLUE);
-        meta.addEnchant(Enchantment.UNBREAKING, 3, true);
+        meta.addEnchant(Enchantment.DURABILITY, 3, true);
         meta.displayName(gradient("Quarry Chestplate"));
         List<String> lore = new ArrayList<>();
         lore.add(" ");
@@ -286,7 +286,7 @@ public class ItemStacks {
         ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
         LeatherArmorMeta meta = (LeatherArmorMeta) leggings.getItemMeta();
         meta.setColor(Color.BLUE);
-        meta.addEnchant(Enchantment.UNBREAKING, 3, true);
+        meta.addEnchant(Enchantment.DURABILITY, 3, true);
         meta.displayName(gradient("Quarry Leggings"));
         List<String> lore = new ArrayList<>();
         lore.add(" ");
@@ -304,7 +304,7 @@ public class ItemStacks {
         ItemStack helmet = new ItemStack(Material.LEATHER_HELMET);
         LeatherArmorMeta meta = (LeatherArmorMeta) helmet.getItemMeta();
         meta.setColor(Color.BLUE);
-        meta.addEnchant(Enchantment.UNBREAKING, 3, true);
+        meta.addEnchant(Enchantment.DURABILITY, 3, true);
         meta.displayName(gradient("Quarry Helmet"));
         List<String> lore = new ArrayList<>();
         lore.add(" ");
@@ -322,7 +322,7 @@ public class ItemStacks {
         ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
         LeatherArmorMeta meta = (LeatherArmorMeta) boots.getItemMeta();
         meta.setColor(Color.BLUE);
-        meta.addEnchant(Enchantment.UNBREAKING, 3, true);
+        meta.addEnchant(Enchantment.DURABILITY, 3, true);
         meta.displayName(gradient("Quarry Boots"));
         List<String> lore = new ArrayList<>();
         lore.add(" ");
@@ -339,7 +339,7 @@ public class ItemStacks {
     public static ItemStack somberCrystal() {
         ItemStack somberCrystal = new ItemStack(Material.ECHO_SHARD);
         ItemMeta meta = somberCrystal.getItemMeta();
-        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE);
         meta.displayName(gradient("Somber Crystal"));
         List<String> lore = new ArrayList<>();
@@ -354,7 +354,7 @@ public class ItemStacks {
     public static ItemStack musicBox() {
         ItemStack musicBox = new ItemStack(Material.NOTE_BLOCK);
         ItemMeta meta = musicBox.getItemMeta();
-        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
         //meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE);
         meta.displayName(gradient("Music Box"));
         List<String> lore = new ArrayList<>();

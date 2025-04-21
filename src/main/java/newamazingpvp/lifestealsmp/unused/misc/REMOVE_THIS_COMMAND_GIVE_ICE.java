@@ -21,7 +21,7 @@ public class REMOVE_THIS_COMMAND_GIVE_ICE implements CommandExecutor {
 
         ItemStack IceCube = new ItemStack(Material.ICE);
         ItemMeta SI = IceCube.getItemMeta();
-        SI.addEnchant(Enchantment.UNBREAKING, 1, false);
+        SI.addEnchant(Enchantment.DURABILITY, 1, false);
         SI.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         SI.setDisplayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Ice Cube");
         SI.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);

@@ -180,7 +180,7 @@ public class RuneHandler implements Listener {
         Random random = new Random();
 
         ItemStack mainHandItem = player.getInventory().getItemInMainHand();
-        int lootingLevel = mainHandItem.getEnchantmentLevel(Enchantment.LOOTING);
+        int lootingLevel = mainHandItem.getEnchantmentLevel(Enchantment.LOOT_BONUS_MOBS);
 
         for (Rune rune : runes) {
             if (entity.getType() == rune.getMob()) {
@@ -246,7 +246,7 @@ public class RuneHandler implements Listener {
         ItemStack runeItem = new ItemStack(Material.PAPER);
         ItemMeta meta = runeItem.getItemMeta();
         meta.displayName(rune.getName());
-        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
+        meta.addEnchant(Enchantment.DURABILITY, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.DARK_PURPLE + "[Item just needs to be in your inventory]");

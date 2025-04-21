@@ -64,7 +64,7 @@ public class InstaboomTnt implements Listener {
     private void triggerInstaBoom(Player player, Location location) {
         World world = location.getWorld();
         if (world != null) {
-            world.spawnParticle(Particle.EXPLOSION, location, 10);
+            world.spawnParticle(Particle.EXPLOSION_HUGE, location, 10);
             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
                 onlinePlayer.playSound(location, Sound.ENTITY_GENERIC_EXPLODE, 5.0f, 1.0f);
                 onlinePlayer.playSound(location, Sound.ENTITY_ELDER_GUARDIAN_CURSE, 5.0f, 2.0f);
