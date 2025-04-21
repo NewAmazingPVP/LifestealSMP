@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.Idea_Vault.LockItem;
+package newamazingpvp.lifestealsmp.vault.LockItem;
 
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -19,7 +19,7 @@ public class UnlockItem implements CommandExecutor {
 
         ItemStack item = player.getInventory().getItemInMainHand();
 
-        if(item.getType().equals(Material.AIR)){
+        if (item.getType().equals(Material.AIR)) {
             sender.sendMessage("§cYou can't unlock air!");
             return false;
         }
@@ -29,15 +29,15 @@ public class UnlockItem implements CommandExecutor {
         List<String> lore = meta.getLore();
         assert lore != null;
 
-        for(int i=0; i<lore.size(); i++){
-            if(lore.get(i).contains("§\uD83D\uDD12")){
+        for (int i = 0; i < lore.size(); i++) {
+            if (lore.get(i).contains("§\uD83D\uDD12")) {
                 lore.remove(i);
             }
         }
 
         meta.setLore(lore);
 
-        sender.sendMessage("§aUnlocked "+ meta.getDisplayName());
+        sender.sendMessage("§aUnlocked " + meta.getDisplayName());
 
         return true;
     }

@@ -6,21 +6,18 @@ import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
-
 public class PlayerLifeManager {
     public static final DataBaseHelper dataBaseHelper;
+
     static {
         dataBaseHelper = new DataBaseHelper("eliminated.db");
         dataBaseHelper.createTable("player_data", "player_name TEXT PRIMARY KEY");
     }
 
-    public static void eliminatePlayer(Player p){
+    public static void eliminatePlayer(Player p) {
         dataBaseHelper.insertData("player_data", new String[]{"player_name"}, p.getName());
         p.banPlayer(ChatColor.RED + "You were eliminated! Ask someone to use a revive beacon to revive you!");
     }

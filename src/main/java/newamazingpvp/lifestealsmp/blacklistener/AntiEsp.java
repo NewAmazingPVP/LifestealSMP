@@ -13,19 +13,21 @@ import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitTask;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class AntiEsp implements Listener {
     private static final int REVEAL_RADIUS = 5;
-    private static final int CHUNK_RADIUS   = REVEAL_RADIUS/16 + 1;
+    private static final int CHUNK_RADIUS = 1;
     private final Map<Chunk, List<Location>> containerCache = new ConcurrentHashMap<>();
-    private BukkitTask asyncTask;
+    private final BukkitTask asyncTask;
 
     public AntiEsp() {
         Bukkit.getWorlds().forEach(world -> {
@@ -46,7 +48,7 @@ public class AntiEsp implements Listener {
         cacheChunk(e.getChunk());
         for (Player p : Bukkit.getOnlinePlayers()) {
             for (Location loc : containerCache.get(e.getChunk())) {
-                if (loc.distanceSquared(p.getLocation()) > REVEAL_RADIUS*REVEAL_RADIUS) {
+                if (loc.distanceSquared(p.getLocation()) > REVEAL_RADIUS * REVEAL_RADIUS) {
                     p.sendBlockChange(loc, Material.AIR.createBlockData());
                 }
             }

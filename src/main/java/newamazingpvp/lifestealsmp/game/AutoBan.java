@@ -12,6 +12,7 @@ import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class AutoBan implements Listener {
     public static final DataBaseHelper autoBanDb;
+
     static {
         autoBanDb = new DataBaseHelper("autoban.db");
         autoBanDb.createTable("player_data", "player_uuid TEXT PRIMARY KEY, ban_count INTEGER, first_kick INTEGER");

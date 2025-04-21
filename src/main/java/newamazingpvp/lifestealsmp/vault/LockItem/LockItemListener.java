@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.Idea_Vault.LockItem;
+package newamazingpvp.lifestealsmp.vault.LockItem;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,13 +12,13 @@ import java.util.List;
 public class LockItemListener implements Listener {
 
     @EventHandler
-    public void dropItem(PlayerDropItemEvent e){
+    public void dropItem(PlayerDropItemEvent e) {
 
         Player player = e.getPlayer();
         ItemStack item = e.getItemDrop().getItemStack();
         ItemMeta meta = item.getItemMeta();
         List<String> lore = meta.getLore();
-        if(meta.getLore().toString().toLowerCase().contains("§\uD83D\uDD12")){
+        if (meta.getLore().toString().toLowerCase().contains("§\uD83D\uDD12")) {
 
         }
 

@@ -8,7 +8,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerChatEvent;
 import org.codehaus.plexus.util.StringUtils;
 
 import java.io.BufferedReader;
@@ -49,7 +48,6 @@ public class ChatFilter implements Listener {
             System.out.println("Error reading or parsing blacklist.csv");
         }
     }
-
 
 
     @EventHandler(priority = EventPriority.LOWEST)
@@ -171,7 +169,7 @@ public class ChatFilter implements Listener {
             regexBuilder.append("(?![a-zA-Z0-9])");
 
 
-            String regexPattern = "(?i)" + regexBuilder.toString();
+            String regexPattern = "(?i)" + regexBuilder;
 
             Pattern pattern = Pattern.compile(regexPattern);
             Matcher matcher = pattern.matcher(message);
@@ -226,7 +224,7 @@ public class ChatFilter implements Listener {
             //regexBuilder.append("(?![a-zA-Z0-9])");
 
 
-            String regexPattern = "(?i)" + regexBuilder.toString();
+            String regexPattern = "(?i)" + regexBuilder;
 
             Pattern pattern = Pattern.compile(regexPattern);
             Matcher matcher = pattern.matcher(message);
@@ -265,7 +263,7 @@ public class ChatFilter implements Listener {
             regexBuilder.append("(?![a-zA-Z0-9])");
 
 
-            String regexPattern = "(?i)" + regexBuilder.toString();
+            String regexPattern = "(?i)" + regexBuilder;
 
             Pattern pattern = Pattern.compile(regexPattern);
             Matcher matcher = pattern.matcher(message);
@@ -353,18 +351,18 @@ public class ChatFilter implements Listener {
             conn.setDoOutput(true);
 
             String body = """
-        {
-          "model": "omni-moderation-latest",
-          "input": [
-            {
-              "type": "image_url",
-              "image_url": {
-                "url": "%s"
-              }
-            }
-          ]
-        }
-        """.formatted(imageUrl.replace("\"", "\\\""));
+                    {
+                      "model": "omni-moderation-latest",
+                      "input": [
+                        {
+                          "type": "image_url",
+                          "image_url": {
+                            "url": "%s"
+                          }
+                        }
+                      ]
+                    }
+                    """.formatted(imageUrl.replace("\"", "\\\""));
 
             try (OutputStream os = conn.getOutputStream()) {
                 os.write(body.getBytes());

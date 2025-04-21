@@ -25,7 +25,7 @@ public class DiscordBot {
     public static TextChannel channel;
     public static WebhookClient client;
     public static String channelId;
-    private static CooldownManager eventRoleCooldown = new CooldownManager();
+    private static final CooldownManager eventRoleCooldown = new CooldownManager();
     public static String consoleChannel = lifestealSmp.getConfig().getString("Discord.ConsoleChannel");
 
     public static void intializeBot() {
@@ -71,7 +71,7 @@ public class DiscordBot {
 
     public static void sendDiscordNewsMessage(String msg, String channelID) {
         if (jda == null) return;
-        if (msg.contains(eventRole) && !msg.contains(eventRole + " ⬆️")){
+        if (msg.contains(eventRole) && !msg.contains(eventRole + " ⬆️")) {
             if (!eventRoleCooldown.isOnCooldown()) {
                 eventRoleCooldown.setCooldown(30);
                 if (!msg.toLowerCase().contains("10 minute") && !msg.toLowerCase().contains("5 hour")) {

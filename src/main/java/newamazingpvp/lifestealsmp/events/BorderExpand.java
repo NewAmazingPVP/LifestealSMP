@@ -2,16 +2,17 @@ package newamazingpvp.lifestealsmp.events;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Difficulty;
 import org.bukkit.World;
 
 import java.time.ZonedDateTime;
 
 import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordNewsMessage;
-import static newamazingpvp.lifestealsmp.events.TimeManager.*;
+import static newamazingpvp.lifestealsmp.events.TimeManager.eventRole;
+import static newamazingpvp.lifestealsmp.events.TimeManager.formatDuration;
 
 public class BorderExpand extends BaseEvent {
-    private final int size ;
+    private final int size;
+
     public BorderExpand(ZonedDateTime time, int size) {
         super(time, time.plusHours(2));
         this.size = size;

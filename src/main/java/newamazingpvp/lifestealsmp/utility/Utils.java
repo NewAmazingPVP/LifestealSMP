@@ -221,8 +221,7 @@ public class Utils {
             if (world.getViewDistance() != 7) {
                 triggerActions("setview 7 2", "chunky continue");
             }
-        }
-        else if (onlinePlayers >= 15) {
+        } else if (onlinePlayers >= 15) {
             if (world.getViewDistance() != 8) {
                 triggerActions("setview 8 3", "chunky continue");
             }

@@ -1,4 +1,4 @@
-package newamazingpvp.lifestealsmp.Idea_Vault.Fishing;
+package newamazingpvp.lifestealsmp.vault.Fishing;
 
 public class AntiFishSpoofing {
 

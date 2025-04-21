@@ -43,7 +43,7 @@ public class DisableNetherite implements Listener {
             ItemStack item = event.getCursor();
             if (item != null && item.getType().name().toLowerCase().contains("netherite")) {
                 event.setCancelled(true);
-                Player player = (Player)event.getWhoClicked();
+                Player player = (Player) event.getWhoClicked();
                 player.sendMessage(ChatColor.RED + "Netherite armor is not allowed! Why did you try breaking a rule and wasting resources!? Do /rules");
             }
 

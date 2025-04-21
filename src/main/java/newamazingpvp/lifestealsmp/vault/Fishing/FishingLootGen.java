@@ -1,9 +1,8 @@
-package newamazingpvp.lifestealsmp.Idea_Vault.Fishing;
+package newamazingpvp.lifestealsmp.vault.Fishing;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.block.Biome;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static newamazingpvp.lifestealsmp.Idea_Vault.Fishing.FishingItemstacks.*;
+import static newamazingpvp.lifestealsmp.vault.Fishing.FishingItemstacks.*;
 
 public class FishingLootGen {
 
@@ -39,21 +38,21 @@ public class FishingLootGen {
 
             int randomIndex = rand.nextInt(rareFishLoot.size());
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 2.0f, 2.0f);
-            player.sendMessage(ChatColor.valueOf("#00e8ff") + "§l[Fishing] " + ChatColor.valueOf("#00ffcd") + "You fished up " + ChatColor.BLUE + "§lRare " +  ChatColor.valueOf("#00ffcd") + "loot!");
+            player.sendMessage(ChatColor.valueOf("#00e8ff") + "§l[Fishing] " + ChatColor.valueOf("#00ffcd") + "You fished up " + ChatColor.BLUE + "§lRare " + ChatColor.valueOf("#00ffcd") + "loot!");
             return rareFishLoot.get(randomIndex);
 
         } else if (lootRarity <= 99) {
 
             int randomIndex = rand.nextInt(legendaryFishLoot.size());
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 2.0f, 2.0f);
-            player.sendMessage(ChatColor.valueOf("#00e8ff") + "§l[Fishing] " + ChatColor.valueOf("#00ffcd") + "You fished up " + ChatColor.GOLD + "§lLegendary " +  ChatColor.valueOf("#00ffcd") + "loot!");
+            player.sendMessage(ChatColor.valueOf("#00e8ff") + "§l[Fishing] " + ChatColor.valueOf("#00ffcd") + "You fished up " + ChatColor.GOLD + "§lLegendary " + ChatColor.valueOf("#00ffcd") + "loot!");
             return legendaryFishLoot.get(randomIndex);
 
         } else {
 
             int randomIndex = rand.nextInt(godlyFishLoot.size());
             player.playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_GROWL, 2.0f, 1.0f);
-            player.sendMessage(ChatColor.valueOf("#00e8ff") + "§l[Fishing] " + ChatColor.valueOf("#00ffcd") + "You fished up " + ChatColor.LIGHT_PURPLE + "§lGODLY " +  ChatColor.valueOf("#00ffcd") + "loot!!!");
+            player.sendMessage(ChatColor.valueOf("#00e8ff") + "§l[Fishing] " + ChatColor.valueOf("#00ffcd") + "You fished up " + ChatColor.LIGHT_PURPLE + "§lGODLY " + ChatColor.valueOf("#00ffcd") + "loot!!!");
             return godlyFishLoot.get(randomIndex);
 
         }
