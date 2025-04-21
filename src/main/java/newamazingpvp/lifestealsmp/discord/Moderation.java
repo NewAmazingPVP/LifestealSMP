@@ -10,7 +10,7 @@ import static newamazingpvp.lifestealsmp.discord.DiscordBot.sendDiscordMessage;
 public class Moderation extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        if (event.getAuthor().isBot() || event.isWebhookMessage() || event.getAuthor().isSystem()){
+        if (event.getAuthor().isBot() || event.isWebhookMessage() || event.getAuthor().isSystem()) {
             return;
         }
         String messageContent = event.getMessage().getContentRaw();
@@ -32,7 +32,7 @@ public class Moderation extends ListenerAdapter {
                 sendDiscordMessage(event.getAuthor().getName() + " tried sending a flagged image: " + attachment.getUrl(), "1019965981025652738");
                 return;
             }
-            if (attachment.isVideo() || attachment.isImage()){
+            if (attachment.isVideo() || attachment.isImage()) {
                 if (attachment.getFileExtension() != null && attachment.getFileExtension().equalsIgnoreCase("gif")) {
                     // add gif/video moderation if we need it
                     // we can use JCodec, TwelveMonkeys ImageIO, or GifDecoder/Encoder

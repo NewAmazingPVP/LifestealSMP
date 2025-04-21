@@ -1,7 +1,5 @@
 package newamazingpvp.lifestealsmp.utility;
 
-import org.bukkit.plugin.java.JavaPlugin;
-
 import java.io.File;
 import java.sql.*;
 import java.util.*;
