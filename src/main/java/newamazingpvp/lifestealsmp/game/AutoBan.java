@@ -52,7 +52,7 @@ public class AutoBan implements Listener {
             autoBanDb.updateData("player_data", Map.of("ban_count", banCount, "first_kick", firstKickTime), "player_uuid = ?", playerUuid);
         }
 
-        if (banCount >= 2 && (currentTime - firstKickTime) <= THREE_DAYS) {
+        if (banCount >= 3 && (currentTime - firstKickTime) <= THREE_DAYS) {
             lifestealSmp.getServer().dispatchCommand(lifestealSmp.getServer().getConsoleSender(), "betterban " + playerName);
         }
     }
