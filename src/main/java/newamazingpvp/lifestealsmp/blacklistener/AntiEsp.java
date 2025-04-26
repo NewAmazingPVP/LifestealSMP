@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class AntiEsp implements Listener {
     private static final int REVEAL_RADIUS = 20;
-    private static final int CHUNK_RADIUS = 11;
+    private static final int CHUNK_RADIUS = 7;
 
     private final Map<Chunk, List<Location>> cache = new ConcurrentHashMap<>();
 
