@@ -112,25 +112,8 @@ public class Utils {
 
     private static boolean canIncreaseTo(int distance) {
         int onlinePlayers = Bukkit.getOnlinePlayers().size();
-
-        switch (distance) {
-            case 2:
-                return true;
-            case 3:
-                return onlinePlayers < 45;
-            case 4:
-                return onlinePlayers < 40;
-            case 5:
-                return onlinePlayers < 35;
-            case 6:
-                return onlinePlayers < 30;
-            case 7:
-                return onlinePlayers < 25;
-            case 8:
-                return onlinePlayers < 20;
-            default:
-                return onlinePlayers < 15;
-        }
+        int maxPlayersForDistance = 170 - 10 * distance;
+        return onlinePlayers <= maxPlayersForDistance;
     }
 
     public static void adjustPerformance() {
@@ -197,75 +180,26 @@ public class Utils {
         int onlinePlayers = Bukkit.getOnlinePlayers().size();
         World world = Bukkit.getWorld("world");
 
-        if (onlinePlayers >= 45) {
-            if (world.getViewDistance() != 2) {
-                triggerActions("setview 2 2", "chunky continue");
-            }
-        } else if (onlinePlayers >= 40) {
-            if (world.getViewDistance() != 3) {
-                triggerActions("setview 3 2", "chunky continue");
-            }
-        } else if (onlinePlayers >= 35) {
-            if (world.getViewDistance() != 4) {
-                triggerActions("setview 4 2", "chunky continue");
-            }
-        } else if (onlinePlayers >= 30) {
-            if (world.getViewDistance() != 5) {
-                triggerActions("setview 5 2", "chunky continue");
-            }
-        } else if (onlinePlayers >= 25) {
-            if (world.getViewDistance() != 6) {
-                triggerActions("setview 6 2", "chunky continue");
-            }
-        } else if (onlinePlayers >= 20) {
-            if (world.getViewDistance() != 7) {
-                triggerActions("setview 7 2", "chunky continue");
-            }
-        } else if (onlinePlayers >= 15) {
-            if (world.getViewDistance() != 8) {
-                triggerActions("setview 8 3", "chunky continue");
-            }
-        } else {
-            if (world.getViewDistance() != 10) {
-                triggerActions("setview 10 5", "chunky continue");
-            }
-        }
+        int desiredDistance = distanceForPlayers(onlinePlayers);
 
+        if (world.getViewDistance() != desiredDistance) {
+            triggerActions("setview " + desiredDistance + " 2", "chunky continue");
+        }
+    }
+
+    private static int distanceForPlayers(int players) {
+        int d = (int) Math.round((170 - players) / 12.5);
+        if (d < 2) d = 2;
+        if (d > 16) d = 16;
+        return d;
     }
 
     private static void resetActions() {
         int onlinePlayers = Bukkit.getOnlinePlayers().size();
         World world = Bukkit.getWorld("world");
 
-        if (onlinePlayers >= 45) {
-            if (world.getViewDistance() != 2) {
-                triggerActions("setview 2 2", "chunky continue");
-            }
-        } else if (onlinePlayers >= 40) {
-            if (world.getViewDistance() != 3) {
-                triggerActions("setview 3 2", "chunky continue");
-            }
-        } else if (onlinePlayers >= 35) {
-            if (world.getViewDistance() != 4) {
-                triggerActions("setview 4 2", "chunky continue");
-            }
-        } else if (onlinePlayers >= 30) {
-            if (world.getViewDistance() != 5) {
-                triggerActions("setview 5 2", "chunky continue");
-            }
-        } else if (onlinePlayers >= 25) {
-            if (world.getViewDistance() != 6) {
-                triggerActions("setview 6 2", "chunky continue");
-            }
-        } else if (onlinePlayers >= 20) {
-            if (world.getViewDistance() != 7) {
-                triggerActions("setview 7 2", "chunky continue");
-            }
-        } else if (onlinePlayers >= 15) {
-            triggerActions("setview 8 3", "chunky continue");
-        } else {
-            triggerActions("setview 10 5", "chunky continue");
-        }
+        int desiredDistance = distanceForPlayers(onlinePlayers);
+        triggerActions("setview " + desiredDistance + " 2", "chunky continue");
         isTriggered = false;
     }
 
