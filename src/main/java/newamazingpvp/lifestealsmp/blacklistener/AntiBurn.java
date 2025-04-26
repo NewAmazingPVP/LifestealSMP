@@ -37,7 +37,7 @@ public class AntiBurn implements Listener {
             if (!(cause == EntityDamageEvent.DamageCause.VOID)) {
                 Item i = (Item) event.getEntity();
                 ItemStack item = i.getItemStack();
-                if (item.hasItemMeta() && item.hasLore()) {
+                if (item.hasItemMeta() && item.getItemMeta().hasLore()) {
                     String lore = item.getLore().toString();
                     if (lore.toLowerCase().contains("rune") ||
                             lore.toLowerCase().contains("special") ||

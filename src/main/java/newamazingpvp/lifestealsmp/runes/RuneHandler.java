@@ -104,7 +104,7 @@ public class RuneHandler implements Listener {
                                 List<String> lore = new ArrayList<>(List.of(ChatColor.DARK_PURPLE + "Have in inventory for " + ChatColor.GOLD + "10-20%" + ChatColor.DARK_PURPLE + " less damage!"));
                                 meta.setLore(lore);
                                 t.setItemMeta(meta);
-                            } else if (ChatColor.stripColor(t.getDisplayName()).toLowerCase().contains("rune pouch")) {
+                            } else if (t.hasItemMeta() && t.getItemMeta().hasDisplayName() && ChatColor.stripColor(t.getItemMeta().getDisplayName()).toLowerCase().contains("rune pouch")) {
                                 BlockStateMeta bsm = (BlockStateMeta) t.getItemMeta();
                                 ShulkerBox shulkerBox = (ShulkerBox) bsm.getBlockState();
                                 for (ItemStack f : shulkerBox.getInventory().getContents()) {
@@ -124,7 +124,7 @@ public class RuneHandler implements Listener {
                                     }
                                 }
                             } else if (t.hasItemMeta()) {
-                                if (t.hasLore()) {
+                                if (t.getItemMeta().hasLore()) {
                                     ItemMeta meta = t.getItemMeta();
                                     List<String> lore = meta.getLore();
                                     /*if (lore.get(0).contains("Use To Craft Extra Hearts!")) {

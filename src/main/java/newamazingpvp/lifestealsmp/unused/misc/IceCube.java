@@ -201,9 +201,9 @@ public class IceCube implements Listener {
     @EventHandler
     public void onMenuClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
-        if (event.getCurrentItem().getDisplayName().equalsIgnoreCase(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Ice")) {
-            player.playSound(player.getLocation(), Sound.BLOCK_GLASS_BREAK, 1.0f, 1.0f);
-            event.setCancelled(true);
-        }
+//        if (event.getCurrentItem().getDisplayName().equalsIgnoreCase(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Ice")) {
+//            player.playSound(player.getLocation(), Sound.BLOCK_GLASS_BREAK, 1.0f, 1.0f);
+//            event.setCancelled(true);
+//        }
     }
 }

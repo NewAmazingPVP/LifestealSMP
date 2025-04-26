@@ -33,7 +33,7 @@ public class InsaneTrackingDay extends BaseEvent {
     public void onEventEnd() {
         Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Insane /track day is now over, Check /discord announcements");
         sendDiscordNewsMessage("Insane /track day is now over", "1032411739351941120");
-        trackingDist = 1000;
+        trackingDist = 500;
         delayDuration = 45;
         resetCompass();
         compassUpdate();

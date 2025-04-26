@@ -11,6 +11,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -24,46 +25,44 @@ public class AntiUseListener implements Listener {
     public void onPlayerInteract(PlayerInteractEvent event) {
         if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             ItemStack item = event.getItem();
-            if (item != null && item.getType() == Material.BEETROOT && item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Severed Mob Heart")) {
-                event.setCancelled(true);
-            }
-            if (item != null && item.getType() == Material.ENDER_PEARL) {
-                if (event.getPlayer().getCooldown(Material.ENDER_PEARL) == 0) {
-                    getServer().getScheduler().runTaskLater(lifestealSmp, () -> event.getPlayer().setCooldown(Material.ENDER_PEARL, 100), 1);
+            if (item == null || item.getType() == Material.AIR) return;
+
+            if (item.getType() == Material.BEETROOT && item.hasItemMeta()) {
+                ItemMeta meta = item.getItemMeta();
+                if (meta != null && meta.hasDisplayName() && (ChatColor.DARK_RED.toString() + ChatColor.BOLD + "Severed Mob Heart").equals(meta.getDisplayName())) {
+                    event.setCancelled(true);
+                    return;
                 }
             }
+
+            if (item.getType() == Material.ENDER_PEARL && event.getPlayer().getCooldown(Material.ENDER_PEARL) == 0) {
+                getServer().getScheduler().runTaskLater(lifestealSmp, () -> event.getPlayer().setCooldown(Material.ENDER_PEARL, 100), 1L);
+            }
         }
-
-        //updateLore(event.getPlayer());
     }
-
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         if (event.getView().getTitle().startsWith(ChatColor.GOLD + "Custom Recipes")) {
             event.setCancelled(true);
-
-            if (event.getCurrentItem() == null || event.getCurrentItem().getType() == Material.AIR) return;
-
-            Player player = (Player) event.getWhoClicked();
-            ItemStack clickedItem = event.getCurrentItem();
-            GUI.openRecipeDetailGUI(player, clickedItem);
+            ItemStack clicked = event.getCurrentItem();
+            if (clicked == null || clicked.getType() == Material.AIR) return;
+            GUI.openRecipeDetailGUI((Player) event.getWhoClicked(), clicked);
+            return;
         }
+
         if (event.getView().getTitle().startsWith(ChatColor.GOLD + "Recipe for ")) {
             event.setCancelled(true);
-            if (event.getCurrentItem() == null || event.getCurrentItem().getType() == Material.AIR) return;
-
-            Player player = (Player) event.getWhoClicked();
-            ItemStack clickedItem = event.getCurrentItem();
-
-            if (clickedItem.getDisplayName().startsWith(ChatColor.YELLOW + "Back Button")) {
-                openRecipesGUI(player);
+            ItemStack clicked = event.getCurrentItem();
+            if (clicked == null || clicked.getType() == Material.AIR) return;
+            ItemMeta meta = clicked.getItemMeta();
+            if (meta != null && meta.hasDisplayName() && meta.getDisplayName().startsWith(ChatColor.YELLOW + "Back Button")) {
+                openRecipesGUI((Player) event.getWhoClicked());
             }
+            return;
         }
-        if (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.DRAGON_EGG) {
-            event.setCancelled(true);
-        }
-        if (event.getView().getTitle().contains("Rune")) {
+
+        if ((event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.DRAGON_EGG) || event.getView().getTitle().contains("Rune")) {
             event.setCancelled(true);
         }
     }
@@ -71,14 +70,15 @@ public class AntiUseListener implements Listener {
     @EventHandler
     public void onPlayerConsume(PlayerItemConsumeEvent event) {
         ItemStack item = event.getItem();
-        if (item.getType() == Material.BEETROOT && item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.getItemMeta().getLore().contains("Severed")) {
+        if (item.getType() != Material.BEETROOT || !item.hasItemMeta()) return;
 
-            event.setCancelled(true);
-            PotionEffect potion = new PotionEffect(PotionEffectType.POISON, 10, 1, false);
-            event.getPlayer().addPotionEffect(potion);
-
+        ItemMeta meta = item.getItemMeta();
+        if (meta != null && meta.hasLore()) {
+            boolean containsSevered = meta.getLore().stream().anyMatch(line -> line != null && line.contains("Severed"));
+            if (containsSevered) {
+                event.setCancelled(true);
+                event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.POISON, 10, 1, false));
+            }
         }
     }
-
-
 }

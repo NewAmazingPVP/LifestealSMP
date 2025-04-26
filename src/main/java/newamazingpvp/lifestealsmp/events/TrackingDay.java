@@ -30,7 +30,7 @@ public class TrackingDay extends BaseEvent {
     public void onEventEnd() {
         Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Exact block /track day is now over, Check announcements");
         sendDiscordNewsMessage("Exact block /track day is now over", "1032411739351941120");
-        trackingDist = 1000;
+        trackingDist = 500;
     }
 
     @Override

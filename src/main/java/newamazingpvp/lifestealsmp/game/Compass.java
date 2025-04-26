@@ -35,7 +35,7 @@ public class Compass implements CommandExecutor, Listener {
     private static final HashMap<UUID, Location> lastPortalLocations = new HashMap<>();
     private static final HashMap<UUID, Long> elytraTrackCooldown = new HashMap<>();
     private static final HashMap<UUID, CooldownManager> invisTrackCooldown = new HashMap<>();
-    public static int trackingDist = 1000;
+    public static int trackingDist = 500;
     private boolean logOffTracking;
     public static boolean noTrackingDay = false;
     public static double delayDuration = 45;
