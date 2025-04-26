@@ -38,7 +38,7 @@ public class GUI {
     public static void openRecipeDetailGUI(Player player, ItemStack item) {
         String name = item.getItemMeta().getDisplayName();
         if (name.isEmpty()) {
-            name = item.getDisplayName();
+            //name = item.getDisplayName();
         }
         if (name.isEmpty()) {
             name = item.getType().name();

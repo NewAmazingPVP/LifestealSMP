@@ -70,13 +70,13 @@ public class ReadBlockAndItemInfo implements CommandExecutor, TabCompleter {
         if (item != null && item.getType() != Material.AIR) {
             itemMaterial = item.getType();
 
-            if (!item.getPersistentDataContainer().isEmpty()) {
-                PersistentDataContainer container = item.getPersistentDataContainer();
-                stringData = container.toString();
-
-            } else {
-                stringData = (ChatColor.RED + "This item currently does not have any persistent data.");
-            }
+//            if (!item.getPersistentDataContainer().isEmpty()) {
+//                PersistentDataContainer container = item.getPersistentDataContainer();
+//                stringData = container.toString();
+//
+//            } else {
+//                stringData = (ChatColor.RED + "This item currently does not have any persistent data.");
+//            }
 
 
         } else {
