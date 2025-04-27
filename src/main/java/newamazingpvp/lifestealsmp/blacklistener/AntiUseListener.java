@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
@@ -79,6 +80,14 @@ public class AntiUseListener implements Listener {
                 event.setCancelled(true);
                 event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.POISON, 10, 1, false));
             }
+        }
+    }
+
+    @EventHandler
+    public void onBarrierPlace(BlockPlaceEvent event) {
+        if (event.getBlockPlaced().getType() == Material.BARRIER) {
+            event.setCancelled(true);
+            event.getPlayer().sendMessage(ChatColor.RED + "You cannot place this item!");
         }
     }
 }
