@@ -19,6 +19,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
+import static newamazingpvp.lifestealsmp.listener.SpawnProtection.isWithinSpawnRadius;
 import static org.bukkit.Bukkit.getServer;
 
 public class TntBow implements Listener {
@@ -84,7 +85,7 @@ public class TntBow implements Listener {
     }
 
     public static void spawnIgnitedTNT(Location location, Entity p) {
-        //if (isWithinSpawnRadius(location)) return;
+        if (isWithinSpawnRadius(location)) return;
         TNTPrimed tnt = (TNTPrimed) location.getWorld().spawnEntity(location, EntityType.PRIMED_TNT);
 
         tnt.setFuseTicks(60);
