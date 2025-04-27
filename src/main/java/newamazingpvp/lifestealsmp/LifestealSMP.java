@@ -194,14 +194,14 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new AntiChunkBan(), this);
         getServer().getPluginManager().registerEvents(new DisableItemsInCombat(), this);
         getServer().getPluginManager().registerEvents(new AntiLavaDamage(), this);
-        getServer().getPluginManager().registerEvents(new RandomSpawn(), this);
+        //getServer().getPluginManager().registerEvents(new RandomSpawn(), this);
         getServer().getPluginManager().registerEvents(new AutoBan(), this);
         //getServer().getPluginManager().registerEvents(new AntiEsp(), this);
         //getServer().getPluginManager().registerEvents(new TotemLimiter(), this);
         //SpawnSnow spawnSnow = new SpawnSnow(this);
         //spawnSnow.startRegionalSnow();
-        //startTPSTracking();
-        totemLimiter();
+        startTPSTracking();
+        //totemLimiter();
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
         getCommand("trade").setExecutor(new Trade());
         getServer().getPluginManager().registerEvents(new TradeListener(), this);
@@ -212,7 +212,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         }
         if (isSmp) {
             //spawn prot removed
-            //getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
+            getServer().getPluginManager().registerEvents(new SpawnProtection(), this);
         }
         doEvents();
         Bukkit.getScheduler().runTaskTimer(this, TimeManager::timeBasedEvents, 20, 20);

@@ -83,7 +83,7 @@ public class NerfOpItems implements Listener {
                 if (arrow.getBasePotionType() == PotionType.INSTANT_DAMAGE) {
                     event.setCancelled(true);
                     if (isWithinSpawnRadius(player.getLocation())) {
-                        //return;
+                        return;
                     }
                     player.damage(1.0, event.getDamager());
                     arrow.remove();
@@ -91,7 +91,7 @@ public class NerfOpItems implements Listener {
                 if (arrow.getBasePotionType() == PotionType.STRONG_HARMING) {
                     event.setCancelled(true);
                     if (isWithinSpawnRadius(player.getLocation())) {
-                        //return;
+                        return;
                     }
                     player.damage(2.0, event.getDamager());
                     arrow.remove();
@@ -104,13 +104,13 @@ public class NerfOpItems implements Listener {
                 }
                 if (t.getPotionMeta().getBasePotionType() == PotionType.INSTANT_DAMAGE) {
                     if (isWithinSpawnRadius(player.getLocation())) {
-                        //return;
+                        return;
                     }
                     event.setDamage(2);
                 }
                 if (t.getPotionMeta().getBasePotionType() == PotionType.STRONG_HARMING) {
                     if (isWithinSpawnRadius(player.getLocation())) {
-                        //return;
+                        return;
                     }
                     event.setDamage(4);
                 }

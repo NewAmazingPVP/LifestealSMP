@@ -112,7 +112,7 @@ public class Utils {
 
     private static boolean canIncreaseTo(int distance) {
         int onlinePlayers = Bukkit.getOnlinePlayers().size();
-        int maxPlayersForDistance = 170 - 10 * distance;
+        int maxPlayersForDistance = (int) Math.round(170 - (12.5 * distance));
         return onlinePlayers <= maxPlayersForDistance;
     }
 
@@ -181,9 +181,10 @@ public class Utils {
         World world = Bukkit.getWorld("world");
 
         int desiredDistance = distanceForPlayers(onlinePlayers);
+        int desiredSimulation = simulationForPlayers(onlinePlayers);
 
         if (world.getViewDistance() != desiredDistance) {
-            triggerActions("setview " + desiredDistance + " 2", "chunky continue");
+            triggerActions("setview " + desiredDistance + " " + desiredSimulation, "chunky continue");
         }
     }
 
@@ -192,6 +193,19 @@ public class Utils {
         if (d < 2) d = 2;
         if (d > 16) d = 16;
         return d;
+    }
+
+    private static int simulationForPlayers(int players) {
+        switch (distanceForPlayers(players)) {
+            case 8: return 3;
+            case 9: return 4;
+            case 10: return 4;
+            case 11: return 4;
+            case 12: return 5;
+            case 13: return 5;
+            case 14: return 5;
+            default: return 2;
+        }
     }
 
     private static void resetActions() {
