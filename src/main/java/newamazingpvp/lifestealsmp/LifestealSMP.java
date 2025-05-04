@@ -81,6 +81,7 @@ import java.io.DataInputStream;
 import java.io.IOException;
 
 import static newamazingpvp.lifestealsmp.blacklistener.ChatFilter.initializeBlacklist;
+import static newamazingpvp.lifestealsmp.command.NonVanillaMechanics.nonVanillaMechanics;
 import static newamazingpvp.lifestealsmp.customitems.utils.DevRecipes.registerCustomRecipesDev;
 import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerBasicRecipes;
 import static newamazingpvp.lifestealsmp.customitems.utils.Recipes.registerCustomRecipes;
@@ -93,6 +94,7 @@ import static newamazingpvp.lifestealsmp.game.Compass.compassUpdate;
 import static newamazingpvp.lifestealsmp.listener.TotemLimiter.totemLimiter;
 import static newamazingpvp.lifestealsmp.utility.NetherAntixray.addAntiXray;
 import static newamazingpvp.lifestealsmp.utility.Utils.startTPSTracking;
+import static org.bukkit.Bukkit.getServer;
 
 public final class LifestealSMP extends JavaPlugin implements Listener, PluginMessageListener {
     public static LifestealSMP lifestealSmp;
@@ -200,7 +202,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         //getServer().getPluginManager().registerEvents(new TotemLimiter(), this);
         //SpawnSnow spawnSnow = new SpawnSnow(this);
         //spawnSnow.startRegionalSnow();
-        startTPSTracking();
+        //startTPSTracking();
         //totemLimiter();
         getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
         getCommand("trade").setExecutor(new Trade());
@@ -363,9 +365,9 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
             //getServer().getPluginManager().registerEvents(new MontuStaffShiftRight(), this);
         }
         getServer().getScheduler().runTaskTimer(this, BroadcastMessage::broadcastServerMessage, 0, 7200 * 20);
-        getServer().getScheduler().runTaskTimer(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** help"), 0, 30 * 60 * 20);
-        getServer().getScheduler().runTaskTimer(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** nonvanillamechanics"), 0, 27 * 60 * 20);
-        getServer().getScheduler().runTaskTimer(this, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** discord"), 0, 22 * 60 * 20);
+        getServer().getScheduler().runTaskTimer(this, () -> Bukkit.getOnlinePlayers().forEach(HelpCommand::help), 0, 30 * 60 * 20);
+        getServer().getScheduler().runTaskTimer(this, () -> Bukkit.getOnlinePlayers().forEach(NonVanillaMechanics::nonVanillaMechanics), 0, 27 * 60 * 20);
+        getServer().getScheduler().runTaskTimer(this, () -> Bukkit.getOnlinePlayers().forEach(DiscordLink::discordURL), 0, 22 * 60 * 20);
         getServer().getScheduler().runTaskTimer(this, () ->
                         getServer().dispatchCommand(getServer().getConsoleSender(),
                                 "broadcast &b[Tip] &fStruggling with low hearts or gear? You don't have to rely solely on PvP for hearts! &bYou can craft hearts &fand keep progressing from rare mob drops (do /recipes), even if you're not ready to fight. &bCheck out /recipes &ffor the Heart Equalizer – a custom item that balances PvP damage based on heart ratios, so you're never at a disadvantage. &fAnother strategy? Build a mob farm! Collect mob drops and craft your way to more hearts with custom items!"),

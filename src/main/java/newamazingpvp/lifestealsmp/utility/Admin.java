@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Admin {
-    public static final Set<String> admins = new HashSet<>(Arrays.asList("NewAmazingPVP", "Comet99", "Adamktheweirdguy", "Zinpaii", "__Lex_"));
+    public static final Set<String> admins = new HashSet<>(Arrays.asList("NewAmazingPVP", "Comet99", "Adamktheweirdguy", "Zinpaii"));
 
     public static void sendAdminMessage(String s) {
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {

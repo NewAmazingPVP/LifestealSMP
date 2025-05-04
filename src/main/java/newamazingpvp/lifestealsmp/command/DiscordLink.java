@@ -14,14 +14,19 @@ public class DiscordLink implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player player) {
+            discordURL(player);
+            player.sendMessage(ChatColor.GOLD + "Click the link to join our Discord server!");
 
-            TextComponent linkText = new TextComponent(ChatColor.GOLD + "Here is our discord:" + ChatColor.AQUA + " https://discord.gg/PN8egFY3ap");
-            linkText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, discordURL));
-
-            player.spigot().sendMessage(linkText);
         } else {
             sender.sendMessage("This command can only be executed by a player.");
         }
         return true;
+    }
+
+    public static void discordURL(Player player) {
+        TextComponent linkText = new TextComponent(ChatColor.GOLD + "Here is our discord:" + ChatColor.AQUA + " https://discord.gg/PN8egFY3ap");
+        linkText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, discordURL));
+
+        player.spigot().sendMessage(linkText);
     }
 }
