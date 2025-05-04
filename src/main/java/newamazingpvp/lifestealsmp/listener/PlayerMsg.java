@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.listener;
 
 import net.md_5.bungee.api.ChatColor;
+import newamazingpvp.lifestealsmp.command.DiscordLink;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -84,7 +85,7 @@ public class PlayerMsg implements Listener {
         }
 
         if (message.contains("discord")) {
-            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> getServer().dispatchCommand(getServer().getConsoleSender(), "sudo ** discord"), 20);
+            Bukkit.getScheduler().runTaskLater(lifestealSmp, () -> Bukkit.getOnlinePlayers().forEach(DiscordLink::discordURL), 20);
         }
 
         if (message.contains("track")) {
