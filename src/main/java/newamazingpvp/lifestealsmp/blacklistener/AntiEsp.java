@@ -87,6 +87,13 @@ public class AntiEsp implements Listener {
             Material.LIGHT_BLUE_BED, Material.YELLOW_BED, Material.LIME_BED,
             Material.PINK_BED, Material.GRAY_BED, Material.LIGHT_GRAY_BED,
             Material.CYAN_BED, Material.PURPLE_BED, Material.BLUE_BED,
-            Material.BROWN_BED, Material.GREEN_BED, Material.RED_BED
+            Material.BROWN_BED, Material.GREEN_BED, Material.RED_BED,
+            Material.STONECUTTER,
+            Material.LECTERN,
+            Material.FLETCHING_TABLE,
+            Material.BREWING_STAND,
+            Material.ANVIL,
+            Material.COMPOSTER
     );
+
 }
