@@ -1,6 +1,7 @@
 package newamazingpvp.lifestealsmp.listener;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -12,9 +13,10 @@ import org.bukkit.scheduler.BukkitRunnable;
 import static newamazingpvp.lifestealsmp.LifestealSMP.lifestealSmp;
 
 public class InfiniteStorage implements Listener {
+
     @EventHandler
     public void InventoryClickEvent(InventoryClickEvent event) {
-        Inventory inv = event.getClickedInventory();
+        Inventory inv  = event.getClickedInventory();
         Inventory inv2 = event.getInventory();
         ItemStack item = event.getCurrentItem();
         ItemStack itemHolding = event.getCursor();
@@ -22,11 +24,18 @@ public class InfiniteStorage implements Listener {
 
         if (inv == null || inv2 == null) return;
 
-        if (inv.getType().toString().contains("SHULKER") && itemHolding.getType().toString().contains("SHULKER")) {
+        if (itemHolding != null
+                && inv.getType().toString().contains("SHULKER")
+                && itemHolding.getType().toString().contains("SHULKER")) {
 
             event.setCancelled(true);
-            event.getWhoClicked().sendMessage(ChatColor.DARK_RED + "You are using the infinite storage feature on this server. As cool as this feature is, do not stack a lot of shulkers inside each other as that might possibly corrupt minecraft data and get you auto chunkbanned. Admins won't be able to help in that case");
-            if (item.getType().toString().equals("AIR")) {
+            event.getWhoClicked().sendMessage(ChatColor.DARK_RED +
+                    "You are using the infinite storage feature on this server. "
+                    + "As cool as this feature is, do not stack a lot of shulkers "
+                    + "inside each other as that might possibly corrupt minecraft data "
+                    + "and get you auto-chunk-banned. Admins won't be able to help in that case");
+
+            if (item == null || item.getType() == Material.AIR) {
                 event.setCurrentItem(itemHolding);
                 itemHolding.setAmount(0);
             } else {
@@ -36,10 +45,17 @@ public class InfiniteStorage implements Listener {
             }
         }
 
-        if (inv2.getType().toString().equals(item.getType().toString()) & shift) {
+
+        if (item != null && (inv2.getType().toString().equals(item.getType().toString())) & shift) {
             if (inv == inv2) return;
+
             event.setCancelled(true);
-            event.getWhoClicked().sendMessage(ChatColor.DARK_RED + "You are using the infinite storage feature on this server. As cool as this feature is, do not stack a lot of shulkers inside each other as that might possibly corrupt minecraft data and get you auto chunkbanned. Admins won't be able to help in that case");
+            event.getWhoClicked().sendMessage(ChatColor.DARK_RED +
+                    "You are using the infinite storage feature on this server. "
+                    + "As cool as this feature is, do not stack a lot of shulkers "
+                    + "inside each other as that might possibly corrupt minecraft data "
+                    + "and get you auto-chunk-banned. Admins won't be able to help in that case");
+
             if (inv2.firstEmpty() != -1) {
                 inv2.addItem(item);
                 inv.removeItem(item);
@@ -49,7 +65,8 @@ public class InfiniteStorage implements Listener {
 
     @EventHandler
     public void onInventoryMoveItem(InventoryMoveItemEvent event) {
-        if (event.getDestination().getType().toString().contains("SHULKER") && event.getItem().getType().toString().contains("SHULKER")) {
+        if (event.getDestination().getType().toString().contains("SHULKER")
+                && event.getItem().getType().toString().contains("SHULKER")) {
 
             new BukkitRunnable() {
                 @Override
@@ -62,7 +79,8 @@ public class InfiniteStorage implements Listener {
         }
     }
 
-    /*@EventHandler
+
+        /*@EventHandler
     public void onInventoryOpen(InventoryOpenEvent event)
     {
         HumanEntity player = event.getPlayer();
