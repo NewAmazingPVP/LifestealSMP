@@ -234,7 +234,7 @@ public class Recipes {
         shapedRecipes.put(heartEqualizer, heartEqualizerRecipe);
 
         //removed rune pouch
-        /*ItemStack runePouch = createRunePouch();
+        ItemStack runePouch = createRunePouch();
         ShapedRecipe runePouchRecipe = new ShapedRecipe(new NamespacedKey(lifestealSmp, "rune_pouch"), runePouch);
         runePouchRecipe.shape("NNN", "DED", "DID");
         runePouchRecipe.setIngredient('D', Material.DIAMOND);
@@ -243,7 +243,7 @@ public class Recipes {
         runePouchRecipe.setIngredient('I', Material.NETHERITE_INGOT);
         Bukkit.addRecipe(runePouchRecipe);
         customItems.add(runePouch);
-        shapedRecipes.put(runePouch, runePouchRecipe);*/
+        shapedRecipes.put(runePouch, runePouchRecipe);
 
         //addRecipes();
     }

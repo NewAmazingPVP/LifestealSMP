@@ -191,7 +191,7 @@ public class Utils {
     private static int distanceForPlayers(int players) {
         int d = (int) Math.round((170 - players) / 12.5);
         if (d < 2) d = 2;
-        if (d > 10) d = 10;
+        if (d > 16) d = 16;
         return d;
     }
 
@@ -202,9 +202,9 @@ public class Utils {
             case 10: return 4;
             case 11: return 4;
             //below were 5s
-            case 12: return 4;
-            case 13: return 4;
-            case 14: return 4;
+            case 12: return 5;
+            case 13: return 5;
+            case 14: return 5;
             default: return 2;
         }
     }

@@ -69,7 +69,8 @@ public class TradeListener implements Listener {
 
             if (slot == 45 || slot == 53) {
                 if (slot == 45) {
-                    if (inventory.getItem(45).getType() == Material.RED_STAINED_GLASS_PANE) {
+                    ItemStack stack45 = inventory.getItem(45);
+                    if (stack45 != null && stack45.getType() == Material.RED_STAINED_GLASS_PANE) {
                         TradeManager.handleTradeAcceptance(player);
                         inventory.setItem(45, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
                     } else {
@@ -78,7 +79,8 @@ public class TradeListener implements Listener {
                     }
                 }
                 if (slot == 53) {
-                    if (inventory.getItem(53).getType() == Material.RED_STAINED_GLASS_PANE) {
+                    ItemStack stack53 = inventory.getItem(53);
+                    if (stack53 != null && stack53.getType() == Material.RED_STAINED_GLASS_PANE) {
                         TradeManager.handleTradeAcceptance(player);
                         inventory.setItem(53, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
                     } else {
