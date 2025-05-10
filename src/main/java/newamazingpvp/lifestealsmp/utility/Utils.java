@@ -174,7 +174,7 @@ public class Utils {
         tpsCooldown.setCooldown(MAX_SIZE);
     }
 
-    private static void defaultDistance() {
+    public static void defaultDistance() {
         if (isTriggered) return;
 
         int onlinePlayers = Bukkit.getOnlinePlayers().size();

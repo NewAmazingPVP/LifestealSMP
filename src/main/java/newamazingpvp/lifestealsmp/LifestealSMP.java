@@ -204,7 +204,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         //spawnSnow.startRegionalSnow();
         //startTPSTracking();
         totemLimiter();
-        getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
+        getServer().getScheduler().runTaskTimer(this, Utils::defaultDistance, 120, 1);
         getCommand("trade").setExecutor(new Trade());
         getServer().getPluginManager().registerEvents(new TradeListener(), this);
         registerBasicRecipes();
