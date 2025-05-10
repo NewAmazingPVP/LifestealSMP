@@ -35,6 +35,6 @@ public class TotemLimiter {
                     }
                 }
             }
-        }.runTaskTimer(lifestealSmp, 0L, 1L);
+        }.runTaskTimer(lifestealSmp, 0L, 10L);
     }
 }
