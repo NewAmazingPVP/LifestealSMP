@@ -9,6 +9,7 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.channel.concrete.NewsChannel;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.requests.GatewayIntent;
+import newamazingpvp.lifestealsmp.events.TimeManager;
 import newamazingpvp.lifestealsmp.utility.CooldownManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -26,6 +27,8 @@ public class DiscordBot {
     public static WebhookClient client;
     public static String channelId;
     private static final CooldownManager eventRoleCooldown = new CooldownManager();
+    private static final CooldownManager mcServerCooldown = new CooldownManager();
+
     public static String consoleChannel = lifestealSmp.getConfig().getString("Discord.ConsoleChannel");
 
     public static void intializeBot() {
@@ -82,6 +85,16 @@ public class DiscordBot {
         if (!msg.contains(eventRole + " ⬆️")) {
             msg = msg.replace(eventRole + " ", "");
         }
+        String mcServer = TimeManager.mcServer;
+        if (msg.contains(mcServer)) {
+            if (mcServerCooldown.isOnCooldown()) {
+                //msg = msg.replace(mcServer + " ", "");
+                return;
+            } else {
+                mcServerCooldown.setCooldown(30);
+            }
+        }
+
         if (channelID.isEmpty()) {
             //channel.sendMessage(msg);
             NewsChannel tempChannel = jda.getNewsChannelById("1032411739351941120");

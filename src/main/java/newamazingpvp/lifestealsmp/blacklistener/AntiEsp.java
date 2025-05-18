@@ -1,5 +1,6 @@
 package newamazingpvp.lifestealsmp.blacklistener;
 
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import org.bukkit.*;
 import org.bukkit.block.BlockState;
 import org.bukkit.entity.Player;
@@ -15,59 +16,117 @@ import org.bukkit.util.Vector;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class AntiEsp implements Listener {
-    private static final int REVEAL_RADIUS = 20;
-    private static final int CHUNK_RADIUS = 7;
 
-    private final Map<Chunk, List<Location>> cache = new ConcurrentHashMap<>();
+public class AntiEsp implements Listener {
+
+    private static final int REVEAL_RADIUS = 20;
+    private static final int CHUNK_RADIUS  = 7;
+
+
+    private final Map<UUID, Long2ObjectOpenHashMap<List<Location>>> chunkCache = new ConcurrentHashMap<>();
+
+    private final Map<Player, Set<Location>> playerVisible = new WeakHashMap<>();
+
 
     public AntiEsp() {
-        for (World w : Bukkit.getWorlds())
-            for (Chunk c : w.getLoadedChunks())
-                cacheChunk(c);
+        for (World w : Bukkit.getWorlds()) {
+            Long2ObjectOpenHashMap<List<Location>> worldMap =
+                    chunkCache.computeIfAbsent(w.getUID(), __ -> new Long2ObjectOpenHashMap<>());
+            for (Chunk c : w.getLoadedChunks()) cacheChunk(c, worldMap);
+        }
     }
 
-    @EventHandler public void onChunkLoad(ChunkLoadEvent e){ cacheChunk(e.getChunk()); }
-    @EventHandler public void onChunkUnload(ChunkUnloadEvent e){ cache.remove(e.getChunk()); }
+
+    @EventHandler public void onChunkLoad(ChunkLoadEvent e)   { cacheChunk(e.getChunk());    }
+    @EventHandler public void onChunkUnload(ChunkUnloadEvent e){
+        Long2ObjectOpenHashMap<List<Location>> map = chunkCache.get(e.getWorld().getUID());
+        if (map != null) map.remove(chunkKey(e.getChunk().getX(), e.getChunk().getZ()));
+    }
+
     @EventHandler public void onPlayerJoin(PlayerJoinEvent e){ updatePlayer(e.getPlayer()); }
 
     @EventHandler public void onPlayerMove(PlayerMoveEvent e){
-        if(e.getFrom().getBlockX()!=e.getTo().getBlockX()||e.getFrom().getBlockY()!=e.getTo().getBlockY()||e.getFrom().getBlockZ()!=e.getTo().getBlockZ())
+        if (e.getFrom().getBlockX()!=e.getTo().getBlockX()
+                || e.getFrom().getBlockY()!=e.getTo().getBlockY()
+                || e.getFrom().getBlockZ()!=e.getTo().getBlockZ())
             updatePlayer(e.getPlayer());
     }
 
     private void updatePlayer(Player p){
         Location eye = p.getEyeLocation();
-        double max = REVEAL_RADIUS*REVEAL_RADIUS;
-        for(Location loc : nearby(eye)){
-            boolean visible = loc.distanceSquared(eye)<=max && hasSight(p.getWorld(), eye, loc);
-            p.sendBlockChange(loc, visible?loc.getBlock().getBlockData():Material.AIR.createBlockData());
+        World w     = eye.getWorld();
+        if (w == null) return;
+
+        double maxDistSq = REVEAL_RADIUS * REVEAL_RADIUS;
+
+        Set<Location> nowVisible = new HashSet<>();
+
+        for (Location loc : nearby(eye)){
+            if (loc.distanceSquared(eye) <= maxDistSq && hasSight(w, eye, loc))
+                nowVisible.add(loc);
+        }
+
+        Set<Location> prev = playerVisible.computeIfAbsent(p, __ -> new HashSet<>());
+
+        for (Location loc : nowVisible) {
+            if (prev.add(loc)) p.sendBlockChange(loc, loc.getBlock().getBlockData());
+        }
+
+        for (Iterator<Location> it = prev.iterator(); it.hasNext();){
+            Location loc = it.next();
+            if (!nowVisible.contains(loc)){
+                p.sendBlockChange(loc, Material.AIR.createBlockData());
+                it.remove();
+            }
         }
     }
 
     private boolean hasSight(World w, Location eye, Location loc){
-        Vector dir = loc.clone().add(0.5,0.5,0.5).toVector().subtract(eye.toVector());
-        double len = dir.length() - 0.75;
+        Vector dir  = loc.clone().add(0.5,0.5,0.5).toVector().subtract(eye.toVector());
+        double len  = dir.length() - 0.75; 
         RayTraceResult r = w.rayTraceBlocks(eye, dir, len, FluidCollisionMode.NEVER, true);
         return r == null || r.getHitBlock() == null;
     }
 
+
     private List<Location> nearby(Location centre){
+        World w = Objects.requireNonNull(centre.getWorld());
+        Long2ObjectOpenHashMap<List<Location>> worldMap = chunkCache.get(w.getUID());
+        if (worldMap == null || worldMap.isEmpty()) return Collections.emptyList();
+
         List<Location> out = new ArrayList<>();
-        World w = centre.getWorld();
-        Chunk c = centre.getChunk(); int bx=c.getX(), bz=c.getZ();
-        for(int dx=-CHUNK_RADIUS; dx<=CHUNK_RADIUS; dx++)
-            for(int dz=-CHUNK_RADIUS; dz<=CHUNK_RADIUS; dz++){
-                List<Location> l = cache.get(w.getChunkAt(bx+dx,bz+dz));
-                if(l!=null) out.addAll(l);
+
+        int baseX = centre.getBlockX() >> 4;
+        int baseZ = centre.getBlockZ() >> 4;
+
+        for (int dx = -CHUNK_RADIUS; dx <= CHUNK_RADIUS; dx++){
+            int cx = baseX + dx;
+            for (int dz = -CHUNK_RADIUS; dz <= CHUNK_RADIUS; dz++){
+                long key = chunkKey(cx, baseZ + dz);
+                List<Location> list = worldMap.get(key);
+                if (list != null) out.addAll(list);
             }
+        }
         return out;
     }
 
+
     private void cacheChunk(Chunk c){
+        Long2ObjectOpenHashMap<List<Location>> worldMap =
+                chunkCache.computeIfAbsent(c.getWorld().getUID(), __ -> new Long2ObjectOpenHashMap<>());
+        cacheChunk(c, worldMap);
+    }
+
+    private void cacheChunk(Chunk c, Long2ObjectOpenHashMap<List<Location>> worldMap){
         List<Location> list = new ArrayList<>();
-        for(BlockState s : c.getTileEntities()) if(ESP_BLOCKS.contains(s.getType())) list.add(s.getLocation());
-        cache.put(c,list);
+        for (BlockState s : c.getTileEntities())
+            if (ESP_BLOCKS.contains(s.getType()))
+                list.add(s.getLocation().clone());
+        worldMap.put(chunkKey(c.getX(), c.getZ()), list);
+    }
+
+    private static long chunkKey(int x, int z){
+        return ((long)x & 0xffffffffL) << 32 | ((long)z & 0xffffffffL);
     }
 
     private static final Set<Material> ESP_BLOCKS = EnumSet.of(
@@ -88,12 +147,7 @@ public class AntiEsp implements Listener {
             Material.PINK_BED, Material.GRAY_BED, Material.LIGHT_GRAY_BED,
             Material.CYAN_BED, Material.PURPLE_BED, Material.BLUE_BED,
             Material.BROWN_BED, Material.GREEN_BED, Material.RED_BED,
-            Material.STONECUTTER,
-            Material.LECTERN,
-            Material.FLETCHING_TABLE,
-            Material.BREWING_STAND,
-            Material.ANVIL,
-            Material.COMPOSTER
+            Material.STONECUTTER, Material.LECTERN, Material.FLETCHING_TABLE, Material.BREWING_STAND,
+            Material.ANVIL, Material.COMPOSTER
     );
-
 }

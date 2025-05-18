@@ -175,7 +175,7 @@ public class Utils {
     }
 
     public static void defaultDistance() {
-        if (isTriggered) return;
+        //if (isTriggered) return;
 
         int onlinePlayers = Bukkit.getOnlinePlayers().size();
         World world = Bukkit.getWorld("world");

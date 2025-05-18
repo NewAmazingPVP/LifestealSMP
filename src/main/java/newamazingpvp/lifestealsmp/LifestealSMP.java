@@ -198,13 +198,16 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new AntiLavaDamage(), this);
         //getServer().getPluginManager().registerEvents(new RandomSpawn(), this);
         getServer().getPluginManager().registerEvents(new AutoBan(), this);
-        getServer().getPluginManager().registerEvents(new AntiEsp(), this);
+        //getServer().getPluginManager().registerEvents(new AntiEsp(), this);
         //getServer().getPluginManager().registerEvents(new TotemLimiter(), this);
         //SpawnSnow spawnSnow = new SpawnSnow(this);
         //spawnSnow.startRegionalSnow();
         //startTPSTracking();
         totemLimiter();
-        getServer().getScheduler().runTaskTimer(this, Utils::defaultDistance, 120, 1);
+        //TODO: dyanmic render with tps
+        //getServer().getScheduler().runTaskTimer(this, Utils::adjustPerformance, 120, 1);
+        //dyanmic render solely on player count
+        getServer().getScheduler().runTaskTimer(this, Utils::defaultDistance, 120, 100);
         getCommand("trade").setExecutor(new Trade());
         getServer().getPluginManager().registerEvents(new TradeListener(), this);
         registerBasicRecipes();
