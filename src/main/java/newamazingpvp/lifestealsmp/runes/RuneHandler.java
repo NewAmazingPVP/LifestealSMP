@@ -118,6 +118,7 @@ public class RuneHandler implements Listener {
                                                 }
                                                 //PotionEffect effect = new PotionEffect(r.getEffect().getType(),  (int) (Math.random() * r.getEffect().getDuration()) + 1, r.getEffect().getAmplifier(), true, false);
                                                 PotionEffect effect = new PotionEffect(r.getEffect().getType(), r.getEffect().getDuration(), r.getEffect().getAmplifier(), true, false);
+                                                p.removePotionEffect(r.getEffect().getType());
                                                 p.addPotionEffect(effect);
                                             }
                                         }
@@ -150,6 +151,7 @@ public class RuneHandler implements Listener {
                                                 }
                                                 //PotionEffect effect = new PotionEffect(r.getEffect().getType(), (int) (Math.random() * r.getEffect().getDuration()) + 1, r.getEffect().getAmplifier(), true, false);
                                                 PotionEffect effect = new PotionEffect(r.getEffect().getType(), r.getEffect().getDuration(), r.getEffect().getAmplifier(), true, false);
+                                                p.removePotionEffect(r.getEffect().getType());
                                                 p.addPotionEffect(effect);
                                             }
                                         }
@@ -235,7 +237,7 @@ public class RuneHandler implements Listener {
 
     public static ItemStack createRuneItem(Rune rune) {
         int dropChance = (int) (1.0 / rune.getDropRate());
-        ItemStack runeItem = new ItemStack(Material.PAPER);
+        ItemStack runeItem = new ItemStack(Material.NAUTILUS_SHELL);
         ItemMeta meta = runeItem.getItemMeta();
         meta.displayName(rune.getName());
         meta.addEnchant(Enchantment.DURABILITY, 1, false);
