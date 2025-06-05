@@ -95,7 +95,7 @@ public class StartEndFight implements CommandExecutor {
                                         // p.addPotionEffect(new PotionEffect(PotionEffectType.POISON, Integer.MAX_VALUE, 2, true, false));
                                         p.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, Integer.MAX_VALUE, 1, true, false));
                                         p.sendTitle(ChatColor.RED + "WARNING!", ChatColor.YELLOW + "Fight to the death, or get eliminated by wither effect!");
-                                        p.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 100, 0, true, false));
+                                        p.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, Integer.MAX_VALUE, 0, true, false));
                                     }
                                 }
                                 Bukkit.broadcastMessage(ChatColor.DARK_RED + "Fight to the death. Wither effect applied!");
