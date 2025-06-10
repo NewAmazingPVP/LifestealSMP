@@ -112,7 +112,7 @@ public class Utils {
 
     private static boolean canIncreaseTo(int distance) {
         int onlinePlayers = Bukkit.getOnlinePlayers().size();
-        int maxPlayersForDistance = (int) Math.round(170 - (12.5 * distance));
+        int maxPlayersForDistance = (int) Math.round(170 - (12.5 * distance)) - 2;
         return onlinePlayers <= maxPlayersForDistance;
     }
 
