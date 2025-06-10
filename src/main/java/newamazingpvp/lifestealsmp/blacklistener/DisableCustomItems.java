@@ -50,34 +50,34 @@ public class DisableCustomItems implements Listener {
             return;
         }
 
-        if (customItems.contains(currentItem) && !basicItems.contains(currentItem)) {
-            Player player = (Player) event.getWhoClicked();
-            String itemId = getCustomItemId(currentItem);
-            ZonedDateTime now = ZonedDateTime.now(ZoneId.of("America/New_York"));
-
-            List<Map<String, Object>> results = dbHelper.getData("custom_items", "item_id = ?", itemId);
-            if (!results.isEmpty()) {
-                Map<String, Object> record = results.get(0);
-                Object craftedAtObj = record.get("crafted_at");
-                Timestamp ts;
-                if (craftedAtObj instanceof Long) {
-                    ts = new Timestamp((Long) craftedAtObj);
-                } else {
-                    ts = (Timestamp) craftedAtObj;
-                }
-                ZonedDateTime lastCrafted = ts.toLocalDateTime().atZone(ZoneId.of("America/New_York"));
-                if (!isTimePassed(lastCrafted.plusDays(1))) {
-                    player.sendMessage(ChatColor.RED + "You must wait " + formatDuration(lastCrafted.plusDays(1)) + " before crafting this limited custom item because it was recently crafted by someone.");
-                    event.setCancelled(true);
-                } else {
-                    Map<String, Object> updateValues = new HashMap<>();
-                    updateValues.put("crafted_at", Timestamp.valueOf(now.toLocalDateTime()));
-                    dbHelper.updateData("custom_items", updateValues, "item_id = ?", itemId);
-                }
-            } else {
-                dbHelper.insertData("custom_items", new String[]{"item_id", "crafted_at"}, itemId, Timestamp.valueOf(now.toLocalDateTime()));
-            }
-        }
+//        if (customItems.contains(currentItem) && !basicItems.contains(currentItem)) {
+//            Player player = (Player) event.getWhoClicked();
+//            String itemId = getCustomItemId(currentItem);
+//            ZonedDateTime now = ZonedDateTime.now(ZoneId.of("America/New_York"));
+//
+//            List<Map<String, Object>> results = dbHelper.getData("custom_items", "item_id = ?", itemId);
+//            if (!results.isEmpty()) {
+//                Map<String, Object> record = results.get(0);
+//                Object craftedAtObj = record.get("crafted_at");
+//                Timestamp ts;
+//                if (craftedAtObj instanceof Long) {
+//                    ts = new Timestamp((Long) craftedAtObj);
+//                } else {
+//                    ts = (Timestamp) craftedAtObj;
+//                }
+//                ZonedDateTime lastCrafted = ts.toLocalDateTime().atZone(ZoneId.of("America/New_York"));
+//                if (!isTimePassed(lastCrafted.plusDays(1))) {
+//                    player.sendMessage(ChatColor.RED + "You must wait " + formatDuration(lastCrafted.plusDays(1)) + " before crafting this limited custom item because it was recently crafted by someone.");
+//                    event.setCancelled(true);
+//                } else {
+//                    Map<String, Object> updateValues = new HashMap<>();
+//                    updateValues.put("crafted_at", Timestamp.valueOf(now.toLocalDateTime()));
+//                    dbHelper.updateData("custom_items", updateValues, "item_id = ?", itemId);
+//                }
+//            } else {
+//                dbHelper.insertData("custom_items", new String[]{"item_id", "crafted_at"}, itemId, Timestamp.valueOf(now.toLocalDateTime()));
+//            }
+//        }
     }
 
     private String getCustomItemId(ItemStack item) {

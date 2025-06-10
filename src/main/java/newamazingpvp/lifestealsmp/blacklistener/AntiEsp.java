@@ -83,7 +83,7 @@ public class AntiEsp implements Listener {
 
     private boolean hasSight(World w, Location eye, Location loc){
         Vector dir  = loc.clone().add(0.5,0.5,0.5).toVector().subtract(eye.toVector());
-        double len  = dir.length() - 0.75; 
+        double len  = dir.length() - 0.75;
         RayTraceResult r = w.rayTraceBlocks(eye, dir, len, FluidCollisionMode.NEVER, true);
         return r == null || r.getHitBlock() == null;
     }
