@@ -193,7 +193,7 @@ public class NerfOpItems implements Listener {
             Location anchorLocation = event.getClickedBlock().getLocation();
             event.getClickedBlock().breakNaturally();
             //anchorLocation.getWorld().createExplosion(anchorLocation, 3.0F, true, true);
-            anchorLocation.getWorld().createExplosion(anchorLocation, 4.0F, true, true);
+            anchorLocation.getWorld().createExplosion(anchorLocation, 3.0F, true, true);
         }
     }
 
