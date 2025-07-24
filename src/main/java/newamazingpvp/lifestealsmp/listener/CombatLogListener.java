@@ -35,9 +35,7 @@ public class CombatLogListener implements Listener {
 
     @EventHandler
     public void onPlayerDisconnect(PlayerQuitEvent e) {
-        if (e.getReason() == PlayerQuitEvent.QuitReason.ERRONEOUS_STATE ||
-                e.getReason() == PlayerQuitEvent.QuitReason.KICKED ||
-                e.getReason() == PlayerQuitEvent.QuitReason.TIMED_OUT) {
+        if (e.getReason() != PlayerQuitEvent.QuitReason.DISCONNECTED) {
             cancelCombatData(e.getPlayer());
             removeEnemies(e.getPlayer());
             return;

@@ -180,7 +180,7 @@ public final class LifestealSMP extends JavaPlugin implements Listener, PluginMe
         getServer().getPluginManager().registerEvents(new ChatFilter(), this);
         getServer().getPluginManager().registerEvents(new CombatProtectionHandler(), this);
         getServer().getPluginManager().registerEvents(new ReviveBeacon(), this);
-        getServer().getPluginManager().registerEvents(new CombatLogListener(), this);
+        //getServer().getPluginManager().registerEvents(new CombatLogListener(), this);
         getServer().getPluginManager().registerEvents(new TeamListener(), this);
         getServer().getPluginManager().registerEvents(new DiscordListener(), this);
         getServer().getPluginManager().registerEvents(new DisableNetherite(), this);
